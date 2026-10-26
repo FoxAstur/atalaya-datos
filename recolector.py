@@ -522,9 +522,13 @@ def sct_texto(texto: str) -> list[dict]:
     lineas = [l for l in texto.splitlines() if l.strip()]
     if not lineas:
         return salida
+    log("  SCT muestra: " + " | ".join(repr(l[:120]) for l in lineas[:3]))
     sep = max(["\t", ";", ","], key=lambda c: lineas[0].count(c))
+    if lineas[0].count(sep) == 0:
+        sep = None  # columnas separadas por espacios (como lee R con read.table)
     for l in lineas:
-        campos = [c.strip().strip('"') for c in l.split(sep)]
+        trozos = l.split(sep) if sep else re.split(r"\s+", l.strip())
+        campos = [c.strip().strip('"') for c in trozos]
         nums = []
         for c in campos:
             try:
