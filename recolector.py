@@ -121,6 +121,14 @@ def distancia(lat1, lon1, lat2, lon2) -> float:
     return 2 * r * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
+def rumbo_entre(lat1, lon1, lat2, lon2) -> float:
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dl = math.radians(lon2 - lon1)
+    y = math.sin(dl) * math.cos(p2)
+    x = math.cos(p1) * math.sin(p2) - math.sin(p1) * math.cos(p2) * math.cos(dl)
+    return (math.degrees(math.atan2(y, x)) + 360) % 360
+
+
 def en_espana(lat, lon) -> bool:
     return (35.0 <= lat <= 44.5 and -10.0 <= lon <= 5.0) or (27.4 <= lat <= 29.6 and -18.5 <= lon <= -13.2)
 
@@ -319,6 +327,20 @@ class Geocodificador:
         if b and f >= 0.5:
             return b
         return a or b
+
+    def rumbo(self, via: str, pk: float, provincia: str | None, sentido: str | None):
+        """Rumbo (grados) de la circulación en ese PK y sentido; None si no se puede saber."""
+        if sentido not in ("Creciente", "Decreciente"):
+            return None
+        k = int(math.floor(pk))
+        for a_km, b_km in ((k, k + 1), (k - 1, k), (k + 1, k + 2)):
+            if a_km < 0:
+                continue
+            a, b = self._hito(via, a_km, provincia), self._hito(via, b_km, provincia)
+            if a and b and 50 < distancia(a[0], a[1], b[0], b[1]) < 3000:
+                rb = rumbo_entre(a[0], a[1], b[0], b[1])
+                return round((rb + 180) % 360 if sentido == "Decreciente" else rb, 1)
+        return None
 
     def direccion(self, texto: str):
         clave = f"dir|{texto}"
@@ -701,6 +723,95 @@ out geom;
     return list(por_id.values())
 
 
+URL_ZBE_CKAN = "https://nap.dgt.es/api/3/action/package_show?id=zonas-de-bajas-emisiones"
+URL_ZBE_DATASET = "https://nap.dgt.es/dataset/zonas-de-bajas-emisiones"
+
+
+def urls_zbe() -> list[str]:
+    urls = []
+    try:
+        d = http_json(URL_ZBE_CKAN, timeout=60)
+        urls = [r["url"] for r in d["result"]["resources"] if str(r.get("url", "")).lower().endswith(".xml")]
+    except Exception as e:  # noqa: BLE001
+        log(f"  ZBE: API CKAN no disponible ({e}); leo la página")
+    if not urls:
+        html = http(URL_ZBE_DATASET, timeout=60).decode("utf-8", "replace")
+        for rid in sorted(set(re.findall(r"/resource/([0-9a-f-]{36})", html))):
+            try:
+                h = http(f"{URL_ZBE_DATASET}/resource/{rid}", timeout=60, intentos=2).decode("utf-8", "replace")
+                m = re.search(r'(https://nap\.dgt\.es/datex2/v3/dgt/zbe/[^"\'<>\s]+\.xml)', h)
+                if m:
+                    urls.append(m.group(1))
+            except Exception:  # noqa: BLE001
+                pass
+    return sorted(set(urls))
+
+
+def simplificar(anillo: list[tuple], tolerancia_m: float = 8.0) -> list[tuple]:
+    """Quita puntos repetidos y casi alineados para que el fichero pese poco."""
+    limpio = []
+    for p in anillo:
+        if not limpio or distancia(limpio[-1][0], limpio[-1][1], p[0], p[1]) > tolerancia_m:
+            limpio.append(p)
+    return limpio
+
+
+def fuente_zbe() -> list[dict]:
+    import xml.etree.ElementTree as ET
+
+    def local(t):
+        return t.rsplit("}", 1)[-1]
+
+    urls = urls_zbe()
+    log(f"  ZBE: {len(urls)} ficheros")
+    zonas = []
+    for url in urls:
+        try:
+            raiz = ET.fromstring(http(url, timeout=90, intentos=2))
+        except Exception as e:  # noqa: BLE001
+            log(f"  ZBE: {url.rsplit('/', 1)[-1]} falló ({e})")
+            continue
+        for z in raiz.iter():
+            if local(z.tag) != "controlledZone":
+                continue
+            nombre = desc = web = estado = None
+            anillos, etiquetas = [], set()
+            for h in z.iter():
+                n = local(h.tag)
+                if n == "name" and nombre is None:
+                    nombre = next((v.text for v in h.iter() if local(v.tag) == "value" and v.text), None)
+                elif n == "controlledZoneDescription" and desc is None:
+                    desc = next((v.text for v in h.iter() if local(v.tag) == "value" and v.text), None)
+                elif n == "urlForFurtherInformation":
+                    web = (h.text or "").strip() or None
+                elif n == "status":
+                    estado = (h.text or "").strip()
+                elif n == "openlrPolygonCorners":
+                    pts = []
+                    for c in h:
+                        if local(c.tag) != "openlrCoordinates":
+                            continue
+                        la = lo = None
+                        for v in c:
+                            if local(v.tag) == "latitude":
+                                la = float(v.text)
+                            elif local(v.tag) == "longitude":
+                                lo = float(v.text)
+                        if la is not None and lo is not None and en_espana(la, lo):
+                            pts.append((la, lo))
+                    pts = simplificar(pts)
+                    if len(pts) >= 3:
+                        anillos.append([round(x, 5) for p in pts for x in p])
+                elif "emission" in n.lower() or "badge" in n.lower() or "label" in n.lower():
+                    if h.text and h.text.strip():
+                        etiquetas.add(h.text.strip())
+            if not anillos or estado == "inactive":
+                continue
+            zonas.append({"id": z.attrib.get("id", nombre or url), "n": nombre, "d": desc, "u": web,
+                          "e": sorted(etiquetas) or None, "p": anillos})
+    return [{k: v for k, v in z.items() if v} for z in zonas]
+
+
 def fuente_zonas() -> list[dict]:
     d = http_json(URL_ZONAS, timeout=180)
     salida = []
@@ -803,6 +914,29 @@ def completar_regiones(puntos: list[dict]) -> None:
             p["ca"] = PROVINCIAS[prov][1]
 
 
+# --------------------------------------------------------------------------------- rumbos
+def completar_rumbos(puntos: list[dict], geo: "Geocodificador") -> int:
+    """Rumbo de circulación de cada punto con vía + PK + sentido: la app avisa solo en ese sentido."""
+    candidatos = [p for p in puntos if p.get("c") and p.get("pk") is not None and p.get("s") in ("Creciente", "Decreciente")
+                  and p["t"] != "ZONA_MOVIL" and "rb" not in p]
+    pet = set()
+    for p in candidatos:
+        k = int(math.floor(p["pk"]))
+        pet |= {(p["c"], k, p.get("pr")), (p["c"], k + 1, p.get("pr"))}
+    geo.precargar(pet)
+    n = 0
+    for p in candidatos:
+        rb = geo.rumbo(p["c"], p["pk"], p.get("pr"), p["s"])
+        if rb is not None:
+            # comprobación: el hito interpolado debe estar cerca del punto real (si no, PK/vía dudosos)
+            c = geo.pk(p["c"], p["pk"], p.get("pr"))
+            if c and distancia(c[0], c[1], p["la"], p["lo"]) < 1500:
+                p["rb"] = rb
+                n += 1
+    geo.guardar()
+    return n
+
+
 # ------------------------------------------------------------------------------- deduplicado
 class Rejilla:
     def __init__(self, celda=0.01):
@@ -850,6 +984,21 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
 
 
 # ------------------------------------------------------------------------------------- main
+def ejecutar_zbe(anterior: dict, estado: dict) -> list:
+    try:
+        z = fuente_zbe()
+        if not z:
+            raise RuntimeError("sin zonas")
+        estado["Zonas de bajas emisiones"] = f"✅ {len(z)}"
+        log(f"ZBE: {len(z)} zonas")
+        return z
+    except Exception as e:  # noqa: BLE001
+        prev = anterior.get("zbe", [])
+        estado["Zonas de bajas emisiones"] = f"⚠️ falló ({e}); se mantienen {len(prev)}"
+        log(f"ZBE: ERROR {e}")
+        return prev
+
+
 def main() -> int:
     anterior = cargar_json(SALIDA, {"puntos": []})
     previos_por_fuente: dict[str, list] = {}
@@ -919,6 +1068,9 @@ def main() -> int:
             # ¿ya está en el feed? misma vía y < 400 m
             q = rej.cerca(c[0], c[1], 400, lambda q: via_normalizada(q.get("c")) == via)
             if q is not None:
+                if not q.get("s") or q.get("s") == "Ambos":
+                    q["s"] = f["sentido"]
+                q.setdefault("pr", prov)
                 if f["tipo"] == "Tramo":
                     q["t"] = "RADAR_TRAMO"
                     if f.get("longitud"):
@@ -996,22 +1148,31 @@ def main() -> int:
         completar_regiones(todos)
     except Exception as e:  # noqa: BLE001
         log(f"regiones: ERROR {e}")
+    try:
+        n = completar_rumbos(todos, geo)
+        log(f"rumbos por sentido: {n}")
+    except Exception as e:  # noqa: BLE001
+        log(f"rumbos: ERROR {e}")
+
+    zbe = ejecutar_zbe(anterior, estado)
 
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     # Solo se reescribe si cambia el contenido (así el móvil no descarga si no hay novedades)
     huella = json.dumps(todos, ensure_ascii=False, sort_keys=True)
-    if huella == json.dumps(anterior.get("puntos", []), ensure_ascii=False, sort_keys=True):
+    huella += json.dumps(zbe, ensure_ascii=False, sort_keys=True)
+    if huella == (json.dumps(anterior.get("puntos", []), ensure_ascii=False, sort_keys=True)
+                  + json.dumps(anterior.get("zbe", []), ensure_ascii=False, sort_keys=True)):
         log("Sin cambios en los datos.")
         version = anterior.get("version", ahora)
     else:
         version = ahora
-    guardar_json(SALIDA, {"version": version, "comprobado": ahora, "fuentes": estado, "puntos": todos}, compacto=True)
-    escribir_informe(todos, estado, version)
+    guardar_json(SALIDA, {"version": version, "comprobado": ahora, "fuentes": estado, "puntos": todos, "zbe": zbe}, compacto=True)
+    escribir_informe(todos, estado, version, zbe)
     return 0
 
 
-def escribir_informe(puntos: list[dict], estado: dict, version: str) -> None:
+def escribir_informe(puntos: list[dict], estado: dict, version: str, zbe: list | None = None) -> None:
     from collections import Counter
     tipos = ["RADAR_FIJO", "RADAR_TRAMO", "SEMAFORO", "STOP_CEDA", "OTRA_CAMARA", "ZONA_MOVIL"]
     nombres = {"RADAR_FIJO": "Fijos", "RADAR_TRAMO": "Tramo", "SEMAFORO": "Semáforo", "STOP_CEDA": "Stop/ceda",
@@ -1024,6 +1185,8 @@ def escribir_informe(puntos: list[dict], estado: dict, version: str) -> None:
           "|---|" + "---:|" * len(tipos)]
     for c in ccaas:
         l.append(f"| {c} | " + " | ".join(str(por_ccaa.get((c, t), 0)) for t in tipos) + " |")
+    l += [f"\nCon sentido de circulación conocido (avisos solo en tu sentido): **{sum('rb' in p for p in puntos)}**",
+          f"Zonas de bajas emisiones: **{len(zbe or [])}**"]
     por_fuente = Counter(p["f"] for p in puntos)
     l += ["\n## Por fuente\n"] + [f"- {k}: {v}" for k, v in por_fuente.most_common()]
     l += ["\n## Registro\n", "```", *LOG[-80:], "```"]
