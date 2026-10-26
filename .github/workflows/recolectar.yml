@@ -1,0 +1,45 @@
+name: Recolectar radares
+
+on:
+  schedule:
+    - cron: "17 4 * * *"   # cada día a las 05:17/06:17 hora peninsular
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["recolector.py", ".github/workflows/recolectar.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar
+  cancel-in-progress: false
+
+jobs:
+  recolectar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dependencias
+        run: pip install pdfplumber==0.11.10
+
+      - name: Recolectar
+        run: python recolector.py
+
+      - name: Publicar si hay cambios
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add datos cache
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Datos $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
