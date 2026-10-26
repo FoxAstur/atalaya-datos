@@ -1,17 +1,17 @@
 # Datos de Atalaya
 
-Versión: 2026-10-26T22:54:19+00:00 · Total: **4018** puntos
+Versión: 2026-10-26T23:02:56+00:00 · Total: **4070** puntos
 
 ## Fuentes
 
 - **DGT feed**: ✅ 737 (1s)
-- **DGT PDF radares**: ✅ 175 (7s)
+- **DGT PDF radares**: ✅ 175 (4s)
 - **DGT PDF cámaras**: ✅ 249 (2s)
-- **Cataluña (SCT)**: ⚠️ falló (analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden); se mantienen 0 de la vez anterior
-- **Ayto. Madrid**: ✅ 23 (0s)
+- **Cataluña (SCT)**: ✅ 230 (15s)
+- **Ayto. Madrid**: ✅ 23 (1s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2621 (80s)
-- **Tramos radar móvil**: ✅ 1152 (0s)
+- **OpenStreetMap**: ✅ 2621 (63s)
+- **Tramos radar móvil**: ✅ 1152 (1s)
 - **Zonas de bajas emisiones**: ✅ 57
 
 ## Por comunidad
@@ -24,7 +24,7 @@ Versión: 2026-10-26T22:54:19+00:00 · Total: **4018** puntos
 | Cantabria | 15 | 6 | 2 | 0 | 6 | 27 |
 | Castilla y León | 181 | 57 | 32 | 0 | 35 | 240 |
 | Castilla-La Mancha | 111 | 20 | 9 | 1 | 34 | 140 |
-| Cataluña | 438 | 69 | 59 | 0 | 4 | 0 |
+| Cataluña | 490 | 69 | 59 | 0 | 4 | 0 |
 | Comunidad de Madrid | 148 | 28 | 49 | 1 | 18 | 33 |
 | Comunidad Foral de Navarra | 27 | 2 | 1 | 0 | 2 | 27 |
 | Comunitat Valenciana | 150 | 29 | 6 | 0 | 44 | 63 |
@@ -43,9 +43,10 @@ Zonas de bajas emisiones: **57**
 
 ## Por fuente
 
-- OSM: 1739
+- OSM: 1565
 - DGT_TRAMOS_MOVIL: 1152
 - DGT: 1106
+- SCT: 226
 - AYUNTAMIENTO: 21
 
 ## Registro
@@ -63,18 +64,19 @@ DGT PDF radares: 175 puntos
 DGT PDF cámaras: 249 puntos
   SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
   SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
-  SCT radars.txt: 0 radares
-Cataluña (SCT): ERROR analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden
+  SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
+  SCT radars.txt: 230 radares
+Cataluña (SCT): 230 puntos
   Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
 Ayto. Madrid: 23 puntos
 Ayto. València: 6 puntos
 OpenStreetMap: 2621 puntos
 Tramos radar móvil: 1152 puntos
-  límites: 193 sin límite, 27 por consultar
+  límites: 193 sin límite, 0 por consultar
 límites deducidos de OSM: 115
-  regiones: 90 celdas nuevas que consultar
-  regiones: ejemplo de respuesta {"id": "01.29.MUN_290540009318", "province": "Málaga", "provinceCode": "29", "comunidadAutonoma": "Andalucía", "comunidadAutonomaCode": "01", "muni": "Fuengirola", "muniCode": "29054", "type": "portal", "address": "RAMON Y CAJAL", "postalCode": "29640", "poblacion": "Fuengirola", "geom": "POINT(-4.6
-  CartoCiudad: 2001 hitos necesarios, 17 por consultar
+  regiones: 98 celdas nuevas que consultar
+  regiones: ejemplo de respuesta {"id": "09.43.G43_431550252375", "province": "Tarragona", "provinceCode": "43", "comunidadAutonoma": "Cataluña/Catalunya", "comunidadAutonomaCode": "09", "muni": "Tortosa", "muniCode": "43155", "type": "portal", "address": "S BERNABE", "postalCode": "43590", "poblacion": "Jesús", "geom": "POINT(0.51
+  CartoCiudad: 2001 hitos necesarios, 0 por consultar
 rumbos por sentido: 1025
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
