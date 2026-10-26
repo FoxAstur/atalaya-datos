@@ -42,5 +42,9 @@ jobs:
             echo "Sin cambios"
           else
             git commit -m "Datos $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            # si mientras tanto alguien ha subido cambios (p. ej. del código), se integran antes de publicar
+            for i in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push && break
+              sleep 5
+            done
           fi
