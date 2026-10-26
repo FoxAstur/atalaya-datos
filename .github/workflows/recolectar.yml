@@ -18,7 +18,7 @@ concurrency:
 jobs:
   recolectar:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 115
     steps:
       - uses: actions/checkout@v4
 
@@ -30,9 +30,10 @@ jobs:
         run: pip install pdfplumber==0.11.10
 
       - name: Recolectar
-        run: python recolector.py
+        run: timeout 100m python recolector.py || echo "::warning::El recolector terminó con aviso; se publica lo obtenido"
 
       - name: Publicar si hay cambios
+        if: always()
         run: |
           git config user.name "atalaya-bot"
           git config user.email "atalaya-bot@users.noreply.github.com"

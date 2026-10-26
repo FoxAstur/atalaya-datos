@@ -54,6 +54,15 @@ CARTO_REV = "https://www.cartociudad.es/geocoder/api/geocoder/reverseGeocode"
 
 LOG: list[str] = []
 MUESTRA_REV: list[int] = []
+INICIO = time.time()
+# Cada ejecución consulta servicios externos como mucho este tiempo; lo que falte se completa
+# en la siguiente (todo queda en caché), así nunca se pasa del límite de GitHub Actions.
+PRESUPUESTO_GEO_S = 50 * 60
+PRESUPUESTO_TOTAL_S = 85 * 60
+
+
+def queda(segundos: float) -> bool:
+    return time.time() - INICIO < segundos
 
 
 def log(msg: str) -> None:
@@ -247,11 +256,26 @@ class Geocodificador:
     def __init__(self):
         self.cache: dict = cargar_json(CACHE_GEO, {})
         self.nuevas = 0
+        self.agotado = False
+
+    def precargar(self, peticiones: set) -> None:
+        """Consulta en paralelo todos los hitos (vía, km, provincia) que aún no estén en caché."""
+        pend = [p for p in peticiones if f"{p[0]}|{p[1]}|{p[2] or ''}" not in self.cache]
+        log(f"  CartoCiudad: {len(peticiones)} hitos necesarios, {len(pend)} por consultar")
+        with ThreadPoolExecutor(8) as ex:
+            for i, _ in enumerate(ex.map(lambda p: self._hito(*p), pend)):
+                if i and i % 300 == 0:
+                    self.guardar()
+                    log(f"    {i}/{len(pend)}")
+        self.guardar()
 
     def _hito(self, via: str, km: int, provincia: str | None):
         clave = f"{via}|{km}|{provincia or ''}"
         if clave in self.cache:
             return self.cache[clave]
+        if not queda(PRESUPUESTO_GEO_S):
+            self.agotado = True
+            return None
         cod = PROVINCIAS.get(provincia, (None, None))[0] if provincia else None
         res = None
         for nombre in variantes_via(via):
@@ -701,6 +725,9 @@ def completar_limites(puntos: list[dict]) -> int:
     pendientes = [p for p in faltan if f"{p['la']:.4f},{p['lo']:.4f}" not in cache]
     log(f"  límites: {len(faltan)} sin límite, {len(pendientes)} por consultar")
     for i in range(0, len(pendientes), 40):
+        if not queda(PRESUPUESTO_TOTAL_S - 20 * 60):
+            log("  límites: sin tiempo, se sigue en la próxima ejecución")
+            break
         lote = pendientes[i:i + 40]
         partes = "".join(f'way(around:30,{p["la"]},{p["lo"]})["highway"]["maxspeed"];' for p in lote)
         try:
@@ -740,6 +767,8 @@ def completar_regiones(puntos: list[dict]) -> None:
     log(f"  regiones: {len(pendientes)} celdas nuevas que consultar")
 
     def consulta(k):
+        if not queda(PRESUPUESTO_TOTAL_S - 10 * 60):
+            return k, "SIN_TIEMPO"
         la, lo = k.split(",")
         try:
             r = http_json(f"{CARTO_REV}?{urllib.parse.urlencode({'lon': lo, 'lat': la})}", timeout=30, intentos=2)
@@ -754,8 +783,14 @@ def completar_regiones(puntos: list[dict]) -> None:
         return k, {"mu": r.get("muni"), "pr": prov}
 
     with ThreadPoolExecutor(6) as ex:
+        sin_tiempo = 0
         for k, v in ex.map(consulta, pendientes):
+            if v == "SIN_TIEMPO":
+                sin_tiempo += 1
+                continue
             cache[k] = v
+        if sin_tiempo:
+            log(f"  regiones: {sin_tiempo} celdas quedan para la próxima ejecución")
     guardar_json(CACHE_REV, cache)
 
     for p in puntos:
@@ -859,6 +894,18 @@ def main() -> int:
         rej = Rejilla(0.05)
         for p in feed:
             rej.add(p)
+        pet = set()
+        for f in filas:
+            if f["tipo"] == "Movil":
+                continue
+            prov, via = provincia_canonica(f["prov"]), via_normalizada(f["via"])
+            pks = [f["pk"]]
+            if f.get("longitud"):
+                pks += [f["pk"] + f["longitud"] / 1000, f["pk"] - f["longitud"] / 1000]
+            for pk in pks:
+                if pk >= 0:
+                    pet |= {(via, int(math.floor(pk)), prov), (via, int(math.floor(pk)) + 1, prov)}
+        geo.precargar(pet)
         salida, sin_situar = [], 0
         for f in filas:
             if f["tipo"] == "Movil":
@@ -907,6 +954,12 @@ def main() -> int:
     def de_equipos():
         filas = parsear_equipos(lineas_pdf(http(pdfs["equipos"], timeout=180)))
         log(f"  equipos: {len(filas)} filas; tipos: {sorted({f['equipo'] for f in filas})}")
+        pet = set()
+        for f in filas:
+            prov, via = provincia_canonica(f["prov"]), via_normalizada(f["via"])
+            k = int(math.floor(f["pk"]))
+            pet |= {(via, k, prov), (via, k + 1, prov)}
+        geo.precargar(pet)
         salida, sin_situar = [], 0
         for f in filas:
             prov = provincia_canonica(f["prov"])
