@@ -1391,6 +1391,10 @@
   "mu": "Berja",
   "pr": "Almería"
  },
+ "36.837,-2.909": {
+  "mu": "Berja",
+  "pr": "Almería"
+ },
  "36.837,-2.910": {
   "mu": "Berja",
   "pr": "Almería"
@@ -2169,6 +2173,10 @@
  "37.375,-5.963": {
   "mu": "Sevilla",
   "pr": "Sevilla"
+ },
+ "37.378,-3.059": {
+  "mu": "Guadix",
+  "pr": "Granada"
  },
  "37.378,-3.060": {
   "mu": "Guadix",
@@ -3310,6 +3318,10 @@
   "mu": "Elx/Elche",
   "pr": "Alicante"
  },
+ "38.288,-0.661": {
+  "mu": "Elx/Elche",
+  "pr": "Alicante"
+ },
  "38.293,-0.566": {
   "mu": "Elx/Elche",
   "pr": "Alicante"
@@ -3941,6 +3953,10 @@
   "pr": "Badajoz"
  },
  "38.864,-0.016": {
+  "mu": "el Verger",
+  "pr": "Alicante"
+ },
+ "38.865,-0.016": {
   "mu": "el Verger",
   "pr": "Alicante"
  },
@@ -5010,6 +5026,10 @@
  "39.514,-2.499": {
   "mu": "La Alberca de Záncara",
   "pr": "Cuenca"
+ },
+ "39.515,-0.321": {
+  "mu": "Alboraia/Alboraya",
+  "pr": "Valencia"
  },
  "39.515,-0.322": {
   "mu": "Meliana",
@@ -6235,6 +6255,10 @@
   "mu": "la Torre d\"en Doménec",
   "pr": "Castellón"
  },
+ "40.260,0.078": {
+  "mu": "la Torre d\"en Doménec",
+  "pr": "Castellón"
+ },
  "40.273,-3.708": {
   "mu": "Getafe",
   "pr": "Madrid"
@@ -6404,6 +6428,10 @@
   "pr": "Madrid"
  },
  "40.361,-3.693": {
+  "mu": "Madrid",
+  "pr": "Madrid"
+ },
+ "40.363,-3.666": {
   "mu": "Madrid",
   "pr": "Madrid"
  },
