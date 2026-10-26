@@ -512,8 +512,59 @@ def tipo_equipo(e: str) -> tuple[str, str]:
 
 
 # ------------------------------------------------------------------------------- otras fuentes
+URL_SCT_CSV = "https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD"
+URL_SCT_TXT = "https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt"
+
+
+def sct_texto(texto: str) -> list[dict]:
+    """Lector genérico del CSV/TXT de radares del SCT: detecta vía, UTM y velocidad por su forma."""
+    salida = []
+    lineas = [l for l in texto.splitlines() if l.strip()]
+    if not lineas:
+        return salida
+    sep = max(["\t", ";", ","], key=lambda c: lineas[0].count(c))
+    for l in lineas:
+        campos = [c.strip().strip('"') for c in l.split(sep)]
+        nums = []
+        for c in campos:
+            try:
+                nums.append(float(c.replace(",", ".")))
+            except ValueError:
+                pass
+        x = next((n for n in nums if 250000 <= n <= 550000), None)
+        y = next((n for n in nums if 4450000 <= n <= 4760000), None)
+        la = next((n for n in nums if 40.4 <= n <= 42.9), None)
+        lo = next((n for n in nums if 0.1 <= n <= 3.4), None)
+        if x and y:
+            la, lo = utm_a_latlon(x, y, 31)
+        if la is None or lo is None or not en_espana(la, lo):
+            continue
+        vel = next((int(n) for n in nums if n in (20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120)), None)
+        via = next((c for c in campos if re.match(r"^[A-Z]{1,4}-?\d+[A-Z]?$", c.upper())), None)
+        salida.append(punto(f"sct:{la:.5f},{lo:.5f}", "RADAR_FIJO", "SCT", la, lo,
+                            c=via_normalizada(via) if via else None, v=vel, ca="Cataluña"))
+    return salida
+
+
 def fuente_sct() -> list[dict]:
-    datos = http_json(URL_SCT, timeout=90)
+    try:
+        datos = http_json(URL_SCT, timeout=90, intentos=2)
+    except Exception as e:  # noqa: BLE001
+        log(f"  SCT JSON: {e}; pruebo CSV y TXT")
+        for url in (URL_SCT_CSV, URL_SCT_TXT):
+            try:
+                b = http(url, timeout=90, intentos=2)
+                try:
+                    t = b.decode("utf-8")
+                except UnicodeDecodeError:
+                    t = b.decode("latin-1")
+                r = sct_texto(t)
+                log(f"  SCT {url.rsplit('/', 1)[-1][:30]}: {len(r)} radares")
+                if r:
+                    return r
+            except Exception as e2:  # noqa: BLE001
+                log(f"  SCT {url}: {e2}")
+        raise
     salida = []
     for i, o in enumerate(datos):
         lat = lon = x = y = None
@@ -906,12 +957,29 @@ def completar_regiones(puntos: list[dict]) -> None:
 
     for p in puntos:
         r = cache.get(clave(p)) or {}
+        propia = provincia_canonica(p.get("pr"))
+        # Puntos situados por PK: si caen en otra provincia, el hito de CartoCiudad era de otra vía homónima
+        if propia and r.get("pr") and r["pr"] != propia and p.get("src", "").startswith("DGT PDF"):
+            p["_dudoso"] = True
+            continue
         if not p.get("mu") and r.get("mu"):
             p["mu"] = r["mu"]
-        prov = provincia_canonica(p.get("pr")) or r.get("pr")
+        prov = propia or r.get("pr")
         if prov:
             p["pr"] = prov
             p["ca"] = PROVINCIAS[prov][1]
+
+    # Lo que siga sin provincia (p. ej. en mitad de una autovía sin direcciones): la del vecino más cercano
+    con = [p for p in puntos if p.get("pr")]
+    rej = Rejilla(0.1)
+    for p in con:
+        rej.add(p)
+    for p in puntos:
+        if p.get("pr") or p.get("_dudoso"):
+            continue
+        v = rej.cerca(p["la"], p["lo"], 25000)
+        if v is not None:
+            p["pr"], p["ca"] = v["pr"], v.get("ca")
 
 
 # --------------------------------------------------------------------------------- rumbos
@@ -1041,15 +1109,31 @@ def main() -> int:
             f"({sum(f['tipo'] == 'Fijo' for f in filas)} fijos, {sum(f['tipo'] == 'Tramo' for f in filas)} tramos, "
             f"{sum(f['tipo'] == 'Movil' for f in filas)} móviles)")
         rej = Rejilla(0.05)
+        indice: dict[str, list] = {}
         for p in feed:
             rej.add(p)
+            indice.setdefault(via_normalizada(p.get("c")), []).append(p)
+
+        def en_feed(via, pk):
+            """El feed trae vía y PK: se casa por ahí, sin depender de geocodificar."""
+            mejor, dmin = None, 0.35
+            for q in indice.get(via, []):
+                if q.get("pk") is None:
+                    continue
+                dd = abs(q["pk"] - pk)
+                if dd < dmin:
+                    mejor, dmin = q, dd
+            return mejor
+
         pet = set()
+        casados = 0
         for f in filas:
             if f["tipo"] == "Movil":
                 continue
             prov, via = provincia_canonica(f["prov"]), via_normalizada(f["via"])
-            pks = [f["pk"]]
-            if f.get("longitud"):
+            q = en_feed(via, f["pk"])
+            pks = [] if q is not None else [f["pk"]]
+            if f.get("longitud") and (q is None or "la2" not in q):
                 pks += [f["pk"] + f["longitud"] / 1000, f["pk"] - f["longitud"] / 1000]
             for pk in pks:
                 if pk >= 0:
@@ -1061,13 +1145,17 @@ def main() -> int:
                 continue
             prov = provincia_canonica(f["prov"])
             via = via_normalizada(f["via"])
-            c = geo.pk(via, f["pk"], prov)
-            if not c:
-                sin_situar += 1
-                continue
-            # ¿ya está en el feed? misma vía y < 400 m
-            q = rej.cerca(c[0], c[1], 400, lambda q: via_normalizada(q.get("c")) == via)
+            q = en_feed(via, f["pk"])
+            c = None
+            if q is None:
+                c = geo.pk(via, f["pk"], prov)
+                if not c:
+                    sin_situar += 1
+                    continue
+                # respaldo espacial por si el feed escribe la vía de otra forma
+                q = rej.cerca(c[0], c[1], 400, lambda q: via_normalizada(q.get("c")) == via)
             if q is not None:
+                casados += 1
                 if not q.get("s") or q.get("s") == "Ambos":
                     q["s"] = f["sentido"]
                 q.setdefault("pr", prov)
@@ -1098,7 +1186,7 @@ def main() -> int:
             else:
                 salida.append(punto(f"dgtpdf:F:{via}:{f['pk']}:{f['sentido'][0]}",
                                     "RADAR_TRAMO" if f["tipo"] == "Tramo" else "RADAR_FIJO", "DGT", c[0], c[1], **base))
-        log(f"  cinemómetros: {len(salida)} añadidos al feed, {sin_situar} sin poder situar")
+        log(f"  cinemómetros: {casados} ya estaban en el feed, {len(salida)} añadidos, {sin_situar} sin poder situar")
         return salida
 
     pdf_radares = ejecutar("DGT PDF radares", de_cinemometros) if "cinemometros" in pdfs else previos_por_fuente.get("DGT PDF radares", [])
@@ -1148,6 +1236,12 @@ def main() -> int:
         completar_regiones(todos)
     except Exception as e:  # noqa: BLE001
         log(f"regiones: ERROR {e}")
+    dudosos = [p for p in todos if p.pop("_dudoso", False)]
+    if dudosos:
+        log(f"descartados {len(dudosos)} puntos situados por PK en otra provincia: "
+            + ", ".join(f"{p.get('c')} PK {p.get('pk')} ({p.get('pr')})" for p in dudosos[:15]))
+        ids = {p["id"] for p in dudosos}
+        todos = [p for p in todos if p["id"] not in ids]
     try:
         n = completar_rumbos(todos, geo)
         log(f"rumbos por sentido: {n}")
