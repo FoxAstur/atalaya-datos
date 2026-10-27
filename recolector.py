@@ -867,6 +867,248 @@ def fuente_zbe() -> list[dict]:
     return [{k: v for k, v in z.items() if v} for z in zonas]
 
 
+# ------------------------------------------------------------------- más fuentes municipales
+def csv_filas(b: bytes):
+    try:
+        t = b.decode("utf-8")
+    except UnicodeDecodeError:
+        t = b.decode("latin-1")
+    t = t.lstrip("﻿")
+    primera = t.splitlines()[0] if t else ""
+    sep = ";" if primera.count(";") >= primera.count(",") else ","
+    filas = list(csv.reader(io.StringIO(t), delimiter=sep))
+    cab = [normalizar(c) for c in filas[0]] if filas else []
+    return cab, filas[1:]
+
+
+def num(v):
+    try:
+        return float(str(v).strip().replace(",", "."))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def coordenadas_fila(cab, f, huso=30):
+    def col(*pistas):
+        for i, c in enumerate(cab):
+            if any(c == p or c.startswith(p) for p in pistas):
+                return i
+        return -1
+    la, lo = col("latitud", "lat"), col("longitud", "lon", "lng")
+    x, y = col("utm_x", "gis_x", "x"), col("utm_y", "gis_y", "y")
+    lat = num(f[la]) if 0 <= la < len(f) else None
+    lon = num(f[lo]) if 0 <= lo < len(f) else None
+    if lat is not None and lon is not None and en_espana(lat, lon):
+        return lat, lon
+    if 0 <= x < len(f) and 0 <= y < len(f) and num(f[x]) and num(f[y]):
+        lat, lon = utm_a_latlon(num(f[x]), num(f[y]), huso)
+        if en_espana(lat, lon):
+            return lat, lon
+    return None
+
+
+URL_MADRID_FOTORROJO = ("https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/"
+                        "205193-1-semaforos-foto-rojo-csv/download/205193-1-semaforos-foto-rojo-csv.csv")
+URL_MADRID_ZBE_CAM = ("https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/"
+                      "300654-1-circulacion-camaras-trafico-csv/download/300654-1-circulacion-camaras-trafico-csv.csv")
+URL_MADRID_ZBEDEP = ("https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/"
+                     "300229-2-trafico-madrid-central-csv/download/300229-2-trafico-madrid-central-csv.csv")
+URL_MALAGA_FOTORROJO = "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.geojson"
+URL_SALAMANCA_FIJOS = ("https://ide.aytosalamanca.es/geoserver/ide_salamanca_tic/ows?service=WFS&version=1.0.0&request=GetFeature"
+                       "&typeName=ide_salamanca_tic%3ARadares_Fijos&outputFormat=application%2Fjson&srsName=EPSG%3A4326")
+URL_SALAMANCA_TRAMO = ("https://ide.aytosalamanca.es/geoserver/ide_salamanca_movilidad/ows?service=WFS&version=1.0.0&request=GetFeature"
+                       "&typeName=ide_salamanca_movilidad%3ARADAR_TRAMO&outputFormat=application%2Fjson&srsName=EPSG%3A4326")
+URL_DONOSTIA = ("https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query"
+                "?where=1%3D1&outFields=*&outSR=4326&f=geojson")
+URL_SANTACRUZ_FOTORROJO = ("https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/"
+                           "c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson")
+URL_PAMPLONA_CINEMO = ("https://sig.pamplona.es/ogc/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=SEGU_Pto_Cinemometro"
+                       "&outputFormat=application/json&srsName=EPSG:4326")
+URL_FEED_COMUNITARIO = "https://geiserx.github.io/radares-anunciados-ha/feed.geojson"
+
+
+def puntos_geojson(d, tipo, prefijo, nombre_fn=None, lim_fn=None, **extra):
+    salida = []
+    for i, f in enumerate(d.get("features", [])):
+        g = f.get("geometry") or {}
+        props = f.get("properties") or {}
+        coords = g.get("coordinates")
+        if g.get("type") == "MultiPoint" and coords:
+            coords = coords[0]
+        if g.get("type") not in ("Point", "MultiPoint") or not coords:
+            continue
+        lo, la = float(coords[0]), float(coords[1])
+        if not en_espana(la, lo):
+            continue
+        lim = lim_fn(props) if lim_fn else None
+        salida.append(punto(f"{prefijo}:{la:.5f},{lo:.5f}", tipo, "AYUNTAMIENTO", la, lo,
+                            n=nombre_fn(props) if nombre_fn else None,
+                            v=int(lim) if lim and 10 <= lim <= 150 else None, **extra))
+    return salida
+
+
+def fuente_madrid_extra() -> list[dict]:
+    salida = []
+    cab, filas = csv_filas(http(URL_MADRID_FOTORROJO, timeout=90))
+    i_nom = cab.index("nombre") if "nombre" in cab else -1
+    i_act = cab.index("activo") if "activo" in cab else -1
+    for f in filas:
+        if 0 <= i_act < len(f) and f[i_act].strip() == "0":
+            continue
+        c = coordenadas_fila(cab, f)
+        if c:
+            salida.append(punto(f"madfr:{c[0]:.5f},{c[1]:.5f}", "SEMAFORO", "AYUNTAMIENTO", c[0], c[1],
+                                n=("Foto-rojo " + f[i_nom].strip().title()) if 0 <= i_nom < len(f) else "Foto-rojo",
+                                mu="Madrid", pr="Madrid", ca="Comunidad de Madrid"))
+    vistos = set()
+    for url, etiqueta in ((URL_MADRID_ZBE_CAM, "Cámara de acceso a la ZBE (lee matrículas)"),
+                          (URL_MADRID_ZBEDEP, "Cámara de acceso a la ZBE Distrito Centro (lee matrículas)")):
+        try:
+            cab, filas = csv_filas(http(url, timeout=90))
+        except Exception as e:  # noqa: BLE001
+            log(f"  Madrid ZBE: {e}")
+            continue
+        for f in filas:
+            c = coordenadas_fila(cab, f)
+            if not c:
+                continue
+            clave = f"{c[0]:.4f},{c[1]:.4f}"
+            if clave in vistos:  # varias cámaras en el mismo poste
+                continue
+            vistos.add(clave)
+            salida.append(punto(f"madzbe:{clave}", "OTRA_CAMARA", "AYUNTAMIENTO", c[0], c[1], n=etiqueta,
+                                mu="Madrid", pr="Madrid", ca="Comunidad de Madrid"))
+    return salida
+
+
+def fuente_malaga() -> list[dict]:
+    d = http_json(URL_MALAGA_FOTORROJO, timeout=90)
+    return puntos_geojson(d, "SEMAFORO", "mlgfr",
+                          nombre_fn=lambda p: p.get("NOMBRE") or "Foto-rojo",
+                          mu="Málaga", pr="Málaga", ca="Andalucía")
+
+
+def fuente_santacruz() -> list[dict]:
+    d = http_json(URL_SANTACRUZ_FOTORROJO, timeout=120, intentos=2)
+    return puntos_geojson(d, "SEMAFORO", "sctffr", nombre_fn=lambda p: "Foto-rojo " + str(
+        p.get("nombre") or p.get("NOMBRE") or p.get("ubicacion") or "").strip(),
+        mu="Santa Cruz de Tenerife", pr="Santa Cruz de Tenerife", ca="Canarias")
+
+
+def fuente_pamplona() -> list[dict]:
+    d = http_json(URL_PAMPLONA_CINEMO, timeout=120, intentos=2)
+    return puntos_geojson(d, "RADAR_FIJO", "pnacin", nombre_fn=lambda p: "Cinemómetro municipal",
+                          mu="Pamplona", pr="Navarra", ca="Comunidad Foral de Navarra")
+
+
+def fuente_salamanca() -> list[dict]:
+    salida = puntos_geojson(http_json(URL_SALAMANCA_FIJOS, timeout=90), "RADAR_FIJO", "slm",
+                            nombre_fn=lambda p: p.get("Ubicación") or p.get("Ubicacion"),
+                            lim_fn=lambda p: num(p.get("vmax") or p.get("VMAX")),
+                            mu="Salamanca", pr="Salamanca", ca="Castilla y León")
+    for i, f in enumerate(http_json(URL_SALAMANCA_TRAMO, timeout=90).get("features", [])):
+        g = f.get("geometry") or {}
+        c = g.get("coordinates") or []
+        if g.get("type") == "MultiLineString" and c:
+            c = c[0]
+        if g.get("type") not in ("LineString", "MultiLineString") or len(c) < 2:
+            continue
+        (lo1, la1), (lo2, la2) = c[0][:2], c[-1][:2]
+        lim = num((f.get("properties") or {}).get("VMAX"))
+        salida.append(punto(f"slmt:{i}", "RADAR_TRAMO", "AYUNTAMIENTO", la1, lo1, la2=round(la2, 6), lo2=round(lo2, 6),
+                            v=int(lim) if lim else None, n="Radar de tramo municipal",
+                            mu="Salamanca", pr="Salamanca", ca="Castilla y León"))
+    return salida
+
+
+def fuente_donostia() -> list[dict]:
+    d = http_json(URL_DONOSTIA, timeout=90)
+    return puntos_geojson(d, "RADAR_FIJO", "dss",
+                          nombre_fn=lambda p: next((str(v) for k, v in p.items() if "kale" in k.lower() or "calle" in k.lower()
+                                                    or "izena" in k.lower() or "nombre" in k.lower()), "Radar municipal"),
+                          lim_fn=lambda p: next((num(v) for k, v in p.items() if "abiad" in k.lower() or "veloc" in k.lower()
+                                                 or "vmax" in k.lower()), None),
+                          mu="Donostia / San Sebastián", pr="Gipuzkoa", ca="País Vasco")
+
+
+# --------------------------------------------------------- feed comunitario (radares-anunciados)
+# Proyecto abierto que publica (ODbL) fuentes que solo responden desde IP española o que se leen de
+# avisos de la Policía Local. Solo se toman las que no recogemos ya por nuestra cuenta.
+FUENTES_FEED = {
+    "euskadi": "AUTONOMICA", "navarra": "AUTONOMICA", "murcia": "POLICIA_LOCAL", "leon": "POLICIA_LOCAL",
+    "madrid_multas": "MULTAS", "barcelona_multas": "MULTAS", "sct_remolc": "SCT", "dgt_invive": "DGT_TRAMOS_MOVIL",
+    "donostia_movil": "POLICIA_LOCAL",
+}
+
+
+def fuente_feed_comunitario() -> list[dict]:
+    d = http_json(URL_FEED_COMUNITARIO, timeout=180)
+    salida = []
+    for f in d.get("features", []):
+        p = f.get("properties") or {}
+        src = p.get("source")
+        if src not in FUENTES_FEED:
+            continue
+        g = f.get("geometry") or {}
+        kind = p.get("kind")
+        fuente = FUENTES_FEED[src]
+        prov = provincia_por_codigo(p.get("province"))
+        base = dict(c=via_normalizada(p.get("road_ref") or p.get("road")) or None,
+                    pk=p.get("km") if p.get("km") is not None else p.get("km_from"),
+                    pk2=p.get("km_to"), v=p.get("maxspeed") if isinstance(p.get("maxspeed"), int) else None,
+                    pr=prov, ca=PROVINCIAS[prov][1] if prov else None,
+                    at=(((p.get("attribution") or "")[:240] + " · ") if p.get("attribution") else "") + "vía radares-anunciados (ODbL)",
+                    vd=p.get("valid_from"), vh=p.get("valid_to"))
+        if p.get("bearing") is not None and p.get("direction_semantics") == "travel" \
+                and p.get("direction_confidence") not in ("low", None):
+            base["rb"] = float(p["bearing"])
+        id_ = f"com:{f.get('id')}"
+        if g.get("type") == "LineString" and len(g.get("coordinates") or []) >= 2:
+            c = g["coordinates"]
+            if kind == "stretch":
+                tr = [round(x, 5) for lo, la in (pt[:2] for pt in c) for x in (la, lo)]
+                salida.append(punto(id_, "ZONA_MOVIL", fuente, c[0][1], c[0][0], tr=tr, n=p.get("name"), **base))
+            else:
+                salida.append(punto(id_, "RADAR_TRAMO", fuente, c[0][1], c[0][0], la2=round(c[-1][1], 6),
+                                    lo2=round(c[-1][0], 6), n=p.get("name"), **base))
+            continue
+        if g.get("type") != "Point":
+            continue
+        lo, la = g["coordinates"][:2]
+        if not en_espana(la, lo):
+            continue
+        if kind in ("fixed", "section_start"):
+            tipo, nombre = "RADAR_FIJO", p.get("name")
+        elif kind == "trailer":
+            tipo, nombre = "ZONA_MOVIL", "Punto de radar en remolque (se mueve entre estos puntos)"
+        elif kind == "mobile_announced":
+            tipo, nombre = "ZONA_MOVIL", (p.get("name") or "Radar móvil anunciado").replace("Radar anunciado", "Radar móvil anunciado")
+        elif kind == "mobile_recurring":
+            tipo, nombre = "ZONA_MOVIL", (p.get("name") or "").replace("Radar móvil frecuente", "Punto habitual de radar móvil") or "Punto habitual de radar móvil"
+        else:
+            continue
+        salida.append(punto(id_, tipo, fuente, la, lo, n=nombre, **base))
+    return salida
+
+
+def solo_tramos_nuevos(invive: list[dict], zonas: list[dict]) -> list[dict]:
+    """De los tramos INVIVE (oficiales, en línea recta) solo los que radares-datos no ha podido situar."""
+    por_via: dict[str, list] = {}
+    for z in zonas:
+        por_via.setdefault(via_normalizada(z.get("c")), []).append(z)
+    salida = []
+    for t in invive:
+        if t["t"] != "ZONA_MOVIL" or "tr" not in t:
+            salida.append(t)
+            continue
+        a, b = sorted([t.get("pk") or 0, t.get("pk2") or 0])
+        solapa = any(max(a, min(z.get("pk") or 0, z.get("pk2") or 0)) <= min(b, max(z.get("pk") or 0, z.get("pk2") or 0)) + 0.5
+                     for z in por_via.get(via_normalizada(t.get("c")), []))
+        if not solapa:
+            salida.append(t)
+    return salida
+
+
 def fuente_zonas() -> list[dict]:
     d = http_json(URL_ZONAS, timeout=180)
     salida = []
@@ -1228,8 +1470,21 @@ def main() -> int:
     geo.guardar()
     osm = ejecutar("OpenStreetMap", fuente_osm)
     zonas = ejecutar("Tramos radar móvil", fuente_zonas)
+    madrid2 = ejecutar("Ayto. Madrid foto-rojo y ZBE", fuente_madrid_extra)
+    malaga = ejecutar("Ayto. Málaga foto-rojo", fuente_malaga)
+    salamanca = ejecutar("Ayto. Salamanca", fuente_salamanca)
+    donostia = ejecutar("Ayto. Donostia", fuente_donostia)
+    santacruz = ejecutar("Ayto. Santa Cruz de Tenerife foto-rojo", fuente_santacruz)
+    pamplona = ejecutar("Ayto. Pamplona cinemómetros", fuente_pamplona)
+    comunitario = ejecutar("Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)", fuente_feed_comunitario)
+    comunitario = solo_tramos_nuevos(comunitario, zonas)
+    log(f"feed comunitario tras quitar tramos ya situados: {len(comunitario)}")
 
-    todos = fusionar([feed, pdf_radares, sct, madrid, valencia, camaras_dgt, osm, zonas])
+    todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, santacruz, pamplona,
+                      camaras_dgt, comunitario, osm, zonas])
+    # radares móviles anunciados ya caducados fuera
+    hoy = datetime.now(timezone.utc).date().isoformat()
+    todos = [p for p in todos if not p.get("vh") or p["vh"] >= hoy]
 
     try:
         n = completar_limites(todos)
