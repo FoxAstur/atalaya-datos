@@ -710,7 +710,29 @@ def clasificar_osm(v: str | None) -> str | None:
         return "SEMAFORO"
     if v in ("stop", "give_way", "yield", "priority"):
         return "STOP_CEDA"
-    return "OTRA_CAMARA"
+    if v in NOMBRES_CAMARA_OSM:
+        return "OTRA_CAMARA"
+    # peajes, aparcamiento, ruido, pesos, alturas, control de acceso a un recinto…: no son multas de conducción
+    return None
+
+
+# Cámaras de OSM que sí multan al conducir, con el nombre que entiende la app (cinturón, línea, ZBE…)
+NOMBRES_CAMARA_OSM = {
+    "access": "Cámara de acceso a zona restringida o ZBE (lee matrículas)",
+    "seatbelt": "Cámara de cinturón y móvil", "seat_belt": "Cámara de cinturón y móvil",
+    "mobile_phone": "Cámara de cinturón y móvil", "phone": "Cámara de cinturón y móvil",
+    "handheld": "Cámara de cinturón y móvil",
+    "overtaking": "Cámara de línea continua", "continuous_line": "Cámara de línea continua",
+    "lane": "Cámara de carril reservado", "bus_lane": "Cámara de carril bus",
+    "mindistance": "Cámara de distancia de seguridad", "min_distance": "Cámara de distancia de seguridad",
+    "traffic": "Cámara de control de tráfico",
+}
+
+
+def nombre_camara_osm(tags: dict) -> str | None:
+    if tags.get("name"):
+        return tags.get("name")
+    return NOMBRES_CAMARA_OSM.get(str(tags.get("enforcement") or "").lower().strip())
 
 
 def limite(tags: dict | None):
@@ -775,7 +797,7 @@ out geom;
             sin_datos = not tags.get("maxspeed") and not direccion_osm(tags)
             viejo = (2 if anno.isdigit() and int(anno) <= 2015 else 1) if sin_datos else None
             por_id.setdefault(id_, punto(id_, tipo, "OSM", lat, lon, c=via_normalizada(tags.get("ref")) or None,
-                                         v=limite(tags), n=tags.get("name"), _viejo=viejo,
+                                         v=limite(tags), n=nombre_camara_osm(tags), _viejo=viejo,
                                          **direccion_osm(tags)))
         elif e["type"] == "relation":
             tipo = clasificar_osm(tags.get("enforcement"))
@@ -1801,6 +1823,14 @@ def main() -> int:
             estado["Radares viejos de OSM repetidos"] = (
                 f"{len(quitados)} quitados (de OSM sin sentido, con otro radar más fiable en la misma calle y sentido a menos de 300 m; 450 m si no tiene datos; 600 m si además es de 2015 o antes)"
                 + (": " + ", ".join(p["id"] for p in quitados[:15]) if quitados else ""))
+            # dos radares de OSM sin sentido, en la misma calzada (de sentido único), mismo límite y a menos de
+            # 200 m: el mismo radar mapeado dos veces. Se deja el primero (el aviso llega antes).
+            dobles = {p["id"] for m, q, p in caminos.seguidos(todos, 200.0)
+                      if q["f"] == p["f"] == "OSM" and q["t"] == p["t"] == "RADAR_FIJO"
+                      and q.get("rb") is None and p.get("rb") is None and len(q["ap"]) == len(p["ap"]) == 1
+                      and q.get("v") == p.get("v")}
+            todos[:] = [p for p in todos if p["id"] not in dobles]
+            log(f"radares de OSM mapeados dos veces: {len(dobles)} quitados {sorted(dobles)[:10]}")
             seg = caminos.seguidos(todos)
             estado["Radares seguidos (mismo sentido, < 300 m)"] = (
                 f"{len(seg)} pares por revisar" + (": " + "; ".join(
