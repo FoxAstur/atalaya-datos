@@ -1100,6 +1100,9 @@ def fuente_feed_comunitario() -> list[dict]:
                     pr=prov, ca=PROVINCIAS[prov][1] if prov else None,
                     at=(((p.get("attribution") or "")[:240] + " · ") if p.get("attribution") else "") + "vía radares-anunciados (ODbL)",
                     vd=p.get("valid_from"), vh=p.get("valid_to"))
+        dtxt = str(p.get("direction") or "").strip()
+        if src == "euskadi" and dtxt and not dtxt.replace(".", "").isdigit() and dtxt.lower() not in ("both", "ambos"):
+            base["_hacia_txt"] = dtxt
         kd = p.get("km_direction")
         if kd in ("positive", "negative") and base.get("c") and base.get("pk") is not None:
             base["s"] = "Creciente" if kd == "positive" else "Decreciente"
@@ -1721,6 +1724,17 @@ def main() -> int:
         log(f"rumbos por sentido: {n}")
     except Exception as e:  # noqa: BLE001
         log(f"rumbos: ERROR {e}")
+    # "hacia Vitoria", "hacia Logroño": la ciudad a la que va el tráfico que vigila el radar
+    hacia = 0
+    for p in todos:
+        txt = p.pop("_hacia_txt", None)
+        if txt and p.get("rb") is None:
+            c = geo.direccion(txt.title() + ", España")
+            if c and distancia(c[0], c[1], p["la"], p["lo"]) > 3000:
+                p["_hacia"] = c
+                hacia += 1
+    geo.guardar()
+    log(f"sentido hacia una ciudad: {hacia} puntos")
     try:
         r = segunda_opinion_sentidos(todos)
         estado["Sentido de los radares DGT (segunda opinión)"] = r
@@ -1754,13 +1768,43 @@ def main() -> int:
             estado["Sentido por el lado de la calle"] = (
                 f"{st['dos_sentidos']} puntos de calles de doble sentido y {st['mediana_dos']} de medianas siguen en ambos sentidos. "
                 f"Prueba de la regla (✓ = se usa): {st['lado']}. Pistas combinadas: {st['cruce']}")
+            # copias de OSM de radares oficiales (misma calle y sentido, < 450 m): fuera la copia; si el
+            # oficial no tiene sentido y la copia sí, se hereda (si la prueba con los que tienen ambos sale bien)
+            pares = caminos.copias_osm(todos)
+            ok = n = 0
+            for o, f, m in pares:
+                if o.get("rb") is not None and f.get("rb") is not None:
+                    n += 1
+                    ok += abs((o["rb"] - f["rb"] + 180) % 360 - 180) <= 60
+            heredar = n >= 15 and ok / n >= 0.9
+            reencajar = []
+            for o, f, m in pares:
+                if heredar and f.get("rb") is None and o.get("rb") is not None:
+                    f["rb"] = o["rb"]
+                    reencajar.append(f)
+            # si los dos tienen sentido y no coincide, no son el mismo radar (uno por sentido en una carretera
+            # de doble sentido): se quedan los dos
+            fuera = {o["id"] for o, f, m in pares
+                     if not (o.get("rb") is not None and f.get("rb") is not None
+                             and abs((o["rb"] - f["rb"] + 180) % 360 - 180) > 60)}
+            todos[:] = [p for p in todos if p["id"] not in fuera]
+            if reencajar:
+                caminos.anadir_caminos(reencajar, ruta_red, zbe, aviso=log)   # su camino, ya en un solo sentido
+            estado["Copias de OSM de radares oficiales"] = (
+                f"{len(fuera)} quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: "
+                f"{ok}/{n} → " + (f"heredado en {len(reencajar)}" if heredar else "no se hereda"))
+            log(estado["Copias de OSM de radares oficiales"])
             quitados = caminos.quitar_viejos_repetidos(todos)
             if quitados:
                 ids = {p["id"] for p in quitados}
                 todos[:] = [p for p in todos if p["id"] not in ids]
             estado["Radares viejos de OSM repetidos"] = (
-                f"{len(quitados)} quitados (de OSM sin ningún dato, con otro radar más fiable en la misma calle y sentido a menos de 450 m, o 600 m si es de 2015 o antes)"
+                f"{len(quitados)} quitados (de OSM sin sentido, con otro radar más fiable en la misma calle y sentido a menos de 300 m; 450 m si no tiene datos; 600 m si además es de 2015 o antes)"
                 + (": " + ", ".join(p["id"] for p in quitados[:15]) if quitados else ""))
+            seg = caminos.seguidos(todos)
+            estado["Radares seguidos (mismo sentido, < 300 m)"] = (
+                f"{len(seg)} pares por revisar" + (": " + "; ".join(
+                    f"{q['id']}→{p['id']} {m} m" for m, q, p in sorted(seg, key=lambda x: x[0])[:20]) if seg else ""))
             estado["Límites tomados de su vía"] = f"{st['limites_via']} puestos, {st['limites_quitados']} quitados por no ser de su vía"
             sos = st.get("sospechosos", [])
             estado["Revisar"] = (f"{len(sos)} radares de autovía con límite deducido < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"
@@ -1775,7 +1819,7 @@ def main() -> int:
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")

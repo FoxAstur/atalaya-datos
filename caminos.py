@@ -393,6 +393,11 @@ def sentidos(red: Red, wi: int, i: int, rb, p: dict | None = None):
         ld = lado(pos, w.pts[i], w.pts[i + 1])
         if p.get("_dir") in ("forward", "backward") and abs(ld) < 2:
             return [1 if p["_dir"] == "forward" else -1]
+        # "hacia Vitoria": el sentido en el que, siguiendo la carretera 3 km, te acercas a esa ciudad
+        if p.get("_hacia"):
+            h = hacia_ciudad(red, wi, i, tuple(p["_hacia"]))
+            if h:
+                return [h]
         # cámara de acceso a una ZBE: vigila a quien entra
         if p["t"] == "OTRA_CAMARA" and "zbe" in (p.get("n") or "").lower():
             hacia = hacia_dentro_zbe(w, i, pos)
@@ -484,6 +489,20 @@ def hacia_dentro_zbe(w: Via, i: int, pos):
         if en_zbe(desplazar(pos, rb, 40)) and not en_zbe(desplazar(pos, rb, -40)):
             entran.append(paso)
     return entran[0] if len(entran) == 1 else None
+
+
+def hacia_ciudad(red: Red, wi: int, i: int, ciudad):
+    finales = {}
+    for paso in (1, -1):
+        if se_puede(red.vias[wi], paso):
+            camino = caminar(red, wi, i, 0.5, paso, 3000.0, False)
+            if len(camino) >= 2 and longitud(camino) > 1000:
+                finales[paso] = dist(camino[-1], ciudad)
+    if len(finales) == 2:
+        a, b = finales[1], finales[-1]
+        if abs(a - b) > 800:
+            return 1 if a < b else -1
+    return None
 
 
 def grado(red: Red, nodo) -> int:
@@ -686,56 +705,121 @@ def via_paralela(red: Red, ap: list) -> float | None:
     return round(mejor, 1) if mejor is not None else None
 
 
+def rumbos_llegada(p: dict) -> list:
+    """Rumbo con el que se llega a un punto por cada uno de sus caminos (último tramo)."""
+    out = []
+    for ap in p.get("ap") or []:
+        if len(ap) >= 4:
+            out.append(rumbo((ap[-4], ap[-3]), (ap[-2], ap[-1])))
+    return out
+
+
+def en_camino_m(q, ap, max_m=600.0, margen=10.0, rumbos_q=None):
+    """
+    Metros por carretera desde q hasta el final del camino ap (el radar), si q está en él y (con rumbos_q)
+    circulando en el mismo sentido que el camino en ese punto; si no, None. El sentido evita confundir la
+    calzada de enfrente, que en una avenida o autovía va a 10-25 m.
+    """
+    pts = [(ap[k], ap[k + 1]) for k in range(0, len(ap) - 1, 2)]
+    acum = 0.0
+    for k in range(len(pts) - 1, 0, -1):
+        a, b = pts[k - 1], pts[k]
+        d, t = proyectar(q, a, b)
+        if d <= margen and (not rumbos_q or any(dif(rumbo(a, b), r) <= 45 for r in rumbos_q)):
+            m = acum + (1 - t) * dist(a, b)
+            return m if m <= max_m else None
+        acum += dist(a, b)
+        if acum > max_m:
+            break
+    return None
+
+
+def copias_osm(puntos: list[dict], max_m=450.0):
+    """
+    Pares (copia de OSM, radar oficial): mismo tipo, misma calle y sentido, a menos de max_m por carretera.
+    La DGT, el SCT, Euskadi o un ayuntamiento sitúan su radar a veces a 100-400 m de donde lo pone OSM; al
+    juntar fuentes con 120 m de margen salían dos radares seguidos donde hay uno.
+    """
+    oficiales = [p for p in puntos if p["f"] not in ("OSM", "PROPIO") and p.get("ap") and p["t"] != "ZONA_MOVIL"]
+    rej: dict = {}
+    for f in oficiales:
+        rej.setdefault((int(f["la"] // 0.01), int(f["lo"] // 0.01)), []).append(f)
+    pares = []
+    for o in puntos:
+        if o["f"] != "OSM" or not o.get("ap") or o["t"] in ("ZONA_MOVIL", "RADAR_TRAMO"):
+            continue
+        cy, cx = int(o["la"] // 0.01), int(o["lo"] // 0.01)
+        mejor = None
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for f in rej.get((cy + dy, cx + dx), ()):
+                    if f["t"] != o["t"] or dist((o["la"], o["lo"]), (f["la"], f["lo"])) > max_m + 50:
+                        continue
+                    ro, rf = rumbos_llegada(o), rumbos_llegada(f)
+                    ms = [m for m in ([en_camino_m((o["la"], o["lo"]), ap, max_m, rumbos_q=ro) for ap in f["ap"]] +
+                                      [en_camino_m((f["la"], f["lo"]), ap, max_m, rumbos_q=rf) for ap in o["ap"]]) if m is not None]
+                    if ms and (mejor is None or min(ms) < mejor[0]):
+                        mejor = (min(ms), f)
+        if mejor:
+            pares.append((o, mejor[1], mejor[0]))
+    return pares
+
+
+def seguidos(puntos: list[dict], max_m=300.0) -> list:
+    """Pares de radares fijos (o cámaras) del mismo tipo, en la misma calle y sentido, a menos de max_m."""
+    ps = [p for p in puntos if p.get("ap") and p["t"] in ("RADAR_FIJO", "OTRA_CAMARA")]
+    rej: dict = {}
+    for p in ps:
+        rej.setdefault((int(p["la"] // 0.01), int(p["lo"] // 0.01)), []).append(p)
+    out = []
+    for p in ps:
+        cy, cx = int(p["la"] // 0.01), int(p["lo"] // 0.01)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for q in rej.get((cy + dy, cx + dx), ()):
+                    if q is p or q["t"] != p["t"] or dist((p["la"], p["lo"]), (q["la"], q["lo"])) > max_m + 30:
+                        continue
+                    rq = rumbos_llegada(q)
+                    ms = [m for m in (en_camino_m((q["la"], q["lo"]), ap, max_m, rumbos_q=rq) for ap in p["ap"]) if m]
+                    if ms and min(ms) > 5:
+                        out.append((round(min(ms)), q, p))
+    return out
+
+
 def quitar_viejos_repetidos(puntos: list[dict]) -> list[dict]:
     """
-    Un radar de OSM viejo y sin datos (marca _viejo) que está en el camino de aproximación de otro radar
-    del mismo tipo, o tiene a otro en el suyo, a menos de 600 m y en el mismo sentido, sobra: es una
-    cabina antigua o un duplicado mal situado. Así no se cantan "dos radares seguidos" donde hay uno.
+    Un radar de OSM sin sentido conocido que está en la misma calle y sentido que otro más fiable (oficial,
+    o de OSM con sentido) y muy cerca, sobra: es una cabina antigua, un duplicado mal situado o el punto
+    "desde" de una relación sin aparato. Cerca es 300 m; 450 m si no tiene ningún dato propio; 600 m si
+    además es de 2015 o antes. Así no se cantan "dos radares seguidos" donde hay uno.
     """
-    def en_camino(q, ap, max_m=600.0):
-        pts = [(ap[k], ap[k + 1]) for k in range(0, len(ap) - 1, 2)]
-        if len(pts) < 2:
-            return False
-        # distancia desde el final (el radar) hacia atrás
-        acum = 0.0
-        for k in range(len(pts) - 1, 0, -1):
-            a, b = pts[k - 1], pts[k]
-            d, t = proyectar(q, a, b)
-            if d <= 12 and acum + (1 - t) * dist(a, b) <= max_m:
-                return True
-            acum += dist(a, b)
-            if acum > max_m:
-                break
-        return False
-
-    # solo radares de OSM sin ningún dato propio y sin relación (sin sentido)
-    viejos = [p for p in puntos if p.get("_viejo") and p.get("ap") and p["t"] == "RADAR_FIJO" and p.get("rb") is None]
-    if not viejos:
+    candidatos = [p for p in puntos if p["f"] == "OSM" and p["t"] == "RADAR_FIJO" and p.get("ap")
+                  and p.get("rb") is None]
+    if not candidatos:
         return []
-    otros = [p for p in puntos if p["t"] == "RADAR_FIJO" and not p.get("_viejo") and p.get("ap")]
+    ids_cand = {p["id"] for p in candidatos}
+    fiables = [p for p in puntos if p["t"] == "RADAR_FIJO" and p.get("ap") and p["id"] not in ids_cand
+               and (p["f"] != "OSM" or p.get("rb") is not None)]
     rej: dict = {}
-    for o in otros:
+    for o in fiables:
         rej.setdefault((int(o["la"] // 0.01), int(o["lo"] // 0.01)), []).append(o)
     fuera = []
-    for v in viejos:
+    for v in candidatos:
+        lim = {2: 600.0, 1: 450.0}.get(v.get("_viejo"), 300.0)
+        rv = rumbos_llegada(v)
         cy, cx = int(v["la"] // 0.01), int(v["lo"] // 0.01)
+        hallado = False
         for dy in (-1, 0, 1):
             for dx in (-1, 0, 1):
                 for o in rej.get((cy + dy, cx + dx), ()):
-                    if dist((v["la"], v["lo"]), (o["la"], o["lo"])) > 650:
+                    if hallado or dist((v["la"], v["lo"]), (o["la"], o["lo"])) > lim + 50:
                         continue
-                    # sin datos: hasta 450 m; además viejo (2015 o antes): hasta 600 m
-                    lim = 600.0 if v["_viejo"] == 2 else 450.0
-                    if any(en_camino((o["la"], o["lo"]), ap, lim) for ap in v["ap"]) or \
-                            any(en_camino((v["la"], v["lo"]), ap, lim) for ap in o["ap"]):
-                        fuera.append(v)
-                        break
-                else:
-                    continue
-                break
-            else:
-                continue
-            break
+                    ro = rumbos_llegada(o)
+                    if any(en_camino_m((o["la"], o["lo"]), ap, lim, rumbos_q=ro) is not None for ap in v["ap"]) or \
+                            any(en_camino_m((v["la"], v["lo"]), ap, lim, rumbos_q=rv) is not None for ap in o["ap"]):
+                        hallado = True
+        if hallado:
+            fuera.append(v)
     return fuera
 
 
