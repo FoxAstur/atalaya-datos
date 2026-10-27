@@ -398,19 +398,55 @@ def sentidos(red: Red, wi: int, i: int, rb, p: dict | None = None):
             hacia = hacia_dentro_zbe(w, i, pos)
             if hacia:
                 return [hacia]
-        # foto-rojo: vigila a quien llega al cruce que tiene justo delante (si la prueba sale bien)
-        if p["t"] == "SEMAFORO" and CRUCE_FIABLE:
-            hacia = hacia_cruce(red, wi, i, pos)
-            if hacia:
-                return [hacia]
+        # Pistas débiles (lado de la calle, cruce de delante, límite por sentido): solo las que, solas o
+        # juntas, han acertado ≥ 90 % con los radares de sentido conocido en esta misma ejecución
+        votos = senales(red, wi, i, p)
+        for regla in ORDEN_REGLAS:
+            if regla in REGLAS_FIABLES:
+                v = aplicar_regla(regla, votos)
+                if v:
+                    return [v]
         if franja_lado(w, ld) in LADO_FIABLE:
             return [1 if ld > 0 else -1]
     return [1, -1]
 
 
+ORDEN_REGLAS = ("limite", "cruce+lado", "cruce", "lado+limite")
+REGLAS_FIABLES: set = set()
+
+
+def senales(red: Red, wi: int, i: int, p: dict) -> dict:
+    """Cada pista que apunta a un sentido (+1/-1 sobre la vía)."""
+    w = red.vias[wi]
+    pos = (p["la"], p["lo"])
+    v = {}
+    ld = lado(pos, w.pts[i], w.pts[i + 1])
+    if abs(ld) >= LADO_MIN:
+        v["lado"] = 1 if ld > 0 else -1
+    if p["t"] == "SEMAFORO":
+        h = hacia_cruce(red, wi, i, pos)
+        if h:
+            v["cruce"] = h
+    # el límite propio del radar coincide con el de un solo sentido de la vía
+    lim = p.get("v") if p.get("vo") != 1 else None
+    if lim and w.vmax_ad != w.vmax_at:
+        if lim == w.vmax_ad:
+            v["limite"] = 1
+        elif lim == w.vmax_at:
+            v["limite"] = -1
+    return v
+
+
+def aplicar_regla(regla: str, votos: dict):
+    partes = regla.split("+")
+    vals = {votos.get(k) for k in partes}
+    if None in vals or len(vals) != 1:
+        return None
+    return vals.pop()
+
+
 # ---------------------------------------------------------------- sentido por el entorno
 ZONAS_ZBE: list = []      # polígonos de las ZBE: [(caja, [anillo plano lat,lon,…])]
-CRUCE_FIABLE = False      # ¿ha pasado la prueba la regla del cruce para los foto-rojo?
 
 
 def dentro(pt, anillo) -> bool:
@@ -510,12 +546,14 @@ def hacia_cruce(red: Red, wi: int, i: int, pos):
 
 
 def calibrar_cruce(red: Red, puntos: list[dict]) -> str:
-    """Prueba la regla del cruce con los foto-rojo de sentido conocido. Se usa con ≥ 20 casos y ≥ 90 % de aciertos."""
-    global CRUCE_FIABLE
-    CRUCE_FIABLE = False
-    ok = n = 0
+    """
+    Prueba cada regla (y combinación de pistas) con los puntos de sentido conocido en calles de doble sentido.
+    Se usa con ≥ 20 casos y ≥ 90 % de aciertos.
+    """
+    REGLAS_FIABLES.clear()
+    cuenta = {r: [0, 0] for r in ORDEN_REGLAS}
     for p in puntos:
-        if p["t"] != "SEMAFORO" or p.get("rb") is None:
+        if p.get("rb") is None or p["t"] in ("ZONA_MOVIL", "RADAR_TRAMO"):
             continue
         e = encajar(red, p)
         if e is None:
@@ -524,14 +562,20 @@ def calibrar_cruce(red: Red, puntos: list[dict]) -> str:
         w = red.vias[wi]
         if w.sentido != 0:
             continue
-        h = hacia_cruce(red, wi, i, (p["la"], p["lo"]))
-        if h is None:
-            continue
         real = 1 if dif(p["rb"], rumbo(w.pts[i], w.pts[i + 1])) <= 90 else -1
-        ok += h == real
-        n += 1
-    CRUCE_FIABLE = n >= 20 and ok / n >= 0.9
-    return f"{ok}/{n}" + (" ✓" if CRUCE_FIABLE else "")
+        votos = senales(red, wi, i, p)
+        for r in ORDEN_REGLAS:
+            v = aplicar_regla(r, votos)
+            if v:
+                cuenta[r][0] += v == real
+                cuenta[r][1] += 1
+    partes = []
+    for r in ORDEN_REGLAS:
+        ok, n = cuenta[r]
+        if n >= 20 and ok / n >= 0.9:
+            REGLAS_FIABLES.add(r)
+        partes.append(f"{r} {ok}/{n}" + (" ✓" if r in REGLAS_FIABLES else ""))
+    return "; ".join(partes)
 
 
 def mejor_aproximacion(red: Red, candidatas, rb, largo):
