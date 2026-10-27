@@ -1,0 +1,50 @@
+      1s  DGT feed: 737 puntos
+      5s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
+     14s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
+     14s    CartoCiudad: 672 hitos necesarios, 0 por consultar
+     14s    cinemómetros: 642 ya estaban en el feed, 175 añadidos, 8 sin poder situar
+     14s  DGT PDF radares: 175 puntos
+     14s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
+     14s    CartoCiudad: 496 hitos necesarios, 0 por consultar
+     14s    equipos: 249 situados, 11 sin poder situar
+     14s  DGT PDF cámaras: 249 puntos
+     22s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
+     29s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
+     30s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
+     30s    SCT radars.txt: 230 radares
+     30s  Cataluña (SCT): 230 puntos
+     30s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
+     30s  Ayto. Madrid: 23 puntos
+     30s  Ayto. València: 6 puntos
+    108s  OpenStreetMap: 2621 puntos
+    109s  Tramos radar móvil: 1152 puntos
+    110s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
+    111s  Ayto. Málaga foto-rojo: 7 puntos
+    117s  Ayto. Salamanca: 24 puntos
+    118s  Ayto. Donostia: 12 puntos
+    165s  Ayto. Santa Cruz de Tenerife foto-rojo: ERROR www.santacruzdetenerife.es: <urlopen error timed out>
+    212s  Ayto. Pamplona cinemómetros: ERROR sig.pamplona.es: <urlopen error timed out>
+    212s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1637 puntos
+    212s  feed comunitario tras quitar tramos ya situados: 466
+    212s  tramos: 2 puntos sueltos unidos a su tramo, 5 cámaras de entrada/salida absorbidas
+    212s    límites: 186 sin límite, 0 por consultar
+    212s  límites deducidos de OSM: 108
+    212s    regiones: 0 celdas nuevas que consultar
+    212s    CartoCiudad: 1993 hitos necesarios, 0 por consultar
+    212s  rumbos por sentido: 1020
+    212s  45 sentidos nuevos, 503 coinciden con los nuestros, 3 en desacuerdo (se avisa en los dos)
+    212s  37 radares de OSM con direction; frente a los oficiales: 4 igual, 0 al revés → se usa en 37 puntos
+    234s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
+    249s    ZBE: 45 ficheros
+    272s  ZBE: 57 zonas
+    336s    caminos: red cargada (939741 vías) en 64s
+    337s    caminos: regla del lado probada en 65s
+    337s    caminos: regla del cruce probada en 65s
+    337s    caminos: 0/3335 en 65s (dgt:GUID_CVM_161274)
+    337s    caminos: 500/3335 en 65s (dgt:GUID_CABINACINEMOMETRO_120585)
+    337s    caminos: 1000/3335 en 65s (sct:41.64066,2.16653)
+    338s    caminos: 1500/3335 en 66s (dgteq:N-1:251.3:D:cintur)
+    339s    caminos: 2000/3335 en 66s (osm:n992001156)
+    339s    caminos: 2500/3335 en 67s (osm:n11043575806)
+    339s    caminos: 3000/3335 en 67s (osm:n992007078)
+    344s  caminos: {'lado': 'carretera 4-7 m: 116/154; carretera 7-12 m: 87/112; carretera 12-25 m: 23/38; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5', 'cruce': '23/28', 'con_camino': 3252, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 62, 'en_enlace': 37, 'sospechosos': [], 'dos_sentidos': 320, 'limites_via': 114, 'limites_quitados': 2, 'segundos': 68}
