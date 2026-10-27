@@ -1,0 +1,46 @@
+name: Depurar red viaria
+
+# Extrae la red viaria de una zona (mismo filtro que el recolector) y la sube a depurar/,
+# para reproducir fuera de GitHub cómo se calculan los caminos de aproximación de esa zona.
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: "Región de Geofabrik"
+        default: "europe/spain/valencia"
+      bbox:
+        description: "oeste,sur,este,norte"
+        default: "-0.56,39.44,-0.36,39.60"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar
+  cancel-in-progress: false
+
+jobs:
+  extraer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extraer
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
+          mkdir -p red depurar
+          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","name","oneway","junction"]}' > red/export.json
+          FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
+          curl -sSL --retry 3 -o red/r.osm.pbf "https://download.geofabrik.de/${{ inputs.region }}-latest.osm.pbf"
+          osmium extract -b "${{ inputs.bbox }}" red/r.osm.pbf -o red/caja.osm.pbf --overwrite
+          osmium tags-filter red/caja.osm.pbf "$FILTRO" -o red/filtrado.osm.pbf --overwrite
+          osmium export red/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o depurar/red.geojsonseq --overwrite
+          gzip -9f depurar/red.geojsonseq
+          ls -la depurar
+      - name: Publicar
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add depurar
+          git commit -m "Red viaria para depurar (${{ inputs.bbox }})" || exit 0
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
