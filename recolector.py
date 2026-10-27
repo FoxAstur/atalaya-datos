@@ -68,6 +68,13 @@ def queda(segundos: float) -> bool:
 def log(msg: str) -> None:
     print(msg, flush=True)
     LOG.append(msg)
+    # registro en curso: si la ejecución se corta, se publica igualmente y se ve dónde se quedó
+    try:
+        os.makedirs("datos", exist_ok=True)
+        with open("datos/REGISTRO.txt", "a", encoding="utf-8") as f:
+            f.write(f"{time.time() - INICIO:7.0f}s  {msg}\n")
+    except OSError:
+        pass
 
 
 # --------------------------------------------------------------------------------------- HTTP
@@ -1440,6 +1447,10 @@ def ejecutar_zbe(anterior: dict, estado: dict) -> list:
 
 
 def main() -> int:
+    try:
+        os.remove("datos/REGISTRO.txt")
+    except OSError:
+        pass
     anterior = cargar_json(SALIDA, {"puntos": []})
     previos_por_fuente: dict[str, list] = {}
     for p in anterior.get("puntos", []):
@@ -1653,7 +1664,7 @@ def main() -> int:
     if os.path.exists(ruta_red):
         try:
             import caminos
-            st = caminos.anadir_caminos(todos, ruta_red, zbe)
+            st = caminos.anadir_caminos(todos, ruta_red, zbe, aviso=log)
             estado["Caminos de aproximación"] = (f"✅ {st['con_camino']} puntos con camino por su carretera, "
                                                  f"{st['tramos_con_recorrido']} de {st['tramos']} tramos con recorrido real "
                                                  f"({st['sin_via']} sin vía cercana; {st['segundos']}s)")

@@ -466,7 +466,11 @@ def dist_cruce(red: Red, wi: int, i: int, pos, paso: int, maximo=120.0):
     previo = pos
     total = 0.0
     vistos = set()
+    pasos = 0
     while total <= maximo:
+        pasos += 1
+        if pasos > 400:   # red rara (nodos repetidos, bucles): mejor no decidir
+            return None
         nodo = w.pts[idx]
         total += dist(previo, nodo)
         previo = nodo
@@ -594,7 +598,7 @@ def calibrar_lado(red: Red, puntos: list[dict]) -> str:
     return "; ".join(partes) or "sin casos"
 
 
-def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None) -> dict:
+def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, aviso=print) -> dict:
     t0 = time.time()
     ZONAS_ZBE.clear()
     for z in zbe or []:
@@ -605,10 +609,17 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None) -
             ZONAS_ZBE.append(((min(las), max(las), min(los), max(los)), anillos))
     objetivos = [p for p in puntos if p["t"] != "ZONA_MOVIL" or "tr" not in p]
     red = cargar_red(ruta_red, objetivos)
-    stats = {"lado": calibrar_lado(red, objetivos), "cruce": calibrar_cruce(red, objetivos),
+    aviso(f"  caminos: red cargada ({len(red.vias)} vías) en {time.time() - t0:.0f}s")
+    lado_txt = calibrar_lado(red, objetivos)
+    aviso(f"  caminos: regla del lado probada en {time.time() - t0:.0f}s")
+    cruce_txt = calibrar_cruce(red, objetivos)
+    aviso(f"  caminos: regla del cruce probada en {time.time() - t0:.0f}s")
+    stats = {"lado": lado_txt, "cruce": cruce_txt,
              "con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
              "caminos_alternativos": 0, "mediana_dos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
-    for p in objetivos:
+    for n_p, p in enumerate(objetivos):
+        if n_p % 500 == 0:
+            aviso(f"  caminos: {n_p}/{len(objetivos)} en {time.time() - t0:.0f}s ({p['id']})")
         p.pop("ap", None)
         p.pop("rt", None)
         p.pop("s2", None)
