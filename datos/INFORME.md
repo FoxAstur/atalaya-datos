@@ -1,18 +1,18 @@
 # Datos de Atalaya
 
-Versión: 2026-10-27T16:14:30+00:00 · Total: **4640** puntos
+Versión: 2026-10-27T16:20:59+00:00 · Total: **4638** puntos
 
 ## Fuentes
 
 - **DGT feed**: ✅ 737 (1s)
-- **DGT PDF radares**: ✅ 175 (5s)
-- **DGT PDF cámaras**: ✅ 249 (1s)
-- **Cataluña (SCT)**: ✅ 230 (15s)
+- **DGT PDF radares**: ✅ 175 (8s)
+- **DGT PDF cámaras**: ✅ 249 (2s)
+- **Cataluña (SCT)**: ✅ 230 (17s)
 - **Ayto. Madrid**: ✅ 23 (1s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2621 (75s)
+- **OpenStreetMap**: ✅ 2621 (84s)
 - **Tramos radar móvil**: ✅ 1152 (0s)
-- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (2s)
+- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
 - **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
 - **Ayto. Salamanca**: ✅ 24 (1s)
 - **Ayto. Donostia**: ✅ 12 (1s)
@@ -23,10 +23,10 @@ Versión: 2026-10-27T16:14:30+00:00 · Total: **4640** puntos
 - **Sentido heredado de OSM**: copias de OSM con sentido frente a oficiales: 529/604 → no se usa
 - **Sentido de los radares de OSM**: 37 radares de OSM con direction; frente a los oficiales: 4 igual, 0 al revés → se usa en 37 puntos
 - **Zonas de bajas emisiones**: ✅ 57
-- **Caminos de aproximación**: ✅ 3252 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 62s)
+- **Caminos de aproximación**: ✅ 3251 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 87s)
 - **Sentido por el lado de la calle**: 316 puntos de calles de doble sentido y 61 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 11/16; ciudad 25-41 m: 2/5. Pistas combinadas: limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10
-- **Radares viejos de OSM repetidos**: 1 quitados (sin datos, de 2015 o antes, con otro radar más fiable en la misma calle y sentido a menos de 600 m): osm:n914385003
-- **Límites tomados de su vía**: 114 puestos, 2 quitados por no ser de su vía
+- **Radares viejos de OSM repetidos**: 2 quitados (de OSM sin ningún dato, con otro radar más fiable en la misma calle y sentido a menos de 450 m, o 600 m si es de 2015 o antes): osm:n498520813, osm:n914385003
+- **Límites tomados de su vía**: 113 puestos, 2 quitados por no ser de su vía
 - **Revisar**: nada sospechoso
 
 ## Por comunidad
@@ -40,9 +40,9 @@ Versión: 2026-10-27T16:14:30+00:00 · Total: **4640** puntos
 | Castilla y León | 181 | 57 | 32 | 0 | 35 | 265 |
 | Castilla-La Mancha | 109 | 20 | 9 | 1 | 34 | 150 |
 | Cataluña | 490 | 69 | 59 | 0 | 4 | 60 |
-| Comunidad de Madrid | 147 | 28 | 60 | 1 | 307 | 59 |
+| Comunidad de Madrid | 146 | 28 | 60 | 1 | 307 | 59 |
 | Comunidad Foral de Navarra | 27 | 2 | 1 | 0 | 2 | 35 |
-| Comunitat Valenciana | 149 | 28 | 6 | 0 | 44 | 69 |
+| Comunitat Valenciana | 148 | 28 | 6 | 0 | 44 | 69 |
 | Extremadura | 53 | 7 | 2 | 0 | 5 | 86 |
 | Galicia | 120 | 33 | 7 | 0 | 30 | 128 |
 | Illes Balears | 67 | 11 | 0 | 0 | 2 | 34 |
@@ -58,7 +58,7 @@ Zonas de bajas emisiones: **57**
 
 ## Por fuente
 
-- OSM: 1412
+- OSM: 1410
 - DGT_TRAMOS_MOVIL: 1306
 - DGT: 1100
 - AYUNTAMIENTO: 386
@@ -99,8 +99,9 @@ Ayto. Pamplona cinemómetros: ERROR sig.pamplona.es: <urlopen error timed out>
 Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1637 puntos
 feed comunitario tras quitar tramos ya situados: 466
 tramos: 2 puntos sueltos unidos a su tramo, 5 cámaras de entrada/salida absorbidas
-  límites: 186 sin límite, 0 por consultar
-límites deducidos de OSM: 108
+correcciones: 1 quitados, 0 sentidos fijados
+  límites: 185 sin límite, 0 por consultar
+límites deducidos de OSM: 107
   regiones: 0 celdas nuevas que consultar
   CartoCiudad: 1993 hitos necesarios, 0 por consultar
 rumbos por sentido: 1020
@@ -110,15 +111,15 @@ copias de OSM con sentido frente a oficiales: 529/604 → no se usa
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
 ZBE: 57 zonas
-  caminos: red cargada (939741 vías) en 49s
-  caminos: regla del lado probada en 50s
-  caminos: regla del cruce probada en 50s
-  caminos: 0/3335 en 50s (dgt:GUID_CVM_161274)
-  caminos: 500/3335 en 51s (dgt:GUID_CABINACINEMOMETRO_120585)
-  caminos: 1000/3335 en 52s (sct:41.64066,2.16653)
-  caminos: 1500/3335 en 55s (dgteq:N-1:251.3:D:cintur)
-  caminos: 2000/3335 en 57s (osm:n992001156)
-  caminos: 2500/3335 en 59s (osm:n11043575806)
-  caminos: 3000/3335 en 61s (osm:n992007078)
-caminos: {'lado': 'carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 11/16; ciudad 25-41 m: 2/5', 'cruce': 'limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10', 'con_camino': 3252, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 61, 'con_paralela': 955, 'en_enlace': 37, 'sospechosos': [], 'dos_sentidos': 316, 'limites_via': 114, 'limites_quitados': 2, 'segundos': 62}
+  caminos: red cargada (939741 vías) en 65s
+  caminos: regla del lado probada en 65s
+  caminos: regla del cruce probada en 66s
+  caminos: 0/3334 en 66s (dgt:GUID_CVM_161274)
+  caminos: 500/3334 en 67s (dgt:GUID_CABINACINEMOMETRO_120585)
+  caminos: 1000/3334 en 69s (sct:41.64066,2.16653)
+  caminos: 1500/3334 en 75s (dgteq:N-1:251.3:D:cintur)
+  caminos: 2000/3334 en 78s (osm:n992001156)
+  caminos: 2500/3334 en 82s (osm:n11048280367)
+  caminos: 3000/3334 en 86s (osm:n1552560377)
+caminos: {'lado': 'carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 11/16; ciudad 25-41 m: 2/5', 'cruce': 'limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10', 'con_camino': 3251, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 61, 'con_paralela': 954, 'en_enlace': 37, 'sospechosos': [], 'dos_sentidos': 316, 'limites_via': 113, 'limites_quitados': 2, 'segundos': 87}
 ```
