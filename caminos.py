@@ -681,6 +681,56 @@ def via_paralela(red: Red, ap: list) -> float | None:
     return round(mejor, 1) if mejor is not None else None
 
 
+def quitar_viejos_repetidos(puntos: list[dict]) -> list[dict]:
+    """
+    Un radar de OSM viejo y sin datos (marca _viejo) que está en el camino de aproximación de otro radar
+    del mismo tipo, o tiene a otro en el suyo, a menos de 600 m y en el mismo sentido, sobra: es una
+    cabina antigua o un duplicado mal situado. Así no se cantan "dos radares seguidos" donde hay uno.
+    """
+    def en_camino(q, ap, max_m=600.0):
+        pts = [(ap[k], ap[k + 1]) for k in range(0, len(ap) - 1, 2)]
+        if len(pts) < 2:
+            return False
+        # distancia desde el final (el radar) hacia atrás
+        acum = 0.0
+        for k in range(len(pts) - 1, 0, -1):
+            a, b = pts[k - 1], pts[k]
+            d, t = proyectar(q, a, b)
+            if d <= 12 and acum + (1 - t) * dist(a, b) <= max_m:
+                return True
+            acum += dist(a, b)
+            if acum > max_m:
+                break
+        return False
+
+    viejos = [p for p in puntos if p.get("_viejo") and p.get("ap") and p["t"] == "RADAR_FIJO"]
+    if not viejos:
+        return []
+    otros = [p for p in puntos if p["t"] == "RADAR_FIJO" and not p.get("_viejo") and p.get("ap")]
+    rej: dict = {}
+    for o in otros:
+        rej.setdefault((int(o["la"] // 0.01), int(o["lo"] // 0.01)), []).append(o)
+    fuera = []
+    for v in viejos:
+        cy, cx = int(v["la"] // 0.01), int(v["lo"] // 0.01)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for o in rej.get((cy + dy, cx + dx), ()):
+                    if dist((v["la"], v["lo"]), (o["la"], o["lo"])) > 650:
+                        continue
+                    if any(en_camino((o["la"], o["lo"]), ap) for ap in v["ap"]) or \
+                            any(en_camino((v["la"], v["lo"]), ap) for ap in o["ap"]):
+                        fuera.append(v)
+                        break
+                else:
+                    continue
+                break
+            else:
+                continue
+            break
+    return fuera
+
+
 def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, aviso=print) -> dict:
     t0 = time.time()
     ZONAS_ZBE.clear()

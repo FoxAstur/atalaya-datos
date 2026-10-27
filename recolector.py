@@ -751,7 +751,7 @@ area["ISO3166-1"="ES"]["admin_level"="2"]->.es;
   node["enforcement"](area.es);
   node["speed_camera"](area.es);
 );
-out body;
+out meta;
 rel["type"="enforcement"](area.es);
 out geom;
 """
@@ -769,8 +769,13 @@ out geom;
             if not tipo:
                 continue
             id_ = f"osm:n{e['id']}"
+            # nodo viejo y sin datos (ni límite ni sentido): si hay otro radar más fiable en la misma calle y
+            # sentido muy cerca, seguramente es una cabina que ya no está o un duplicado (se mira en caminos.py)
+            anno = str(e.get("timestamp") or "")[:4]
+            viejo = anno.isdigit() and int(anno) <= 2015 and not tags.get("maxspeed") and not direccion_osm(tags)
             por_id.setdefault(id_, punto(id_, tipo, "OSM", lat, lon, c=via_normalizada(tags.get("ref")) or None,
-                                         v=limite(tags), n=tags.get("name"), **direccion_osm(tags)))
+                                         v=limite(tags), n=tags.get("name"), _viejo=1 if viejo else None,
+                                         **direccion_osm(tags)))
         elif e["type"] == "relation":
             tipo = clasificar_osm(tags.get("enforcement"))
             if not tipo:
@@ -1730,6 +1735,13 @@ def main() -> int:
             estado["Sentido por el lado de la calle"] = (
                 f"{st['dos_sentidos']} puntos de calles de doble sentido y {st['mediana_dos']} de medianas siguen en ambos sentidos. "
                 f"Prueba de la regla (✓ = se usa): {st['lado']}. Pistas combinadas: {st['cruce']}")
+            quitados = caminos.quitar_viejos_repetidos(todos)
+            if quitados:
+                ids = {p["id"] for p in quitados}
+                todos[:] = [p for p in todos if p["id"] not in ids]
+            estado["Radares viejos de OSM repetidos"] = (
+                f"{len(quitados)} quitados (sin datos, de 2015 o antes, con otro radar más fiable en la misma calle y sentido a menos de 600 m)"
+                + (": " + ", ".join(p["id"] for p in quitados[:15]) if quitados else ""))
             estado["Límites tomados de su vía"] = f"{st['limites_via']} puestos, {st['limites_quitados']} quitados por no ser de su vía"
             sos = st.get("sospechosos", [])
             estado["Revisar"] = (f"{len(sos)} radares de autovía con límite deducido < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"
@@ -1744,7 +1756,7 @@ def main() -> int:
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
