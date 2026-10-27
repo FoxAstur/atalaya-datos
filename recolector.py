@@ -951,6 +951,7 @@ URL_SANTACRUZ_FOTORROJO = ("https://www.santacruzdetenerife.es/opendata/dataset/
                            "c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson")
 URL_PAMPLONA_CINEMO = ("https://sig.pamplona.es/ogc/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=SEGU_Pto_Cinemometro"
                        "&outputFormat=application/json&srsName=EPSG:4326")
+URL_SENTIDOS_DGT = "https://raw.githubusercontent.com/secretariacyas-crypto/radares-datos/main/radar_directions.json"
 URL_FEED_COMUNITARIO = "https://geiserx.github.io/radares-anunciados-ha/feed.geojson"
 
 
@@ -1326,6 +1327,33 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
     return salida
 
 
+def segunda_opinion_sentidos(puntos: list[dict]) -> str:
+    """
+    radares-datos (ODbL) calcula por su cuenta el rumbo de cada radar de la DGT. Si nosotros no lo tenemos,
+    se toma el suyo; si los dos no coinciden, se quita (mejor avisar en los dos sentidos que callar ante uno real).
+    """
+    d = http_json(URL_SENTIDOS_DGT, timeout=60)
+    rad = d.get("radars") or {}
+    puestos = coinciden = quitados = 0
+    for p in puntos:
+        if p.get("f") != "DGT" or not p["id"].startswith("dgt:GUID_"):
+            continue
+        suyo = rad.get(p["id"][len("dgt:GUID_"):])
+        if not suyo or suyo[0] is None:
+            continue
+        rb = float(suyo[0])
+        if p.get("rb") is None:
+            p["rb"] = rb
+            p.setdefault("at", "Sentido: radares-datos (ODbL)")
+            puestos += 1
+        elif abs((p["rb"] - rb + 180) % 360 - 180) <= 60:
+            coinciden += 1
+        else:
+            p.pop("rb", None)
+            quitados += 1
+    return f"{puestos} sentidos nuevos, {coinciden} coinciden con los nuestros, {quitados} en desacuerdo (se avisa en los dos)"
+
+
 def calibrar_direcciones(puntos: list[dict]) -> str:
     """
     En OSM, direction=<grados> unas veces es hacia dónde va el tráfico vigilado y otras hacia dónde mira la
@@ -1605,6 +1633,12 @@ def main() -> int:
         log(f"rumbos por sentido: {n}")
     except Exception as e:  # noqa: BLE001
         log(f"rumbos: ERROR {e}")
+    try:
+        r = segunda_opinion_sentidos(todos)
+        estado["Sentido de los radares DGT (segunda opinión)"] = r
+        log(r)
+    except Exception as e:  # noqa: BLE001
+        log(f"segunda opinión de sentidos: ERROR {e}")
     try:
         r = calibrar_direcciones(todos)
         estado["Sentido de los radares de OSM"] = r
