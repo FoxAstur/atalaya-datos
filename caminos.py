@@ -669,8 +669,13 @@ def via_paralela(red: Red, ap: list) -> float | None:
             continue
         # la propia carretera es la más cercana (el camino está simplificado: puede quedar a unos metros)
         d0, _, propia, _ = min(cand)
+        wp = red.vias[propia]
         for d, t, wj, j in cand:
-            if wj == propia or d < d0 + 6.0 or d - d0 > 35.0:
+            if wj == propia or d < d0 + 5.0 or d - d0 > 35.0:
+                continue
+            o = red.vias[wj]
+            # otro trozo o carril de la misma carretera no cuenta como vía paralela
+            if (wp.nombre and o.nombre == wp.nombre) or (wp.ref and o.ref == wp.ref):
                 continue
             d = d - d0
             o = red.vias[wj]
@@ -870,8 +875,8 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
             p["ap"] = aps
             stats["con_camino"] += 1
             pl = min((x for x in (via_paralela(red, a) for a in aps) if x is not None), default=None)
-            # por debajo de 10 m suele ser la propia carretera (carriles de enlace, trazado simplificado)
-            if pl is not None and pl >= 10:
+            # por debajo de 8 m suelen ser carriles de giro o el trazado simplificado de la misma calle
+            if pl is not None and pl >= 8:
                 p["pl"] = pl
                 stats["con_paralela"] += 1
     for p in puntos:
