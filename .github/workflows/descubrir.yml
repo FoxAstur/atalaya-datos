@@ -1,0 +1,36 @@
+name: Descubrir fuentes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["descubrir.py", ".github/workflows/descubrir.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar
+  cancel-in-progress: false
+
+jobs:
+  descubrir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Explorar catálogos
+        run: timeout 50m python descubrir.py || true
+      - name: Publicar informe
+        if: always()
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add datos/DESCUBRIMIENTO.md datos/descubrimiento.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Descubrimiento de fuentes $(date -u +%Y-%m-%dT%H:%MZ)"
+            for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
+          fi
