@@ -9714,8 +9714,68 @@
   39.48989840040976,
   -0.40618444943253806
  ],
+ "dir|Beasain, España": null,
+ "dir|Behobia, España": null,
+ "dir|Berango, España": [
+  38.27746099996635,
+  -5.827807600034237
+ ],
+ "dir|Bilbao, España": [
+  43.25784082856098,
+  -2.9230347683346594
+ ],
  "dir|Camí Nou de Picanya 49, Valencia": [
   39.45483695731722,
   -0.40591664223541224
+ ],
+ "dir|Cantabria, España": [
+  37.35327827577991,
+  -2.1877451394375265
+ ],
+ "dir|Donostia / San Sebastián, España": [
+  42.463130654000054,
+  -2.46605663549994
+ ],
+ "dir|Erletxe, España": null,
+ "dir|Getxo / Barakaldo, España": null,
+ "dir|Getxo, España": null,
+ "dir|Hondarribia, España": [
+  43.3626729800001,
+  -1.78350902499994
+ ],
+ "dir|Irun, España": [
+  42.804065246067914,
+  -2.8321395710463317
+ ],
+ "dir|Laga, España": [
+  39.459380288196385,
+  -0.3641753204685474
+ ],
+ "dir|Leioa, España": null,
+ "dir|Lezo, España": [
+  42.40287642270285,
+  -2.32447600187597
+ ],
+ "dir|Logroño, España": [
+  42.441926399299646,
+  -2.512665154577623
+ ],
+ "dir|Loiu, España": null,
+ "dir|Madrid, España": [
+  40.46311592420244,
+  -3.6161192132269933
+ ],
+ "dir|San Sebastian, España": [
+  40.54476756564224,
+  -3.631305821149005
+ ],
+ "dir|Vitoria - Gasteiz, España": null,
+ "dir|Vitoria-Gasteiz, España": [
+  42.84648399757115,
+  -2.672440344490091
+ ],
+ "dir|Zaragoza, España": [
+  41.65203828777591,
+  -0.8810017949060953
  ]
 }
