@@ -708,7 +708,8 @@ def quitar_viejos_repetidos(puntos: list[dict]) -> list[dict]:
                 break
         return False
 
-    viejos = [p for p in puntos if p.get("_viejo") and p.get("ap") and p["t"] == "RADAR_FIJO"]
+    # solo radares de OSM sin ningún dato propio y sin relación (sin sentido)
+    viejos = [p for p in puntos if p.get("_viejo") and p.get("ap") and p["t"] == "RADAR_FIJO" and p.get("rb") is None]
     if not viejos:
         return []
     otros = [p for p in puntos if p["t"] == "RADAR_FIJO" and not p.get("_viejo") and p.get("ap")]
@@ -723,8 +724,10 @@ def quitar_viejos_repetidos(puntos: list[dict]) -> list[dict]:
                 for o in rej.get((cy + dy, cx + dx), ()):
                     if dist((v["la"], v["lo"]), (o["la"], o["lo"])) > 650:
                         continue
-                    if any(en_camino((o["la"], o["lo"]), ap) for ap in v["ap"]) or \
-                            any(en_camino((v["la"], v["lo"]), ap) for ap in o["ap"]):
+                    # sin datos: hasta 450 m; además viejo (2015 o antes): hasta 600 m
+                    lim = 600.0 if v["_viejo"] == 2 else 450.0
+                    if any(en_camino((o["la"], o["lo"]), ap, lim) for ap in v["ap"]) or \
+                            any(en_camino((v["la"], v["lo"]), ap, lim) for ap in o["ap"]):
                         fuera.append(v)
                         break
                 else:

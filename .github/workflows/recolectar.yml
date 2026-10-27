@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["recolector.py", "caminos.py", ".github/workflows/recolectar.yml"]
+    paths: ["recolector.py", "caminos.py", "correcciones.json", ".github/workflows/recolectar.yml"]
 
 permissions:
   contents: write

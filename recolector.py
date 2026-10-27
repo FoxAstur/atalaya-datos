@@ -772,9 +772,10 @@ out geom;
             # nodo viejo y sin datos (ni límite ni sentido): si hay otro radar más fiable en la misma calle y
             # sentido muy cerca, seguramente es una cabina que ya no está o un duplicado (se mira en caminos.py)
             anno = str(e.get("timestamp") or "")[:4]
-            viejo = anno.isdigit() and int(anno) <= 2015 and not tags.get("maxspeed") and not direccion_osm(tags)
+            sin_datos = not tags.get("maxspeed") and not direccion_osm(tags)
+            viejo = (2 if anno.isdigit() and int(anno) <= 2015 else 1) if sin_datos else None
             por_id.setdefault(id_, punto(id_, tipo, "OSM", lat, lon, c=via_normalizada(tags.get("ref")) or None,
-                                         v=limite(tags), n=tags.get("name"), _viejo=1 if viejo else None,
+                                         v=limite(tags), n=tags.get("name"), _viejo=viejo,
                                          **direccion_osm(tags)))
         elif e["type"] == "relation":
             tipo = clasificar_osm(tags.get("enforcement"))
@@ -1453,6 +1454,23 @@ def reutilizar_caminos(puntos: list[dict], anterior: dict) -> int:
     return n
 
 
+def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
+    """correcciones.json: lo que se ha comprobado sobre el terreno (radares que no existen, sentidos)."""
+    try:
+        c = cargar_json("correcciones.json", {})
+    except Exception:  # noqa: BLE001
+        return puntos
+    quitar = {q["id"] for q in c.get("quitar", [])}
+    sentidos = c.get("sentido", {})
+    for p in puntos:
+        if p["id"] in sentidos:
+            p["rb"] = float(sentidos[p["id"]]["rb"])
+    n = len(puntos)
+    puntos = [p for p in puntos if p["id"] not in quitar]
+    log(f"correcciones: {n - len(puntos)} quitados, {sum(1 for p in puntos if p['id'] in sentidos)} sentidos fijados")
+    return puntos
+
+
 def unir_tramos(puntos: list[dict]) -> list[dict]:
     """
     Un mismo radar de tramo puede llegar por varias fuentes de forma distinta: OSM con entrada y salida,
@@ -1678,6 +1696,7 @@ def main() -> int:
     todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, santacruz, pamplona,
                       camaras_dgt, comunitario, osm, zonas])
     todos = unir_tramos(todos)
+    todos = aplicar_correcciones(todos)
     # radares móviles anunciados ya caducados fuera
     hoy = datetime.now(timezone.utc).date().isoformat()
     todos = [p for p in todos if not p.get("vh") or p["vh"] >= hoy]
@@ -1740,7 +1759,7 @@ def main() -> int:
                 ids = {p["id"] for p in quitados}
                 todos[:] = [p for p in todos if p["id"] not in ids]
             estado["Radares viejos de OSM repetidos"] = (
-                f"{len(quitados)} quitados (sin datos, de 2015 o antes, con otro radar más fiable en la misma calle y sentido a menos de 600 m)"
+                f"{len(quitados)} quitados (de OSM sin ningún dato, con otro radar más fiable en la misma calle y sentido a menos de 450 m, o 600 m si es de 2015 o antes)"
                 + (": " + ", ".join(p["id"] for p in quitados[:15]) if quitados else ""))
             estado["Límites tomados de su vía"] = f"{st['limites_via']} puestos, {st['limites_quitados']} quitados por no ser de su vía"
             sos = st.get("sospechosos", [])
