@@ -835,7 +835,7 @@ out geom;
                     # la relación dice de dónde viene el tráfico: rumbo desde "from" hasta el aparato
                     rb = round(rumbo_entre(desde[0], desde[1], c[0], c[1]), 1) if desde and distancia(*desde, *c) > 5 else None
                     por_id[i] = punto(i, "RADAR_FIJO" if tipo == "RADAR_TRAMO" else tipo, "OSM", c[0], c[1],
-                                      c=ref or prev.get("c"), v=lim or prev.get("v"), n=prev.get("n"), rb=rb,
+                                      c=ref or prev.get("c"), v=lim or prev.get("v"), n=prev.get("n") or nombre_camara_osm(tags), rb=rb,
                                       **({k: prev[k] for k in ("_dir", "_dirg") if k in prev} if rb is None else {}))
     return list(por_id.values())
 
