@@ -468,7 +468,7 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
     red = cargar_red(ruta_red, objetivos)
     stats = {"lado": calibrar_lado(red, objetivos),
              "con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
-             "caminos_alternativos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
+             "caminos_alternativos": 0, "mediana_dos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
     for p in objetivos:
         p.pop("ap", None)
         p.pop("rt", None)
@@ -544,6 +544,24 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
             camino = caminar(red, wi, i, t, paso, largo, True, solo_enlace=enlace)
             if len(camino) >= 2 and longitud(camino) > (20 if enlace else 60):
                 aps.append(plano(simplificar(list(reversed(camino)))))
+        # En la mediana entre dos calzadas de sentido único y sin saber a cuál mira: las dos (y el usuario
+        # puede silenciar desde la app el sentido que no es). Elegir una al azar dejaría sin aviso la otra la mitad de las veces.
+        if p.get("rb") is None and not p.get("_dir") and w.sentido != 0 and not enlace and p["t"] != "ZONA_MOVIL" and aps:
+            pos = (p["la"], p["lo"])
+            d_w = proyectar(pos, w.pts[i], w.pts[i + 1])[0]
+            if lado(pos, w.pts[i], w.pts[i + 1]) * w.sentido < -2:
+                trafico_w = rumbo(w.pts[i], w.pts[i + 1]) if w.sentido == 1 else rumbo(w.pts[i + 1], w.pts[i])
+                for d_o, t_o, wj, j in sorted(red.cercanos(pos)):
+                    o = red.vias[wj]
+                    if wj == wi or o.sentido == 0 or o.tipo.endswith("_link") or d_o - d_w > 6:
+                        continue
+                    trafico_o = rumbo(o.pts[j], o.pts[j + 1]) if o.sentido == 1 else rumbo(o.pts[j + 1], o.pts[j])
+                    if dif(trafico_w, trafico_o) > 120 and lado(pos, o.pts[j], o.pts[j + 1]) * o.sentido < -2:
+                        camino = caminar(red, wj, j, t_o, o.sentido, largo, True)
+                        if len(camino) >= 2 and longitud(camino) > 60:
+                            aps.append(plano(simplificar(list(reversed(camino)))))
+                            stats["mediana_dos"] += 1
+                        break
         # para revisar a mano: radares de autovía con límite de ciudad (como el "40" de la CV-35)
         if p["t"] == "RADAR_FIJO" and w.tipo == "motorway" and p.get("vo") == 1 and p.get("v") and p["v"] < 60:
             stats["sospechosos"].append(f'{p["id"]} {p.get("c") or ""} {p.get("mu") or ""} límite {p["v"]}')

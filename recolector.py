@@ -1623,7 +1623,8 @@ def main() -> int:
                                                  f"{st['tramos_con_recorrido']} de {st['tramos']} tramos con recorrido real "
                                                  f"({st['sin_via']} sin vía cercana; {st['segundos']}s)")
             estado["Sentido por el lado de la calle"] = (
-                f"{st['dos_sentidos']} puntos siguen en ambos sentidos. Prueba de la regla (✓ = se usa): {st['lado']}")
+                f"{st['dos_sentidos']} puntos de calles de doble sentido y {st['mediana_dos']} de medianas siguen en ambos sentidos. "
+                f"Prueba de la regla (✓ = se usa): {st['lado']}")
             estado["Límites tomados de su vía"] = f"{st['limites_via']} puestos, {st['limites_quitados']} quitados por no ser de su vía"
             sos = st.get("sospechosos", [])
             estado["Revisar"] = (f"{len(sos)} radares de autovía con límite deducido < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"
