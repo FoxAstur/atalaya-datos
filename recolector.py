@@ -1395,6 +1395,24 @@ def calibrar_direcciones(puntos: list[dict]) -> str:
             + ("no se usa" if giro is None else f"se usa{' girado 180°' if giro else ''} en {n} puntos"))
 
 
+def reutilizar_caminos(puntos: list[dict], anterior: dict) -> int:
+    """Sin red viaria, cada punto conserva su camino, recorrido y sentido de la vez anterior (si sigue igual)."""
+    previos = {p["id"]: p for p in anterior.get("puntos", [])}
+    n = 0
+    for p in puntos:
+        q = previos.get(p["id"])
+        if not q or abs(q["la"] - p["la"]) > 1e-5 or abs(q["lo"] - p["lo"]) > 1e-5:
+            continue
+        for k in ("ap", "rt", "s2", "pl"):
+            if k in q and k not in p:
+                p[k] = q[k]
+        if "rb" in q and "rb" not in p:
+            p["rb"] = q["rb"]
+        if "ap" in p:
+            n += 1
+    return n
+
+
 def unir_tramos(puntos: list[dict]) -> list[dict]:
     """
     Un mismo radar de tramo puede llegar por varias fuentes de forma distinta: OSM con entrada y salida,
@@ -1676,10 +1694,13 @@ def main() -> int:
             estado["Revisar"] = (f"{len(sos)} radares de autovía con límite deducido < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"
             log(f"caminos: {st}")
         except Exception as e:  # noqa: BLE001
-            estado["Caminos de aproximación"] = f"⚠️ falló ({e})"
+            estado["Caminos de aproximación"] = f"⚠️ falló ({e}); se mantienen los de la vez anterior"
             log(f"caminos: ERROR {e}")
+            n = reutilizar_caminos(todos, anterior)
+            log(f"caminos: {n} puntos con los caminos de la vez anterior")
     else:
-        estado["Caminos de aproximación"] = "⚠️ sin red viaria descargada"
+        n = reutilizar_caminos(todos, anterior)
+        estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
     for p in todos:  # campos de trabajo que no van al fichero
         for k in ("_dir", "_dirg", "_osm_dirg"):
