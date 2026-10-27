@@ -308,7 +308,9 @@ def encajar(red: Red, p: dict):
         if rb is not None:
             fb = rumbo(w.pts[i], w.pts[i + 1])
             opciones = [fb] if w.sentido == 1 else [(fb + 180) % 360] if w.sentido == -1 else [fb, (fb + 180) % 360]
-            s += min(dif(rb, o) for o in opciones) / 3
+            dmin = min(dif(rb, o) for o in opciones)
+            # la calzada que circula en el sentido del radar manda (autovías: dos calzadas a pocos metros)
+            s += dmin / 3 if dmin <= 60 else 150
         if s < puntuacion:
             mejor, puntuacion = (wi, i, t), s
     return mejor
