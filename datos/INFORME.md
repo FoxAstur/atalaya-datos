@@ -1,18 +1,18 @@
 # Datos de Atalaya
 
-Versión: 2026-10-27T11:10:28+00:00 · Total: **4641** puntos
+Versión: 2026-10-27T11:23:06+00:00 · Total: **4641** puntos
 
 ## Fuentes
 
-- **DGT feed**: ✅ 737 (0s)
-- **DGT PDF radares**: ✅ 175 (6s)
-- **DGT PDF cámaras**: ✅ 249 (0s)
-- **Cataluña (SCT)**: ✅ 230 (17s)
+- **DGT feed**: ✅ 737 (1s)
+- **DGT PDF radares**: ✅ 175 (8s)
+- **DGT PDF cámaras**: ✅ 249 (1s)
+- **Cataluña (SCT)**: ✅ 230 (14s)
 - **Ayto. Madrid**: ✅ 23 (1s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2621 (70s)
+- **OpenStreetMap**: ✅ 2621 (77s)
 - **Tramos radar móvil**: ✅ 1152 (0s)
-- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (2s)
+- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
 - **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
 - **Ayto. Salamanca**: ✅ 24 (1s)
 - **Ayto. Donostia**: ✅ 12 (1s)
@@ -21,8 +21,8 @@ Versión: 2026-10-27T11:10:28+00:00 · Total: **4641** puntos
 - **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1637 (0s)
 - **Sentido de los radares de OSM**: 37 radares de OSM con direction; frente a los oficiales: 4 igual, 0 al revés → no se usa
 - **Zonas de bajas emisiones**: ✅ 57
-- **Caminos de aproximación**: ✅ 3252 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 54s)
-- **Sentido por el lado de la calle**: 336 puntos siguen en ambos sentidos. Prueba de la regla (✓ = se usa): carretera 4-7 m: 115/153; carretera 7-12 m: 87/111; carretera 12-25 m: 23/38; carretera 25-41 m: 12/25; ciudad 4-7 m: 54/88; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5
+- **Caminos de aproximación**: ✅ 3252 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 67s)
+- **Sentido por el lado de la calle**: 336 puntos de calles de doble sentido y 66 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): carretera 4-7 m: 115/153; carretera 7-12 m: 87/111; carretera 12-25 m: 23/38; carretera 25-41 m: 12/25; ciudad 4-7 m: 54/88; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5
 - **Límites tomados de su vía**: 114 puestos, 2 quitados por no ser de su vía
 - **Revisar**: nada sospechoso
 
@@ -105,5 +105,5 @@ rumbos por sentido: 1020
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
 ZBE: 57 zonas
-caminos: {'lado': 'carretera 4-7 m: 115/153; carretera 7-12 m: 87/111; carretera 12-25 m: 23/38; carretera 25-41 m: 12/25; ciudad 4-7 m: 54/88; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5', 'con_camino': 3252, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 8, 'en_enlace': 36, 'sospechosos': [], 'dos_sentidos': 336, 'limites_via': 114, 'limites_quitados': 2, 'segundos': 54}
+caminos: {'lado': 'carretera 4-7 m: 115/153; carretera 7-12 m: 87/111; carretera 12-25 m: 23/38; carretera 25-41 m: 12/25; ciudad 4-7 m: 54/88; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5', 'con_camino': 3252, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 8, 'mediana_dos': 66, 'en_enlace': 36, 'sospechosos': [], 'dos_sentidos': 336, 'limites_via': 114, 'limites_quitados': 2, 'segundos': 67}
 ```
