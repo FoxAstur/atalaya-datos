@@ -642,6 +642,45 @@ def calibrar_lado(red: Red, puntos: list[dict]) -> str:
     return "; ".join(partes) or "sin casos"
 
 
+def via_paralela(red: Red, ap: list) -> float | None:
+    """
+    Metros a la vía más cercana que va pegada y en el mismo sentido que los últimos 400 m del camino
+    (vía de servicio, calzada lateral). La app pide entonces ir más pegado al camino para avisar.
+    """
+    pts = [(ap[k], ap[k + 1]) for k in range(0, len(ap) - 1, 2)]
+    if len(pts) < 2:
+        return None
+    # últimos 400 m, muestreados cada ~25 m
+    muestras = []
+    acum = 0.0
+    for k in range(len(pts) - 1, 0, -1):
+        a, b = pts[k - 1], pts[k]
+        seg = dist(a, b)
+        n = max(1, int(seg // 25))
+        for j in range(n):
+            muestras.append((interpolar(b, a, j / n), rumbo(a, b)))
+        acum += seg
+        if acum >= 400:
+            break
+    mejor = None
+    for q, rb in muestras:
+        cand = list(red.cercanos(q, 45.0))
+        if not cand:
+            continue
+        # la propia carretera es la más cercana (el camino está simplificado: puede quedar a unos metros)
+        d0, _, propia, _ = min(cand)
+        for d, t, wj, j in cand:
+            if wj == propia or d < d0 + 6.0 or d - d0 > 35.0:
+                continue
+            d = d - d0
+            o = red.vias[wj]
+            fb = rumbo(o.pts[j], o.pts[j + 1])
+            sentidos_o = [fb] if o.sentido == 1 else [(fb + 180) % 360] if o.sentido == -1 else [fb, (fb + 180) % 360]
+            if any(dif(rb, x) <= 25 for x in sentidos_o) and (mejor is None or d < mejor):
+                mejor = d
+    return round(mejor, 1) if mejor is not None else None
+
+
 def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, aviso=print) -> dict:
     t0 = time.time()
     ZONAS_ZBE.clear()
@@ -660,13 +699,14 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
     aviso(f"  caminos: regla del cruce probada en {time.time() - t0:.0f}s")
     stats = {"lado": lado_txt, "cruce": cruce_txt,
              "con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
-             "caminos_alternativos": 0, "mediana_dos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
+             "caminos_alternativos": 0, "mediana_dos": 0, "con_paralela": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
     for n_p, p in enumerate(objetivos):
         if n_p % 500 == 0:
             aviso(f"  caminos: {n_p}/{len(objetivos)} en {time.time() - t0:.0f}s ({p['id']})")
         p.pop("ap", None)
         p.pop("rt", None)
         p.pop("s2", None)
+        p.pop("pl", None)
         e = encajar(red, p)
         if e is None:
             stats["sin_via"] += 1
@@ -779,6 +819,11 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
         if aps:
             p["ap"] = aps
             stats["con_camino"] += 1
+            pl = min((x for x in (via_paralela(red, a) for a in aps) if x is not None), default=None)
+            # por debajo de 10 m suele ser la propia carretera (carriles de enlace, trazado simplificado)
+            if pl is not None and pl >= 10:
+                p["pl"] = pl
+                stats["con_paralela"] += 1
     for p in puntos:
         p.pop("_dir", None); p.pop("_dirg", None)
     stats["segundos"] = round(time.time() - t0)

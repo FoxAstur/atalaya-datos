@@ -30,23 +30,44 @@ jobs:
       - name: Dependencias
         run: pip install pdfplumber==0.11.10
 
+      # La red viaria cambia poco: se guarda en caché una semana. Si Geofabrik va lento o falla,
+      # se usa la de la última vez en lugar de quedarse colgado (le pasó dos veces el 27-10-2026).
+      - name: Semana
+        id: semana
+        run: echo "semana=$(date -u +%G-%V)" >> "$GITHUB_OUTPUT"
+
+      - name: Caché de la red viaria
+        id: cache_red
+        uses: actions/cache@v4
+        with:
+          path: red/vias.geojsonseq
+          key: red-v2-${{ steps.semana.outputs.semana }}
+          restore-keys: red-v2-
+
       - name: Red viaria (OpenStreetMap, Geofabrik)
+        if: steps.cache_red.outputs.cache-hit != 'true'
         continue-on-error: true
+        timeout-minutes: 30
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
-          mkdir -p red
+          mkdir -p red/tmp
           echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","name","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward"]}' > red/export.json
           FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
-          : > red/vias.geojsonseq
+          : > red/tmp/vias.geojsonseq
           for zona in europe/spain africa/canary-islands; do
-            f=red/$(basename $zona).osm.pbf
-            curl -sSL --retry 3 -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
-            osmium tags-filter "$f" "$FILTRO" -o red/filtrado.osm.pbf --overwrite
-            osmium export red/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o red/parte.geojsonseq --overwrite
-            cat red/parte.geojsonseq >> red/vias.geojsonseq
-            rm -f "$f" red/filtrado.osm.pbf red/parte.geojsonseq
+            f=red/tmp/$(basename $zona).osm.pbf
+            # corta si baja a menos de 300 kB/s durante 1 minuto o tarda más de 15 min
+            curl -sSL --retry 2 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 900 \
+              -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
+            osmium tags-filter "$f" "$FILTRO" -o red/tmp/filtrado.osm.pbf --overwrite
+            osmium export red/tmp/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o red/tmp/parte.geojsonseq --overwrite
+            cat red/tmp/parte.geojsonseq >> red/tmp/vias.geojsonseq
+            rm -f "$f" red/tmp/filtrado.osm.pbf red/tmp/parte.geojsonseq
           done
-          ls -la red; wc -l red/vias.geojsonseq
+          # solo se sustituye la anterior si la nueva está completa
+          if [ "$(wc -l < red/tmp/vias.geojsonseq)" -gt 300000 ]; then mv red/tmp/vias.geojsonseq red/vias.geojsonseq; fi
+          rm -rf red/tmp
+          ls -la red; wc -l red/vias.geojsonseq || true
 
       - name: Recolectar
         run: timeout 100m python recolector.py || echo "::warning::El recolector terminó con aviso; se publica lo obtenido"
