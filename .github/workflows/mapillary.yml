@@ -1,0 +1,34 @@
+name: Explorar Mapillary
+
+# Consulta qué detecta Mapillary alrededor de una muestra de radares y lo sube a depurar/ para estudiarlo.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar
+  cancel-in-progress: false
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Explorar
+        env:
+          MAPILLARY_TOKEN: ${{ secrets.MAPILLARY_TOKEN }}
+        run: python mapillary.py explorar
+      - name: Publicar
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          gzip -9f depurar/mapillary.json
+          git add -f depurar/mapillary.json.gz
+          git commit -m "Exploración de Mapillary" || exit 0
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
