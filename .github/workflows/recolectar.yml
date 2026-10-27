@@ -29,6 +29,24 @@ jobs:
       - name: Dependencias
         run: pip install pdfplumber==0.11.10
 
+      - name: Red viaria (OpenStreetMap, Geofabrik)
+        continue-on-error: true
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
+          mkdir -p red
+          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","name","oneway","junction"]}' > red/export.json
+          FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
+          : > red/vias.geojsonseq
+          for zona in europe/spain africa/canary-islands; do
+            f=red/$(basename $zona).osm.pbf
+            curl -sSL --retry 3 -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
+            osmium tags-filter "$f" "$FILTRO" -o red/filtrado.osm.pbf --overwrite
+            osmium export red/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o red/parte.geojsonseq --overwrite
+            cat red/parte.geojsonseq >> red/vias.geojsonseq
+            rm -f "$f" red/filtrado.osm.pbf red/parte.geojsonseq
+          done
+          ls -la red; wc -l red/vias.geojsonseq
+
       - name: Recolectar
         run: timeout 100m python recolector.py || echo "::warning::El recolector terminó con aviso; se publica lo obtenido"
 

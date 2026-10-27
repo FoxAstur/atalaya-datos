@@ -1509,6 +1509,22 @@ def main() -> int:
 
     zbe = ejecutar_zbe(anterior, estado)
 
+    # Caminos de aproximación por la red viaria de OSM (la app solo avisa si vas por esa carretera)
+    ruta_red = "red/vias.geojsonseq"
+    if os.path.exists(ruta_red):
+        try:
+            import caminos
+            st = caminos.anadir_caminos(todos, ruta_red)
+            estado["Caminos de aproximación"] = (f"✅ {st['con_camino']} puntos con camino por su carretera, "
+                                                 f"{st['tramos_con_recorrido']} de {st['tramos']} tramos con recorrido real "
+                                                 f"({st['sin_via']} sin vía cercana; {st['segundos']}s)")
+            log(f"caminos: {st}")
+        except Exception as e:  # noqa: BLE001
+            estado["Caminos de aproximación"] = f"⚠️ falló ({e})"
+            log(f"caminos: ERROR {e}")
+    else:
+        estado["Caminos de aproximación"] = "⚠️ sin red viaria descargada"
+
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     # Solo se reescribe si cambia el contenido (así el móvil no descarga si no hay novedades)
