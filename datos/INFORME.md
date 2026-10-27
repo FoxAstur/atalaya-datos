@@ -1,20 +1,20 @@
 # Datos de Atalaya
 
-Versión: 2026-10-27T13:22:29+00:00 · Total: **4641** puntos
+Versión: 2026-10-27T14:48:08+00:00 · Total: **4641** puntos
 
 ## Fuentes
 
 - **DGT feed**: ✅ 737 (1s)
-- **DGT PDF radares**: ✅ 175 (8s)
+- **DGT PDF radares**: ✅ 175 (7s)
 - **DGT PDF cámaras**: ✅ 249 (1s)
-- **Cataluña (SCT)**: ✅ 230 (16s)
-- **Ayto. Madrid**: ✅ 23 (0s)
+- **Cataluña (SCT)**: ✅ 230 (15s)
+- **Ayto. Madrid**: ✅ 23 (1s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2621 (78s)
-- **Tramos radar móvil**: ✅ 1152 (0s)
+- **OpenStreetMap**: ✅ 2621 (71s)
+- **Tramos radar móvil**: ✅ 1152 (1s)
 - **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
 - **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
-- **Ayto. Salamanca**: ✅ 24 (6s)
+- **Ayto. Salamanca**: ✅ 24 (2s)
 - **Ayto. Donostia**: ✅ 12 (1s)
 - **Ayto. Santa Cruz de Tenerife foto-rojo**: ⚠️ falló (www.santacruzdetenerife.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
 - **Ayto. Pamplona cinemómetros**: ⚠️ falló (sig.pamplona.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
@@ -22,8 +22,8 @@ Versión: 2026-10-27T13:22:29+00:00 · Total: **4641** puntos
 - **Sentido de los radares DGT (segunda opinión)**: 45 sentidos nuevos, 503 coinciden con los nuestros, 3 en desacuerdo (se avisa en los dos)
 - **Sentido de los radares de OSM**: 37 radares de OSM con direction; frente a los oficiales: 4 igual, 0 al revés → se usa en 37 puntos
 - **Zonas de bajas emisiones**: ✅ 57
-- **Caminos de aproximación**: ✅ 3252 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 68s)
-- **Sentido por el lado de la calle**: 320 puntos de calles de doble sentido y 62 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): carretera 4-7 m: 116/154; carretera 7-12 m: 87/112; carretera 12-25 m: 23/38; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5. Foto-rojo hacia el cruce: 23/28
+- **Caminos de aproximación**: ✅ 3252 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 86s)
+- **Sentido por el lado de la calle**: 320 puntos de calles de doble sentido y 62 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): carretera 4-7 m: 116/154; carretera 7-12 m: 87/112; carretera 12-25 m: 23/38; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5. Pistas combinadas: limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10
 - **Límites tomados de su vía**: 114 puestos, 2 quitados por no ser de su vía
 - **Revisar**: nada sospechoso
 
@@ -109,13 +109,13 @@ rumbos por sentido: 1020
 ZBE: 57 zonas
   caminos: red cargada (939741 vías) en 64s
   caminos: regla del lado probada en 65s
-  caminos: regla del cruce probada en 65s
-  caminos: 0/3335 en 65s (dgt:GUID_CVM_161274)
-  caminos: 500/3335 en 65s (dgt:GUID_CABINACINEMOMETRO_120585)
-  caminos: 1000/3335 en 65s (sct:41.64066,2.16653)
-  caminos: 1500/3335 en 66s (dgteq:N-1:251.3:D:cintur)
-  caminos: 2000/3335 en 66s (osm:n992001156)
-  caminos: 2500/3335 en 67s (osm:n11043575806)
-  caminos: 3000/3335 en 67s (osm:n992007078)
-caminos: {'lado': 'carretera 4-7 m: 116/154; carretera 7-12 m: 87/112; carretera 12-25 m: 23/38; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5', 'cruce': '23/28', 'con_camino': 3252, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 62, 'en_enlace': 37, 'sospechosos': [], 'dos_sentidos': 320, 'limites_via': 114, 'limites_quitados': 2, 'segundos': 68}
+  caminos: regla del cruce probada en 66s
+  caminos: 0/3335 en 66s (dgt:GUID_CVM_161274)
+  caminos: 500/3335 en 67s (dgt:GUID_CABINACINEMOMETRO_120585)
+  caminos: 1000/3335 en 69s (sct:41.64066,2.16653)
+  caminos: 1500/3335 en 74s (dgteq:N-1:251.3:D:cintur)
+  caminos: 2000/3335 en 77s (osm:n992001156)
+  caminos: 2500/3335 en 81s (osm:n11043575806)
+  caminos: 3000/3335 en 85s (osm:n992007078)
+caminos: {'lado': 'carretera 4-7 m: 116/154; carretera 7-12 m: 87/112; carretera 12-25 m: 23/38; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/91; ciudad 7-12 m: 20/28; ciudad 12-25 m: 12/17; ciudad 25-41 m: 2/5', 'cruce': 'limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10', 'con_camino': 3252, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 62, 'con_paralela': 628, 'en_enlace': 37, 'sospechosos': [], 'dos_sentidos': 320, 'limites_via': 114, 'limites_quitados': 2, 'segundos': 86}
 ```
