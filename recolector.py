@@ -711,6 +711,30 @@ def limite(tags: dict | None):
     return int(s) if s.isdigit() and 10 <= int(s) <= 150 else None
 
 
+CARDINALES = {"n": 0, "nne": 22.5, "ne": 45, "ene": 67.5, "e": 90, "ese": 112.5, "se": 135, "sse": 157.5,
+              "s": 180, "ssw": 202.5, "sw": 225, "wsw": 247.5, "w": 270, "wnw": 292.5, "nw": 315, "nnw": 337.5}
+
+
+def direccion_osm(tags: dict) -> dict:
+    """Sentido que vigila un nodo de OSM: forward/backward (respecto a su vía, se resuelve en caminos.py)
+    o grados/cardinal (se calibra contra los radares oficiales antes de usarlo)."""
+    for k in ("direction", "camera:direction", "traffic_signals:direction"):
+        v = str(tags.get(k) or "").strip().lower()
+        if not v:
+            continue
+        if v in ("forward", "backward"):
+            return {"_dir": v}
+        if v in CARDINALES:
+            return {"_dirg": CARDINALES[v]}
+        try:
+            g = float(v)
+            if 0 <= g <= 360:
+                return {"_dirg": g % 360}
+        except ValueError:
+            pass
+    return {}
+
+
 def fuente_osm() -> list[dict]:
     q = """
 [out:json][timeout:280];
@@ -739,7 +763,7 @@ out geom;
                 continue
             id_ = f"osm:n{e['id']}"
             por_id.setdefault(id_, punto(id_, tipo, "OSM", lat, lon, c=via_normalizada(tags.get("ref")) or None,
-                                         v=limite(tags), n=tags.get("name")))
+                                         v=limite(tags), n=tags.get("name"), **direccion_osm(tags)))
         elif e["type"] == "relation":
             tipo = clasificar_osm(tags.get("enforcement"))
             if not tipo:
@@ -773,8 +797,11 @@ out geom;
                 lista = disp or ([(f"osm:r{e['id']}", desde)] if desde else [])
                 for i, c in lista:
                     prev = por_id.get(i, {})
+                    # la relación dice de dónde viene el tráfico: rumbo desde "from" hasta el aparato
+                    rb = round(rumbo_entre(desde[0], desde[1], c[0], c[1]), 1) if desde and distancia(*desde, *c) > 5 else None
                     por_id[i] = punto(i, "RADAR_FIJO" if tipo == "RADAR_TRAMO" else tipo, "OSM", c[0], c[1],
-                                      c=ref or prev.get("c"), v=lim or prev.get("v"), n=prev.get("n"))
+                                      c=ref or prev.get("c"), v=lim or prev.get("v"), n=prev.get("n"), rb=rb,
+                                      **({k: prev[k] for k in ("_dir", "_dirg") if k in prev} if rb is None else {}))
     return list(por_id.values())
 
 
@@ -1291,10 +1318,44 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
                 for k in ("v", "c", "la2", "lo2"):
                     if k not in previo and k in p:
                         previo[k] = p[k]
+                if "_dirg" in p:
+                    previo.setdefault("_osm_dirg", p["_dirg"])
                 continue
             rej.add(p)
             salida.append(p)
     return salida
+
+
+def calibrar_direcciones(puntos: list[dict]) -> str:
+    """
+    En OSM, direction=<grados> unas veces es hacia dónde va el tráfico vigilado y otras hacia dónde mira la
+    cámara (al revés). Se mide contra los radares oficiales que tienen rumbo y también un duplicado de OSM,
+    y solo se usa si la gran mayoría coincide (o la gran mayoría es justo al revés).
+    """
+    igual = contrario = 0
+    for p in puntos:
+        g = p.pop("_osm_dirg", None)
+        if g is None or p.get("rb") is None:
+            continue
+        dd = abs((g - p["rb"] + 180) % 360 - 180)
+        if dd <= 45:
+            igual += 1
+        elif dd >= 135:
+            contrario += 1
+    total = igual + contrario
+    giro = None
+    if total >= 15 and igual / total >= 0.85:
+        giro = 0
+    elif total >= 15 and contrario / total >= 0.85:
+        giro = 180
+    n = 0
+    for p in puntos:
+        g = p.pop("_dirg", None)
+        if g is not None and giro is not None and p.get("rb") is None:
+            p["rb"] = round((g + giro) % 360, 1)
+            n += 1
+    return (f"direction de OSM frente a radares oficiales: {igual} igual, {contrario} al revés → "
+            + ("no se usa" if giro is None else f"se usa{' girado 180°' if giro else ''} en {n} puntos"))
 
 
 def unir_tramos(puntos: list[dict]) -> list[dict]:
@@ -1542,6 +1603,12 @@ def main() -> int:
         log(f"rumbos por sentido: {n}")
     except Exception as e:  # noqa: BLE001
         log(f"rumbos: ERROR {e}")
+    try:
+        r = calibrar_direcciones(todos)
+        estado["Sentido de los radares de OSM"] = r
+        log(r)
+    except Exception as e:  # noqa: BLE001
+        log(f"direcciones OSM: ERROR {e}")
 
     zbe = ejecutar_zbe(anterior, estado)
 
@@ -1554,6 +1621,13 @@ def main() -> int:
             estado["Caminos de aproximación"] = (f"✅ {st['con_camino']} puntos con camino por su carretera, "
                                                  f"{st['tramos_con_recorrido']} de {st['tramos']} tramos con recorrido real "
                                                  f"({st['sin_via']} sin vía cercana; {st['segundos']}s)")
+            tot = st["lado_ok"] + st["lado_mal"]
+            estado["Sentido por el lado de la calle"] = (
+                f"{st['dos_sentidos']} puntos siguen en ambos sentidos; comprobación con radares de sentido conocido: "
+                f"{st['lado_ok']} de {tot} aciertos" + (f" ({100 * st['lado_ok'] // tot} %)" if tot else ""))
+            estado["Límites tomados de su vía"] = f"{st['limites_via']} puestos, {st['limites_quitados']} quitados por no ser de su vía"
+            sos = st.get("sospechosos", [])
+            estado["Revisar"] = (f"{len(sos)} radares de autovía con límite < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"
             log(f"caminos: {st}")
         except Exception as e:  # noqa: BLE001
             estado["Caminos de aproximación"] = f"⚠️ falló ({e})"
@@ -1561,6 +1635,9 @@ def main() -> int:
     else:
         estado["Caminos de aproximación"] = "⚠️ sin red viaria descargada"
 
+    for p in todos:  # campos de trabajo que no van al fichero
+        for k in ("_dir", "_dirg", "_osm_dirg"):
+            p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     # Solo se reescribe si cambia el contenido (así el móvil no descarga si no hay novedades)

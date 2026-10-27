@@ -61,6 +61,16 @@ def proyectar(p, a, b):
     return math.hypot(ax + t * dx, ay + t * dy), t
 
 
+def lado(p, a, b):
+    """Distancia con signo de p a la recta a→b: positiva a la derecha del sentido a→b."""
+    ky = 111320.0
+    kx = 111320.0 * math.cos(math.radians(a[0]))
+    bx, by = (b[1] - a[1]) * kx, (b[0] - a[0]) * ky
+    px, py = (p[1] - a[1]) * kx, (p[0] - a[0]) * ky
+    n = math.hypot(bx, by)
+    return (bx * py - by * px) / n * -1 if n else 0.0
+
+
 def interpolar(a, b, t):
     return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
 
@@ -89,13 +99,30 @@ def plano(pts):
     return [round(x, 5) for p in pts for x in p]
 
 
+LIMITES_ES = {"es:urban": 50, "es:rural": 90, "es:motorway": 120, "es:trunk": 100, "es:living_street": 20,
+              "es:zone30": 30, "es:zone20": 20, "es:school": 30, "es:bicycle_road": 30}
+
+
+def velocidad(v):
+    """maxspeed de OSM → km/h (o None)."""
+    v = (v or "").strip().lower()
+    if not v:
+        return None
+    if v in LIMITES_ES:
+        return LIMITES_ES[v]
+    n = v.split()[0].split(";")[0]
+    if n.isdigit() and 10 <= int(n) <= 150:
+        return int(n) if "mph" not in v else None
+    return None
+
+
 def norm_ref(r):
     return (r or "").upper().replace(" ", "").replace("-", "").split(";")[0]
 
 
 # --------------------------------------------------------------------------- red viaria
 class Via:
-    __slots__ = ("pts", "clase", "ref", "nombre", "sentido", "tipo")
+    __slots__ = ("pts", "clase", "ref", "nombre", "sentido", "tipo", "vmax", "vmax_ad", "vmax_at")
 
     def __init__(self, pts, tags):
         self.pts = pts
@@ -103,6 +130,9 @@ class Via:
         self.clase = CLASE.get(self.tipo, 6)
         self.ref = norm_ref(tags.get("ref"))
         self.nombre = (tags.get("name") or "").strip().lower()
+        self.vmax = velocidad(tags.get("maxspeed"))
+        self.vmax_ad = velocidad(tags.get("maxspeed:forward")) or self.vmax
+        self.vmax_at = velocidad(tags.get("maxspeed:backward")) or self.vmax
         ow = str(tags.get("oneway", "")).lower()
         if ow in ("yes", "1", "true"):
             self.sentido = 1
@@ -121,6 +151,7 @@ class Red:
         self.vias: list[Via] = []
         self.nodos: dict[tuple, list] = {}      # coord → [(vía, índice)]
         self.segs: dict[tuple, list] = {}       # celda → [(vía, índice)]
+        self.con_limites = False                 # ¿trae la red los maxspeed? (exportaciones antiguas no)
 
     @staticmethod
     def clave(p):
@@ -188,6 +219,8 @@ def cargar_red(ruta: str, puntos: list[dict]) -> Red:
             if tags.get("highway") not in CLASE:
                 continue
             red.anadir([(la, lo) for lo, la in c], tags)
+            if "maxspeed" in tags:
+                red.con_limites = True
     print(f"  red viaria: {n} vías leídas, {len(red.vias)} cerca de algún punto", flush=True)
     return red
 
@@ -308,6 +341,14 @@ def encajar(red: Red, p: dict):
         s += 4 * (w.clase - 1) if p["t"] in ("RADAR_FIJO", "RADAR_TRAMO") else 0
         if w.tipo.endswith("_link"):
             s += 10
+        if rb is None and w.sentido != 0 and p["t"] != "ZONA_MOVIL":
+            # calzada de un solo sentido: la cámara está a su derecha (o encima), no a su izquierda;
+            # si queda a la izquierda, seguramente es de la calzada de enfrente
+            ld = lado(pos, w.pts[i], w.pts[i + 1]) * w.sentido
+            if ld < -3:
+                s += 15
+        if p.get("_dir") and d < 1.5:
+            s -= 20   # nodo de OSM puesto sobre su vía: esa es
         if rb is not None:
             fb = rumbo(w.pts[i], w.pts[i + 1])
             opciones = [fb] if w.sentido == 1 else [(fb + 180) % 360] if w.sentido == -1 else [fb, (fb + 180) % 360]
@@ -319,14 +360,28 @@ def encajar(red: Red, p: dict):
     return mejor
 
 
-def sentidos(red: Red, wi: int, i: int, rb):
-    """Sentidos de circulación (paso +1/-1 sobre la vía) que vigila el punto."""
+LADO_MIN = 4.0   # m: a partir de aquí se sabe a qué lado de una calle de doble sentido está la cámara
+
+
+def sentidos(red: Red, wi: int, i: int, rb, p: dict | None = None):
+    """
+    Sentidos de circulación (paso +1/-1 sobre la vía) que vigila el punto. En una vía de doble sentido sin
+    rumbo conocido: el direction=forward/backward de OSM, y si no, el lado de la calle (en España se
+    circula por la derecha y la cámara vigila el carril que tiene al lado). Solo si está en el eje, ambos.
+    """
     w = red.vias[wi]
     if w.sentido != 0:
         return [w.sentido]
     if rb is not None:
         fb = rumbo(w.pts[i], w.pts[i + 1])
         return [1] if dif(rb, fb) <= 90 else [-1]
+    if p is not None and p["t"] != "ZONA_MOVIL":
+        pos = (p["la"], p["lo"])
+        ld = lado(pos, w.pts[i], w.pts[i + 1])
+        if p.get("_dir") in ("forward", "backward") and abs(ld) < 2:
+            return [1 if p["_dir"] == "forward" else -1]
+        if abs(ld) >= LADO_MIN:
+            return [1 if ld > 0 else -1]
     return [1, -1]
 
 
@@ -345,11 +400,25 @@ def mejor_aproximacion(red: Red, candidatas, rb, largo):
     return plano(simplificar(list(reversed(mejor)))) if mejor else None
 
 
+def limite_de_via(red: Red, wi: int, i: int, pasos, p: dict):
+    """Límite de la vía en la que está el punto (y en su sentido); si no lo tiene, el de la misma carretera al lado."""
+    w = red.vias[wi]
+    paso = pasos[0] if len(pasos) == 1 else 0
+    lim = w.vmax_ad if paso == 1 else w.vmax_at if paso == -1 else w.vmax
+    if lim is None:
+        for d, t, wj, j in sorted(red.cercanos((p["la"], p["lo"]))):
+            o = red.vias[wj]
+            if o.vmax and ((w.ref and o.ref == w.ref) or (w.nombre and o.nombre == w.nombre)) and o.tipo == w.tipo:
+                return o.vmax
+    return lim
+
+
 def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
     t0 = time.time()
     objetivos = [p for p in puntos if p["t"] != "ZONA_MOVIL" or "tr" not in p]
     red = cargar_red(ruta_red, objetivos)
-    stats = {"con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0}
+    stats = {"con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
+             "lado_ok": 0, "lado_mal": 0, "caminos_alternativos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
     for p in objetivos:
         p.pop("ap", None)
         p.pop("rt", None)
@@ -389,6 +458,13 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
                 while k < len(ruta) - 1 and dist(ruta[0], ruta[k]) < 40:
                     k += 1
                 rb_ruta = rumbo(ruta[0], ruta[k])
+                if (p.get("vo") == 1 or "v" not in p) and red.con_limites:
+                    cw, ci, _ = cand
+                    fb = rumbo(red.vias[cw].pts[ci], red.vias[cw].pts[ci + 1])
+                    lim = limite_de_via(red, cw, ci, [1 if dif(rb_ruta, fb) <= 90 else -1], p)
+                    if lim:
+                        p["v"], p["vo"] = lim, 1
+                        stats["limites_via"] += 1
                 camino = mejor_aproximacion(red, [(wi, i, t), cand], rb_ruta, largo)
                 if camino:
                     p["ap"] = [camino]
@@ -400,16 +476,51 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
                 pasos = [1 if dif(rumbo((p["la"], p["lo"]), fin), fb) <= 90 else -1]
                 pasos = [s for s in pasos if se_puede(w, s)] or sentidos(red, wi, i, None)
         else:
-            pasos = sentidos(red, wi, i, p.get("rb"))
+            pasos = sentidos(red, wi, i, p.get("rb"), p)
+            # comprobación de la regla del lado con los puntos de rumbo conocido (va al informe)
+            if p.get("rb") is not None and w.sentido == 0 and p["t"] != "ZONA_MOVIL":
+                ld = lado((p["la"], p["lo"]), w.pts[i], w.pts[i + 1])
+                if abs(ld) >= LADO_MIN:
+                    por_lado = 1 if ld > 0 else -1
+                    stats["lado_ok" if [por_lado] == pasos else "lado_mal"] += 1
+            if len(pasos) == 2:
+                stats["dos_sentidos"] += 1
+        # el límite deducido (no el del propio radar) se toma de la vía en la que está, no de la más cercana
+        if p["t"] == "RADAR_FIJO" and (p.get("vo") == 1 or "v" not in p) and red.con_limites:
+            lim = limite_de_via(red, wi, i, pasos, p)
+            if lim:
+                p["v"], p["vo"] = lim, 1
+                stats["limites_via"] += 1
+            elif p.get("vo") == 1:
+                p.pop("v", None); p.pop("vo", None)
+                stats["limites_quitados"] += 1
         aps = []
         enlace = w.tipo.endswith("_link")
         for paso in pasos:
             camino = caminar(red, wi, i, t, paso, largo, True, solo_enlace=enlace)
             if len(camino) >= 2 and longitud(camino) > (20 if enlace else 60):
                 aps.append(plano(simplificar(list(reversed(camino)))))
+        # para revisar a mano: radares de autovía con límite de ciudad (como el "40" de la CV-35)
+        if p["t"] == "RADAR_FIJO" and w.tipo in ("motorway", "trunk") and p.get("v") and p["v"] < 60:
+            stats["sospechosos"].append(f'{p["id"]} {p.get("c") or ""} {p.get("mu") or ""} límite {p["v"]}')
+        if w.tipo.endswith("_link"):
+            stats["en_enlace"] += 1
+        if not aps:
+            # sin camino por la vía elegida (calle cortada, fin de vía…): la más cercana, en sus sentidos
+            for d0, tj, wj, j in sorted(red.cercanos((p["la"], p["lo"])))[:4]:
+                o = red.vias[wj]
+                for paso in ([o.sentido] if o.sentido else sentidos(red, wj, j, p.get("rb"), p)):
+                    camino = caminar(red, wj, j, tj, paso, largo, True, solo_enlace=o.tipo.endswith("_link"))
+                    if len(camino) >= 2 and longitud(camino) > 60:
+                        aps.append(plano(simplificar(list(reversed(camino)))))
+                if aps:
+                    stats["caminos_alternativos"] += 1
+                    break
         if aps:
             p["ap"] = aps
             stats["con_camino"] += 1
+    for p in puntos:
+        p.pop("_dir", None); p.pop("_dirg", None)
     stats["segundos"] = round(time.time() - t0)
     return stats
 
