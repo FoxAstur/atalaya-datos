@@ -24,12 +24,14 @@ jobs:
           python-version: "3.12"
       - name: Explorar catálogos
         run: timeout 50m python descubrir.py || true
+        env:
+          SOLO_SONDAS: ${{ github.event_name == 'push' && '1' || '' }}
       - name: Publicar informe
         if: always()
         run: |
           git config user.name "atalaya-bot"
           git config user.email "atalaya-bot@users.noreply.github.com"
-          git add datos/DESCUBRIMIENTO.md datos/descubrimiento.json || true
+          git add datos/DESCUBRIMIENTO.md datos/descubrimiento.json datos/SONDAS.md 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "Descubrimiento de fuentes $(date -u +%Y-%m-%dT%H:%MZ)"
             for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done

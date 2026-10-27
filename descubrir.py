@@ -227,7 +227,90 @@ def muestra(d: dict) -> str:
     return "(no se pudo descargar ninguna muestra)"
 
 
+# Fuentes concretas que conviene inspeccionar a mano (formato y volumen)
+SONDAS = {
+    "Feed radares-anunciados (estado)": "https://geiserx.github.io/radares-anunciados-ha/status.json",
+    "Feed radares-anunciados (inicio)": "https://geiserx.github.io/radares-anunciados-ha/feed.geojson",
+    "DGT NAP tramos INVIVE (página)": "https://nap.dgt.es/dataset/tramos-invive",
+    "SCT radares remolque": "https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars-remolc.txt",
+    "SCT radares": "https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt",
+    "Madrid foto-rojo CSV": "https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-1-semaforos-foto-rojo-csv/download/205193-1-semaforos-foto-rojo-csv.csv",
+    "Madrid radares CSV": "https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-1-radares-fijos-moviles-csv/download/300049-1-radares-fijos-moviles-csv.csv",
+    "Salamanca fijos GeoJSON": "https://ide.aytosalamanca.es/geoserver/ide_salamanca_tic/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_salamanca_tic%3ARadares_Fijos&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+    "Salamanca tramo GeoJSON": "https://ide.aytosalamanca.es/geoserver/ide_salamanca_movilidad/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_salamanca_movilidad%3ARADAR_TRAMO&outputFormat=application%2Fjson&srsName=EPSG%3A4326",
+    "Santa Cruz de Tenerife foto-rojo": "https://www.santacruzdetenerife.es/opendata/api/3/action/package_show?id=foto-rojo",
+    "Pamplona WFS (capas)": "https://sig.pamplona.es/ogc/wfs?service=WFS&request=GetCapabilities",
+    "OSM notas con radar": "https://api.openstreetmap.org/api/0.6/notes/search.json?q=radar&limit=10000&closed=0",
+    "Donostia datos abiertos": "https://www.donostia.eus/datosabiertos/catalogo",
+    "Málaga foto-rojo": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.geojson",
+    "Santa Cruz foto-rojo": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson",
+    "Madrid cámaras ZBE": "https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-1-circulacion-camaras-trafico-csv/download/300654-1-circulacion-camaras-trafico-csv.csv",
+    "Madrid ZBEDEP Centro": "https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-2-trafico-madrid-central-csv/download/300229-2-trafico-madrid-central-csv.csv",
+    "Pamplona cinemómetros WFS": "https://sig.pamplona.es/ogc/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=SEGU_Pto_Cinemometro&outputFormat=application/json&srsName=EPSG:4326",
+    "Pamplona cinemómetros WFS2": "https://sig.pamplona.es/ogc/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=SEGU_Pto_Cinemometro&outputFormat=geojson&srsName=EPSG:4326",
+    "Mossos controles velocidad": "https://analisi.transparenciacatalunya.cat/api/v3/views/guxp-fqcu/query.json?accessType=DOWNLOAD",
+    "Mossos controles velocidad CSV": "https://analisi.transparenciacatalunya.cat/api/v3/views/guxp-fqcu/export.csv?accessType=DOWNLOAD",
+    "Alcobendas denuncias radar": "https://datos.alcobendas.org/dataset/8dfbb415-3022-448f-8f8a-0d973eba6a8b/resource/884e219e-b7e7-4d6a-9587-216102b61b76/download/denuncias-de-radar.csv",
+}
+
+
+def sondear() -> list[str]:
+    l = ["", "## Sondas de fuentes concretas", ""]
+
+    def una(item):
+        nombre, url = item
+        try:
+            b = get(url, timeout=60)
+            t = b.decode("utf-8", "replace")
+            extra = ""
+            if "WFS" in nombre:
+                capas = re.findall(r"<(?:wfs:)?Name>([^<]+)</(?:wfs:)?Name>", t)
+                rel = [c for c in capas if INTERES.search(c) or re.search(r"semaf|radar|camara|trafic|movil", c, re.I)]
+                extra = f"\nCapas relevantes ({len(rel)} de {len(capas)}): {rel[:60]}"
+            if nombre.startswith("OSM notas"):
+                try:
+                    fs = json.loads(t).get("features", [])
+                    es = [f for f in fs if 35 <= f["geometry"]["coordinates"][1] <= 44.5 and -10 <= f["geometry"]["coordinates"][0] <= 5]
+                    extra = f"\nNotas abiertas con 'radar' en España: {len(es)} (de {len(fs)})"
+                except Exception:  # noqa: BLE001
+                    pass
+            if nombre.endswith("(estado)"):
+                extra = "\n" + t[:8000]
+            if nombre.endswith("(inicio)"):
+                try:
+                    fs = json.loads(t).get("features", [])
+                    from collections import Counter
+                    claves = Counter(k for f in fs for k in (f.get("properties") or {}))
+                    fuentes = Counter(str((f.get("properties") or {}).get("source") or (f.get("properties") or {}).get("fuente")) for f in fs)
+                    geoms = Counter(f.get("geometry", {}).get("type") for f in fs)
+                    ej = {}
+                    for f in fs:
+                        k = str((f.get("properties") or {}).get("source"))
+                        if k not in ej:
+                            ej[k] = f
+                    extra = (f"\n{len(fs)} features · claves {dict(claves)} · fuentes {dict(fuentes)} · geometrías {dict(geoms)}"
+                             "\n\nEjemplos por fuente:\n```\n" + "\n".join(json.dumps(v, ensure_ascii=False)[:700] for v in ej.values()) + "\n```")
+                    t = ""
+                except Exception as e:  # noqa: BLE001
+                    extra = f"\n(no se pudo analizar: {e})"
+            return [f"### {nombre}", f"`{url}` · {len(b)} bytes{extra}", "", "```", t[:900], "```", ""]
+        except Exception as e:  # noqa: BLE001
+            return [f"### {nombre}", f"`{url}` · ERROR {e}", ""]
+
+    with ThreadPoolExecutor(6) as ex:
+        for r in ex.map(una, SONDAS.items()):
+            l += r
+    return l
+
+
 def main() -> int:
+    import os
+    if os.environ.get("SOLO_SONDAS"):
+        l = ["# Sondas de fuentes"] + sondear()
+        with open("datos/SONDAS.md", "w", encoding="utf-8") as f:
+            f.write("\n".join(l))
+        print("\n".join(l)[:3000])
+        return 0
     tareas = [("datos.gob.es", datos_gob)]
     tareas += [(n, (lambda n=n, b=b: ckan(n, b))) for n, b in CKAN.items()]
     tareas += [(n, (lambda n=n, b=b: opendatasoft(n, b))) for n, b in OPENDATASOFT.items()]
@@ -264,6 +347,7 @@ def main() -> int:
               f"- Web: {d['web']}", f"- Licencia: {d.get('licencia')}", f"- Notas: {d.get('notas', '').strip()[:250]}",
               "- Ficheros: " + "; ".join(f"{f.get('formato')}: {f.get('url')}" for f in d["ficheros"][:6]),
               "", m, ""]
+    l += sondear()
     with open("datos/DESCUBRIMIENTO.md", "w", encoding="utf-8") as f:
         f.write("\n".join(l))
     with open("datos/descubrimiento.json", "w", encoding="utf-8") as f:
