@@ -347,12 +347,23 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
             fin = (p["la2"], p["lo2"])
             directo = dist((p["la"], p["lo"]), fin)
             mejor = None
-            for paso in sentidos(red, wi, i, None):
-                ruta, ok = caminar(red, wi, i, t, paso, directo * 1.8 + 3000, False, objetivo=fin)
-                if ok and (mejor is None or longitud(ruta) < longitud(mejor[1])):
-                    mejor = (paso, ruta)
+            # se prueban la vía encajada y las cercanas (en autovías, la otra calzada o un enlace),
+            # en los dos sentidos permitidos: gana el recorrido más corto que llega al final
+            candidatas = [(wi, i, t)]
+            vistas = {wi}
+            for d, t2, wj, j in sorted(red.cercanos((p["la"], p["lo"]))):
+                if d <= 40 and wj not in vistas and len(candidatas) < 6:
+                    vistas.add(wj)
+                    candidatas.append((wj, j, t2))
+            for (cw, ci, ct) in candidatas:
+                for paso in sentidos(red, cw, ci, None):
+                    ruta, ok = caminar(red, cw, ci, ct, paso, directo * 2.2 + 3000, False,
+                                       objetivo=fin, radio_objetivo=60.0)
+                    if ok and (mejor is None or longitud(ruta) < longitud(mejor[1])):
+                        mejor = (paso, ruta, (cw, ci, ct))
             if mejor:
-                paso, ruta = mejor
+                paso, ruta, (wi, i, t) = mejor
+                w = red.vias[wi]
                 p["rt"] = plano(simplificar(ruta))
                 p["lm"] = round(longitud(ruta))
                 stats["tramos_con_recorrido"] += 1

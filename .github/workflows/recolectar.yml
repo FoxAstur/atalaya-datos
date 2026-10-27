@@ -2,11 +2,12 @@ name: Recolectar radares
 
 on:
   schedule:
-    - cron: "17 4 * * *"   # cada día a las 05:17/06:17 hora peninsular
+    - cron: "17 4 * * *"    # cada día a las 05:17/06:17 hora peninsular
+    - cron: "43 15 * * *"   # y por la tarde, por si GitHub se salta la de la mañana
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["recolector.py", ".github/workflows/recolectar.yml"]
+    paths: ["recolector.py", "caminos.py", ".github/workflows/recolectar.yml"]
 
 permissions:
   contents: write
