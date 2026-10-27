@@ -1,16 +1,16 @@
 # Datos de Atalaya
 
-Versión: 2026-10-27T08:50:35+00:00 · Total: **4648** puntos
+Versión: 2026-10-27T10:16:05+00:00 · Total: **4641** puntos
 
 ## Fuentes
 
-- **DGT feed**: ✅ 737 (0s)
-- **DGT PDF radares**: ✅ 175 (8s)
-- **DGT PDF cámaras**: ✅ 249 (1s)
+- **DGT feed**: ✅ 737 (1s)
+- **DGT PDF radares**: ✅ 175 (6s)
+- **DGT PDF cámaras**: ✅ 249 (0s)
 - **Cataluña (SCT)**: ✅ 230 (14s)
-- **Ayto. Madrid**: ✅ 23 (0s)
+- **Ayto. Madrid**: ✅ 23 (1s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2621 (72s)
+- **OpenStreetMap**: ✅ 2621 (79s)
 - **Tramos radar móvil**: ✅ 1152 (0s)
 - **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
 - **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
@@ -20,40 +20,40 @@ Versión: 2026-10-27T08:50:35+00:00 · Total: **4648** puntos
 - **Ayto. Pamplona cinemómetros**: ⚠️ falló (sig.pamplona.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
 - **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1637 (0s)
 - **Zonas de bajas emisiones**: ✅ 57
-- **Caminos de aproximación**: ✅ 3209 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 65s)
+- **Caminos de aproximación**: ✅ 3248 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 54s)
 
 ## Por comunidad
 
 | Comunidad | Fijos | Tramo | Semáforo | Stop/ceda | Otras cám. | Zonas móvil |
 |---|---:|---:|---:|---:|---:|---:|
-| Andalucía | 279 | 49 | 19 | 0 | 68 | 230 |
+| Andalucía | 279 | 48 | 19 | 0 | 68 | 230 |
 | Aragón | 92 | 6 | 0 | 0 | 18 | 102 |
 | Canarias | 48 | 12 | 2 | 0 | 0 | 68 |
 | Cantabria | 15 | 6 | 2 | 0 | 6 | 27 |
 | Castilla y León | 181 | 57 | 32 | 0 | 35 | 265 |
-| Castilla-La Mancha | 111 | 20 | 9 | 1 | 34 | 150 |
+| Castilla-La Mancha | 109 | 20 | 9 | 1 | 34 | 150 |
 | Cataluña | 490 | 69 | 59 | 0 | 4 | 60 |
-| Comunidad de Madrid | 148 | 28 | 60 | 1 | 307 | 59 |
+| Comunidad de Madrid | 147 | 28 | 60 | 1 | 307 | 59 |
 | Comunidad Foral de Navarra | 27 | 2 | 1 | 0 | 2 | 35 |
-| Comunitat Valenciana | 150 | 29 | 6 | 0 | 44 | 69 |
+| Comunitat Valenciana | 149 | 28 | 6 | 0 | 44 | 69 |
 | Extremadura | 54 | 7 | 2 | 0 | 5 | 86 |
 | Galicia | 120 | 33 | 7 | 0 | 30 | 128 |
 | Illes Balears | 67 | 11 | 0 | 0 | 2 | 34 |
 | La Rioja | 29 | 0 | 0 | 0 | 7 | 17 |
 | Melilla | 6 | 0 | 0 | 0 | 0 | 0 |
 | País Vasco | 176 | 2 | 9 | 0 | 0 | 0 |
-| Principado de Asturias | 69 | 12 | 8 | 0 | 7 | 32 |
+| Principado de Asturias | 68 | 12 | 8 | 0 | 7 | 32 |
 | Región de Murcia | 20 | 5 | 0 | 0 | 5 | 63 |
 | Sin asignar | 0 | 0 | 1 | 0 | 0 | 0 |
 
-Con sentido de circulación conocido (avisos solo en tu sentido): **1026**
+Con sentido de circulación conocido (avisos solo en tu sentido): **1021**
 Zonas de bajas emisiones: **57**
 
 ## Por fuente
 
-- OSM: 1414
+- OSM: 1413
 - DGT_TRAMOS_MOVIL: 1306
-- DGT: 1106
+- DGT: 1100
 - AYUNTAMIENTO: 386
 - SCT: 277
 - AUTONOMICA: 91
@@ -91,14 +91,14 @@ Ayto. Santa Cruz de Tenerife foto-rojo: ERROR www.santacruzdetenerife.es: <urlop
 Ayto. Pamplona cinemómetros: ERROR sig.pamplona.es: <urlopen error timed out>
 Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1637 puntos
 feed comunitario tras quitar tramos ya situados: 466
-  límites: 193 sin límite, 0 por consultar
-límites deducidos de OSM: 115
+tramos: 2 puntos sueltos unidos a su tramo, 5 cámaras de entrada/salida absorbidas
+  límites: 186 sin límite, 0 por consultar
+límites deducidos de OSM: 108
   regiones: 0 celdas nuevas que consultar
-  CartoCiudad: 2001 hitos necesarios, 0 por consultar
-rumbos por sentido: 1025
+  CartoCiudad: 1993 hitos necesarios, 0 por consultar
+rumbos por sentido: 1020
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
 ZBE: 57 zonas
-caminos: {'con_camino': 3209, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'segundos': 65}
-Sin cambios en los datos.
+caminos: {'con_camino': 3248, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'segundos': 54}
 ```
