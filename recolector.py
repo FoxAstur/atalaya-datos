@@ -1344,9 +1344,10 @@ def calibrar_direcciones(puntos: list[dict]) -> str:
             contrario += 1
     total = igual + contrario
     giro = None
-    if total >= 15 and igual / total >= 0.85:
+    # pocos casos: se exige que coincidan todos (o casi)
+    if total >= 4 and igual / total >= 0.9:
         giro = 0
-    elif total >= 15 and contrario / total >= 0.85:
+    elif total >= 4 and contrario / total >= 0.9:
         giro = 180
     n = 0
     con_dir = sum(1 for p in puntos if "_dirg" in p)
@@ -1618,13 +1619,13 @@ def main() -> int:
     if os.path.exists(ruta_red):
         try:
             import caminos
-            st = caminos.anadir_caminos(todos, ruta_red)
+            st = caminos.anadir_caminos(todos, ruta_red, zbe)
             estado["Caminos de aproximación"] = (f"✅ {st['con_camino']} puntos con camino por su carretera, "
                                                  f"{st['tramos_con_recorrido']} de {st['tramos']} tramos con recorrido real "
                                                  f"({st['sin_via']} sin vía cercana; {st['segundos']}s)")
             estado["Sentido por el lado de la calle"] = (
                 f"{st['dos_sentidos']} puntos de calles de doble sentido y {st['mediana_dos']} de medianas siguen en ambos sentidos. "
-                f"Prueba de la regla (✓ = se usa): {st['lado']}")
+                f"Prueba de la regla (✓ = se usa): {st['lado']}. Foto-rojo hacia el cruce: {st['cruce']}")
             estado["Límites tomados de su vía"] = f"{st['limites_via']} puestos, {st['limites_quitados']} quitados por no ser de su vía"
             sos = st.get("sospechosos", [])
             estado["Revisar"] = (f"{len(sos)} radares de autovía con límite deducido < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"

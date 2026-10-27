@@ -393,9 +393,141 @@ def sentidos(red: Red, wi: int, i: int, rb, p: dict | None = None):
         ld = lado(pos, w.pts[i], w.pts[i + 1])
         if p.get("_dir") in ("forward", "backward") and abs(ld) < 2:
             return [1 if p["_dir"] == "forward" else -1]
+        # cámara de acceso a una ZBE: vigila a quien entra
+        if p["t"] == "OTRA_CAMARA" and "zbe" in (p.get("n") or "").lower():
+            hacia = hacia_dentro_zbe(w, i, pos)
+            if hacia:
+                return [hacia]
+        # foto-rojo: vigila a quien llega al cruce que tiene justo delante (si la prueba sale bien)
+        if p["t"] == "SEMAFORO" and CRUCE_FIABLE:
+            hacia = hacia_cruce(red, wi, i, pos)
+            if hacia:
+                return [hacia]
         if franja_lado(w, ld) in LADO_FIABLE:
             return [1 if ld > 0 else -1]
     return [1, -1]
+
+
+# ---------------------------------------------------------------- sentido por el entorno
+ZONAS_ZBE: list = []      # polígonos de las ZBE: [(caja, [anillo plano lat,lon,…])]
+CRUCE_FIABLE = False      # ¿ha pasado la prueba la regla del cruce para los foto-rojo?
+
+
+def dentro(pt, anillo) -> bool:
+    la, lo = pt
+    n = len(anillo) // 2
+    d = False
+    j = n - 1
+    for k in range(n):
+        yi, xi, yj, xj = anillo[2 * k], anillo[2 * k + 1], anillo[2 * j], anillo[2 * j + 1]
+        if (yi > la) != (yj > la) and lo < (xj - xi) * (la - yi) / (yj - yi) + xi:
+            d = not d
+        j = k
+    return d
+
+
+def en_zbe(pt) -> bool:
+    for (a, b, c, d), anillos in ZONAS_ZBE:
+        if a <= pt[0] <= b and c <= pt[1] <= d and any(dentro(pt, r) for r in anillos):
+            return True
+    return False
+
+
+def desplazar(pt, rb, m):
+    return (pt[0] + m * math.cos(math.radians(rb)) / 110540.0,
+            pt[1] + m * math.sin(math.radians(rb)) / (111320.0 * math.cos(math.radians(pt[0]))))
+
+
+def hacia_dentro_zbe(w: Via, i: int, pos):
+    """+1/-1 si solo uno de los dos sentidos de la vía entra en una ZBE en este punto."""
+    if not ZONAS_ZBE:
+        return None
+    fb = rumbo(w.pts[i], w.pts[i + 1])
+    entran = []
+    for paso, rb in ((1, fb), (-1, (fb + 180) % 360)):
+        if en_zbe(desplazar(pos, rb, 40)) and not en_zbe(desplazar(pos, rb, -40)):
+            entran.append(paso)
+    return entran[0] if len(entran) == 1 else None
+
+
+def grado(red: Red, nodo) -> int:
+    """Nº de tramos de calle que salen de un nodo (3 o más = cruce)."""
+    g = 0
+    for wj, k in red.nodos.get(nodo, ()):
+        n = len(red.vias[wj].pts)
+        g += (k > 0) + (k < n - 1)
+    return g
+
+
+def dist_cruce(red: Red, wi: int, i: int, pos, paso: int, maximo=120.0):
+    """Metros por la calle hasta el siguiente cruce en el sentido paso (o None si no hay en `maximo`)."""
+    w = red.vias[wi]
+    idx = i + 1 if paso == 1 else i
+    previo = pos
+    total = 0.0
+    vistos = set()
+    while total <= maximo:
+        nodo = w.pts[idx]
+        total += dist(previo, nodo)
+        previo = nodo
+        if total > maximo:
+            return None
+        clave = Red.clave(nodo)
+        g = grado(red, clave)
+        if g >= 3:
+            return total
+        siguiente = idx + paso
+        if 0 <= siguiente < len(w.pts):
+            idx = siguiente
+            continue
+        # fin de la vía en un nodo de paso (grado 2): se sigue por la otra
+        otra = [(wj, k) for wj, k in red.nodos.get(clave, ()) if wj != wi]
+        if len(otra) != 1 or (otra[0][0], otra[0][1]) in vistos:
+            return None
+        wi, k = otra[0]
+        vistos.add((wi, k))
+        w = red.vias[wi]
+        paso = 1 if k == 0 else -1
+        idx = k + paso
+        if not (0 <= idx < len(w.pts)):
+            return None
+    return None
+
+
+def hacia_cruce(red: Red, wi: int, i: int, pos):
+    """El sentido que va hacia el cruce que la cámara tiene justo delante (y no detrás)."""
+    a = dist_cruce(red, wi, i, pos, 1)
+    b = dist_cruce(red, wi, i, pos, -1)
+    if a is not None and a <= 35 and (b is None or b >= a + 30):
+        return 1
+    if b is not None and b <= 35 and (a is None or a >= b + 30):
+        return -1
+    return None
+
+
+def calibrar_cruce(red: Red, puntos: list[dict]) -> str:
+    """Prueba la regla del cruce con los foto-rojo de sentido conocido. Se usa con ≥ 20 casos y ≥ 90 % de aciertos."""
+    global CRUCE_FIABLE
+    CRUCE_FIABLE = False
+    ok = n = 0
+    for p in puntos:
+        if p["t"] != "SEMAFORO" or p.get("rb") is None:
+            continue
+        e = encajar(red, p)
+        if e is None:
+            continue
+        wi, i, _ = e
+        w = red.vias[wi]
+        if w.sentido != 0:
+            continue
+        h = hacia_cruce(red, wi, i, (p["la"], p["lo"]))
+        if h is None:
+            continue
+        real = 1 if dif(p["rb"], rumbo(w.pts[i], w.pts[i + 1])) <= 90 else -1
+        ok += h == real
+        n += 1
+    CRUCE_FIABLE = n >= 20 and ok / n >= 0.9
+    return f"{ok}/{n}" + (" ✓" if CRUCE_FIABLE else "")
 
 
 def mejor_aproximacion(red: Red, candidatas, rb, largo):
@@ -462,16 +594,24 @@ def calibrar_lado(red: Red, puntos: list[dict]) -> str:
     return "; ".join(partes) or "sin casos"
 
 
-def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
+def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None) -> dict:
     t0 = time.time()
+    ZONAS_ZBE.clear()
+    for z in zbe or []:
+        anillos = [r for r in z.get("p", []) if len(r) >= 6]
+        if anillos:
+            las = [v for r in anillos for v in r[0::2]]
+            los = [v for r in anillos for v in r[1::2]]
+            ZONAS_ZBE.append(((min(las), max(las), min(los), max(los)), anillos))
     objetivos = [p for p in puntos if p["t"] != "ZONA_MOVIL" or "tr" not in p]
     red = cargar_red(ruta_red, objetivos)
-    stats = {"lado": calibrar_lado(red, objetivos),
+    stats = {"lado": calibrar_lado(red, objetivos), "cruce": calibrar_cruce(red, objetivos),
              "con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
              "caminos_alternativos": 0, "mediana_dos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
     for p in objetivos:
         p.pop("ap", None)
         p.pop("rt", None)
+        p.pop("s2", None)
         e = encajar(red, p)
         if e is None:
             stats["sin_via"] += 1
@@ -529,6 +669,8 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
             pasos = sentidos(red, wi, i, p.get("rb"), p)
             if len(pasos) == 2:
                 stats["dos_sentidos"] += 1
+                if p["t"] != "ZONA_MOVIL":
+                    p["s2"] = 1   # se avisa en los dos sentidos porque no se sabe cuál vigila
         # el límite deducido (no el del propio radar) se toma de la vía en la que está, no de la más cercana
         if p["t"] == "RADAR_FIJO" and (p.get("vo") == 1 or "v" not in p) and red.con_limites:
             lim = limite_de_via(red, wi, i, pasos, p)
@@ -561,6 +703,7 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
                         if len(camino) >= 2 and longitud(camino) > 60:
                             aps.append(plano(simplificar(list(reversed(camino)))))
                             stats["mediana_dos"] += 1
+                            p["s2"] = 1
                         break
         # para revisar a mano: radares de autovía con límite de ciudad (como el "40" de la CV-35)
         if p["t"] == "RADAR_FIJO" and w.tipo == "motorway" and p.get("vo") == 1 and p.get("v") and p["v"] < 60:
