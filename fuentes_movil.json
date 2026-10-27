@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "nota": "Fuentes que no responden desde GitHub (servidores fuera de España bloqueados o lentos). Las descarga la app Atalaya desde el móvil, como mucho una vez al día. Para añadir una: formato geojson (o JSON de ArcGIS con f=json), t = tipo de punto, huso = huso UTM si viene en metros.",
+  "fuentes": [
+    {
+      "id": "sctffr",
+      "nombre": "Ayto. Santa Cruz de Tenerife foto-rojo",
+      "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson",
+      "formato": "geojson",
+      "t": "SEMAFORO",
+      "n": "Foto-rojo",
+      "campos_nombre": ["nombre", "NOMBRE", "ubicacion", "UBICACION", "direccion"],
+      "mu": "Santa Cruz de Tenerife", "pr": "Santa Cruz de Tenerife", "ca": "Canarias",
+      "huso": 28
+    },
+    {
+      "id": "pnacin",
+      "nombre": "Ayto. Pamplona cinemómetros",
+      "url": "https://sig.pamplona.es/ogc/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=SEGU_Pto_Cinemometro&outputFormat=application/json&srsName=EPSG:4326",
+      "formato": "geojson",
+      "t": "RADAR_FIJO",
+      "n": "Cinemómetro municipal",
+      "campos_nombre": ["calle", "CALLE", "ubicacion", "UBICACION", "nombre"],
+      "campos_limite": ["velocidad", "VELOCIDAD", "limite", "LIMITE"],
+      "mu": "Pamplona", "pr": "Navarra", "ca": "Comunidad Foral de Navarra",
+      "huso": 30
+    }
+  ]
+}

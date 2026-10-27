@@ -989,14 +989,14 @@ def fuente_malaga() -> list[dict]:
 
 
 def fuente_santacruz() -> list[dict]:
-    d = http_json(URL_SANTACRUZ_FOTORROJO, timeout=120, intentos=2)
+    d = http_json(URL_SANTACRUZ_FOTORROJO, timeout=45, intentos=1)  # casi nunca responde a GitHub: lo baja la app (fuentes_movil.json)
     return puntos_geojson(d, "SEMAFORO", "sctffr", nombre_fn=lambda p: "Foto-rojo " + str(
         p.get("nombre") or p.get("NOMBRE") or p.get("ubicacion") or "").strip(),
         mu="Santa Cruz de Tenerife", pr="Santa Cruz de Tenerife", ca="Canarias")
 
 
 def fuente_pamplona() -> list[dict]:
-    d = http_json(URL_PAMPLONA_CINEMO, timeout=120, intentos=2)
+    d = http_json(URL_PAMPLONA_CINEMO, timeout=45, intentos=1)  # ídem
     return puntos_geojson(d, "RADAR_FIJO", "pnacin", nombre_fn=lambda p: "Cinemómetro municipal",
                           mu="Pamplona", pr="Navarra", ca="Comunidad Foral de Navarra")
 
