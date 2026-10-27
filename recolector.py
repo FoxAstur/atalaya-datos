@@ -1349,12 +1349,13 @@ def calibrar_direcciones(puntos: list[dict]) -> str:
     elif total >= 15 and contrario / total >= 0.85:
         giro = 180
     n = 0
+    con_dir = sum(1 for p in puntos if "_dirg" in p)
     for p in puntos:
         g = p.pop("_dirg", None)
         if g is not None and giro is not None and p.get("rb") is None:
             p["rb"] = round((g + giro) % 360, 1)
             n += 1
-    return (f"direction de OSM frente a radares oficiales: {igual} igual, {contrario} al revés → "
+    return (f"{con_dir} radares de OSM con direction; frente a los oficiales: {igual} igual, {contrario} al revés → "
             + ("no se usa" if giro is None else f"se usa{' girado 180°' if giro else ''} en {n} puntos"))
 
 
@@ -1621,13 +1622,11 @@ def main() -> int:
             estado["Caminos de aproximación"] = (f"✅ {st['con_camino']} puntos con camino por su carretera, "
                                                  f"{st['tramos_con_recorrido']} de {st['tramos']} tramos con recorrido real "
                                                  f"({st['sin_via']} sin vía cercana; {st['segundos']}s)")
-            tot = st["lado_ok"] + st["lado_mal"]
             estado["Sentido por el lado de la calle"] = (
-                f"{st['dos_sentidos']} puntos siguen en ambos sentidos; comprobación con radares de sentido conocido: "
-                f"{st['lado_ok']} de {tot} aciertos" + (f" ({100 * st['lado_ok'] // tot} %)" if tot else ""))
+                f"{st['dos_sentidos']} puntos siguen en ambos sentidos. Prueba de la regla (✓ = se usa): {st['lado']}")
             estado["Límites tomados de su vía"] = f"{st['limites_via']} puestos, {st['limites_quitados']} quitados por no ser de su vía"
             sos = st.get("sospechosos", [])
-            estado["Revisar"] = (f"{len(sos)} radares de autovía con límite < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"
+            estado["Revisar"] = (f"{len(sos)} radares de autovía con límite deducido < 60: " + "; ".join(sos[:12])) if sos else "nada sospechoso"
             log(f"caminos: {st}")
         except Exception as e:  # noqa: BLE001
             estado["Caminos de aproximación"] = f"⚠️ falló ({e})"

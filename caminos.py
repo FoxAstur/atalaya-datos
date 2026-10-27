@@ -360,7 +360,20 @@ def encajar(red: Red, p: dict):
     return mejor
 
 
-LADO_MIN = 4.0   # m: a partir de aquí se sabe a qué lado de una calle de doble sentido está la cámara
+LADO_MIN = 4.0   # m: por debajo, el punto está en el eje de la calle y no dice nada
+# Franjas de distancia al eje (m) y tipos de vía en las que la regla "la cámara vigila el carril que tiene
+# al lado" se pone a prueba con los radares de sentido conocido. Solo se usa donde acierta (ver calibrar_lado).
+FRANJAS = ((4, 7), (7, 12), (12, 25), (25, 41))
+URBANAS = {"residential", "living_street", "tertiary", "tertiary_link", "unclassified", "road"}
+LADO_FIABLE: set = set()   # (franja, urbana) que han pasado la prueba en esta ejecución
+
+
+def franja_lado(w: Via, ld: float):
+    a = abs(ld)
+    for f in FRANJAS:
+        if f[0] <= a < f[1]:
+            return (f, w.tipo in URBANAS)
+    return None
 
 
 def sentidos(red: Red, wi: int, i: int, rb, p: dict | None = None):
@@ -380,7 +393,7 @@ def sentidos(red: Red, wi: int, i: int, rb, p: dict | None = None):
         ld = lado(pos, w.pts[i], w.pts[i + 1])
         if p.get("_dir") in ("forward", "backward") and abs(ld) < 2:
             return [1 if p["_dir"] == "forward" else -1]
-        if abs(ld) >= LADO_MIN:
+        if franja_lado(w, ld) in LADO_FIABLE:
             return [1 if ld > 0 else -1]
     return [1, -1]
 
@@ -413,12 +426,49 @@ def limite_de_via(red: Red, wi: int, i: int, pasos, p: dict):
     return lim
 
 
+def calibrar_lado(red: Red, puntos: list[dict]) -> str:
+    """
+    ¿Acierta la regla del lado? Se mira con los puntos que sí traen rumbo (y por tanto sentido conocido),
+    por franjas de distancia al eje y por tipo de vía. Solo se usa en las franjas con 25 casos o más y un
+    90 % de aciertos; en el resto, ante la duda, se avisa en los dos sentidos (mejor un aviso de más que uno de menos).
+    """
+    LADO_FIABLE.clear()
+    cuenta: dict = {}
+    for p in puntos:
+        if p.get("rb") is None or p["t"] in ("ZONA_MOVIL", "RADAR_TRAMO"):
+            continue
+        e = encajar(red, p)
+        if e is None:
+            continue
+        wi, i, _ = e
+        w = red.vias[wi]
+        if w.sentido != 0:
+            continue
+        ld = lado((p["la"], p["lo"]), w.pts[i], w.pts[i + 1])
+        k = franja_lado(w, ld)
+        if k is None:
+            continue
+        fb = rumbo(w.pts[i], w.pts[i + 1])
+        real = 1 if dif(p["rb"], fb) <= 90 else -1
+        ok, n = cuenta.get(k, (0, 0))
+        cuenta[k] = (ok + (real == (1 if ld > 0 else -1)), n + 1)
+    partes = []
+    for k in sorted(cuenta, key=lambda k: (k[1], k[0])):
+        ok, n = cuenta[k]
+        fiable = n >= 25 and ok / n >= 0.9
+        if fiable:
+            LADO_FIABLE.add(k)
+        partes.append(f"{'ciudad' if k[1] else 'carretera'} {k[0][0]}-{k[0][1]} m: {ok}/{n}{' ✓' if fiable else ''}")
+    return "; ".join(partes) or "sin casos"
+
+
 def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
     t0 = time.time()
     objetivos = [p for p in puntos if p["t"] != "ZONA_MOVIL" or "tr" not in p]
     red = cargar_red(ruta_red, objetivos)
-    stats = {"con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
-             "lado_ok": 0, "lado_mal": 0, "caminos_alternativos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
+    stats = {"lado": calibrar_lado(red, objetivos),
+             "con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
+             "caminos_alternativos": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
     for p in objetivos:
         p.pop("ap", None)
         p.pop("rt", None)
@@ -477,12 +527,6 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
                 pasos = [s for s in pasos if se_puede(w, s)] or sentidos(red, wi, i, None)
         else:
             pasos = sentidos(red, wi, i, p.get("rb"), p)
-            # comprobación de la regla del lado con los puntos de rumbo conocido (va al informe)
-            if p.get("rb") is not None and w.sentido == 0 and p["t"] != "ZONA_MOVIL":
-                ld = lado((p["la"], p["lo"]), w.pts[i], w.pts[i + 1])
-                if abs(ld) >= LADO_MIN:
-                    por_lado = 1 if ld > 0 else -1
-                    stats["lado_ok" if [por_lado] == pasos else "lado_mal"] += 1
             if len(pasos) == 2:
                 stats["dos_sentidos"] += 1
         # el límite deducido (no el del propio radar) se toma de la vía en la que está, no de la más cercana
@@ -501,7 +545,7 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
             if len(camino) >= 2 and longitud(camino) > (20 if enlace else 60):
                 aps.append(plano(simplificar(list(reversed(camino)))))
         # para revisar a mano: radares de autovía con límite de ciudad (como el "40" de la CV-35)
-        if p["t"] == "RADAR_FIJO" and w.tipo in ("motorway", "trunk") and p.get("v") and p["v"] < 60:
+        if p["t"] == "RADAR_FIJO" and w.tipo == "motorway" and p.get("vo") == 1 and p.get("v") and p["v"] < 60:
             stats["sospechosos"].append(f'{p["id"]} {p.get("c") or ""} {p.get("mu") or ""} límite {p["v"]}')
         if w.tipo.endswith("_link"):
             stats["en_enlace"] += 1
