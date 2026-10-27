@@ -1094,6 +1094,9 @@ def fuente_feed_comunitario() -> list[dict]:
                     pr=prov, ca=PROVINCIAS[prov][1] if prov else None,
                     at=(((p.get("attribution") or "")[:240] + " · ") if p.get("attribution") else "") + "vía radares-anunciados (ODbL)",
                     vd=p.get("valid_from"), vh=p.get("valid_to"))
+        kd = p.get("km_direction")
+        if kd in ("positive", "negative") and base.get("c") and base.get("pk") is not None:
+            base["s"] = "Creciente" if kd == "positive" else "Decreciente"
         if p.get("bearing") is not None and p.get("direction_semantics") == "travel" \
                 and p.get("direction_confidence") not in ("low", None):
             base["rb"] = float(p["bearing"])
@@ -1328,6 +1331,10 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
                         previo[k] = p[k]
                 if "_dirg" in p:
                     previo.setdefault("_osm_dirg", p["_dirg"])
+                # el mismo radar mapeado en OSM con su sentido (relación from → radar): se guarda como pista
+                if p.get("f") == "OSM" and p.get("rb") is not None and \
+                        distancia(p["la"], p["lo"], previo["la"], previo["lo"]) <= 60:
+                    previo.setdefault("_rbs_osm", []).append(p["rb"])
                 continue
             rej.add(p)
             salida.append(p)
@@ -1359,6 +1366,34 @@ def segunda_opinion_sentidos(puntos: list[dict]) -> str:
             p.pop("rb", None)
             quitados += 1
     return f"{puestos} sentidos nuevos, {coinciden} coinciden con los nuestros, {quitados} en desacuerdo (se avisa en los dos)"
+
+
+def heredar_sentido_osm(puntos: list[dict]) -> str:
+    """
+    Si un radar oficial sin sentido tiene en OpenStreetMap su copia con sentido (a menos de 60 m), se usa el
+    de OSM. Antes se comprueba con los oficiales que sí tienen sentido: solo si coinciden ≥ 90 % (y ≥ 15 casos).
+    Si OSM da dos sentidos distintos para el mismo sitio (una cabina por sentido), no se decide.
+    """
+    def unico(rbs):
+        if not rbs:
+            return None
+        if any(abs((r - rbs[0] + 180) % 360 - 180) > 45 for r in rbs):
+            return None
+        return rbs[0]
+    ok = n = 0
+    for p in puntos:
+        r = unico(p.get("_rbs_osm") or [])
+        if r is not None and p.get("rb") is not None:
+            n += 1
+            ok += abs((r - p["rb"] + 180) % 360 - 180) <= 60
+    usar = n >= 15 and ok / n >= 0.9
+    puestos = 0
+    for p in puntos:
+        r = unico(p.pop("_rbs_osm", None) or [])
+        if usar and r is not None and p.get("rb") is None:
+            p["rb"] = r
+            puestos += 1
+    return f"copias de OSM con sentido frente a oficiales: {ok}/{n} → " + (f"se usa en {puestos} puntos" if usar else "no se usa")
 
 
 def calibrar_direcciones(puntos: list[dict]) -> str:
@@ -1669,6 +1704,12 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         log(f"segunda opinión de sentidos: ERROR {e}")
     try:
+        r = heredar_sentido_osm(todos)
+        estado["Sentido heredado de OSM"] = r
+        log(r)
+    except Exception as e:  # noqa: BLE001
+        log(f"sentido heredado de OSM: ERROR {e}")
+    try:
         r = calibrar_direcciones(todos)
         estado["Sentido de los radares de OSM"] = r
         log(r)
@@ -1703,7 +1744,7 @@ def main() -> int:
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
