@@ -1297,6 +1297,41 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
     return salida
 
 
+def unir_tramos(puntos: list[dict]) -> list[dict]:
+    """
+    Un mismo radar de tramo puede llegar por varias fuentes de forma distinta: OSM con entrada y salida,
+    y la DGT con un solo punto (a veces la cámara de salida) o con su cámara de entrada como "radar fijo".
+    Sin unirlos, la app avisaba de un "radar" en la entrada y otra vez del tramo al pasarlo.
+    """
+    tramos = [p for p in puntos if p["t"] == "RADAR_TRAMO" and "la2" in p]
+    rej = Rejilla()
+    for t in tramos:
+        rej.add({"t": "_ext", "la": t["la"], "lo": t["lo"], "_t": t})
+        rej.add({"t": "_ext", "la": t["la2"], "lo": t["lo2"], "_t": t})
+
+    def sentido_ok(p, t):
+        rb = p.get("rb")
+        return rb is None or abs((rumbo_entre(t["la"], t["lo"], t["la2"], t["lo2"]) - rb + 180) % 360 - 180) <= 70
+
+    fuera, sueltos, camaras = set(), 0, 0
+    for p in puntos:
+        if p["t"] == "RADAR_TRAMO" and "la2" not in p:
+            e = rej.cerca(p["la"], p["lo"], 300, lambda q: sentido_ok(p, q["_t"]))
+            if e is not None:
+                t = e["_t"]
+                for k in ("c", "v"):  # el PK y el sentido son los de su punto, no los de la entrada
+                    if k in p and k not in t:
+                        t[k] = p[k]
+                fuera.add(p["id"]); sueltos += 1
+        elif p["t"] == "RADAR_FIJO" and "v" not in p:
+            # cámara de entrada o salida del tramo dada de alta como radar fijo (sin límite propio)
+            e = rej.cerca(p["la"], p["lo"], 150, lambda q: sentido_ok(p, q["_t"]))
+            if e is not None:
+                fuera.add(p["id"]); camaras += 1
+    log(f"tramos: {sueltos} puntos sueltos unidos a su tramo, {camaras} cámaras de entrada/salida absorbidas")
+    return [p for p in puntos if p["id"] not in fuera]
+
+
 # ------------------------------------------------------------------------------------- main
 def ejecutar_zbe(anterior: dict, estado: dict) -> list:
     try:
@@ -1482,6 +1517,7 @@ def main() -> int:
 
     todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, santacruz, pamplona,
                       camaras_dgt, comunitario, osm, zonas])
+    todos = unir_tramos(todos)
     # radares móviles anunciados ya caducados fuera
     hoy = datetime.now(timezone.utc).date().isoformat()
     todos = [p for p in todos if not p.get("vh") or p["vh"] >= hoy]

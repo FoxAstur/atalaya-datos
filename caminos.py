@@ -236,7 +236,7 @@ def elegir(red: Red, nodo, via_actual: int, idx_actual: int, ref, nombre, clase,
 
 
 def caminar(red: Red, wi: int, i: int, t: float, paso: int, largo: float, hacia_atras: bool,
-            objetivo=None, radio_objetivo=45.0):
+            objetivo=None, radio_objetivo=45.0, solo_enlace=False):
     """
     Recorre la red desde (vía wi, segmento i, fracción t) por la circulación que va en sentido `paso`.
     hacia_atras=True: contra el tráfico, para saber por dónde se llega. Devuelve los puntos recorridos;
@@ -273,6 +273,9 @@ def caminar(red: Red, wi: int, i: int, t: float, paso: int, largo: float, hacia_
         if e is None:
             break
         wj, k, p2 = e
+        if hacia_atras and solo_enlace and not red.vias[wj].tipo.endswith("_link"):
+            # el punto está en una rampa: antes de la bifurcación no se sabe si vas a tomarla
+            break
         w = red.vias[wj]
         step = -p2 if hacia_atras else p2
         idx = k + step
@@ -327,6 +330,21 @@ def sentidos(red: Red, wi: int, i: int, rb):
     return [1, -1]
 
 
+def mejor_aproximacion(red: Red, candidatas, rb, largo):
+    """El camino de llegada más largo entre varias vías candidatas, circulando con rumbo rb."""
+    mejor = None
+    for (cw, ci, ct) in candidatas:
+        w = red.vias[cw]
+        fb = rumbo(w.pts[ci], w.pts[ci + 1])
+        for paso in (1, -1):
+            if not se_puede(w, paso) or dif(rb, fb if paso == 1 else (fb + 180) % 360) > 60:
+                continue
+            camino = caminar(red, cw, ci, ct, paso, largo, True, solo_enlace=w.tipo.endswith("_link"))
+            if len(camino) >= 2 and longitud(camino) > 20 and (mejor is None or longitud(camino) > longitud(mejor)):
+                mejor = camino
+    return plano(simplificar(list(reversed(mejor)))) if mejor else None
+
+
 def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
     t0 = time.time()
     objetivos = [p for p in puntos if p["t"] != "ZONA_MOVIL" or "tr" not in p]
@@ -362,12 +380,20 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
                     if ok and (mejor is None or longitud(ruta) < longitud(mejor[1])):
                         mejor = (paso, ruta, (cw, ci, ct))
             if mejor:
-                paso, ruta, (wi, i, t) = mejor
-                w = red.vias[wi]
+                paso, ruta, cand = mejor
                 p["rt"] = plano(simplificar(ruta))
                 p["lm"] = round(longitud(ruta))
                 stats["tramos_con_recorrido"] += 1
-                pasos = [paso]
+                # sentido de circulación del recorrido, para elegir el sentido de cada vía candidata
+                k = 1
+                while k < len(ruta) - 1 and dist(ruta[0], ruta[k]) < 40:
+                    k += 1
+                rb_ruta = rumbo(ruta[0], ruta[k])
+                camino = mejor_aproximacion(red, [(wi, i, t), cand], rb_ruta, largo)
+                if camino:
+                    p["ap"] = [camino]
+                    stats["con_camino"] += 1
+                continue
             else:
                 # sin recorrido: al menos el sentido que va hacia el final
                 fb = rumbo(w.pts[i], w.pts[i + 1])
@@ -376,9 +402,10 @@ def anadir_caminos(puntos: list[dict], ruta_red: str) -> dict:
         else:
             pasos = sentidos(red, wi, i, p.get("rb"))
         aps = []
+        enlace = w.tipo.endswith("_link")
         for paso in pasos:
-            camino = caminar(red, wi, i, t, paso, largo, True)
-            if len(camino) >= 2 and longitud(camino) > 60:
+            camino = caminar(red, wi, i, t, paso, largo, True, solo_enlace=enlace)
+            if len(camino) >= 2 and longitud(camino) > (20 if enlace else 60):
                 aps.append(plano(simplificar(list(reversed(camino)))))
         if aps:
             p["ap"] = aps
