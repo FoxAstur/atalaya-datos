@@ -1,26 +1,26 @@
 # Datos de Atalaya
 
-Versión: 2026-10-27T07:28:00+00:00 · Total: **4648** puntos
+Versión: 2026-10-27T08:37:35+00:00 · Total: **4648** puntos
 
 ## Fuentes
 
 - **DGT feed**: ✅ 737 (1s)
-- **DGT PDF radares**: ✅ 175 (4s)
-- **DGT PDF cámaras**: ✅ 249 (0s)
+- **DGT PDF radares**: ✅ 175 (8s)
+- **DGT PDF cámaras**: ✅ 249 (1s)
 - **Cataluña (SCT)**: ✅ 230 (16s)
 - **Ayto. Madrid**: ✅ 23 (0s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2621 (91s)
-- **Tramos radar móvil**: ✅ 1152 (1s)
+- **OpenStreetMap**: ✅ 2621 (82s)
+- **Tramos radar móvil**: ✅ 1152 (0s)
 - **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
-- **Ayto. Málaga foto-rojo**: ✅ 7 (20s)
-- **Ayto. Salamanca**: ✅ 24 (2s)
+- **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
+- **Ayto. Salamanca**: ✅ 24 (1s)
 - **Ayto. Donostia**: ✅ 12 (1s)
 - **Ayto. Santa Cruz de Tenerife foto-rojo**: ⚠️ falló (www.santacruzdetenerife.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
 - **Ayto. Pamplona cinemómetros**: ⚠️ falló (sig.pamplona.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
-- **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1637 (1s)
+- **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1637 (0s)
 - **Zonas de bajas emisiones**: ✅ 57
-- **Caminos de aproximación**: ✅ 3256 puntos con camino por su carretera, 242 de 325 tramos con recorrido real (81 sin vía cercana; 46s)
+- **Caminos de aproximación**: ✅ 3209 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 68s)
 
 ## Por comunidad
 
@@ -99,5 +99,5 @@ rumbos por sentido: 1025
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
 ZBE: 57 zonas
-caminos: {'con_camino': 3256, 'sin_via': 81, 'tramos_con_recorrido': 242, 'tramos': 325, 'segundos': 46}
+caminos: {'con_camino': 3209, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'segundos': 68}
 ```
