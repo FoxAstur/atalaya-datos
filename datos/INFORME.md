@@ -1,25 +1,26 @@
 # Datos de Atalaya
 
-Versión: 2026-10-27T06:30:52+00:00 · Total: **4648** puntos
+Versión: 2026-10-27T07:28:00+00:00 · Total: **4648** puntos
 
 ## Fuentes
 
 - **DGT feed**: ✅ 737 (1s)
-- **DGT PDF radares**: ✅ 175 (8s)
-- **DGT PDF cámaras**: ✅ 249 (1s)
-- **Cataluña (SCT)**: ✅ 230 (15s)
-- **Ayto. Madrid**: ✅ 23 (1s)
+- **DGT PDF radares**: ✅ 175 (4s)
+- **DGT PDF cámaras**: ✅ 249 (0s)
+- **Cataluña (SCT)**: ✅ 230 (16s)
+- **Ayto. Madrid**: ✅ 23 (0s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2621 (69s)
-- **Tramos radar móvil**: ✅ 1152 (0s)
-- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (2s)
-- **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
+- **OpenStreetMap**: ✅ 2621 (91s)
+- **Tramos radar móvil**: ✅ 1152 (1s)
+- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
+- **Ayto. Málaga foto-rojo**: ✅ 7 (20s)
 - **Ayto. Salamanca**: ✅ 24 (2s)
 - **Ayto. Donostia**: ✅ 12 (1s)
 - **Ayto. Santa Cruz de Tenerife foto-rojo**: ⚠️ falló (www.santacruzdetenerife.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
 - **Ayto. Pamplona cinemómetros**: ⚠️ falló (sig.pamplona.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
-- **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1637 (0s)
+- **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1637 (1s)
 - **Zonas de bajas emisiones**: ✅ 57
+- **Caminos de aproximación**: ✅ 3256 puntos con camino por su carretera, 242 de 325 tramos con recorrido real (81 sin vía cercana; 46s)
 
 ## Por comunidad
 
@@ -92,11 +93,11 @@ Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 163
 feed comunitario tras quitar tramos ya situados: 466
   límites: 193 sin límite, 0 por consultar
 límites deducidos de OSM: 115
-  regiones: 254 celdas nuevas que consultar
-  regiones: ejemplo de respuesta {"id": "05.35.G35_350130228223", "province": "Las Palmas", "provinceCode": "35", "comunidadAutonoma": "Canarias", "comunidadAutonomaCode": "05", "muni": "Moya", "muniCode": "35013", "type": "portal", "address": "COSTA DE LA", "postalCode": "35413", "poblacion": "El Pagador", "geom": "POINT(-15.57398
-  CartoCiudad: 2001 hitos necesarios, 2 por consultar
+  regiones: 0 celdas nuevas que consultar
+  CartoCiudad: 2001 hitos necesarios, 0 por consultar
 rumbos por sentido: 1025
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
 ZBE: 57 zonas
+caminos: {'con_camino': 3256, 'sin_via': 81, 'tramos_con_recorrido': 242, 'tramos': 325, 'segundos': 46}
 ```
