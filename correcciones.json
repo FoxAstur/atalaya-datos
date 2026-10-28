@@ -1,7 +1,17 @@
 {
-  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar.",
+  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar y, si hace falta, su posición real (la, lo).",
   "quitar": [
-    {"id": "osm:n992004970", "motivo": "Av. Pío XII (València), 400 m después del de Corts Valencianes: no existe (Carlos, 27-10-2026)"}
+    {
+      "id": "osm:n992004970",
+      "motivo": "Av. Pío XII (València), 400 m después del de Corts Valencianes: no existe (Carlos, 27-10-2026)"
+    }
   ],
-  "sentido": {}
+  "sentido": {
+    "vlc:5": {
+      "rb": 151,
+      "la": 39.489685,
+      "lo": -0.406672,
+      "motivo": "Av. Maestro Rodrigo (cerca de Beniferri): vigila a quien entra en València, calzada sureste (Carlos, 28-10-2026)"
+    }
+  }
 }
