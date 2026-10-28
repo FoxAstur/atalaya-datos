@@ -1,30 +1,30 @@
 # Datos de Atalaya
 
-Versión: 2026-10-27T17:11:15+00:00 · Total: **4580** puntos
+Versión: 2026-10-28T08:02:41+00:00 · Total: **4597** puntos
 
 ## Fuentes
 
-- **DGT feed**: ✅ 737 (0s)
+- **DGT feed**: ✅ 737 (1s)
 - **DGT PDF radares**: ✅ 175 (8s)
 - **DGT PDF cámaras**: ✅ 249 (1s)
-- **Cataluña (SCT)**: ✅ 230 (14s)
-- **Ayto. Madrid**: ✅ 23 (0s)
+- **Cataluña (SCT)**: ✅ 230 (15s)
+- **Ayto. Madrid**: ✅ 23 (177s)
 - **Ayto. València**: ✅ 6 (0s)
-- **OpenStreetMap**: ✅ 2603 (68s)
-- **Tramos radar móvil**: ✅ 1152 (0s)
-- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
+- **OpenStreetMap**: ✅ 2603 (72s)
+- **Tramos radar móvil**: ✅ 1152 (1s)
+- **Ayto. Madrid foto-rojo y ZBE**: ⚠️ falló (datos.madrid.es: The read operation timed out); se mantienen 326 de la vez anterior
 - **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
-- **Ayto. Salamanca**: ✅ 24 (1s)
+- **Ayto. Salamanca**: ✅ 24 (2s)
 - **Ayto. Donostia**: ✅ 12 (1s)
 - **Ayto. Santa Cruz de Tenerife foto-rojo**: ⚠️ falló (www.santacruzdetenerife.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
 - **Ayto. Pamplona cinemómetros**: ⚠️ falló (sig.pamplona.es: <urlopen error timed out>); se mantienen 0 de la vez anterior
-- **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1637 (0s)
+- **Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)**: ✅ 1654 (0s)
 - **Sentido de los radares DGT (segunda opinión)**: 51 sentidos nuevos, 573 coinciden con los nuestros, 5 en desacuerdo (se avisa en los dos)
-- **Sentido heredado de OSM**: copias de OSM con sentido frente a oficiales: 527/602 → no se usa
+- **Sentido heredado de OSM**: copias de OSM con sentido frente a oficiales: 528/603 → no se usa
 - **Sentido de los radares de OSM**: 38 radares de OSM con direction; frente a los oficiales: 4 igual, 0 al revés → se usa en 38 puntos
 - **Zonas de bajas emisiones**: ✅ 57
-- **Caminos de aproximación**: ✅ 3240 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 90s)
-- **Sentido por el lado de la calle**: 307 puntos de calles de doble sentido y 61 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/90; ciudad 7-12 m: 20/28; ciudad 12-25 m: 10/15; ciudad 25-41 m: 2/5. Pistas combinadas: limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10
+- **Caminos de aproximación**: ✅ 3257 puntos con camino por su carretera, 268 de 325 tramos con recorrido real (81 sin vía cercana; 85s)
+- **Sentido por el lado de la calle**: 310 puntos de calles de doble sentido y 61 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/90; ciudad 7-12 m: 20/28; ciudad 12-25 m: 10/15; ciudad 25-41 m: 2/5. Pistas combinadas: limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10
 - **Copias de OSM de radares oficiales**: 46 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 26/29 → no se hereda
 - **Radares viejos de OSM repetidos**: 2 quitados (de OSM sin sentido, con otro radar más fiable en la misma calle y sentido a menos de 300 m; 450 m si no tiene datos; 600 m si además es de 2015 o antes): osm:n1123913886, osm:r20130852
 - **Radares seguidos (mismo sentido, < 300 m)**: 26 pares por revisar: osm:n8081941155→osm:n8432725880 85 m; osm:n8081941154→osm:n8432725875 99 m; madzbe:40.3986,-3.6695→madzbe:40.3977,-3.6701 105 m; osm:n5308701907→osm:n245940388 120 m; dgt:GUID_CABINACINEMOMETRO_120452→dgt:GUID_CABINACINEMOMETRO_120647 123 m; madzbe:40.3926,-3.6774→madzbe:40.3932,-3.6767 130 m; osm:n9205627955→osm:n8119271102 144 m; madzbe:40.4142,-3.7208→madzbe:40.4156,-3.7208 156 m; osm:n992007100→dgt:GUID_CABINACINEMOMETRO_120390 162 m; madzbe:40.4127,-3.7211→madzbe:40.4142,-3.7208 163 m; osm:n2334938884→osm:n14130746912 169 m; madzbe:40.4266,-3.7133→madzbe:40.4280,-3.7141 181 m; osm:n8081941130→osm:n8119271103 186 m; madzbe:40.3631,-3.6845→madzbe:40.3614,-3.6838 188 m; madzbe:40.3614,-3.6838→madzbe:40.3631,-3.6845 189 m; madzbe:40.4130,-3.7137→madzbe:40.4118,-3.7137 198 m; madzbe:40.4193,-3.6943→madzbe:40.4188,-3.6967 211 m; madzbe:40.4061,-3.7080→madzbe:40.4064,-3.7095 213 m; osm:n8432725880→osm:n8432725882 219 m; madzbe:40.3891,-3.6916→madzbe:40.3910,-3.6927 226 m
@@ -50,12 +50,12 @@ Versión: 2026-10-27T17:11:15+00:00 · Total: **4580** puntos
 | Illes Balears | 67 | 11 | 0 | 0 | 2 | 34 |
 | La Rioja | 29 | 0 | 0 | 0 | 6 | 17 |
 | Melilla | 6 | 0 | 0 | 0 | 0 | 0 |
-| País Vasco | 173 | 2 | 9 | 0 | 0 | 0 |
+| País Vasco | 173 | 2 | 9 | 0 | 0 | 17 |
 | Principado de Asturias | 68 | 12 | 8 | 0 | 7 | 32 |
 | Región de Murcia | 20 | 5 | 0 | 0 | 5 | 63 |
 | Sin asignar | 0 | 0 | 1 | 0 | 0 | 0 |
 
-Con sentido de circulación conocido (avisos solo en tu sentido): **2016**
+Con sentido de circulación conocido (avisos solo en tu sentido): **2017**
 Zonas de bajas emisiones: **57**
 
 ## Por fuente
@@ -66,7 +66,7 @@ Zonas de bajas emisiones: **57**
 - AYUNTAMIENTO: 386
 - SCT: 277
 - AUTONOMICA: 91
-- POLICIA_LOCAL: 35
+- POLICIA_LOCAL: 52
 - MULTAS: 33
 
 ## Registro
@@ -92,40 +92,40 @@ Ayto. Madrid: 23 puntos
 Ayto. València: 6 puntos
 OpenStreetMap: 2603 puntos
 Tramos radar móvil: 1152 puntos
-Ayto. Madrid foto-rojo y ZBE: 454 puntos
+Ayto. Madrid foto-rojo y ZBE: ERROR datos.madrid.es: The read operation timed out
 Ayto. Málaga foto-rojo: 7 puntos
 Ayto. Salamanca: 24 puntos
 Ayto. Donostia: 12 puntos
 Ayto. Santa Cruz de Tenerife foto-rojo: ERROR www.santacruzdetenerife.es: <urlopen error timed out>
 Ayto. Pamplona cinemómetros: ERROR sig.pamplona.es: <urlopen error timed out>
-Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1637 puntos
-feed comunitario tras quitar tramos ya situados: 466
+Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1654 puntos
+feed comunitario tras quitar tramos ya situados: 483
 tramos: 2 puntos sueltos unidos a su tramo, 5 cámaras de entrada/salida absorbidas
-correcciones: 1 quitados, 0 sentidos fijados
+correcciones: 1 quitados, 1 sentidos fijados
   límites: 194 sin límite, 0 por consultar
 límites deducidos de OSM: 115
-  regiones: 0 celdas nuevas que consultar
+  regiones: 17 celdas nuevas que consultar
+  regiones: ejemplo de respuesta {"id": "16.PV.MUN_200690094830", "province": "Gipuzkoa", "provinceCode": "20", "comunidadAutonoma": "País Vasco/Euskadi", "comunidadAutonomaCode": "16", "muni": "Donostia/San Sebastián", "muniCode": "20069", "type": "portal", "address": "ALTO DE ZORROAGA", "postalCode": "20014", "poblacion": "Donost
   CartoCiudad: 1993 hitos necesarios, 0 por consultar
 rumbos por sentido: 1020
 sentido hacia una ciudad: 72 puntos
 51 sentidos nuevos, 573 coinciden con los nuestros, 5 en desacuerdo (se avisa en los dos)
-copias de OSM con sentido frente a oficiales: 527/602 → no se usa
+copias de OSM con sentido frente a oficiales: 528/603 → no se usa
 38 radares de OSM con direction; frente a los oficiales: 4 igual, 0 al revés → se usa en 38 puntos
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
 ZBE: 57 zonas
-  caminos: red cargada (937371 vías) en 67s
-  caminos: regla del lado probada en 67s
-  caminos: regla del cruce probada en 68s
-  caminos: 0/3323 en 68s (dgt:GUID_CVM_161274)
-  caminos: 500/3323 en 70s (dgt:GUID_CABINACINEMOMETRO_120585)
-  caminos: 1000/3323 en 72s (sct:41.64066,2.16653)
-  caminos: 1500/3323 en 77s (dgteq:N-1:251.3:D:cintur)
-  caminos: 2000/3323 en 80s (osm:n992001156)
-  caminos: 2500/3323 en 85s (osm:n11026473818)
-  caminos: 3000/3323 en 88s (osm:n2911384088)
+  caminos: red cargada (937371 vías) en 63s
+  caminos: regla del lado probada en 63s
+  caminos: regla del cruce probada en 64s
+  caminos: 0/3340 en 64s (dgt:GUID_CVM_161274)
+  caminos: 500/3340 en 65s (dgt:GUID_CABINACINEMOMETRO_120585)
+  caminos: 1000/3340 en 67s (sct:41.64066,2.16653)
+  caminos: 1500/3340 en 73s (dgteq:N-1:251.3:D:cintur)
+  caminos: 2000/3340 en 76s (osm:n992000724)
+  caminos: 2500/3340 en 80s (osm:n10559741179)
+  caminos: 3000/3340 en 83s (osm:n14130760508)
 46 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 26/29 → no se hereda
 radares de OSM mapeados dos veces: 1 quitados ['osm:n2238358575']
-caminos: {'lado': 'carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/90; ciudad 7-12 m: 20/28; ciudad 12-25 m: 10/15; ciudad 25-41 m: 2/5', 'cruce': 'limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10', 'con_camino': 3240, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 61, 'con_paralela': 954, 'en_enlace': 34, 'sospechosos': [], 'dos_sentidos': 307, 'limites_via': 121, 'limites_quitados': 2, 'segundos': 90}
-Sin cambios en los datos.
+caminos: {'lado': 'carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/90; ciudad 7-12 m: 20/28; ciudad 12-25 m: 10/15; ciudad 25-41 m: 2/5', 'cruce': 'limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10', 'con_camino': 3257, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 61, 'con_paralela': 963, 'en_enlace': 34, 'sospechosos': [], 'dos_sentidos': 310, 'limites_via': 121, 'limites_quitados': 2, 'segundos': 85}
 ```

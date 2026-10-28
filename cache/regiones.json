@@ -15874,6 +15874,10 @@
   "mu": "Usurbil",
   "pr": "Gipuzkoa"
  },
+ "43.294,-1.967": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.295,-2.058": {
   "mu": "Usurbil",
   "pr": "Gipuzkoa"
@@ -15894,6 +15898,10 @@
   "mu": "Langreo",
   "pr": "Asturias"
  },
+ "43.298,-1.967": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.298,-2.967": {
   "mu": "Erandio",
   "pr": "Bizkaia"
@@ -15910,6 +15918,10 @@
   "mu": "Langreo",
   "pr": "Asturias"
  },
+ "43.302,-1.969": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.302,-2.204": {
   "mu": "Getaria",
   "pr": "Gipuzkoa"
@@ -15918,11 +15930,19 @@
   "mu": "Erandio",
   "pr": "Bizkaia"
  },
+ "43.303,-1.974": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.303,-1.978": {
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
  },
  "43.303,-1.979": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.303,-2.014": {
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
  },
@@ -15938,6 +15958,10 @@
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
  },
+ "43.304,-2.009": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.304,-5.699": {
   "mu": "Langreo",
   "pr": "Asturias"
@@ -15950,6 +15974,10 @@
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
  },
+ "43.306,-2.017": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.307,-3.854": {
   "mu": "Santa María de Cayón",
   "pr": "Cantabria"
@@ -15957,6 +15985,14 @@
  "43.307,-7.665": {
   "mu": "Vilalba",
   "pr": "Lugo"
+ },
+ "43.308,-1.975": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.308,-2.012": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
  },
  "43.308,-8.330": {
   "mu": "Oleiros",
@@ -16010,6 +16046,10 @@
   "mu": "Cabezón de la Sal",
   "pr": "Cantabria"
  },
+ "43.312,-1.978": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.313,-2.966": {
   "mu": "Erandio",
   "pr": "Bizkaia"
@@ -16046,6 +16086,18 @@
   "mu": "Tineo",
   "pr": "Asturias"
  },
+ "43.317,-1.941": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.317,-1.956": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.318,-1.961": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.320,-1.962": {
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
@@ -16070,7 +16122,23 @@
   "mu": "Oviedo",
   "pr": "Asturias"
  },
+ "43.322,-1.960": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.322,-1.961": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.322,-1.965": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.322,-1.966": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.322,-1.971": {
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
  },
