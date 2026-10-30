@@ -1,0 +1,7 @@
+https://transit.gencat.cat/ca/seguretat_viaria/cinemometre_fixos_mobils_catalunya/ -> 200 403037 text/html;charset=UTF-8
+https://transit.gencat.cat/es/seguretat_viaria/cinemometre_fixos_mobils_catalunya/ -> 404 7813 text/html;charset=UTF-8
+https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf.json -> 200 4313 application/json; charset=utf-8
+https://analisi.transparenciacatalunya.cat/resource/re3y-fftf.json?$limit=5 -> 403 84 application/json; charset=utf-8
+https://nap.transportes.gob.es/Files/List -> 404 0 
+https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets?where=search(%22radar%22)&limit=20 -> 404 188436 text/html
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_search?q=radar&rows=20 -> 200 52999 application/json;charset=utf-8
