@@ -391,6 +391,16 @@ URBANAS = {"residential", "living_street", "tertiary", "tertiary_link", "unclass
 LADO_FIABLE: set = set()   # (franja, urbana) que han pasado la prueba en esta ejecución
 
 
+def grupo_fuente(p: dict) -> str:
+    """
+    Quién pone la posición del punto. La regla del lado solo dice algo si la posición es la de la cabina:
+    en OSM la pone a mano quien la ha visto; la DGT y otras fuentes dan a menudo un punto de la carretera
+    (el eje, el PK). Por eso se prueba por separado para cada una.
+    """
+    pre = p["id"].split(":")[0]
+    return {"osm": "osm", "sct": "sct", "dgt": "dgt", "dgtpdf": "dgtpdf", "dgteq": "dgtpdf"}.get(pre, "otros")
+
+
 def franja_lado(w: Via, ld: float):
     a = abs(ld)
     for f in FRANJAS:
@@ -434,7 +444,8 @@ def sentidos(red: Red, wi: int, i: int, rb, p: dict | None = None):
                 v = aplicar_regla(regla, votos)
                 if v:
                     return [v]
-        if franja_lado(w, ld) in LADO_FIABLE:
+        f = franja_lado(w, ld)
+        if f is not None and ((grupo_fuente(p),) + f in LADO_FIABLE or (grupo_fuente(p), "todas", f[1]) in LADO_FIABLE):
             return [1 if ld > 0 else -1]
     return [1, -1]
 
@@ -651,13 +662,15 @@ def limite_de_via(red: Red, wi: int, i: int, pasos, p: dict):
 def calibrar_lado(red: Red, puntos: list[dict]) -> str:
     """
     ¿Acierta la regla del lado? Se mira con los puntos que sí traen rumbo (y por tanto sentido conocido),
-    por franjas de distancia al eje y por tipo de vía. Solo se usa en las franjas con 25 casos o más y un
-    90 % de aciertos; en el resto, ante la duda, se avisa en los dos sentidos (mejor un aviso de más que uno de menos).
+    por fuente (quién pone la posición), por franjas de distancia al eje y por tipo de vía. Solo se usa donde
+    hay 20 casos o más y un 90 % de aciertos; en el resto, ante la duda, se avisa en los dos sentidos (mejor
+    un aviso de más que uno de menos). Antes se probaba todo junto y los puntos de la DGT (que suelen estar en
+    el eje de la carretera) hundían la regla también para OSM.
     """
     LADO_FIABLE.clear()
     cuenta: dict = {}
     for p in puntos:
-        if p.get("rb") is None or p["t"] in ("ZONA_MOVIL", "RADAR_TRAMO"):
+        if p.get("rb") is None or p["t"] in ("ZONA_MOVIL", "RADAR_TRAMO") or p.get("_rb_por_lado"):
             continue
         e = encajar(red, p)
         if e is None:
@@ -667,20 +680,24 @@ def calibrar_lado(red: Red, puntos: list[dict]) -> str:
         if w.sentido != 0:
             continue
         ld = lado((p["la"], p["lo"]), w.pts[i], w.pts[i + 1])
-        k = franja_lado(w, ld)
-        if k is None:
+        f = franja_lado(w, ld)
+        if f is None:
             continue
         fb = rumbo(w.pts[i], w.pts[i + 1])
         real = 1 if dif(p["rb"], fb) <= 90 else -1
-        ok, n = cuenta.get(k, (0, 0))
-        cuenta[k] = (ok + (real == (1 if ld > 0 else -1)), n + 1)
+        acierto = real == (1 if ld > 0 else -1)
+        g = grupo_fuente(p)
+        for k in ((g,) + f, (g, "todas", f[1])):
+            ok, n = cuenta.get(k, (0, 0))
+            cuenta[k] = (ok + acierto, n + 1)
     partes = []
-    for k in sorted(cuenta, key=lambda k: (k[1], k[0])):
+    for k in sorted(cuenta, key=lambda k: (k[0], str(k[1]), k[2])):
         ok, n = cuenta[k]
-        fiable = n >= 25 and ok / n >= 0.9
+        fiable = n >= 20 and ok / n >= 0.9
         if fiable:
             LADO_FIABLE.add(k)
-        partes.append(f"{'ciudad' if k[1] else 'carretera'} {k[0][0]}-{k[0][1]} m: {ok}/{n}{' ✓' if fiable else ''}")
+        franja = "todas" if k[1] == "todas" else f"{k[1][0]}-{k[1][1]} m"
+        partes.append(f"{k[0]} {'ciudad' if k[2] else 'carretera'} {franja}: {ok}/{n}{' ✓' if fiable else ''}")
     return "; ".join(partes) or "sin casos"
 
 
