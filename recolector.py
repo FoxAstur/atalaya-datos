@@ -136,6 +136,24 @@ def rumbo_entre(lat1, lon1, lat2, lon2) -> float:
     return (math.degrees(math.atan2(y, x)) + 360) % 360
 
 
+# Portugal continental, contorno aproximado (frontera con España y costa): para marcar sus puntos como
+# "Portugal" y no buscarles provincia española
+PORTUGAL = [(41.87, -8.88), (42.15, -8.19), (41.84, -7.89), (41.95, -7.20), (41.98, -6.55), (41.68, -6.19),
+            (41.03, -6.93), (40.33, -6.85), (39.66, -7.53), (39.05, -7.00), (38.75, -7.25), (38.20, -6.93),
+            (37.98, -7.25), (37.53, -7.50), (37.17, -7.40), (36.95, -7.90), (36.95, -9.00), (38.70, -9.55),
+            (39.70, -9.15), (41.00, -8.75), (41.87, -8.95)]
+
+
+def en_portugal(lat, lon) -> bool:
+    d = False
+    n = len(PORTUGAL)
+    for k in range(n):
+        (y1, x1), (y2, x2) = PORTUGAL[k], PORTUGAL[(k + 1) % n]
+        if (y1 > lat) != (y2 > lat) and lon < (x2 - x1) * (lat - y1) / (y2 - y1) + x1:
+            d = not d
+    return d
+
+
 def en_espana(lat, lon) -> bool:
     return (35.0 <= lat <= 44.5 and -10.0 <= lon <= 5.0) or (27.4 <= lat <= 29.6 and -18.5 <= lon <= -13.2)
 
@@ -876,7 +894,7 @@ def direccion_osm(tags: dict) -> dict:
 def fuente_osm() -> list[dict]:
     q = """
 [out:json][timeout:280];
-area["ISO3166-1"="ES"]["admin_level"="2"]->.es;
+area["ISO3166-1"~"^(ES|PT)$"]["admin_level"="2"]->.es;
 (
   node["highway"="speed_camera"](area.es);
   node["enforcement"](area.es);
@@ -994,6 +1012,9 @@ out geom;
                     por_id[i] = punto(i, "RADAR_FIJO" if tipo == "RADAR_TRAMO" else tipo, "OSM", c[0], c[1], _rel=1,
                                       c=ref or prev.get("c"), v=lim or prev.get("v"), n=prev.get("n") or nombre_camara_osm(tags), rb=rb,
                                       **({k: prev[k] for k in ("_dir", "_dirg") if k in prev} if rb is None else {}))
+    for p in por_id.values():
+        if en_portugal(p["la"], p["lo"]):
+            p["pr"] = p["ca"] = "Portugal"
     return list(por_id.values())
 
 
@@ -1397,7 +1418,8 @@ def completar_regiones(puntos: list[dict]) -> None:
     def clave(p):
         return f"{p['la']:.3f},{p['lo']:.3f}"
 
-    pendientes = sorted({clave(p) for p in puntos if not (p.get("mu") and p.get("pr")) and clave(p) not in cache})
+    pendientes = sorted({clave(p) for p in puntos if not (p.get("mu") and p.get("pr")) and p.get("ca") != "Portugal"
+                         and clave(p) not in cache})
     log(f"  regiones: {len(pendientes)} celdas nuevas que consultar")
 
     def consulta(k):
@@ -1428,6 +1450,8 @@ def completar_regiones(puntos: list[dict]) -> None:
     guardar_json(CACHE_REV, cache)
 
     for p in puntos:
+        if p.get("ca") == "Portugal":
+            continue
         r = cache.get(clave(p)) or {}
         propia = provincia_canonica(p.get("pr"))
         # Puntos situados por PK: si caen en otra provincia, el hito de CartoCiudad era de otra vía homónima
@@ -1442,7 +1466,7 @@ def completar_regiones(puntos: list[dict]) -> None:
             p["ca"] = PROVINCIAS[prov][1]
 
     # Lo que siga sin provincia (p. ej. en mitad de una autovía sin direcciones): la del vecino más cercano
-    con = [p for p in puntos if p.get("pr")]
+    con = [p for p in puntos if p.get("pr") and p.get("ca") != "Portugal"]
     rej = Rejilla(0.1)
     for p in con:
         rej.add(p)

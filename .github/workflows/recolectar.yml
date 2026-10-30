@@ -43,8 +43,8 @@ jobs:
           path: |
             red/vias.geojsonseq
             red/camaras.opl
-          key: red-v4-${{ steps.semana.outputs.semana }}
-          restore-keys: red-v4-
+          key: red-v5-${{ steps.semana.outputs.semana }}
+          restore-keys: red-v5-
 
       - name: Red viaria (OpenStreetMap, Geofabrik)
         if: steps.cache_red.outputs.cache-hit != 'true'
@@ -57,7 +57,7 @@ jobs:
           FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
           : > red/tmp/vias.geojsonseq
           : > red/tmp/camaras.opl
-          for zona in europe/spain africa/canary-islands; do
+          for zona in europe/spain europe/portugal africa/canary-islands; do
             f=red/tmp/$(basename $zona).osm.pbf
             # corta si baja a menos de 300 kB/s durante 1 minuto o tarda más de 15 min
             curl -sSL --retry 2 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 900 \
