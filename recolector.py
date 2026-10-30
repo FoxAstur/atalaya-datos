@@ -857,8 +857,16 @@ out geom;
             anno = str(e.get("timestamp") or "")[:4]
             sin_datos = not tags.get("maxspeed") and not direccion_osm(tags)
             viejo = (2 if anno.isdigit() and int(anno) <= 2015 else 1) if sin_datos else None
+            # notas importadas de bases de radares: "... CV-35 Km 7.6 Valencia-Heron City DIR Ademuz CL",
+            # "sentido Zaragoza": el pueblo al que va el tráfico que vigila (se sitúa luego, como en Euskadi)
+            hacia_txt = None
+            nota = " ".join(str(tags.get(k) or "") for k in ("note", "description", "name", "direction:name"))
+            m = re.search(r"\b(?:DIR|dir\.|Dir\.|sentido|Sentido|SENTIDO|sentit|Sentit|SENTIT|hacia|HACIA)\s+"
+                          r"([A-Za-zÀ-ÿ'·][A-Za-zÀ-ÿ'·\- ]{1,30}?)(?=\s+(?:CL|CD|TRIP|en|EN|km|Km|KM|PK)\b|[,.;()]|$)", nota)
+            if m and not direccion_osm(tags):
+                hacia_txt = m.group(1).strip()
             por_id.setdefault(id_, punto(id_, tipo, "OSM", lat, lon, c=via_normalizada(tags.get("ref")) or None,
-                                         v=limite(tags), n=nombre_camara_osm(tags), _viejo=viejo,
+                                         v=limite(tags), n=nombre_camara_osm(tags), _viejo=viejo, _hacia_txt=hacia_txt,
                                          **direccion_osm(tags)))
         elif e["type"] == "relation":
             tipo = clasificar_osm(tags.get("enforcement"))
