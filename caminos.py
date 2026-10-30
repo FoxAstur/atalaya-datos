@@ -296,6 +296,15 @@ def caminar(red: Red, wi: int, i: int, t: float, paso: int, largo: float, hacia_
         if d >= resto:
             pts.append(interpolar(pts[-1], nodo, resto / d if d else 0))
             break
+        # el camino vuelve sobre sí mismo (vuelta a una manzana, rotonda, cambio de sentido): se corta ahí.
+        # Con un lazo, la posición casa con dos tramos del camino y la distancia que se dice sale mal.
+        if hacia_atras and len(pts) > 3 and largo - resto > 120:
+            hecho, k = 0.0, len(pts) - 1
+            while k > 0 and hecho < 120:
+                hecho += dist(pts[k], pts[k - 1])
+                k -= 1
+            if any(dist(nodo, q) < 20 for q in pts[:k]):
+                break
         pts.append(nodo)
         resto -= d
         if 0 <= idx + step < len(w.pts):
