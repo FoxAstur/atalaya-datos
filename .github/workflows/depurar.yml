@@ -29,13 +29,17 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
           mkdir -p red depurar
-          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","name","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward"]}' > red/export.json
+          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","name","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward","tunnel","bridge","layer","lanes","lanes:forward","lanes:backward","turn:lanes"]}' > red/export.json
           FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
           curl -sSL --retry 3 -o red/r.osm.pbf "https://download.geofabrik.de/${{ inputs.region }}-latest.osm.pbf"
           osmium extract -b "${{ inputs.bbox }}" red/r.osm.pbf -o red/caja.osm.pbf --overwrite
           osmium tags-filter red/caja.osm.pbf "$FILTRO" -o red/filtrado.osm.pbf --overwrite
           osmium export red/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o depurar/red.geojsonseq --overwrite
           gzip -9f depurar/red.geojsonseq
+          # cámaras y radares de OSM de la zona, con todas sus etiquetas
+          osmium tags-filter red/caja.osm.pbf n/highway=speed_camera n/enforcement n/man_made=surveillance r/type=enforcement -o red/camaras.osm.pbf --overwrite
+          osmium cat red/camaras.osm.pbf -f opl -o depurar/camaras.opl --overwrite
+          gzip -9f depurar/camaras.opl
           ls -la depurar
       - name: Publicar
         run: |
