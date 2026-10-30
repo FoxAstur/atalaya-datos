@@ -670,21 +670,32 @@ def fuente_madrid() -> list[dict]:
     return salida
 
 
-VALENCIA = [
-    "Avenida de los Hermanos Machado, Valencia", "Avenida Antonio Ferrandis, Valencia",
-    "Camí Nou de Picanya 49, Valencia", "Avenida Fernando Abril Martorell, Valencia",
-    "Avenida de los Naranjos 8, Valencia", "Avenida del Maestro Rodrigo 84, Valencia",
+# Cabinas del Ayuntamiento de València (seis cinemómetros que rotan entre diez cabinas; prensa del 24-25/05/2026,
+# más las cuatro de los túneles de acceso de 2019). Posición en su calzada y sentido que vigila, sacados de
+# OpenStreetMap (relaciones enforcement) y de los cruces que da el Ayuntamiento. Antes se geocodificaban las
+# direcciones y salían en el centro de la avenida (a 300-500 m) o en otra provincia ("Hermanos Machado" →
+# Badajoz).
+VALENCIA = [  # el orden fija el id (vlc:0, vlc:1…): lo nuevo, al final
+    {"n": "Avinguda dels Germans Machado (Vicent Canet), entrada a València", "la": 39.501516, "lo": -0.390876, "rb": 141},
+    {"n": "Avinguda d'Antonio Ferrandis (Camí del Pou d'Aparisi)", "la": 39.451319, "lo": -0.356371, "rb": 61},
+    {"n": "Camí Nou de Picanya, 49", "la": 39.454433, "lo": -0.406758, "rb": 46},
+    {"n": "Avinguda de Fernando Abril Martorell (Carrera de Malilla)", "la": 39.445464, "lo": -0.379314, "rb": 277},
+    {"n": "Avinguda dels Tarongers, 8", "la": 39.478368, "lo": -0.340918, "rb": 110},
+    {"n": "Avinguda del Maestro Rodrigo, 84 (entrada a València)", "la": 39.489685, "lo": -0.406672, "rb": 151},
+    {"n": "Avinguda dels Germans Machado (a la altura de Sant Josep Artesà), salida hacia Burjassot", "la": 39.501241, "lo": -0.389968, "rb": 321},
+    {"n": "Túnel de Corts Valencianes – Pius XII (entrada a València)", "la": 39.485197, "lo": -0.395783, "rb": 151, "tu": 1},
+    {"n": "Avinguda del Cid, a la salida del túnel (entrada a València)", "la": 39.469624, "lo": -0.404758, "rb": 99},
+    {"n": "Túnel de l'autopista del Saler – López Piñero (entrada a València)", "la": 39.453089, "lo": -0.351631, "rb": 323, "v": 70, "tu": 1},
+    {"n": "Paso inferior de la Ronda Nord – Germans Machado (hacia el mar)", "la": 39.497581, "lo": -0.368867, "rb": 112, "tu": 1},
 ]
 
 
-def fuente_valencia(geo: Geocodificador) -> list[dict]:
+def fuente_valencia(geo: Geocodificador | None = None) -> list[dict]:
     salida = []
     for i, d in enumerate(VALENCIA):
-        c = geo.direccion(d)
-        if c and en_espana(*c):
-            salida.append(punto(f"vlc:{i}", "RADAR_FIJO", "AYUNTAMIENTO", c[0], c[1], c=d.split(",")[0],
-                                n="Cabina de radar del Ayuntamiento (el cinemómetro rota entre cabinas)",
-                                mu="València", pr="Valencia", ca="Comunitat Valenciana"))
+        salida.append(punto(f"vlc:{i}", "RADAR_FIJO", "AYUNTAMIENTO", d["la"], d["lo"], c=re.split(r" \(|,", d["n"])[0],
+                            n="Cabina del Ayuntamiento · " + d["n"], v=d.get("v", 50), rb=float(d["rb"]),
+                            tu=d.get("tu"), mu="València", pr="Valencia", ca="Comunitat Valenciana"))
     return salida
 
 
@@ -790,6 +801,12 @@ out geom;
                     or ("RADAR_FIJO" if tags.get("highway") == "speed_camera" or tags.get("speed_camera") == "yes" else None))
             if not tipo:
                 continue
+            # cámaras de semáforo importadas como "speed_camera" con una nota tipo "SEM PUNT València ... CRUCE ..."
+            # o "Radar Semáforo": son de semáforo, no de velocidad
+            texto = normalizar(" ".join(str(tags.get(k) or "") for k in ("note", "description", "name")))
+            if tipo == "RADAR_FIJO" and not tags.get("enforcement") and \
+                    re.search(r"(^|\s)sem(\s|$)|semaforo|foto ?-?rojo|red ?light", texto):
+                tipo = "SEMAFORO"
             id_ = f"osm:n{e['id']}"
             # nodo viejo y sin datos (ni límite ni sentido): si hay otro radar más fiable en la misma calle y
             # sentido muy cerca, seguramente es una cabina que ya no está o un duplicado (se mira en caminos.py)
@@ -834,7 +851,13 @@ out geom;
                     prev = por_id.get(i, {})
                     # la relación dice de dónde viene el tráfico: rumbo desde "from" hasta el aparato
                     rb = round(rumbo_entre(desde[0], desde[1], c[0], c[1]), 1) if desde and distancia(*desde, *c) > 5 else None
-                    por_id[i] = punto(i, "RADAR_FIJO" if tipo == "RADAR_TRAMO" else tipo, "OSM", c[0], c[1],
+                    # el mismo aparato en otra relación con el sentido contrario: vigila los dos sentidos.
+                    # Antes la segunda relación pisaba a la primera y se perdía un sentido (Germans Machado).
+                    if prev.get("_rel") and prev.get("rb") is not None and rb is not None and \
+                            abs((prev["rb"] - rb + 180) % 360 - 180) > 90:
+                        i = i + "b"
+                        prev = {k: v for k, v in prev.items() if k in ("c", "v", "n")}
+                    por_id[i] = punto(i, "RADAR_FIJO" if tipo == "RADAR_TRAMO" else tipo, "OSM", c[0], c[1], _rel=1,
                                       c=ref or prev.get("c"), v=lim or prev.get("v"), n=prev.get("n") or nombre_camara_osm(tags), rb=rb,
                                       **({k: prev[k] for k in ("_dir", "_dirg") if k in prev} if rb is None else {}))
     return list(por_id.values())
@@ -1345,6 +1368,21 @@ class Rejilla:
         return mejor
 
 
+def sentidos_opuestos(a: dict, b: dict) -> bool:
+    """
+    ¿Vigilan sentidos contrarios? Entonces son dos radares (uno por calzada, a la misma altura) y no se
+    pueden juntar en uno: antes se juntaba todo lo que estaba a menos de 120 m y en autovías se perdía
+    el radar de uno de los dos sentidos.
+    """
+    if a.get("rb") is not None and b.get("rb") is not None:
+        return abs((a["rb"] - b["rb"] + 180) % 360 - 180) > 90
+    sa, sb = a.get("s"), b.get("s")
+    if sa in ("Creciente", "Decreciente") and sb in ("Creciente", "Decreciente") and sa != sb:
+        ca, cb = via_normalizada(a.get("c")), via_normalizada(b.get("c"))
+        return not ca or not cb or ca == cb
+    return False
+
+
 def fusionar(capas: list[list[dict]]) -> list[dict]:
     """Une capas por orden de prioridad: un punto de una capa posterior que coincide con uno anterior se descarta."""
     radios = {"RADAR_FIJO": 120, "RADAR_TRAMO": 300, "SEMAFORO": 60, "STOP_CEDA": 60, "OTRA_CAMARA": 80, "ZONA_MOVIL": 50}
@@ -1355,7 +1393,8 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
             if p["t"] == "ZONA_MOVIL" and "tr" in p:
                 salida.append(p)
                 continue
-            previo = rej.cerca(p["la"], p["lo"], radios.get(p["t"], 80), lambda q: q["t"] == p["t"])
+            previo = rej.cerca(p["la"], p["lo"], radios.get(p["t"], 80),
+                               lambda q: q["t"] == p["t"] and not sentidos_opuestos(p, q))
             if previo is not None:
                 for k in ("v", "c", "la2", "lo2"):
                     if k not in previo and k in p:
@@ -1367,9 +1406,14 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
                         distancia(p["la"], p["lo"], previo["la"], previo["lo"]) <= 60:
                     previo.setdefault("_rbs_osm", []).append(p["rb"])
                 continue
+            if rej.cerca(p["la"], p["lo"], radios.get(p["t"], 80), lambda q: q["t"] == p["t"]) is not None:
+                FUSION["opuestos"] += 1
             rej.add(p)
             salida.append(p)
     return salida
+
+
+FUSION = {"opuestos": 0}
 
 
 def segunda_opinion_sentidos(puntos: list[dict]) -> str:
@@ -1723,6 +1767,7 @@ def main() -> int:
 
     todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, santacruz, pamplona,
                       camaras_dgt, comunitario, osm, zonas])
+    log(f"fusión: {FUSION['opuestos']} radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)")
     todos = unir_tramos(todos)
     todos = aplicar_correcciones(todos)
     # radares móviles anunciados ya caducados fuera
@@ -1755,7 +1800,8 @@ def main() -> int:
         txt = p.pop("_hacia_txt", None)
         if txt and p.get("rb") is None:
             c = geo.direccion(txt.title() + ", España")
-            if c and distancia(c[0], c[1], p["la"], p["lo"]) > 3000:
+            # (a menos de 150 km: un pueblo con el nombre repetido en otra provincia daría el sentido al azar)
+            if c and 3000 < distancia(c[0], c[1], p["la"], p["lo"]) < 150_000:
                 p["_hacia"] = c
                 hacia += 1
     geo.guardar()
@@ -1852,7 +1898,7 @@ def main() -> int:
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")

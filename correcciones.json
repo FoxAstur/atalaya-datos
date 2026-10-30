@@ -4,14 +4,11 @@
     {
       "id": "osm:n992004970",
       "motivo": "Av. Pío XII (València), 400 m después del de Corts Valencianes: no existe (Carlos, 27-10-2026)"
+    },
+    {
+      "id": "osm:n9495468406",
+      "motivo": "Túnel de Corts Valencianes, tubo de salida de València: la cabina está en el de entrada (osm:n6766167853 / vlc:7); este sobraba y avisaba en el carril que no es (Carlos, 28-10-2026)"
     }
   ],
-  "sentido": {
-    "vlc:5": {
-      "rb": 151,
-      "la": 39.489685,
-      "lo": -0.406672,
-      "motivo": "Av. Maestro Rodrigo (cerca de Beniferri): vigila a quien entra en València, calzada sureste (Carlos, 28-10-2026)"
-    }
-  }
+  "sentido": {}
 }

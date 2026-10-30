@@ -122,7 +122,7 @@ def norm_ref(r):
 
 # --------------------------------------------------------------------------- red viaria
 class Via:
-    __slots__ = ("pts", "clase", "ref", "nombre", "sentido", "tipo", "vmax", "vmax_ad", "vmax_at")
+    __slots__ = ("pts", "clase", "ref", "nombre", "sentido", "tipo", "vmax", "vmax_ad", "vmax_at", "tunel")
 
     def __init__(self, pts, tags):
         self.pts = pts
@@ -133,6 +133,7 @@ class Via:
         self.vmax = velocidad(tags.get("maxspeed"))
         self.vmax_ad = velocidad(tags.get("maxspeed:forward")) or self.vmax
         self.vmax_at = velocidad(tags.get("maxspeed:backward")) or self.vmax
+        self.tunel = str(tags.get("tunnel", "")).lower() in ("yes", "1", "true")
         ow = str(tags.get("oneway", "")).lower()
         if ow in ("yes", "1", "true"):
             self.sentido = 1
@@ -855,6 +856,9 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
             continue
         wi, i, t = e
         w = red.vias[wi]
+        if w.tunel and p["t"] != "ZONA_MOVIL":
+            p["tu"] = 1   # en un túnel: se dice ("Radar en túnel") y el GPS ahí dentro va peor
+            stats["en_tunel"] = stats.get("en_tunel", 0) + 1
         largo = 1700.0 if w.tipo in INTERURBANA else 800.0
         if p["t"] == "RADAR_TRAMO" and "la2" in p:
             stats["tramos"] += 1

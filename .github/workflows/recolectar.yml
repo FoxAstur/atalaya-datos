@@ -41,8 +41,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: red/vias.geojsonseq
-          key: red-v2-${{ steps.semana.outputs.semana }}
-          restore-keys: red-v2-
+          key: red-v3-${{ steps.semana.outputs.semana }}
+          restore-keys: red-v3-
 
       - name: Red viaria (OpenStreetMap, Geofabrik)
         if: steps.cache_red.outputs.cache-hit != 'true'
@@ -51,7 +51,7 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
           mkdir -p red/tmp
-          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","name","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward"]}' > red/export.json
+          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","name","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward","tunnel"]}' > red/export.json
           FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
           : > red/tmp/vias.geojsonseq
           for zona in europe/spain africa/canary-islands; do
