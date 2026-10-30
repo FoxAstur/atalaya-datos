@@ -293,6 +293,10 @@
   "mu": "Santa Cruz de Tenerife",
   "pr": "Santa Cruz de Tenerife"
  },
+ "28.464,-16.440": {
+  "mu": "El Sauzal",
+  "pr": "Santa Cruz de Tenerife"
+ },
  "28.465,-16.439": {
   "mu": "El Sauzal",
   "pr": "Santa Cruz de Tenerife"
@@ -614,6 +618,10 @@
   "pr": "Cádiz"
  },
  "36.207,-5.391": {
+  "mu": "San Roque",
+  "pr": "Cádiz"
+ },
+ "36.207,-5.393": {
   "mu": "San Roque",
   "pr": "Cádiz"
  },
@@ -2147,6 +2155,10 @@
   "mu": "Sevilla",
   "pr": "Sevilla"
  },
+ "37.344,-5.987": {
+  "mu": "Sevilla",
+  "pr": "Sevilla"
+ },
  "37.344,-5.988": {
   "mu": "Sevilla",
   "pr": "Sevilla"
@@ -2377,6 +2389,10 @@
  },
  "37.416,-6.035": {
   "mu": "Camas",
+  "pr": "Sevilla"
+ },
+ "37.417,-5.964": {
+  "mu": "Sevilla",
   "pr": "Sevilla"
  },
  "37.417,-5.968": {
@@ -2996,6 +3012,10 @@
   "pr": "Córdoba"
  },
  "37.909,-0.752": {
+  "mu": "Orihuela",
+  "pr": "Alicante"
+ },
+ "37.909,-0.753": {
   "mu": "Orihuela",
   "pr": "Alicante"
  },
@@ -5235,6 +5255,10 @@
   "mu": "Malpartida de Cáceres",
   "pr": "Cáceres"
  },
+ "39.454,-0.407": {
+  "mu": "València",
+  "pr": "Valencia"
+ },
  "39.456,3.087": {
   "mu": "Felanitx",
   "pr": "Illes Balears"
@@ -6037,6 +6061,10 @@
   "mu": "Navalmoral de la Mata",
   "pr": "Cáceres"
  },
+ "39.887,4.249": {
+  "mu": "Maó",
+  "pr": "Illes Balears"
+ },
  "39.887,4.250": {
   "mu": "Maó",
   "pr": "Illes Balears"
@@ -6067,6 +6095,10 @@
  },
  "39.902,-5.279": {
   "mu": "Calzada de Oropesa",
+  "pr": "Toledo"
+ },
+ "39.903,-3.621": {
+  "mu": "Yepes",
   "pr": "Toledo"
  },
  "39.904,-3.621": {
@@ -6161,6 +6193,10 @@
   "pr": "Illes Balears"
  },
  "39.937,4.126": {
+  "mu": "Alaior",
+  "pr": "Illes Balears"
+ },
+ "39.937,4.127": {
   "mu": "Alaior",
   "pr": "Illes Balears"
  },
@@ -6358,6 +6394,10 @@
   "pr": "Illes Balears"
  },
  "39.989,-0.037": {
+  "mu": "Castelló de la Plana/Castellón de la Plana",
+  "pr": "Castellón"
+ },
+ "39.989,-0.038": {
   "mu": "Castelló de la Plana/Castellón de la Plana",
   "pr": "Castellón"
  },
@@ -6665,6 +6705,10 @@
  "40.221,-4.076": {
   "mu": "Casarrubios del Monte",
   "pr": "Toledo"
+ },
+ "40.221,0.191": {
+  "mu": "Torreblanca",
+  "pr": "Castellón"
  },
  "40.221,0.192": {
   "mu": "Torreblanca",
@@ -7213,6 +7257,10 @@
   "mu": "Madrid",
   "pr": "Madrid"
  },
+ "40.415,-3.695": {
+  "mu": "Madrid",
+  "pr": "Madrid"
+ },
  "40.415,-3.945": {
   "mu": "Boadilla del Monte",
   "pr": "Madrid"
@@ -7263,6 +7311,10 @@
  },
  "40.426,-3.499": {
   "mu": "San Fernando de Henares",
+  "pr": "Madrid"
+ },
+ "40.427,-3.556": {
+  "mu": "Coslada",
   "pr": "Madrid"
  },
  "40.427,-3.557": {
@@ -9276,6 +9328,10 @@
   "mu": "Sant Jaume dels Domenys",
   "pr": "Tarragona"
  },
+ "41.288,1.590": {
+  "mu": "Sant Jaume dels Domenys",
+  "pr": "Tarragona"
+ },
  "41.290,1.594": {
   "mu": "L\"Arboç",
   "pr": "Tarragona"
@@ -9465,6 +9521,10 @@
   "pr": "Barcelona"
  },
  "41.340,2.110": {
+  "mu": "L\"Hospitalet de Llobregat",
+  "pr": "Barcelona"
+ },
+ "41.341,2.110": {
   "mu": "L\"Hospitalet de Llobregat",
   "pr": "Barcelona"
  },
@@ -13653,6 +13713,10 @@
   "mu": "Ourense",
   "pr": "Ourense"
  },
+ "42.352,-3.676": {
+  "mu": "Burgos",
+  "pr": "Burgos"
+ },
  "42.352,-4.625": null,
  "42.352,-7.876": {
   "mu": "Ourense",
@@ -13894,6 +13958,10 @@
   "mu": "Nogueira de Ramuín",
   "pr": "Ourense"
  },
+ "42.443,-2.451": {
+  "mu": "Logroño",
+  "pr": "La Rioja"
+ },
  "42.443,-2.452": {
   "mu": "Logroño",
   "pr": "La Rioja"
@@ -13979,6 +14047,10 @@
   "pr": "La Rioja"
  },
  "42.459,-2.437": {
+  "mu": "Logroño",
+  "pr": "La Rioja"
+ },
+ "42.459,-2.438": {
   "mu": "Logroño",
   "pr": "La Rioja"
  },
@@ -14184,6 +14256,10 @@
   "pr": "León"
  },
  "42.548,-5.621": {
+  "mu": "Santovenia de la Valdoncina",
+  "pr": "León"
+ },
+ "42.548,-5.622": {
   "mu": "Santovenia de la Valdoncina",
   "pr": "León"
  },
@@ -14982,6 +15058,10 @@
   "mu": "Ames",
   "pr": "A Coruña"
  },
+ "42.861,-2.668": {
+  "mu": "Vitoria-Gasteiz",
+  "pr": "Álava"
+ },
  "42.861,-2.669": {
   "mu": "Vitoria-Gasteiz",
   "pr": "Álava"
@@ -14995,6 +15075,10 @@
   "pr": "Lugo"
  },
  "42.863,-8.542": {
+  "mu": "Santiago de Compostela",
+  "pr": "A Coruña"
+ },
+ "42.864,-8.559": {
   "mu": "Santiago de Compostela",
   "pr": "A Coruña"
  },
@@ -15485,6 +15569,10 @@
   "pr": "Bizkaia"
  },
  "43.181,-2.485": {
+  "mu": "Eibar",
+  "pr": "Gipuzkoa"
+ },
+ "43.181,-2.487": {
   "mu": "Eibar",
   "pr": "Gipuzkoa"
  },
