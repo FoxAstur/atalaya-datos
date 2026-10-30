@@ -7,6 +7,10 @@ on:
       urls:
         description: "URLs separadas por espacios"
         required: true
+      rama:
+        description: "Rama donde dejar las sondas (vacío = main)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -36,9 +40,20 @@ jobs:
           done
           ls -la sondas
       - name: Publicar
+        env:
+          RAMA: ${{ inputs.rama }}
         run: |
           git config user.name "atalaya-bot"
           git config user.email "atalaya-bot@users.noreply.github.com"
+          if [ -n "$RAMA" ]; then
+            mv sondas /tmp/sondas
+            git checkout --orphan "$RAMA"
+            git rm -rfq . >/dev/null
+            mv /tmp/sondas sondas
+            git add -f sondas
+            git commit -qm "Sondas" && git push -f origin "$RAMA"
+            exit 0
+          fi
           git add -f sondas
           git commit -m "Sondas de fuentes" || exit 0
           for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
