@@ -870,7 +870,15 @@ out geom;
                 for i, c in lista:
                     prev = por_id.get(i, {})
                     # la relación dice de dónde viene el tráfico: rumbo desde "from" hasta el aparato
-                    rb = round(rumbo_entre(desde[0], desde[1], c[0], c[1]), 1) if desde and distancia(*desde, *c) > 5 else None
+                    # (con "from" pegado al aparato, a 10 m, ese rumbo sale de lado: entonces aparato → "to", o from → to)
+                    if desde and distancia(*desde, *c) >= 30:
+                        rb = round(rumbo_entre(desde[0], desde[1], c[0], c[1]), 1)
+                    elif hasta and distancia(*c, *hasta) >= 30:
+                        rb = round(rumbo_entre(c[0], c[1], hasta[0], hasta[1]), 1)
+                    elif desde and hasta and distancia(*desde, *hasta) >= 20:
+                        rb = round(rumbo_entre(desde[0], desde[1], hasta[0], hasta[1]), 1)
+                    else:
+                        rb = round(rumbo_entre(desde[0], desde[1], c[0], c[1]), 1) if desde and distancia(*desde, *c) > 5 else None
                     # el mismo aparato en otra relación con el sentido contrario: vigila los dos sentidos.
                     # Antes la segunda relación pisaba a la primera y se perdía un sentido (Germans Machado).
                     if prev.get("_rel") and prev.get("rb") is not None and rb is not None and \
