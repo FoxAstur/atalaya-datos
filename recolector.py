@@ -1901,6 +1901,20 @@ def main() -> int:
             todos[:] = [p for p in todos if p["id"] not in dobles]
             log(f"radares de OSM mapeados dos veces: {len(dobles)} quitados {sorted(dobles)[:10]}")
             seg = caminos.seguidos(todos)
+            # Gemelos: dos radares oficiales en el mismo sitio, uno "creciente" y otro "decreciente" (una cabina por
+            # sentido, o una que vigila los dos), a los que el cálculo de rumbos ha dado el mismo sentido. Uno de los
+            # dos está mal: se le da el contrario, y así queda uno en cada sentido como dice la fuente.
+            gemelos = []
+            for m, q, p in seg:
+                if m < 80 and q["t"] == p["t"] and q.get("s") in ("Creciente", "Decreciente") and \
+                        p.get("s") in ("Creciente", "Decreciente") and q["s"] != p["s"] and q.get("rb") is not None \
+                        and p["id"] not in {g["id"] for g in gemelos}:
+                    p["rb"] = round((q["rb"] + 180) % 360, 1)
+                    gemelos.append(p)
+            if gemelos:
+                caminos.anadir_caminos(gemelos, ruta_red, zbe, aviso=log)
+                seg = caminos.seguidos(todos)
+            log(f"gemelos de sentido contrario corregidos: {len(gemelos)} {[g['id'] for g in gemelos][:10]}")
             estado["Radares seguidos (mismo sentido, < 300 m)"] = (
                 f"{len(seg)} pares por revisar" + (": " + "; ".join(
                     f"{q['id']}→{p['id']} {m} m" for m, q, p in sorted(seg, key=lambda x: x[0])[:20]) if seg else ""))
