@@ -1,5 +1,5 @@
 {
-  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar y, si hace falta, su posición real (la, lo).",
+  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar y, si hace falta, su posición real (la, lo). Los sentidos marcados como 'ortofotos' salen de ver la cabina en las fotos aéreas PNOA (© Instituto Geográfico Nacional) e ICGC (© Institut Cartogràfic i Geològic de Catalunya), CC-BY 4.0: probado a ciegas con 9 radares de sentido conocido, 9 aciertos.",
   "quitar": [
     {
       "id": "osm:n992004970",
@@ -10,5 +10,62 @@
       "motivo": "Túnel de Corts Valencianes, tubo de salida de València: la cabina está en el de entrada (osm:n6766167853 / vlc:7); este sobraba y avisaba en el carril que no es (Carlos, 28-10-2026)"
     }
   ],
-  "sentido": {}
+  "sentido": {
+    "sct:40.59931,0.56036": {
+      "rb": 226,
+      "motivo": "N-340 Alcanar: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:40.64828,0.59161": {
+      "rb": 165,
+      "motivo": "N-340 Amposta: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:40.68706,0.58302": {
+      "rb": 355,
+      "motivo": "N-340 Amposta: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:40.84038,0.51444": {
+      "rb": 12,
+      "motivo": "C-12 Tortosa: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:41.04508,0.98912": {
+      "rb": 58,
+      "motivo": "N-340 Mont-roig del Camp: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:41.11140,0.64122": {
+      "rb": 353,
+      "motivo": "C-12 Móra la Nova: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:41.27629,1.61123": {
+      "rb": 201,
+      "motivo": "N-340 L\"Arboç: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:41.83088,1.36258": {
+      "rb": 321,
+      "motivo": "C-1412A Biosca: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:42.06633,2.81297": {
+      "rb": 196,
+      "motivo": "C-66 Palol de Revardit: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:42.12885,2.97447": {
+      "rb": 73,
+      "motivo": "GI-623 Saus, Camallera i Llampaies: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:42.21872,3.01732": {
+      "rb": 123,
+      "motivo": "C-31 Siurana: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:42.22181,2.57607": {
+      "rb": 95,
+      "motivo": "A-26 Montagut i Oix: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:42.25358,2.34334": {
+      "rb": 89,
+      "motivo": "C-38 Sant Joan de les Abadesses: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "sct:42.37323,1.74771": {
+      "rb": 258,
+      "motivo": "N-260 Prullans: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    }
+  }
 }
