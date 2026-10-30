@@ -22,10 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Descargar
+        env:
+          URLS: ${{ inputs.urls }}
         run: |
           mkdir -p sondas
           i=0
-          for u in ${{ inputs.urls }}; do
+          for u in $URLS; do
             i=$((i+1))
             f="sondas/$(printf %02d $i)_$(echo "$u" | sed 's#https\?://##; s#[^A-Za-z0-9._-]#_#g' | cut -c1-80)"
             code=$(curl -sSL -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36" \
