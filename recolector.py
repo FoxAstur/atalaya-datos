@@ -373,7 +373,7 @@ class Geocodificador:
         mejor = None
         partes = [texto] + [x.strip() for x in re.split(r"\s+-\s+|/", texto) if x.strip() and x.strip() != texto]
         for nombre in partes:
-            clave = f"lugar|{normalizar(nombre)}"
+            clave = f"lugar2|{normalizar(nombre)}"
             if clave not in self.cache:
                 cands = []
                 try:
@@ -383,12 +383,21 @@ class Geocodificador:
                     pass
                 obj = normalizar(nombre)
                 opciones = []
-                for c in cands if isinstance(cands, list) else []:
+                for c in (cands if isinstance(cands, list) else [])[:8]:
                     tipo = normalizar(str(c.get("type") or ""))
-                    if c.get("lat") is None or c.get("lng") is None:
+                    if not (tipo in ("municipio", "poblacion") or normalizar(str(c.get("address") or "")) == obj):
                         continue
-                    if tipo in ("municipio", "poblacion") or normalizar(str(c.get("address") or "")) == obj:
-                        opciones.append([float(c["lat"]), float(c["lng"])])
+                    la, lo = c.get("lat") or 0, c.get("lng") or 0
+                    if not la or not lo:
+                        # los municipios y poblaciones vienen sin coordenadas: se piden por su id
+                        try:
+                            r = http_json(f"{CARTO_FIND}?{urllib.parse.urlencode({'id': c.get('id'), 'type': c.get('type')})}",
+                                          timeout=40, intentos=2)
+                            la, lo = (r or {}).get("lat") or 0, (r or {}).get("lng") or 0
+                        except Exception:  # noqa: BLE001
+                            la = lo = 0
+                    if la and lo and en_espana(float(la), float(lo)):
+                        opciones.append([float(la), float(lo)])
                 self.cache[clave] = opciones
                 self.nuevas += 1
             for c in self.cache[clave] or []:
