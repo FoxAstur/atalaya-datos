@@ -820,13 +820,15 @@ out geom;
             tipo = clasificar_osm(tags.get("enforcement"))
             if not tipo:
                 continue
-            desde = hasta = None
+            desde = hasta = via = None
+            desde_via = hasta_via = None   # extremos de "from"/"to" cuando son vías (cruces de semáforo)
             disp = []
             for m in e.get("members", []):
+                g = m.get("geometry") if m.get("type") == "way" else None
                 if m.get("type") == "node" and m.get("lat") is not None:
                     c = (m["lat"], m["lon"])
-                elif m.get("type") == "way" and m.get("geometry"):
-                    c = (m["geometry"][0]["lat"], m["geometry"][0]["lon"])
+                elif g:
+                    c = (g[0]["lat"], g[0]["lon"])
                 else:
                     continue
                 if not en_espana(*c):
@@ -834,10 +836,28 @@ out geom;
                 rol = m.get("role")
                 if rol == "from":
                     desde = c
+                    if g:
+                        desde_via = (c, (g[-1]["lat"], g[-1]["lon"]))
                 elif rol == "to":
                     hasta = c
+                    if g:
+                        hasta_via = (c, (g[-1]["lat"], g[-1]["lon"]))
+                elif rol == "via" and not g:
+                    via = c
                 elif rol == "device":
                     disp.append((f"osm:n{m.get('ref')}", c))
+            # Sin aparato, el sitio es el cruce ("via") o el extremo de la vía "from" que da a "to"; antes se
+            # tomaba el primer nodo de "from", que puede estar a cientos de metros (salían semáforos fantasma)
+            if desde_via and tipo != "RADAR_TRAMO":
+                ref_pt = via or (min(hasta_via, key=lambda q: min(distancia(*q, *x) for x in desde_via)) if hasta_via else hasta)
+                if ref_pt:
+                    cerca_ = min(desde_via, key=lambda x: distancia(*x, *ref_pt))
+                    lejos_ = desde_via[1] if cerca_ is desde_via[0] else desde_via[0]
+                    desde = lejos_          # de dónde viene el tráfico (para el rumbo)
+                    if not disp and tipo != "RADAR_TRAMO":
+                        disp = [(f"osm:r{e['id']}", via or cerca_)]
+            elif via and not disp and tipo != "RADAR_TRAMO":
+                disp = [(f"osm:r{e['id']}", via)]
             lim, ref = limite(tags), via_normalizada(tags.get("ref")) or None
             if tipo == "RADAR_TRAMO" and desde and hasta:
                 id_ = f"osm:r{e['id']}"
