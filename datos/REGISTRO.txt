@@ -1,55 +1,55 @@
       1s  DGT feed: 737 puntos
-      4s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
-     12s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
-     12s    CartoCiudad: 672 hitos necesarios, 0 por consultar
-     12s    cinemómetros: 642 ya estaban en el feed, 175 añadidos, 8 sin poder situar
-     12s  DGT PDF radares: 175 puntos
+      5s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
+     13s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
+     13s    CartoCiudad: 672 hitos necesarios, 0 por consultar
+     13s    cinemómetros: 642 ya estaban en el feed, 175 añadidos, 8 sin poder situar
+     13s  DGT PDF radares: 175 puntos
      14s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
      14s    CartoCiudad: 496 hitos necesarios, 0 por consultar
      14s    equipos: 249 situados, 11 sin poder situar
      14s  DGT PDF cámaras: 249 puntos
      21s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
-     28s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
-     28s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
-     28s    SCT radars.txt: 230 radares
-     28s  Cataluña (SCT): 230 puntos
-     29s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
-     29s  Ayto. Madrid: 23 puntos
-     29s  Ayto. València: 6 puntos
-    110s  OpenStreetMap: 2605 puntos
-    110s  Tramos radar móvil: 1152 puntos
-    112s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
-    113s  Ayto. Málaga foto-rojo: 7 puntos
-    114s  Ayto. Salamanca: 24 puntos
-    114s  Ayto. Donostia: 12 puntos
-    162s  Ayto. Santa Cruz de Tenerife foto-rojo: ERROR www.santacruzdetenerife.es: <urlopen error timed out>
-    209s  Ayto. Pamplona cinemómetros: ERROR sig.pamplona.es: <urlopen error timed out>
-    209s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1654 puntos
-    209s  feed comunitario tras quitar tramos ya situados: 483
-    209s  tramos: 2 puntos sueltos unidos a su tramo, 5 cámaras de entrada/salida absorbidas
-    209s  correcciones: 1 quitados, 1 sentidos fijados
-    209s    límites: 194 sin límite, 0 por consultar
-    209s  límites deducidos de OSM: 115
-    209s    regiones: 0 celdas nuevas que consultar
-    209s    CartoCiudad: 1993 hitos necesarios, 0 por consultar
-    209s  rumbos por sentido: 1020
-    209s  sentido hacia una ciudad: 72 puntos
-    209s  51 sentidos nuevos, 573 coinciden con los nuestros, 5 en desacuerdo (se avisa en los dos)
-    209s  copias de OSM con sentido frente a oficiales: 528/603 → no se usa
-    209s  38 radares de OSM con direction; frente a los oficiales: 4 igual, 0 al revés → se usa en 38 puntos
-    230s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
-    242s    ZBE: 45 ficheros
-    262s  ZBE: 57 zonas
-    327s    caminos: red cargada (937773 vías) en 65s
-    328s    caminos: regla del lado probada en 66s
-    328s    caminos: regla del cruce probada en 66s
-    328s    caminos: 0/3325 en 66s (dgt:GUID_CVM_161274)
-    330s    caminos: 500/3325 en 68s (dgt:GUID_CABINACINEMOMETRO_120585)
-    332s    caminos: 1000/3325 en 70s (sct:41.64066,2.16653)
-    337s    caminos: 1500/3325 en 75s (dgteq:N-1:251.3:D:cintur)
-    340s    caminos: 2000/3325 en 78s (osm:n992001156)
-    344s    caminos: 2500/3325 en 82s (osm:n11026473818)
-    347s    caminos: 3000/3325 en 86s (osm:n100482065)
-    353s  46 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 26/29 → no se hereda
-    353s  radares de OSM mapeados dos veces: 1 quitados ['osm:n2238358575']
-    353s  caminos: {'lado': 'carretera 4-7 m: 117/155; carretera 7-12 m: 88/113; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/90; ciudad 7-12 m: 20/28; ciudad 12-25 m: 10/15; ciudad 25-41 m: 2/5', 'cruce': 'limite 22/29; cruce+lado 3/4; cruce 23/28; lado+limite 8/10', 'con_camino': 3242, 'sin_via': 81, 'tramos_con_recorrido': 268, 'tramos': 325, 'caminos_alternativos': 9, 'mediana_dos': 61, 'con_paralela': 955, 'en_enlace': 34, 'sospechosos': [], 'dos_sentidos': 309, 'limites_via': 121, 'limites_quitados': 2, 'segundos': 87}
+     29s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
+     29s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
+     29s    SCT radars.txt: 230 radares
+     29s  Cataluña (SCT): 230 puntos
+     30s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
+     30s  Ayto. Madrid: 23 puntos
+     30s  Ayto. València: 6 puntos
+    592s  OpenStreetMap: ERROR Overpass: overpass.kumi.systems: HTTP Error 504: Gateway Timeout
+    593s  Tramos radar móvil: 1152 puntos
+    594s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
+    595s  Ayto. Málaga foto-rojo: 7 puntos
+    597s  Ayto. Salamanca: 24 puntos
+    598s  Ayto. Donostia: 12 puntos
+    645s  Ayto. Santa Cruz de Tenerife foto-rojo: ERROR www.santacruzdetenerife.es: <urlopen error timed out>
+    693s  Ayto. Pamplona cinemómetros: ERROR sig.pamplona.es: <urlopen error timed out>
+    693s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1654 puntos
+    693s  feed comunitario tras quitar tramos ya situados: 483
+    693s  tramos: 3 puntos sueltos unidos a su tramo, 7 cámaras de entrada/salida absorbidas
+    693s  correcciones: 0 quitados, 1 sentidos fijados
+    693s    límites: 870 sin límite, 0 por consultar
+    693s  límites deducidos de OSM: 581
+    693s    regiones: 0 celdas nuevas que consultar
+    693s    CartoCiudad: 1989 hitos necesarios, 0 por consultar
+    693s  rumbos por sentido: 1016
+    693s  sentido hacia una ciudad: 72 puntos
+    693s  51 sentidos nuevos, 569 coinciden con los nuestros, 5 en desacuerdo (se avisa en los dos)
+    693s  copias de OSM con sentido frente a oficiales: 0/0 → no se usa
+    693s  0 radares de OSM con direction; frente a los oficiales: 0 igual, 0 al revés → no se usa
+    714s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
+    728s    ZBE: 45 ficheros
+    750s  ZBE: 57 zonas
+    817s    caminos: red cargada (937415 vías) en 67s
+    817s    caminos: regla del lado probada en 67s
+    818s    caminos: regla del cruce probada en 68s
+    818s    caminos: 0/3272 en 68s (dgt:GUID_CVM_161274)
+    819s    caminos: 500/3272 en 69s (dgt:GUID_CABINACINEMOMETRO_120587)
+    821s    caminos: 1000/3272 en 71s (sct:41.73961,2.81575)
+    827s    caminos: 1500/3272 en 77s (dgteq:A-2004:0.0:D:cintur)
+    830s    caminos: 2000/3272 en 80s (osm:n11105081490)
+    833s    caminos: 2500/3272 en 83s (osm:n2334938884)
+    836s    caminos: 3000/3272 en 87s (osm:r20063005)
+    842s  0 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 0/3 → no se hereda
+    842s  radares de OSM mapeados dos veces: 0 quitados []
+    842s  caminos: {'lado': 'carretera 4-7 m: 105/143; carretera 7-12 m: 82/107; carretera 12-25 m: 24/39; carretera 25-41 m: 13/26; ciudad 4-7 m: 57/90; ciudad 7-12 m: 20/28; ciudad 12-25 m: 10/15; ciudad 25-41 m: 2/5', 'cruce': 'limite 1/2; cruce+lado 3/4; cruce 23/28; lado+limite 1/1', 'con_camino': 3189, 'sin_via': 81, 'tramos_con_recorrido': 258, 'tramos': 317, 'caminos_alternativos': 9, 'mediana_dos': 61, 'con_paralela': 943, 'en_enlace': 34, 'sospechosos': [], 'dos_sentidos': 310, 'limites_via': 696, 'limites_quitados': 5, 'segundos': 89}
