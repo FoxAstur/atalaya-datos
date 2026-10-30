@@ -676,7 +676,7 @@ def fuente_madrid() -> list[dict]:
 # direcciones y salían en el centro de la avenida (a 300-500 m) o en otra provincia ("Hermanos Machado" →
 # Badajoz).
 VALENCIA = [  # el orden fija el id (vlc:0, vlc:1…): lo nuevo, al final
-    {"n": "Avinguda dels Germans Machado (Vicent Canet), entrada a València", "la": 39.501516, "lo": -0.390876, "rb": 141},
+    {"n": "Avinguda dels Germans Machado (a la altura de Vicent Canet), entrada a València", "la": 39.501666, "lo": -0.390636, "rb": 141},
     {"n": "Avinguda d'Antonio Ferrandis (Camí del Pou d'Aparisi)", "la": 39.451319, "lo": -0.356371, "rb": 61},
     {"n": "Camí Nou de Picanya, 49", "la": 39.454433, "lo": -0.406758, "rb": 46},
     {"n": "Avinguda de Fernando Abril Martorell (Carrera de Malilla)", "la": 39.445464, "lo": -0.379314, "rb": 277},
