@@ -743,6 +743,57 @@ def fuente_valencia(geo: Geocodificador | None = None) -> list[dict]:
     return salida
 
 
+CAMARAS_OPL = "red/camaras.opl"   # cámaras de OSM sacadas del extracto semanal de Geofabrik (recolectar.yml)
+
+
+def opl_a_overpass(ruta: str) -> dict:
+    """
+    Las cámaras del extracto de Geofabrik (formato OPL de osmium) con la forma de la respuesta de Overpass
+    ("out meta" para nodos, "out geom" para relaciones). Así, si Overpass falla, OSM no se queda en lo de la
+    última vez: se perdían el sentido heredado de OSM y salían 120 radares más "en los dos sentidos".
+    """
+    def tags(t):
+        out = {}
+        for kv in t.split(",") if t else []:
+            if "=" in kv:
+                k, v = kv.split("=", 1)
+                out[desopl(k)] = desopl(v)
+        return out
+    nodos, vias, rels = {}, {}, []
+    for linea in open(ruta, encoding="utf-8"):
+        partes = linea.rstrip("\n").split(" ")
+        if not partes or not partes[0]:
+            continue
+        tipo, oid = partes[0][0], int(partes[0][1:])
+        campos = {x[0]: x[1:] for x in partes[1:] if x}
+        if tipo == "n" and campos.get("x"):
+            nodos[oid] = {"type": "node", "id": oid, "lat": float(campos["y"]), "lon": float(campos["x"]),
+                          "timestamp": campos.get("t", ""), "tags": tags(campos.get("T", ""))}
+        elif tipo == "w":
+            vias[oid] = [int(r[1:]) for r in campos.get("N", "").split(",") if r]
+        elif tipo == "r":
+            rels.append((oid, tags(campos.get("T", "")), campos.get("M", "")))
+    elementos = [n for n in nodos.values() if n["tags"]]
+    for oid, t, m in rels:
+        miembros = []
+        for x in m.split(",") if m else []:
+            ref, _, rol = x.partition("@")
+            k, r = ref[0], int(ref[1:])
+            if k == "n" and r in nodos:
+                miembros.append({"type": "node", "ref": r, "role": rol, "lat": nodos[r]["lat"], "lon": nodos[r]["lon"]})
+            elif k == "w" and r in vias:
+                g = [{"lat": nodos[n]["lat"], "lon": nodos[n]["lon"]} for n in vias[r] if n in nodos]
+                if g:
+                    miembros.append({"type": "way", "ref": r, "role": rol, "geometry": g})
+        elementos.append({"type": "relation", "id": oid, "tags": t, "members": miembros})
+    return {"elements": elementos}
+
+
+def desopl(s: str) -> str:
+    """OPL escapa los caracteres especiales como %xxxx% (código Unicode en hexadecimal)."""
+    return re.sub(r"%([0-9a-fA-F]+)%", lambda m: chr(int(m.group(1), 16)), s)
+
+
 def overpass(consulta: str) -> dict:
     ultimo = None
     for s in OVERPASS:
@@ -750,6 +801,9 @@ def overpass(consulta: str) -> dict:
             return json.loads(http(s, data=urllib.parse.urlencode({"data": consulta}).encode(), timeout=300, intentos=2))
         except Exception as e:  # noqa: BLE001
             ultimo = e
+    if os.path.exists(CAMARAS_OPL) and "enforcement" in consulta:
+        log(f"  Overpass no responde ({ultimo}); uso las cámaras del extracto de Geofabrik")
+        return opl_a_overpass(CAMARAS_OPL)
     raise RuntimeError(f"Overpass: {ultimo}")
 
 
