@@ -305,6 +305,9 @@ def caminar(red: Red, wi: int, i: int, t: float, paso: int, largo: float, hacia_
                 k -= 1
             if any(dist(nodo, q) < 20 for q in pts[:k]):
                 break
+        # ...o vuelve a pasar por el mismo sitio (dos vueltas a una rotonda)
+        if hacia_atras and len(pts) > 2 and any(dist(nodo, q) < 3 for q in pts[:-1]):
+            break
         pts.append(nodo)
         resto -= d
         if 0 <= idx + step < len(w.pts):
