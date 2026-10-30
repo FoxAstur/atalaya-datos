@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="ca" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mapa radars de trànsit de Catalunya: ubicació, multes i recaptació - Ara.cat</title>
+		<meta property="og:title" content="Catalunya, multa a multa, radar a radar" />
+		<meta property="og:description" content="Els radars de les carreteres catalanes han enxampat 4 milions de conductors en cinc anys per córrer massa i han ingressat 254 milions d'euros." />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Ara.cat" />
+		<meta name="keywords" content="mapa, radars, transit, ARA, diari, notícies, informació general, vídeos, fotos, imatges, blogs, català" />
+		<meta property="og:image" content="https://interactius.ara.cat/assets/antics/radars/img/social.png" />
+		<meta property="og:url" content="https://interactius.ara.cat/mapa-radars-transit-catalunya/" />
+		<meta name="description" content="Tot el que sempre has volgut saber dels radars de trànsit de Catalunya i mai no t'havies atrevit a preguntar. " />
+		<meta name="Resource-type" content="Document" />
+		<meta name="twitter:card" value="summary_large_image">
+		<meta name="twitter:site" value="@diariARA">
+		<meta name="twitter:creator" value="@diariARA">
+		<meta name="twitter:title" content="Catalunya, multa a multa, radar a radar - Ara.cat">
+		<meta name="twitter:url" content="https://interactius.ara.cat/mapa-radars-transit-catalunya/">
+		<meta name="twitter:description" content="Els radars de les carreteres catalanes han enxampat 4 milions de conductors en cinc anys per córrer massa i han ingressat 254 milions d'euros.">
+		<meta name="twitter:image:src" content="https://interactius.ara.cat/assets/antics/radars/img/social.png">
+		<link href="https://fast.fonts.net/cssapi/54ce8053-7ddb-488b-b425-55c372817038.css" rel="stylesheet" type="text/css">
+		<link href="https://interactius.ara.cat/assets/antics/radars/scss/style.css?id=211120161329" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://interactius.ara.cat/assets/antics/common/css/smoothness_jquery-ui.css?id=161120161215">
+		<link rel="icon" href="https://interactius.ara.cat/favicon.png" type="image/png">
+		<script type="text/javascript" src="https://interactius.ara.cat/assets/antics/common/js/jquery-1.11.3.min.js"></script>
+		<script src="https://interactius.ara.cat/assets/antics/common/js/jquery-ui.js"></script>
+		<script>
+		var start;
+		var i_start=0;
+		var end;
+		var i_end=0;
+		$(document).ready(function() {
+			window.onscroll = function(){
+				if($(window).scrollTop()>$(".velocitat").position().top+$(".velocitat").height()*0.4){
+					if(i_start==0){
+						console.log("start");
+						i_start=1;
+						d = new Date();
+						start = d.getTime();
+					}
+				}
+				if($(window).scrollTop()>($(".velocitat").position().top+$(".velocitat").height()*0.8)){
+					if(i_end==0){
+						i_end=1;
+						d = new Date();
+						end = d.getTime();
+						console.log(start);
+						console.log(end);
+						delay=end-start;
+						console.log(delay);
+						if(delay<5000 && delay>1){
+							$("body").addClass("flash");
+							setTimeout(function(){ $(".radarbox").show(); }, 100);
+							setTimeout(function(){ $(".radarbox").hide(); }, 3000);
+						}
+					}
+				}
+				if($(window).scrollTop()<$(".velocitat").position().top){
+					i_start=0;
+					i_end=0;
+					$("body").removeClass("flash");
+				}
+			};
+		});
+		</script>
+	</head>
+	<body>
+		<!-- Google Data Layer -->
+<script>dataLayer = [{"domain":"interactius.ara.cat","pageType":"interactiu","content":{"id":"","taxonomy":{"primary":{"name":"interactius"}},"byline":"aralabs","isBranded":false}}];</script>
+<!-- End Google Data Layer -->
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M63PMSS');</script>
+<!-- End Google Tag Manager -->
+
+	
+		<div id="header" class="blanc">
+			<div class="esq">
+				<a class="ara" href="http://www.ara.cat" target="_blank"><img width="80" height="50" src="https://interactius.ara.cat/assets/antics/common/img/ara_capblanca.png" class="logo"></a>
+			</div>
+			<div class="center titol">Radars</div>
+			<div class="dre">
+				<span>Comparteix</span>
+				<a class="wp" href="whatsapp://send?text=Catalunya, multa a multa, radar a radar http://interactius.ara.cat/mapa-radars-transit-catalunya"><img width="17" height="50" src="https://interactius.ara.cat/assets/common/img/wp_capblanca.png"></a>
+				<a class="popup tw" href="https://twitter.com/intent/tweet?url=http://interactius.ara.cat/mapa-radars-transit-catalunya&amp;text=Catalunya, multa a multa, radar a radar @diariAra &amp;lang=ca" target="_blank"><img width="15" height="50" src="https://interactius.ara.cat/assets/antics/common/img/tw_capblanca.png"></a>
+				<a class="popup fb" href="https://www.facebook.com/sharer/sharer.php?u=http://interactius.ara.cat/mapa-radars-transit-catalunya" target="_blank"><img width="8" height="50" src="https://interactius.ara.cat/assets/antics/common/img/fb_capblanca.png"></a>
+			</div>
+		</div>
+		<div class="cap">
+			<h1>
+				<span>CATALUNYA</span>
+				<div class="rw-words rw-words-1">
+					<span>RADAR A RADAR</span>
+					<span>MULTA A MULTA</span>
+				</div>
+			</h1>
+			<h2>Els radars de les carreteres catalanes han enxampat 4 milions de conductors en cinc anys per córrer massa i han ingressat 254 milions d'euros.</h2>
+			<p class="e1 autor">PER ISAAC SALVATIERRA<span>Disseny: Ricard Marfà / Programació: Idoia Longan</span></p>
+		</div>		
+		<div class="mapa">
+			<div id="map"></div>
+			<div class="infowindow">
+				<div class="filtres active">
+					<div class="entrada">
+						<p class="a3">Tots els radars de Catalunya</p>					
+					</div>
+					<div class="filtreslider">
+						<p class="a7 titol">Filtra per import recaptat <span id="importrecaptat"></span></p>
+						<div id="slider"></div>
+						<p class="a7 titol">Filtra per nombre de multes <span id="nombremultes"></span></p>
+						<div id="slider2"></div>
+						<p class="a7 titol">Filtra per velocitat màxima <span id="velocitatmax"></span></p>
+						<div id="slider3"></div>
+					</div>
+					<div class="info">
+						<p class="a4 vd"></p>
+						<p class="a5 desc"></p>
+						<div class="dades">
+							<p class="a5"></p>
+							<p class="a5"></p>
+							<p class="a5"></p>
+							<p class="a5"></p>
+						</div>
+					</div>
+					<div class="peu">
+						<p class="a6">*Clica sobre un radar per a + info</p>
+					</div>
+				</div>
+			</div>
+			<div class="llegenda">
+				<p class="e2"><span class="bullet verd"></span><span>Radars actius</span><span class="bullet vermell"></span><span>Radars inactius</span></p>
+				<p class="e3 font"><b>Font:</b> Generalitat de Catalunya i Ajuntament de Barcelona (1/6/2015 - 1/6/2016)</p>
+			</div>	
+		</div>
+		<div class="velocitat">
+			<div class="text">
+				<p>Els radars de trànsit escampats per les carreteres catalanes han multat en 5 anys 4 milions de conductors per excés de velocitat. En total, han ingressat 253,7 milions d'euros en multes. Això és més que tot el pressupost que la Generalitat destina en un any al foment de l'activitat econòmica, que inclou turisme, consum i indústria. Els radars, temuts pels conductors, vistos com una eina recaptatòria de l'administració, registren, minut a minut, una evidència: es corre massa a la carretera. De mitjana, cada dia 2.245 conductors són sancionats per prémer massa l'accelerador. Les dades surten dels 233 cinemòmetres fixos i mòbils del Servei Català de Trànsit i els 13 de l'Ajuntament de Barcelona. «Tenim l'obligació de protegir els ciutadans», adverteix la directora de Trànsit, Eugenia Doménech. «No podem permetre que per les carreteres hi hagi vehicles que posen en risc els altres conductors.» I ho arrodoneix amb aquest exemple: «Imaginem-nos que anéssim pel carrer i hi hagués tot de persones donant cops a la resta de vianants. Socialment, no podem permetre que això passi».</p>
+				<p class="destacat">De mitjana, cada dia 2.245 conductors són sancionats</p>
+				<p>El mapa interactiu que acompanya aquesta notícia permet veure on estan situats tots els radars que gestiona la Generalitat i l'Ajuntament de Barcelona amb el punt quilomètric exacte damunt el mapa, quantes sancions s'han posat en l'últim any i l'import facturat. Les dades corresponen al període que va de l'1 de juny del 2015 a l'1 de juny del 2016. En un any, la Generalitat ha ingressat 34,8 milions d'euros. És tot el pressupost que el Govern va destinar el 2015 a promocionar el català. En total, l'Ajuntament de Barcelona ha ingressat 7,1 milions. L'import mitjà de la multa és de 52 euros. L'equip d'Ara Data n’ha obtingut les dades per una petició d'accés a la informació pública prevista a la llei de la transparència. Fins ara, els governs de la Generalitat i de la capital catalana s'havien negat a publicar-ne la informació completa.</p>
+			</div>
+			<div class="imatge">
+				<img src="https://interactius.ara.cat/assets/antics/radars/img/f1.jpg" width="100%" alt="" />
+				<span class="e3 font fontimatge">Radar a l'AP-7 a l'alçada de L'Ametlla de Mar. Tjerk van der Meulen</span>
+			</div>
+			<div class="text">
+				<p class="titolet">Trànsit: sempre hi ha una ‘justificació tècnica’</p>
+				<p>Els radars formen part de l'estratègia de la Generalitat per lluitar contra els accidents. La instal·lació de cada radar té una «justificació tècnica» i la seva eficàcia, asseguren els responsables de Trànsit, està comprovada: la velocitat dels trams on hi ha un radar baixa uns 10 km/h de mitjana. Això ajuda a fer que es redueixin els accidents. Dos exemples: després d'instal·lar-hi un radar fix, el punt negre del quilòmetre 15 de la C-58 a Terrassa va passar de 6 accidents amb morts o ferits greus el 2003 a 1 l'any 2015. A la N-II a Sant Pol de Mar, es va passar de 7 sinistres a 1 entre el 2001 i el 2015.</p>
+				<p class="destacat">Catalunya té 27 radars per cada milió d'habitants, Suècia en té 123, i la Gran Bretanya, 92</p>
+				<p>Però, al marge dels accidents que eviten, hi ha radars que són màquines de posar multes. En aquests cinc anys, cada cinemòmetre ha recaptat de mitjana més d'1 milió d'euros. Només el radar de la C-31 a Castell Platja d'Aro ha facturat 12,7 milions (192.066 multes), més del doble que el segon del rànquing, el de Caldes de Malavella a la C-35, amb 6,7 milions d'euros recaptats (100.281 multes). Els quatre primers radars que més diners ingressen de la xarxa viària catalana sumen 30,4 milions d'euros dels 218,2 totals.</p>
+				<p class="a8 titolgrafic">Els radars que més multen (fora de Barcelona)</p>
+				<div id='g-multes-_1_-box' class='ai2html'>
+					<!-- Generated by ai2html v0.61 - 2016-11-15 - 15:59 -->
+					<!-- ai file: multes-(1) -->
+					<!-- Artboard: Mesa_de_trabajo_1 -->
+					<div id='g-multes-_1_-Mesa_de_trabajo_1' class='g-artboard g-artboard-v3 ' data-min-width='603'>
+						<div id='g-multes-_1_-Mesa_de_trabajo_1-graphic'>
+							<img id='g-ai0-0'
+								class='g-aiImg'
+								src='https://interactius.ara.cat/assets/antics/radars/img/multes-_1_-Mesa_de_trabajo_1.svg'
+								/>
+							<div id='g-ai0-1' class='g-Capa_1 g-aiAbs' style='top:2.1084%;left:9.0797%;'>
+								<p class='g-aiPstyle0'>&euro; recaptats l&rsquo;últim any</p>
+							</div>
+							<div id='g-ai0-2' class='g-Capa_1 g-aiAbs' style='top:2.1084%;left:54.602%;'>
+								<p class='g-aiPstyle0'>&euro; recaptats els últims 5 anys</p>
+							</div>
+							<div id='g-ai0-3' class='g-Capa_1 g-aiAbs' style='top:11.8976%;left:0.0829%;'>
+								<p class='g-aiPstyle1'>C-31 // Castell-Platja d'Aro</p>
+							</div>
+							<div id='g-ai0-4' class='g-Capa_1 g-aiAbs' style='top:24.3976%;left:7.2281%;'>
+								<p class='g-aiPstyle2'>1.191.830 &euro;</p>
+							</div>
+							<div id='g-ai0-5' class='g-Capa_1 g-aiAbs' style='top:24.3976%;right:21.1028%;'>
+								<p class='g-aiPstyle3'>12.781.151</p>
+							</div>
+							<div id='g-ai0-6' class='g-Capa_1 g-aiAbs' style='top:27.4096%;left:7.2281%;'>
+								<p class='g-aiPstyle4'>26.678 multes</p>
+							</div>
+							<div id='g-ai0-7' class='g-Capa_1 g-aiAbs' style='top:27.4096%;right:21.1028%;'>
+								<p class='g-aiPstyle5'>192.066</p>
+							</div>
+							<div id='g-ai0-8' class='g-Capa_1 g-aiAbs' style='top:35.241%;left:0.0829%;'>
+								<p class='g-aiPstyle1'>C-35 // Caldes de Malavella</p>
+							</div>
+							<div id='g-ai0-9' class='g-Capa_1 g-aiAbs' style='top:47.741%;left:4.4601%;'>
+								<p class='g-aiPstyle2'>770.430</p>
+							</div>
+							<div id='g-ai0-10' class='g-Capa_1 g-aiAbs' style='top:47.741%;left:41.4306%;'>
+								<p class='g-aiPstyle2'>6.733.636</p>
+							</div>
+							<div id='g-ai0-11' class='g-Capa_1 g-aiAbs' style='top:50.6024%;left:4.4601%;'>
+								<p class='g-aiPstyle4'>17.941</p>
+							</div>
+							<div id='g-ai0-12' class='g-Capa_1 g-aiAbs' style='top:50.6024%;left:41.4306%;'>
+								<p class='g-aiPstyle4'>100.281</p>
+							</div>
+							<div id='g-ai0-13' class='g-Capa_1 g-aiAbs' style='top:58.5843%;left:0.0829%;'>
+								<p class='g-aiPstyle6'>C-245 // Gavà</p>
+							</div>
+							<div id='g-ai0-14' class='g-Capa_1 g-aiAbs' style='top:71.0843%;left:2.725%;'>
+								<p class='g-aiPstyle2'>513.720</p>
+							</div>
+							<div id='g-ai0-15' class='g-Capa_1 g-aiAbs' style='top:71.0843%;left:33.6651%;'>
+								<p class='g-aiPstyle2'>5.452.120</p>
+							</div>
+							<div id='g-ai0-16' class='g-Capa_1 g-aiAbs' style='top:74.0964%;left:2.725%;'>
+								<p class='g-aiPstyle4'>4.804</p>
+							</div>
+							<div id='g-ai0-17' class='g-Capa_1 g-aiAbs' style='top:74.0964%;left:33.6651%;'>
+								<p class='g-aiPstyle4'>35.864</p>
+							</div>
+							<div id='g-ai0-18' class='g-Capa_1 g-aiAbs' style='top:81.9277%;left:0.0829%;'>
+								<p class='g-aiPstyle1'>AP-7 // Ametlla de Mar</p>
+							</div>
+							<div id='g-ai0-19' class='g-Capa_1 g-aiAbs' style='top:94.5783%;left:6.815%;'>
+								<p class='g-aiPstyle2'>1.121.700</p>
+							</div>
+							<div id='g-ai0-20' class='g-Capa_1 g-aiAbs' style='top:94.5783%;left:33.252%;'>
+								<p class='g-aiPstyle2'>5.399.633</p>
+							</div>
+							<div id='g-ai0-21' class='g-Capa_1 g-aiAbs' style='top:97.4398%;left:6.815%;'>
+								<p class='g-aiPstyle4'>24.011</p>
+							</div>
+							<div id='g-ai0-22' class='g-Capa_1 g-aiAbs' style='top:97.4398%;left:33.252%;'>
+								<p class='g-aiPstyle4'>78.585</p>
+							</div>
+						</div>
+					</div>
+					<!-- End ai2html - 2016-11-15 - 15:59 -->
+				</div>
+				<p class="e3 font fontgrafic"><b>Font:</b> Generalitat de Catalunya i Ajuntament de Barcelona (1/6/2015 - 1/6/2016)</p>
+				<p class="titolet">La gallina dels ous d'or de Barcelona</p>
+				<p>A Barcelona, la concentració és encara més gran. Només tres radars posen el 57% de les multes. Els conductors els coneixen bé: estan situats a l'entrada de la ciutat i obliguen a prémer el fre de cop per adaptar la velocitat als 50 km/h màxims permesos a la via urbana. Són la gallina dels ous d'or de l'Ajuntament. El radar de la Gran Via –a l'entrada per la C-31, des del Besòs– va posar 46.889 sancions entre l'1 de juny del 2015 i l'1 de juny del 2016. El de l'entrada de la Diagonal per la banda Llobregat (la B-23), 31.202 multes. Tanca el pòdium el radar del principi de la Meridiana venint pel Vallès, amb 26.951 sancions. L'Ajuntament no ha informat de quants diners ha recaptat cada radar. De mitjana cada un dels 13 radars de Barcelona factura 546.280 euros l'any.</p>
+				<p class="a8 titolgrafic">Els 3 radars que més multen de Barcelona</p>
+
+				<div id='g-multesbcn-_1_-box' class='ai2html'>
+					<div id='g-multesbcn-_1_-Mesa_de_trabajo_1_2' class='g-artboard g-artboard-v3 ' data-min-width='603'>
+						<div id='g-multesbcn-_1_-Mesa_de_trabajo_1_2-graphic'>
+							<img id='g-ai0-0'
+								class='g-aiImg'
+								src='https://interactius.ara.cat/assets/antics/radars/img/multesbcn-_1_-Mesa_de_trabajo_1_2.svg'
+								/>
+							<div id='g-ai0-1' class='g-Capa_1 g-aiAbs' style='top:-0.1639%;left:0.0829%;'>
+								<p class='g-aiPstyle0'>Gran Via, 921  <span>(A)</span></p>
+							</div>
+							<div id='g-ai0-2' class='g-Capa_1 g-aiAbs' style='top:13.4426%;right:22.3647%;'>
+								<p class='g-aiPstyle1'>46.889 multes</p>
+							</div>
+							<div id='g-ai0-3' class='g-Capa_1 g-aiAbs' style='top:21.9672%;left:0.0829%;'>
+								<p class='g-aiPstyle0'>Av. Diagonal, 671  <span>(B)</span></p>
+							</div>
+							<div id='g-ai0-4' class='g-Capa_1 g-aiAbs' style='top:27.8689%;right:5.8514%;'>
+								<p class='g-aiPstyle2'>C</p>
+							</div>
+							<div id='g-ai0-5' class='g-Capa_1 g-aiAbs' style='top:30.8197%;right:19.0713%;'>
+								<p class='g-aiPstyle3'>Glòries</p>
+							</div>
+							<div id='g-ai0-6' class='g-Capa_1 g-aiAbs' style='top:35.5738%;right:48.3798%;'>
+								<p class='g-aiPstyle1'>31.202</p>
+							</div>
+							<div id='g-ai0-7' class='g-Capa_1 g-aiAbs' style='top:42.2951%;right:2.7363%;'>
+								<p class='g-aiPstyle2'>A</p>
+							</div>
+							<div id='g-ai0-8' class='g-Capa_1 g-aiAbs' style='top:44.0984%;left:0.0829%;'>
+								<p class='g-aiPstyle0'>Av. Meridiana, 563  <span>(C)</span></p>
+							</div>
+							<div id='g-ai0-9' class='g-Capa_1 g-aiAbs' style='top:48.3607%;right:21.4475%;'>
+								<p class='g-aiPstyle2'>B</p>
+							</div>
+							<div id='g-ai0-10' class='g-Capa_1 g-aiAbs' style='top:57.8689%;right:55.4296%;'>
+								<p class='g-aiPstyle1'>26.951</p>
+							</div>
+							<div id='g-ai0-11' class='g-Capa_1 g-aiAbs' style='top:64.4262%;right:0.1657%;'>
+								<p class='g-aiPstyle4'>Barcelona</p>
+							</div>
+							<div id='g-ai0-12' class='g-Capa_1 g-aiAbs' style='top:70.1639%;right:0.3317%;'>
+								<p class='g-aiPstyle5'>*<span class="vd">El 1r fora de BCN</span> - AP-7 // Amposta - <span class="vd">44.011 multes</span></p>
+							</div>
+						</div>
+					</div>
+				</div>			
+				<div class="textgrafic">	
+					<p class="a5"><span>Aquests 3 radars posen </span><span>el <span class="vd">57%</span> de les multes de BCN</span></p>
+					<p class="a5"><span>Els 10 radars restants posen</span><span> el <span class="vd">43%</span> de les multes</span></p>
+					<p class="a5"><span>[ Total multes: <span class="vd">185.190</span> ]</span></p>
+				</div>
+				<p class="a8 titolgrafic">€ recaptats a Barcelona (total radars)</p>
+				<div id='g-multesbcn2-_2_-box' class='ai2html'>
+					<div id='g-multesbcn2-_2_-Mesa_de_trabajo_1' class='g-artboard g-artboard-v3 ' data-min-width='603'>
+						<div id='g-multesbcn2-_2_-Mesa_de_trabajo_1-graphic'>
+							<img id='g-ai0-0'
+								class='g-aiImg'
+								src='https://interactius.ara.cat/assets/antics/radars/img/multesbcn2-_2_-Mesa_de_trabajo_1.svg'
+								/>
+							<div id='g-ai0-1' class='g-Capa_1 g-aiAbs' style='top:55.7987%;right:0.1658%;'>
+								<p class='g-aiPstyle0'>34.880.843 &euro;</p>
+							</div>
+							<div id='g-ai0-2' class='g-Capa_1 g-aiAbs' style='top:55.7987%;right:79.8061%;'>
+								<p class='g-aiPstyle0'>7.101.650 &euro;</p>
+							</div>
+							<div id='g-ai0-3' class='g-Capa_1 g-aiAbs' style='top:75.1136%;right:0.1658%;'>
+								<p class='g-aiPstyle1'>(Total fora de BCN)</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p class="e3 font fontgrafic"><b>Font:</b> Generalitat de Catalunya i Ajuntament de Barcelona (1/6/2015 - 1/6/2016)</p>
+				<p class="titolet">Trampa per a turistes</p>
+				<p>Els radars que més multes posen són els que acostumen a agafar desprevinguts els conductors. Sempre hi ha un senyal que avisa, però no és el mateix un radar situat en una zona turística que un altre on la majoria de vehicles hi passen cada dia. El radar de la C-31 a Castell Platja d'Aro o el de la N-II a Sant Pol de Mar en són dos exemples. Sovint acaben sent trampes per a estiuejants. En general, els radars de les carreteres de la costa multen més. Els nous radars també sorprenen. El de l'AP-7 a Amposta, instal·lat el 2015, ha facturat 2,4 milions d'euros en només un any. La directora de Trànsit nega que hi hagi cap interès recaptatori. «Som conscients que són impopulars. Molts cops es té la percepció que la policia t'està limitant una decisió individual de llibertat, però encara hi ha massa conductors que van per sobre de la velocitat i hi hem d'insistir més», es defensa Eugenia Doménech. Alguns conductors no entenen què hi fa un radar en una recta. «És molt senzill –aclareix la directora de Trànsit–: sovint has de limitar abans la velocitat perquè ve una corba al final de la recta».</p>
+				<p class="destacat">Els infractors financen les campanyes de trànsit: la llei obliga que els diners ingressats per les multes es destinin a polítiques de prevenció</p>
+				<p>Catalunya té 27 radars per cada milió d'habitants. La xifra supera la ràtio espanyola però està molt per sota dels països capdavanters en la lluita contra els accidents de trànsit. A Suècia hi ha 123 radars per cada milió d'habitants. A la Gran Bretanya, 92, i a Holanda, 71. Hi ha un aspecte poc conegut que és on van a parar els diners recaptats amb els radars. La llei obliga a destinar tots els diners a campanyes de Trànsit. Té molta lògica: són els mateixos infractors els que financen les polítiques de prevenció d'accidents.</p>		
+				<p class="titolet">S'estanca la reducció d'accidents</p>
+				<p>Els accidents a la carretera amb morts i ferits greus es van reduir de manera dràstica entre el 2000 i el 2010 gràcies a un seguit de mesures impulsades pel govern espanyol i català, entre les quals destaca el carnet per punts. Els radars han tingut a veure en aquest descens. Córrer augmenta el risc de tenir un accident i, quan no n'és la causa directa, també fa que les conseqüències siguin més grans. En condicions normals, un conductor triga un segon a prémer el fre. En funció de la velocitat a què vagi el vehicle, l'espai que recorrerà serà més gran. A 120 km/h, la distància de frenada pot ser de 90 metres, gairebé un camp de futbol. Entre el 2005 i el 2015, la velocitat mitjana de les autopistes va baixar de 120 a 104 km/h.</p>
+				<p>Però la reducció de la sinistralitat s'ha estancat. L'any passat els accidents amb morts <a class="extern" href="http://transit.gencat.cat/web/.content/documents/seguretat_viaria/anuari_2015_cat.pdf" target="_blank">van augmentar un 7%</a>. En part, per l'increment de les distraccions, com mirar el mòbil o enviar missatges en marxa. «S'ha notat un canvi cultural i podem dir que es corre menys que fa vint anys, però no ens podem relaxar, si ens volem equiparar amb els països amb menys víctimes d'Europa, encara hem de prendre més consciència», explica la directora de Trànsit.</p>
+			</div>
+			<div class="imatge">
+				<img src="https://interactius.ara.cat/assets/antics/radars/img/f2.jpg" width="100%" alt="" />
+				<span class="e3 font fontimatge">L'any passat els accidents amb morts van augmentar un 7%. En part, per l'increment de les distraccions, com mirar el mòbil o enviar missatges en marxa. Manolo Garcia</span>
+			</div>
+			<div class="text">
+				<p class="titolet">Aprendre a córrer menys: el radar per tram</p>
+				<p>El primer cinemòmetre es va instal·lar l'any 2001 a l'autovia de Castelldefels. A partir del 2004 es crea el pla integral de velocitat excessiva, que és el que fixa periòdicament on han d'estar instal·lats tots els radars. La nova generació de radars és el radar per tram. Davant la picaresca de molts conductors de frenar el cotxe just abans de passar per un radar per evitar la multa i tornar a accelerar després, l'any 2010 Trànsit va implantar un nou sistema. El funcionament és senzill. S'instal·len dos aparells en dos punts diferents de la via. El sistema registra la velocitat mitjana de cada vehicle i si quan passa pel segon punt ha superat la màxima permesa, se'l sanciona. El nou radar per tram de l'AP-7 a Amposta ocupa el segon lloc del rànquing del 2015, amb 44.011 multes, per darrere del de la Gran Via de Barcelona. L'objectiu és provocar un canvi cultural als conductors: aprendre a moderar la velocitat en trams llargs i no només als punts on hi ha perill.</p>
+				<p>El radar per tram ja és una mesura prioritària en la lluita contra els accidents. Trànsit està enllestint la instal·lació de 8 radars per tram abans d'acabar l'any. En total, n'hi haurà 21. Cada radar per tram posa de mitjana gairebé 13.000 multes anuals. Els radars fixos posen de mitjana 7.100 multes.</p>
+				<p class="titolet">74 caixes buides que no multen</p>
+				<p>El llistat de facturació, radar per radar, constata l'existència de 74 radars fixos inactius, que en l'últim any no havien posat cap multa. Són caixes buides, senyalitzades com un radar, i que compleixen amb la funció dissuasiva perquè els conductors redueixen la velocitat, però que en realitat no posen sancions. Trànsit ho justifica dient que gràcies a aquestes cabines buides poden anar fent rotar els cinemòmetres. </p>
+				<p class="destacat">A la xarxa viària hi ha 74 caixes buides amb radars que no multen</p>
+				<p>A banda de la xarxa de radars fixos, els Mossos instal·len cada dia cinemòmetres mòbils a diferents punts per «fer accions quirúrgiques al lloc i al moment concrets». Des del 2015, els radars mòbils també estan senyalitzats i la seva ubicació exacta es pot descarregar a la <a class="extern" href="http://transit.gencat.cat/ca/seguretat_viaria/cinemometre_fixos_mobils_catalunya/" target="_blank">pàgina de Trànsit</a>. L'últim any, els radars mòbils del Servei Català de Trànsit han posat 73.000 multes i han ingressat 6,9 milions d'euros.</p>
+				
+				<p class="botons_xarxes">
+					<a class="tw" href="https://twitter.com/intent/tweet?url=http://interactius.ara.cat/mapa-radars-transit-catalunya&amp;text=Catalunya, multa a multa, radar a radar @diariAra &amp;lang=ca" target="_blank">Comparteix a Twitter</a>
+					<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u=http://interactius.ara.cat/mapa-radars-transit-catalunya" target="_blank">Comparteix a Facebook</a>
+				</p>
+
+			</div>
+		</div>
+		<div class="nota"><p class="e3"><span>Nota:</span> Ara Data ha tingut accés, via llei de transparència, a la recaptació total dels últims 5 anys de tots els radars gestionats pel Servei Català de Trànsit. El llistat només identifica codis d'antenes i és impossible saber a quin radar correspon cada registre. Posteriorment el Servei Català de Trànsit va facilitar la llista, radar per radar, de multes i recaptació corresponent a l'últim any. Esgotat el termini legal de resposta de la petició d'accés a la informació pública, l'Ajuntament de Barcelona només ha facilitat el punt quilomètric dels radars gestionats pel consistori. Al marge de la petició de transparència prevista per la llei, via departament de Premsa l'àrea de Mobilitat ha facilitat el nombre d'expedients, radar per radar, però la d'Hisenda no ha desglossat la recaptació. La xifra total de diners ingressats pels radars catalans en 5 anys s'ha fet sumant la recaptació dels radars del SCT (218,2 milions) més una estimació dels de Barcelona, ja que només es disposa de la dada de l'últim any (7,1 milions).</p></div>
+		<div class="radarbox">
+			<p>Vigila!</p>
+			<p>Has baixat tan de pressa que has fet saltar el radar!</p>
+			<p>;)</p>
+		</div>
+		<script type="text/javascript" src="https://interactius.ara.cat/assets/antics/radars/js/mapa.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.37&key=AIzaSyA2F59mMU8LgDwRiWIn_dstQu96Mc6VJ3A&libraries=places&callback=initMap"></script>
+	</body>

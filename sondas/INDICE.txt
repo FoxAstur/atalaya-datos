@@ -5,3 +5,10 @@ https://analisi.transparenciacatalunya.cat/resource/re3y-fftf.json?$limit=5 -> 4
 https://nap.transportes.gob.es/Files/List -> 404 0 
 https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets?where=search(%22radar%22)&limit=20 -> 404 188436 text/html
 https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_search?q=radar&rows=20 -> 200 52999 application/json;charset=utf-8
+https://transit.gencat.cat/ca/seguretat_viaria/cinemometres-fixos-trams-mobils/ -> 200 403032 text/html;charset=UTF-8
+https://interactius.ara.cat/mapa-radars-transit-catalunya -> 200 28200 text/html; charset=UTF-8
+https://infotransit.blog.gencat.cat/tag/radars/ -> 429 1168 text/html
+https://gastrodesvio.com/radares/comunidad/cataluna -> 200 191815 text/html; charset=utf-8
+https://gastrodesvio.com/radares -> 200 538795 text/html; charset=utf-8
+https://ide.aytosalamanca.es/geoserver/ide_salamanca_tic/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_salamanca_tic%3ARadares_Fijos&outputFormat=application%2Fjson&srsName=EPSG%3A4326 -> 200 6615 application/json;charset=UTF-8
+https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?where=1%3D1&outFields=*&outSR=4326&f=geojson -> 200 2243 application/geo+json; charset=UTF-8
