@@ -364,6 +364,41 @@ class Geocodificador:
         self.nuevas += 1
         return res
 
+    def lugar(self, texto: str, cerca: tuple):
+        """
+        Un pueblo o ciudad ("hacia IRUN"), el más cercano a `cerca` de los que se llaman así. El buscador de
+        direcciones daba cualquier calle con ese nombre (Irun en Álava, Donostia en La Rioja, San Sebastián en
+        Madrid), y con eso el sentido salía al revés.
+        """
+        mejor = None
+        partes = [texto] + [x.strip() for x in re.split(r"\s+-\s+|/", texto) if x.strip() and x.strip() != texto]
+        for nombre in partes:
+            clave = f"lugar|{normalizar(nombre)}"
+            if clave not in self.cache:
+                cands = []
+                try:
+                    cands = http_json(f"{CARTO_CAND}?{urllib.parse.urlencode({'q': nombre, 'limit': 20})}",
+                                      timeout=40, intentos=2) or []
+                except Exception:  # noqa: BLE001
+                    pass
+                obj = normalizar(nombre)
+                opciones = []
+                for c in cands if isinstance(cands, list) else []:
+                    tipo = normalizar(str(c.get("type") or ""))
+                    if c.get("lat") is None or c.get("lng") is None:
+                        continue
+                    if tipo in ("municipio", "poblacion") or normalizar(str(c.get("address") or "")) == obj:
+                        opciones.append([float(c["lat"]), float(c["lng"])])
+                self.cache[clave] = opciones
+                self.nuevas += 1
+            for c in self.cache[clave] or []:
+                d = distancia(c[0], c[1], *cerca)
+                if mejor is None or d < mejor[0]:
+                    mejor = (d, c)
+            if mejor:
+                break
+        return mejor[1] if mejor and mejor[0] < 120_000 else None
+
     def guardar(self):
         guardar_json(CACHE_GEO, self.cache)
 
@@ -1824,16 +1859,19 @@ def main() -> int:
         log(f"rumbos: ERROR {e}")
     # "hacia Vitoria", "hacia Logroño": la ciudad a la que va el tráfico que vigila el radar
     hacia = 0
+    muestras = []
     for p in todos:
         txt = p.pop("_hacia_txt", None)
         if txt and p.get("rb") is None:
-            c = geo.direccion(txt.title() + ", España")
-            # (a menos de 150 km: un pueblo con el nombre repetido en otra provincia daría el sentido al azar)
-            if c and 3000 < distancia(c[0], c[1], p["la"], p["lo"]) < 150_000:
+            c = geo.lugar(txt.title(), (p["la"], p["lo"]))
+            # (a más de 1,2 km: si el radar ya está en el pueblo, "hacia" no dice nada)
+            if c and 1200 < distancia(c[0], c[1], p["la"], p["lo"]):
                 p["_hacia"] = c
                 hacia += 1
+                if hacia <= 8:
+                    muestras.append(f"{txt} → {c[0]:.3f},{c[1]:.3f} ({distancia(c[0], c[1], p['la'], p['lo']) / 1000:.0f} km)")
     geo.guardar()
-    log(f"sentido hacia una ciudad: {hacia} puntos")
+    log(f"sentido hacia una ciudad: {hacia} puntos; {muestras}")
     try:
         r = segunda_opinion_sentidos(todos)
         estado["Sentido de los radares DGT (segunda opinión)"] = r

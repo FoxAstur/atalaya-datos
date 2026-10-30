@@ -922,8 +922,10 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
             pasos = sentidos(red, wi, i, p.get("rb"), p)
             if len(pasos) == 2:
                 stats["dos_sentidos"] += 1
-                if p["t"] != "ZONA_MOVIL":
-                    p["s2"] = 1   # se avisa en los dos sentidos porque no se sabe cuál vigila
+                # se avisa en los dos sentidos porque no se sabe cuál vigila; si la fuente dice que vigila los
+                # dos ("Ambos"), no hay duda y no se dice "puede ser del otro sentido"
+                if p["t"] != "ZONA_MOVIL" and p.get("s") != "Ambos":
+                    p["s2"] = 1
         # el límite deducido (no el del propio radar) se toma de la vía en la que está, no de la más cercana
         if p["t"] == "RADAR_FIJO" and (p.get("vo") == 1 or "v" not in p) and red.con_limites:
             lim = limite_de_via(red, wi, i, pasos, p)
