@@ -335,6 +335,16 @@ def caminar(red: Red, wi: int, i: int, t: float, paso: int, largo: float, hacia_
     return (pts, llegado) if objetivo is not None else pts
 
 
+def llegada(a) -> float:
+    """Rumbo con el que un camino plano (lat,lon,…) llega a su punto (últimos ~40 m)."""
+    n = len(a) // 2
+    fin = (a[-2], a[-1])
+    k = n - 2
+    while k > 0 and dist((a[2 * k], a[2 * k + 1]), fin) < 40:
+        k -= 1
+    return rumbo((a[2 * k], a[2 * k + 1]), fin)
+
+
 def longitud(pts):
     return sum(dist(pts[i], pts[i + 1]) for i in range(len(pts) - 1))
 
@@ -976,6 +986,28 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
                 if aps:
                     stats["caminos_alternativos"] += 1
                     break
+        # Con sentido conocido, el camino tiene que llegar en ese sentido. Si llega al revés, el punto se ha
+        # encajado en la calzada de enfrente (autovía, avenida con mediana): se busca la suya a menos de 60 m.
+        rb = p.get("rb")
+        if rb is not None and aps and p["t"] != "ZONA_MOVIL" and p["t"] != "RADAR_TRAMO":
+            buenos = [a for a in aps if dif(llegada(a), rb) <= 90]
+            if not buenos:
+                for d0, tj, wj, j in sorted(red.cercanos((p["la"], p["lo"]), 60.0)):
+                    o = red.vias[wj]
+                    fb = rumbo(o.pts[j], o.pts[j + 1])
+                    paso = 1 if dif(rb, fb) <= 60 else -1 if dif(rb, (fb + 180) % 360) <= 60 else 0
+                    if paso == 0 or not se_puede(o, paso):
+                        continue
+                    camino = caminar(red, wj, j, tj, paso, largo, True, solo_enlace=o.tipo.endswith("_link"))
+                    if len(camino) >= 2 and longitud(camino) > 60:
+                        buenos = [plano(simplificar(list(reversed(camino))))]
+                        break
+                stats["calzada_corregida" if buenos else "sin_calzada_de_su_sentido"] = \
+                    stats.get("calzada_corregida" if buenos else "sin_calzada_de_su_sentido", 0) + 1
+            if buenos:
+                aps = buenos
+            else:
+                p["s2"] = 1   # su vía y su sentido no casan: se avisa por donde está, diciendo que puede no ser
         if aps:
             p["ap"] = aps
             stats["con_camino"] += 1
