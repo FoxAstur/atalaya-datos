@@ -1,0 +1,42 @@
+name: Sondear fuentes
+
+# Descarga unas cuantas páginas y APIs para ver qué traen (sentido de los radares, etc.) y las sube a sondas/.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "URLs separadas por espacios"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar
+  cancel-in-progress: false
+
+jobs:
+  sondear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar
+        run: |
+          mkdir -p sondas
+          i=0
+          for u in ${{ inputs.urls }}; do
+            i=$((i+1))
+            f="sondas/$(printf %02d $i)_$(echo "$u" | sed 's#https\?://##; s#[^A-Za-z0-9._-]#_#g' | cut -c1-80)"
+            code=$(curl -sSL -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36" \
+              --max-time 60 -o "$f" -w "%{http_code} %{size_download} %{content_type}" "$u" || echo "ERR")
+            echo "$u -> $code" | tee -a sondas/INDICE.txt
+          done
+          ls -la sondas
+      - name: Publicar
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add -f sondas
+          git commit -m "Sondas de fuentes" || exit 0
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
