@@ -338,6 +338,38 @@ def caminar(red: Red, wi: int, i: int, t: float, paso: int, largo: float, hacia_
 RAMAS_CIUDAD_M = 250.0       # hasta dónde (hacia atrás) se miran los cruces por los que también se llega
 RAMAS_CARRETERA_M = 400.0
 MAX_RAMAS = 6
+RAMA_LARGO_CIUDAD_M = 500.0     # largo total (rama + tramo común) de un camino por rama
+RAMA_LARGO_CARRETERA_M = 900.0
+
+
+def recortar_rama(atras: list, camino: list, acum: float) -> list:
+    """
+    Corta la rama (recorrida hacia atrás desde el cruce) donde vuelve a pasar por el camino principal o por
+    ella misma: en una rotonda la rama da la vuelta y acaba encima del camino, y la app, con dos caminos del
+    mismo punto en el mismo sitio, decía la distancia del más corto.
+    """
+    cum = [0.0]
+    for m in range(1, len(camino)):
+        cum.append(cum[-1] + dist(camino[m - 1], camino[m]))
+    hecho = 0.0
+    for n in range(1, len(atras)):
+        hecho += dist(atras[n - 1], atras[n])
+        if hecho < 15:
+            continue
+        q = atras[n]
+        # encima del camino principal y a otra distancia del punto (una rampa que va pegada a la autovía,
+        # a la misma distancia, no molesta)
+        for m in range(len(camino) - 1):
+            d, t = proyectar(q, camino[m], camino[m + 1])
+            if d < 12 and abs(cum[m] + t * (cum[m + 1] - cum[m]) - (acum + hecho)) > 40:
+                return atras[:n]
+        previo, k = 0.0, n - 1
+        while k > 0 and previo < 30:
+            previo += dist(atras[k], atras[k - 1])
+            k -= 1
+        if any(dist(q, atras[m]) < 8 for m in range(k)):
+            return atras[:n]
+    return atras
 
 
 def ramas(red: Red, camino: list, largo: float, interurbana: bool, solo_enlace: bool = False) -> list:
@@ -351,6 +383,8 @@ def ramas(red: Red, camino: list, largo: float, interurbana: bool, solo_enlace: 
     if solo_enlace or len(camino) < 2:
         return []
     tope = RAMAS_CARRETERA_M if interurbana else RAMAS_CIUDAD_M
+    # hasta dónde se avisa por una rama: más lejos, quien va por esa calle tiene más ocasiones de no ir al radar
+    tope_rama = RAMA_LARGO_CARRETERA_M if interurbana else RAMA_LARGO_CIUDAD_M
     salida, vistas = [], set()
     acum = 0.0
     for j in range(1, len(camino)):
@@ -393,7 +427,7 @@ def ramas(red: Red, camino: list, largo: float, interurbana: bool, solo_enlace: 
                     continue
                 vistas.add((wk, otro))
                 i0, t0 = (k - 1, 1.0) if paso == 1 else (k, 0.0)
-                atras = caminar(red, wk, i0, t0, paso, max(60.0, largo - acum), True)
+                atras = recortar_rama(caminar(red, wk, i0, t0, paso, max(60.0, min(largo, tope_rama) - acum), True), camino, acum)
                 if len(atras) < 2 or longitud(atras) < 40:
                     continue
                 salida.append(list(reversed(atras)) + list(reversed(camino[:j])))
@@ -1068,11 +1102,13 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
                 p.pop("v", None); p.pop("vo", None)
                 stats["limites_quitados"] += 1
         aps = []
+        principales = []   # sin las ramas: la vía paralela se mide en el camino de la propia carretera
         enlace = w.tipo.endswith("_link")
         for paso in pasos:
             camino = caminar(red, wi, i, t, paso, largo, True, solo_enlace=enlace)
             if len(camino) >= 2 and longitud(camino) > (20 if enlace else 60):
                 aps.append(plano(simplificar(list(reversed(camino)))))
+                principales.append(aps[-1])
                 if p["t"] != "ZONA_MOVIL":
                     for rama in ramas(red, camino, largo, w.tipo in INTERURBANA, enlace):
                         aps.append(plano(simplificar(rama)))
@@ -1137,7 +1173,8 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
         if aps:
             p["ap"] = aps
             stats["con_camino"] += 1
-            pl = min((x for x in (via_paralela(red, a) for a in aps) if x is not None), default=None)
+            pl = min((x for x in (via_paralela(red, a) for a in (principales if any(a in aps for a in principales) else aps))
+                      if x is not None), default=None)
             # por debajo de 8 m suelen ser carriles de giro o el trazado simplificado de la misma calle
             if pl is not None and pl >= 8:
                 p["pl"] = pl
