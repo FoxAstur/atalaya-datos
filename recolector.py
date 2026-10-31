@@ -1860,6 +1860,10 @@ def ejecutar_zbe(anterior: dict, estado: dict) -> list:
         return prev
 
 
+# Fuentes que cambian mucho de un día a otro por naturaleza (avisos semanales de radares móviles)
+FUENTES_VARIABLES = {"Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)"}
+
+
 def main() -> int:
     try:
         os.remove("datos/REGISTRO.txt")
@@ -1879,6 +1883,11 @@ def main() -> int:
             r = fn()
             if not r:
                 raise RuntimeError("sin datos")
+            # Respuesta a medias (Overpass cortado, un PDF que se lee mal…): si trae menos del 60 % de lo de la
+            # vez anterior, se toma como fallo. Antes se publicaba y el móvil perdía esos radares hasta el día siguiente.
+            prev_n = len(previos_por_fuente.get(nombre, []))
+            if prev_n >= 30 and len(r) < 0.6 * prev_n and nombre not in FUENTES_VARIABLES:
+                raise RuntimeError(f"solo {len(r)} de {prev_n}: respuesta incompleta")
             for p in r:
                 p["src"] = nombre
             estado[nombre] = f"✅ {len(r)} ({time.time() - t0:.0f}s)"
@@ -2157,6 +2166,13 @@ def main() -> int:
             # sentido, o una que vigila los dos), a los que el cálculo de rumbos ha dado el mismo sentido. Uno de los
             # dos está mal: se le da el contrario, y así queda uno en cada sentido como dice la fuente.
             gemelos = []
+            # ...y si ninguno de los dos tiene sentido (misma cabina "creciente" y "decreciente", como en el túnel
+            # de la M-111) cada uno avisaba en los mismos caminos: dos avisos en un sentido y ninguno en el otro.
+            # Se le da a uno el sentido de su camino y al otro el contrario.
+            for q, p in caminos.gemelos_sin_sentido(todos):
+                q["rb"] = round(caminos.llegada(q["ap"][0]), 1)
+                p["rb"] = round((q["rb"] + 180) % 360, 1)
+                gemelos += [q, p]
             for m, q, p in seg:
                 if m < 80 and q["t"] == p["t"] and q.get("s") in ("Creciente", "Decreciente") and \
                         p.get("s") in ("Creciente", "Decreciente") and q["s"] != p["s"] and q.get("rb") is not None \
@@ -2188,6 +2204,15 @@ def main() -> int:
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    # Freno de emergencia: si desaparece más del 15 % de los radares y cámaras de golpe, algo ha ido mal
+    # (una fuente grande caída sin datos de la vez anterior, un fallo en la fusión…): no se publica.
+    fijos = sum(1 for p in todos if p["t"] != "ZONA_MOVIL")
+    fijos_antes = sum(1 for p in anterior.get("puntos", []) if p["t"] != "ZONA_MOVIL")
+    if fijos_antes >= 1000 and fijos < 0.85 * fijos_antes:
+        estado["⛔ No publicado"] = f"solo {fijos} radares y cámaras frente a {fijos_antes} de la vez anterior"
+        log(f"NO SE PUBLICA: {fijos} frente a {fijos_antes}")
+        escribir_informe(todos, estado, anterior.get("version", ahora), zbe)
+        return 1
     # Solo se reescribe si cambia el contenido (así el móvil no descarga si no hay novedades)
     huella = json.dumps(todos, ensure_ascii=False, sort_keys=True)
     huella += json.dumps(zbe, ensure_ascii=False, sort_keys=True)

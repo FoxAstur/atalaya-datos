@@ -929,6 +929,36 @@ def seguidos(puntos: list[dict], max_m=300.0) -> list:
     return out
 
 
+def gemelos_sin_sentido(puntos: list[dict]) -> list:
+    """
+    Dos fichas oficiales en el mismo sitio (< 30 m), una "Creciente" y otra "Decreciente", y ninguna con
+    sentido conocido: una cabina por sentido (o una que vigila los dos). Sin rumbo, las dos avisan en los
+    mismos caminos. Devuelve los pares (cada punto una sola vez).
+    """
+    ps = [p for p in puntos if p.get("ap") and p.get("rb") is None and p.get("s") in ("Creciente", "Decreciente")]
+    rej: dict = {}
+    for p in ps:
+        rej.setdefault((int(p["la"] // 0.01), int(p["lo"] // 0.01)), []).append(p)
+    usados, out = set(), []
+    for q in ps:
+        if q["id"] in usados:
+            continue
+        cy, cx = int(q["la"] // 0.01), int(q["lo"] // 0.01)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for p in rej.get((cy + dy, cx + dx), ()):
+                    if p is q or p["id"] in usados or q["id"] in usados or p["t"] != q["t"] or p["s"] == q["s"]:
+                        continue
+                    if dist((p["la"], p["lo"]), (q["la"], q["lo"])) < 30:
+                        usados |= {p["id"], q["id"]}
+                        out.append((q, p))
+    return out
+
+
+def largo_plano(a) -> float:
+    return sum(dist((a[i], a[i + 1]), (a[i + 2], a[i + 3])) for i in range(0, len(a) - 2, 2))
+
+
 def quitar_viejos_repetidos(puntos: list[dict]) -> list[dict]:
     """
     Un radar de OSM sin sentido conocido que está en la misma calle y sentido que otro más fiable (oficial,
@@ -1170,6 +1200,11 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
                 aps = buenos
             else:
                 p["s2"] = 1   # su vía y su sentido no casan: se avisa por donde está, diciendo que puede no ser
+        # Camino de menos de 150 m (la red se corta, un giro que no se sabe seguir): el aviso saldría casi
+        # encima. Mejor sin camino: la app avisa entonces de lo que tiene delante en línea recta (hasta 600 m).
+        if aps and not enlace and p["t"] != "ZONA_MOVIL" and max(largo_plano(a) for a in aps) < 150:
+            stats["caminos_cortos"] = stats.get("caminos_cortos", 0) + 1
+            aps = []
         if aps:
             p["ap"] = aps
             stats["con_camino"] += 1
