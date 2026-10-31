@@ -1,0 +1,4 @@
+https://radaresavista.pt/ -> 200 74913 text/html; charset=UTF-8
+https://radaresavista.pt/concelhos/ -> 200 54078 text/html; charset=UTF-8
+https://services3.arcgis.com/ImYoiBnIj5kSaAsi/arcgis/rest/services/Semaforo_semaforo_rojo/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson -> 200 471704 application/json; charset=utf-8
+https://services1.arcgis.com/CNKqG6fp33iYgAxz/arcgis/rest/services/Radares_Fijos/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson&resultRecordCount=5 -> 200 102 application/json; charset=utf-8
