@@ -1,0 +1,1 @@
+https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A60%5D%3Bnwr%5Bamenity%3Dtownhall%5D%2839.53%2C-0.385%2C39.55%2C-0.35%29%3Bout%20center%20tags%3Bnode%5Bhighway%3Dstop%5D%2839.53%2C-0.385%2C39.55%2C-0.35%29%3Bout%3Bway%5Bname~%22Major%22%5D%2839.53%2C-0.385%2C39.55%2C-0.35%29%3Bout%20geom%20tags%3B -> 200 6260 application/json

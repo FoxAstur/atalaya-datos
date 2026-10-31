@@ -1,0 +1,250 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-31T05:44:23Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 8224136316,
+  "lat": 39.5388312,
+  "lon": -0.3698171,
+  "tags": {
+    "addr:city": "Vinalesa",
+    "addr:housenumber": "1",
+    "addr:postcode": "46114",
+    "addr:street": "Carrer de la Fàbrica",
+    "amenity": "townhall",
+    "name": "Ajuntament de Vinalesa",
+    "name:ca": "Ajuntament de Vinalesa",
+    "townhall:type": "municipality",
+    "wikimedia_commons": "File:Fàbrica de la seda de Vinalesa, ajuntament.jpg"
+  }
+},
+{
+  "type": "way",
+  "id": 662608471,
+  "center": {
+    "lat": 39.5377031,
+    "lon": -0.3559151
+  },
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:postcode": "46134",
+    "addr:street": "Plaça del Poble",
+    "amenity": "townhall",
+    "building": "public",
+    "building:levels": "2",
+    "email": "ajuntament@foios.es",
+    "fax": "+34 961494823",
+    "name": "Ajuntament de Foios",
+    "name:ca": "Ajuntament de Foios",
+    "phone": "+34 961491110",
+    "website": "https://www.foios.es/",
+    "wikidata": "Q668117",
+    "wikipedia": "es:Foyos"
+  }
+},
+{
+  "type": "node",
+  "id": 8295019311,
+  "lat": 39.5387135,
+  "lon": -0.3698027,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 12892300534,
+  "lat": 39.5341461,
+  "lon": -0.3509960,
+  "tags": {
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 13378651263,
+  "lat": 39.5387110,
+  "lon": -0.3696954,
+  "tags": {
+    "direction": "backward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "way",
+  "id": 23331048,
+  "bounds": {
+    "minlat": 39.5368340,
+    "minlon": -0.3705494,
+    "maxlat": 39.5387136,
+    "maxlon": -0.3697367
+  },
+  "geometry": [
+    { "lat": 39.5368340, "lon": -0.3705494 },
+    { "lat": 39.5370493, "lon": -0.3704691 },
+    { "lat": 39.5373497, "lon": -0.3703266 },
+    { "lat": 39.5378264, "lon": -0.3701276 },
+    { "lat": 39.5382726, "lon": -0.3699264 },
+    { "lat": 39.5386305, "lon": -0.3697725 },
+    { "lat": 39.5387136, "lon": -0.3697367 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Major",
+    "name:ca": "Carrer Major",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 23364643,
+  "bounds": {
+    "minlat": 39.5453562,
+    "minlon": -0.3847899,
+    "maxlat": 39.5503618,
+    "maxlon": -0.3838935
+  },
+  "geometry": [
+    { "lat": 39.5503618, "lon": -0.3838935 },
+    { "lat": 39.5499294, "lon": -0.3839635 },
+    { "lat": 39.5499217, "lon": -0.3839647 },
+    { "lat": 39.5494969, "lon": -0.3840334 },
+    { "lat": 39.5488192, "lon": -0.3841475 },
+    { "lat": 39.5487617, "lon": -0.3841582 },
+    { "lat": 39.5483504, "lon": -0.3842344 },
+    { "lat": 39.5479416, "lon": -0.3843102 },
+    { "lat": 39.5478612, "lon": -0.3843209 },
+    { "lat": 39.5476191, "lon": -0.3843530 },
+    { "lat": 39.5472349, "lon": -0.3844317 },
+    { "lat": 39.5471668, "lon": -0.3844456 },
+    { "lat": 39.5468918, "lon": -0.3844955 },
+    { "lat": 39.5465119, "lon": -0.3845641 },
+    { "lat": 39.5461991, "lon": -0.3846206 },
+    { "lat": 39.5461529, "lon": -0.3846320 },
+    { "lat": 39.5460955, "lon": -0.3846451 },
+    { "lat": 39.5459959, "lon": -0.3846652 },
+    { "lat": 39.5459377, "lon": -0.3846760 },
+    { "lat": 39.5454341, "lon": -0.3847747 },
+    { "lat": 39.5453562, "lon": -0.3847899 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Major",
+    "name:ca": "Carrer Major",
+    "name:es": "Calle Mayor"
+  }
+},
+{
+  "type": "way",
+  "id": 80341284,
+  "bounds": {
+    "minlat": 39.5378402,
+    "minlon": -0.3584434,
+    "maxlat": 39.5392995,
+    "maxlon": -0.3559321
+  },
+  "geometry": [
+    { "lat": 39.5378402, "lon": -0.3559321 },
+    { "lat": 39.5378895, "lon": -0.3560613 },
+    { "lat": 39.5379109, "lon": -0.3561632 },
+    { "lat": 39.5380709, "lon": -0.3564824 },
+    { "lat": 39.5382171, "lon": -0.3567422 },
+    { "lat": 39.5382858, "lon": -0.3568766 },
+    { "lat": 39.5384382, "lon": -0.3572470 },
+    { "lat": 39.5387004, "lon": -0.3577413 },
+    { "lat": 39.5388101, "lon": -0.3578961 },
+    { "lat": 39.5389088, "lon": -0.3580653 },
+    { "lat": 39.5390011, "lon": -0.3581870 },
+    { "lat": 39.5390948, "lon": -0.3582725 },
+    { "lat": 39.5392001, "lon": -0.3583681 },
+    { "lat": 39.5392995, "lon": -0.3584434 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Major",
+    "name:ca": "Carrer Major",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 160160024,
+  "bounds": {
+    "minlat": 39.5446736,
+    "minlon": -0.3849370,
+    "maxlat": 39.5453562,
+    "maxlon": -0.3847899
+  },
+  "geometry": [
+    { "lat": 39.5446736, "lon": -0.3849370 },
+    { "lat": 39.5447560, "lon": -0.3849192 },
+    { "lat": 39.5452944, "lon": -0.3848032 },
+    { "lat": 39.5453562, "lon": -0.3847899 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Major",
+    "name:ca": "Carrer Major",
+    "name:es": "Calle Mayor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 665636470,
+  "bounds": {
+    "minlat": 39.5364038,
+    "minlon": -0.3706932,
+    "maxlat": 39.5368340,
+    "maxlon": -0.3705494
+  },
+  "geometry": [
+    { "lat": 39.5364038, "lon": -0.3706932 },
+    { "lat": 39.5367842, "lon": -0.3705660 },
+    { "lat": 39.5368070, "lon": -0.3705584 },
+    { "lat": 39.5368249, "lon": -0.3705525 },
+    { "lat": 39.5368340, "lon": -0.3705494 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Major",
+    "name:ca": "Carrer Major",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 972251334,
+  "bounds": {
+    "minlat": 39.5392995,
+    "minlon": -0.3587946,
+    "maxlat": 39.5397829,
+    "maxlon": -0.3584434
+  },
+  "geometry": [
+    { "lat": 39.5392995, "lon": -0.3584434 },
+    { "lat": 39.5393289, "lon": -0.3584619 },
+    { "lat": 39.5394701, "lon": -0.3585613 },
+    { "lat": 39.5396519, "lon": -0.3586948 },
+    { "lat": 39.5397829, "lon": -0.3587946 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Carrer Major",
+    "name:ca": "Carrer Major",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+}
+
+  ]
+}
