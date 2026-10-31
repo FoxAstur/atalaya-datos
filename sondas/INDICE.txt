@@ -1,0 +1,6 @@
+https://dados.cm-lisboa.pt/api/3/action/package_search?q=radar&rows=50 -> 403 5706 text/html; charset=UTF-8
+https://dadosabertos.cm-lisboa.pt/api/3/action/package_search?q=radar&rows=50 -> 403 5734 text/html; charset=UTF-8
+https://postal.pt/wp-content/uploads/2024/02/Locais-de-Controlo-de-Velocidade-em-funcionamento.pdf -> 200 662144 application/pdf
+https://opendata.porto.digital/api/3/action/package_search?q=radar&rows=50 -> 200 224 application/json;charset=utf-8
+https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets?limit=100&where=search(%22camara%22) -> 404 188436 text/html
+https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets?limit=100&where=search(%22trafico%22) -> 404 188436 text/html
