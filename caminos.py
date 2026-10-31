@@ -863,6 +863,41 @@ def quitar_viejos_repetidos(puntos: list[dict]) -> list[dict]:
     return fuera
 
 
+def rumbo_por_cardinal(red: Red, puntos: list[dict]) -> int:
+    """
+    Fuentes que dan el sentido como "Norte-Sul", "Este-Oeste" (ANSR, Portugal): el rumbo exacto es el de la
+    carretera en ese punto, en el sentido de circulación que más se parece (a menos de 75°). Si la carretera
+    va de través (un "Norte-Sul" en una vía este-oeste) no se adivina: se queda en los dos sentidos.
+    """
+    n = 0
+    for p in puntos:
+        card = p.pop("_card", None)
+        if card is None or (p.get("rb") is not None and dif(p["rb"], card) <= 100):
+            continue
+        pos = (p["la"], p["lo"])
+        ref = norm_ref(p.get("c"))
+        mejor = None
+        for d, t, wi, i in red.cercanos(pos):
+            w = red.vias[wi]
+            if w.tipo.endswith("_link"):
+                continue
+            fb = rumbo(w.pts[i], w.pts[i + 1])
+            for paso in (1, -1):
+                if not se_puede(w, paso):
+                    continue
+                r = fb if paso == 1 else (fb + 180) % 360
+                dd = dif(r, card)
+                if dd > 75:
+                    continue
+                s = d + dd / 3 + ((-15 if w.ref == ref else 25) if ref and w.ref else 0)
+                if mejor is None or s < mejor[0]:
+                    mejor = (s, r)
+        if mejor:
+            p["rb"] = round(mejor[1], 1)
+            n += 1
+    return n
+
+
 def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, aviso=print) -> dict:
     t0 = time.time()
     ZONAS_ZBE.clear()
@@ -875,11 +910,12 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
     objetivos = [p for p in puntos if p["t"] != "ZONA_MOVIL" or "tr" not in p]
     red = cargar_red(ruta_red, objetivos)
     aviso(f"  caminos: red cargada ({len(red.vias)} vías) en {time.time() - t0:.0f}s")
+    n_card = rumbo_por_cardinal(red, objetivos)
     lado_txt = calibrar_lado(red, objetivos)
     aviso(f"  caminos: regla del lado probada en {time.time() - t0:.0f}s")
     cruce_txt = calibrar_cruce(red, objetivos)
     aviso(f"  caminos: regla del cruce probada en {time.time() - t0:.0f}s")
-    stats = {"lado": lado_txt, "cruce": cruce_txt,
+    stats = {"lado": lado_txt, "cruce": cruce_txt, "rumbo_por_cardinal": n_card,
              "con_camino": 0, "sin_via": 0, "tramos_con_recorrido": 0, "tramos": 0,
              "caminos_alternativos": 0, "mediana_dos": 0, "con_paralela": 0, "en_enlace": 0, "sospechosos": [], "dos_sentidos": 0, "limites_via": 0, "limites_quitados": 0}
     for n_p, p in enumerate(objetivos):
@@ -1034,7 +1070,7 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
                 p["pl"] = pl
                 stats["con_paralela"] += 1
     for p in puntos:
-        p.pop("_dir", None); p.pop("_dirg", None)
+        p.pop("_dir", None); p.pop("_dirg", None); p.pop("_card", None)
     stats["segundos"] = round(time.time() - t0)
     return stats
 

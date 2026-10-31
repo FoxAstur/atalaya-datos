@@ -1,5 +1,5 @@
 {
-  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar y, si hace falta, su posición real (la, lo). Los sentidos marcados como 'ortofotos' salen de ver la cabina en las fotos aéreas PNOA (© Instituto Geográfico Nacional) e ICGC (© Institut Cartogràfic i Geològic de Catalunya), CC-BY 4.0: probado a ciegas con 9 radares de sentido conocido, 9 aciertos.",
+  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar y, si hace falta, su posición real (la, lo). Los sentidos marcados como 'ortofotos' salen de ver la cabina en las fotos aéreas PNOA (© Instituto Geográfico Nacional) e ICGC (© Institut Cartogràfic i Geològic de Catalunya), CC-BY 4.0: probado a ciegas con 9 radares de sentido conocido, 9 aciertos. 'tipo': el tipo bien puesto cuando una fuente se equivoca. 'anadir': cámaras que solo publica la prensa o el ayuntamiento, situadas a mano (se ignoran si ya hay una del mismo tipo a menos de 60 m).",
   "quitar": [
     {
       "id": "osm:n992004970",
@@ -67,5 +67,27 @@
       "rb": 258,
       "motivo": "N-260 Prullans: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
     }
-  }
+  },
+  "tipo": {
+    "osm:n13339261021": {
+      "t": "STOP_CEDA",
+      "n": "Foto-Stop de la rotonda del Hospital IMED (Burjassot)",
+      "motivo": "Ayuntamiento de Burjassot: Foto-Stop de la rotonda del IMED, multa desde el 30-06-2026. En OSM está como cámara de semáforo."
+    }
+  },
+  "anadir": [
+    {
+      "id": "man:vinalesa-stop",
+      "t": "STOP_CEDA",
+      "la": 39.53868,
+      "lo": -0.36975,
+      "rb": 18,
+      "n": "Foto-Stop de Vinalesa · Carrer Major, frente al Ayuntamiento",
+      "c": "Carrer Major",
+      "mu": "Vinalesa",
+      "pr": "Valencia",
+      "ca": "Comunitat Valenciana",
+      "motivo": "El Periòdic d'Aquí (2026): cámara en el stop del Carrer Major, enfrente del ayuntamiento, desde marzo. Posición: final del Carrer Major (sentido único hacia el norte) en OSM."
+    }
+  ]
 }

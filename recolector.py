@@ -1262,6 +1262,88 @@ def fuente_salamanca() -> list[dict]:
     return salida
 
 
+URL_LISBOA = ("https://services.arcgis.com/1dSrzEWVQn5kHHyK/arcgis/rest/services/MOB_RadaresPaineis/FeatureServer/0/query"
+              "?outFields=*&where=1%3D1&outSR=4326&f=geojson")
+
+
+def fuente_lisboa() -> list[dict]:
+    """Radares de la Câmara Municipal de Lisboa (dados.gov.pt, «Localização de radares»)."""
+    salida = []
+    for f in http_json(URL_LISBOA, timeout=90).get("features", []):
+        g = f.get("geometry") or {}
+        c = g.get("coordinates") or []
+        pr = f.get("properties") or {}
+        if g.get("type") != "Point" or len(c) < 2:
+            continue
+        if "radar" not in str(pr.get("REFNAME") or "radar").lower():
+            continue
+        lo, la = float(c[0]), float(c[1])
+        salida.append(punto(f"lis:{la:.5f},{lo:.5f}", "RADAR_FIJO", "AYUNTAMIENTO", la, lo,
+                            n="Radar da Câmara Municipal de Lisboa", mu="Lisboa", pr="Portugal", ca="Portugal",
+                            at="Câmara Municipal de Lisboa (dados.gov.pt)"))
+    return salida
+
+
+URL_VILADECANS = ("https://geoportal.viladecans.cat/server/rest/services/EP520_Radars_PT/FeatureServer/0/query"
+                  "?where=1%3D1&outFields=id,ubicacio,equip,estat&outSR=4326&f=geojson")
+
+
+URL_ANSR = "https://radaresavista.pt/wp-content/themes/ansr-radares/dataTest.json"
+# Sentido de la ANSR → rumbo aproximado del tráfico vigilado (caminos.py lo ajusta a la carretera)
+CARDINAL_ANSR = {"norte-sul": 180.0, "sul-norte": 0.0, "este-oeste": 270.0, "oeste-este": 90.0}
+
+
+def fuente_ansr() -> list[dict]:
+    """
+    Red SINCRO de Portugal: los radares oficiales de la ANSR (portal «Radares à vista»), con coordenadas,
+    carretera, PK, límite y sentido (Norte-Sul, Este-Oeste… o Ambos).
+    """
+    datos = json.loads(http(URL_ANSR, timeout=90).decode("utf-8-sig", "replace"))
+    salida = []
+    for d in datos:
+        nums = re.findall(r"-?\d+(?:\.\d+)?", str(d.get("Coordenada") or "").replace(",", " , "))
+        if len(nums) < 2:
+            continue
+        la, lo = float(nums[0]), -abs(float(nums[1]))   # todo Portugal está al oeste de Greenwich
+        if not (36.5 < la < 42.3 and -31.5 < lo < -6.0):
+            continue
+        tipo = "RADAR_TRAMO" if str(d.get("Tipo") or "").strip().upper() == "VM" else "RADAR_FIJO"
+        via = str(d.get("Estrada") or "").strip()
+        km = str(d.get("Km Inicial") or "").strip()
+        sentido = str(d.get("Sentido") or "").strip()
+        card = CARDINAL_ANSR.get(sentido.lower())
+        vel = num(d.get("Velocidade"))
+        salida.append(punto(f"ansr:{via}:{km}:{sentido[:1] or 'x'}", tipo, "AUTONOMICA", la, lo,
+                            c=via or None, pk=num(km), v=int(vel) if vel else None,
+                            s="Ambos" if sentido.lower() in ("ambos", "dois sentidos") else sentido or None,
+                            n=("Radar de velocidad media" if tipo == "RADAR_TRAMO" else "Radar") + " SINCRO (ANSR)"
+                              + (f" · {via} km {km.replace('.', ',')}" if via and km else ""),
+                            _card=card, mu=str(d.get("Freguesia") or "").strip() or None, pr="Portugal", ca="Portugal",
+                            at="ANSR — Radares à vista (radaresavista.pt)"))
+    return salida
+
+
+def fuente_viladecans() -> list[dict]:
+    """Cabinas de radar y fotorrojos del Ajuntament de Viladecans (geoportal municipal, «Radars»)."""
+    salida = []
+    for f in http_json(URL_VILADECANS, timeout=90).get("features", []):
+        g = f.get("geometry") or {}
+        c = g.get("coordinates") or []
+        pr = f.get("properties") or {}
+        if g.get("type") != "Point" or len(c) < 2 or "producci" not in str(pr.get("estat") or "").lower():
+            continue
+        lo, la = float(c[0]), float(c[1])
+        equip = str(pr.get("equip") or "").lower()
+        rojo = "vermell" in equip or "roig" in equip
+        donde = str(pr.get("ubicacio") or "").strip()
+        salida.append(punto(f"vdc:{pr.get('id')}", "SEMAFORO" if rojo else "RADAR_FIJO", "AYUNTAMIENTO", la, lo,
+                            c=re.split(r",| /", donde)[0] or None,
+                            n=("Fotorrojo" if rojo else "Cabina de radar") + " del Ajuntament · " + donde,
+                            mu="Viladecans", pr="Barcelona", ca="Cataluña",
+                            at="Ajuntament de Viladecans (geoportal)"))
+    return salida
+
+
 def fuente_donostia() -> list[dict]:
     d = http_json(URL_DONOSTIA, timeout=90)
     return puntos_geojson(d, "RADAR_FIJO", "dss",
@@ -1532,8 +1614,10 @@ def sentidos_opuestos(a: dict, b: dict) -> bool:
     pueden juntar en uno: antes se juntaba todo lo que estaba a menos de 120 m y en autovías se perdía
     el radar de uno de los dos sentidos.
     """
-    if a.get("rb") is not None and b.get("rb") is not None:
-        return abs((a["rb"] - b["rb"] + 180) % 360 - 180) > 90
+    ra = a["rb"] if a.get("rb") is not None else a.get("_card")
+    rb_ = b["rb"] if b.get("rb") is not None else b.get("_card")
+    if ra is not None and rb_ is not None:   # rumbo o, si no hay, el "Norte-Sul" de la ANSR
+        return abs((ra - rb_ + 180) % 360 - 180) > 90
     sa, sb = a.get("s"), b.get("s")
     if sa in ("Creciente", "Decreciente") and sb in ("Creciente", "Decreciente") and sa != sb:
         ca, cb = via_normalizada(a.get("c")), via_normalizada(b.get("c"))
@@ -1689,7 +1773,22 @@ def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
         return puntos
     quitar = {q["id"] for q in c.get("quitar", [])}
     sentidos = c.get("sentido", {})
+    tipos = c.get("tipo", {})
+    # cámaras que solo salen en la prensa o en avisos del ayuntamiento (foto-stop de un pueblo, etc.):
+    # se añaden si no hay ya una del mismo tipo a menos de 60 m
+    anadidos = 0
+    for a in c.get("anadir", []):
+        if any(q["t"] == a["t"] and distancia(q["la"], q["lo"], a["la"], a["lo"]) < 60 for q in puntos):
+            continue
+        puntos.append(punto(a["id"], a["t"], a.get("f", "AYUNTAMIENTO"), float(a["la"]), float(a["lo"]),
+                            src=a.get("src", "Ayuntamiento / prensa (situada a mano)"),
+                            **{k: v for k, v in a.items() if k in ("c", "v", "n", "rb", "mu", "pr", "ca", "tu", "at")}))
+        anadidos += 1
     for p in puntos:
+        if p["id"] in tipos:   # el tipo bien puesto (un foto-stop que OSM tiene como cámara de semáforo)
+            p["t"] = tipos[p["id"]]["t"]
+            if tipos[p["id"]].get("n"):
+                p["n"] = tipos[p["id"]]["n"]
         if p["id"] in sentidos:
             c_ = sentidos[p["id"]]
             p["rb"] = float(c_["rb"])
@@ -1697,7 +1796,8 @@ def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
                 p["la"], p["lo"] = float(c_["la"]), float(c_["lo"])
     n = len(puntos)
     puntos = [p for p in puntos if p["id"] not in quitar]
-    log(f"correcciones: {n - len(puntos)} quitados, {sum(1 for p in puntos if p['id'] in sentidos)} sentidos fijados")
+    log(f"correcciones: {n - len(puntos)} quitados, {sum(1 for p in puntos if p['id'] in sentidos)} sentidos fijados, "
+        f"{anadidos} añadidos, {sum(1 for p in puntos if p['id'] in tipos)} con el tipo corregido")
     return puntos
 
 
@@ -1917,13 +2017,16 @@ def main() -> int:
     malaga = ejecutar("Ayto. Málaga foto-rojo", fuente_malaga)
     salamanca = ejecutar("Ayto. Salamanca", fuente_salamanca)
     donostia = ejecutar("Ayto. Donostia", fuente_donostia)
+    lisboa = ejecutar("Câmara Municipal de Lisboa", fuente_lisboa)
+    viladecans = ejecutar("Ajuntament de Viladecans", fuente_viladecans)
+    ansr = ejecutar("Portugal: ANSR (red SINCRO)", fuente_ansr)
     santacruz = ejecutar("Ayto. Santa Cruz de Tenerife foto-rojo", fuente_santacruz)
     pamplona = ejecutar("Ayto. Pamplona cinemómetros", fuente_pamplona)
     comunitario = ejecutar("Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)", fuente_feed_comunitario)
     comunitario = solo_tramos_nuevos(comunitario, zonas)
     log(f"feed comunitario tras quitar tramos ya situados: {len(comunitario)}")
 
-    todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, santacruz, pamplona,
+    todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, ansr, lisboa, viladecans, santacruz, pamplona,
                       camaras_dgt, comunitario, osm, zonas])
     log(f"fusión: {FUSION['opuestos']} radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)")
     todos = unir_tramos(todos)
@@ -2073,7 +2176,7 @@ def main() -> int:
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")

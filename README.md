@@ -23,6 +23,10 @@ para la app [Atalaya](https://github.com/FoxAstur/atalaya).
 | Ayuntamiento de Málaga | Foto-rojo (CC BY 4.0) |
 | Ayuntamiento de Salamanca | Radares fijos y de tramo municipales |
 | Ayuntamiento de Donostia / San Sebastián | Radares fijos municipales |
+| ANSR, portal «Radares à vista» (Portugal) | Radares SINCRO oficiales de Portugal: coordenadas, carretera, PK, límite y sentido |
+| Câmara Municipal de Lisboa (dados.gov.pt) | Radares municipales de Lisboa |
+| Ajuntament de Viladecans (geoportal) | Cabinas de radar y fotorrojos municipales |
+| Prensa y avisos municipales (`correcciones.json`, a mano) | Foto-stop de Burjassot y Vinalesa y otras cámaras que no publica nadie en datos abiertos |
 | Ayuntamientos de Santa Cruz de Tenerife y Pamplona | Foto-rojo y cinemómetros (cuando responden desde fuera de España) |
 | [radares-anunciados](https://github.com/GeiserX/radares-anunciados-ha) (ODbL) | Gobierno Vasco (cabinas y tramos), Navarra, radares móviles anunciados por las Policías Locales de Murcia, León y Donostia, puntos habituales de radar móvil deducidos de las multas de Madrid y Barcelona, remolques del SCT y tramos INVIVE de la DGT |
 
