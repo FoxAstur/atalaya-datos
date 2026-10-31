@@ -1,0 +1,5 @@
+https://services.arcgis.com/1dSrzEWVQn5kHHyK/arcgis/rest/services/MOB_RadaresPaineis/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson -> 200 5289 application/json; charset=utf-8
+https://hub.arcgis.com/api/v3/search?q=radares&filter%5Btype%5D=Feature%20Service -> 200 2028826 application/json; charset=utf-8
+https://hub.arcgis.com/api/v3/search?q=cinemometros -> 200 1983 application/json; charset=utf-8
+https://hub.arcgis.com/api/v3/search?q=foto%20rojo -> 200 452553 application/json; charset=utf-8
+https://hub.arcgis.com/api/v3/search?q=radars%20velocitat -> 200 560736 application/json; charset=utf-8
