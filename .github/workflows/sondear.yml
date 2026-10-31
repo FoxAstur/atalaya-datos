@@ -11,6 +11,10 @@ on:
         description: "Rama donde dejar las sondas (vacío = main)"
         required: false
         default: ""
+      ua:
+        description: "User-Agent (vacío = navegador; Overpass rechaza los de navegador)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -28,13 +32,15 @@ jobs:
       - name: Descargar
         env:
           URLS: ${{ inputs.urls }}
+          UA: ${{ inputs.ua }}
         run: |
+          [ -n "$UA" ] || UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36"
           mkdir -p sondas
           i=0
           for u in $URLS; do
             i=$((i+1))
             f="sondas/$(printf %02d $i)_$(echo "$u" | sed 's#https\?://##; s#[^A-Za-z0-9._-]#_#g' | cut -c1-80)"
-            code=$(curl -sSL -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36" \
+            code=$(curl -sSL -A "$UA" \
               --max-time 60 -o "$f" -w "%{http_code} %{size_download} %{content_type}" "$u" || echo "ERR")
             echo "$u -> $code" | tee -a sondas/INDICE.txt
           done
