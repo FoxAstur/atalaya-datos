@@ -1,0 +1,5 @@
+https://radaresavista.pt/wp-content/themes/ansr-radares/template-parts/block/map/script.js -> 200 0 text/javascript
+https://radaresavista.pt/wp-content/themes/ansr-radares/template-parts/block/radars/script.js -> 404 28052 text/html; charset=UTF-8
+https://radaresavista.pt/wp-content/themes/ansr-radares/dist/scripts/main.js -> 200 226400 text/javascript
+https://radaresavista.pt/wp-json/ -> 401 98 application/json; charset=UTF-8
+https://radaresavista.pt/wp-content/themes/ansr-radares/providers.js -> 200 29154 text/javascript
