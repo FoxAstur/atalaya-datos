@@ -335,6 +335,75 @@ def caminar(red: Red, wi: int, i: int, t: float, paso: int, largo: float, hacia_
     return (pts, llegado) if objetivo is not None else pts
 
 
+RAMAS_CIUDAD_M = 250.0       # hasta dónde (hacia atrás) se miran los cruces por los que también se llega
+RAMAS_CARRETERA_M = 400.0
+MAX_RAMAS = 6
+
+
+def ramas(red: Red, camino: list, largo: float, interurbana: bool, solo_enlace: bool = False) -> list:
+    """
+    Otros caminos por los que se llega al punto: las calles que desembocan en el camino principal en los
+    últimos 250 m (400 m en carretera). caminar() sigue una sola carretera hacia atrás, y una cabina justo
+    después de un cruce solo avisaba a quien llegaba por la calle elegida (Germans Machado: se avisaba
+    viniendo por la CV-30 y no viniendo de Burjassot). Cada rama es el trozo de la calle que desemboca
+    más el camino principal desde el cruce hasta el punto. Devuelve caminos en el orden del tráfico.
+    """
+    if solo_enlace or len(camino) < 2:
+        return []
+    tope = RAMAS_CARRETERA_M if interurbana else RAMAS_CIUDAD_M
+    salida, vistas = [], set()
+    acum = 0.0
+    for j in range(1, len(camino)):
+        acum += dist(camino[j - 1], camino[j])
+        if acum > tope or len(salida) >= MAX_RAMAS:
+            break
+        nodo = camino[j]
+        clave = Red.clave(nodo)
+        if clave not in red.nodos:
+            continue   # punto interpolado, no un nodo de la red
+        # rumbo con el que el tráfico sale del cruce hacia el punto
+        sale = rumbo(nodo, camino[j - 1])
+        for wk, k in red.nodos[clave]:
+            w = red.vias[wk]
+            for paso in (1, -1):
+                otro = k - paso
+                if not (0 <= otro < len(w.pts)) or not se_puede(w, paso):
+                    continue
+                desde = w.pts[otro]
+                # es el propio camino (por donde ya se viene) o vuelve por donde se va
+                if j + 1 < len(camino) and dist(desde, camino[j + 1]) < 1.0:
+                    continue
+                if dist(desde, camino[j - 1]) < 1.0:
+                    continue
+                llega = rumbo(desde, nodo)
+                if dif(llega, sale) > 150:
+                    continue   # cambio de sentido
+                # Solo si quien viene por esa calle sigue, lo más recto que puede, hacia el punto (incorporación,
+                # rampa, rotonda, calle que acaba en "T"). Una calle que cruza recta no: avisaría a todo el que cruza.
+                giros = []
+                for wm, m in red.nodos[clave]:
+                    o = red.vias[wm]
+                    for p2 in (1, -1):
+                        sig = m + p2
+                        if 0 <= sig < len(o.pts) and se_puede(o, p2) and dist(o.pts[sig], desde) >= 1.0:
+                            giros.append(dif(llega, rumbo(nodo, o.pts[sig])))
+                if giros and dif(llega, sale) > min(giros) + 15:
+                    continue
+                if (wk, otro) in vistas:
+                    continue
+                vistas.add((wk, otro))
+                i0, t0 = (k - 1, 1.0) if paso == 1 else (k, 0.0)
+                atras = caminar(red, wk, i0, t0, paso, max(60.0, largo - acum), True)
+                if len(atras) < 2 or longitud(atras) < 40:
+                    continue
+                salida.append(list(reversed(atras)) + list(reversed(camino[:j])))
+                if len(salida) >= MAX_RAMAS:
+                    break
+            if len(salida) >= MAX_RAMAS:
+                break
+    return salida
+
+
 def llegada(a) -> float:
     """Rumbo con el que un camino plano (lat,lon,…) llega a su punto (últimos ~40 m)."""
     n = len(a) // 2
@@ -1004,6 +1073,10 @@ def anadir_caminos(puntos: list[dict], ruta_red: str, zbe: list | None = None, a
             camino = caminar(red, wi, i, t, paso, largo, True, solo_enlace=enlace)
             if len(camino) >= 2 and longitud(camino) > (20 if enlace else 60):
                 aps.append(plano(simplificar(list(reversed(camino)))))
+                if p["t"] != "ZONA_MOVIL":
+                    for rama in ramas(red, camino, largo, w.tipo in INTERURBANA, enlace):
+                        aps.append(plano(simplificar(rama)))
+                        stats["ramas"] = stats.get("ramas", 0) + 1
         # En la mediana entre dos calzadas de sentido único y sin saber a cuál mira: las dos (y el usuario
         # puede silenciar desde la app el sentido que no es). Elegir una al azar dejaría sin aviso la otra la mitad de las veces.
         if p.get("rb") is None and not p.get("_dir") and w.sentido != 0 and not enlace and p["t"] != "ZONA_MOVIL" and aps:
