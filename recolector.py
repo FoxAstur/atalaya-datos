@@ -1704,13 +1704,21 @@ def heredar_sentido_osm(puntos: list[dict]) -> str:
             n += 1
             ok += abs((r - p["rb"] + 180) % 360 - 180) <= 60
     usar = n >= 15 and ok / n >= 0.9
-    puestos = 0
+    puestos = ambos = 0
     for p in puntos:
-        r = unico(p.pop("_rbs_osm", None) or [])
+        rbs = p.pop("_rbs_osm", None) or []
+        r = unico(rbs)
         if usar and r is not None and p.get("rb") is None:
             p["rb"] = r
             puestos += 1
-    return f"copias de OSM con sentido frente a oficiales: {ok}/{n} → " + (f"se usa en {puestos} puntos" if usar else "no se usa")
+        elif usar and r is None and p.get("rb") is None and not p.get("s") and len(rbs) >= 2 and \
+                any(abs((a - b + 180) % 360 - 180) >= 135 for a in rbs for b in rbs):
+            # OSM tiene la cabina vigilando los dos sentidos (una relación por sentido): se avisa en los
+            # dos sin decir "puede ser del otro sentido"
+            p["s"] = "Ambos"
+            ambos += 1
+    return f"copias de OSM con sentido frente a oficiales: {ok}/{n} → " + \
+        (f"se usa en {puestos} puntos y en {ambos} vigila los dos sentidos" if usar else "no se usa")
 
 
 def calibrar_direcciones(puntos: list[dict]) -> str:
