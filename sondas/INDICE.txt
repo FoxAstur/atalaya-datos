@@ -1,0 +1,8 @@
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services/RADARES_WEB/FeatureServer?f=json -> 200 3272 application/json; charset=utf-8
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services/RADARES_WEB/FeatureServer/0/query?where=1%3D1&outFields=*&f=geojson&resultRecordCount=2000 -> 200 141356 application/json; charset=utf-8
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services/RADARES_WEB/FeatureServer/1/query?where=1%3D1&outFields=*&f=geojson&resultRecordCount=2000 -> 200 189609 application/json; charset=utf-8
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services/RADARES_WEB/FeatureServer/2/query?where=1%3D1&outFields=*&f=geojson&resultRecordCount=2000 -> 400 11 text/html
+https://geoportal.viladecans.cat/server/rest/services/EP520_Radars_PT/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson -> 200 25617 application/geo+json; charset=UTF-8
+https://services7.arcgis.com/hbCLW4UI0LrFsq5X/arcgis/rest/services/posicion_radares/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson -> 400 11 text/html
+https://services8.arcgis.com/a5aqWbstIGx9R1ui/arcgis/rest/services/Radar_Tabela_Web/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson -> 200 226290 application/json; charset=utf-8
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services?f=json -> 200 14630 application/json; charset=utf-8
