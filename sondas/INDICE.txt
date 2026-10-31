@@ -1,0 +1,14 @@
+https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=200 -> 200 52912 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/radares.json?_pageSize=200 -> 200 14610 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/cinemometro.json?_pageSize=200 -> 200 931 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json?_pageSize=200 -> 200 4734 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/foto-rojo.json?_pageSize=200 -> 200 7200 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/fotorojo.json?_pageSize=200 -> 200 916 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/sem%C3%A0fors.json?_pageSize=200 -> 200 939 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/radars.json?_pageSize=200 -> 200 3888 application/json
+https://datos.gob.es/apidata/catalog/dataset/title/control%20de%20velocidad.json?_pageSize=200 -> 200 4989 application/json
+https://api.github.com/repos/gavilanfranc/avisador-radar-datos/releases -> 200 34980 application/json; charset=utf-8
+https://aplicacionsweb.paeria.es/eOpenDataPublicWeb/faces/ca/cataleg/territori/urbanisme_infraestructures/mapa-semafors-vermells-radars/detalls -> 000 0 ERR
+https://dados.gov.pt/api/1/datasets/?q=radares&page_size=50 -> 200 12807 application/json
+https://dados.gov.pt/api/1/datasets/?q=radar&page_size=50 -> 200 265712 application/json
+https://dados.gov.pt/api/1/datasets/?q=velocidade&page_size=50 -> 200 342814 application/json

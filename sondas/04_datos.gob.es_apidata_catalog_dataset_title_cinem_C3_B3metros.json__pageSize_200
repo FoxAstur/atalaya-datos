@@ -1,0 +1,24 @@
+{ "format" : "linked-data-api", "version" : "0.2", "result" : {"_about" : "http://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json?_pageSize=200", "definition" : {"_about" : "http://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json", "definition" : "http://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json", "hasPart" : "http://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json?_pageSize=200", "type" : "http://purl.org/linked-data/api/vocab#ListEndpoint"}
+    , "extendedMetadataVersion" : "http://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json?_pageSize=200&_metadata=all", "first" : "http://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json?_page=0", "isPartOf" : "http://datos.gob.es/apidata/catalog/dataset/title/cinem%C3%B3metros.json", "items" : [{"_about" : "https://datos.gob.es/catalogo/a15002917-control-de-trafico-cinemometros-ayuntamiento-de-pamplona-iruneko-udala1", "accrualPeriodicity" : "http://publications.europa.eu/resource/authority/frequency/UNKNOWN", "conformsTo" : "https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2008:326:0012:0030:ES:PDF", "description" : [{"_value" : "Ubicación e informaciónde los cinemómetros para control de tráfico que tiene disponible el Ayuntamiento de Pamplona.", "_lang" : "eu"}
+      , {"_value" : "Ubicación e informaciónde los cinemómetros para control de tráfico que tiene disponible el Ayuntamiento de Pamplona.", "_lang" : "es"}
+      ], "distribution" : [{"_about" : "https://datos.gob.es/catalogo/a15002917-control-de-trafico-cinemometros-ayuntamiento-de-pamplona-iruneko-udala1/resource/aea9a62f-e6e2-48ba-8dd0-8fc1d7f0b1b7", "accessURL" : "https://sig.pamplona.es/ogc/wfs?request=getcapabilities", "format" : "http://publications.europa.eu/resource/authority/file-type/SHP", "identifier" : "https://sig.pamplona.es/ogc/wfs?request=getcapabilities", "title" : [{"_value" : "Servicio de descarga del Ayuntamiento de Pamplona / Iruñeko Udala", "_lang" : "eu"}
+        , {"_value" : "Servicio de descarga del Ayuntamiento de Pamplona / Iruñeko Udala", "_lang" : "es"}
+        ], "type" : "http://www.w3.org/ns/dcat#Distribution"}
+      , {"_about" : "https://datos.gob.es/catalogo/a15002917-control-de-trafico-cinemometros-ayuntamiento-de-pamplona-iruneko-udala1/resource/aef5758e-fe19-404f-b2f1-3c11186d9f0d", "accessURL" : "https://sig.pamplona.es/descargas/SEGU_Pto_Cinemometro.zip", "format" : "http://publications.europa.eu/resource/authority/file-type/SHP", "identifier" : "https://sig.pamplona.es/descargas/SEGU_Pto_Cinemometro.zip", "title" : [{"_value" : "Descarga directa de los archivos ESRI Shapefile del Ayuntamiento de Pamplona / Iruñeko Udala", "_lang" : "eu"}
+        , {"_value" : "Descarga directa de los archivos ESRI Shapefile del Ayuntamiento de Pamplona / Iruñeko Udala", "_lang" : "es"}
+        ], "type" : "http://www.w3.org/ns/dcat#Distribution"}
+      ], "identifier" : "https://datosabiertos.navarra.es/dataset/spapamplona_segu_pto_cinemometro", "issued" : "mié, 15 abr 2026 11:44:54 GMT+0000", "keyword" : [{"_value" : "AyuntamientoPamplona", "_lang" : "eu"}
+      , {"_value" : "AyuntamientoPamplona", "_lang" : "es"}
+      , {"_value" : "Dataset público con descarga disponible", "_lang" : "eu"}
+      , {"_value" : "Dataset público con descarga disponible", "_lang" : "es"}
+      , {"_value" : "GeoPamplona", "_lang" : "es"}
+      , {"_value" : "GeoPamplona", "_lang" : "eu"}
+      , {"_value" : "IruñekoUdala", "_lang" : "es"}
+      , {"_value" : "IruñekoUdala", "_lang" : "eu"}
+      , {"_value" : "Servicios de utilidad pública y estatales", "_lang" : "es"}
+      , {"_value" : "Servicios de utilidad pública y estatales", "_lang" : "eu"}
+      ], "language" : ["http://publications.europa.eu/resource/authority/language/EUS", "http://publications.europa.eu/resource/authority/language/SPA"], "license" : "http://publications.europa.eu/resource/authority/licence/CC_BY_4_0", "modified" : "mié, 15 abr 2026 11:44:54 GMT+0000", "publisher" : "http://datos.gob.es/recurso/sector-publico/org/Organismo/A15002917", "spatial" : "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Comunidad-Foral-Navarra", "theme" : "http://datos.gob.es/kos/sector-publico/sector/urbanismo-infraestructuras", "title" : [{"_value" : "Control de tráfico. Cinemómetros. Ayuntamiento de Pamplona / Iruñeko Udala.", "_lang" : "eu"}
+      , {"_value" : "Control de tráfico. Cinemómetros. Ayuntamiento de Pamplona / Iruñeko Udala.", "_lang" : "es"}
+      ], "type" : "http://www.w3.org/ns/dcat#Dataset"}
+    ], "itemsPerPage" : 200, "page" : 0, "startIndex" : 1, "type" : "http://purl.org/linked-data/api/vocab#Page"}
+}

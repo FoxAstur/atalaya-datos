@@ -1,0 +1,22 @@
+{ "format" : "linked-data-api", "version" : "0.2", "result" : {"_about" : "http://datos.gob.es/apidata/catalog/dataset/title/radars.json?_pageSize=200", "definition" : "http://datos.gob.es/apidata/catalog/meta/dataset/title/_varTitle.json", "extendedMetadataVersion" : "http://datos.gob.es/apidata/catalog/dataset/title/radars.json?_pageSize=200&_metadata=all", "first" : "http://datos.gob.es/apidata/catalog/dataset/title/radars.json?_page=0", "isPartOf" : {"_about" : "http://datos.gob.es/apidata/catalog/dataset/title/radars.json", "definition" : "http://datos.gob.es/apidata/catalog/meta/dataset/title/_varTitle.json", "hasPart" : "http://datos.gob.es/apidata/catalog/dataset/title/radars.json?_pageSize=200", "type" : "http://purl.org/linked-data/api/vocab#ListEndpoint"}
+    , "items" : [{"_about" : "https://datos.gob.es/catalogo/a09002970-radares-fijos-de-cataluna", "accrualPeriodicity" : {"_about" : "https://datos.gob.es/catalogo/a09002970-radares-fijos-de-cataluna/Frequency", "value" : {"_about" : "https://datos.gob.es/catalogo/a09002970-radares-fijos-de-cataluna/DurationDescription", "days" : 1.0}
+      }
+      , "description" : [{"_value" : "Ubicació dels radars fixos del Servei Català de Trànsit a les carreteres de Catalunya. El fitxer conté el nom de la via, les coordenades UTM i la velocitat màxima del tram.", "_lang" : "en"}
+      , {"_value" : "Ubicació dels radars fixos del Servei Català de Trànsit a les carreteres de Catalunya. El fitxer conté el nom de la via, les coordenades UTM i la velocitat màxima del tram.", "_lang" : "es"}
+      , {"_value" : "Ubicació dels radars fixos del Servei Català de Trànsit a les carreteres de Catalunya. El fitxer conté el nom de la via, les coordenades UTM i la velocitat màxima del tram.", "_lang" : "ca"}
+      ], "distribution" : {"_about" : "https://datos.gob.es/catalogo/a09002970-radares-fijos-de-cataluna/resource/c5a1942e-a9f8-4731-8e20-365ac191919f", "accessURL" : "http://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt", "format" : {"_about" : "https://datos.gob.es/catalogo/a09002970-radares-fijos-de-cataluna/resource/c5a1942e-a9f8-4731-8e20-365ac191919f/format", "type" : "http://purl.org/dc/terms/IMT", "value" : "text/plain"}
+        , "identifier" : "https://analisi.transparenciacatalunya.cat/d/re3y-fftf", "title" : [{"_value" : "Permanent radars in Catalonia", "_lang" : "en"}
+        , {"_value" : "Radares fijos de Cataluña", "_lang" : "es"}
+        , {"_value" : "Radars fixos de Catalunya", "_lang" : "ca"}
+        ], "type" : "http://www.w3.org/ns/dcat#Distribution"}
+      , "identifier" : "https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf", "issued" : "jue, 16 feb 2017 23:00:00 GMT+0000", "keyword" : [{"_value" : "mobilitat", "_lang" : "es"}
+      , {"_value" : "ods12_producció i consum responsable", "_lang" : "es"}
+      , {"_value" : "ods16_pau justícies i institucions sòlides", "_lang" : "es"}
+      , {"_value" : "ods3_salut i benestar", "_lang" : "es"}
+      , {"_value" : "trànsit", "_lang" : "es"}
+      ], "language" : "http://publications.europa.eu/resource/authority/language/CAT", "modified" : "mar, 15 sep 2026 22:00:00 GMT+0000", "publisher" : "http://datos.gob.es/recurso/sector-publico/org/Organismo/A09002970", "references" : "https://analisi.transparenciacatalunya.cat/d/re3y-fftf", "spatial" : "http://datos.gob.es/recurso/sector-publico/territorio/Autonomia/Cataluna", "theme" : "http://datos.gob.es/kos/sector-publico/sector/transporte", "title" : [{"_value" : "Permanent radars in Catalonia", "_lang" : "en"}
+      , {"_value" : "Radares fijos de Cataluña", "_lang" : "es"}
+      , {"_value" : "Radars fixos de Catalunya", "_lang" : "ca"}
+      ], "type" : "http://www.w3.org/ns/dcat#Dataset"}
+    ], "itemsPerPage" : 200, "page" : 0, "startIndex" : 1, "type" : "http://purl.org/linked-data/api/vocab#Page"}
+}
