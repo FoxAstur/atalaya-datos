@@ -1,0 +1,19 @@
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+radares -> 200 262903 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+radar -> 200 261516 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+cinemometro -> 200 59 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+cinemometros -> 200 59 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+fotorrojo -> 200 59 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+%22foto+rojo%22 -> 200 10448 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+%22semaforo+rojo%22 -> 200 1248 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+radars -> 200 264810 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+%22radars+velocitat%22 -> 200 59 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+velocidade -> 200 764015 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+%22radar+velocidade%22 -> 200 59 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+sincro -> 200 17987 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+%22camaras+trafico%22 -> 200 6179 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+multas -> 200 125572 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+%22control+velocidad%22 -> 200 59 application/json;charset=utf-8
+https://www.arcgis.com/sharing/rest/search?f=json&num=100&q=type%3A%22Feature+Service%22+AND+%22semaforos+rojo%22 -> 200 1248 application/json;charset=utf-8
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services/Semaforos/FeatureServer?f=json -> 200 3003 application/json; charset=utf-8
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services/Semaforos/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson&resultRecordCount=20 -> 200 3212 application/json; charset=utf-8
+https://services-eu1.arcgis.com/xMJSZjeskIpAzCcP/arcgis/rest/services/RADARES_WEB_punto/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson -> 200 13264 application/json; charset=utf-8
