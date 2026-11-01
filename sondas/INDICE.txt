@@ -1,0 +1,1 @@
+https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A180%5D%3Bway%5Bhighway~%22%5E%28motorway%7Ctrunk%7Cprimary%7Csecondary%7Ctertiary%7Cmotorway_link%7Ctrunk_link%7Cprimary_link%7Csecondary_link%7Cunclassified%29%24%22%5D%2838.80%2C-0.72%2C39.45%2C-0.40%29%3Bout%20geom%20tags%3B -> 200 13029391 application/json
