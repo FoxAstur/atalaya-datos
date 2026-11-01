@@ -2114,6 +2114,14 @@ def main() -> int:
         try:
             import caminos
             st = caminos.anadir_caminos(todos, ruta_red, zbe, aviso=log)
+            try:
+                sz = caminos.trazar_zonas([p for p in todos if p["t"] == "ZONA_MOVIL" and p.get("tr")], ruta_red, aviso=log)
+                estado["Zonas de radar móvil por carretera"] = (
+                    f"{sz['zonas_trazadas']} de {sz['zonas_rectas']} que venían en línea recta siguen ya la carretera"
+                    f" ({sz['zonas_sin_trazar']} sin poder trazar)")
+                log(f"zonas: {sz}")
+            except Exception as e:  # noqa: BLE001
+                log(f"zonas: ERROR {e}")
             estado["Caminos de aproximación"] = (f"✅ {st['con_camino']} puntos con camino por su carretera, "
                                                  f"{st['tramos_con_recorrido']} de {st['tramos']} tramos con recorrido real "
                                                  f"({st['sin_via']} sin vía cercana; {st['segundos']}s)")

@@ -929,6 +929,84 @@ def seguidos(puntos: list[dict], max_m=300.0) -> list:
     return out
 
 
+# --------------------------------------------------------------------------- zonas de radar móvil
+def _ruta_entre(red: Red, a, b, ref: str):
+    """Recorrido por carretera de a hasta b (siguiendo la misma vía), o None."""
+    directo = dist(a, b)
+    cand, vistas = [], set()
+    for d, t, wi, i in sorted(red.cercanos(a, 180.0 if ref else 40.0)):
+        if wi in vistas:
+            continue
+        w = red.vias[wi]
+        # con referencia (CV-35), la vía que la lleva; si no hay ninguna, lo que esté pegado al punto
+        if ref and w.ref and w.ref != ref:
+            continue
+        vistas.add(wi)
+        cand.append((d + (0 if ref and w.ref == ref else 60), wi, i, t))
+    mejor = None
+    for _, wi, i, t in sorted(cand)[:6]:
+        for paso in (1, -1):
+            if not se_puede(red.vias[wi], paso):
+                continue
+            ruta, ok = caminar(red, wi, i, t, paso, directo * 1.8 + 2000, False, objetivo=b, radio_objetivo=200.0)
+            if ok and (mejor is None or longitud(ruta) < longitud(mejor)):
+                mejor = ruta
+    return mejor
+
+
+def trazar_zonas(zonas: list[dict], ruta_red: str, aviso=print) -> dict:
+    """
+    Los tramos de posible radar móvil llegan muchas veces como una línea recta de un PK a otro (de 20 o 30 km).
+    La app solo avisa si vas a menos de 30 m del trazado: con una recta, en cuanto la carretera tuerce, no
+    avisaba. Aquí cada trozo recto de más de 300 m se cambia por el recorrido real por la carretera.
+    """
+    t0 = time.time()
+    largas = []
+    for z in zonas:
+        t = z.get("tr") or []
+        pts = list(zip(t[0::2], t[1::2]))
+        if len(pts) >= 2 and any(dist(pts[k], pts[k + 1]) > 300 for k in range(len(pts) - 1)):
+            largas.append((z, pts))
+    st = {"zonas_rectas": len(largas), "zonas_trazadas": 0, "zonas_sin_trazar": 0}
+    if not largas:
+        return st
+    # se carga la red a lo largo de cada zona (un punto cada ~1 km de la recta)
+    semillas = []
+    for z, pts in largas:
+        for k in range(len(pts) - 1):
+            n = max(1, int(dist(pts[k], pts[k + 1]) // 1000))
+            for j in range(n + 1):
+                q = interpolar(pts[k], pts[k + 1], j / n)
+                semillas.append({"la": q[0], "lo": q[1]})
+    red = cargar_red(ruta_red, semillas)
+    aviso(f"  zonas: red cargada ({len(red.vias)} vías) para {len(largas)} zonas en {time.time() - t0:.0f}s")
+    for z, pts in largas:
+        ref = norm_ref(z.get("c"))
+        nuevo, ok = [pts[0]], True
+        for k in range(len(pts) - 1):
+            a, b = pts[k], pts[k + 1]
+            if dist(a, b) <= 300:
+                nuevo.append(b)
+                continue
+            # la carretera puede haber cambiado de nombre (la CV-40 ahora es la A-7): si no, sin referencia
+            ruta = (_ruta_entre(red, a, b, ref) or _ruta_entre(red, b, a, ref)
+                    or _ruta_entre(red, a, b, "") or _ruta_entre(red, b, a, ""))
+            if not ruta:
+                ok = False
+                break
+            if dist(ruta[0], a) > dist(ruta[0], b):   # se encontró de b hacia a
+                ruta = list(reversed(ruta))
+            nuevo.extend(ruta)
+            nuevo.append(b)
+        if ok:
+            z["tr"] = plano(simplificar(nuevo, 6.0))
+            st["zonas_trazadas"] += 1
+        else:
+            st["zonas_sin_trazar"] += 1
+    st["segundos_zonas"] = round(time.time() - t0)
+    return st
+
+
 def gemelos_sin_sentido(puntos: list[dict]) -> list:
     """
     Dos fichas oficiales en el mismo sitio (< 30 m), una "Creciente" y otra "Decreciente", y ninguna con
