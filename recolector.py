@@ -1765,6 +1765,11 @@ def reutilizar_caminos(puntos: list[dict], anterior: dict) -> int:
     n = 0
     for p in puntos:
         q = previos.get(p["id"])
+        # zonas de radar móvil: su trazado por carretera de la vez anterior (si empieza y acaba donde el de hoy)
+        if q and p["t"] == "ZONA_MOVIL" and p.get("tr") and q.get("tr") and len(q["tr"]) > len(p["tr"]):
+            a_, b_ = p["tr"], q["tr"]
+            if max(abs(a_[0] - b_[0]), abs(a_[1] - b_[1]), abs(a_[-2] - b_[-2]), abs(a_[-1] - b_[-1])) < 1e-4:
+                p["tr"] = b_
         if not q or abs(q["la"] - p["la"]) > 1e-5 or abs(q["lo"] - p["lo"]) > 1e-5:
             continue
         for k in ("ap", "rt", "s2", "pl"):
@@ -1777,7 +1782,7 @@ def reutilizar_caminos(puntos: list[dict], anterior: dict) -> int:
     return n
 
 
-SENALES_OPL = "red/senales.opl"   # stops y semáforos de OSM (extracto semanal de Geofabrik, recolectar.yml)
+SENALES_OPL = "red/camaras.opl"   # los stops y semáforos van con las cámaras (misma pasada de osmium, recolectar.yml)
 
 
 def a_la_linea_de_detencion(puntos: list[dict], ruta: str = SENALES_OPL) -> str:

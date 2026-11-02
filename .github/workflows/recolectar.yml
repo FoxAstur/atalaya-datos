@@ -43,14 +43,13 @@ jobs:
           path: |
             red/vias.geojsonseq
             red/camaras.opl
-            red/senales.opl
-          key: red-v6-${{ steps.semana.outputs.semana }}
-          restore-keys: red-v6-
+          key: red-v7-${{ steps.semana.outputs.semana }}
+          restore-keys: red-v7-
 
       - name: Red viaria (OpenStreetMap, Geofabrik)
         if: steps.cache_red.outputs.cache-hit != 'true'
         continue-on-error: true
-        timeout-minutes: 30
+        timeout-minutes: 45
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
           mkdir -p red/tmp
@@ -58,29 +57,24 @@ jobs:
           FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
           : > red/tmp/vias.geojsonseq
           : > red/tmp/camaras.opl
-          : > red/tmp/senales.opl
           for zona in europe/spain europe/portugal africa/canary-islands; do
             f=red/tmp/$(basename $zona).osm.pbf
             # corta si baja a menos de 300 kB/s durante 1 minuto o tarda más de 15 min
             curl -sSL --retry 2 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 900 \
               -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
             osmium tags-filter "$f" "$FILTRO" -o red/tmp/filtrado.osm.pbf --overwrite
-            # cámaras y radares (con los nodos y vías de sus relaciones): por si Overpass falla
-            osmium tags-filter "$f" n/highway=speed_camera n/enforcement n/speed_camera r/type=enforcement -o red/tmp/cam.osm.pbf --overwrite
+            # cámaras y radares (con los nodos y vías de sus relaciones): por si Overpass falla. En la misma pasada,
+            # los stops y semáforos: la cámara de stop o de semáforo se avisa en la línea de detención, no en el poste
+            osmium tags-filter "$f" n/highway=speed_camera,stop,traffic_signals n/enforcement n/speed_camera r/type=enforcement -o red/tmp/cam.osm.pbf --overwrite
             osmium cat red/tmp/cam.osm.pbf -f opl -o red/tmp/cam.opl --overwrite
             cat red/tmp/cam.opl >> red/tmp/camaras.opl
-            # stops y semáforos: la cámara de stop o de semáforo se avisa en la línea de detención, no en el poste
-            osmium tags-filter "$f" n/highway=stop,traffic_signals -o red/tmp/sen.osm.pbf --overwrite
-            osmium cat red/tmp/sen.osm.pbf -t node -f opl -o red/tmp/sen.opl --overwrite
-            cat red/tmp/sen.opl >> red/tmp/senales.opl
             osmium export red/tmp/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o red/tmp/parte.geojsonseq --overwrite
             cat red/tmp/parte.geojsonseq >> red/tmp/vias.geojsonseq
-            rm -f "$f" red/tmp/filtrado.osm.pbf red/tmp/parte.geojsonseq red/tmp/cam.osm.pbf red/tmp/cam.opl red/tmp/sen.osm.pbf red/tmp/sen.opl
+            rm -f "$f" red/tmp/filtrado.osm.pbf red/tmp/parte.geojsonseq red/tmp/cam.osm.pbf red/tmp/cam.opl
           done
           # solo se sustituye la anterior si la nueva está completa
           if [ "$(wc -l < red/tmp/vias.geojsonseq)" -gt 300000 ]; then mv red/tmp/vias.geojsonseq red/vias.geojsonseq; fi
           if [ "$(wc -l < red/tmp/camaras.opl)" -gt 3000 ]; then mv red/tmp/camaras.opl red/camaras.opl; fi
-          if [ "$(wc -l < red/tmp/senales.opl)" -gt 50000 ]; then mv red/tmp/senales.opl red/senales.opl; fi
           rm -rf red/tmp
           ls -la red; wc -l red/vias.geojsonseq || true
 
