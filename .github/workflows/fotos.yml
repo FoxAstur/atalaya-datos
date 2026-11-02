@@ -1,0 +1,42 @@
+name: Fotos de calle (Mapillary)
+
+# Baja fotos de Mapillary (CC BY-SA) alrededor de un punto y las deja en la rama «fotos», fuera de main,
+# para revisar a ojo la posición o el sentido de una cabina.
+on:
+  workflow_dispatch:
+    inputs:
+      lat: { description: "Latitud", required: true }
+      lon: { description: "Longitud", required: true }
+      radio: { description: "Radio en metros", required: false, default: "150" }
+      maximo: { description: "Máximo de fotos", required: false, default: "80" }
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fotos
+  cancel-in-progress: false
+
+jobs:
+  fotos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Bajar fotos
+        env:
+          MAPILLARY_TOKEN: ${{ secrets.MAPILLARY_TOKEN }}
+        run: python fotos_mapillary.py "${{ inputs.lat }}" "${{ inputs.lon }}" "${{ inputs.radio }}" "${{ inputs.maximo }}"
+      - name: Subir a la rama fotos
+        run: |
+          mkdir /tmp/f && mv fotos /tmp/f/
+          cd /tmp/f
+          git init -q -b fotos
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          printf 'Fotos de Mapillary (CC BY-SA 4.0, https://www.mapillary.com) para revisión manual.\n' > LEEME.txt
+          git add -A && git commit -qm "Fotos ${{ inputs.lat }},${{ inputs.lon }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" fotos
