@@ -1876,6 +1876,8 @@ def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
             p["rb"] = float(c_["rb"])
             if "la" in c_ and "lo" in c_:   # posición real, en su calzada
                 p["la"], p["lo"] = float(c_["la"]), float(c_["lo"])
+            if c_.get("n"):
+                p["n"] = c_["n"]
     n = len(puntos)
     puntos = [p for p in puntos if p["id"] not in quitar]
     log(f"correcciones: {n - len(puntos)} quitados, {sum(1 for p in puntos if p['id'] in sentidos)} sentidos fijados, "

@@ -8,6 +8,10 @@
     {
       "id": "osm:n9495468406",
       "motivo": "Túnel de Corts Valencianes, tubo de salida de València: la cabina está en el de entrada (osm:n6766167853 / vlc:7); este sobraba y avisaba en el carril que no es (Carlos, 28-10-2026)"
+    },
+    {
+      "id": "vlc:0",
+      "motivo": "Germans Machado, «entrada a València» a la altura de Vicent Canet: no hay cabina ahí; la de ese sentido es la que el Ayuntamiento da como «salida hacia Burjassot» (vlc:6), que en realidad vigila el carril hacia València (Carlos, 02-11-2026)"
     }
   ],
   "sentido": {
@@ -76,6 +80,13 @@
     "mad:40.40745,-3.74545": {
       "rb": 248,
       "motivo": "Ayuntamiento de Madrid: «A-5 PK 4,000, SALIDA» (saliendo de Madrid, hacia el oeste). En la ortofoto PNOA es un pórtico sobre la calzada."
+    },
+    "vlc:6": {
+      "rb": 140,
+      "la": 39.501241,
+      "lo": -0.390201,
+      "n": "Cabina del Ayuntamiento · Avinguda dels Germans Machado (a la altura de Sant Josep Artesà), entrada a València",
+      "motivo": "Germans Machado: la cabina a la altura de Sant Josep Artesà vigila el carril hacia València, no el de salida hacia Burjassot; posición pasada a esa calzada (Carlos, 02-11-2026)"
     }
   },
   "tipo": {
