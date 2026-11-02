@@ -1,0 +1,182 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-02T13:40:48Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 13339160382,
+  "lat": 39.5021143,
+  "lon": -0.4093537,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "note": "Stop videovigilado.",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261021,
+  "lat": 39.5019713,
+  "lon": -0.4095764,
+  "tags": {
+    "description": "Control de stop",
+    "direction": "50",
+    "highway": "speed_camera"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261022,
+  "lat": 39.5022977,
+  "lon": -0.4090948,
+  "tags": {
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261052,
+  "lat": 39.5025193,
+  "lon": -0.4062922,
+  "tags": {
+    "highway": "stop",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261053,
+  "lat": 39.5028944,
+  "lon": -0.4101177,
+  "tags": {
+    "direction": "backward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "way",
+  "id": 144013785,
+  "bounds": {
+    "minlat": 39.5022871,
+    "minlon": -0.4091740,
+    "maxlat": 39.5023561,
+    "maxlon": -0.4089477
+  },
+  "geometry": [
+    { "lat": 39.5023561, "lon": -0.4089477 },
+    { "lat": 39.5023423, "lon": -0.4089864 },
+    { "lat": 39.5023362, "lon": -0.4090006 },
+    { "lat": 39.5023313, "lon": -0.4090118 },
+    { "lat": 39.5023151, "lon": -0.4090471 },
+    { "lat": 39.5023020, "lon": -0.4090792 },
+    { "lat": 39.5022977, "lon": -0.4090948 },
+    { "lat": 39.5022913, "lon": -0.4091177 },
+    { "lat": 39.5022886, "lon": -0.4091414 },
+    { "lat": 39.5022871, "lon": -0.4091740 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015577,
+  "bounds": {
+    "minlat": 39.5017910,
+    "minlon": -0.4097478,
+    "maxlat": 39.5021192,
+    "maxlon": -0.4092989
+  },
+  "geometry": [
+    { "lat": 39.5017910, "lon": -0.4097478 },
+    { "lat": 39.5018172, "lon": -0.4097457 },
+    { "lat": 39.5018375, "lon": -0.4097343 },
+    { "lat": 39.5019713, "lon": -0.4095764 },
+    { "lat": 39.5020823, "lon": -0.4094454 },
+    { "lat": 39.5020917, "lon": -0.4094346 },
+    { "lat": 39.5021033, "lon": -0.4094075 },
+    { "lat": 39.5021109, "lon": -0.4093842 },
+    { "lat": 39.5021143, "lon": -0.4093537 },
+    { "lat": 39.5021156, "lon": -0.4093414 },
+    { "lat": 39.5021192, "lon": -0.4092989 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "noname": "yes",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 282105984,
+  "bounds": {
+    "minlat": 39.5028885,
+    "minlon": -0.4117333,
+    "maxlat": 39.5038712,
+    "maxlon": -0.4098548
+  },
+  "geometry": [
+    { "lat": 39.5038712, "lon": -0.4117333 },
+    { "lat": 39.5038176, "lon": -0.4116375 },
+    { "lat": 39.5037441, "lon": -0.4115074 },
+    { "lat": 39.5035022, "lon": -0.4110890 },
+    { "lat": 39.5034032, "lon": -0.4109279 },
+    { "lat": 39.5033556, "lon": -0.4108559 },
+    { "lat": 39.5030060, "lon": -0.4103266 },
+    { "lat": 39.5028989, "lon": -0.4101684 },
+    { "lat": 39.5028901, "lon": -0.4101441 },
+    { "lat": 39.5028885, "lon": -0.4101265 },
+    { "lat": 39.5028944, "lon": -0.4101177 },
+    { "lat": 39.5028995, "lon": -0.4101102 },
+    { "lat": 39.5032947, "lon": -0.4098888 },
+    { "lat": 39.5033295, "lon": -0.4098693 },
+    { "lat": 39.5033430, "lon": -0.4098548 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "layer": "1",
+    "oneway": "no",
+    "segregated": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555300,
+  "bounds": {
+    "minlat": 39.5012046,
+    "minlon": -0.4071193,
+    "maxlat": 39.5025626,
+    "maxlon": -0.4062583
+  },
+  "geometry": [
+    { "lat": 39.5012046, "lon": -0.4071193 },
+    { "lat": 39.5024592, "lon": -0.4063343 },
+    { "lat": 39.5024913, "lon": -0.4063142 },
+    { "lat": 39.5025193, "lon": -0.4062922 },
+    { "lat": 39.5025626, "lon": -0.4062583 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes"
+  }
+}
+
+  ]
+}
