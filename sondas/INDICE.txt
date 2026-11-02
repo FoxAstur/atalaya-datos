@@ -1,0 +1,4 @@
+https://nap.dgt.es/api/3/action/package_list -> 403 520 text/html
+https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50 -> 200 52908 application/json
+https://datos.gob.es/apidata/catalog/dataset/keyword/radares.json?_pageSize=50 -> 200 38110 application/json
+https://datos.gob.es/apidata/catalog/dataset/keyword/cinem%C3%B3metro.json?_pageSize=50 -> 200 970 application/json
