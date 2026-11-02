@@ -99,6 +99,74 @@
     "dgt:GUID_CABINACINEMOMETRO_120601": {
       "rb": 340,
       "motivo": "CV-91 PK 18,9 (Rojales): la DGT lo da como «Decreciente», hacia Orihuela; el mismo radar en OpenStreetMap (osm:n992004847, a 280 m) mira hacia el oeste (289°). Coincide con lo que dice Carlos (02-11-2026)"
+    },
+    "sct:41.46630,2.17392": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16152550/r16152551) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:41.47306,2.16307": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16152550/r16152551) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:41.60981,1.53098": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r14126599/r14126600) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:41.63072,1.46915": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r14126599/r14126600) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:41.93104,2.80224": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16151839/r16151840) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:41.95648,2.83821": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16151839/r16151840) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:41.97713,2.84591": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16151841/r16151842) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:42.00113,2.84804": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16151841/r16151842) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:42.00451,3.00157": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16148070/r16151426) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:42.04081,2.92842": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16148070/r16151426) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:41.93994,1.25809": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16151240/r16151241) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:42.00980,1.29389": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16151240/r16151241) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:42.62532,0.76410": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16154986/r16154987) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "sct:42.67263,0.77737": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r16154986/r16154987) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "osm:n13381367555": {
+      "s": "Ambos",
+      "motivo": "Pórtico de radar de tramo: en OpenStreetMap hay un tramo en cada sentido (osm:r20181207/r20181268) que empieza o acaba aquí; vigila los dos sentidos (cruce de datos, 02-11-2026)"
+    },
+    "osm:n11662465512": {
+      "rb": 107,
+      "motivo": "N-211 PK 57,9 (Molina de Aragón): a 22 m está el equipo de la DGT con sentido «Creciente» (hacia Teruel, 107°); coincide con lo que pasó Carlos (02-11-2026)"
+    },
+    "osm:n4790245640": {
+      "rb": 312,
+      "motivo": "N-2 PK 346,4 (Villafranca de Ebro): a 6 m está el equipo de la DGT con sentido «Decreciente» (hacia Zaragoza, 311°); coincide con lo que pasó Carlos (02-11-2026)"
     }
   },
   "tipo": {
