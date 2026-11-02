@@ -15,7 +15,10 @@ import urllib.parse
 import urllib.request
 
 API = "https://graph.mapillary.com/images"
-CAMPOS = "id,captured_at,compass_angle,computed_compass_angle,computed_geometry,geometry,thumb_1024_url,sequence"
+TAM = os.environ.get("TAM", "1024")          # 1024, 2048 u original
+DESDE = int(os.environ.get("DESDE", "0"))    # año mínimo de las fotos
+URL = "thumb_original_url" if TAM == "original" else f"thumb_{TAM}_url"
+CAMPOS = "id,captured_at,compass_angle,computed_compass_angle,computed_geometry,geometry,sequence," + URL
 
 
 def pedir(url: str, binario: bool = False):
@@ -50,7 +53,9 @@ def main() -> int:
     elegidas, vistos = [], set()
     for f in fotos:
         g = (f.get("computed_geometry") or f.get("geometry") or {}).get("coordinates")
-        if not g or not f.get("thumb_1024_url"):
+        if not g or not f.get(URL):
+            continue
+        if DESDE and time.gmtime((f.get("captured_at") or 0) / 1000).tm_year < DESDE:
             continue
         rumbo = f.get("computed_compass_angle", f.get("compass_angle")) or 0
         clave = (round(g[1] * 4000), round(g[0] * 4000), int(rumbo // 45))   # ~25 m y 45°
@@ -65,7 +70,7 @@ def main() -> int:
     for f, g, rumbo in elegidas:
         fecha = time.strftime("%Y-%m-%d", time.gmtime((f.get("captured_at") or 0) / 1000))
         nombre = f"{fecha}_{g[1]:.6f}_{g[0]:.6f}_{int(rumbo):03d}.jpg"
-        datos = pedir(f["thumb_1024_url"], binario=True)
+        datos = pedir(f[URL], binario=True)
         if not datos:
             continue
         with open(os.path.join("fotos", nombre), "wb") as fh:

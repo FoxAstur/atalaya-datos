@@ -9,6 +9,8 @@ on:
       lon: { description: "Longitud", required: true }
       radio: { description: "Radio en metros", required: false, default: "150" }
       maximo: { description: "Máximo de fotos", required: false, default: "80" }
+      tam: { description: "Tamaño: 1024, 2048 u original", required: false, default: "1024" }
+      desde: { description: "Año mínimo de las fotos (0 = todas)", required: false, default: "0" }
 
 permissions:
   contents: write
@@ -29,6 +31,8 @@ jobs:
       - name: Bajar fotos
         env:
           MAPILLARY_TOKEN: ${{ secrets.MAPILLARY_TOKEN }}
+          TAM: ${{ inputs.tam }}
+          DESDE: ${{ inputs.desde }}
         run: python fotos_mapillary.py "${{ inputs.lat }}" "${{ inputs.lon }}" "${{ inputs.radio }}" "${{ inputs.maximo }}"
       - name: Subir a la rama fotos
         run: |
