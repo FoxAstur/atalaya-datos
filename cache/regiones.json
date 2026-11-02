@@ -2328,7 +2328,15 @@
   "mu": "Camas",
   "pr": "Sevilla"
  },
+ "37.393,-5.971": {
+  "mu": "Sevilla",
+  "pr": "Sevilla"
+ },
  "37.394,-5.971": {
+  "mu": "Sevilla",
+  "pr": "Sevilla"
+ },
+ "37.396,-6.012": {
   "mu": "Sevilla",
   "pr": "Sevilla"
  },
@@ -2421,6 +2429,10 @@
   "pr": "Sevilla"
  },
  "37.422,-5.947": {
+  "mu": "Sevilla",
+  "pr": "Sevilla"
+ },
+ "37.423,-5.947": {
   "mu": "Sevilla",
   "pr": "Sevilla"
  },
@@ -4694,6 +4706,10 @@
   "mu": "Ciudad Real",
   "pr": "Ciudad Real"
  },
+ "38.982,-3.933": {
+  "mu": "Ciudad Real",
+  "pr": "Ciudad Real"
+ },
  "38.982,1.485": {
   "mu": "Santa Eulària des Riu",
   "pr": "Illes Balears"
@@ -6907,6 +6923,10 @@
   "mu": "Mondéjar",
   "pr": "Guadalajara"
  },
+ "40.328,-3.837": {
+  "mu": "Alcorcón",
+  "pr": "Madrid"
+ },
  "40.328,-3.838": {
   "mu": "Alcorcón",
   "pr": "Madrid"
@@ -8279,6 +8299,10 @@
   "pr": "Segovia"
  },
  "40.714,-4.189": {
+  "mu": "El Espinar",
+  "pr": "Segovia"
+ },
+ "40.715,-4.198": {
   "mu": "El Espinar",
   "pr": "Segovia"
  },
@@ -9727,11 +9751,19 @@
   "mu": "Barcelona",
   "pr": "Barcelona"
  },
+ "41.383,2.139": {
+  "mu": "Barcelona",
+  "pr": "Barcelona"
+ },
  "41.383,2.146": {
   "mu": "Barcelona",
   "pr": "Barcelona"
  },
  "41.383,2.159": {
+  "mu": "Barcelona",
+  "pr": "Barcelona"
+ },
+ "41.383,2.160": {
   "mu": "Barcelona",
   "pr": "Barcelona"
  },
@@ -9804,6 +9836,10 @@
   "mu": "Barcelona",
   "pr": "Barcelona"
  },
+ "41.389,2.128": {
+  "mu": "Barcelona",
+  "pr": "Barcelona"
+ },
  "41.389,2.129": {
   "mu": "Barcelona",
   "pr": "Barcelona"
@@ -9848,6 +9884,10 @@
   "mu": "Barcelona",
   "pr": "Barcelona"
  },
+ "41.391,2.160": {
+  "mu": "Barcelona",
+  "pr": "Barcelona"
+ },
  "41.392,2.162": {
   "mu": "Barcelona",
   "pr": "Barcelona"
@@ -9869,6 +9909,14 @@
   "pr": "Barcelona"
  },
  "41.393,2.152": {
+  "mu": "Barcelona",
+  "pr": "Barcelona"
+ },
+ "41.393,2.153": {
+  "mu": "Barcelona",
+  "pr": "Barcelona"
+ },
+ "41.393,2.161": {
   "mu": "Barcelona",
   "pr": "Barcelona"
  },
@@ -9933,6 +9981,10 @@
   "pr": "Barcelona"
  },
  "41.397,2.161": {
+  "mu": "Barcelona",
+  "pr": "Barcelona"
+ },
+ "41.397,2.163": {
   "mu": "Barcelona",
   "pr": "Barcelona"
  },
@@ -10591,6 +10643,10 @@
   "mu": "Mollet del Vallès",
   "pr": "Barcelona"
  },
+ "41.534,2.211": {
+  "mu": "Mollet del Vallès",
+  "pr": "Barcelona"
+ },
  "41.535,-5.977": {
   "mu": "Muelas del Pan",
   "pr": "Zamora"
@@ -10601,6 +10657,10 @@
  },
  "41.535,2.089": {
   "mu": "Sant Quirze del Vallès",
+  "pr": "Barcelona"
+ },
+ "41.535,2.422": {
+  "mu": "Mataró",
   "pr": "Barcelona"
  },
  "41.536,2.422": {
@@ -10661,6 +10721,10 @@
  },
  "41.543,2.188": {
   "mu": "Santa Perpètua de Mogoda",
+  "pr": "Barcelona"
+ },
+ "41.544,2.441": {
+  "mu": "Mataró",
   "pr": "Barcelona"
  },
  "41.544,2.455": {
@@ -11254,6 +11318,10 @@
   "mu": "Lleida",
   "pr": "Lleida"
  },
+ "41.623,0.628": {
+  "mu": "Lleida",
+  "pr": "Lleida"
+ },
  "41.623,1.416": {
   "mu": "Montmaneu",
   "pr": "Barcelona"
@@ -11328,6 +11396,10 @@
   "mu": "Valladolid",
   "pr": "Valladolid"
  },
+ "41.636,-4.719": {
+  "mu": "Valladolid",
+  "pr": "Valladolid"
+ },
  "41.637,-0.861": {
   "mu": "Zaragoza",
   "pr": "Zaragoza"
@@ -11388,6 +11460,10 @@
   "mu": "Valladolid",
   "pr": "Valladolid"
  },
+ "41.644,-4.735": {
+  "mu": "Valladolid",
+  "pr": "Valladolid"
+ },
  "41.644,1.075": {
   "mu": "Anglesola",
   "pr": "Lleida"
@@ -11429,6 +11505,10 @@
   "mu": "Valladolid",
   "pr": "Valladolid"
  },
+ "41.649,-4.719": {
+  "mu": "Valladolid",
+  "pr": "Valladolid"
+ },
  "41.649,2.416": {
   "mu": "Llinars del Vallès",
   "pr": "Barcelona"
@@ -11436,6 +11516,10 @@
  "41.650,-0.855": {
   "mu": "Zaragoza",
   "pr": "Zaragoza"
+ },
+ "41.650,-4.739": {
+  "mu": "Valladolid",
+  "pr": "Valladolid"
  },
  "41.650,-4.740": {
   "mu": "Valladolid",
@@ -11456,6 +11540,10 @@
  "41.653,-0.920": {
   "mu": "Zaragoza",
   "pr": "Zaragoza"
+ },
+ "41.653,-4.730": {
+  "mu": "Valladolid",
+  "pr": "Valladolid"
  },
  "41.654,-0.861": {
   "mu": "Zaragoza",
@@ -12543,6 +12631,10 @@
   "pr": "Palencia"
  },
  "41.988,-5.409": {
+  "mu": "Villanueva del Campo",
+  "pr": "Zamora"
+ },
+ "41.988,-5.410": {
   "mu": "Villanueva del Campo",
   "pr": "Zamora"
  },
@@ -13702,6 +13794,14 @@
   "mu": "Punxín",
   "pr": "Ourense"
  },
+ "42.350,-3.689": {
+  "mu": "Burgos",
+  "pr": "Burgos"
+ },
+ "42.350,-3.696": {
+  "mu": "Burgos",
+  "pr": "Burgos"
+ },
  "42.350,-4.615": {
   "mu": "Carrión de los Condes",
   "pr": "Palencia"
@@ -14498,6 +14598,10 @@
   "mu": "León",
   "pr": "León"
  },
+ "42.598,-5.580": {
+  "mu": "León",
+  "pr": "León"
+ },
  "42.599,-5.572": {
   "mu": "León",
   "pr": "León"
@@ -15042,6 +15146,10 @@
   "mu": "Valle de Egüés/Eguesibar",
   "pr": "Navarra"
  },
+ "42.812,-1.602": {
+  "mu": "Valle de Egüés/Eguesibar",
+  "pr": "Navarra"
+ },
  "42.813,-1.648": {
   "mu": "Pamplona/Iruña",
   "pr": "Navarra"
@@ -15182,6 +15290,10 @@
   "mu": "Vitoria-Gasteiz",
   "pr": "Álava"
  },
+ "42.852,-2.688": {
+  "mu": "Vitoria-Gasteiz",
+  "pr": "Álava"
+ },
  "42.852,-2.894": {
   "mu": "Kuartango",
   "pr": "Álava"
@@ -15279,6 +15391,10 @@
   "pr": "A Coruña"
  },
  "42.872,-8.551": {
+  "mu": "Santiago de Compostela",
+  "pr": "A Coruña"
+ },
+ "42.872,-8.552": {
   "mu": "Santiago de Compostela",
   "pr": "A Coruña"
  },
