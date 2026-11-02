@@ -1,0 +1,4234 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-02T13:37:43Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 13339261021,
+  "lat": 39.5019713,
+  "lon": -0.4095764,
+  "tags": {
+    "description": "Control de stop",
+    "direction": "50",
+    "highway": "speed_camera"
+  }
+},
+{
+  "type": "way",
+  "id": 11825114,
+  "bounds": {
+    "minlat": 39.5022210,
+    "minlon": -0.4054956,
+    "maxlat": 39.5022838,
+    "maxlon": -0.4054829
+  },
+  "geometry": [
+    { "lat": 39.5022210, "lon": -0.4054845 },
+    { "lat": 39.5022531, "lon": -0.4054829 },
+    { "lat": 39.5022838, "lon": -0.4054956 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 13066400,
+  "bounds": {
+    "minlat": 39.5036123,
+    "minlon": -0.4056916,
+    "maxlat": 39.5038453,
+    "maxlon": -0.4055196
+  },
+  "geometry": [
+    { "lat": 39.5038453, "lon": -0.4055196 },
+    { "lat": 39.5038241, "lon": -0.4055790 },
+    { "lat": 39.5037908, "lon": -0.4056299 },
+    { "lat": 39.5037481, "lon": -0.4056672 },
+    { "lat": 39.5036992, "lon": -0.4056884 },
+    { "lat": 39.5036478, "lon": -0.4056916 },
+    { "lat": 39.5036123, "lon": -0.4056820 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272152,
+  "bounds": {
+    "minlat": 39.5022526,
+    "minlon": -0.4091740,
+    "maxlat": 39.5022871,
+    "maxlon": -0.4091101
+  },
+  "geometry": [
+    { "lat": 39.5022526, "lon": -0.4091101 },
+    { "lat": 39.5022701, "lon": -0.4091315 },
+    { "lat": 39.5022807, "lon": -0.4091550 },
+    { "lat": 39.5022871, "lon": -0.4091740 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 144015582,
+  "bounds": {
+    "minlat": 39.5000099,
+    "minlon": -0.4105097,
+    "maxlat": 39.5002849,
+    "maxlon": -0.4101530
+  },
+  "geometry": [
+    { "lat": 39.5000189, "lon": -0.4102347 },
+    { "lat": 39.5000358, "lon": -0.4101895 },
+    { "lat": 39.5000707, "lon": -0.4101664 },
+    { "lat": 39.5001111, "lon": -0.4101530 },
+    { "lat": 39.5001497, "lon": -0.4101588 },
+    { "lat": 39.5002006, "lon": -0.4101789 },
+    { "lat": 39.5002349, "lon": -0.4102148 },
+    { "lat": 39.5002636, "lon": -0.4102603 },
+    { "lat": 39.5002789, "lon": -0.4103238 },
+    { "lat": 39.5002849, "lon": -0.4103800 },
+    { "lat": 39.5002785, "lon": -0.4104286 },
+    { "lat": 39.5002577, "lon": -0.4104705 },
+    { "lat": 39.5002313, "lon": -0.4105004 },
+    { "lat": 39.5001736, "lon": -0.4105097 },
+    { "lat": 39.5001330, "lon": -0.4105059 },
+    { "lat": 39.5000906, "lon": -0.4104829 },
+    { "lat": 39.5000446, "lon": -0.4104391 },
+    { "lat": 39.5000185, "lon": -0.4103856 },
+    { "lat": 39.5000099, "lon": -0.4103332 },
+    { "lat": 39.5000106, "lon": -0.4102809 },
+    { "lat": 39.5000189, "lon": -0.4102347 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "2",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015587,
+  "bounds": {
+    "minlat": 39.5011737,
+    "minlon": -0.4101052,
+    "maxlat": 39.5018373,
+    "maxlon": -0.4093791
+  },
+  "geometry": [
+    { "lat": 39.5018373, "lon": -0.4100437 },
+    { "lat": 39.5018144, "lon": -0.4100666 },
+    { "lat": 39.5017888, "lon": -0.4100897 },
+    { "lat": 39.5017566, "lon": -0.4101014 },
+    { "lat": 39.5017173, "lon": -0.4101052 },
+    { "lat": 39.5016758, "lon": -0.4100949 },
+    { "lat": 39.5016422, "lon": -0.4100708 },
+    { "lat": 39.5016377, "lon": -0.4100642 },
+    { "lat": 39.5015754, "lon": -0.4099725 },
+    { "lat": 39.5015264, "lon": -0.4099007 },
+    { "lat": 39.5015052, "lon": -0.4098691 },
+    { "lat": 39.5014538, "lon": -0.4097934 },
+    { "lat": 39.5013375, "lon": -0.4096231 },
+    { "lat": 39.5013134, "lon": -0.4095866 },
+    { "lat": 39.5012196, "lon": -0.4094486 },
+    { "lat": 39.5011920, "lon": -0.4094068 },
+    { "lat": 39.5011737, "lon": -0.4093791 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 280243397,
+  "bounds": {
+    "minlat": 39.4993716,
+    "minlon": -0.4080321,
+    "maxlat": 39.4995509,
+    "maxlon": -0.4078026
+  },
+  "geometry": [
+    { "lat": 39.4995509, "lon": -0.4079190 },
+    { "lat": 39.4995450, "lon": -0.4079587 },
+    { "lat": 39.4995291, "lon": -0.4079933 },
+    { "lat": 39.4995050, "lon": -0.4080188 },
+    { "lat": 39.4994756, "lon": -0.4080321 },
+    { "lat": 39.4994399, "lon": -0.4080303 },
+    { "lat": 39.4994114, "lon": -0.4080140 },
+    { "lat": 39.4993889, "lon": -0.4079861 },
+    { "lat": 39.4993752, "lon": -0.4079499 },
+    { "lat": 39.4993716, "lon": -0.4079158 },
+    { "lat": 39.4993774, "lon": -0.4078762 },
+    { "lat": 39.4993934, "lon": -0.4078415 },
+    { "lat": 39.4994175, "lon": -0.4078160 },
+    { "lat": 39.4994474, "lon": -0.4078026 },
+    { "lat": 39.4994785, "lon": -0.4078034 },
+    { "lat": 39.4995076, "lon": -0.4078180 },
+    { "lat": 39.4995310, "lon": -0.4078445 },
+    { "lat": 39.4995461, "lon": -0.4078799 },
+    { "lat": 39.4995509, "lon": -0.4079190 }
+  ],
+  "tags": {
+    "highway": "service",
+    "junction": "roundabout",
+    "service": "parking_aisle",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 1244966388,
+  "bounds": {
+    "minlat": 39.5010521,
+    "minlon": -0.4091903,
+    "maxlat": 39.5013947,
+    "maxlon": -0.4089755
+  },
+  "geometry": [
+    { "lat": 39.5010577, "lon": -0.4091903 },
+    { "lat": 39.5010550, "lon": -0.4091524 },
+    { "lat": 39.5010521, "lon": -0.4091196 },
+    { "lat": 39.5010553, "lon": -0.4090745 },
+    { "lat": 39.5010687, "lon": -0.4090316 },
+    { "lat": 39.5010900, "lon": -0.4090009 },
+    { "lat": 39.5011121, "lon": -0.4089863 },
+    { "lat": 39.5011339, "lon": -0.4089783 },
+    { "lat": 39.5011818, "lon": -0.4089755 },
+    { "lat": 39.5012253, "lon": -0.4089866 },
+    { "lat": 39.5012634, "lon": -0.4090132 },
+    { "lat": 39.5013947, "lon": -0.4091864 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1244966389,
+  "bounds": {
+    "minlat": 39.5010577,
+    "minlon": -0.4093791,
+    "maxlat": 39.5011737,
+    "maxlon": -0.4091903
+  },
+  "geometry": [
+    { "lat": 39.5011737, "lon": -0.4093791 },
+    { "lat": 39.5010842, "lon": -0.4092344 },
+    { "lat": 39.5010577, "lon": -0.4091903 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "1",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1244966390,
+  "bounds": {
+    "minlat": 39.5013947,
+    "minlon": -0.4100437,
+    "maxlat": 39.5018658,
+    "maxlon": -0.4091864
+  },
+  "geometry": [
+    { "lat": 39.5013947, "lon": -0.4091864 },
+    { "lat": 39.5015361, "lon": -0.4093869 },
+    { "lat": 39.5017087, "lon": -0.4096316 },
+    { "lat": 39.5017910, "lon": -0.4097478 },
+    { "lat": 39.5018192, "lon": -0.4097951 },
+    { "lat": 39.5018524, "lon": -0.4098561 },
+    { "lat": 39.5018633, "lon": -0.4098891 },
+    { "lat": 39.5018658, "lon": -0.4099018 },
+    { "lat": 39.5018648, "lon": -0.4099627 },
+    { "lat": 39.5018572, "lon": -0.4099956 },
+    { "lat": 39.5018373, "lon": -0.4100437 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "1",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555271,
+  "bounds": {
+    "minlat": 39.5022838,
+    "minlon": -0.4055966,
+    "maxlat": 39.5023339,
+    "maxlon": -0.4054956
+  },
+  "geometry": [
+    { "lat": 39.5022838, "lon": -0.4054956 },
+    { "lat": 39.5023093, "lon": -0.4055209 },
+    { "lat": 39.5023262, "lon": -0.4055571 },
+    { "lat": 39.5023339, "lon": -0.4055966 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555272,
+  "bounds": {
+    "minlat": 39.5022261,
+    "minlon": -0.4057230,
+    "maxlat": 39.5023339,
+    "maxlon": -0.4055966
+  },
+  "geometry": [
+    { "lat": 39.5023339, "lon": -0.4055966 },
+    { "lat": 39.5023300, "lon": -0.4056380 },
+    { "lat": 39.5023187, "lon": -0.4056693 },
+    { "lat": 39.5023011, "lon": -0.4056952 },
+    { "lat": 39.5022785, "lon": -0.4057136 },
+    { "lat": 39.5022528, "lon": -0.4057230 },
+    { "lat": 39.5022261, "lon": -0.4057225 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555273,
+  "bounds": {
+    "minlat": 39.5022005,
+    "minlon": -0.4057225,
+    "maxlat": 39.5022261,
+    "maxlon": -0.4057123
+  },
+  "geometry": [
+    { "lat": 39.5022261, "lon": -0.4057225 },
+    { "lat": 39.5022005, "lon": -0.4057123 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555274,
+  "bounds": {
+    "minlat": 39.5021479,
+    "minlon": -0.4057123,
+    "maxlat": 39.5022005,
+    "maxlon": -0.4055766
+  },
+  "geometry": [
+    { "lat": 39.5022005, "lon": -0.4057123 },
+    { "lat": 39.5021761, "lon": -0.4056891 },
+    { "lat": 39.5021595, "lon": -0.4056630 },
+    { "lat": 39.5021490, "lon": -0.4056268 },
+    { "lat": 39.5021479, "lon": -0.4055881 },
+    { "lat": 39.5021508, "lon": -0.4055766 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555275,
+  "bounds": {
+    "minlat": 39.5021508,
+    "minlon": -0.4055766,
+    "maxlat": 39.5021559,
+    "maxlon": -0.4055519
+  },
+  "geometry": [
+    { "lat": 39.5021508, "lon": -0.4055766 },
+    { "lat": 39.5021559, "lon": -0.4055519 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555276,
+  "bounds": {
+    "minlat": 39.5021559,
+    "minlon": -0.4055519,
+    "maxlat": 39.5022210,
+    "maxlon": -0.4054845
+  },
+  "geometry": [
+    { "lat": 39.5021559, "lon": -0.4055519 },
+    { "lat": 39.5021722, "lon": -0.4055205 },
+    { "lat": 39.5021945, "lon": -0.4054976 },
+    { "lat": 39.5022210, "lon": -0.4054845 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555278,
+  "bounds": {
+    "minlat": 39.5034733,
+    "minlon": -0.4054408,
+    "maxlat": 39.5035053,
+    "maxlon": -0.4053095
+  },
+  "geometry": [
+    { "lat": 39.5034733, "lon": -0.4054408 },
+    { "lat": 39.5034784, "lon": -0.4053995 },
+    { "lat": 39.5034888, "lon": -0.4053528 },
+    { "lat": 39.5035053, "lon": -0.4053095 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555279,
+  "bounds": {
+    "minlat": 39.5035053,
+    "minlon": -0.4053095,
+    "maxlat": 39.5035470,
+    "maxlon": -0.4052540
+  },
+  "geometry": [
+    { "lat": 39.5035053, "lon": -0.4053095 },
+    { "lat": 39.5035100, "lon": -0.4053006 },
+    { "lat": 39.5035191, "lon": -0.4052891 },
+    { "lat": 39.5035470, "lon": -0.4052540 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555280,
+  "bounds": {
+    "minlat": 39.5035470,
+    "minlon": -0.4052540,
+    "maxlat": 39.5037370,
+    "maxlon": -0.4052025
+  },
+  "geometry": [
+    { "lat": 39.5035470, "lon": -0.4052540 },
+    { "lat": 39.5035933, "lon": -0.4052192 },
+    { "lat": 39.5036452, "lon": -0.4052026 },
+    { "lat": 39.5036834, "lon": -0.4052025 },
+    { "lat": 39.5037161, "lon": -0.4052114 },
+    { "lat": 39.5037370, "lon": -0.4052234 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555281,
+  "bounds": {
+    "minlat": 39.5037370,
+    "minlon": -0.4052318,
+    "maxlat": 39.5037502,
+    "maxlon": -0.4052234
+  },
+  "geometry": [
+    { "lat": 39.5037370, "lon": -0.4052234 },
+    { "lat": 39.5037502, "lon": -0.4052318 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555282,
+  "bounds": {
+    "minlat": 39.5035917,
+    "minlon": -0.4056820,
+    "maxlat": 39.5036123,
+    "maxlon": -0.4056728
+  },
+  "geometry": [
+    { "lat": 39.5036123, "lon": -0.4056820 },
+    { "lat": 39.5035917, "lon": -0.4056728 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555283,
+  "bounds": {
+    "minlat": 39.5034733,
+    "minlon": -0.4056728,
+    "maxlat": 39.5035917,
+    "maxlon": -0.4054408
+  },
+  "geometry": [
+    { "lat": 39.5035917, "lon": -0.4056728 },
+    { "lat": 39.5035524, "lon": -0.4056452 },
+    { "lat": 39.5035147, "lon": -0.4055976 },
+    { "lat": 39.5034884, "lon": -0.4055385 },
+    { "lat": 39.5034776, "lon": -0.4054914 },
+    { "lat": 39.5034733, "lon": -0.4054408 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555284,
+  "bounds": {
+    "minlat": 39.5037502,
+    "minlon": -0.4054928,
+    "maxlat": 39.5038529,
+    "maxlon": -0.4052318
+  },
+  "geometry": [
+    { "lat": 39.5037502, "lon": -0.4052318 },
+    { "lat": 39.5037784, "lon": -0.4052560 },
+    { "lat": 39.5038028, "lon": -0.4052837 },
+    { "lat": 39.5038270, "lon": -0.4053211 },
+    { "lat": 39.5038478, "lon": -0.4053855 },
+    { "lat": 39.5038529, "lon": -0.4054386 },
+    { "lat": 39.5038500, "lon": -0.4054928 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555285,
+  "bounds": {
+    "minlat": 39.5038453,
+    "minlon": -0.4055196,
+    "maxlat": 39.5038500,
+    "maxlon": -0.4054928
+  },
+  "geometry": [
+    { "lat": 39.5038500, "lon": -0.4054928 },
+    { "lat": 39.5038453, "lon": -0.4055196 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "junction": "roundabout",
+    "lanes": "2",
+    "maxspeed": "50",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556385,
+  "bounds": {
+    "minlat": 39.5021014,
+    "minlon": -0.4091504,
+    "maxlat": 39.5022317,
+    "maxlon": -0.4090850
+  },
+  "geometry": [
+    { "lat": 39.5021014, "lon": -0.4091504 },
+    { "lat": 39.5021132, "lon": -0.4091377 },
+    { "lat": 39.5021368, "lon": -0.4091078 },
+    { "lat": 39.5021667, "lon": -0.4090896 },
+    { "lat": 39.5021995, "lon": -0.4090850 },
+    { "lat": 39.5022317, "lon": -0.4090947 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556386,
+  "bounds": {
+    "minlat": 39.5022361,
+    "minlon": -0.4093303,
+    "maxlat": 39.5022921,
+    "maxlon": -0.4091740
+  },
+  "geometry": [
+    { "lat": 39.5022871, "lon": -0.4091740 },
+    { "lat": 39.5022921, "lon": -0.4091965 },
+    { "lat": 39.5022914, "lon": -0.4092370 },
+    { "lat": 39.5022809, "lon": -0.4092753 },
+    { "lat": 39.5022619, "lon": -0.4093074 },
+    { "lat": 39.5022361, "lon": -0.4093303 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556387,
+  "bounds": {
+    "minlat": 39.5021192,
+    "minlon": -0.4093415,
+    "maxlat": 39.5022361,
+    "maxlon": -0.4092989
+  },
+  "geometry": [
+    { "lat": 39.5022361, "lon": -0.4093303 },
+    { "lat": 39.5022073, "lon": -0.4093415 },
+    { "lat": 39.5021772, "lon": -0.4093410 },
+    { "lat": 39.5021486, "lon": -0.4093288 },
+    { "lat": 39.5021270, "lon": -0.4093124 },
+    { "lat": 39.5021192, "lon": -0.4092989 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556388,
+  "bounds": {
+    "minlat": 39.5020940,
+    "minlon": -0.4092989,
+    "maxlat": 39.5021192,
+    "maxlon": -0.4091504
+  },
+  "geometry": [
+    { "lat": 39.5021192, "lon": -0.4092989 },
+    { "lat": 39.5021074, "lon": -0.4092784 },
+    { "lat": 39.5020971, "lon": -0.4092457 },
+    { "lat": 39.5020940, "lon": -0.4092107 },
+    { "lat": 39.5020953, "lon": -0.4091810 },
+    { "lat": 39.5021014, "lon": -0.4091504 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556389,
+  "bounds": {
+    "minlat": 39.5022317,
+    "minlon": -0.4091101,
+    "maxlat": 39.5022526,
+    "maxlon": -0.4090947
+  },
+  "geometry": [
+    { "lat": 39.5022317, "lon": -0.4090947 },
+    { "lat": 39.5022526, "lon": -0.4091101 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "node",
+  "id": 1478779585,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 1575963126,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 1575963149,
+  "tags": {
+    "direction": "backward",
+    "highway": "stop",
+    "side": "left",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 6915007213,
+  "tags": {
+    "direction": "backward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 7562522786,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "side": "right",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 7837920297,
+  "tags": {
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 7837920307,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 7837920308,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 8321015787,
+  "tags": {
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 9237647755,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9388376504,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9388376512,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9428362452,
+  "tags": {
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9430633968,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9430633969,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9430633970,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9430633979,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9431197905,
+  "tags": {
+    "direction": "backward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9431197906,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 9431197907,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 11573483568,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 11573490076,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 12657445770,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071229,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071230,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071231,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071232,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071233,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071234,
+  "tags": {
+    "direction": "backward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071235,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071236,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071238,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071241,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071242,
+  "tags": {
+    "direction": "backward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071243,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071244,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071245,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 13261898059,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 13339160382,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "note": "Stop videovigilado.",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261022,
+  "tags": {
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261052,
+  "tags": {
+    "highway": "stop",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261053,
+  "tags": {
+    "direction": "backward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 13810001390,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 13810001391,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "way",
+  "id": 11825114,
+  "bounds": {
+    "minlat": 39.5022210,
+    "minlon": -0.4054956,
+    "maxlat": 39.5022838,
+    "maxlon": -0.4054829
+  },
+  "geometry": [
+    { "lat": 39.5022210, "lon": -0.4054845 },
+    { "lat": 39.5022531, "lon": -0.4054829 },
+    { "lat": 39.5022838, "lon": -0.4054956 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 11825115,
+  "bounds": {
+    "minlat": 39.5019055,
+    "minlon": -0.4057123,
+    "maxlat": 39.5022005,
+    "maxlon": -0.4056838
+  },
+  "geometry": [
+    { "lat": 39.5022005, "lon": -0.4057123 },
+    { "lat": 39.5021506, "lon": -0.4056986 },
+    { "lat": 39.5021209, "lon": -0.4056943 },
+    { "lat": 39.5020689, "lon": -0.4056890 },
+    { "lat": 39.5020223, "lon": -0.4056866 },
+    { "lat": 39.5019667, "lon": -0.4056841 },
+    { "lat": 39.5019055, "lon": -0.4056838 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer del Pont Trencat",
+    "name:ca": "Carrer del Pont Trencat",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 12342998,
+  "bounds": {
+    "minlat": 39.5028313,
+    "minlon": -0.4166904,
+    "maxlat": 39.5054863,
+    "maxlon": -0.4102655
+  },
+  "geometry": [
+    { "lat": 39.5054863, "lon": -0.4166904 },
+    { "lat": 39.5054629, "lon": -0.4166184 },
+    { "lat": 39.5053110, "lon": -0.4161372 },
+    { "lat": 39.5049784, "lon": -0.4151260 },
+    { "lat": 39.5047113, "lon": -0.4143034 },
+    { "lat": 39.5041819, "lon": -0.4127147 },
+    { "lat": 39.5040122, "lon": -0.4123016 },
+    { "lat": 39.5038547, "lon": -0.4119785 },
+    { "lat": 39.5038349, "lon": -0.4119380 },
+    { "lat": 39.5037956, "lon": -0.4118578 },
+    { "lat": 39.5037514, "lon": -0.4117762 },
+    { "lat": 39.5037172, "lon": -0.4117131 },
+    { "lat": 39.5034102, "lon": -0.4111611 },
+    { "lat": 39.5033153, "lon": -0.4110061 },
+    { "lat": 39.5032801, "lon": -0.4109450 },
+    { "lat": 39.5029315, "lon": -0.4104090 },
+    { "lat": 39.5028313, "lon": -0.4102655 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "highway": "tertiary",
+    "lanes": "2",
+    "lanes:backward": "1",
+    "lanes:forward": "1",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Avinguda de la Mare de Déu de la Cabeça",
+    "name:ca": "Avinguda de la Mare de Déu de la Cabeça",
+    "name:es": "Avenida Virgen de la Cabeza",
+    "oneway": "no",
+    "sidewalk": "left",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 12462262,
+  "bounds": {
+    "minlat": 39.4982593,
+    "minlon": -0.4089606,
+    "maxlat": 39.5016440,
+    "maxlon": -0.4049522
+  },
+  "geometry": [
+    { "lat": 39.4982593, "lon": -0.4049522 },
+    { "lat": 39.4987791, "lon": -0.4053351 },
+    { "lat": 39.4989930, "lon": -0.4055059 },
+    { "lat": 39.4994913, "lon": -0.4059722 },
+    { "lat": 39.4997832, "lon": -0.4062940 },
+    { "lat": 39.5001154, "lon": -0.4066884 },
+    { "lat": 39.5003907, "lon": -0.4070847 },
+    { "lat": 39.5016440, "lon": -0.4089606 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "name:etymology:wikidata": "Q8254172",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272148,
+  "bounds": {
+    "minlat": 39.5032498,
+    "minlon": -0.4059482,
+    "maxlat": 39.5035917,
+    "maxlon": -0.4056728
+  },
+  "geometry": [
+    { "lat": 39.5035917, "lon": -0.4056728 },
+    { "lat": 39.5035495, "lon": -0.4056757 },
+    { "lat": 39.5035141, "lon": -0.4056826 },
+    { "lat": 39.5034782, "lon": -0.4057015 },
+    { "lat": 39.5034406, "lon": -0.4057379 },
+    { "lat": 39.5034051, "lon": -0.4057768 },
+    { "lat": 39.5033583, "lon": -0.4058340 },
+    { "lat": 39.5032911, "lon": -0.4059043 },
+    { "lat": 39.5032498, "lon": -0.4059482 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272149,
+  "bounds": {
+    "minlat": 39.5012532,
+    "minlon": -0.4072355,
+    "maxlat": 39.5032498,
+    "maxlon": -0.4059482
+  },
+  "geometry": [
+    { "lat": 39.5032498, "lon": -0.4059482 },
+    { "lat": 39.5031709, "lon": -0.4060276 },
+    { "lat": 39.5030866, "lon": -0.4060956 },
+    { "lat": 39.5030049, "lon": -0.4061534 },
+    { "lat": 39.5029399, "lon": -0.4061931 },
+    { "lat": 39.5012532, "lon": -0.4072355 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "highway": "tertiary",
+    "layer": "1",
+    "maxspeed": "40",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272150,
+  "bounds": {
+    "minlat": 39.5007854,
+    "minlon": -0.4073520,
+    "maxlat": 39.5012532,
+    "maxlon": -0.4072355
+  },
+  "geometry": [
+    { "lat": 39.5007854, "lon": -0.4072757 },
+    { "lat": 39.5008166, "lon": -0.4072964 },
+    { "lat": 39.5008594, "lon": -0.4073235 },
+    { "lat": 39.5009029, "lon": -0.4073424 },
+    { "lat": 39.5009429, "lon": -0.4073520 },
+    { "lat": 39.5009799, "lon": -0.4073517 },
+    { "lat": 39.5010239, "lon": -0.4073407 },
+    { "lat": 39.5010639, "lon": -0.4073274 },
+    { "lat": 39.5011135, "lon": -0.4073035 },
+    { "lat": 39.5012532, "lon": -0.4072355 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "maxspeed": "40",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272152,
+  "bounds": {
+    "minlat": 39.5022526,
+    "minlon": -0.4091740,
+    "maxlat": 39.5022871,
+    "maxlon": -0.4091101
+  },
+  "geometry": [
+    { "lat": 39.5022526, "lon": -0.4091101 },
+    { "lat": 39.5022701, "lon": -0.4091315 },
+    { "lat": 39.5022807, "lon": -0.4091550 },
+    { "lat": 39.5022871, "lon": -0.4091740 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272153,
+  "bounds": {
+    "minlat": 39.5022317,
+    "minlon": -0.4090947,
+    "maxlat": 39.5023561,
+    "maxlon": -0.4089477
+  },
+  "geometry": [
+    { "lat": 39.5022317, "lon": -0.4090947 },
+    { "lat": 39.5023225, "lon": -0.4089874 },
+    { "lat": 39.5023561, "lon": -0.4089477 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 24272156,
+  "bounds": {
+    "minlat": 39.5037505,
+    "minlon": -0.4071164,
+    "maxlat": 39.5038933,
+    "maxlon": -0.4062879
+  },
+  "geometry": [
+    { "lat": 39.5038933, "lon": -0.4071164 },
+    { "lat": 39.5038016, "lon": -0.4065879 },
+    { "lat": 39.5037505, "lon": -0.4062879 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "50",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272158,
+  "bounds": {
+    "minlat": 39.5034754,
+    "minlon": -0.4095597,
+    "maxlat": 39.5034871,
+    "maxlon": -0.4091850
+  },
+  "geometry": [
+    { "lat": 39.5034823, "lon": -0.4091850 },
+    { "lat": 39.5034849, "lon": -0.4093504 },
+    { "lat": 39.5034859, "lon": -0.4093903 },
+    { "lat": 39.5034871, "lon": -0.4094328 },
+    { "lat": 39.5034833, "lon": -0.4094946 },
+    { "lat": 39.5034754, "lon": -0.4095597 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "maxspeed": "50",
+    "name": "Carrer de l'Almara",
+    "name:ca": "Carrer de l'Almara",
+    "name:es": "Calle de Almara",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 24272159,
+  "bounds": {
+    "minlat": 39.5034933,
+    "minlon": -0.4083218,
+    "maxlat": 39.5036258,
+    "maxlon": -0.4078442
+  },
+  "geometry": [
+    { "lat": 39.5035078, "lon": -0.4083218 },
+    { "lat": 39.5035054, "lon": -0.4082864 },
+    { "lat": 39.5034976, "lon": -0.4082381 },
+    { "lat": 39.5034933, "lon": -0.4081858 },
+    { "lat": 39.5034936, "lon": -0.4081403 },
+    { "lat": 39.5034946, "lon": -0.4080813 },
+    { "lat": 39.5035040, "lon": -0.4080238 },
+    { "lat": 39.5035170, "lon": -0.4079766 },
+    { "lat": 39.5035321, "lon": -0.4079349 },
+    { "lat": 39.5035385, "lon": -0.4079196 },
+    { "lat": 39.5035811, "lon": -0.4078707 },
+    { "lat": 39.5036258, "lon": -0.4078442 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "50",
+    "name": "Carrer de l'Almara",
+    "name:ca": "Carrer de l'Almara",
+    "name:es": "Calle de Almara",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272420,
+  "bounds": {
+    "minlat": 39.5034405,
+    "minlon": -0.4097980,
+    "maxlat": 39.5034525,
+    "maxlon": -0.4096474
+  },
+  "geometry": [
+    { "lat": 39.5034405, "lon": -0.4096474 },
+    { "lat": 39.5034478, "lon": -0.4096635 },
+    { "lat": 39.5034525, "lon": -0.4096980 },
+    { "lat": 39.5034523, "lon": -0.4097415 },
+    { "lat": 39.5034455, "lon": -0.4097980 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer de Beniferri",
+    "name:ca": "Carrer de Beniferri",
+    "name:es": "Calle de Beniferri",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 24272421,
+  "bounds": {
+    "minlat": 39.5035463,
+    "minlon": -0.4101964,
+    "maxlat": 39.5043230,
+    "maxlon": -0.4095765
+  },
+  "geometry": [
+    { "lat": 39.5035463, "lon": -0.4101964 },
+    { "lat": 39.5039588, "lon": -0.4098672 },
+    { "lat": 39.5042611, "lon": -0.4096259 },
+    { "lat": 39.5043230, "lon": -0.4095765 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lane_markings": "no",
+    "name": "Carrer del Mestre Palau",
+    "name:ca": "Carrer del Mestre Palau",
+    "name:es": "Calle del Maestro Palau",
+    "oneway": "yes",
+    "source:width": "ARCore",
+    "surface": "asphalt",
+    "width": "3.6"
+  }
+},
+{
+  "type": "way",
+  "id": 24272422,
+  "bounds": {
+    "minlat": 39.5039588,
+    "minlon": -0.4105566,
+    "maxlat": 39.5043078,
+    "maxlon": -0.4098672
+  },
+  "geometry": [
+    { "lat": 39.5043078, "lon": -0.4105566 },
+    { "lat": 39.5041499, "lon": -0.4102432 },
+    { "lat": 39.5039588, "lon": -0.4098672 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lane_markings": "no",
+    "name": "Carrer de Bernat i Baldoví",
+    "name:ca": "Carrer de Bernat i Baldoví",
+    "name:es": "Calle Bernat i Baldoví",
+    "oneway": "yes",
+    "source:width": "ARCore",
+    "surface": "asphalt",
+    "width": "2.9"
+  }
+},
+{
+  "type": "way",
+  "id": 24272425,
+  "bounds": {
+    "minlat": 39.5040761,
+    "minlon": -0.4111393,
+    "maxlat": 39.5050845,
+    "maxlon": -0.4090643
+  },
+  "geometry": [
+    { "lat": 39.5050845, "lon": -0.4111393 },
+    { "lat": 39.5050541, "lon": -0.4110674 },
+    { "lat": 39.5049755, "lon": -0.4109072 },
+    { "lat": 39.5047442, "lon": -0.4104355 },
+    { "lat": 39.5047205, "lon": -0.4103847 },
+    { "lat": 39.5043538, "lon": -0.4096374 },
+    { "lat": 39.5043230, "lon": -0.4095765 },
+    { "lat": 39.5041044, "lon": -0.4091471 },
+    { "lat": 39.5040761, "lon": -0.4090643 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "30",
+    "name": "Carrer de Guillem de Castro",
+    "name:ca": "Carrer de Guillem de Castro",
+    "name:es": "Calle de Guillem de Castro",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "wikidata": "Q17593160",
+    "wikipedia": "ca:Carrer de Guillem de Castro"
+  }
+},
+{
+  "type": "way",
+  "id": 24272426,
+  "bounds": {
+    "minlat": 39.5035758,
+    "minlon": -0.4081397,
+    "maxlat": 39.5036258,
+    "maxlon": -0.4078442
+  },
+  "geometry": [
+    { "lat": 39.5036250, "lon": -0.4081397 },
+    { "lat": 39.5036111, "lon": -0.4081082 },
+    { "lat": 39.5035950, "lon": -0.4080602 },
+    { "lat": 39.5035831, "lon": -0.4080180 },
+    { "lat": 39.5035773, "lon": -0.4079782 },
+    { "lat": 39.5035758, "lon": -0.4079417 },
+    { "lat": 39.5035879, "lon": -0.4079100 },
+    { "lat": 39.5036258, "lon": -0.4078442 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272428,
+  "bounds": {
+    "minlat": 39.5042405,
+    "minlon": -0.4109259,
+    "maxlat": 39.5055342,
+    "maxlon": -0.4082846
+  },
+  "geometry": [
+    { "lat": 39.5042405, "lon": -0.4082846 },
+    { "lat": 39.5044683, "lon": -0.4087359 },
+    { "lat": 39.5051169, "lon": -0.4100548 },
+    { "lat": 39.5053737, "lon": -0.4105806 },
+    { "lat": 39.5055054, "lon": -0.4108548 },
+    { "lat": 39.5055342, "lon": -0.4109259 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lane_markings": "no",
+    "name": "Carrer del Mestre Giner",
+    "name:ca": "Carrer del Mestre Giner",
+    "name:es": "Calle del Maestro Giner",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272429,
+  "bounds": {
+    "minlat": 39.5036250,
+    "minlon": -0.4081397,
+    "maxlat": 39.5039731,
+    "maxlon": -0.4077910
+  },
+  "geometry": [
+    { "lat": 39.5039731, "lon": -0.4077910 },
+    { "lat": 39.5039659, "lon": -0.4078136 },
+    { "lat": 39.5039432, "lon": -0.4078559 },
+    { "lat": 39.5039303, "lon": -0.4078738 },
+    { "lat": 39.5039133, "lon": -0.4078943 },
+    { "lat": 39.5038979, "lon": -0.4079088 },
+    { "lat": 39.5038468, "lon": -0.4079522 },
+    { "lat": 39.5037241, "lon": -0.4080547 },
+    { "lat": 39.5036250, "lon": -0.4081397 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "50",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 24272430,
+  "bounds": {
+    "minlat": 39.5038933,
+    "minlon": -0.4077910,
+    "maxlat": 39.5040044,
+    "maxlon": -0.4071164
+  },
+  "geometry": [
+    { "lat": 39.5038933, "lon": -0.4071164 },
+    { "lat": 39.5039471, "lon": -0.4073067 },
+    { "lat": 39.5039806, "lon": -0.4074338 },
+    { "lat": 39.5039914, "lon": -0.4074866 },
+    { "lat": 39.5040011, "lon": -0.4075562 },
+    { "lat": 39.5040038, "lon": -0.4076117 },
+    { "lat": 39.5040044, "lon": -0.4076602 },
+    { "lat": 39.5040013, "lon": -0.4077037 },
+    { "lat": 39.5039819, "lon": -0.4077638 },
+    { "lat": 39.5039731, "lon": -0.4077910 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "50",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 26506143,
+  "bounds": {
+    "minlat": 39.5038650,
+    "minlon": -0.4086285,
+    "maxlat": 39.5052577,
+    "maxlon": -0.4071508
+  },
+  "geometry": [
+    { "lat": 39.5038650, "lon": -0.4086285 },
+    { "lat": 39.5041387, "lon": -0.4083965 },
+    { "lat": 39.5041863, "lon": -0.4083546 },
+    { "lat": 39.5042063, "lon": -0.4083354 },
+    { "lat": 39.5042405, "lon": -0.4082846 },
+    { "lat": 39.5042613, "lon": -0.4082513 },
+    { "lat": 39.5042852, "lon": -0.4082226 },
+    { "lat": 39.5045693, "lon": -0.4079067 },
+    { "lat": 39.5050030, "lon": -0.4074404 },
+    { "lat": 39.5052577, "lon": -0.4071508 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Huertas",
+    "name:ca": "Carrer Huertas",
+    "name:es": "Calle Huertas",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 26508380,
+  "bounds": {
+    "minlat": 39.5034754,
+    "minlon": -0.4095597,
+    "maxlat": 39.5055731,
+    "maxlon": -0.4076713
+  },
+  "geometry": [
+    { "lat": 39.5055731, "lon": -0.4076713 },
+    { "lat": 39.5053178, "lon": -0.4080333 },
+    { "lat": 39.5048347, "lon": -0.4084390 },
+    { "lat": 39.5044683, "lon": -0.4087359 },
+    { "lat": 39.5044285, "lon": -0.4087707 },
+    { "lat": 39.5041317, "lon": -0.4090166 },
+    { "lat": 39.5040761, "lon": -0.4090643 },
+    { "lat": 39.5040125, "lon": -0.4091147 },
+    { "lat": 39.5038447, "lon": -0.4092517 },
+    { "lat": 39.5036663, "lon": -0.4093966 },
+    { "lat": 39.5035737, "lon": -0.4094655 },
+    { "lat": 39.5035556, "lon": -0.4094776 },
+    { "lat": 39.5035197, "lon": -0.4095025 },
+    { "lat": 39.5035005, "lon": -0.4095145 },
+    { "lat": 39.5034872, "lon": -0.4095295 },
+    { "lat": 39.5034754, "lon": -0.4095597 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lane_markings": "no",
+    "name": "Carrer de Cervantes",
+    "name:ca": "Carrer de Cervantes",
+    "name:es": "Calle Cervantes",
+    "name:etymology:wikidata": "Q5682",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 26623355,
+  "bounds": {
+    "minlat": 39.5001555,
+    "minlon": -0.4067213,
+    "maxlat": 39.5003800,
+    "maxlon": -0.4063682
+  },
+  "geometry": [
+    { "lat": 39.5001555, "lon": -0.4063682 },
+    { "lat": 39.5003800, "lon": -0.4067213 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 26641358,
+  "bounds": {
+    "minlat": 39.5031285,
+    "minlon": -0.4077860,
+    "maxlat": 39.5038016,
+    "maxlon": -0.4065879
+  },
+  "geometry": [
+    { "lat": 39.5038016, "lon": -0.4065879 },
+    { "lat": 39.5036288, "lon": -0.4067168 },
+    { "lat": 39.5035842, "lon": -0.4067599 },
+    { "lat": 39.5035699, "lon": -0.4067727 },
+    { "lat": 39.5034949, "lon": -0.4068503 },
+    { "lat": 39.5034405, "lon": -0.4069082 },
+    { "lat": 39.5033778, "lon": -0.4069862 },
+    { "lat": 39.5033146, "lon": -0.4070942 },
+    { "lat": 39.5032583, "lon": -0.4072012 },
+    { "lat": 39.5032184, "lon": -0.4072854 },
+    { "lat": 39.5032002, "lon": -0.4073319 },
+    { "lat": 39.5031835, "lon": -0.4073811 },
+    { "lat": 39.5031685, "lon": -0.4074426 },
+    { "lat": 39.5031553, "lon": -0.4075001 },
+    { "lat": 39.5031506, "lon": -0.4075353 },
+    { "lat": 39.5031443, "lon": -0.4075888 },
+    { "lat": 39.5031398, "lon": -0.4076273 },
+    { "lat": 39.5031285, "lon": -0.4077402 },
+    { "lat": 39.5031291, "lon": -0.4077584 },
+    { "lat": 39.5031369, "lon": -0.4077752 },
+    { "lat": 39.5031500, "lon": -0.4077860 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer de la Séquia de Montcada",
+    "name:ca": "Carrer de la Séquia de Montcada",
+    "name:es": "Calle de la Acequia de Moncada",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 37300350,
+  "bounds": {
+    "minlat": 39.5005273,
+    "minlon": -0.4072757,
+    "maxlat": 39.5007854,
+    "maxlon": -0.4069720
+  },
+  "geometry": [
+    { "lat": 39.5005273, "lon": -0.4069720 },
+    { "lat": 39.5006404, "lon": -0.4071327 },
+    { "lat": 39.5006837, "lon": -0.4071806 },
+    { "lat": 39.5007182, "lon": -0.4072162 },
+    { "lat": 39.5007475, "lon": -0.4072469 },
+    { "lat": 39.5007854, "lon": -0.4072757 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 37300359,
+  "bounds": {
+    "minlat": 39.5008226,
+    "minlon": -0.4059550,
+    "maxlat": 39.5019055,
+    "maxlon": -0.4056838
+  },
+  "geometry": [
+    { "lat": 39.5019055, "lon": -0.4056838 },
+    { "lat": 39.5016681, "lon": -0.4057339 },
+    { "lat": 39.5015742, "lon": -0.4057555 },
+    { "lat": 39.5014099, "lon": -0.4057934 },
+    { "lat": 39.5011558, "lon": -0.4058637 },
+    { "lat": 39.5010321, "lon": -0.4058977 },
+    { "lat": 39.5009590, "lon": -0.4059173 },
+    { "lat": 39.5008226, "lon": -0.4059550 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer del Pont Trencat",
+    "name:ca": "Carrer del Pont Trencat"
+  }
+},
+{
+  "type": "way",
+  "id": 142495915,
+  "bounds": {
+    "minlat": 39.5026210,
+    "minlon": -0.4122138,
+    "maxlat": 39.5033844,
+    "maxlon": -0.4098905
+  },
+  "geometry": [
+    { "lat": 39.5033844, "lon": -0.4122138 },
+    { "lat": 39.5033578, "lon": -0.4121555 },
+    { "lat": 39.5033330, "lon": -0.4120779 },
+    { "lat": 39.5033113, "lon": -0.4120367 },
+    { "lat": 39.5032795, "lon": -0.4119958 },
+    { "lat": 39.5032465, "lon": -0.4119490 },
+    { "lat": 39.5031140, "lon": -0.4117053 },
+    { "lat": 39.5029191, "lon": -0.4113708 },
+    { "lat": 39.5027261, "lon": -0.4110738 },
+    { "lat": 39.5026792, "lon": -0.4110032 },
+    { "lat": 39.5026535, "lon": -0.4109566 },
+    { "lat": 39.5026210, "lon": -0.4108846 },
+    { "lat": 39.5026777, "lon": -0.4101095 },
+    { "lat": 39.5026880, "lon": -0.4100595 },
+    { "lat": 39.5027087, "lon": -0.4100175 },
+    { "lat": 39.5027293, "lon": -0.4099824 },
+    { "lat": 39.5027795, "lon": -0.4099412 },
+    { "lat": 39.5028240, "lon": -0.4099184 },
+    { "lat": 39.5028326, "lon": -0.4099140 },
+    { "lat": 39.5028847, "lon": -0.4098905 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de la Mare de Déu de la Cabeça",
+    "name:ca": "Avinguda de la Mare de Déu de la Cabeça",
+    "name:es": "Avenida Virgen de la Cabeza",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 142500277,
+  "bounds": {
+    "minlat": 39.5025595,
+    "minlon": -0.4125493,
+    "maxlat": 39.5030221,
+    "maxlon": -0.4108846
+  },
+  "geometry": [
+    { "lat": 39.5030221, "lon": -0.4125493 },
+    { "lat": 39.5029844, "lon": -0.4124761 },
+    { "lat": 39.5027695, "lon": -0.4120595 },
+    { "lat": 39.5027402, "lon": -0.4120027 },
+    { "lat": 39.5025595, "lon": -0.4116482 },
+    { "lat": 39.5025847, "lon": -0.4113479 },
+    { "lat": 39.5026126, "lon": -0.4109919 },
+    { "lat": 39.5026210, "lon": -0.4108846 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Cardenal Cisneros",
+    "name:ca": "Carrer Cardenal Cisneros",
+    "name:es": "Calle Cardenal Cisneros",
+    "name:etymology:wikidata": "Q342392",
+    "oneway": "yes",
+    "sidewalk": "both"
+  }
+},
+{
+  "type": "way",
+  "id": 144013783,
+  "bounds": {
+    "minlat": 39.5023339,
+    "minlon": -0.4059276,
+    "maxlat": 39.5024442,
+    "maxlon": -0.4055966
+  },
+  "geometry": [
+    { "lat": 39.5023339, "lon": -0.4055966 },
+    { "lat": 39.5023492, "lon": -0.4056704 },
+    { "lat": 39.5023585, "lon": -0.4057106 },
+    { "lat": 39.5023744, "lon": -0.4057568 },
+    { "lat": 39.5023949, "lon": -0.4058098 },
+    { "lat": 39.5024442, "lon": -0.4059276 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144013785,
+  "bounds": {
+    "minlat": 39.5022871,
+    "minlon": -0.4091740,
+    "maxlat": 39.5023561,
+    "maxlon": -0.4089477
+  },
+  "geometry": [
+    { "lat": 39.5023561, "lon": -0.4089477 },
+    { "lat": 39.5023423, "lon": -0.4089864 },
+    { "lat": 39.5023362, "lon": -0.4090006 },
+    { "lat": 39.5023313, "lon": -0.4090118 },
+    { "lat": 39.5023151, "lon": -0.4090471 },
+    { "lat": 39.5023020, "lon": -0.4090792 },
+    { "lat": 39.5022977, "lon": -0.4090948 },
+    { "lat": 39.5022913, "lon": -0.4091177 },
+    { "lat": 39.5022886, "lon": -0.4091414 },
+    { "lat": 39.5022871, "lon": -0.4091740 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144013786,
+  "bounds": {
+    "minlat": 39.5010669,
+    "minlon": -0.4076273,
+    "maxlat": 39.5026093,
+    "maxlon": -0.4065639
+  },
+  "geometry": [
+    { "lat": 39.5026093, "lon": -0.4065865 },
+    { "lat": 39.5025530, "lon": -0.4065720 },
+    { "lat": 39.5025031, "lon": -0.4065639 },
+    { "lat": 39.5024493, "lon": -0.4065827 },
+    { "lat": 39.5022025, "lon": -0.4067364 },
+    { "lat": 39.5015180, "lon": -0.4071627 },
+    { "lat": 39.5015095, "lon": -0.4071680 },
+    { "lat": 39.5011333, "lon": -0.4074144 },
+    { "lat": 39.5011124, "lon": -0.4074368 },
+    { "lat": 39.5010731, "lon": -0.4075200 },
+    { "lat": 39.5010669, "lon": -0.4076273 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144013787,
+  "bounds": {
+    "minlat": 39.5022261,
+    "minlon": -0.4059276,
+    "maxlat": 39.5024442,
+    "maxlon": -0.4057225
+  },
+  "geometry": [
+    { "lat": 39.5024442, "lon": -0.4059276 },
+    { "lat": 39.5024020, "lon": -0.4058705 },
+    { "lat": 39.5023669, "lon": -0.4058258 },
+    { "lat": 39.5023378, "lon": -0.4057933 },
+    { "lat": 39.5023033, "lon": -0.4057689 },
+    { "lat": 39.5022988, "lon": -0.4057658 },
+    { "lat": 39.5022624, "lon": -0.4057427 },
+    { "lat": 39.5022261, "lon": -0.4057225 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144013788,
+  "bounds": {
+    "minlat": 39.5023561,
+    "minlon": -0.4089477,
+    "maxlat": 39.5026247,
+    "maxlon": -0.4067051
+  },
+  "geometry": [
+    { "lat": 39.5023561, "lon": -0.4089477 },
+    { "lat": 39.5023781, "lon": -0.4089017 },
+    { "lat": 39.5023961, "lon": -0.4088500 },
+    { "lat": 39.5024310, "lon": -0.4087144 },
+    { "lat": 39.5024694, "lon": -0.4085496 },
+    { "lat": 39.5024816, "lon": -0.4084899 },
+    { "lat": 39.5025096, "lon": -0.4083534 },
+    { "lat": 39.5025275, "lon": -0.4082505 },
+    { "lat": 39.5025418, "lon": -0.4081381 },
+    { "lat": 39.5025974, "lon": -0.4075315 },
+    { "lat": 39.5026145, "lon": -0.4073093 },
+    { "lat": 39.5026247, "lon": -0.4070264 },
+    { "lat": 39.5026212, "lon": -0.4068203 },
+    { "lat": 39.5026164, "lon": -0.4067051 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 144015563,
+  "bounds": {
+    "minlat": 39.5007953,
+    "minlon": -0.4087703,
+    "maxlat": 39.5010872,
+    "maxlon": -0.4082368
+  },
+  "geometry": [
+    { "lat": 39.5010872, "lon": -0.4087703 },
+    { "lat": 39.5010580, "lon": -0.4086718 },
+    { "lat": 39.5010224, "lon": -0.4085838 },
+    { "lat": 39.5009845, "lon": -0.4085088 },
+    { "lat": 39.5007953, "lon": -0.4082368 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk_link",
+    "layer": "-1",
+    "oneway": "yes",
+    "tunnel": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015565,
+  "bounds": {
+    "minlat": 39.5002006,
+    "minlon": -0.4101789,
+    "maxlat": 39.5010577,
+    "maxlon": -0.4091903
+  },
+  "geometry": [
+    { "lat": 39.5002006, "lon": -0.4101789 },
+    { "lat": 39.5002912, "lon": -0.4100970 },
+    { "lat": 39.5003843, "lon": -0.4099930 },
+    { "lat": 39.5009304, "lon": -0.4093831 },
+    { "lat": 39.5009737, "lon": -0.4093390 },
+    { "lat": 39.5010187, "lon": -0.4092891 },
+    { "lat": 39.5010431, "lon": -0.4092451 },
+    { "lat": 39.5010577, "lon": -0.4091903 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Carrer Coscollana",
+    "name:ca": "Carrer Coscollana",
+    "name:es": "Calle Coscollana",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015566,
+  "bounds": {
+    "minlat": 39.5010872,
+    "minlon": -0.4090009,
+    "maxlat": 39.5010988,
+    "maxlon": -0.4087703
+  },
+  "geometry": [
+    { "lat": 39.5010900, "lon": -0.4090009 },
+    { "lat": 39.5010944, "lon": -0.4089439 },
+    { "lat": 39.5010970, "lon": -0.4089053 },
+    { "lat": 39.5010988, "lon": -0.4088569 },
+    { "lat": 39.5010872, "lon": -0.4087703 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk_link",
+    "lanes": "1",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015568,
+  "bounds": {
+    "minlat": 39.5018658,
+    "minlon": -0.4100466,
+    "maxlat": 39.5019432,
+    "maxlon": -0.4099018
+  },
+  "geometry": [
+    { "lat": 39.5018658, "lon": -0.4099018 },
+    { "lat": 39.5019432, "lon": -0.4100466 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015570,
+  "bounds": {
+    "minlat": 39.5019824,
+    "minlon": -0.4097107,
+    "maxlat": 39.5022361,
+    "maxlon": -0.4093303
+  },
+  "geometry": [
+    { "lat": 39.5022361, "lon": -0.4093303 },
+    { "lat": 39.5022165, "lon": -0.4093529 },
+    { "lat": 39.5022011, "lon": -0.4093786 },
+    { "lat": 39.5021809, "lon": -0.4094276 },
+    { "lat": 39.5021575, "lon": -0.4094814 },
+    { "lat": 39.5021421, "lon": -0.4095072 },
+    { "lat": 39.5021308, "lon": -0.4095209 },
+    { "lat": 39.5020210, "lon": -0.4096614 },
+    { "lat": 39.5019824, "lon": -0.4097107 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "noname": "yes",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015576,
+  "bounds": {
+    "minlat": 39.5013542,
+    "minlon": -0.4114514,
+    "maxlat": 39.5023749,
+    "maxlon": -0.4107306
+  },
+  "geometry": [
+    { "lat": 39.5013542, "lon": -0.4114514 },
+    { "lat": 39.5013959, "lon": -0.4114243 },
+    { "lat": 39.5014814, "lon": -0.4113621 },
+    { "lat": 39.5015529, "lon": -0.4113251 },
+    { "lat": 39.5021720, "lon": -0.4110480 },
+    { "lat": 39.5022279, "lon": -0.4110230 },
+    { "lat": 39.5023190, "lon": -0.4109639 },
+    { "lat": 39.5023666, "lon": -0.4108620 },
+    { "lat": 39.5023749, "lon": -0.4107306 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Carrer Séquia de Faitanar",
+    "name:ca": "Carrer Séquia de Faitanar",
+    "name:es": "Calle Acequia de Faitanar",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 144015577,
+  "bounds": {
+    "minlat": 39.5017910,
+    "minlon": -0.4097478,
+    "maxlat": 39.5021192,
+    "maxlon": -0.4092989
+  },
+  "geometry": [
+    { "lat": 39.5017910, "lon": -0.4097478 },
+    { "lat": 39.5018172, "lon": -0.4097457 },
+    { "lat": 39.5018375, "lon": -0.4097343 },
+    { "lat": 39.5019713, "lon": -0.4095764 },
+    { "lat": 39.5020823, "lon": -0.4094454 },
+    { "lat": 39.5020917, "lon": -0.4094346 },
+    { "lat": 39.5021033, "lon": -0.4094075 },
+    { "lat": 39.5021109, "lon": -0.4093842 },
+    { "lat": 39.5021143, "lon": -0.4093537 },
+    { "lat": 39.5021156, "lon": -0.4093414 },
+    { "lat": 39.5021192, "lon": -0.4092989 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "noname": "yes",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015578,
+  "bounds": {
+    "minlat": 39.5002636,
+    "minlon": -0.4102603,
+    "maxlat": 39.5011737,
+    "maxlon": -0.4093571
+  },
+  "geometry": [
+    { "lat": 39.5011737, "lon": -0.4093791 },
+    { "lat": 39.5011096, "lon": -0.4093571 },
+    { "lat": 39.5010769, "lon": -0.4093580 },
+    { "lat": 39.5010416, "lon": -0.4093753 },
+    { "lat": 39.5010095, "lon": -0.4094099 },
+    { "lat": 39.5007573, "lon": -0.4096916 },
+    { "lat": 39.5003350, "lon": -0.4101632 },
+    { "lat": 39.5002830, "lon": -0.4102340 },
+    { "lat": 39.5002636, "lon": -0.4102603 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer Coscollana",
+    "name:ca": "Carrer Coscollana",
+    "name:es": "Calle Coscollana",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015587,
+  "bounds": {
+    "minlat": 39.5011737,
+    "minlon": -0.4101052,
+    "maxlat": 39.5018373,
+    "maxlon": -0.4093791
+  },
+  "geometry": [
+    { "lat": 39.5018373, "lon": -0.4100437 },
+    { "lat": 39.5018144, "lon": -0.4100666 },
+    { "lat": 39.5017888, "lon": -0.4100897 },
+    { "lat": 39.5017566, "lon": -0.4101014 },
+    { "lat": 39.5017173, "lon": -0.4101052 },
+    { "lat": 39.5016758, "lon": -0.4100949 },
+    { "lat": 39.5016422, "lon": -0.4100708 },
+    { "lat": 39.5016377, "lon": -0.4100642 },
+    { "lat": 39.5015754, "lon": -0.4099725 },
+    { "lat": 39.5015264, "lon": -0.4099007 },
+    { "lat": 39.5015052, "lon": -0.4098691 },
+    { "lat": 39.5014538, "lon": -0.4097934 },
+    { "lat": 39.5013375, "lon": -0.4096231 },
+    { "lat": 39.5013134, "lon": -0.4095866 },
+    { "lat": 39.5012196, "lon": -0.4094486 },
+    { "lat": 39.5011920, "lon": -0.4094068 },
+    { "lat": 39.5011737, "lon": -0.4093791 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 144015591,
+  "bounds": {
+    "minlat": 39.5018373,
+    "minlon": -0.4100466,
+    "maxlat": 39.5019432,
+    "maxlon": -0.4100348
+  },
+  "geometry": [
+    { "lat": 39.5019432, "lon": -0.4100466 },
+    { "lat": 39.5018808, "lon": -0.4100348 },
+    { "lat": 39.5018373, "lon": -0.4100437 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 144015592,
+  "bounds": {
+    "minlat": 39.4990833,
+    "minlon": -0.4082368,
+    "maxlat": 39.5007953,
+    "maxlon": -0.4058019
+  },
+  "geometry": [
+    { "lat": 39.5007953, "lon": -0.4082368 },
+    { "lat": 39.4998853, "lon": -0.4068814 },
+    { "lat": 39.4996035, "lon": -0.4064352 },
+    { "lat": 39.4994074, "lon": -0.4062228 },
+    { "lat": 39.4990833, "lon": -0.4058019 }
+  ],
+  "tags": {
+    "foot": "no",
+    "highway": "trunk_link",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 208689106,
+  "bounds": {
+    "minlat": 39.4997003,
+    "minlon": -0.4091903,
+    "maxlat": 39.5010577,
+    "maxlon": -0.4070273
+  },
+  "geometry": [
+    { "lat": 39.5010577, "lon": -0.4091903 },
+    { "lat": 39.5010202, "lon": -0.4091591 },
+    { "lat": 39.5008737, "lon": -0.4089375 },
+    { "lat": 39.5008417, "lon": -0.4088560 },
+    { "lat": 39.5007441, "lon": -0.4087063 },
+    { "lat": 39.5004047, "lon": -0.4082023 },
+    { "lat": 39.5001965, "lon": -0.4078933 },
+    { "lat": 39.4999814, "lon": -0.4075704 },
+    { "lat": 39.4999278, "lon": -0.4074638 },
+    { "lat": 39.4997145, "lon": -0.4071442 },
+    { "lat": 39.4997003, "lon": -0.4070794 },
+    { "lat": 39.4997096, "lon": -0.4070273 }
+  ],
+  "tags": {
+    "fixme": "Comprobar si el nombre es correcto.",
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 282105981,
+  "bounds": {
+    "minlat": 39.5027617,
+    "minlon": -0.4102655,
+    "maxlat": 39.5028847,
+    "maxlon": -0.4098905
+  },
+  "geometry": [
+    { "lat": 39.5028313, "lon": -0.4102655 },
+    { "lat": 39.5027946, "lon": -0.4102054 },
+    { "lat": 39.5027638, "lon": -0.4101342 },
+    { "lat": 39.5027617, "lon": -0.4100917 },
+    { "lat": 39.5027644, "lon": -0.4100530 },
+    { "lat": 39.5027963, "lon": -0.4099823 },
+    { "lat": 39.5028319, "lon": -0.4099386 },
+    { "lat": 39.5028847, "lon": -0.4098905 }
+  ],
+  "tags": {
+    "cycleway:right": "separate",
+    "highway": "tertiary",
+    "maxspeed": "50",
+    "name": "Avinguda de la Mare de Déu de la Cabeça",
+    "name:ca": "Avinguda de la Mare de Déu de la Cabeça",
+    "name:es": "Avenida Virgen de la Cabeza",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 282105983,
+  "bounds": {
+    "minlat": 39.5028034,
+    "minlon": -0.4102655,
+    "maxlat": 39.5034405,
+    "maxlon": -0.4096474
+  },
+  "geometry": [
+    { "lat": 39.5034405, "lon": -0.4096474 },
+    { "lat": 39.5034129, "lon": -0.4096845 },
+    { "lat": 39.5033709, "lon": -0.4097192 },
+    { "lat": 39.5032912, "lon": -0.4097691 },
+    { "lat": 39.5028626, "lon": -0.4100166 },
+    { "lat": 39.5028325, "lon": -0.4100437 },
+    { "lat": 39.5028102, "lon": -0.4100906 },
+    { "lat": 39.5028034, "lon": -0.4101603 },
+    { "lat": 39.5028313, "lon": -0.4102655 }
+  ],
+  "tags": {
+    "cycleway:right": "separate",
+    "highway": "tertiary",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Carrer Cervantes",
+    "name:ca": "Carrer Cervantes",
+    "name:es": "Calle Cervantes",
+    "name:etymology:wikidata": "Q5682",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 323224595,
+  "bounds": {
+    "minlat": 39.5022187,
+    "minlon": -0.4104844,
+    "maxlat": 39.5024906,
+    "maxlon": -0.4100854
+  },
+  "geometry": [
+    { "lat": 39.5024906, "lon": -0.4104844 },
+    { "lat": 39.5022187, "lon": -0.4100854 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 323224597,
+  "bounds": {
+    "minlat": 39.5021146,
+    "minlon": -0.4102484,
+    "maxlat": 39.5025096,
+    "maxlon": -0.4096623
+  },
+  "geometry": [
+    { "lat": 39.5021146, "lon": -0.4096623 },
+    { "lat": 39.5025096, "lon": -0.4102484 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 323224598,
+  "bounds": {
+    "minlat": 39.4989208,
+    "minlon": -0.4090064,
+    "maxlat": 39.5014830,
+    "maxlon": -0.4056502
+  },
+  "geometry": [
+    { "lat": 39.5014830, "lon": -0.4090064 },
+    { "lat": 39.5002866, "lon": -0.4072017 },
+    { "lat": 39.4999724, "lon": -0.4067645 },
+    { "lat": 39.4997130, "lon": -0.4064448 },
+    { "lat": 39.4994028, "lon": -0.4061041 },
+    { "lat": 39.4990833, "lon": -0.4058019 },
+    { "lat": 39.4989208, "lon": -0.4056502 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "destination": "València;Palau de Congressos",
+    "destination:colour": ";purple",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "name:etymology:wikidata": "Q8254172",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 323224599,
+  "bounds": {
+    "minlat": 39.4998382,
+    "minlon": -0.4090064,
+    "maxlat": 39.5014830,
+    "maxlon": -0.4070104
+  },
+  "geometry": [
+    { "lat": 39.5014830, "lon": -0.4090064 },
+    { "lat": 39.5013014, "lon": -0.4088872 },
+    { "lat": 39.5011512, "lon": -0.4087080 },
+    { "lat": 39.5010106, "lon": -0.4085867 },
+    { "lat": 39.5008138, "lon": -0.4083872 },
+    { "lat": 39.5006696, "lon": -0.4082067 },
+    { "lat": 39.4999940, "lon": -0.4072058 },
+    { "lat": 39.4998382, "lon": -0.4070104 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "destination:colour:lanes": ";green|;green",
+    "destination:lanes": "ronda nord;av. Juan XXIII|ronda sud;av. Mestre Rodrigo;Burjassot;centre comercial",
+    "destination:symbol:lanes": "|;;;shopping_centre",
+    "foot": "no",
+    "highway": "trunk_link",
+    "junction:ref": "1",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "slight_left|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 386673920,
+  "bounds": {
+    "minlat": 39.4993671,
+    "minlon": -0.4073412,
+    "maxlat": 39.5006559,
+    "maxlon": -0.4056154
+  },
+  "geometry": [
+    { "lat": 39.4993671, "lon": -0.4056154 },
+    { "lat": 39.4997539, "lon": -0.4060253 },
+    { "lat": 39.4999886, "lon": -0.4063119 },
+    { "lat": 39.5002680, "lon": -0.4067166 },
+    { "lat": 39.5006559, "lon": -0.4073412 }
+  ],
+  "tags": {
+    "destination": "Llíria;Castelló;Aeropuerto",
+    "destination:ref": "CV-35;A-7",
+    "destination:symbol": "airport",
+    "foot": "no",
+    "highway": "trunk_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "turn:lanes": "through|merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 441648340,
+  "bounds": {
+    "minlat": 39.5032498,
+    "minlon": -0.4059482,
+    "maxlat": 39.5034733,
+    "maxlon": -0.4054408
+  },
+  "geometry": [
+    { "lat": 39.5032498, "lon": -0.4059482 },
+    { "lat": 39.5033044, "lon": -0.4058632 },
+    { "lat": 39.5033447, "lon": -0.4057957 },
+    { "lat": 39.5033803, "lon": -0.4057351 },
+    { "lat": 39.5034227, "lon": -0.4056296 },
+    { "lat": 39.5034500, "lon": -0.4055508 },
+    { "lat": 39.5034733, "lon": -0.4054408 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 467787407,
+  "bounds": {
+    "minlat": 39.5006559,
+    "minlon": -0.4089606,
+    "maxlat": 39.5016440,
+    "maxlon": -0.4073412
+  },
+  "geometry": [
+    { "lat": 39.5006559, "lon": -0.4073412 },
+    { "lat": 39.5013333, "lon": -0.4083764 },
+    { "lat": 39.5016440, "lon": -0.4089606 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "destination": "Llíria;Castelló;Aeropuerto",
+    "destination:ref": "CV-35;A-7",
+    "destination:symbol": "airport",
+    "foot": "no",
+    "highway": "trunk_link",
+    "lanes": "1",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 467787408,
+  "bounds": {
+    "minlat": 39.5014830,
+    "minlon": -0.4095964,
+    "maxlat": 39.5018735,
+    "maxlon": -0.4090064
+  },
+  "geometry": [
+    { "lat": 39.5018735, "lon": -0.4095964 },
+    { "lat": 39.5014830, "lon": -0.4090064 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "destination:colour:lanes": ";purple|;purple|;purple|;green;green",
+    "destination:lanes": "València;Palau de Congressos|València;Palau de Congressos|València;Palau de Congressos|rondes;av. Juan XXIII;av. Mestre Rodrigo;Burjassot;centre comercial",
+    "destination:symbol:lanes": "|||;;;;shopping_centre",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "4",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;slight_right|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 467787409,
+  "bounds": {
+    "minlat": 39.5020121,
+    "minlon": -0.4100854,
+    "maxlat": 39.5022187,
+    "maxlon": -0.4097859
+  },
+  "geometry": [
+    { "lat": 39.5022187, "lon": -0.4100854 },
+    { "lat": 39.5020121, "lon": -0.4097859 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "destination:colour:lanes": ";purple|;purple|;purple|;green;green",
+    "destination:lanes": "València;Palau de Congressos|València;Palau de Congressos|València;Palau de Congressos|rondes;av. Juan XXIII;av. Mestre Rodrigo;Burjassot;centre comercial",
+    "destination:symbol:lanes": "|||;;;;shopping_centre",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "4",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;slight_right|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 561380653,
+  "bounds": {
+    "minlat": 39.5010293,
+    "minlon": -0.4079819,
+    "maxlat": 39.5012532,
+    "maxlon": -0.4072355
+  },
+  "geometry": [
+    { "lat": 39.5012532, "lon": -0.4072355 },
+    { "lat": 39.5011490, "lon": -0.4073291 },
+    { "lat": 39.5011019, "lon": -0.4073807 },
+    { "lat": 39.5010801, "lon": -0.4074081 },
+    { "lat": 39.5010596, "lon": -0.4074421 },
+    { "lat": 39.5010366, "lon": -0.4075148 },
+    { "lat": 39.5010293, "lon": -0.4075957 },
+    { "lat": 39.5010384, "lon": -0.4076804 },
+    { "lat": 39.5010544, "lon": -0.4077467 },
+    { "lat": 39.5011760, "lon": -0.4079819 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 561380656,
+  "bounds": {
+    "minlat": 39.5019432,
+    "minlon": -0.4107306,
+    "maxlat": 39.5023749,
+    "maxlon": -0.4100466
+  },
+  "geometry": [
+    { "lat": 39.5023749, "lon": -0.4107306 },
+    { "lat": 39.5023267, "lon": -0.4106207 },
+    { "lat": 39.5019881, "lon": -0.4101138 },
+    { "lat": 39.5019432, "lon": -0.4100466 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 561380658,
+  "bounds": {
+    "minlat": 39.5010669,
+    "minlon": -0.4081382,
+    "maxlat": 39.5012779,
+    "maxlon": -0.4076273
+  },
+  "geometry": [
+    { "lat": 39.5010669, "lon": -0.4076273 },
+    { "lat": 39.5010876, "lon": -0.4077346 },
+    { "lat": 39.5011366, "lon": -0.4078265 },
+    { "lat": 39.5011983, "lon": -0.4079226 },
+    { "lat": 39.5012323, "lon": -0.4079856 },
+    { "lat": 39.5012565, "lon": -0.4080499 },
+    { "lat": 39.5012779, "lon": -0.4081382 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 561380659,
+  "bounds": {
+    "minlat": 39.5019055,
+    "minlon": -0.4056838,
+    "maxlat": 39.5021508,
+    "maxlon": -0.4055766
+  },
+  "geometry": [
+    { "lat": 39.5019055, "lon": -0.4056838 },
+    { "lat": 39.5019684, "lon": -0.4056580 },
+    { "lat": 39.5020070, "lon": -0.4056465 },
+    { "lat": 39.5020499, "lon": -0.4056360 },
+    { "lat": 39.5020789, "lon": -0.4056238 },
+    { "lat": 39.5021030, "lon": -0.4056071 },
+    { "lat": 39.5021281, "lon": -0.4055916 },
+    { "lat": 39.5021508, "lon": -0.4055766 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer del Pont Trencat",
+    "name:ca": "Carrer del Pont Trencat",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 685794741,
+  "bounds": {
+    "minlat": 39.5026013,
+    "minlon": -0.4067051,
+    "maxlat": 39.5026164,
+    "maxlon": -0.4065045
+  },
+  "geometry": [
+    { "lat": 39.5026164, "lon": -0.4067051 },
+    { "lat": 39.5026093, "lon": -0.4065865 },
+    { "lat": 39.5026013, "lon": -0.4065045 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 685794742,
+  "bounds": {
+    "minlat": 39.5024442,
+    "minlon": -0.4063167,
+    "maxlat": 39.5025718,
+    "maxlon": -0.4059276
+  },
+  "geometry": [
+    { "lat": 39.5025718, "lon": -0.4063167 },
+    { "lat": 39.5025626, "lon": -0.4062583 },
+    { "lat": 39.5025260, "lon": -0.4061313 },
+    { "lat": 39.5024953, "lon": -0.4060445 },
+    { "lat": 39.5024637, "lon": -0.4059697 },
+    { "lat": 39.5024442, "lon": -0.4059276 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 839935897,
+  "bounds": {
+    "minlat": 39.5034823,
+    "minlon": -0.4091850,
+    "maxlat": 39.5035078,
+    "maxlon": -0.4083218
+  },
+  "geometry": [
+    { "lat": 39.5034823, "lon": -0.4091850 },
+    { "lat": 39.5034903, "lon": -0.4088656 },
+    { "lat": 39.5034989, "lon": -0.4086321 },
+    { "lat": 39.5035071, "lon": -0.4083552 },
+    { "lat": 39.5035078, "lon": -0.4083218 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Carrer de l'Almara",
+    "name:ca": "Carrer de l'Almara",
+    "name:es": "Calle de Almara",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 839935898,
+  "bounds": {
+    "minlat": 39.5032882,
+    "minlon": -0.4096652,
+    "maxlat": 39.5034405,
+    "maxlon": -0.4096341
+  },
+  "geometry": [
+    { "lat": 39.5032882, "lon": -0.4096652 },
+    { "lat": 39.5034100, "lon": -0.4096341 },
+    { "lat": 39.5034405, "lon": -0.4096474 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "maxspeed": "50",
+    "name": "Carrer de Cervantes",
+    "name:ca": "Carrer de Cervantes",
+    "name:es": "Calle Cervantes",
+    "name:etymology:wikidata": "Q5682",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 839935899,
+  "bounds": {
+    "minlat": 39.5032882,
+    "minlon": -0.4096652,
+    "maxlat": 39.5034823,
+    "maxlon": -0.4091850
+  },
+  "geometry": [
+    { "lat": 39.5032882, "lon": -0.4096652 },
+    { "lat": 39.5033359, "lon": -0.4096242 },
+    { "lat": 39.5033750, "lon": -0.4095919 },
+    { "lat": 39.5034057, "lon": -0.4095609 },
+    { "lat": 39.5034225, "lon": -0.4095330 },
+    { "lat": 39.5034398, "lon": -0.4094966 },
+    { "lat": 39.5034496, "lon": -0.4094615 },
+    { "lat": 39.5034581, "lon": -0.4093963 },
+    { "lat": 39.5034636, "lon": -0.4093442 },
+    { "lat": 39.5034823, "lon": -0.4091850 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "maxspeed": "50",
+    "name": "Carrer de Cervantes",
+    "name:ca": "Carrer de Cervantes",
+    "name:es": "Calle Cervantes",
+    "name:etymology:wikidata": "Q5682",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 839935900,
+  "bounds": {
+    "minlat": 39.5034455,
+    "minlon": -0.4108103,
+    "maxlat": 39.5038400,
+    "maxlon": -0.4097980
+  },
+  "geometry": [
+    { "lat": 39.5034455, "lon": -0.4097980 },
+    { "lat": 39.5034471, "lon": -0.4099599 },
+    { "lat": 39.5034605, "lon": -0.4100165 },
+    { "lat": 39.5034790, "lon": -0.4100598 },
+    { "lat": 39.5035463, "lon": -0.4101964 },
+    { "lat": 39.5037333, "lon": -0.4105775 },
+    { "lat": 39.5037776, "lon": -0.4106720 },
+    { "lat": 39.5038400, "lon": -0.4108103 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lane_markings": "no",
+    "name": "Carrer de Beniferri",
+    "name:ca": "Carrer de Beniferri",
+    "name:es": "Calle de Beniferri",
+    "oneway": "yes",
+    "source:width": "ARCore",
+    "surface": "paving_stones",
+    "width": "3.8"
+  }
+},
+{
+  "type": "way",
+  "id": 839935901,
+  "bounds": {
+    "minlat": 39.5034405,
+    "minlon": -0.4096474,
+    "maxlat": 39.5034754,
+    "maxlon": -0.4095597
+  },
+  "geometry": [
+    { "lat": 39.5034754, "lon": -0.4095597 },
+    { "lat": 39.5034589, "lon": -0.4096051 },
+    { "lat": 39.5034405, "lon": -0.4096474 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Carrer de Cervantes",
+    "name:ca": "Carrer de Cervantes",
+    "name:es": "Calle Cervantes",
+    "name:etymology:wikidata": "Q5682",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 839935902,
+  "bounds": {
+    "minlat": 39.5028847,
+    "minlon": -0.4098905,
+    "maxlat": 39.5032882,
+    "maxlon": -0.4096652
+  },
+  "geometry": [
+    { "lat": 39.5028847, "lon": -0.4098905 },
+    { "lat": 39.5030211, "lon": -0.4098157 },
+    { "lat": 39.5032882, "lon": -0.4096652 }
+  ],
+  "tags": {
+    "cycleway:right": "separate",
+    "highway": "tertiary",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Carrer de Cervantes",
+    "name:ca": "Carrer de Cervantes",
+    "name:es": "Calle Cervantes",
+    "name:etymology:wikidata": "Q5682",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "left|right"
+  }
+},
+{
+  "type": "way",
+  "id": 1012227892,
+  "bounds": {
+    "minlat": 39.5031500,
+    "minlon": -0.4077860,
+    "maxlat": 39.5038099,
+    "maxlon": -0.4076729
+  },
+  "geometry": [
+    { "lat": 39.5031500, "lon": -0.4077860 },
+    { "lat": 39.5035183, "lon": -0.4076964 },
+    { "lat": 39.5036356, "lon": -0.4076729 },
+    { "lat": 39.5037149, "lon": -0.4076847 },
+    { "lat": 39.5037515, "lon": -0.4076953 },
+    { "lat": 39.5037796, "lon": -0.4077024 },
+    { "lat": 39.5038099, "lon": -0.4076983 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "noname": "yes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1012227893,
+  "bounds": {
+    "minlat": 39.5035013,
+    "minlon": -0.4079196,
+    "maxlat": 39.5035385,
+    "maxlon": -0.4076964
+  },
+  "geometry": [
+    { "lat": 39.5035385, "lon": -0.4079196 },
+    { "lat": 39.5035365, "lon": -0.4078987 },
+    { "lat": 39.5035335, "lon": -0.4078757 },
+    { "lat": 39.5035014, "lon": -0.4077510 },
+    { "lat": 39.5035013, "lon": -0.4077271 },
+    { "lat": 39.5035061, "lon": -0.4077091 },
+    { "lat": 39.5035183, "lon": -0.4076964 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "noname": "yes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1017778124,
+  "bounds": {
+    "minlat": 39.5021387,
+    "minlon": -0.4055519,
+    "maxlat": 39.5021559,
+    "maxlon": -0.4053874
+  },
+  "geometry": [
+    { "lat": 39.5021559, "lon": -0.4055519 },
+    { "lat": 39.5021554, "lon": -0.4055234 },
+    { "lat": 39.5021527, "lon": -0.4054916 },
+    { "lat": 39.5021501, "lon": -0.4054687 },
+    { "lat": 39.5021474, "lon": -0.4054470 },
+    { "lat": 39.5021387, "lon": -0.4053874 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida Enrique Valor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1017778125,
+  "bounds": {
+    "minlat": 39.5021387,
+    "minlon": -0.4054956,
+    "maxlat": 39.5022838,
+    "maxlon": -0.4053874
+  },
+  "geometry": [
+    { "lat": 39.5021387, "lon": -0.4053874 },
+    { "lat": 39.5022013, "lon": -0.4054251 },
+    { "lat": 39.5022148, "lon": -0.4054349 },
+    { "lat": 39.5022381, "lon": -0.4054512 },
+    { "lat": 39.5022838, "lon": -0.4054956 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida Enrique Valor",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1017778137,
+  "bounds": {
+    "minlat": 39.5039515,
+    "minlon": -0.4078387,
+    "maxlat": 39.5040226,
+    "maxlon": -0.4077201
+  },
+  "geometry": [
+    { "lat": 39.5039515, "lon": -0.4077201 },
+    { "lat": 39.5039761, "lon": -0.4077542 },
+    { "lat": 39.5039819, "lon": -0.4077638 },
+    { "lat": 39.5039919, "lon": -0.4077809 },
+    { "lat": 39.5040043, "lon": -0.4078035 },
+    { "lat": 39.5040226, "lon": -0.4078387 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1017778138,
+  "bounds": {
+    "minlat": 39.5034636,
+    "minlon": -0.4094143,
+    "maxlat": 39.5036663,
+    "maxlon": -0.4093442
+  },
+  "geometry": [
+    { "lat": 39.5036663, "lon": -0.4093966 },
+    { "lat": 39.5036401, "lon": -0.4094082 },
+    { "lat": 39.5036042, "lon": -0.4094143 },
+    { "lat": 39.5035579, "lon": -0.4094109 },
+    { "lat": 39.5035477, "lon": -0.4094101 },
+    { "lat": 39.5035221, "lon": -0.4094032 },
+    { "lat": 39.5034995, "lon": -0.4093993 },
+    { "lat": 39.5034859, "lon": -0.4093903 },
+    { "lat": 39.5034789, "lon": -0.4093857 },
+    { "lat": 39.5034702, "lon": -0.4093662 },
+    { "lat": 39.5034636, "lon": -0.4093442 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1017778139,
+  "bounds": {
+    "minlat": 39.5034525,
+    "minlon": -0.4096980,
+    "maxlat": 39.5034754,
+    "maxlon": -0.4095597
+  },
+  "geometry": [
+    { "lat": 39.5034754, "lon": -0.4095597 },
+    { "lat": 39.5034617, "lon": -0.4096162 },
+    { "lat": 39.5034561, "lon": -0.4096547 },
+    { "lat": 39.5034525, "lon": -0.4096980 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1022537155,
+  "bounds": {
+    "minlat": 39.5025718,
+    "minlon": -0.4065045,
+    "maxlat": 39.5026013,
+    "maxlon": -0.4063167
+  },
+  "geometry": [
+    { "lat": 39.5026013, "lon": -0.4065045 },
+    { "lat": 39.5025718, "lon": -0.4063167 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda d'Enric Valor",
+    "name:ca": "Avinguda d'Enric Valor",
+    "name:es": "Avenida de Enrique Valor",
+    "oneway": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1244966388,
+  "bounds": {
+    "minlat": 39.5010521,
+    "minlon": -0.4091903,
+    "maxlat": 39.5013947,
+    "maxlon": -0.4089755
+  },
+  "geometry": [
+    { "lat": 39.5010577, "lon": -0.4091903 },
+    { "lat": 39.5010550, "lon": -0.4091524 },
+    { "lat": 39.5010521, "lon": -0.4091196 },
+    { "lat": 39.5010553, "lon": -0.4090745 },
+    { "lat": 39.5010687, "lon": -0.4090316 },
+    { "lat": 39.5010900, "lon": -0.4090009 },
+    { "lat": 39.5011121, "lon": -0.4089863 },
+    { "lat": 39.5011339, "lon": -0.4089783 },
+    { "lat": 39.5011818, "lon": -0.4089755 },
+    { "lat": 39.5012253, "lon": -0.4089866 },
+    { "lat": 39.5012634, "lon": -0.4090132 },
+    { "lat": 39.5013947, "lon": -0.4091864 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1244966389,
+  "bounds": {
+    "minlat": 39.5010577,
+    "minlon": -0.4093791,
+    "maxlat": 39.5011737,
+    "maxlon": -0.4091903
+  },
+  "geometry": [
+    { "lat": 39.5011737, "lon": -0.4093791 },
+    { "lat": 39.5010842, "lon": -0.4092344 },
+    { "lat": 39.5010577, "lon": -0.4091903 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "1",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1244966390,
+  "bounds": {
+    "minlat": 39.5013947,
+    "minlon": -0.4100437,
+    "maxlat": 39.5018658,
+    "maxlon": -0.4091864
+  },
+  "geometry": [
+    { "lat": 39.5013947, "lon": -0.4091864 },
+    { "lat": 39.5015361, "lon": -0.4093869 },
+    { "lat": 39.5017087, "lon": -0.4096316 },
+    { "lat": 39.5017910, "lon": -0.4097478 },
+    { "lat": 39.5018192, "lon": -0.4097951 },
+    { "lat": 39.5018524, "lon": -0.4098561 },
+    { "lat": 39.5018633, "lon": -0.4098891 },
+    { "lat": 39.5018658, "lon": -0.4099018 },
+    { "lat": 39.5018648, "lon": -0.4099627 },
+    { "lat": 39.5018572, "lon": -0.4099956 },
+    { "lat": 39.5018373, "lon": -0.4100437 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "circular",
+    "lanes": "1",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1268183446,
+  "bounds": {
+    "minlat": 39.5019813,
+    "minlon": -0.4096623,
+    "maxlat": 39.5021146,
+    "maxlon": -0.4094680
+  },
+  "geometry": [
+    { "lat": 39.5019813, "lon": -0.4094680 },
+    { "lat": 39.5021146, "lon": -0.4096623 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1268183447,
+  "bounds": {
+    "minlat": 39.5018735,
+    "minlon": -0.4097859,
+    "maxlat": 39.5020121,
+    "maxlon": -0.4095964
+  },
+  "geometry": [
+    { "lat": 39.5020121, "lon": -0.4097859 },
+    { "lat": 39.5018735, "lon": -0.4095964 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "bridge": "yes",
+    "destination:colour:lanes": ";purple|;purple|;purple|;green;green",
+    "destination:lanes": "València;Palau de Congressos|València;Palau de Congressos|València;Palau de Congressos|rondes;av. Juan XXIII;av. Mestre Rodrigo;Burjassot;centre comercial",
+    "destination:symbol:lanes": "|||;;;;shopping_centre",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "4",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;slight_right|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 1268183448,
+  "bounds": {
+    "minlat": 39.5025096,
+    "minlon": -0.4105524,
+    "maxlat": 39.5027154,
+    "maxlon": -0.4102484
+  },
+  "geometry": [
+    { "lat": 39.5025096, "lon": -0.4102484 },
+    { "lat": 39.5027154, "lon": -0.4105524 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1268183449,
+  "bounds": {
+    "minlat": 39.5024906,
+    "minlon": -0.4107894,
+    "maxlat": 39.5027013,
+    "maxlon": -0.4104844
+  },
+  "geometry": [
+    { "lat": 39.5027013, "lon": -0.4107894 },
+    { "lat": 39.5024906, "lon": -0.4104844 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt",
+    "turn:lanes": "through|through|through;slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 1268183450,
+  "bounds": {
+    "minlat": 39.5027154,
+    "minlon": -0.4110557,
+    "maxlat": 39.5030470,
+    "maxlon": -0.4105524
+  },
+  "geometry": [
+    { "lat": 39.5027154, "lon": -0.4105524 },
+    { "lat": 39.5030470, "lon": -0.4110557 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1268183451,
+  "bounds": {
+    "minlat": 39.5027013,
+    "minlon": -0.4111672,
+    "maxlat": 39.5029495,
+    "maxlon": -0.4107894
+  },
+  "geometry": [
+    { "lat": 39.5029495, "lon": -0.4111672 },
+    { "lat": 39.5027013, "lon": -0.4107894 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1375256823,
+  "bounds": {
+    "minlat": 39.5036258,
+    "minlon": -0.4078442,
+    "maxlat": 39.5039446,
+    "maxlon": -0.4071164
+  },
+  "geometry": [
+    { "lat": 39.5036258, "lon": -0.4078442 },
+    { "lat": 39.5038099, "lon": -0.4076983 },
+    { "lat": 39.5038308, "lon": -0.4076849 },
+    { "lat": 39.5038831, "lon": -0.4076416 },
+    { "lat": 39.5039122, "lon": -0.4076087 },
+    { "lat": 39.5039370, "lon": -0.4075545 },
+    { "lat": 39.5039446, "lon": -0.4075074 },
+    { "lat": 39.5039395, "lon": -0.4074498 },
+    { "lat": 39.5038933, "lon": -0.4071164 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "50",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1375256824,
+  "bounds": {
+    "minlat": 39.5035078,
+    "minlon": -0.4083218,
+    "maxlat": 39.5036250,
+    "maxlon": -0.4081397
+  },
+  "geometry": [
+    { "lat": 39.5036250, "lon": -0.4081397 },
+    { "lat": 39.5035904, "lon": -0.4081728 },
+    { "lat": 39.5035621, "lon": -0.4082009 },
+    { "lat": 39.5035399, "lon": -0.4082398 },
+    { "lat": 39.5035272, "lon": -0.4082670 },
+    { "lat": 39.5035078, "lon": -0.4083218 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "50",
+    "name": "Carrer de l'Almara",
+    "name:ca": "Carrer de l'Almara",
+    "name:es": "Calle de Almara",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1375256825,
+  "bounds": {
+    "minlat": 39.5036250,
+    "minlon": -0.4090643,
+    "maxlat": 39.5040761,
+    "maxlon": -0.4081397
+  },
+  "geometry": [
+    { "lat": 39.5040761, "lon": -0.4090643 },
+    { "lat": 39.5040469, "lon": -0.4090057 },
+    { "lat": 39.5038650, "lon": -0.4086285 },
+    { "lat": 39.5036763, "lon": -0.4082510 },
+    { "lat": 39.5036250, "lon": -0.4081397 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer de Guillem de Castro",
+    "name:ca": "Carrer de Guillem de Castro",
+    "name:es": "Calle de Guillem de Castro",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1375256826,
+  "bounds": {
+    "minlat": 39.5040226,
+    "minlon": -0.4082846,
+    "maxlat": 39.5042405,
+    "maxlon": -0.4078387
+  },
+  "geometry": [
+    { "lat": 39.5040226, "lon": -0.4078387 },
+    { "lat": 39.5040363, "lon": -0.4078726 },
+    { "lat": 39.5042405, "lon": -0.4082846 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1375256827,
+  "bounds": {
+    "minlat": 39.5038308,
+    "minlon": -0.4077201,
+    "maxlat": 39.5039515,
+    "maxlon": -0.4076727
+  },
+  "geometry": [
+    { "lat": 39.5038308, "lon": -0.4076849 },
+    { "lat": 39.5038614, "lon": -0.4076727 },
+    { "lat": 39.5038822, "lon": -0.4076731 },
+    { "lat": 39.5039130, "lon": -0.4076868 },
+    { "lat": 39.5039324, "lon": -0.4077010 },
+    { "lat": 39.5039515, "lon": -0.4077201 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "maxspeed": "50",
+    "name": "Ronda del Castell",
+    "name:ca": "Ronda del Castell",
+    "name:es": "Ronda del Castillo",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395554311,
+  "bounds": {
+    "minlat": 39.5016440,
+    "minlon": -0.4094680,
+    "maxlat": 39.5019813,
+    "maxlon": -0.4089606
+  },
+  "geometry": [
+    { "lat": 39.5016440, "lon": -0.4089606 },
+    { "lat": 39.5019813, "lon": -0.4094680 }
+  ],
+  "tags": {
+    "alt_name": "Pista de Ademuz;Pista de Liria",
+    "alt_name:ca": "Pista d'Ademús;Pista de Llíria",
+    "alt_name:es": "Pista de Ademuz;Pista de Liria",
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "80",
+    "name": "Autovia del Túria",
+    "name:ca": "Autovia del Túria",
+    "name:es": "Autovía del Turia",
+    "name:etymology:wikidata": "Q8254172",
+    "oneway": "yes",
+    "ref": "CV-35",
+    "ref:colour": "orange",
+    "ref:colour_tx": "black",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555271,
+  "bounds": {
+    "minlat": 39.5022838,
+    "minlon": -0.4055966,
+    "maxlat": 39.5023339,
+    "maxlon": -0.4054956
+  },
+  "geometry": [
+    { "lat": 39.5022838, "lon": -0.4054956 },
+    { "lat": 39.5023093, "lon": -0.4055209 },
+    { "lat": 39.5023262, "lon": -0.4055571 },
+    { "lat": 39.5023339, "lon": -0.4055966 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555272,
+  "bounds": {
+    "minlat": 39.5022261,
+    "minlon": -0.4057230,
+    "maxlat": 39.5023339,
+    "maxlon": -0.4055966
+  },
+  "geometry": [
+    { "lat": 39.5023339, "lon": -0.4055966 },
+    { "lat": 39.5023300, "lon": -0.4056380 },
+    { "lat": 39.5023187, "lon": -0.4056693 },
+    { "lat": 39.5023011, "lon": -0.4056952 },
+    { "lat": 39.5022785, "lon": -0.4057136 },
+    { "lat": 39.5022528, "lon": -0.4057230 },
+    { "lat": 39.5022261, "lon": -0.4057225 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555273,
+  "bounds": {
+    "minlat": 39.5022005,
+    "minlon": -0.4057225,
+    "maxlat": 39.5022261,
+    "maxlon": -0.4057123
+  },
+  "geometry": [
+    { "lat": 39.5022261, "lon": -0.4057225 },
+    { "lat": 39.5022005, "lon": -0.4057123 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555274,
+  "bounds": {
+    "minlat": 39.5021479,
+    "minlon": -0.4057123,
+    "maxlat": 39.5022005,
+    "maxlon": -0.4055766
+  },
+  "geometry": [
+    { "lat": 39.5022005, "lon": -0.4057123 },
+    { "lat": 39.5021761, "lon": -0.4056891 },
+    { "lat": 39.5021595, "lon": -0.4056630 },
+    { "lat": 39.5021490, "lon": -0.4056268 },
+    { "lat": 39.5021479, "lon": -0.4055881 },
+    { "lat": 39.5021508, "lon": -0.4055766 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555275,
+  "bounds": {
+    "minlat": 39.5021508,
+    "minlon": -0.4055766,
+    "maxlat": 39.5021559,
+    "maxlon": -0.4055519
+  },
+  "geometry": [
+    { "lat": 39.5021508, "lon": -0.4055766 },
+    { "lat": 39.5021559, "lon": -0.4055519 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555276,
+  "bounds": {
+    "minlat": 39.5021559,
+    "minlon": -0.4055519,
+    "maxlat": 39.5022210,
+    "maxlon": -0.4054845
+  },
+  "geometry": [
+    { "lat": 39.5021559, "lon": -0.4055519 },
+    { "lat": 39.5021722, "lon": -0.4055205 },
+    { "lat": 39.5021945, "lon": -0.4054976 },
+    { "lat": 39.5022210, "lon": -0.4054845 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "noname": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555292,
+  "bounds": {
+    "minlat": 39.5003800,
+    "minlon": -0.4069302,
+    "maxlat": 39.5005012,
+    "maxlon": -0.4067213
+  },
+  "geometry": [
+    { "lat": 39.5003800, "lon": -0.4067213 },
+    { "lat": 39.5005012, "lon": -0.4069302 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555293,
+  "bounds": {
+    "minlat": 39.5005012,
+    "minlon": -0.4069720,
+    "maxlat": 39.5005273,
+    "maxlon": -0.4069302
+  },
+  "geometry": [
+    { "lat": 39.5005012, "lon": -0.4069302 },
+    { "lat": 39.5005273, "lon": -0.4069720 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555294,
+  "bounds": {
+    "minlat": 39.5005273,
+    "minlon": -0.4079819,
+    "maxlat": 39.5011760,
+    "maxlon": -0.4069720
+  },
+  "geometry": [
+    { "lat": 39.5005273, "lon": -0.4069720 },
+    { "lat": 39.5006995, "lon": -0.4072518 },
+    { "lat": 39.5008132, "lon": -0.4074309 },
+    { "lat": 39.5011760, "lon": -0.4079819 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555295,
+  "bounds": {
+    "minlat": 39.5011760,
+    "minlon": -0.4081382,
+    "maxlat": 39.5012779,
+    "maxlon": -0.4079819
+  },
+  "geometry": [
+    { "lat": 39.5011760, "lon": -0.4079819 },
+    { "lat": 39.5012779, "lon": -0.4081382 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555296,
+  "bounds": {
+    "minlat": 39.5012779,
+    "minlon": -0.4085141,
+    "maxlat": 39.5015221,
+    "maxlon": -0.4081382
+  },
+  "geometry": [
+    { "lat": 39.5012779, "lon": -0.4081382 },
+    { "lat": 39.5015130, "lon": -0.4084986 },
+    { "lat": 39.5015221, "lon": -0.4085141 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555297,
+  "bounds": {
+    "minlat": 39.5015221,
+    "minlon": -0.4091166,
+    "maxlat": 39.5019518,
+    "maxlon": -0.4085141
+  },
+  "geometry": [
+    { "lat": 39.5015221, "lon": -0.4085141 },
+    { "lat": 39.5019167, "lon": -0.4090688 },
+    { "lat": 39.5019518, "lon": -0.4091166 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555298,
+  "bounds": {
+    "minlat": 39.5019518,
+    "minlon": -0.4091678,
+    "maxlat": 39.5021014,
+    "maxlon": -0.4091166
+  },
+  "geometry": [
+    { "lat": 39.5019518, "lon": -0.4091166 },
+    { "lat": 39.5019758, "lon": -0.4091397 },
+    { "lat": 39.5020081, "lon": -0.4091587 },
+    { "lat": 39.5020368, "lon": -0.4091663 },
+    { "lat": 39.5020616, "lon": -0.4091678 },
+    { "lat": 39.5020827, "lon": -0.4091631 },
+    { "lat": 39.5021014, "lon": -0.4091504 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "name": "Avinguda de la Il·lustració",
+    "name:ca": "Avinguda de la Il·lustració",
+    "name:es": "Avenida de la Ilustración",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555299,
+  "bounds": {
+    "minlat": 39.5007854,
+    "minlon": -0.4072872,
+    "maxlat": 39.5012046,
+    "maxlon": -0.4071193
+  },
+  "geometry": [
+    { "lat": 39.5007854, "lon": -0.4072757 },
+    { "lat": 39.5008411, "lon": -0.4072814 },
+    { "lat": 39.5008969, "lon": -0.4072872 },
+    { "lat": 39.5009445, "lon": -0.4072723 },
+    { "lat": 39.5009837, "lon": -0.4072575 },
+    { "lat": 39.5012046, "lon": -0.4071193 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395555300,
+  "bounds": {
+    "minlat": 39.5012046,
+    "minlon": -0.4071193,
+    "maxlat": 39.5025626,
+    "maxlon": -0.4062583
+  },
+  "geometry": [
+    { "lat": 39.5012046, "lon": -0.4071193 },
+    { "lat": 39.5024592, "lon": -0.4063343 },
+    { "lat": 39.5024913, "lon": -0.4063142 },
+    { "lat": 39.5025193, "lon": -0.4062922 },
+    { "lat": 39.5025626, "lon": -0.4062583 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Avinguda de les Jacarandes",
+    "name:ca": "Avinguda de les Jacarandes",
+    "name:es": "Avenida de las Jacarandas",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556385,
+  "bounds": {
+    "minlat": 39.5021014,
+    "minlon": -0.4091504,
+    "maxlat": 39.5022317,
+    "maxlon": -0.4090850
+  },
+  "geometry": [
+    { "lat": 39.5021014, "lon": -0.4091504 },
+    { "lat": 39.5021132, "lon": -0.4091377 },
+    { "lat": 39.5021368, "lon": -0.4091078 },
+    { "lat": 39.5021667, "lon": -0.4090896 },
+    { "lat": 39.5021995, "lon": -0.4090850 },
+    { "lat": 39.5022317, "lon": -0.4090947 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556386,
+  "bounds": {
+    "minlat": 39.5022361,
+    "minlon": -0.4093303,
+    "maxlat": 39.5022921,
+    "maxlon": -0.4091740
+  },
+  "geometry": [
+    { "lat": 39.5022871, "lon": -0.4091740 },
+    { "lat": 39.5022921, "lon": -0.4091965 },
+    { "lat": 39.5022914, "lon": -0.4092370 },
+    { "lat": 39.5022809, "lon": -0.4092753 },
+    { "lat": 39.5022619, "lon": -0.4093074 },
+    { "lat": 39.5022361, "lon": -0.4093303 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556387,
+  "bounds": {
+    "minlat": 39.5021192,
+    "minlon": -0.4093415,
+    "maxlat": 39.5022361,
+    "maxlon": -0.4092989
+  },
+  "geometry": [
+    { "lat": 39.5022361, "lon": -0.4093303 },
+    { "lat": 39.5022073, "lon": -0.4093415 },
+    { "lat": 39.5021772, "lon": -0.4093410 },
+    { "lat": 39.5021486, "lon": -0.4093288 },
+    { "lat": 39.5021270, "lon": -0.4093124 },
+    { "lat": 39.5021192, "lon": -0.4092989 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556388,
+  "bounds": {
+    "minlat": 39.5020940,
+    "minlon": -0.4092989,
+    "maxlat": 39.5021192,
+    "maxlon": -0.4091504
+  },
+  "geometry": [
+    { "lat": 39.5021192, "lon": -0.4092989 },
+    { "lat": 39.5021074, "lon": -0.4092784 },
+    { "lat": 39.5020971, "lon": -0.4092457 },
+    { "lat": 39.5020940, "lon": -0.4092107 },
+    { "lat": 39.5020953, "lon": -0.4091810 },
+    { "lat": 39.5021014, "lon": -0.4091504 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1395556389,
+  "bounds": {
+    "minlat": 39.5022317,
+    "minlon": -0.4091101,
+    "maxlat": 39.5022526,
+    "maxlon": -0.4090947
+  },
+  "geometry": [
+    { "lat": 39.5022317, "lon": -0.4090947 },
+    { "lat": 39.5022526, "lon": -0.4091101 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "junction": "roundabout",
+    "lanes": "1",
+    "noname": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1454530875,
+  "bounds": {
+    "minlat": 39.5018633,
+    "minlon": -0.4098891,
+    "maxlat": 39.5019824,
+    "maxlon": -0.4097107
+  },
+  "geometry": [
+    { "lat": 39.5019824, "lon": -0.4097107 },
+    { "lat": 39.5018910, "lon": -0.4098191 },
+    { "lat": 39.5018725, "lon": -0.4098546 },
+    { "lat": 39.5018633, "lon": -0.4098891 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "noname": "yes",
+    "oneway": "yes"
+  }
+}
+
+  ]
+}
