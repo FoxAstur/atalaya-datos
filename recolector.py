@@ -923,6 +923,10 @@ out geom;
             if tipo == "RADAR_FIJO" and not tags.get("enforcement") and \
                     re.search(r"(^|\s)sem(\s|$)|semaforo|foto ?-?rojo|red ?light", texto):
                 tipo = "SEMAFORO"
+            # "Control de stop", "foto-stop": cámara de stop (la de la rotonda del IMED de Burjassot salía de semáforo)
+            elif tipo in ("RADAR_FIJO", "SEMAFORO") and not tags.get("enforcement") and \
+                    re.search(r"(^|[\s-])stop(\s|$)|ceda el paso", texto):
+                tipo = "STOP_CEDA"
             id_ = f"osm:n{e['id']}"
             # nodo viejo y sin datos (ni límite ni sentido): si hay otro radar más fiable en la misma calle y
             # sentido muy cerca, seguramente es una cabina que ya no está o un duplicado (se mira en caminos.py)
@@ -1773,6 +1777,67 @@ def reutilizar_caminos(puntos: list[dict], anterior: dict) -> int:
     return n
 
 
+SENALES_OPL = "red/senales.opl"   # stops y semáforos de OSM (extracto semanal de Geofabrik, recolectar.yml)
+
+
+def a_la_linea_de_detencion(puntos: list[dict], ruta: str = SENALES_OPL) -> str:
+    """
+    Una cámara de stop o de semáforo está en un poste unos metros antes (o al lado) de la línea donde hay que
+    parar, y lo que importa al conducir es esa línea: con el punto en el poste, el aviso de llegada salía
+    antes de tiempo (el foto-stop del IMED, 25 m antes del stop). Se lleva cada cámara al stop o al
+    semáforo de OSM que tiene delante (en su sentido, a menos de 45 m); sin sentido conocido, al más
+    cercano a menos de 25 m.
+    """
+    if not os.path.exists(ruta):
+        return "sin fichero de stops y semáforos"
+    rej: dict = {}
+    n_sen = 0
+    with open(ruta, encoding="utf-8") as f:
+        for linea in f:
+            if not linea.startswith("n"):
+                continue
+            campos = linea.split()
+            tags = next((c[1:] for c in campos if c.startswith("T")), "")
+            x = next((c[1:] for c in campos if c.startswith("x")), "")
+            y = next((c[1:] for c in campos if c.startswith("y")), "")
+            if not x or not y:
+                continue
+            clase = "stop" if "highway=stop" in tags else "semaforo" if "highway=traffic_signals" in tags else None
+            if not clase:
+                continue
+            la, lo = float(y), float(x)
+            rej.setdefault((int(la // 0.001), int(lo // 0.001)), []).append((la, lo, clase))
+            n_sen += 1
+    movidos = 0
+    for p in puntos:
+        if p["t"] not in ("SEMAFORO", "STOP_CEDA"):
+            continue
+        quiero = "stop" if p["t"] == "STOP_CEDA" else "semaforo"
+        cy, cx = int(p["la"] // 0.001), int(p["lo"] // 0.001)
+        rb = p.get("rb")
+        mejor = None
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for la, lo, clase in rej.get((cy + dy, cx + dx), ()):
+                    if clase != quiero:
+                        continue
+                    d = distancia(p["la"], p["lo"], la, lo)
+                    if d < 3:
+                        mejor = (0.0, la, lo)   # ya está en la línea
+                        break
+                    if rb is not None:
+                        if d > 45 or abs((rumbo_entre(p["la"], p["lo"], la, lo) - rb + 180) % 360 - 180) > 50:
+                            continue
+                    elif d > 25:
+                        continue
+                    if mejor is None or d < mejor[0]:
+                        mejor = (d, la, lo)
+        if mejor and mejor[0] >= 3:
+            p["la"], p["lo"] = round(mejor[1], 6), round(mejor[2], 6)
+            movidos += 1
+    return f"{movidos} cámaras de stop o semáforo llevadas a su línea de detención ({n_sen} stops y semáforos de OSM)"
+
+
 def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
     """correcciones.json: lo que se ha comprobado sobre el terreno (radares que no existen, sentidos)."""
     try:
@@ -2047,6 +2112,12 @@ def main() -> int:
                       camaras_dgt, comunitario, osm, zonas])
     log(f"fusión: {FUSION['opuestos']} radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)")
     todos = unir_tramos(todos)
+    try:
+        msg = a_la_linea_de_detencion(todos)
+    except Exception as e:  # noqa: BLE001
+        msg = f"falló ({e})"
+    estado["Cámaras de stop y semáforo"] = msg
+    log(msg)
     todos = aplicar_correcciones(todos)
     # radares móviles anunciados ya caducados fuera
     hoy = datetime.now(timezone.utc).date().isoformat()

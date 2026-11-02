@@ -66,6 +66,12 @@
     "sct:42.37323,1.74771": {
       "rb": 258,
       "motivo": "N-260 Prullans: cabina vista en las ortofotos PNOA (IGN) e ICGC, en el margen derecho de ese sentido (CC-BY 4.0)"
+    },
+    "osm:n13339261021": {
+      "rb": 50,
+      "la": 39.502114,
+      "lo": -0.409354,
+      "motivo": "Foto-stop de la rotonda del IMED (Burjassot): el poste está 25 m antes; el aviso va en el stop vigilado (OSM n13339160382, «Stop videovigilado»). Carlos, 02-11-2026"
     }
   },
   "tipo": {
