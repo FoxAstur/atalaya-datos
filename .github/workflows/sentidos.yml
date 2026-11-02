@@ -1,0 +1,40 @@
+name: Sentidos dudosos (Mapillary)
+
+# Hojas de fotos de Mapillary (CC BY-SA) de cada radar de sentido dudoso, en la rama «sentidos» (fuera de
+# main), para decidir a ojo hacia dónde mira cada cabina.
+on:
+  workflow_dispatch:
+    inputs:
+      desde: { description: "Año mínimo de las fotos", required: false, default: "2019" }
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sentidos
+  cancel-in-progress: false
+
+jobs:
+  hojas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Hojas
+        env:
+          MAPILLARY_TOKEN: ${{ secrets.MAPILLARY_TOKEN }}
+        run: python sentidos_mapillary.py "${{ inputs.desde }}"
+      - name: Subir a la rama sentidos
+        run: |
+          mkdir /tmp/s && mv hojas /tmp/s/
+          cd /tmp/s
+          git init -q -b sentidos
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          printf 'Fotos de Mapillary (CC BY-SA 4.0, https://www.mapillary.com) para revisión manual.\n' > LEEME.txt
+          git add -A && git commit -qm "Hojas de sentidos dudosos"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" sentidos
