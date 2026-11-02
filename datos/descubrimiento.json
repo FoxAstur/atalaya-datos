@@ -823,9 +823,14 @@
     "nombre": "300596-46-emt-lineas-autobuses-tramos"
    },
    {
-    "url": "https://datos.emtmadrid.es/dataset/03c64a21-3ee8-461a-9f9a-cb4c727a41be/resource/8400b44b-ca21-45b9-b3cf-7a15b754b739/download/2026ccr.csv",
+    "url": "https://datos.emtmadrid.es/dataset/03c64a21-3ee8-461a-9f9a-cb4c727a41be/resource/8400b44b-ca21-45b9-b3cf-7a15b754b739/download/2026busoferta.csv",
     "formato": "CSV",
     "nombre": "300596-47-emt-lineas-autobuses-tramos"
+   },
+   {
+    "url": "https://datos.emtmadrid.es/dataset/03c64a21-3ee8-461a-9f9a-cb4c727a41be/resource/4b7b03e0-d7f4-41ae-9470-52b5ecfe6d8f/download/contenidocochescc_.md",
+    "formato": "MD",
+    "nombre": "300596-48-emt-lineas-autobuses-tramos"
    }
   ]
  },
@@ -3724,51 +3729,6 @@
  },
  {
   "catalogo": "Aragón",
-  "titulo": "Menores condenados según lugar de condena, nacionalidad y número de infracciones cometidas",
-  "publica": "Instituto Aragonés de Estadística",
-  "web": "https://opendata.aragon.es/ckan/dataset/menores-condenados-segun-lugar-de-condena-nacionalidad-y-numero-de-infracciones-cometidas",
-  "licencia": "Creative Commons Attribution 4.0",
-  "notas": "Estudio sociodemográfico de los menores condenados",
-  "ficheros": [
-   {
-    "url": "http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A06.px",
-    "formato": "px",
-    "nombre": "060704A06.px"
-   }
-  ]
- },
- {
-  "catalogo": "Aragón",
-  "titulo": "Menores condenados según lugar de condena, número de infracciones cometidas y edad",
-  "publica": "Instituto Aragonés de Estadística",
-  "web": "https://opendata.aragon.es/ckan/dataset/menores-condenados-segun-lugar-de-condena-numero-de-infracciones-cometidas-y-edad",
-  "licencia": "Creative Commons Attribution 4.0",
-  "notas": "Estudio sociodemográfico de los menores condenados",
-  "ficheros": [
-   {
-    "url": "http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A04.px",
-    "formato": "px",
-    "nombre": "060704A04.px"
-   }
-  ]
- },
- {
-  "catalogo": "Aragón",
-  "titulo": "Menores condenados según lugar de condena, sexo y número de infracciones cometidas",
-  "publica": "Instituto Aragonés de Estadística",
-  "web": "https://opendata.aragon.es/ckan/dataset/menores-condenados-segun-lugar-de-condena-sexo-y-numero-de-infracciones-cometidas",
-  "licencia": "Creative Commons Attribution 4.0",
-  "notas": "Estudio sociodemográfico de los menores condenados",
-  "ficheros": [
-   {
-    "url": "http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A05.px",
-    "formato": "px",
-    "nombre": "060704A05.px"
-   }
-  ]
- },
- {
-  "catalogo": "Aragón",
   "titulo": "Nº de empleados según tramo salarial anual y sexo.",
   "publica": "Instituto Aragonés de Estadística",
   "web": "https://opendata.aragon.es/ckan/dataset/n-de-empleados-segun-tramo-salarial-anual-y-sexo",
@@ -4819,16 +4779,16 @@
   "notas": "Intensidades medias diarias de tráfico, composición y velocidades de la Red Regional de Castilla y León",
   "ficheros": [
    {
-    "url": "https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.xls",
-    "formato": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-   },
-   {
     "url": "https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.csv",
     "formato": "text/csv"
    },
    {
     "url": "https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.json",
     "formato": "application/json"
+   },
+   {
+    "url": "https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.xls",
+    "formato": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
    }
   ]
  },

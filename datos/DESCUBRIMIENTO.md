@@ -1,6 +1,6 @@
 # Descubrimiento de fuentes
 
-Conjuntos relevantes: **147**
+Conjuntos relevantes: **144**
 
 ## Catálogos consultados
 
@@ -9,11 +9,11 @@ Conjuntos relevantes: **147**
 - Málaga: 72 resultados
 - Santa Cruz de Tenerife: error: 
 - Salamanca: 4 resultados
-- Madrid (Ayuntamiento): 149 resultados
+- Madrid (Ayuntamiento): 148 resultados
 - València (Ajuntament): 112 resultados
-- Navarra: 130 resultados
+- Navarra: 127 resultados
 - Comunitat Valenciana: 74 resultados
-- Andalucía: 22 resultados
+- Andalucía: 24 resultados
 - Canarias: 132 resultados
 - Región de Murcia: 0 resultados
 - Diputació de Barcelona: 0 resultados
@@ -23,7 +23,7 @@ Conjuntos relevantes: **147**
 - Bizkaia (Diputación): 0 resultados
 - Gipuzkoa (Diputación): 0 resultados
 - Euskadi: 0 resultados
-- Aragón: 350 resultados
+- Aragón: 345 resultados
 - Castilla-La Mancha: 0 resultados
 - Bilbao: 0 resultados
 - Vitoria-Gasteiz: 0 resultados
@@ -63,7 +63,7 @@ Previsualización disponible en la siguiente URL de Geoportal https://callejero.
 `https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_camarasTrafico-25830.geojson`
 
 ```
-{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_camarasTrafico.fid--175d4967_1a17b770c71_32be","geometry":{"type":"Point","coordinates":[362562.22455977,4065366.41583447,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":21611,"NOMBRE":"TV87-EL BONI - CAMPANILLAS","DESCRIPCION":"C/ José Calderón - El Boni","DIRECCION":"CALLE JOSÉ CALDERÓN, 45 ","URL":"https://movilidad.malaga.eu/es/servicios/camaras-de-trafico/distrito-9/tv-87/index.html","EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No","URLIMAGEN":
+{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_camarasTrafico.fid--175d4967_1a19a5b630d_4d6d","geometry":{"type":"Point","coordinates":[362562.22455977,4065366.41583447,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":21611,"NOMBRE":"TV87-EL BONI - CAMPANILLAS","DESCRIPCION":"C/ José Calderón - El Boni","DIRECCION":"CALLE JOSÉ CALDERÓN, 45 ","URL":"https://movilidad.malaga.eu/es/servicios/camaras-de-trafico/distrito-9/tv-87/index.html","EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No","URLIMAGEN":
 ```
 
 ### Foto Rojo
@@ -76,7 +76,7 @@ Previsualización disponible en la siguiente URL de Geoportal https://callejero.
 `https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-25830.geojson`
 
 ```
-{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_transporteFotoRojo.fid--175d4967_1a17b770c71_5284","geometry":{"type":"Point","coordinates":[368216.09123564,4064429.56522268,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":79133,"NOMBRE":"Foto-Rojo Jiménez Fraud dirección Hospital Clínico","DESCRIPCION":"C/ Jiménez Fraud nº 5 dirección Hospital Clínico","DIRECCION":"CALLE DE JIMÉNEZ FRAUD, 5 ","URL":null,"EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No"}},{"type":"Feature","id":"da_transporteFotoRo
+{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_transporteFotoRojo.fid--175d4967_1a19a5b630d_6d33","geometry":{"type":"Point","coordinates":[368216.09123564,4064429.56522268,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":79133,"NOMBRE":"Foto-Rojo Jiménez Fraud dirección Hospital Clínico","DESCRIPCION":"C/ Jiménez Fraud nº 5 dirección Hospital Clínico","DIRECCION":"CALLE DE JIMÉNEZ FRAUD, 5 ","URL":null,"EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No"}},{"type":"Feature","id":"da_transporteFotoRo
 ```
 
 ### Cámaras tráfico
@@ -97,7 +97,7 @@ MODELO DE DATOS
 `https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/190/query?where=1=1&outFields=*&f=geojson`
 
 ```
-{"type":"FeatureCollection","features":[{"type":"Feature","id":138786,"geometry":{"type":"Point","coordinates":[-0.37147337742172509,39.498069290023132]},"properties":{"objectid":138786,"angulo":179.75899999999999,"idcamara":"12806","tipocamara":"CF","descripcio":"Conde Lumiares - Hermanos Machado (Pedro Cabanes)","url":"https://camaras.valencia.es/camaras/visualizador.html?id=12806","anggra":254.726,"x":726019.68000000005,"y":4375349.1200000001}},{"type":"Feature","id":138787,"geometry":{"type":"Point","coordinates":[-0.37020235625388337,39.498111337776074]},"properties":{"objectid":138787,"a
+{"type":"FeatureCollection","features":[{"type":"Feature","id":142884,"geometry":{"type":"Point","coordinates":[-0.36276600002309228,39.462514102462002]},"properties":{"objectid":142884,"angulo":90.063000000000002,"idcamara":"02504","tipocamara":"CF","descripcio":"Peris i Valero - Regne de València (Pont de l'Àngel Custodi)","url":"https://camaras.valencia.es/camaras/visualizador.html?id=02504","anggra":30.681000000000001,"x":726884.08999999997,"y":4371424.29}},{"type":"Feature","id":142885,"geometry":{"type":"Point","coordinates":[-0.36277141624188253,39.462530711450874]},"properties":{"objec
 ```
 
 ### Intensidad tráfico tramos
@@ -133,7 +133,7 @@ MODELO DE DATOS
 `https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/182/query?where=1=1&outFields=*&f=geojson`
 
 ```
-{"type":"FeatureCollection","features":[{"type":"Feature","id":426456,"geometry":{"type":"Point","coordinates":[-0.37122999227693421,39.465963714278608]},"properties":{"optica":"Led","tiporegulador":null,"codregulador":null,"codcruce":"0302","descripcion":"MARQUES DEL TURIA - TAQUIGRAFO MART","objectid":426456}},{"type":"Feature","id":426457,"geometry":{"type":"Point","coordinates":[-0.37018008457272583,39.466390310141058]},"properties":{"optica":"Led","tiporegulador":null,"codregulador":null,"codcruce":"0303","descripcion":"MARQUES DEL TURIA - MAESTRO GOZALBO","objectid":426457}},{"type":"Fea
+{"type":"FeatureCollection","features":[{"type":"Feature","id":432888,"geometry":{"type":"Point","coordinates":[-0.36801360618944368,39.483732803668637]},"properties":{"optica":"Led","tiporegulador":null,"codregulador":null,"codcruce":"1326","descripcion":"JACA - GENARO LA HUERTA","objectid":432888}},{"type":"Feature","id":432889,"geometry":{"type":"Point","coordinates":[-0.36140265065283667,39.489595768518015]},"properties":{"optica":"Led","tiporegulador":null,"codregulador":null,"codcruce":"1328","descripcion":"DOLORES MARQUES - VALLADOLID","objectid":432889}},{"type":"Feature","id":432890,"
 ```
 
 ### Velocidad Calles
@@ -267,11 +267,7 @@ Linea;FECHASER;TIPODIAMO;CodFranja;NumCCReal
 - Notas: En este conjunto de datos se incluye información detallada de la gestión municipal de las multas de circulación cuya competencia corresponde al Ayuntamiento de Madrid hasta un mes anterior al actual. Puede consultarse la evolución, a lo largo del tie
 - Ficheros: XLS: https://datos.madrid.es/dataset/210041-0-multas-circulacion-estadisticas/resource/210041-1-multas-circulacion-estadisticas-xls/download/210041-1-multas-circulacion-estadisticas-xls.xls; XLS: https://datos.madrid.es/dataset/210041-0-multas-circulacion-estadisticas/resource/210041-0-multas-circulacion-estadisticas-xls/download/datos-de-gestion-2026-pda.xls; XLSX: https://datos.madrid.es/dataset/210041-0-multas-circulacion-estadisticas/resource/210041-2-multas-circulacion-estadisticas-xls/download/denuncias-por-tipo-2026-.xlsx; XLS: https://datos.madrid.es/dataset/210041-0-multas-circulacion-estadisticas/resource/210041-3-multas-circulacion-estadisticas-xls/download/reclamaciones-pda.xls
 
-`https://datos.madrid.es/dataset/210041-0-multas-circulacion-estadisticas/resource/210041-1-multas-circulacion-estadisticas-xls/download/210041-1-multas-circulacion-estadisticas-xls.xls`
-
-```
-��ࡱ�                >  ��	               P          ����    ����    O   ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	   ZO��    �  ��    �   \ p                                                  
-```
+(no se pudo descargar ninguna muestra)
 
 ### Multas de circulación: detalle
 - Publica: Ayuntamiento de Madrid · Catálogo: Madrid (Ayuntamiento)
@@ -280,13 +276,7 @@ Linea;FECHASER;TIPODIAMO;CodFranja;NumCCReal
 - Notas: En este conjunto de datos se van incorporando todas las multas de circulación que el Ayuntamiento de Madrid tramita cada mes, con todo el detalle posible sobre cada una de ellas que permite la legislación de protección de datos. Se incluye informació
 - Ficheros: CSV: https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle/resource/210104-0-multas-circulacion-detalle-csv/download/210104-0-multas-circulacion-detalle-csv.csv; CSV: https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle/resource/210104-1-multas-circulacion-detalle-csv/download/210104-1-multas-circulacion-detalle-csv.csv; CSV: https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle/resource/210104-2-multas-circulacion-detalle-csv/download/210104-2-multas-circulacion-detalle-csv.csv; CSV: https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle/resource/210104-3-multas-circulacion-detalle-csv/download/210104-3-multas-circulacion-detalle-csv.csv; CSV: https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle/resource/210104-4-multas-circulacion-detalle-csv/download/210104-4-multas-circulacion-detalle-csv.csv; CSV: https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle/resource/210104-5-multas-circulacion-detalle-csv/download/210104-5-multas-circulacion-detalle-csv.csv
 
-`https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle/resource/210104-0-multas-circulacion-detalle-csv/download/210104-0-multas-circulacion-detalle-csv.csv`
-
-```
-N�MERO;IMPORTE        
-000000030;000017600,00
-
-```
+(no se pudo descargar ninguna muestra)
 
 ### Radares
 - Publica: Ayuntamiento de Madrid · Catálogo: Madrid (Ayuntamiento)
@@ -299,13 +289,19 @@ N�MERO;IMPORTE
   * Las **coordenadas X e Y** , se muestran en **WGS84** : Sistema Geodésico Mundial 1984 (World G
 - Ficheros: GEO: https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-0-radares-fijos-moviles-geo/download/300049-0-radares-fijos-moviles-geo.geo; CSV: https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-1-radares-fijos-moviles-csv/download/300049-1-radares-fijos-moviles-csv.csv; XLSX: https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-2-radares-fijos-moviles-xlsx/download/300049-2-radares-fijos-moviles-xlsx.xlsx
 
-`https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-1-radares-fijos-moviles-csv/download/300049-1-radares-fijos-moviles-csv.csv`
+`https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-0-radares-fijos-moviles-geo/download/300049-0-radares-fijos-moviles-geo.geo`
 
 ```
-﻿Nº RADAR;Ubicacion;Carretara o vial;UBICACIÓN Calle 30;PK;Sentido;Tipo;Carril;Longitud inicio tramo;Latitud inicio tramo;X (WGS84);Y (WGS84);Longitud;Latitud;Velocidad límite;Responsable
-1;M-30, ENTRADA DE LA A-1, SENTIDO PUENTE DE VENTAS P.K. 0,500;M-30;00NC50;0+500;Calzada interior;Fijo;Fijo carril 4;;;442843.00;4481180.00;-3.67433808;40.47934148;90;DGP
-2;M-30, ENTRADA DE LA A-1, SENTIDO PUENTE DE VENTAS P.K. 0,500;M-30;00NC50;0+500;Calzada interior;Fijo;Fijo carril 5;;;442847.00;4481180.00;-3.67429089;40.47934175;90;DGP
-3;PASO INFERIOR COSTA RICA, SENTIDO PRÍNCIPE DE VERGARA;PASO INFERI
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:georss="http://www.georss.org/georss">
+    <title>Radares</title>
+    <link href="https://datos.madrid.es/egob/catalogo/300049-0-radares-fijos-moviles" rel="self"/>
+    <link href="https://datos.madrid.es" rel="alternate" type="text/html"/>
+    <id>300049-0</id>
+    <icon>https://datos.madrid.es/favicon.ico</icon>
+    <generator uri="https://datos.madrid.es">https://datos.madrid.es</generator>
+    <entry>
+       
 ```
 
 ### Tráfico Calle 30. Cámaras
@@ -332,16 +328,7 @@ N�MERO;IMPORTE
 Además de su valor en sí mismo, permite asociar a sus elementos otros dispositivos que se recogen en otros co
 - Ficheros: CSV: https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-0-cruces-semaforizados-csv/download/cruces_09-2026.csv; XLSX: https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-1-cruces-semaforizados-xlsx/download/cruces_09-2026.xlsx; ZIP: https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-2-cruces-semaforizados-zip/download/cruces_09-2026.zip; PDF: https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-3-cruces-semaforizados/download/estructura_ds_crucessemaforos.pdf; GEO: https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-4-cruces-semaforizados-geo/download/cruces_09-2026.geo
 
-`https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-0-cruces-semaforizados-csv/download/cruces_09-2026.csv`
-
-```
-distrito;id;"descripcion";"fecha_inst";utm_x;utm_y;longitud;latitud
-6;306;"GRAL. PERON - ORENSE";"27/05/1968";441064.571474627;4478195.373107696;-3.69504131180059;40.45233041829437
-9;898;"FERRAZ - ROMERO ROBLEDO";"27/12/1978";438737.196046137;4475873.236449583;-3.72226271424455;40.43124341122916
-9;500;"PSO. PTOR. ROSALES - MARQUES URQUIJO";"10/03/1972";438784.299423487;4475611.15007337;-3.72168218759263;40.42888589620946
-9;1690;"FERRAZ - REY FRANCISCO";"29/10/2001";439129.065724556;4475339.095854883;-3.71759193424704;40.42646041490665
-9;1224;"ISAAC PERAL - DONOSO CORTES";"24/09/1990";4390
-```
+(no se pudo descargar ninguna muestra)
 
 ### Tráfico. Cámaras
 - Publica: Ayuntamiento de Madrid · Catálogo: Madrid (Ayuntamiento)
@@ -386,7 +373,17 @@ Estos estudios anuales se suelen tener en el primer trimestre del año siguiente
 Para los ejercicios 2012 y 20
 - Ficheros: XLSX: https://datos.madrid.es/dataset/203962-0-trafico-imd/resource/203962-0-trafico-imd-xlsx/download/203962-0-trafico-imd-xlsx.xlsx; XLS: https://datos.madrid.es/dataset/203962-0-trafico-imd/resource/203962-1-trafico-imd-xls/download/203962-1-trafico-imd-xls; XLSX: https://datos.madrid.es/dataset/203962-0-trafico-imd/resource/203962-2-trafico-imd-xlsx/download/203962-2-trafico-imd-xlsx; KMZ: https://datos.madrid.es/dataset/203962-0-trafico-imd/resource/203962-3-trafico-imd-kmz/download/203962-3-trafico-imd-kmz; ZIP: https://datos.madrid.es/dataset/203962-0-trafico-imd/resource/203962-4-trafico-imd-zip/download/203962-4-trafico-imd-zip; ZIP: https://datos.madrid.es/dataset/203962-0-trafico-imd/resource/203962-5-trafico-imd-zip/download/203962-5-trafico-imd-zip
 
-(no se pudo descargar ninguna muestra)
+`https://datos.madrid.es/dataset/203962-0-trafico-imd/resource/203962-17-trafico-imd-kml/download/203962-17-trafico-imd-kml`
+
+```
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns:atom='http://www.w3.org/2005/Atom' xmlns:kml='http://www.opengis.net/kml/2.2' xmlns:gx='http://www.google.com/kml/ext/2.2' xmlns='http://www.opengis.net/kml/2.2'>
+<Document>
+<Schema name='2019' id='2019'><SimpleField name='CODIGO' type='STRING'></SimpleField><SimpleField name='NOMBRE' type='STRING'></SimpleField><SimpleField name='TRAMO' type='STRING'></SimpleField><SimpleField name='SENTIDO' type='STRING'></SimpleField>
+<SimpleField name='iMD 0-23H' type='STRING'></SimpleField>
+<SimpleField name='iMD 7-9H' type='STRING'></SimpleField>
+<S
+```
 
 ### Tráfico. Semáforos con control foto-rojo
 - Publica: Ayuntamiento de Madrid · Catálogo: Madrid (Ayuntamiento)
@@ -397,7 +394,32 @@ Para los ejercicios 2012 y 20
 Las cámaras se insta
 - Ficheros: PDF: https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-2-semaforos-foto-rojo/download/estructura_ds_archivos_foto_rojo.pdf; PDF: https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-3-semaforos-foto-rojo/download/manualvisualizapuntosmedidatrafico.pdf; XLSX: https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-5-semaforos-foto-rojo-xlsx/download/205193-5-semaforos-foto-rojo-xlsx.xlsx; CSV: https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-1-semaforos-foto-rojo-csv/download/205193-1-semaforos-foto-rojo-csv.csv; ZIP: https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-4-semaforos-foto-rojo-zip/download/205193-4-semaforos-foto-rojo-zip.zip; GEO: https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-0-semaforos-foto-rojo-geo/download/205193-0-semaforos-foto-rojo-geo.geo
 
-(no se pudo descargar ninguna muestra)
+`https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-2-semaforos-foto-rojo/download/estructura_ds_archivos_foto_rojo.pdf`
+
+```
+%PDF-1.5
+%����
+13 0 obj
+<<
+/Type /FontDescriptor
+/FontName /Arial,Bold
+/Flags 32
+/ItalicAngle 0
+/Ascent 905
+/Descent -210
+/CapHeight 728
+/AvgWidth 479
+/MaxWidth 2628
+/FontWeight 700
+/XHeight 250
+/Leading 33
+/StemV 47
+/FontBBox [-628 -210 2000 728]
+>>
+endobj
+14 0 obj
+[278 0 0 0 0 0 0 0 0 0 0 0 0 333 278 278 556 0 556 556 0 0 0 0 0 0 333 0 0 0 0 0 0 722 0 722 722 667 611 778 722 278 556 0 611 833 722 778 667 0 722 667 611 722 667 0 667 667 0 0 0 0 0 0 0 0 611 556 0 556 0 0 0 278 0 0 0 0 611 611 0 0 389 556 333 611 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+```
 
 ### Tráfico. Velocidad media diaria anual por tramos
 - Publica: Ayuntamiento de Madrid · Catálogo: Madrid (Ayuntamiento)
@@ -412,7 +434,21 @@ Otros conjuntos de datos que pueden resultar de interés son:
   * ****[Tráfico. Intensidad y velocid
 - Ficheros: ZIP: https://datos.madrid.es/dataset/300340-0-trafico-velocidad/resource/300340-0-trafico-velocidad-zip/download/300340-0-trafico-velocidad-zip; XLSX: https://datos.madrid.es/dataset/300340-0-trafico-velocidad/resource/300340-1-trafico-velocidad-xlsx/download/300340-1-trafico-velocidad-xlsx; KML: https://datos.madrid.es/dataset/300340-0-trafico-velocidad/resource/300340-2-trafico-velocidad-kml/download/300340-2-trafico-velocidad-kml; XLSX: https://datos.madrid.es/dataset/300340-0-trafico-velocidad/resource/300340-3-trafico-velocidad-xlsx/download/300340-3-trafico-velocidad-xlsx; ZIP: https://datos.madrid.es/dataset/300340-0-trafico-velocidad/resource/300340-4-trafico-velocidad-zip/download/300340-4-trafico-velocidad-zip; KML: https://datos.madrid.es/dataset/300340-0-trafico-velocidad/resource/300340-5-trafico-velocidad-kml/download/300340-5-trafico-velocidad-kml
 
-(no se pudo descargar ninguna muestra)
+`https://datos.madrid.es/dataset/300340-0-trafico-velocidad/resource/300340-2-trafico-velocidad-kml/download/300340-2-trafico-velocidad-kml`
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="root_doc">
+	<name>VELOCIDADES_2019_v1.kml</name>
+	<open>1</open>
+	<Schema name="hola" id="hola">
+		<SimpleField type="string" name="DESCRIPTIO"></SimpleField>
+		<SimpleField type="string" name="TIMESTAMP"></SimpleField>
+		<SimpleField type="string" name="BEGIN"></SimpleField>
+		<SimpleField type="string" name="END"></SimpleField>
+		<SimpleField type="string" na
+```
 
 ### Tráfico: Madrid Zona de Bajas Emisiones. Cámaras
 - Publica: Ayuntamiento de Madrid · Catálogo: Madrid (Ayuntamiento)
@@ -423,7 +459,11 @@ Otros conjuntos de datos que pueden resultar de interés son:
 Madrid Zona de Bajas Emisiones (ZBE)’ en términos generales consiste en la ordenación de tráfico
 - Ficheros: ZIP: https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-0-circulacion-camaras-trafico-zip/download/300654-0-circulacion-camaras-trafico-zip.zip; CSV: https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-1-circulacion-camaras-trafico-csv/download/300654-1-circulacion-camaras-trafico-csv.csv; XLSX: https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-2-circulacion-camaras-trafico-xlsx/download/300654-2-circulacion-camaras-trafico-xlsx.xlsx; PDF: https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-3-circulacion-camaras-trafico/download/estructura_ds_archivos_zbe_lpr.pdf; PDF: https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-4-circulacion-camaras-trafico/download/manualvisualizacic3b3nubicacic3b3ndispositivos.pdf; PDF: https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-5-circulacion-camaras-trafico/download/ordenanzamovilidadasostenible.pdf
 
-(no se pudo descargar ninguna muestra)
+`https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-0-circulacion-camaras-trafico-zip/download/300654-0-circulacion-camaras-trafico-zip.zip`
+
+```
+PK   =x�[P<�         ZBE_MADRID_CAMARAS.cpgqӵ  PK   =x�[1��Fn)  �c    ZBE_MADRID_CAMARAS.dbf�͎串����x�W\^/Z��Hj�R�kԣ��(3�ks�ɏ�g���GHY�Y�R��7������&HF0���?�������������+��p�툿��/���5�������Z����e�z9��?/�]��Y��B	"�8u�ys�NB+C?�g�V�u]��]J׮�����im<_�a�c~�Mp߫ ��T%`n�A����g>���Q�ߡ<M��?�D��[}��_�&�8.Zq�W8D�I�k7�N|o��#@�Z-���d��m\�����?�o��:�Ng��}��K'F��ƿ� Q�M�`n�@T��swKBw�q�Q�����������;��D�k��^Z�T�����KG�Q�AU�R�ŃDC]5�i ���Jr��n�:*���o�@���"{ �M�1:G8��_� �ZWu���WbE�_��;*�,H44��.$j��$�T)z�я˞=6�&x�ZS��9*eU�D�Y�@�s�~�6���� }L�(z�
+```
 
 ### Zona de Bajas Emisiones de Especial Protección (ZBEDEP) Distrito Centro. Cámaras y calles
 - Publica: Ayuntamiento de Madrid · Catálogo: Madrid (Ayuntamiento)
@@ -432,7 +472,14 @@ Madrid Zona de Bajas Emisiones (ZBE)’ en términos generales consiste en la or
 - Notas: La Zona de Bajas Emisiones de Especial Protección (ZBEDEP) “Distrito Centro” fue creada en desarrollo de la Estrategia de Sostenibilidad Ambiental Madrid 360, para proteger la salud humana y el medio ambiente urbano mediante la mejora de la calidad d
 - Ficheros: GEO: https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-0-trafico-madrid-central-geo/download/300229-0-trafico-madrid-central-geo.geo; KMZ: https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-1-trafico-madrid-central-kmz/download/300229-1-trafico-madrid-central-kmz.kmz; CSV: https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-2-trafico-madrid-central-csv/download/300229-2-trafico-madrid-central-csv.csv; XLSX: https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-3-trafico-madrid-central-xlsx/download/300229-3-trafico-madrid-central-xlsx.xlsx; XLSX: https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-4-trafico-madrid-central-xlsx/download/300229-4-trafico-madrid-central-xlsx.xlsx; ZIP: https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-5-trafico-madrid-central-zip/download/300229-5-trafico-madrid-central-zip.zip
 
-(no se pudo descargar ninguna muestra)
+`https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-2-trafico-madrid-central-csv/download/300229-2-trafico-madrid-central-csv.csv`
+
+```
+﻿gis_x;gis_y;fecha_alta;distrito;barrio;calle;num_finca;tipo_elemento;codigo;num_puerta;id_camara;longitud;latitud;direccion
+439654,6834420440;4473220,4094054000;2018-11-30;01  CENTRO;01-02 EMBAJADORES;CAPITAN SALAZAR MARTINEZ, CALLE, DEL;1;Cámaras;Camara Entrada;1;1.1 e;-3.7111951;40.4074126;CAPITAN SALAZAR MARTINEZ, CALLE, DEL, 1
+439655,6556642660;4473220,2427387400;2018-11-30;01  CENTRO;01-02 EMBAJADORES;TOLEDO, CALLE, DE;125;Cámaras;Camara Entrada;1;1.2 e;-3.7111835;40.4074112;TOLEDO, CALLE, DE, 125
+439795,4257352600;4473105,8387040900;2018-11-30;01  CENTRO;01-02 EMBAJADORES;CAMPILLO DE
+```
 
 ### Estaciones de aforo por tramos de la red de carreteras de Tenerife
 - Publica: Cabildo de Tenerife · Catálogo: Canarias
@@ -640,86 +687,6 @@ PK    e�F]����� r�z    REDABA_Lin_Tramo_Moncayo.dbf��ˎ
 ```
 PK    ��F]
 �_�A �k    REDSAN_Lin_Tramo_Moncayo.dbf���n�@ � !$N��޸�]���u�M�4pE�Z)$(�Wފ�w�Z~���`�0ٙC�,-&�:��{��;�����s�7n��p�|Zo?m?���;�f2��m���v�O��z��]�?�)?j�'�l:����wʫ�/��fݞ��,?ms,��|2?5�fp�����+ˏ��?�k��z4����?����.���*ݾ~��a3:����}}�����4㋯?�)R�O^>��\��;����I3z�׃���}�M�ćiwf�:�]v��y�ܬ̞�����o�������H ���U���|s�z�ui"���z�X�U�<��L�${��Q�q!��i�4'�7���D�d�G�B"��]��M�n��y�.b�5�d����LOӟdf��՚�u�o��L�%X���ջn��>sݸ6���e�����8�����Nfh�2�B��2Gۖ����5�y�as}Ӈ�d��T"�ds�q)��+&gM�AO�⸌��e�b����m"z2)6EVL:��F&�<H$�Y����0�Hl�`bY-��&�'cJ�u�IpГI-�9&%�gГ
-```
-
-### Menores condenados según lugar de condena, nacionalidad y número de infracciones cometidas
-- Publica: Instituto Aragonés de Estadística · Catálogo: Aragón
-- Web: https://opendata.aragon.es/ckan/dataset/menores-condenados-segun-lugar-de-condena-nacionalidad-y-numero-de-infracciones-cometidas
-- Licencia: Creative Commons Attribution 4.0
-- Notas: Estudio sociodemográfico de los menores condenados
-- Ficheros: px: http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A06.px
-
-`http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A06.px`
-
-```
-CHARSET="ANSI";
-AXIS-VERSION="2000";
-LANGUAGE="es";
-CREATION-DATE="20260715 08:07";
-DECIMALS=0;
-SHOWDECIMALS=0;
-MATRIX="060704A06";
-SUBJECT-CODE="060704A";
-SUBJECT-AREA="Personas condenadas menores de edad";
-DESCRIPTION="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y nacionalidad";
-TITLE="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y nacionalidad";
-DESCRIPTIONDEFAULT=YES;
-CONTENTS="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y nacionalidad";
-UNITS="n
-```
-
-### Menores condenados según lugar de condena, número de infracciones cometidas y edad
-- Publica: Instituto Aragonés de Estadística · Catálogo: Aragón
-- Web: https://opendata.aragon.es/ckan/dataset/menores-condenados-segun-lugar-de-condena-numero-de-infracciones-cometidas-y-edad
-- Licencia: Creative Commons Attribution 4.0
-- Notas: Estudio sociodemográfico de los menores condenados
-- Ficheros: px: http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A04.px
-
-`http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A04.px`
-
-```
-CHARSET="ANSI";
-AXIS-VERSION="2000";
-LANGUAGE="es";
-CREATION-DATE="20260715 08:07";
-DECIMALS=0;
-SHOWDECIMALS=0;
-MATRIX="060704A04";
-SUBJECT-CODE="060704A";
-SUBJECT-AREA="Personas condenadas menores de edad";
-DESCRIPTION="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y edad";
-TITLE="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y edad";
-DESCRIPTIONDEFAULT=YES;
-CONTENTS="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y edad";
-UNITS="n�mero de menores";
-STUB=
-```
-
-### Menores condenados según lugar de condena, sexo y número de infracciones cometidas
-- Publica: Instituto Aragonés de Estadística · Catálogo: Aragón
-- Web: https://opendata.aragon.es/ckan/dataset/menores-condenados-segun-lugar-de-condena-sexo-y-numero-de-infracciones-cometidas
-- Licencia: Creative Commons Attribution 4.0
-- Notas: Estudio sociodemográfico de los menores condenados
-- Ficheros: px: http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A05.px
-
-`http://servicios3.aragon.es/iaeaxi_docs/06/07/04/060704A05.px`
-
-```
-CHARSET="ANSI";
-AXIS-VERSION="2000";
-LANGUAGE="es";
-CREATION-DATE="20260715 08:07";
-DECIMALS=0;
-SHOWDECIMALS=0;
-MATRIX="060704A05";
-SUBJECT-CODE="060704A";
-SUBJECT-AREA="Personas condenadas menores de edad";
-DESCRIPTION="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y sexo";
-TITLE="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y sexo";
-DESCRIPTIONDEFAULT=YES;
-CONTENTS="Personas condenadas menores de edad seg�n lugar de condena, n�mero de infracciones cometidas y sexo";
-UNITS="n�mero de menores";
-STUB=
 ```
 
 ### Nº de empleados según tramo salarial anual y sexo.
@@ -1236,7 +1203,7 @@ PK    �m�D1��  �   TramosPeatonales.dbfUT	 �*�S�6�S
 - Web: https://datos.gob.es/catalogo/a07002862-intensidades-medias-diarias-de-trafico-y-velocidades-red-regional-de-carreteras1
 - Licencia: 
 - Notas: Intensidades medias diarias de tráfico, composición y velocidades de la Red Regional de Castilla y León
-- Ficheros: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.xls; text/csv: https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.csv; application/json: https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.json
+- Ficheros: text/csv: https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.csv; application/json: https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.json; application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.xls
 
 `https://datosabiertos.jcyl.es/web/jcyl/risp/es/transporte/intensidad_circulacion/1284733182199.json`
 
@@ -1547,8 +1514,9 @@ Imágenes de reflectividad correspondientes a la elevación más baja de la expl
 `https://ssl.renfe.com/gtransit/Fichero_AV_LD/google_transit.zip`
 
 ```
-PK    E	[]�m1�y   �  
-  agency.txtUT	 ���j���jux h� q KLO�K���L�I���sSa�Ң�$37�*?.����cd %F&�2407�	r�ssU�prt�r��())���///�+J�KK�K���q--�/H��ML)F�k��������'/� PK    E	[]GX5��� ��   calendar_dates.txtUT	 ���j���jux h� q ��͊e�.���S�*�}{Dx����6nG*�BHo�����s�'ð�A�:�����7ǚ���?�����������������?����?������?����������������X�����_�/]�?�z{}yy�����|��/o�����������|���_/��z__�ӫz�W3�}��^��=��Y�G�轤W��h� ��ҫ�^^z�y������*���_���ڣ�s�������ۣ޷�j��m�Y��%����ˏϿ�˥G�譐�|�}������r���M����K���mr�����u�h��������69x��&������^z�y�ގ2=�5�Kk${�}
+PK    	b]�m1�y   �  
+  agency.txtUT	 i��ji��jux h� q KLO�K���L�I���sSa�Ң�$37�*?.����cd %F&�2407�	r�ssU�prt�r��())���///�+J�KK�K���q--�/H��ML)F�k��������'/� PK    	b]�A�Q� �Ơ   calendar_dates.txtUT	 h��jh��jux h� q ��͊l[�6���*t����j
+Q�5�#R!��׉}N��{b2B`���l%���x�9�\������������_�����o����������_���������������������]~�����}������|{{����?>����������������+��Y����j������z/��� ���j��m��wz5���[�6��#���ܤ����/��z�{�ynz߯�]�=뽦W��h��z/o����^~|�u}�ۣ��VHz>�����������w�?��ߚ<@o������_����M�Y�{���mr� �M�Y�G���(�s.$/�9�z;��z�sX
 ```
 
 ### Listado estaciones de Alta Velocidad, Larga Distancia y Media Distancia
@@ -2431,7 +2399,7 @@ Otros conjuntos de datos que pueden resultar de interés son:
 `https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_camarasTrafico-4326.geojson`
 
 ```
-{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_camarasTrafico.fid--175d4967_1a17b770c71_3502","geometry":{"type":"Point","coordinates":[-4.539063,36.72406291,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":21611,"NOMBRE":"TV87-EL BONI - CAMPANILLAS","DESCRIPCION":"C/ José Calderón - El Boni","DIRECCION":"CALLE JOSÉ CALDERÓN, 45 ","URL":"https://movilidad.malaga.eu/es/servicios/camaras-de-trafico/distrito-9/tv-87/index.html","EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No","URLIMAGEN":"https://ct
+{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_camarasTrafico.fid--175d4967_1a19a5b630d_4fb1","geometry":{"type":"Point","coordinates":[-4.539063,36.72406291,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":21611,"NOMBRE":"TV87-EL BONI - CAMPANILLAS","DESCRIPCION":"C/ José Calderón - El Boni","DIRECCION":"CALLE JOSÉ CALDERÓN, 45 ","URL":"https://movilidad.malaga.eu/es/servicios/camaras-de-trafico/distrito-9/tv-87/index.html","EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No","URLIMAGEN":"https://ct
 ```
 
 ### Foto Rojo
@@ -2444,7 +2412,7 @@ Otros conjuntos de datos que pueden resultar de interés son:
 `https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.geojson`
 
 ```
-{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_transporteFotoRojo.fid--175d4967_1a17b770c71_52a0","geometry":{"type":"Point","coordinates":[-4.47560748,36.71642191,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":79133,"NOMBRE":"Foto-Rojo Jiménez Fraud dirección Hospital Clínico","DESCRIPCION":"C/ Jiménez Fraud nº 5 dirección Hospital Clínico","DIRECCION":"CALLE DE JIMÉNEZ FRAUD, 5 ","URL":null,"EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No"}},{"type":"Feature","id":"da_transporteFotoRojo.fid--1
+{"type":"FeatureCollection","features":[{"type":"Feature","id":"da_transporteFotoRojo.fid--175d4967_1a19a5b630d_6d4f","geometry":{"type":"Point","coordinates":[-4.47560748,36.71642191,0]},"geometry_name":"SDOGEOMETRIA","properties":{"ID":79133,"NOMBRE":"Foto-Rojo Jiménez Fraud dirección Hospital Clínico","DESCRIPCION":"C/ Jiménez Fraud nº 5 dirección Hospital Clínico","DIRECCION":"CALLE DE JIMÉNEZ FRAUD, 5 ","URL":null,"EMAIL":null,"CONTACTO":null,"HORARIOS":null,"PRECIOS":null,"TITULARIDAD":"MUNICIPAL","TARJETAJOVEN":"No","ACCESOPMR":"No"}},{"type":"Feature","id":"da_transporteFotoRojo.fid--1
 ```
 
 ### Cámaras de Tráfico
@@ -2515,7 +2483,7 @@ NOTA: El Ayuntamiento de Bilbao se reserva el derecho de deshabilitar una c&#225
 `https://idezar-sig.zaragoza.es/servicios/geoserver/idezar_base/wfs?version=1.1.1&&Request=GetCapabilities`
 
 ```
-<?xml version="1.0" encoding="UTF-8"?><wfs:WFS_Capabilities version="1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.opengis.net/wfs" xmlns:wfs="http://www.opengis.net/wfs" xmlns:ows="http://www.opengis.net/ows" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.opengis.net/wfs https://idezar-sig.zaragoza.es/servicios/geoserver/schemas/wfs/1.1.0/wfs.xsd" xmlns:idezar_base="https://zaragoza.es/idezar_base/" updateSequence="18001"><ows:ServiceIdentification><ows:Tit
+<?xml version="1.0" encoding="UTF-8"?><wfs:WFS_Capabilities version="1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.opengis.net/wfs" xmlns:wfs="http://www.opengis.net/wfs" xmlns:ows="http://www.opengis.net/ows" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.opengis.net/wfs https://idezar-sig.zaragoza.es/servicios/geoserver/schemas/wfs/1.1.0/wfs.xsd" xmlns:idezar_base="https://zaragoza.es/idezar_base/" updateSequence="18071"><ows:ServiceIdentification><ows:Tit
 ```
 
 ### Datos de tráfico semanales: velocidad - 2021
@@ -2646,3 +2614,514 @@ NOTA: El Ayuntamiento de Bilbao se reserva el derecho de deshabilitar una c&#225
               "rango2_max": 90,
             
 ```
+
+
+## Sondas de fuentes concretas
+
+### Feed radares-anunciados (estado)
+`https://geiserx.github.io/radares-anunciados-ha/status.json` · 8906 bytes
+{
+ "generated": "2026-11-02T06:24:35+00:00",
+ "features": 4521,
+ "reported": 38,
+ "sources": [
+  {
+   "source": "dgt",
+   "status": "ok",
+   "radars": 784,
+   "stretches": 47,
+   "reported": 0,
+   "in_feed": 783,
+   "data_time": "2026-11-02T06:19:42+00:00",
+   "updated": "2025-12-18",
+   "error": "",
+   "attribution": "Dirección General de Tráfico (CC BY 4.0)",
+   "licence": "CC BY 4.0",
+   "spanish_ip": false
+  },
+  {
+   "source": "osm",
+   "status": "ok",
+   "radars": 2833,
+   "stretches": 311,
+   "reported": 0,
+   "in_feed": 1718,
+   "data_time": "2026-11-02T06:19:43+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "© OpenStreetMap contributors (ODbL 1.0)",
+   "licence": "ODbL 1.0",
+   "spanish_ip": false
+  },
+  {
+   "source": "osm_notes",
+   "status": "ok",
+   "radars": 0,
+   "stretches": 0,
+   "reported": 38,
+   "in_feed": 38,
+   "data_time": "2026-11-02T06:21:28+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "© OpenStreetMap contributors (ODbL 1.0)",
+   "licence": "ODbL 1.0",
+   "spanish_ip": false
+  },
+  {
+   "source": "murcia",
+   "status": "ok",
+   "radars": 0,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 62,
+   "data_time": "2026-11-02T06:21:30+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "Policía Local de Murcia (lista semanal, leída en la prensa local); geometría © OpenStreetMap y CartoCiudad, CC BY 4.0 scne.es (© Instituto Geográfico Nacional)",
+   "licence": "the Policía Local's weekly list, which it posts on its social networks as an image; the feed reads it in the press and takes its facts (street, district, week), not the article's text. Geometry: ODbL 1.0; a street OpenStreetMap misses, CartoCiudad (IGN), CC BY 4.0",
+   "spanish_ip": false,
+   "streets": {
+    "announced": 0,
+    "placed": 0,
+    "by_method": {},
+    "unplaced": []
+   }
+  },
+  {
+   "source": "sct",
+   "status": "ok",
+   "radars": 230,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 230,
+   "data_time": "2026-11-02T06:21:30+00:00",
+   "updated": "2026-09-17",
+   "error": "",
+   "attribution": "Generalitat de Catalunya. Departament d'Interior i Seguretat Pública. Servei Català de Trànsit (Llicència oberta d'ús d'informació – Catalunya)",
+   "licence": "Llicència oberta d'ús d'informació – Catalunya",
+   "spanish_ip": false
+  },
+  {
+   "source": "sct_remolc",
+   "status": "ok",
+   "radars": 53,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 53,
+   "data_time": "2026-11-02T06:21:30+00:00",
+   "updated": "2025-11-27",
+   "error": "",
+   "attribution": "Generalitat de Catalunya. Departament d'Interior i Seguretat Pública. Servei Català de Trànsit (Llicència oberta d'ús d'informació – Catalunya)",
+   "licence": "Llicència oberta d'ús d'informació – Catalunya",
+   "spanish_ip": false
+  },
+  {
+   "source": "dgt_invive",
+   "status": "ok",
+   "radars": 0,
+   "stretches": 1325,
+   "reported": 0,
+   "in_feed": 1325,
+   "data_time": "2026-11-02T06:21:31+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "Dirección General de Tráfico (Creative Commons Attribution)",
+   "licence": "Creative Commons Attribution (as stated on the NAP dataset page, no version given); terms of use https://www.dgt.es/contenido/aviso-legal/",
+   "spanish_ip": false
+  },
+  {
+   "source": "euskadi",
+   "status": "ok",
+   "radars": 97,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 97,
+   "data_time": "2026-11-02T06:21:31+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "Gobierno Vasco / Eusko Jaurlaritza, Dirección de Tráfico (Trafikoa)",
+   "licence": "no reuse licence; the data is reused under Ley 37/2007 on the reuse of public-sector information. Its legal notice reserves the site's content: https://www.euskadi.eus/informacion/-/informacion-legal",
+   "spanish_ip": true
+  },
+  {
+   "source": "navarra",
+   "status": "ok",
+   "radars": 1,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 1,
+   "data_time": "2026-11-02T06:21:32+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "Gobierno de Navarra, Visor de Tráfico",
+   "licence": "no reuse licence; the data is reused under Ley 37/2007 on the reuse of public-sector information. Its legal notice reserves the site's content: https://www.navarra.es/es/aviso-legal",
+   "spanish_ip": true
+  },
+  {
+   "source": "donostia",
+   "status": "ok",
+   "radars": 12,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 12,
+   "data_time": "2026-11-02T06:21:32+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "© Donostiako Udala - Ayuntamiento de Donostia / San Sebastián",
+   "licence": "the council's reuse terms: content kept whole, source cited, no unlawful use (Ley 37/2007); third-party content excluded. Legal notice: https://www.donostia.eus/es/aviso-legal",
+   "spanish_ip": false
+  },
+  {
+   "source": "donostia_movil",
+   "status": "ok",
+   "radars": 0,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 17,
+   "data_time": "2026-11-02T06:21:32+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "Ayuntamiento de Donostia / San Sebastián, ubicación del radar móvil; geometría de una calle sin línea: CartoCiudad, CC BY 4.0 scne.es (© Instituto Geográfico Nacional), © OpenStreetMap",
+   "licence": "the council's reuse terms: content kept whole, source cited, no unlawful use (Ley 37/2007); third-party content excluded. Legal notice: https://www.donostia.eus/es/aviso-legal. A street the council gives no line for: CartoCiudad (IGN), CC BY 4.0, or OpenStreetMap, ODbL 1.0",
+   "spanish_ip": false,
+   "streets": {
+    "announced": 0,
+    "placed": 0,
+    "by_method": {},
+    "unplaced": []
+   }
+  },
+  {
+   "source": "madrid",
+   "status": "ok",
+   "radars": 26,
+   "stretches": 9,
+   "reported": 0,
+   "in_feed": 35,
+   "data_time": "2026-11-02T06:21:33+00:00",
+   "updated": "2026-10-22",
+   "error": "",
+   "attribution": "Origen de los datos: Ayuntamiento de Madrid (CC BY 4.0)",
+   "licence": "CC BY 4.0",
+   "spanish_ip": false
+  },
+  {
+   "source": "salamanca",
+   "status": "ok",
+   "radars": 28,
+   "stretches": 4,
+   "reported": 0,
+   "in_feed": 28,
+   "data_time": "2026-11-02T06:21:33+00:00",
+   "updated": "2025-01-22",
+   "error": "",
+   "attribution": "Ayuntamiento de Salamanca, Radares Municipales (GNU Free Documentation License)",
+   "licence": "GNU Free Documentation License (as the dataset states it); the portal's terms add Ley 37/2007 art. 8: data unaltered, source cited, date of last update given",
+   "spanish_ip": false
+  },
+  {
+   "source": "leon",
+   "status": "ok",
+   "radars": 226,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 89,
+   "data_time": "2026-11-02T06:21:34+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "Ayuntamiento de León (ubicación mensual de los radares móviles); Redacción ILEÓN, obtenido de ILEÓN (ileon.eldiario.es); geometría © OpenStreetMap y CartoCiudad, CC BY 4.0 scne.es (© Instituto Geográfico Nacional)",
+   "licence": "Ayuntamiento de León's posts: no reuse licence; the data is reused under Ley 37/2007 on the reuse of public-sector information; its portal's terms reserve reproduction except for personal and private use (https://www.aytoleon.es/es/inicio/Paginas/terminos-y-condiciones-generales.aspx). Days only iLeón covers: the facts iLeón reports (street, day, limit), not its text, which is CC BY-NC 4.0. Geometry: ODbL 1.0; a street OpenStreetMap misses, CartoCiudad (IGN), CC BY 4.0",
+   "spanish_ip": true,
+   "streets": {
+    "announced": 37,
+    "placed": 35,
+    "by_method": {
+     "osm": 34,
+     "osm_fuzzy": 1
+    },
+    "unplaced": [
+     "P.º Condesa",
+     "P.º Salamanca"
+    ]
+   }
+  },
+  {
+   "source": "barcelona_multas",
+   "status": "ok",
+   "radars": 13,
+   "stretches": 0,
+   "reported": 0,
+   "in_feed": 9,
+   "data_time": "2026-11-02T06:22:08+00:00",
+   "updated": "2026-09-01",
+   "error": "",
+   "attribution": "Fuente de los datos: Ayuntamiento de Barcelona (CC BY 4.0), detalle de las denuncias y sanciones de tráfico",
+   "licence": "CC BY 4.0",
+   "spanish_ip": false
+  },
+  {
+   "sourc
+
+```
+{
+ "generated": "2026-11-02T06:24:35+00:00",
+ "features": 4521,
+ "reported": 38,
+ "sources": [
+  {
+   "source": "dgt",
+   "status": "ok",
+   "radars": 784,
+   "stretches": 47,
+   "reported": 0,
+   "in_feed": 783,
+   "data_time": "2026-11-02T06:19:42+00:00",
+   "updated": "2025-12-18",
+   "error": "",
+   "attribution": "Dirección General de Tráfico (CC BY 4.0)",
+   "licence": "CC BY 4.0",
+   "spanish_ip": false
+  },
+  {
+   "source": "osm",
+   "status": "ok",
+   "radars": 2833,
+   "stretches": 311,
+   "reported": 0,
+   "in_feed": 1718,
+   "data_time": "2026-11-02T06:19:43+00:00",
+   "updated": null,
+   "error": "",
+   "attribution": "© OpenStreetMap contributors (ODbL 1.0)",
+   "licence": "ODbL 1.0",
+   "spanish_ip": false
+  },
+  {
+   "source": "osm_notes",
+   "status": "ok",
+   "radars": 0,
+   "stretches": 0,
+   "reported": 38,
+   "in_feed": 38,
+   "data_time": "2026-11-02T06:21:28+00:00"
+```
+
+### Feed radares-anunciados (inicio)
+`https://geiserx.github.io/radares-anunciados-ha/feed.geojson` · 2560444 bytes
+4521 features · claves {'name': 4521, 'source': 4521, 'kind': 4521, 'radius_m': 2930, 'active': 4521, 'valid_from': 2930, 'valid_to': 2930, 'reported': 2930, 'maxspeed': 4521, 'direction': 4521, 'province': 4521, 'url': 4521, 'attribution': 4521, 'road_ref': 957, 'km': 928, 'km_direction': 674, 'bearing': 1439, 'direction_semantics': 1439, 'direction_confidence': 1439, 'bearing_source': 1439, 'road': 1591, 'km_from': 1591, 'km_to': 1591} · fuentes {'barcelona_multas': 9, 'dgt': 783, 'donostia': 12, 'euskadi': 97, 'leon': 89, 'madrid': 35, 'madrid_multas': 24, 'navarra': 1, 'osm': 1718, 'osm_notes': 38, 'salamanca': 28, 'sct': 230, 'sct_remolc': 53, 'donostia_movil': 17, 'murcia': 62, 'dgt_invive': 1325} · geometrías {'Point': 2930, 'LineString': 1591}
+
+Ejemplos por fuente:
+```
+{"type": "Feature", "id": "barcelona_multas-avinguda-del-parc-logistic-0028", "geometry": {"type": "Point", "coordinates": [2.126219, 41.3410341]}, "properties": {"name": "Radar móvil frecuente Avinguda del Parc Logístic 28", "source": "barcelona_multas", "kind": "mobile_recurring", "radius_m": 756, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": null, "direction": null, "province": "08", "url": "https://opendata-ajuntament.barcelona.cat/data/es/dataset/denuncies_sancions_transit_bcn_detall", "attribution": "Fuente de los datos: Ayuntamiento de Barcelona (CC BY 4.0), multas de tráfico de octubre a diciembre de 2025, actualizado 2026-09-01; multas aquí en 2
+{"type": "Feature", "id": "dgt-CABINACINEMOMETRO_120001", "geometry": {"type": "Point", "coordinates": [-1.94488, 41.30326]}, "properties": {"name": "Radar fijo A-2 km 202.3 (sentido ZARAGOZA)", "source": "dgt", "kind": "fixed", "radius_m": 1533, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": null, "direction": "ZARAGOZA", "province": "50", "url": "https://nap.dgt.es/datex2/dgt/PredefinedLocationsPublication/radares/content.xml", "attribution": "Dirección General de Tráfico (CC BY 4.0), actualizado 2025-12-18; carretera: © OpenStreetMap contributors (ODbL 1.0)", "road_ref": "A-2", "km": 202.33, "km_direction": "positive", "bearing": 81, "direction_semanti
+{"type": "Feature", "id": "donostia-43.29166_-1.97345", "geometry": {"type": "Point", "coordinates": [-1.9734455903108072, 43.29165893106]}, "properties": {"name": "Radar fijo Begiristain Doktorearen pasealekua, Donostia", "source": "donostia", "kind": "fixed", "radius_m": 533, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 30, "direction": null, "province": "20", "url": "https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?where=1%3D1&outFields=*&outSR=4326&f=geojson", "attribution": "© Donostiako Udala - Ayuntamiento de Donostia / San Sebastián; carretera: © OpenStreetMap contributors (ODbL 1.0)"}}
+{"type": "Feature", "id": "euskadi-aiurdin", "geometry": {"type": "Point", "coordinates": [-2.7762310000002675, 42.94285999697679]}, "properties": {"name": "Radar fijo N-622 km 15.4 (sentido VITORIA - GASTEIZ)", "source": "euskadi", "kind": "fixed", "radius_m": 1533, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 120, "direction": "VITORIA - GASTEIZ", "province": "01", "url": "https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo", "attribution": "Gobierno Vasco / Eusko Jaurlaritza, Dirección de Tráfico (Trafikoa); carretera: © OpenStreetMap contributors (ODbL 1.0)", "bearing": 126, "direction_semantics": "travel", "direction_confidence
+{"type": "Feature", "id": "leon-2026-11-02-avenida-de-fernandez-ladreda-0", "geometry": {"type": "Point", "coordinates": [-5.5568147, 42.588064]}, "properties": {"name": "Radar anunciado Avenida de Fernández Ladreda", "source": "leon", "kind": "mobile_announced", "radius_m": 367, "active": true, "valid_from": "2026-11-02", "valid_to": "2026-11-02", "reported": null, "maxspeed": 30, "direction": null, "province": "24", "url": "https://ileon.eldiario.es/actualidad/radares-moviles-leon-semana-2-8-noviembre-calles-horarios-limites-velocidad_1_13630595.html", "attribution": "Redacción ILEÓN, obtenido de ILEÓN (ileon.eldiario.es), CC BY-NC 4.0; geometría © OpenStreetMap"}}
+{"type": "Feature", "id": "madrid-1", "geometry": {"type": "Point", "coordinates": [-3.67433808, 40.47934148]}, "properties": {"name": "Radar fijo M-30, ENTRADA DE LA A-1, SENTIDO PUENTE DE VENTAS P.K. 0,500", "source": "madrid", "kind": "fixed", "radius_m": 1200, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 90, "direction": "Calzada interior", "province": "28", "url": "https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-1-radares-fijos-moviles-csv/download/300049-1-radares-fijos-moviles-csv.csv", "attribution": "Origen de los datos: Ayuntamiento de Madrid (CC BY 4.0), actualizado 2026-10-22; carretera: © OpenStreetMap contrib
+{"type": "Feature", "id": "madrid_multas-n001-av-juan-de-herrera", "geometry": {"type": "Point", "coordinates": [-3.7298849, 40.4388225]}, "properties": {"name": "Radar móvil frecuente Avenida de Juan de Herrera 1", "source": "madrid_multas", "kind": "mobile_recurring", "radius_m": 644, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 40, "direction": null, "province": "28", "url": "https://datos.madrid.es/dataset/210104-0-multas-circulacion-detalle", "attribution": "Origen de los datos: Ayuntamiento de Madrid (CC BY 4.0): multas de circulación de enero de 2026 a junio de 2026, actualizado 2026-10-20, y callejero oficial; multas aquí en 6 de 6 meses"}}
+{"type": "Feature", "id": "navarra-A-12-5.9-D", "geometry": {"type": "Point", "coordinates": [-1.6981253462991215, 42.78582677638]}, "properties": {"name": "Radar fijo A-12 km 5.9 (sentido decreciente)", "source": "navarra", "kind": "fixed", "radius_m": 1533, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": null, "direction": "decreciente", "province": "31", "url": "https://visorcontroltrafico.navarra.es/gn.visortrafico.web.internet/api/openits/elements/radars", "attribution": "Gobierno de Navarra, Visor de Tráfico; carretera: © OpenStreetMap contributors (ODbL 1.0)", "road_ref": "A-12", "km": 5.948, "km_direction": "negative", "bearing": 41, "direction_sem
+{"type": "Feature", "id": "osm-10002215811", "geometry": {"type": "Point", "coordinates": [2.186095, 41.4115003]}, "properties": {"name": "Radar", "source": "osm", "kind": "fixed", "radius_m": 533, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 30, "direction": null, "province": null, "url": "https://www.openstreetmap.org/node/10002215811", "attribution": "© OpenStreetMap contributors (ODbL 1.0)"}}
+{"type": "Feature", "id": "osm-note-3828288", "geometry": {"type": "Point", "coordinates": [0.9346655, 41.0216531]}, "properties": {"name": "radar 30 km/h via StreetComplete 53.3", "source": "osm_notes", "kind": "reported", "radius_m": 0, "active": true, "valid_from": null, "valid_to": null, "reported": "2023-08-11", "maxspeed": null, "direction": null, "province": null, "url": "https://www.openstreetmap.org/note/3828288", "attribution": "© OpenStreetMap contributors (ODbL 1.0)"}}
+{"type": "Feature", "id": "salamanca-1", "geometry": {"type": "Point", "coordinates": [-5.67012994, 40.95233426]}, "properties": {"name": "Radar fijo Avenida Saavedra y Fajardo", "source": "salamanca", "kind": "fixed", "radius_m": 756, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 50, "direction": null, "province": "37", "url": "https://ide.aytosalamanca.es/geoserver/ide_salamanca_tic/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_salamanca_tic%3ARadares_Fijos&outputFormat=application%2Fjson&srsName=EPSG%3A4326", "attribution": "Ayuntamiento de Salamanca, Radares Municipales (GNU Free Documentation License), actualizado 2024-08-08; carrete
+{"type": "Feature", "id": "sct-A-2-445.35", "geometry": {"type": "Point", "coordinates": [0.4594567160511196, 41.538228513689106]}, "properties": {"name": "Radar fijo A-2 km 445.35", "source": "sct", "kind": "fixed", "radius_m": 1533, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 120, "direction": null, "province": "25", "url": "https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt", "attribution": "Generalitat de Catalunya. Departament d'Interior i Seguretat Pública. Servei Català de Trànsit (Llicència oberta d'ús d'informació – Catalunya), actualizado 2026-09-17; carretera: © OpenStreetMap contributors (ODbL 1.0)", "road_ref": "
+{"type": "Feature", "id": "sct_remolc-A-2-501.25", "geometry": {"type": "Point", "coordinates": [1.0747740034054443, 41.64420987325134]}, "properties": {"name": "Radar en remolque A-2 km 501.25", "source": "sct_remolc", "kind": "trailer", "radius_m": 1533, "active": true, "valid_from": null, "valid_to": null, "reported": null, "maxspeed": 120, "direction": null, "province": "25", "url": "https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars-remolc.txt", "attribution": "Generalitat de Catalunya. Departament d'Interior i Seguretat Pública. Servei Català de Trànsit (Llicència oberta d'ús d'informació – Catalunya), actualizado 2025-11-27; carretera: © OpenStreetMap contributo
+{"type": "Feature", "id": "donostia_movil-2026-10-28-avenida-de-ategorrieta-0", "geometry": {"type": "Point", "coordinates": [-1.9599062204360962, 43.321692683036815]}, "properties": {"name": "Radar anunciado Avenida de Ategorrieta (Donostia)", "source": "donostia_movil", "kind": "mobile_announced", "radius_m": 478, "active": false, "valid_from": "2026-10-28", "valid_to": "2026-10-28", "reported": null, "maxspeed": null, "direction": null, "province": "20", "url": "https://www.donostia.eus/info/ciudadano/radar_movil.nsf/fwHome?ReadForm=&idioma=cas&id=A434305381910", "attribution": "Ayuntamiento de Donostia / San Sebastián, ubicación del radar móvil"}}
+{"type": "Feature", "id": "murcia-2026-10-19-avenida-de-la-ora-la-arboleja-0", "geometry": {"type": "Point", "coordinates": [-1.1528039, 37.9884069]}, "properties": {"name": "Radar anunciado Avenida de la Ñora (La Arboleja)", "source": "murcia", "kind": "mobile_announced", "radius_m": 478, "active": false, "valid_from": "2026-10-19", "valid_to": "2026-10-25", "reported": null, "maxspeed": null, "direction": null, "province": "30", "url": "https://www.laopiniondemurcia.es/murcia/2026/10/19/son-lugares-instalaran-radares-semana-135485900.html", "attribution": "Policía Local de Murcia (lista semanal, leída en La Opinión de Murcia); geometría © OpenStreetMap"}}
+{"type": "Feature", "id": "dgt_invive-Tramo_Invive_1", "geometry": {"type": "LineString", "coordinates": [[-1.91995, 39.25851], [-1.99897, 39.11986]]}, "properties": {"name": "Tramo de radar móvil CM-220 km 17.3-34.8", "source": "dgt_invive", "kind": "stretch", "road": "CM-220", "km_from": 17.3, "km_to": 34.8, "active": true, "maxspeed": null, "direction": "both", "province": "02", "url": "https://nap.dgt.es/datex2/dgt/PredefinedLocationsPublication/tramos_invive/content.xml", "attribution": "Dirección General de Tráfico (Creative Commons Attribution); carretera: © OpenStreetMap contributors (ODbL 1.0)"}}
+```
+
+```
+
+```
+
+### DGT NAP tramos INVIVE (página)
+`https://nap.dgt.es/dataset/tramos-invive` · 35269 bytes
+
+```
+<!DOCTYPE html>
+<!--[if IE 7]> <html lang="es" class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html lang="es" class="ie ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="es" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es"> <!--<![endif]-->
+  <head>
+    <!--[if lte ie 8]><script type="text/javascript" src="/fanstatic/vendor/:version:2024-02-19T13:19:51.12/html5.min.js"></script><![endif]-->
+<link rel="stylesheet" type="text/css" href="/fanstatic/vendor/:version:2024-02-19T13:19:51.12/select2/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/css/:version:2024-02-19T13:19:51.12/main.min.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/vendor/:version:2024-02-19T13:19:51.12/font-awesome/css/font-awesome.min.css" />
+
+    <meta charset="utf-8" />
+      <meta name="generator" content="ckan 2.7.12" />
+      <meta name="viewport" content="width=d
+```
+
+### SCT radares remolque
+`https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars-remolc.txt` · 2112 bytes
+
+```
+Via	PK	Velocitat	X	Y
+A-2	501,25	120	339668,6962	4612064,806
+A-2	524,2	120	359633,7229	4612742,343
+A-2	547,65	120	379313,438	4606164,195
+A-2	609,65	80	422995,312	4577545,577
+A-27	3,625	100	351721,0241	4556239,402
+A-7	1144,4	120	336229,5072	4550110,848
+AP-7	60,77	120	482294,3992	4648510,672
+AP-7	78,08	120	479096,2211	4632397,766
+AP-7	79,58	120	479161,1767	4630919,966
+AP-7	83,94	120	478898,2866	4626649,402
+AP-7	83,95	120	478876,5013	4626629,87
+AP-7	89,7	120	475657,2491	4622260,111
+AP-7	129,5	120	442063,6737	4604324,649
+AP-7	129,5	120	442060,0756	4604312,576
+AP-7	138,6	100	434976,3309	4600034,808
+AP-7	141,5	100	432264,9052	4599377,061
+AP-7	147,57	100	427979,8829	4595701,699
+AP-7	153,8	100	422459,6006	4593439,649
+AP-7	160,6	80	417091,6123	4590147,034
+AP-7	160,6	100	417128,212	4590111,86
+AP-7	183,64	120	398740,9323	4585428,69
+AP-7	192,02	120	393422,2831	4579760,499
+AP-7	
+```
+
+### SCT radares
+`https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt` · 15151 bytes
+
+```
+(ETRS89)
+
+Via         PK          Velocitat   X           Y           
+A-2         445,35      120         288075,4643 4601625,063 
+A-2         477,4       120         315966,2147 4611784,9372
+A-2         510         120         347348,6149 4613312,8914
+A-2         522,046     120         358222,4382 4614165,5302
+A-2         524         120         359545,6704 4612865,7882
+A-2         534,15      120         368029,975  4609097,778 
+A-2         560,25      100         390017,1609 4605387,7454
+A-2         570,3       100         398172,1918 4603841,5011
+A-2         579,4       100         404844,106  4599075,0531
+A-2         597,45      120         416250,5113 4586903,1977
+A-2         602,75      100         418212,2371 4581992,9452
+A-2         603,2       100         418357,2645 4581610,1835
+A-2         608,2       80          420910,1949 4578514,6093
+A-2         609,075     80          
+```
+
+### Madrid foto-rojo CSV
+`https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-1-semaforos-foto-rojo-csv/download/205193-1-semaforos-foto-rojo-csv.csv` · ERROR HTTP Error 403: Forbidden
+
+### Madrid radares CSV
+`https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-1-radares-fijos-moviles-csv/download/300049-1-radares-fijos-moviles-csv.csv` · ERROR HTTP Error 403: Forbidden
+
+### Salamanca fijos GeoJSON
+`https://ide.aytosalamanca.es/geoserver/ide_salamanca_tic/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_salamanca_tic%3ARadares_Fijos&outputFormat=application%2Fjson&srsName=EPSG%3A4326` · 6615 bytes
+
+```
+{"type":"FeatureCollection","features":[{"type":"Feature","id":"Radares_Fijos.1","geometry":{"type":"MultiPoint","coordinates":[[-5.67012994,40.95233426]]},"geometry_name":"geom","properties":{"fid":1,"Ubicación":"Avenida  Saavedra y Fajardo","vmax":50,"Latitud":4536899.318,"Longitud":275264.675},"bbox":[-5.67012994,40.95233426,-5.67012994,40.95233426]},{"type":"Feature","id":"Radares_Fijos.2","geometry":{"type":"MultiPoint","coordinates":[[-5.66292203,40.94945195]]},"geometry_name":"geom","properties":{"fid":2,"Ubicación":"Calle Hilario Goyenechea","vmax":30,"Latitud":4536560.787,"Longitud":275861.646},"bbox":[-5.66292203,40.94945195,-5.66292203,40.94945195]},{"type":"Feature","id":"Radares_Fijos.3","geometry":{"type":"MultiPoint","coordinates":[[-5.65937848,40.95222867]]},"geometry_name":"geom","properties":{"fid":3,"Ubicación":"Vía Helmántica","vmax":50,"Latitud":4536859.987,"Longitud
+```
+
+### Salamanca tramo GeoJSON
+`https://ide.aytosalamanca.es/geoserver/ide_salamanca_movilidad/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_salamanca_movilidad%3ARADAR_TRAMO&outputFormat=application%2Fjson&srsName=EPSG%3A4326` · 1851 bytes
+
+```
+{"type":"FeatureCollection","features":[{"type":"Feature","id":"RADAR_TRAMO.1","geometry":{"type":"LineString","coordinates":[[-5.69108462,40.95486928],[-5.68603896,40.95491575]]},"geometry_name":"geom","properties":{"fid":1,"VMAX":30},"bbox":[-5.69108462,40.95486928,-5.68603896,40.95491575]},{"type":"Feature","id":"RADAR_TRAMO.2","geometry":{"type":"LineString","coordinates":[[-5.68286491,40.96529924],[-5.68360842,40.96499529],[-5.68375969,40.96489268],[-5.68386737,40.96473393],[-5.68398531,40.96450548],[-5.68404684,40.96438352],[-5.6842058,40.96424606],[-5.68467499,40.96394017],[-5.68529288,40.96356071],[-5.68571591,40.96331677],[-5.68617484,40.96313865],[-5.68677735,40.96288696],[-5.68927198,40.96214545]]},"geometry_name":"geom","properties":{"fid":2,"VMAX":30},"bbox":[-5.68927198,40.96214545,-5.68286491,40.96529924]},{"type":"Feature","id":"RADAR_TRAMO.3","geometry":{"type":"LineStri
+```
+
+### Santa Cruz de Tenerife foto-rojo
+`https://www.santacruzdetenerife.es/opendata/api/3/action/package_show?id=foto-rojo` · ERROR <urlopen error timed out>
+
+### Pamplona WFS (capas)
+`https://sig.pamplona.es/ogc/wfs?service=WFS&request=GetCapabilities` · ERROR <urlopen error timed out>
+
+### OSM notas con radar
+`https://api.openstreetmap.org/api/0.6/notes/search.json?q=radar&limit=10000&closed=0` · 230290 bytes
+Notas abiertas con 'radar' en España: 68 (de 225)
+
+```
+{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[-2.1939933,36.8929859]},"properties":{"id":5612041,"url":"https://api.openstreetmap.org/api/0.6/notes/5612041.json","comment_url":"https://api.openstreetmap.org/api/0.6/notes/5612041/comment.json","close_url":"https://api.openstreetmap.org/api/0.6/notes/5612041/close.json","date_created":"2026-11-01 20:22:42 UTC","status":"open","comments":[{"date":"2026-11-01 20:22:42 UTC","action":"opened","text":"Radar fijo ambos sentidos en 4,600km +-\nVelocidad de 50kmh","html":"\u003cp dir=\"auto\"\u003eRadar fijo ambos sentidos en 4,600km +-\n\u003cbr /\u003eVelocidad de 50kmh\u003c/p\u003e"}]}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-1.6484159,42.8133437]},"properties":{"id":5611605,"url":"https://api.openstreetmap.org/api/0.6/notes/5611605.json","comment_url":"https://api.open
+```
+
+### Donostia datos abiertos
+`https://www.donostia.eus/datosabiertos/catalogo` · 64979 bytes
+
+```
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="es" class="ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="es"  > <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+      <meta name="csrf_field_name" content="_csrf_token" />
+      <meta name="_csrf_token" content="ImJmYjM3YWQ2MmNlYTg4NDY4MjBjNGU3NDc0ZWJhYmExNDI4YWE4Yzgi.aujlIA.GdY5eTfpiobjuFruBMWEKe7ejjQ" />
+
+      <meta name="generator" content="ckan 2.11.2" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjunto de datos - CKAN</title>
+
+    
+    
+    <link rel="shortcut icon" href="/base/images/ckan.ico" />
+    
+    
+        <link rel="alternate" type="text/n3" href="https://www.donostia.eus/datosabiertos/catalog.n3"/>
+        <link rel="alternate" type="text/turtle" href="https://www.donostia.eus/datosabiertos/catalog.ttl"/>
+        <link rel="alternate" type="application/rdf+xml" href=
+```
+
+### Málaga foto-rojo
+`https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.geojson` · ERROR HTTP Error 503: Service Unavailable
+
+### Santa Cruz foto-rojo
+`https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson` · ERROR <urlopen error timed out>
+
+### Madrid cámaras ZBE
+`https://datos.madrid.es/dataset/300654-0-circulacion-camaras-trafico/resource/300654-1-circulacion-camaras-trafico-csv/download/300654-1-circulacion-camaras-trafico-csv.csv` · ERROR HTTP Error 403: Forbidden
+
+### Madrid ZBEDEP Centro
+`https://datos.madrid.es/dataset/300229-0-trafico-madrid-central/resource/300229-2-trafico-madrid-central-csv/download/300229-2-trafico-madrid-central-csv.csv` · 21351 bytes
+
+```
+﻿gis_x;gis_y;fecha_alta;distrito;barrio;calle;num_finca;tipo_elemento;codigo;num_puerta;id_camara;longitud;latitud;direccion
+439654,6834420440;4473220,4094054000;2018-11-30;01  CENTRO;01-02 EMBAJADORES;CAPITAN SALAZAR MARTINEZ, CALLE, DEL;1;Cámaras;Camara Entrada;1;1.1 e;-3.7111951;40.4074126;CAPITAN SALAZAR MARTINEZ, CALLE, DEL, 1
+439655,6556642660;4473220,2427387400;2018-11-30;01  CENTRO;01-02 EMBAJADORES;TOLEDO, CALLE, DE;125;Cámaras;Camara Entrada;1;1.2 e;-3.7111835;40.4074112;TOLEDO, CALLE, DE, 125
+439795,4257352600;4473105,8387040900;2018-11-30;01  CENTRO;01-02 EMBAJADORES;CAMPILLO DEL MUNDO NUEVO, PLAZA, DEL;S/N;Cámaras;Camara Entrada;2;2 e;-3.7095255;40.4063907;CAMPILLO DEL MUNDO NUEVO, PLAZA, DEL, S/N
+439924,3457812710;4473071,2311696900;2018-11-30;01  CENTRO;01-02 EMBAJADORES;CAMPILLO DEL MUNDO NUEVO, PLAZA, DEL;5;Cámaras;Camara Entrada;3;3 e;-3.708003;40.4060882;CAMPILLO D
+```
+
+### Pamplona cinemómetros WFS
+`https://sig.pamplona.es/ogc/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=SEGU_Pto_Cinemometro&outputFormat=application/json&srsName=EPSG:4326` · ERROR <urlopen error timed out>
+
+### Pamplona cinemómetros WFS2
+`https://sig.pamplona.es/ogc/wfs?service=WFS&version=2.0.0&request=GetFeature&typeNames=SEGU_Pto_Cinemometro&outputFormat=geojson&srsName=EPSG:4326` · ERROR <urlopen error timed out>
+
+### Mossos controles velocidad
+`https://analisi.transparenciacatalunya.cat/api/v3/views/guxp-fqcu/query.json?accessType=DOWNLOAD` · 448875 bytes
+
+```
+[
+{":id":"row-v2j8.pdh7_xrvx",":version":"rv-dsi3~96k4-4sx5",":created_at":"2025-01-21T14:33:34.221Z",":updated_at":"2025-01-21T14:33:34.221Z","mes":"1","nom_mes":"Gener","any":"2011","regi_policial_rp":"RP Camp de Tarragona","rea_regional_de_tr_nsit_art":"ART Camp de Tarragona","nombre":"53930"},
+{":id":"row-7w93-8szc_8vdh",":version":"rv-7j74.3pm5_935q",":created_at":"2025-01-21T14:33:34.221Z",":updated_at":"2025-01-21T14:33:34.221Z","mes":"1","nom_mes":"Gener","any":"2011","regi_policial_rp":"RP Central","rea_regional_de_tr_nsit_art":"ART Central","nombre":"84402"},
+{":id":"row-q9ru.pxzf-efgw",":version":"rv-vksa.wnxk_e4np",":created_at":"2025-01-21T14:33:34.221Z",":updated_at":"2025-01-21T14:33:34.221Z","mes":"1","nom_mes":"Gener","any":"2011","regi_policial_rp":"RP Girona","rea_regional_de_tr_nsit_art":"ART Girona","nombre":"18471"},
+{":id":"row-qmmx_zgvf.s9ct",":version":"rv-9ur7~q
+```
+
+### Mossos controles velocidad CSV
+`https://analisi.transparenciacatalunya.cat/api/v3/views/guxp-fqcu/export.csv?accessType=DOWNLOAD` · 105945 bytes
+
+```
+"Mes","Nom mes","Any","Regió Policial (RP)","Àrea Regional de Trànsit (ART)/Àrea Bàsica Policial (ABP)","Nombre"
+"1","Gener","2011","RP Camp de Tarragona","ART Camp de Tarragona","53.930"
+"1","Gener","2011","RP Central","ART Central","84.402"
+"1","Gener","2011","RP Girona","ART Girona","18.471"
+"1","Gener","2011","RP Metropolitana Barcelona","ART Metropolitana Nord","2.565"
+"1","Gener","2011","RP Metropolitana Nord","ART Metropolitana Nord","120.821"
+"1","Gener","2011","RP Metropolitana Sud","ART Metropolitana Sud","54.205"
+"1","Gener","2011","RP Pirineu Occidental","ART Pirineu Occidental","7.686"
+"1","Gener","2011","RP Ponent","ART Ponent","39.868"
+"1","Gener","2011","RP Terres de l'Ebre","ART Terres de l'Ebre","26.625"
+"2","Febrer","2011","RP Camp de Tarragona","ART Camp de Tarragona","51.091"
+"2","Febrer","2011","RP Central","ART Central","75.053"
+"2","Febrer","2011","RP Girona","ART
+```
+
+### Alcobendas denuncias radar
+`https://datos.alcobendas.org/dataset/8dfbb415-3022-448f-8f8a-0d973eba6a8b/resource/884e219e-b7e7-4d6a-9587-216102b61b76/download/denuncias-de-radar.csv` · ERROR HTTP Error 403: Forbidden
