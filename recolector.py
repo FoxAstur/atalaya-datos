@@ -1365,6 +1365,8 @@ FUENTES_FEED = {
     "euskadi": "AUTONOMICA", "navarra": "AUTONOMICA", "murcia": "POLICIA_LOCAL", "leon": "POLICIA_LOCAL",
     "madrid_multas": "MULTAS", "barcelona_multas": "MULTAS", "sct_remolc": "SCT", "dgt_invive": "DGT_TRAMOS_MOVIL",
     "donostia_movil": "POLICIA_LOCAL",
+    # notas abiertas de OpenStreetMap en las que alguien avisa de un radar que aún no está en el mapa
+    "osm_notes": "OSM",
 }
 
 
@@ -1416,6 +1418,8 @@ def fuente_feed_comunitario() -> list[dict]:
             tipo, nombre = "ZONA_MOVIL", "Punto de radar en remolque (se mueve entre estos puntos)"
         elif kind == "mobile_announced":
             tipo, nombre = "ZONA_MOVIL", (p.get("name") or "Radar móvil anunciado").replace("Radar anunciado", "Radar móvil anunciado")
+        elif kind == "reported":
+            tipo, nombre = "ZONA_MOVIL", "Posible radar: aviso de un usuario en OpenStreetMap, sin confirmar"
         elif kind == "mobile_recurring":
             tipo, nombre = "ZONA_MOVIL", (p.get("name") or "").replace("Radar móvil frecuente", "Punto habitual de radar móvil") or "Punto habitual de radar móvil"
         else:
