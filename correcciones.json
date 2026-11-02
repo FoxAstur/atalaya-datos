@@ -72,6 +72,10 @@
       "la": 39.502114,
       "lo": -0.409354,
       "motivo": "Foto-stop de la rotonda del IMED (Burjassot): el poste está 25 m antes; el aviso va en el stop vigilado (OSM n13339160382, «Stop videovigilado»). Carlos, 02-11-2026"
+    },
+    "mad:40.40745,-3.74545": {
+      "rb": 248,
+      "motivo": "Ayuntamiento de Madrid: «A-5 PK 4,000, SALIDA» (saliendo de Madrid, hacia el oeste). En la ortofoto PNOA es un pórtico sobre la calzada."
     }
   },
   "tipo": {
