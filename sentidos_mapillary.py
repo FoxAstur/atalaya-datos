@@ -21,7 +21,10 @@ import urllib.request
 from PIL import Image, ImageDraw
 
 API = "https://graph.mapillary.com/images"
-CAMPOS = "id,captured_at,compass_angle,computed_compass_angle,computed_geometry,geometry,thumb_2048_url"
+CAMPOS = ("id,captured_at,compass_angle,computed_compass_angle,computed_geometry,geometry,thumb_2048_url,"
+          "thumb_original_url,camera_type,camera_parameters,width,height")
+RECORTE = os.environ.get("RECORTE") == "1"   # recorta a resolución original alrededor de donde cae el punto
+SOLO = set(filter(None, os.environ.get("SOLO", "").split()))   # ids concretos (vacío = todos)
 
 
 def pedir(url: str, binario: bool = False):
@@ -59,7 +62,7 @@ def main() -> int:
     desde = int(sys.argv[1]) if len(sys.argv) > 1 else 2019
     datos = json.load(open("datos/radares.json"))
     puntos = datos["puntos"] if isinstance(datos, dict) else datos
-    dudosos = [p for p in puntos if p.get("s2")]
+    dudosos = [p for p in puntos if p.get("s2") and (not SOLO or p["id"] in SOLO)]
     print(f"{len(dudosos)} dudosos", flush=True)
     os.makedirs("hojas", exist_ok=True)
     indice = []
@@ -84,7 +87,10 @@ def main() -> int:
             d = dist(g[1], g[0], la, lo)
             if not 12 <= d <= 90 or dif(h, rumbo(g[1], g[0], la, lo)) > 22:
                 continue
+            if RECORTE and (f.get("camera_type") not in (None, "perspective") or not f.get("thumb_original_url")):
+                continue
             cand.append({"f": f, "la": g[1], "lo": g[0], "h": h, "d": d, "ano": ano,
+                         "rel": ((rumbo(g[1], g[0], la, lo) - h + 540) % 360) - 180,
                          "fecha": time.strftime("%Y-%m-%d", time.gmtime(f["captured_at"] / 1000))})
         # dos sentidos: el de rb (o el de la primera foto) y el contrario
         base = p.get("rb")
@@ -98,7 +104,7 @@ def main() -> int:
                 grupos["B"].append(c)
         filas, meta = [], {}
         for k in ("A", "B"):
-            g = sorted(grupos[k], key=lambda c: (-c["ano"], abs(c["d"] - 40)))
+            g = sorted(grupos[k], key=lambda c: (-c["ano"], abs(c["d"] - (28 if RECORTE else 40))))
             elegidas, usadas = [], set()
             for c in g:   # una por distancia aproximada, para no repetir la misma foto
                 clave = round(c["d"] / 20)
@@ -106,17 +112,31 @@ def main() -> int:
                     continue
                 usadas.add(clave)
                 elegidas.append(c)
-                if len(elegidas) == 2:
+                if len(elegidas) == (3 if RECORTE else 2):
                     break
             imgs = []
             for c in elegidas:
-                b = pedir(c["f"]["thumb_2048_url"], binario=True)
+                b = pedir(c["f"]["thumb_original_url" if RECORTE else "thumb_2048_url"], binario=True)
                 if not b:
                     continue
                 im = Image.open(io.BytesIO(b)).convert("RGB")
                 w, h = im.size
-                im = im.crop((0, int(h * 0.1), w, int(h * 0.68)))
-                im = im.resize((900, int(900 * im.height / im.width)))
+                if RECORTE:
+                    # dónde cae el punto en la foto: x = centro + focal · tan(ángulo relativo)
+                    cp = c["f"].get("camera_parameters") or [0.8]
+                    foc = (cp[0] if cp and cp[0] else 0.8) * max(w, h)
+                    x = w / 2 + foc * math.tan(math.radians(max(-60, min(60, c["rel"]))))
+                    ancho = w * 0.42
+                    x0 = int(max(0, min(w - ancho, x - ancho / 2)))
+                    im = im.crop((x0, int(h * 0.12), int(x0 + ancho), int(h * 0.62)))
+                    dr0 = ImageDraw.Draw(im)
+                    xr = x - x0
+                    if 0 <= xr <= im.width:   # marca donde debería estar
+                        dr0.line([(xr, im.height - 40), (xr, im.height)], fill=(255, 0, 255), width=6)
+                    im = im.resize((600, int(600 * im.height / im.width)))
+                else:
+                    im = im.crop((0, int(h * 0.1), w, int(h * 0.68)))
+                    im = im.resize((900, int(900 * im.height / im.width)))
                 dr = ImageDraw.Draw(im)
                 txt = f"{k} rumbo {c['h']:.0f}  a {c['d']:.0f} m  {c['fecha']}  id {c['f']['id']}"
                 dr.rectangle([0, 0, 9 * len(txt) + 10, 22], fill=(0, 0, 0))
@@ -130,12 +150,13 @@ def main() -> int:
                "nombre": p.get("n"), "fotos": meta, "total_cerca": len(cand)}
         if filas:
             alto = max(i.height for f in filas for i in f)
-            hoja = Image.new("RGB", (1800, alto * len(filas) + 30), "white")
+            anch = 600 if RECORTE else 900
+            hoja = Image.new("RGB", (anch * max(len(f) for f in filas), alto * len(filas) + 30), "white")
             dr = ImageDraw.Draw(hoja)
             dr.text((5, 8), f"{p['id']}  rb={p.get('rb')}  {(p.get('n') or p.get('c') or '')[:150]}", fill=(0, 0, 0))
             for i, fila in enumerate(filas):
                 for j, im in enumerate(fila):
-                    hoja.paste(im, (j * 900, 30 + i * alto))
+                    hoja.paste(im, (j * anch, 30 + i * alto))
             nombre = f"{n:03d}_{p['id'].replace(':', '_').replace(',', '_')}.jpg"
             hoja.save(os.path.join("hojas", nombre), quality=82)
             reg["hoja"] = nombre

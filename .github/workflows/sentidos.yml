@@ -6,6 +6,8 @@ on:
   workflow_dispatch:
     inputs:
       desde: { description: "Año mínimo de las fotos", required: false, default: "2019" }
+      recorte: { description: "1 = recortes a resolución original donde cae el punto", required: false, default: "1" }
+      solo: { description: "Ids separados por espacios (vacío = todos los dudosos)", required: false, default: "" }
 
 permissions:
   contents: write
@@ -27,6 +29,8 @@ jobs:
       - name: Hojas
         env:
           MAPILLARY_TOKEN: ${{ secrets.MAPILLARY_TOKEN }}
+          RECORTE: ${{ inputs.recorte }}
+          SOLO: ${{ inputs.solo }}
         run: python sentidos_mapillary.py "${{ inputs.desde }}"
       - name: Subir a la rama sentidos
         run: |
