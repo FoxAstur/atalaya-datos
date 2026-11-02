@@ -1873,7 +1873,11 @@ def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
                 p["n"] = tipos[p["id"]]["n"]
         if p["id"] in sentidos:
             c_ = sentidos[p["id"]]
-            p["rb"] = float(c_["rb"])
+            if c_.get("s") == "Ambos":   # vigila los dos sentidos: se avisa en ambos sin «puede ser del otro»
+                p["s"] = "Ambos"
+                p.pop("rb", None)
+            else:
+                p["rb"] = float(c_["rb"])
             if "la" in c_ and "lo" in c_:   # posición real, en su calzada
                 p["la"], p["lo"] = float(c_["la"]), float(c_["lo"])
             if c_.get("n"):

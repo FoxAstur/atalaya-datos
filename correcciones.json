@@ -87,6 +87,18 @@
       "lo": -0.390201,
       "n": "Cabina del Ayuntamiento · Avinguda dels Germans Machado (a la altura de Sant Josep Artesà), entrada a València",
       "motivo": "Germans Machado: la cabina a la altura de Sant Josep Artesà vigila el carril hacia València, no el de salida hacia Burjassot; posición pasada a esa calzada (Carlos, 02-11-2026)"
+    },
+    "sct:41.13045,1.21502": {
+      "s": "Ambos",
+      "motivo": "A-7 en Tarragona: pórtico del radar de tramo, que en OpenStreetMap tiene un tramo en cada sentido (osm:r16153526 y osm:r16153527) que empieza o acaba aquí; vigila los dos sentidos (Carlos, 02-11-2026)"
+    },
+    "sct:41.12336,1.26027": {
+      "s": "Ambos",
+      "motivo": "A-7 en Tarragona: pórtico del radar de tramo, que en OpenStreetMap tiene un tramo en cada sentido (osm:r16153526 y osm:r16153527) que empieza o acaba aquí; vigila los dos sentidos (Carlos, 02-11-2026)"
+    },
+    "dgt:GUID_CABINACINEMOMETRO_120601": {
+      "rb": 340,
+      "motivo": "CV-91 PK 18,9 (Rojales): la DGT lo da como «Decreciente», hacia Orihuela; el mismo radar en OpenStreetMap (osm:n992004847, a 280 m) mira hacia el oeste (289°). Coincide con lo que dice Carlos (02-11-2026)"
     }
   },
   "tipo": {
