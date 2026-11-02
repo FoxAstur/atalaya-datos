@@ -1,0 +1,1 @@
+https://opensky-network.org/api/states/all?lamin=38.5&lomin=-1.5&lamax=40.5&lomax=0.5 -> 200 2791 application/json
