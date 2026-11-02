@@ -1,0 +1,9 @@
+{"ac":[
+{"hex":"34329a","type":"mode_s","flight":"ABEJA10 ","r":"EC-LBD","t":"EC35","alt_baro":3350,"gs":92.0,"tas":92,"track":156.27,"roll":0.70,"squawk":"7260","rr_lat":40.3,"rr_lon":-3.5,"alert":0,"spi":0,"mlat":[],"tisb":[],"messages":2442,"seen":0.3,"rssi":-3.5}
+]
+,"msg": "No error"
+,"now": 1793633601501
+,"total": 1
+,"ctime": 1793633601501
+,"ptime": 0
+}

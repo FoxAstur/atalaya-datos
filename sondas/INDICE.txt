@@ -1,0 +1,6 @@
+https://api.adsb.lol/v2/type/EC35 -> 200 8194 application/json
+https://api.adsb.lol/v2/type/AS50 -> 200 11467 application/json
+https://api.adsb.lol/v2/reg/EC-LBD -> 200 361 application/json
+https://api.adsb.lol/v2/hex/34329a -> 200 361 application/json
+https://api.adsb.lol/v2/callsign/PEGASO -> 200 101 application/json
+https://api.airplanes.live/v2/type/EC35 -> 403 164 application/json
