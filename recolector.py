@@ -1847,13 +1847,71 @@ def a_la_linea_de_detencion(puntos: list[dict], ruta: str = SENALES_OPL) -> str:
     return f"{movidos} cámaras de stop o semáforo llevadas a su línea de detención ({n_sen} stops y semáforos de OSM)"
 
 
+def aplicar_verificados(puntos: list[dict]) -> str:
+    """
+    verificados.json: puntos comprobados sobre el terreno, que ninguna actualización puede perder ni estropear.
+    Se buscan por su id y, si ese id ya no está o ahora es otro punto (algunas fuentes cambian los ids), por tipo
+    y cercanía. Si falta, se repone; si se ha movido o ha cambiado de sentido, de tipo o de límite, se deja como
+    está comprobado. Se marcan con "_verif" para comprobar después que tienen caminos de aproximación.
+    """
+    try:
+        lista = cargar_json("verificados.json", {}).get("puntos", [])
+    except Exception as e:  # noqa: BLE001
+        return f"⚠️ verificados.json ilegible: {e}"
+    por_id = {p["id"]: p for p in puntos}
+    arreglos = []
+    for r in lista:
+        la, lo, t = float(r["la"]), float(r["lo"]), r["t"]
+        p = por_id.get(r["id"])
+        if p is not None and (p["t"] != t or distancia(p["la"], p["lo"], la, lo) > 150):
+            p = None   # ese id ahora es otra cosa
+        if p is None:
+            cerca = [(distancia(q["la"], q["lo"], la, lo), q) for q in puntos if q["t"] == t]
+            cerca = [x for x in cerca if x[0] < 80]
+            p = min(cerca, key=lambda x: x[0])[1] if cerca else None
+        if p is None:
+            extra = {k: r[k] for k in ("c", "v", "n", "rb", "mu", "pr", "ca", "tu", "s", "la2", "lo2") if k in r}
+            p = punto(r["id"], t, r.get("f", "AYUNTAMIENTO"), la, lo, src="Comprobado sobre el terreno", **extra)
+            puntos.append(p)
+            arreglos.append(f"{r['id']} repuesto")
+            p["_verif"] = r["id"]
+            continue
+        cambios = []
+        if distancia(p["la"], p["lo"], la, lo) > float(r.get("tol", 25)):
+            p["la"], p["lo"] = la, lo
+            cambios.append("posición")
+        if r.get("s") == "Ambos":
+            if p.get("s") != "Ambos" or "rb" in p:
+                p["s"] = "Ambos"
+                p.pop("rb", None)
+                cambios.append("los dos sentidos")
+        elif "rb" in r:
+            d = abs((float(p["rb"]) - float(r["rb"]) + 180) % 360 - 180) if p.get("rb") is not None else 999
+            if d > 20:
+                p["rb"] = float(r["rb"])
+                cambios.append("sentido")
+        for k in ("v", "n", "la2", "lo2", "tu"):
+            if k in r and p.get(k) != r[k]:
+                p[k] = r[k]
+                cambios.append(k)
+        if cambios:
+            arreglos.append(f"{r['id']} ({', '.join(cambios)})")
+        p["_verif"] = r["id"]
+    msg = f"{len(lista)} comprobados sobre el terreno" + (f"; arreglados: {'; '.join(arreglos)}" if arreglos else ", todos en su sitio")
+    log(f"verificados: {msg}")
+    return msg if not arreglos else "⚠️ " + msg
+
+
 def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
     """correcciones.json: lo que se ha comprobado sobre el terreno (radares que no existen, sentidos)."""
     try:
         c = cargar_json("correcciones.json", {})
     except Exception:  # noqa: BLE001
         return puntos
-    quitar = {q["id"] for q in c.get("quitar", [])}
+    # Con posición (la/lo), se quita lo que haya de ese tipo a menos de 25 m, venga con el id que venga: los ids
+    # de algunas fuentes cambian (vlc:0 fue una vez un radar de Badajoz) y por el id solo se podría quitar otro
+    quitar = {q["id"] for q in c.get("quitar", []) if "la" not in q}
+    quitar_pos = [(float(q["la"]), float(q["lo"]), q.get("t")) for q in c.get("quitar", []) if "la" in q and "lo" in q]
     sentidos = c.get("sentido", {})
     tipos = c.get("tipo", {})
     # cámaras que solo salen en la prensa o en avisos del ayuntamiento (foto-stop de un pueblo, etc.):
@@ -1883,7 +1941,13 @@ def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
             if c_.get("n"):
                 p["n"] = c_["n"]
     n = len(puntos)
-    puntos = [p for p in puntos if p["id"] not in quitar]
+
+    def sobra(p: dict) -> bool:
+        if p["id"] in quitar:
+            return True
+        return p["t"] != "ZONA_MOVIL" and any((t is None or t == p["t"]) and distancia(p["la"], p["lo"], la, lo) < 25
+                                              for la, lo, t in quitar_pos)
+    puntos = [p for p in puntos if not sobra(p)]
     log(f"correcciones: {n - len(puntos)} quitados, {sum(1 for p in puntos if p['id'] in sentidos)} sentidos fijados, "
         f"{anadidos} añadidos, {sum(1 for p in puntos if p['id'] in tipos)} con el tipo corregido")
     return puntos
@@ -2134,6 +2198,7 @@ def main() -> int:
     estado["Cámaras de stop y semáforo"] = msg
     log(msg)
     todos = aplicar_correcciones(todos)
+    estado["Puntos comprobados"] = aplicar_verificados(todos)
     # radares móviles anunciados ya caducados fuera
     hoy = datetime.now(timezone.utc).date().isoformat()
     todos = [p for p in todos if not p.get("vh") or p["vh"] >= hoy]
@@ -2293,8 +2358,14 @@ def main() -> int:
         n = reutilizar_caminos(todos, anterior)
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
+    # Los puntos comprobados tienen que poder avisarse: con su camino de aproximación (salvo tramos, que llevan
+    # su recorrido)
+    sin_camino = [p["_verif"] for p in todos if p.get("_verif") and p["t"] != "RADAR_TRAMO" and not p.get("ap")]
+    if sin_camino:
+        estado["Puntos comprobados"] = f"⚠️ sin camino de aproximación (no avisarían): {', '.join(sin_camino)}"
+        log(f"verificados SIN CAMINO: {sin_camino}")
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")

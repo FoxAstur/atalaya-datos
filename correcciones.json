@@ -1,17 +1,26 @@
 {
-  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar y, si hace falta, su posición real (la, lo). Los sentidos marcados como 'ortofotos' salen de ver la cabina en las fotos aéreas PNOA (© Instituto Geográfico Nacional) e ICGC (© Institut Cartogràfic i Geològic de Catalunya), CC-BY 4.0: probado a ciegas con 9 radares de sentido conocido, 9 aciertos. 'tipo': el tipo bien puesto cuando una fuente se equivoca. 'anadir': cámaras que solo publica la prensa o el ayuntamiento, situadas a mano (se ignoran si ya hay una del mismo tipo a menos de 60 m).",
+  "nota": "Comprobaciones sobre el terreno. 'quitar': radares que no existen. 'sentido': rumbo (grados) que vigila un radar y, si hace falta, su posición real (la, lo). Los sentidos marcados como 'ortofotos' salen de ver la cabina en las fotos aéreas PNOA (© Instituto Geográfico Nacional) e ICGC (© Institut Cartogràfic i Geològic de Catalunya), CC-BY 4.0: probado a ciegas con 9 radares de sentido conocido, 9 aciertos. 'tipo': el tipo bien puesto cuando una fuente se equivoca. 'anadir': cámaras que solo publica la prensa o el ayuntamiento, situadas a mano (se ignoran si ya hay una del mismo tipo a menos de 60 m). En 'quitar', con la/lo se quita lo que haya de ese tipo a menos de 25 m (los ids de algunas fuentes cambian).",
   "quitar": [
     {
       "id": "osm:n992004970",
-      "motivo": "Av. Pío XII (València), 400 m después del de Corts Valencianes: no existe (Carlos, 27-10-2026)"
+      "motivo": "Av. Pío XII (València), 400 m después del de Corts Valencianes: no existe (Carlos, 27-10-2026)",
+      "la": 39.48186,
+      "lo": -0.393385,
+      "t": "RADAR_FIJO"
     },
     {
       "id": "osm:n9495468406",
-      "motivo": "Túnel de Corts Valencianes, tubo de salida de València: la cabina está en el de entrada (osm:n6766167853 / vlc:7); este sobraba y avisaba en el carril que no es (Carlos, 28-10-2026)"
+      "motivo": "Túnel de Corts Valencianes, tubo de salida de València: la cabina está en el de entrada (osm:n6766167853 / vlc:7); este sobraba y avisaba en el carril que no es (Carlos, 28-10-2026)",
+      "la": 39.486392,
+      "lo": -0.396469,
+      "t": "RADAR_FIJO"
     },
     {
       "id": "vlc:0",
-      "motivo": "Germans Machado, «entrada a València» a la altura de Vicent Canet: no hay cabina ahí; la de ese sentido es la que el Ayuntamiento da como «salida hacia Burjassot» (vlc:6), que en realidad vigila el carril hacia València (Carlos, 02-11-2026)"
+      "motivo": "Germans Machado, «entrada a València» a la altura de Vicent Canet: no hay cabina ahí; la de ese sentido es la que el Ayuntamiento da como «salida hacia Burjassot» (vlc:6), que en realidad vigila el carril hacia València (Carlos, 02-11-2026)",
+      "la": 39.501666,
+      "lo": -0.390636,
+      "t": "RADAR_FIJO"
     }
   ],
   "sentido": {

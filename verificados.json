@@ -1,0 +1,89 @@
+{
+  "nota": "Puntos comprobados sobre el terreno (o en la red diaria de Carlos): ninguna actualización puede perderlos, moverlos ni cambiarles el sentido. Se buscan por id y, si ha cambiado, por tipo a menos de 80 m. 'tol': metros que se le permite moverse.",
+  "puntos": [
+    {
+      "id": "osm:n13339261021",
+      "t": "STOP_CEDA",
+      "f": "OSM",
+      "la": 39.502114,
+      "lo": -0.409354,
+      "rb": 50,
+      "n": "Foto-Stop de la rotonda del Hospital IMED (Burjassot)",
+      "tol": 15,
+      "motivo": "Stop vigilado a la entrada de la rotonda del viaducto (Carlos, 02/03-11-2026)"
+    },
+    {
+      "id": "vlc:6",
+      "t": "RADAR_FIJO",
+      "f": "AYUNTAMIENTO",
+      "la": 39.501241,
+      "lo": -0.390201,
+      "rb": 140,
+      "v": 50,
+      "n": "Cabina del Ayuntamiento · Avinguda dels Germans Machado (a la altura de Sant Josep Artesà), entrada a València",
+      "c": "Avinguda dels Germans Machado",
+      "mu": "València",
+      "pr": "Valencia",
+      "ca": "Comunitat Valenciana",
+      "motivo": "Única cabina de Germans Machado, carril hacia València (Carlos, 02-11-2026)"
+    },
+    {
+      "id": "man:vinalesa-stop",
+      "t": "STOP_CEDA",
+      "la": 39.53868,
+      "lo": -0.36975,
+      "rb": 18,
+      "n": "Foto-Stop de Vinalesa · Carrer Major, frente al Ayuntamiento",
+      "c": "Carrer Major",
+      "mu": "Vinalesa",
+      "pr": "Valencia",
+      "ca": "Comunitat Valenciana",
+      "motivo": "Prensa local 2026"
+    },
+    {
+      "id": "vlc:7",
+      "t": "RADAR_FIJO",
+      "f": "AYUNTAMIENTO",
+      "la": 39.485197,
+      "lo": -0.395783,
+      "rb": 151,
+      "v": 50,
+      "tu": 1,
+      "motivo": "Túnel de Corts Valencianes, tubo de entrada a València (Carlos, 28-10-2026)"
+    },
+    {
+      "id": "dgt:GUID_CABINACINEMOMETRO_120575",
+      "t": "RADAR_FIJO",
+      "f": "DGT",
+      "la": 39.557583,
+      "lo": -0.492294,
+      "rb": 125.6,
+      "v": 120,
+      "tol": 40,
+      "motivo": "CV-35 junto a casa de Carlos (DGT)"
+    },
+    {
+      "id": "dgt:GUID_CABINACINEMOMETRO_120574",
+      "t": "RADAR_FIJO",
+      "f": "DGT",
+      "la": 39.530003,
+      "lo": -0.443857,
+      "rb": 325.8,
+      "v": 100,
+      "tol": 40,
+      "motivo": "CV-35 Paterna (DGT), trayecto diario de Carlos"
+    },
+    {
+      "id": "osm:r9933664",
+      "t": "RADAR_TRAMO",
+      "f": "OSM",
+      "la": 39.514771,
+      "lo": -0.431408,
+      "la2": 39.504429,
+      "lo2": -0.414643,
+      "v": 80,
+      "tol": 60,
+      "motivo": "Tramo de 80 de la CV-35 en Burjassot (Cv35Test)"
+    }
+  ]
+}
