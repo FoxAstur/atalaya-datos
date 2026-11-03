@@ -1,0 +1,198 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-03T13:33:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1478779585,
+  "lat": 39.5028901,
+  "lon": -0.4101441,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 1575963126,
+  "lat": 39.5010842,
+  "lon": -0.4092344,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 7837920297,
+  "lat": 39.5034100,
+  "lon": -0.4096341,
+  "tags": {
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 9428362452,
+  "lat": 39.5020616,
+  "lon": -0.4091678,
+  "tags": {
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 11573483568,
+  "lat": 39.5018725,
+  "lon": -0.4098546,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 11573490076,
+  "lat": 39.5018808,
+  "lon": -0.4100348,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071229,
+  "lat": 39.5019577,
+  "lon": -0.4101462,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071235,
+  "lat": 39.5008780,
+  "lon": -0.4099721,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071238,
+  "lat": 39.5011861,
+  "lon": -0.4102779,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071241,
+  "lat": 39.5013020,
+  "lon": -0.4097319,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071242,
+  "lat": 39.5014819,
+  "lon": -0.4099502,
+  "tags": {
+    "direction": "backward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071243,
+  "lat": 39.5011483,
+  "lon": -0.4094587,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 12709071244,
+  "lat": 39.5008007,
+  "lon": -0.4097591,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop"
+  }
+},
+{
+  "type": "node",
+  "id": 13339160382,
+  "lat": 39.5021143,
+  "lon": -0.4093537,
+  "tags": {
+    "direction": "forward",
+    "highway": "stop",
+    "note": "Stop videovigilado.",
+    "traffic_sign": "ES:R2"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261021,
+  "lat": 39.5019713,
+  "lon": -0.4095764,
+  "tags": {
+    "description": "Control de stop",
+    "direction": "50",
+    "highway": "speed_camera"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261022,
+  "lat": 39.5022977,
+  "lon": -0.4090948,
+  "tags": {
+    "highway": "give_way",
+    "traffic_sign": "ES:R1"
+  }
+},
+{
+  "type": "node",
+  "id": 13339261053,
+  "lat": 39.5028944,
+  "lon": -0.4101177,
+  "tags": {
+    "direction": "backward",
+    "highway": "give_way"
+  }
+},
+{
+  "type": "node",
+  "id": 13810001391,
+  "lat": 39.5010406,
+  "lon": -0.4090220,
+  "tags": {
+    "direction": "forward",
+    "highway": "give_way"
+  }
+}
+
+  ]
+}
