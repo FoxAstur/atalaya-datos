@@ -1234,14 +1234,14 @@ def fuente_malaga() -> list[dict]:
 
 
 def fuente_santacruz() -> list[dict]:
-    d = http_json(URL_SANTACRUZ_FOTORROJO, timeout=45, intentos=1)  # casi nunca responde a GitHub: lo baja la app (fuentes_movil.json)
+    d = http_json(URL_SANTACRUZ_FOTORROJO, timeout=15, intentos=1)  # casi nunca responde a GitHub: lo baja la app (fuentes_movil.json)
     return puntos_geojson(d, "SEMAFORO", "sctffr", nombre_fn=lambda p: "Foto-rojo " + str(
         p.get("nombre") or p.get("NOMBRE") or p.get("ubicacion") or "").strip(),
         mu="Santa Cruz de Tenerife", pr="Santa Cruz de Tenerife", ca="Canarias")
 
 
 def fuente_pamplona() -> list[dict]:
-    d = http_json(URL_PAMPLONA_CINEMO, timeout=45, intentos=1)  # ídem
+    d = http_json(URL_PAMPLONA_CINEMO, timeout=15, intentos=1)  # ídem
     return puntos_geojson(d, "RADAR_FIJO", "pnacin", nombre_fn=lambda p: "Cinemómetro municipal",
                           mu="Pamplona", pr="Navarra", ca="Comunidad Foral de Navarra")
 
@@ -1847,7 +1847,7 @@ def a_la_linea_de_detencion(puntos: list[dict], ruta: str = SENALES_OPL) -> str:
     return f"{movidos} cámaras de stop o semáforo llevadas a su línea de detención ({n_sen} stops y semáforos de OSM)"
 
 
-def aplicar_verificados(puntos: list[dict]) -> str:
+def aplicar_verificados(puntos: list[dict], cambiados: list | None = None) -> str:
     """
     verificados.json: puntos comprobados sobre el terreno, que ninguna actualización puede perder ni estropear.
     Se buscan por su id y, si ese id ya no está o ahora es otro punto (algunas fuentes cambian los ids), por tipo
@@ -1886,8 +1886,9 @@ def aplicar_verificados(puntos: list[dict]) -> str:
                 p.pop("rb", None)
                 cambios.append("los dos sentidos")
         elif "rb" in r:
-            d = abs((float(p["rb"]) - float(r["rb"]) + 180) % 360 - 180) if p.get("rb") is not None else 999
-            if d > 20:
+            if p.get("rb") is None:
+                p["rb"] = float(r["rb"])   # la fuente no lo daba todavía: no es un arreglo
+            elif abs((float(p["rb"]) - float(r["rb"]) + 180) % 360 - 180) > 20:
                 p["rb"] = float(r["rb"])
                 cambios.append("sentido")
         for k in ("v", "n", "la2", "lo2", "tu"):
@@ -1896,6 +1897,8 @@ def aplicar_verificados(puntos: list[dict]) -> str:
                 cambios.append(k)
         if cambios:
             arreglos.append(f"{r['id']} ({', '.join(cambios)})")
+            if cambiados is not None:
+                cambiados.append(p)
         p["_verif"] = r["id"]
     msg = f"{len(lista)} comprobados sobre el terreno" + (f"; arreglados: {'; '.join(arreglos)}" if arreglos else ", todos en su sitio")
     log(f"verificados: {msg}")
@@ -2021,7 +2024,7 @@ def main() -> int:
     estado: dict[str, str] = {}
     geo = Geocodificador()
 
-    def ejecutar(nombre, fn):
+    def ejecutar(nombre, fn, si_falla: str | None = None):
         t0 = time.time()
         try:
             r = fn()
@@ -2039,6 +2042,11 @@ def main() -> int:
             return r
         except Exception as e:  # noqa: BLE001
             prev = previos_por_fuente.get(nombre, [])
+            if si_falla and not prev:
+                # fuentes que desde GitHub no responden (bloquean IP de fuera de España) y ya baja la app
+                estado[nombre] = f"ℹ️ {si_falla}"
+                log(f"{nombre}: no responde ({e}); {si_falla}")
+                return prev
             estado[nombre] = f"⚠️ falló ({e}); se mantienen {len(prev)} de la vez anterior"
             log(f"{nombre}: ERROR {e}")
             return prev
@@ -2181,8 +2189,9 @@ def main() -> int:
     lisboa = ejecutar("Câmara Municipal de Lisboa", fuente_lisboa)
     viladecans = ejecutar("Ajuntament de Viladecans", fuente_viladecans)
     ansr = ejecutar("Portugal: ANSR (red SINCRO)", fuente_ansr)
-    santacruz = ejecutar("Ayto. Santa Cruz de Tenerife foto-rojo", fuente_santacruz)
-    pamplona = ejecutar("Ayto. Pamplona cinemómetros", fuente_pamplona)
+    desde_movil = "desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)"
+    santacruz = ejecutar("Ayto. Santa Cruz de Tenerife foto-rojo", fuente_santacruz, desde_movil)
+    pamplona = ejecutar("Ayto. Pamplona cinemómetros", fuente_pamplona, desde_movil)
     comunitario = ejecutar("Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados)", fuente_feed_comunitario)
     comunitario = solo_tramos_nuevos(comunitario, zonas)
     log(f"feed comunitario tras quitar tramos ya situados: {len(comunitario)}")
@@ -2358,6 +2367,19 @@ def main() -> int:
         n = reutilizar_caminos(todos, anterior)
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
+    # Segunda pasada de los comprobados, ya con todos los pasos que ponen o cambian sentidos (segunda opinión de
+    # la DGT, herencia de OSM, gemelos…): si alguno se los ha cambiado, se vuelven a poner y se recalcula su camino
+    try:
+        cambiados: list = []
+        msg_final = aplicar_verificados(todos, cambiados)
+        if cambiados:
+            for p in cambiados:
+                p.pop("ap", None)
+            if os.path.exists(ruta_red):
+                caminos.anadir_caminos(cambiados, ruta_red, zbe, aviso=log)
+            estado["Puntos comprobados"] = msg_final.replace("⚠️ ", "⚠️ al final: ")
+    except Exception as e:  # noqa: BLE001
+        log(f"verificados (final): ERROR {e}")
     # Los puntos comprobados tienen que poder avisarse: con su camino de aproximación (salvo tramos, que llevan
     # su recorrido)
     sin_camino = [p["_verif"] for p in todos if p.get("_verif") and p["t"] != "RADAR_TRAMO" and not p.get("ap")]
