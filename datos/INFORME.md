@@ -1,19 +1,19 @@
 # Datos de Atalaya
 
-Versión: 2026-11-03T17:17:19+00:00 · Total: **5193** puntos
+Versión: 2026-11-03T17:25:24+00:00 · Total: **5193** puntos
 
 ## Fuentes
 
 - **DGT feed**: ✅ 737 (1s)
-- **DGT PDF radares**: ✅ 175 (7s)
-- **DGT PDF cámaras**: ✅ 249 (2s)
+- **DGT PDF radares**: ✅ 175 (4s)
+- **DGT PDF cámaras**: ✅ 249 (0s)
 - **Cataluña (SCT)**: ✅ 230 (15s)
 - **Ayto. Madrid**: ✅ 23 (1s)
 - **Ayto. València**: ✅ 11 (0s)
-- **OpenStreetMap**: ✅ 3217 (82s)
-- **Tramos radar móvil**: ✅ 1152 (1s)
-- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (2s)
-- **Ayto. Málaga foto-rojo**: ✅ 7 (2s)
+- **OpenStreetMap**: ✅ 3217 (91s)
+- **Tramos radar móvil**: ✅ 1152 (0s)
+- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
+- **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
 - **Ayto. Salamanca**: ✅ 24 (2s)
 - **Ayto. Donostia**: ✅ 12 (1s)
 - **Câmara Municipal de Lisboa**: ✅ 18 (0s)
@@ -29,7 +29,7 @@ Versión: 2026-11-03T17:17:19+00:00 · Total: **5193** puntos
 - **Sentido de los radares de OSM**: 61 radares de OSM con direction; frente a los oficiales: 3 igual, 1 al revés → no se usa
 - **Zonas de bajas emisiones**: ✅ 57
 - **Zonas de radar móvil por carretera**: 1139 de 1301 que venían en línea recta siguen ya la carretera (162 sin poder trazar)
-- **Caminos de aproximación**: ✅ 3858 puntos con camino por su carretera, 295 de 355 tramos con recorrido real (82 sin vía cercana; 101s)
+- **Caminos de aproximación**: ✅ 3858 puntos con camino por su carretera, 295 de 355 tramos con recorrido real (82 sin vía cercana; 76s)
 - **Sentido por el lado de la calle**: 284 puntos de calles de doble sentido y 29 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 38/41 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 93/116; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 8/18; dgtpdf ciudad 12-25 m: 8/10; dgtpdf carretera 25-41 m: 8/19; dgtpdf ciudad 25-41 m: 2/5; dgtpdf carretera 4-7 m: 7/10; dgtpdf ciudad 4-7 m: 1/3; dgtpdf carretera 7-12 m: 6/14; dgtpdf ciudad 7-12 m: 1/2; dgtpdf carretera todas: 29/61; dgtpdf ciudad todas: 12/20; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm carretera 4-7 m: 96/122; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/32; osm carretera todas: 156/202; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1. Pistas combinadas: limite 23/31; cruce+lado 1/2; cruce 33/41; lado+limite 10/12
 - **Copias de OSM de radares oficiales**: 62 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 37/38 → heredado en 18
 - **Radares viejos de OSM repetidos**: 4 quitados (de OSM sin sentido, con otro radar más fiable en la misma calle y sentido a menos de 300 m; 450 m si no tiene datos; 600 m si además es de 2015 o antes): osm:n1123913886, osm:n5744469677, osm:n7171815050, osm:n14169137330
@@ -127,29 +127,29 @@ copias de OSM con sentido frente a oficiales: 559/582 → se usa en 319 puntos y
   ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
   ZBE: 45 ficheros
 ZBE: 57 zonas
-  caminos: red cargada (1101222 vías) en 71s
-  caminos: regla del lado probada en 72s
-  caminos: regla del cruce probada en 73s
-  caminos: 0/3953 en 73s (dgt:GUID_CVM_161274)
-  caminos: 500/3953 en 74s (dgt:GUID_CABINACINEMOMETRO_120570)
-  caminos: 1000/3953 en 76s (sct:41.54123,1.88726)
-  caminos: 1500/3953 en 82s (ansr:A7:38.2:E)
-  caminos: 2000/3953 en 85s (com:leon-2026-11-03-avenida-reyes-leoneses-3)
-  caminos: 2500/3953 en 90s (osm:n2334938922)
-  caminos: 3000/3953 en 94s (osm:n13096716365)
-  caminos: 3500/3953 en 98s (osm:r16150126)
-  zonas: red cargada (1153793 vías) para 1301 zonas en 81s
-zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 94}
-  caminos: red cargada (15556 vías) en 25s
-  caminos: regla del lado probada en 25s
-  caminos: regla del cruce probada en 25s
-  caminos: 0/18 en 25s (sct:41.53823,0.45946)
+  caminos: red cargada (1101222 vías) en 57s
+  caminos: regla del lado probada en 58s
+  caminos: regla del cruce probada en 58s
+  caminos: 0/3953 en 58s (dgt:GUID_CVM_161274)
+  caminos: 500/3953 en 59s (dgt:GUID_CABINACINEMOMETRO_120570)
+  caminos: 1000/3953 en 60s (sct:41.54123,1.88726)
+  caminos: 1500/3953 en 64s (ansr:A7:38.2:E)
+  caminos: 2000/3953 en 66s (com:leon-2026-11-03-avenida-reyes-leoneses-3)
+  caminos: 2500/3953 en 69s (osm:n2334938922)
+  caminos: 3000/3953 en 72s (osm:n13096716365)
+  caminos: 3500/3953 en 74s (osm:r16150126)
+  zonas: red cargada (1153793 vías) para 1301 zonas en 63s
+zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 72}
+  caminos: red cargada (15556 vías) en 15s
+  caminos: regla del lado probada en 15s
+  caminos: regla del cruce probada en 15s
+  caminos: 0/18 en 15s (sct:41.53823,0.45946)
 62 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 37/38 → heredado en 18
 radares de OSM mapeados dos veces: 0 quitados []
-  caminos: red cargada (1705 vías) en 24s
-  caminos: regla del lado probada en 24s
-  caminos: regla del cruce probada en 24s
-  caminos: 0/3 en 24s (dgt:GUID_CABINACINEMOMETRO_120285)
+  caminos: red cargada (1705 vías) en 15s
+  caminos: regla del lado probada en 15s
+  caminos: regla del cruce probada en 15s
+  caminos: 0/3 en 15s (dgt:GUID_CABINACINEMOMETRO_120285)
 gemelos de sentido contrario corregidos: 3 ['dgt:GUID_CABINACINEMOMETRO_120285', 'dgt:GUID_CABINACINEMOMETRO_120288', 'dgt:GUID_CABINACINEMOMETRO_120603']
-caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 38/41 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 93/116; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 8/18; dgtpdf ciudad 12-25 m: 8/10; dgtpdf carretera 25-41 m: 8/19; dgtpdf ciudad 25-41 m: 2/5; dgtpdf carretera 4-7 m: 7/10; dgtpdf ciudad 4-7 m: 1/3; dgtpdf carretera 7-12 m: 6/14; dgtpdf ciudad 7-12 m: 1/2; dgtpdf carretera todas: 29/61; dgtpdf ciudad todas: 12/20; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm carretera 4-7 m: 96/122; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/32; osm carretera todas: 156/202; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/31; cruce+lado 1/2; cruce 33/41; lado+limite 10/12', 'rumbo_por_cardinal': 46, 'con_camino': 3858, 'sin_via': 82, 'tramos_con_recorrido': 295, 'tramos': 355, 'caminos_alternativos': 12, 'mediana_dos': 29, 'con_paralela': 1215, 'en_enlace': 41, 'sospechosos': [], 'dos_sentidos': 284, 'limites_via': 150, 'limites_quitados': 4, 'en_tunel': 68, 'ramas': 3092, 'calzada_corregida': 17, 'caminos_cortos': 9, 'sin_calzada_de_su_sentido': 3, 'segundos': 101}
+caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 38/41 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 93/116; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 8/18; dgtpdf ciudad 12-25 m: 8/10; dgtpdf carretera 25-41 m: 8/19; dgtpdf ciudad 25-41 m: 2/5; dgtpdf carretera 4-7 m: 7/10; dgtpdf ciudad 4-7 m: 1/3; dgtpdf carretera 7-12 m: 6/14; dgtpdf ciudad 7-12 m: 1/2; dgtpdf carretera todas: 29/61; dgtpdf ciudad todas: 12/20; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm carretera 4-7 m: 96/122; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/32; osm carretera todas: 156/202; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/31; cruce+lado 1/2; cruce 33/41; lado+limite 10/12', 'rumbo_por_cardinal': 46, 'con_camino': 3858, 'sin_via': 82, 'tramos_con_recorrido': 295, 'tramos': 355, 'caminos_alternativos': 12, 'mediana_dos': 29, 'con_paralela': 1215, 'en_enlace': 41, 'sospechosos': [], 'dos_sentidos': 284, 'limites_via': 150, 'limites_quitados': 4, 'en_tunel': 68, 'ramas': 3092, 'calzada_corregida': 17, 'caminos_cortos': 9, 'sin_calzada_de_su_sentido': 3, 'segundos': 76}
 ```
