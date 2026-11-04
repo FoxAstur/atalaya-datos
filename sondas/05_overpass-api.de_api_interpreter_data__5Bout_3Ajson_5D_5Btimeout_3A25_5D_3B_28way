@@ -1,0 +1,2389 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-04T11:41:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 128249152,
+  "lat": 39.4819183,
+  "lon": -0.3926202,
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "zebra",
+    "crossing:signals": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 128249164,
+  "lat": 39.4819041,
+  "lon": -0.3927862,
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 128249166,
+  "lat": 39.4817886,
+  "lon": -0.3929413,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 128249349,
+  "lat": 39.4816825,
+  "lon": -0.3925996,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 243982400,
+  "lat": 39.4810520,
+  "lon": -0.3933538,
+  "tags": {
+    "bicycle": "yes",
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 243982402,
+  "lat": 39.4811988,
+  "lon": -0.3933605,
+  "tags": {
+    "bicycle": "yes",
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 243982409,
+  "lat": 39.4817391,
+  "lon": -0.3932940,
+  "tags": {
+    "bicycle": "yes",
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "highway": "crossing",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 243982412,
+  "lat": 39.4819064,
+  "lon": -0.3931995,
+  "tags": {
+    "bicycle": "yes",
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 246089211,
+  "lat": 39.4823567,
+  "lon": -0.3933940,
+  "tags": {
+    "bench": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Pius XII - Campanar",
+    "network": "EMT",
+    "network:wikidata": "Q11007711",
+    "operator": "Empresa Municipal de Transportes de Valencia",
+    "public_transport": "platform",
+    "ref": "372",
+    "shelter": "yes",
+    "source": "www.emtvalencia.es",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 246089282,
+  "lat": 39.4816895,
+  "lon": -0.3934140,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "Pius XII - Bisbe Soler",
+    "network": "EMT",
+    "network:wikidata": "Q11007711",
+    "operator": "Empresa Municipal de Transportes de Valencia",
+    "public_transport": "platform",
+    "ref": "407",
+    "shelter": "yes",
+    "source": "www.emtvalencia.es",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 246089684,
+  "lat": 39.4811475,
+  "lon": -0.3936389,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "no",
+    "name": "Vall de la Ballestera - Pius XII",
+    "network": "EMT",
+    "operator": "Empresa Municipal de Transportes de Valencia",
+    "public_transport": "platform",
+    "ref": "833",
+    "shelter": "yes",
+    "source": "www.emtvalencia.es",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 442029711,
+  "lat": 39.4815735,
+  "lon": -0.3934315,
+  "tags": {
+    "bicycle": "yes",
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 992004970,
+  "lat": 39.4818597,
+  "lon": -0.3933852,
+  "tags": {
+    "highway": "speed_camera",
+    "note": "SEM JMAR Valencia Pío XII CRUCE Ballestera DIR Río Turia CL"
+  }
+},
+{
+  "type": "node",
+  "id": 1316130893,
+  "lat": 39.4821964,
+  "lon": -0.3939735,
+  "tags": {
+    "bicycle": "yes",
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 1316130918,
+  "lat": 39.4819515,
+  "lon": -0.3938037,
+  "tags": {
+    "bicycle": "yes",
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 1316130975,
+  "lat": 39.4818750,
+  "lon": -0.3937544,
+  "tags": {
+    "bicycle": "yes",
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 1326293603,
+  "lat": 39.4818569,
+  "lon": -0.3926446,
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 2424872623,
+  "lat": 39.4817147,
+  "lon": -0.3923852,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5965093065,
+  "lat": 39.4818721,
+  "lon": -0.3931737,
+  "tags": {
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "highway": "crossing",
+    "tactile_paving": "yes",
+    "traffic_signals:sound": "no",
+    "traffic_signals:vibration": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5965093072,
+  "lat": 39.4817076,
+  "lon": -0.3932698,
+  "tags": {
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "highway": "crossing",
+    "tactile_paving": "yes",
+    "traffic_signals:sound": "no",
+    "traffic_signals:vibration": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5965093075,
+  "lat": 39.4815395,
+  "lon": -0.3934108,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6903111130,
+  "lat": 39.4816091,
+  "lon": -0.3926652,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 6903111131,
+  "lat": 39.4815800,
+  "lon": -0.3929662,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 6903111132,
+  "lat": 39.4815434,
+  "lon": -0.3925052,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7703117837,
+  "lat": 39.4812006,
+  "lon": -0.3929185,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7703117838,
+  "lat": 39.4811420,
+  "lon": -0.3932660,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 7703117839,
+  "lat": 39.4821871,
+  "lon": -0.3932158,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10286536431,
+  "lat": 39.4810514,
+  "lon": -0.3933910,
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 10944111411,
+  "lat": 39.4819612,
+  "lon": -0.3927530,
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "crossing:signals": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 11662614596,
+  "lat": 39.4821810,
+  "lon": -0.3940079,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 11662614710,
+  "lat": 39.4818615,
+  "lon": -0.3937854,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "yes",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 11662614711,
+  "lat": 39.4819399,
+  "lon": -0.3938369,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "yes",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 11662614714,
+  "lat": 39.4811860,
+  "lon": -0.3933902,
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 12999954661,
+  "lat": 39.4816737,
+  "lon": -0.3934028,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "València, Pius XII - Bisbe Soler",
+    "network": "Metrobús",
+    "network:wikidata": "Q5712403",
+    "operator": "Autoritat de Transport Metropolità de València",
+    "operator:short": "ATMV",
+    "operator:wikidata": "Q26084999",
+    "public_transport": "platform",
+    "ref": "407",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12999954668,
+  "lat": 39.4823438,
+  "lon": -0.3933868,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "València, Pius XII - Campanar",
+    "network": "Metrobús",
+    "network:wikidata": "Q5712403",
+    "operator": "Autoritat de Transport Metropolità de València",
+    "operator:short": "ATMV",
+    "operator:wikidata": "Q26084999",
+    "public_transport": "platform",
+    "ref": "372",
+    "shelter": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 11945184,
+  "bounds": {
+    "minlat": 39.4789787,
+    "minlon": -0.3985369,
+    "maxlat": 39.4812365,
+    "maxlon": -0.3932918
+  },
+  "geometry": [
+    { "lat": 39.4812365, "lon": -0.3932918 },
+    { "lat": 39.4811988, "lon": -0.3933605 },
+    { "lat": 39.4811860, "lon": -0.3933902 },
+    { "lat": 39.4808099, "lon": -0.3942589 },
+    { "lat": 39.4805402, "lon": -0.3948952 },
+    { "lat": 39.4805127, "lon": -0.3949614 },
+    { "lat": 39.4804986, "lon": -0.3949913 },
+    { "lat": 39.4801831, "lon": -0.3957226 },
+    { "lat": 39.4799048, "lon": -0.3963643 },
+    { "lat": 39.4798229, "lon": -0.3965532 },
+    { "lat": 39.4797283, "lon": -0.3967696 },
+    { "lat": 39.4796907, "lon": -0.3968582 },
+    { "lat": 39.4790259, "lon": -0.3984256 },
+    { "lat": 39.4789787, "lon": -0.3985369 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Carrer de la Vall de la Ballestera",
+    "name:ca": "Carrer de la Vall de la Ballestera",
+    "name:es": "Calle del Valle de la Ballestera",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 12341624,
+  "bounds": {
+    "minlat": 39.4813544,
+    "minlon": -0.3932811,
+    "maxlat": 39.4815731,
+    "maxlon": -0.3931865
+  },
+  "geometry": [
+    { "lat": 39.4815731, "lon": -0.3931865 },
+    { "lat": 39.4814432, "lon": -0.3932510 },
+    { "lat": 39.4813544, "lon": -0.3932811 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "lit": "yes",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 22730086,
+  "bounds": {
+    "minlat": 39.4817886,
+    "minlon": -0.3929413,
+    "maxlat": 39.4880055,
+    "maxlon": -0.3899623
+  },
+  "geometry": [
+    { "lat": 39.4880055, "lon": -0.3900029 },
+    { "lat": 39.4879380, "lon": -0.3899646 },
+    { "lat": 39.4879015, "lon": -0.3899623 },
+    { "lat": 39.4878678, "lon": -0.3899714 },
+    { "lat": 39.4877218, "lon": -0.3900305 },
+    { "lat": 39.4876864, "lon": -0.3900475 },
+    { "lat": 39.4870801, "lon": -0.3903383 },
+    { "lat": 39.4863676, "lon": -0.3906754 },
+    { "lat": 39.4863222, "lon": -0.3906995 },
+    { "lat": 39.4862750, "lon": -0.3907181 },
+    { "lat": 39.4861401, "lon": -0.3907816 },
+    { "lat": 39.4860516, "lon": -0.3908239 },
+    { "lat": 39.4848218, "lon": -0.3914106 },
+    { "lat": 39.4845600, "lon": -0.3915360 },
+    { "lat": 39.4843133, "lon": -0.3916565 },
+    { "lat": 39.4837659, "lon": -0.3919129 },
+    { "lat": 39.4836837, "lon": -0.3919514 },
+    { "lat": 39.4833711, "lon": -0.3920990 },
+    { "lat": 39.4833366, "lon": -0.3921161 },
+    { "lat": 39.4832870, "lon": -0.3921392 },
+    { "lat": 39.4829169, "lon": -0.3923131 },
+    { "lat": 39.4828131, "lon": -0.3923609 },
+    { "lat": 39.4826637, "lon": -0.3924345 },
+    { "lat": 39.4825438, "lon": -0.3924943 },
+    { "lat": 39.4819612, "lon": -0.3927530 },
+    { "lat": 39.4819041, "lon": -0.3927862 },
+    { "lat": 39.4817886, "lon": -0.3929413 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avinguda de Campanar",
+    "name:ca": "Avinguda de Campanar",
+    "name:es": "Avenida de Campanar",
+    "name:etymology:wikidata": "Q11907387",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "wikidata": "Q11907387",
+    "wikipedia": "ca:Avinguda de Campanar"
+  }
+},
+{
+  "type": "way",
+  "id": 22740786,
+  "bounds": {
+    "minlat": 39.4819512,
+    "minlon": -0.3934007,
+    "maxlat": 39.4824777,
+    "maxlon": -0.3932158
+  },
+  "geometry": [
+    { "lat": 39.4819512, "lon": -0.3932325 },
+    { "lat": 39.4820150, "lon": -0.3932313 },
+    { "lat": 39.4820638, "lon": -0.3932285 },
+    { "lat": 39.4821871, "lon": -0.3932158 },
+    { "lat": 39.4822348, "lon": -0.3932199 },
+    { "lat": 39.4822723, "lon": -0.3932364 },
+    { "lat": 39.4824777, "lon": -0.3934007 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "sidewalk": "separate",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 22954451,
+  "bounds": {
+    "minlat": 39.4812275,
+    "minlon": -0.3954944,
+    "maxlat": 39.4819856,
+    "maxlon": -0.3937309
+  },
+  "geometry": [
+    { "lat": 39.4819856, "lon": -0.3937309 },
+    { "lat": 39.4819515, "lon": -0.3938037 },
+    { "lat": 39.4819399, "lon": -0.3938369 },
+    { "lat": 39.4816385, "lon": -0.3945347 },
+    { "lat": 39.4815810, "lon": -0.3946717 },
+    { "lat": 39.4815380, "lon": -0.3947739 },
+    { "lat": 39.4812275, "lon": -0.3954944 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer de Valdelinares",
+    "name:ca": "Carrer de Valdelinares",
+    "name:es": "Calle de Valdelinares",
+    "name:etymology:wikidata": "Q1650933",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 22954453,
+  "bounds": {
+    "minlat": 39.4818990,
+    "minlon": -0.3940335,
+    "maxlat": 39.4824237,
+    "maxlon": -0.3934146
+  },
+  "geometry": [
+    { "lat": 39.4824237, "lon": -0.3940335 },
+    { "lat": 39.4823629, "lon": -0.3939226 },
+    { "lat": 39.4822408, "lon": -0.3937980 },
+    { "lat": 39.4821885, "lon": -0.3937326 },
+    { "lat": 39.4820261, "lon": -0.3935812 },
+    { "lat": 39.4818990, "lon": -0.3934146 }
+  ],
+  "tags": {
+    "highway": "primary_link",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 22954454,
+  "bounds": {
+    "minlat": 39.4814872,
+    "minlon": -0.3956180,
+    "maxlat": 39.4822249,
+    "maxlon": -0.3939046
+  },
+  "geometry": [
+    { "lat": 39.4814872, "lon": -0.3956180 },
+    { "lat": 39.4815438, "lon": -0.3954824 },
+    { "lat": 39.4815820, "lon": -0.3953908 },
+    { "lat": 39.4816872, "lon": -0.3951437 },
+    { "lat": 39.4818716, "lon": -0.3947065 },
+    { "lat": 39.4819449, "lon": -0.3945328 },
+    { "lat": 39.4821810, "lon": -0.3940079 },
+    { "lat": 39.4821964, "lon": -0.3939735 },
+    { "lat": 39.4822249, "lon": -0.3939046 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "name": "Carrer de Gaudencia Torres",
+    "name:ca": "Carrer de Gaudencia Torres",
+    "name:es": "Calle de Gaudencia Torres",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 28790867,
+  "bounds": {
+    "minlat": 39.4818990,
+    "minlon": -0.3957184,
+    "maxlat": 39.4851105,
+    "maxlon": -0.3934146
+  },
+  "geometry": [
+    { "lat": 39.4851105, "lon": -0.3957184 },
+    { "lat": 39.4836453, "lon": -0.3946630 },
+    { "lat": 39.4818990, "lon": -0.3934146 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:type": "ES:urban",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "source:maxspeed": "ES:urban",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 41057317,
+  "bounds": {
+    "minlat": 39.4817325,
+    "minlon": -0.3930746,
+    "maxlat": 39.4817886,
+    "maxlon": -0.3929413
+  },
+  "geometry": [
+    { "lat": 39.4817886, "lon": -0.3929413 },
+    { "lat": 39.4817702, "lon": -0.3930053 },
+    { "lat": 39.4817325, "lon": -0.3930746 }
+  ],
+  "tags": {
+    "cycleway:right": "separate",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 41335003,
+  "bounds": {
+    "minlat": 39.4813544,
+    "minlon": -0.3940335,
+    "maxlat": 39.4824237,
+    "maxlon": -0.3932811
+  },
+  "geometry": [
+    { "lat": 39.4824237, "lon": -0.3940335 },
+    { "lat": 39.4822249, "lon": -0.3939046 },
+    { "lat": 39.4819856, "lon": -0.3937309 },
+    { "lat": 39.4819092, "lon": -0.3936767 },
+    { "lat": 39.4815735, "lon": -0.3934315 },
+    { "lat": 39.4815395, "lon": -0.3934108 },
+    { "lat": 39.4813544, "lon": -0.3932811 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "3",
+    "maxspeed": "50",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 111415605,
+  "bounds": {
+    "minlat": 39.4810624,
+    "minlon": -0.3931865,
+    "maxlat": 39.4815731,
+    "maxlon": -0.3928211
+  },
+  "geometry": [
+    { "lat": 39.4815731, "lon": -0.3931865 },
+    { "lat": 39.4812006, "lon": -0.3929185 },
+    { "lat": 39.4810624, "lon": -0.3928211 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "foot": "no",
+    "highway": "primary",
+    "lanes": "4",
+    "lanes:psv": "1",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "shoulder": "no",
+    "sidewalk": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 111415609,
+  "bounds": {
+    "minlat": 39.4817325,
+    "minlon": -0.3932325,
+    "maxlat": 39.4819512,
+    "maxlon": -0.3930746
+  },
+  "geometry": [
+    { "lat": 39.4817325, "lon": -0.3930746 },
+    { "lat": 39.4818721, "lon": -0.3931737 },
+    { "lat": 39.4819064, "lon": -0.3931995 },
+    { "lat": 39.4819512, "lon": -0.3932325 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:type": "ES:urban",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "sidewalk": "separate",
+    "source:maxspeed": "ES:urban",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 111415615,
+  "bounds": {
+    "minlat": 39.4812245,
+    "minlon": -0.3930746,
+    "maxlat": 39.4817325,
+    "maxlon": -0.3927137
+  },
+  "geometry": [
+    { "lat": 39.4812245, "lon": -0.3927137 },
+    { "lat": 39.4815800, "lon": -0.3929662 },
+    { "lat": 39.4817325, "lon": -0.3930746 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "primary",
+    "lanes": "4",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 111415620,
+  "bounds": {
+    "minlat": 39.4815731,
+    "minlon": -0.3931865,
+    "maxlat": 39.4817325,
+    "maxlon": -0.3930746
+  },
+  "geometry": [
+    { "lat": 39.4817325, "lon": -0.3930746 },
+    { "lat": 39.4816856, "lon": -0.3931150 },
+    { "lat": 39.4815731, "lon": -0.3931865 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "lit": "yes",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 144586713,
+  "bounds": {
+    "minlat": 39.4811802,
+    "minlon": -0.3954696,
+    "maxlat": 39.4819092,
+    "maxlon": -0.3936767
+  },
+  "geometry": [
+    { "lat": 39.4811802, "lon": -0.3954696 },
+    { "lat": 39.4814852, "lon": -0.3947365 },
+    { "lat": 39.4815123, "lon": -0.3946219 },
+    { "lat": 39.4817385, "lon": -0.3940816 },
+    { "lat": 39.4818615, "lon": -0.3937854 },
+    { "lat": 39.4818750, "lon": -0.3937544 },
+    { "lat": 39.4819092, "lon": -0.3936767 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Carrer de Valdelinares",
+    "name:ca": "Carrer de Valdelinares",
+    "name:es": "Calle de Valdelinares",
+    "name:etymology:wikidata": "Q1650933",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 178321363,
+  "bounds": {
+    "minlat": 39.4817753,
+    "minlon": -0.3957638,
+    "maxlat": 39.4822585,
+    "maxlon": -0.3940079
+  },
+  "geometry": [
+    { "lat": 39.4821631, "lon": -0.3957638 },
+    { "lat": 39.4821812, "lon": -0.3957196 },
+    { "lat": 39.4822433, "lon": -0.3955709 },
+    { "lat": 39.4822472, "lon": -0.3955442 },
+    { "lat": 39.4822371, "lon": -0.3955241 },
+    { "lat": 39.4822218, "lon": -0.3955122 },
+    { "lat": 39.4818069, "lon": -0.3952171 },
+    { "lat": 39.4817946, "lon": -0.3952084 },
+    { "lat": 39.4817828, "lon": -0.3951945 },
+    { "lat": 39.4817753, "lon": -0.3951771 },
+    { "lat": 39.4817774, "lon": -0.3951579 },
+    { "lat": 39.4819474, "lon": -0.3947606 },
+    { "lat": 39.4820203, "lon": -0.3945904 },
+    { "lat": 39.4822522, "lon": -0.3940587 },
+    { "lat": 39.4822585, "lon": -0.3940425 },
+    { "lat": 39.4822578, "lon": -0.3940269 },
+    { "lat": 39.4822521, "lon": -0.3940151 },
+    { "lat": 39.4822446, "lon": -0.3940079 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 191182711,
+  "bounds": {
+    "minlat": 39.4814391,
+    "minlon": -0.3926799,
+    "maxlat": 39.4816887,
+    "maxlon": -0.3926591
+  },
+  "geometry": [
+    { "lat": 39.4814391, "lon": -0.3926644 },
+    { "lat": 39.4815193, "lon": -0.3926591 },
+    { "lat": 39.4816091, "lon": -0.3926652 },
+    { "lat": 39.4816887, "lon": -0.3926799 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "lit": "yes",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 191182738,
+  "bounds": {
+    "minlat": 39.4817079,
+    "minlon": -0.3929413,
+    "maxlat": 39.4817930,
+    "maxlon": -0.3926892
+  },
+  "geometry": [
+    { "lat": 39.4817079, "lon": -0.3926892 },
+    { "lat": 39.4817386, "lon": -0.3927187 },
+    { "lat": 39.4817677, "lon": -0.3927613 },
+    { "lat": 39.4817930, "lon": -0.3928545 },
+    { "lat": 39.4817886, "lon": -0.3929413 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 191774878,
+  "bounds": {
+    "minlat": 39.4815731,
+    "minlon": -0.3934146,
+    "maxlat": 39.4818990,
+    "maxlon": -0.3931865
+  },
+  "geometry": [
+    { "lat": 39.4818990, "lon": -0.3934146 },
+    { "lat": 39.4818597, "lon": -0.3933852 },
+    { "lat": 39.4817391, "lon": -0.3932940 },
+    { "lat": 39.4817076, "lon": -0.3932698 },
+    { "lat": 39.4815731, "lon": -0.3931865 }
+  ],
+  "tags": {
+    "cycleway:right": "separate",
+    "highway": "primary",
+    "lanes": "4",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:type": "ES:urban",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "sidewalk:left": "separate",
+    "sidewalk:right": "no",
+    "source:maxspeed": "ES:urban",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 501476248,
+  "bounds": {
+    "minlat": 39.4819559,
+    "minlon": -0.3934828,
+    "maxlat": 39.4828021,
+    "maxlon": -0.3930885
+  },
+  "geometry": [
+    { "lat": 39.4819559, "lon": -0.3931287 },
+    { "lat": 39.4819794, "lon": -0.3931120 },
+    { "lat": 39.4820075, "lon": -0.3930897 },
+    { "lat": 39.4820241, "lon": -0.3931070 },
+    { "lat": 39.4820463, "lon": -0.3931077 },
+    { "lat": 39.4821256, "lon": -0.3930885 },
+    { "lat": 39.4821706, "lon": -0.3930885 },
+    { "lat": 39.4822248, "lon": -0.3930975 },
+    { "lat": 39.4822791, "lon": -0.3931177 },
+    { "lat": 39.4823075, "lon": -0.3931333 },
+    { "lat": 39.4823431, "lon": -0.3931539 },
+    { "lat": 39.4826095, "lon": -0.3933404 },
+    { "lat": 39.4826333, "lon": -0.3933560 },
+    { "lat": 39.4826718, "lon": -0.3933837 },
+    { "lat": 39.4827848, "lon": -0.3934682 },
+    { "lat": 39.4828021, "lon": -0.3934828 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 501476251,
+  "bounds": {
+    "minlat": 39.4823431,
+    "minlon": -0.3931639,
+    "maxlat": 39.4825861,
+    "maxlon": -0.3931518
+  },
+  "geometry": [
+    { "lat": 39.4825861, "lon": -0.3931518 },
+    { "lat": 39.4825686, "lon": -0.3931639 },
+    { "lat": 39.4825004, "lon": -0.3931616 },
+    { "lat": 39.4823431, "lon": -0.3931539 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 559239015,
+  "bounds": {
+    "minlat": 39.4824777,
+    "minlon": -0.3944697,
+    "maxlat": 39.4839643,
+    "maxlon": -0.3934007
+  },
+  "geometry": [
+    { "lat": 39.4824777, "lon": -0.3934007 },
+    { "lat": 39.4827576, "lon": -0.3935978 },
+    { "lat": 39.4839643, "lon": -0.3944697 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "maxspeed": "50",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 631683993,
+  "bounds": {
+    "minlat": 39.4817949,
+    "minlon": -0.3932147,
+    "maxlat": 39.4819559,
+    "maxlon": -0.3931287
+  },
+  "geometry": [
+    { "lat": 39.4819559, "lon": -0.3931287 },
+    { "lat": 39.4818721, "lon": -0.3931737 },
+    { "lat": 39.4817949, "lon": -0.3932147 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 631683994,
+  "bounds": {
+    "minlat": 39.4817635,
+    "minlon": -0.3932326,
+    "maxlat": 39.4817949,
+    "maxlon": -0.3932147
+  },
+  "geometry": [
+    { "lat": 39.4817949, "lon": -0.3932147 },
+    { "lat": 39.4817635, "lon": -0.3932326 }
+  ],
+  "tags": {
+    "crossing:island": "yes",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 631683996,
+  "bounds": {
+    "minlat": 39.4816259,
+    "minlon": -0.3933270,
+    "maxlat": 39.4817635,
+    "maxlon": -0.3932326
+  },
+  "geometry": [
+    { "lat": 39.4817635, "lon": -0.3932326 },
+    { "lat": 39.4817076, "lon": -0.3932698 },
+    { "lat": 39.4816259, "lon": -0.3933270 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 631683997,
+  "bounds": {
+    "minlat": 39.4815846,
+    "minlon": -0.3933687,
+    "maxlat": 39.4816259,
+    "maxlon": -0.3933270
+  },
+  "geometry": [
+    { "lat": 39.4816259, "lon": -0.3933270 },
+    { "lat": 39.4815846, "lon": -0.3933687 }
+  ],
+  "tags": {
+    "crossing:island": "yes",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 631683998,
+  "bounds": {
+    "minlat": 39.4814868,
+    "minlon": -0.3934624,
+    "maxlat": 39.4815846,
+    "maxlon": -0.3933687
+  },
+  "geometry": [
+    { "lat": 39.4815846, "lon": -0.3933687 },
+    { "lat": 39.4815395, "lon": -0.3934108 },
+    { "lat": 39.4814868, "lon": -0.3934624 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 704615504,
+  "bounds": {
+    "minlat": 39.4810598,
+    "minlon": -0.3932918,
+    "maxlat": 39.4812365,
+    "maxlon": -0.3932275
+  },
+  "geometry": [
+    { "lat": 39.4812365, "lon": -0.3932918 },
+    { "lat": 39.4811420, "lon": -0.3932660 },
+    { "lat": 39.4810598, "lon": -0.3932275 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "lit": "yes",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 960747141,
+  "bounds": {
+    "minlat": 39.4816796,
+    "minlon": -0.3926799,
+    "maxlat": 39.4825066,
+    "maxlon": -0.3905181
+  },
+  "geometry": [
+    { "lat": 39.4825066, "lon": -0.3905181 },
+    { "lat": 39.4823760, "lon": -0.3908195 },
+    { "lat": 39.4823597, "lon": -0.3908581 },
+    { "lat": 39.4817147, "lon": -0.3923852 },
+    { "lat": 39.4816796, "lon": -0.3925365 },
+    { "lat": 39.4816825, "lon": -0.3925996 },
+    { "lat": 39.4816887, "lon": -0.3926799 }
+  ],
+  "tags": {
+    "cycleway:right": "lane",
+    "cycleway:right:lane": "exclusive",
+    "highway": "tertiary",
+    "lanes": "2",
+    "lit": "yes",
+    "name": "Carrer de Joaquim Ballester",
+    "name:ca": "Carrer de Joaquim Ballester",
+    "name:es": "Calle de Joaquín Ballester",
+    "name:etymology:wikidata": "Q28841967",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 960751052,
+  "bounds": {
+    "minlat": 39.4817079,
+    "minlon": -0.3926892,
+    "maxlat": 39.4878764,
+    "maxlon": -0.3898182
+  },
+  "geometry": [
+    { "lat": 39.4817079, "lon": -0.3926892 },
+    { "lat": 39.4817705, "lon": -0.3926742 },
+    { "lat": 39.4818569, "lon": -0.3926446 },
+    { "lat": 39.4819183, "lon": -0.3926202 },
+    { "lat": 39.4825599, "lon": -0.3923365 },
+    { "lat": 39.4826772, "lon": -0.3922823 },
+    { "lat": 39.4827782, "lon": -0.3922360 },
+    { "lat": 39.4831828, "lon": -0.3920431 },
+    { "lat": 39.4832519, "lon": -0.3920096 },
+    { "lat": 39.4833351, "lon": -0.3919715 },
+    { "lat": 39.4835754, "lon": -0.3918583 },
+    { "lat": 39.4837142, "lon": -0.3917902 },
+    { "lat": 39.4837875, "lon": -0.3917555 },
+    { "lat": 39.4844617, "lon": -0.3914364 },
+    { "lat": 39.4845687, "lon": -0.3913886 },
+    { "lat": 39.4847835, "lon": -0.3912841 },
+    { "lat": 39.4848381, "lon": -0.3912579 },
+    { "lat": 39.4848801, "lon": -0.3912377 },
+    { "lat": 39.4854061, "lon": -0.3909900 },
+    { "lat": 39.4860093, "lon": -0.3907059 },
+    { "lat": 39.4860987, "lon": -0.3906618 },
+    { "lat": 39.4862963, "lon": -0.3905646 },
+    { "lat": 39.4863690, "lon": -0.3905284 },
+    { "lat": 39.4864113, "lon": -0.3905083 },
+    { "lat": 39.4871161, "lon": -0.3901737 },
+    { "lat": 39.4876518, "lon": -0.3899198 },
+    { "lat": 39.4876984, "lon": -0.3898977 },
+    { "lat": 39.4878764, "lon": -0.3898182 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Avinguda de Campanar",
+    "name:ca": "Avinguda de Campanar",
+    "name:es": "Avenida de Campanar",
+    "name:etymology:wikidata": "Q11907387",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 965571703,
+  "bounds": {
+    "minlat": 39.4816887,
+    "minlon": -0.3926892,
+    "maxlat": 39.4817079,
+    "maxlon": -0.3926799
+  },
+  "geometry": [
+    { "lat": 39.4816887, "lon": -0.3926799 },
+    { "lat": 39.4817079, "lon": -0.3926892 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 965571705,
+  "bounds": {
+    "minlat": 39.4812365,
+    "minlon": -0.3932918,
+    "maxlat": 39.4813544,
+    "maxlon": -0.3932811
+  },
+  "geometry": [
+    { "lat": 39.4813544, "lon": -0.3932811 },
+    { "lat": 39.4812365, "lon": -0.3932918 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "highway": "secondary",
+    "junction": "circular",
+    "lane_markings": "no",
+    "lit": "yes",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105268,
+  "bounds": {
+    "minlat": 39.4819486,
+    "minlon": -0.3930897,
+    "maxlat": 39.4830192,
+    "maxlon": -0.3923631
+  },
+  "geometry": [
+    { "lat": 39.4830192, "lon": -0.3923631 },
+    { "lat": 39.4829388, "lon": -0.3923975 },
+    { "lat": 39.4828846, "lon": -0.3924191 },
+    { "lat": 39.4828349, "lon": -0.3924389 },
+    { "lat": 39.4825380, "lon": -0.3925830 },
+    { "lat": 39.4822015, "lon": -0.3927468 },
+    { "lat": 39.4821296, "lon": -0.3927818 },
+    { "lat": 39.4819908, "lon": -0.3928493 },
+    { "lat": 39.4819486, "lon": -0.3928699 },
+    { "lat": 39.4819486, "lon": -0.3928926 },
+    { "lat": 39.4820820, "lon": -0.3930150 },
+    { "lat": 39.4820075, "lon": -0.3930897 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105269,
+  "bounds": {
+    "minlat": 39.4819482,
+    "minlon": -0.3927981,
+    "maxlat": 39.4819746,
+    "maxlon": -0.3927099
+  },
+  "geometry": [
+    { "lat": 39.4819746, "lon": -0.3927981 },
+    { "lat": 39.4819612, "lon": -0.3927530 },
+    { "lat": 39.4819482, "lon": -0.3927099 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "crossing:signals": "yes",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105276,
+  "bounds": {
+    "minlat": 39.4817592,
+    "minlon": -0.3925775,
+    "maxlat": 39.4818977,
+    "maxlon": -0.3924323
+  },
+  "geometry": [
+    { "lat": 39.4817853, "lon": -0.3924323 },
+    { "lat": 39.4817592, "lon": -0.3924981 },
+    { "lat": 39.4818489, "lon": -0.3925775 },
+    { "lat": 39.4818977, "lon": -0.3925551 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105283,
+  "bounds": {
+    "minlat": 39.4821296,
+    "minlon": -0.3929851,
+    "maxlat": 39.4821863,
+    "maxlon": -0.3927818
+  },
+  "geometry": [
+    { "lat": 39.4821296, "lon": -0.3927818 },
+    { "lat": 39.4821863, "lon": -0.3929851 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105284,
+  "bounds": {
+    "minlat": 39.4821863,
+    "minlon": -0.3929851,
+    "maxlat": 39.4822015,
+    "maxlon": -0.3927468
+  },
+  "geometry": [
+    { "lat": 39.4822015, "lon": -0.3927468 },
+    { "lat": 39.4821863, "lon": -0.3929851 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105285,
+  "bounds": {
+    "minlat": 39.4820820,
+    "minlon": -0.3930150,
+    "maxlat": 39.4821863,
+    "maxlon": -0.3929851
+  },
+  "geometry": [
+    { "lat": 39.4821863, "lon": -0.3929851 },
+    { "lat": 39.4820820, "lon": -0.3930150 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105286,
+  "bounds": {
+    "minlat": 39.4821863,
+    "minlon": -0.3931333,
+    "maxlat": 39.4823271,
+    "maxlon": -0.3929851
+  },
+  "geometry": [
+    { "lat": 39.4821863, "lon": -0.3929851 },
+    { "lat": 39.4823271, "lon": -0.3929986 },
+    { "lat": 39.4823238, "lon": -0.3930929 },
+    { "lat": 39.4823075, "lon": -0.3931333 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105287,
+  "bounds": {
+    "minlat": 39.4821680,
+    "minlon": -0.3930885,
+    "maxlat": 39.4821863,
+    "maxlon": -0.3929851
+  },
+  "geometry": [
+    { "lat": 39.4821706, "lon": -0.3930885 },
+    { "lat": 39.4821680, "lon": -0.3930354 },
+    { "lat": 39.4821863, "lon": -0.3929851 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1178105295,
+  "bounds": {
+    "minlat": 39.4821706,
+    "minlon": -0.3933911,
+    "maxlat": 39.4823831,
+    "maxlon": -0.3930885
+  },
+  "geometry": [
+    { "lat": 39.4821706, "lon": -0.3930885 },
+    { "lat": 39.4821807, "lon": -0.3931188 },
+    { "lat": 39.4821854, "lon": -0.3931404 },
+    { "lat": 39.4821871, "lon": -0.3932158 },
+    { "lat": 39.4821871, "lon": -0.3932547 },
+    { "lat": 39.4821990, "lon": -0.3932655 },
+    { "lat": 39.4823831, "lon": -0.3933911 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1254567225,
+  "bounds": {
+    "minlat": 39.4813610,
+    "minlon": -0.3954247,
+    "maxlat": 39.4821008,
+    "maxlon": -0.3938760
+  },
+  "geometry": [
+    { "lat": 39.4821008, "lon": -0.3939558 },
+    { "lat": 39.4817957, "lon": -0.3946525 },
+    { "lat": 39.4814611, "lon": -0.3954247 },
+    { "lat": 39.4813610, "lon": -0.3953581 },
+    { "lat": 39.4816396, "lon": -0.3947142 },
+    { "lat": 39.4816981, "lon": -0.3945791 },
+    { "lat": 39.4819965, "lon": -0.3938760 },
+    { "lat": 39.4821008, "lon": -0.3939558 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1254567228,
+  "bounds": {
+    "minlat": 39.4821437,
+    "minlon": -0.3940444,
+    "maxlat": 39.4822326,
+    "maxlon": -0.3939815
+  },
+  "geometry": [
+    { "lat": 39.4822326, "lon": -0.3940444 },
+    { "lat": 39.4821810, "lon": -0.3940079 },
+    { "lat": 39.4821437, "lon": -0.3939815 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1254567232,
+  "bounds": {
+    "minlat": 39.4811550,
+    "minlon": -0.3940816,
+    "maxlat": 39.4817385,
+    "maxlon": -0.3936700
+  },
+  "geometry": [
+    { "lat": 39.4817385, "lon": -0.3940816 },
+    { "lat": 39.4816943, "lon": -0.3940504 },
+    { "lat": 39.4811550, "lon": -0.3936700 }
+  ],
+  "tags": {
+    "highway": "pedestrian",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII"
+  }
+},
+{
+  "type": "way",
+  "id": 1254567233,
+  "bounds": {
+    "minlat": 39.4809222,
+    "minlon": -0.3945863,
+    "maxlat": 39.4818174,
+    "maxlon": -0.3933953
+  },
+  "geometry": [
+    { "lat": 39.4814632, "lon": -0.3945863 },
+    { "lat": 39.4809222, "lon": -0.3941967 },
+    { "lat": 39.4811550, "lon": -0.3936700 },
+    { "lat": 39.4812602, "lon": -0.3934321 },
+    { "lat": 39.4812824, "lon": -0.3934092 },
+    { "lat": 39.4812990, "lon": -0.3934027 },
+    { "lat": 39.4813171, "lon": -0.3933953 },
+    { "lat": 39.4814640, "lon": -0.3935002 },
+    { "lat": 39.4818174, "lon": -0.3937647 },
+    { "lat": 39.4816943, "lon": -0.3940504 },
+    { "lat": 39.4814632, "lon": -0.3945863 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1254567234,
+  "bounds": {
+    "minlat": 39.4814640,
+    "minlon": -0.3935002,
+    "maxlat": 39.4814868,
+    "maxlon": -0.3934624
+  },
+  "geometry": [
+    { "lat": 39.4814868, "lon": -0.3934624 },
+    { "lat": 39.4814640, "lon": -0.3935002 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1254567236,
+  "bounds": {
+    "minlat": 39.4818315,
+    "minlon": -0.3937994,
+    "maxlat": 39.4818830,
+    "maxlon": -0.3937649
+  },
+  "geometry": [
+    { "lat": 39.4818830, "lon": -0.3937994 },
+    { "lat": 39.4818615, "lon": -0.3937854 },
+    { "lat": 39.4818315, "lon": -0.3937649 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "yes",
+    "crossing:markings": "zebra",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572276,
+  "bounds": {
+    "minlat": 39.4819836,
+    "minlon": -0.3935061,
+    "maxlat": 39.4827697,
+    "maxlon": -0.3931159
+  },
+  "geometry": [
+    { "lat": 39.4819836, "lon": -0.3931634 },
+    { "lat": 39.4820052, "lon": -0.3931545 },
+    { "lat": 39.4820411, "lon": -0.3931382 },
+    { "lat": 39.4820753, "lon": -0.3931270 },
+    { "lat": 39.4821095, "lon": -0.3931200 },
+    { "lat": 39.4821464, "lon": -0.3931159 },
+    { "lat": 39.4821807, "lon": -0.3931188 },
+    { "lat": 39.4822155, "lon": -0.3931242 },
+    { "lat": 39.4822793, "lon": -0.3931499 },
+    { "lat": 39.4824903, "lon": -0.3932821 },
+    { "lat": 39.4826707, "lon": -0.3934208 },
+    { "lat": 39.4826926, "lon": -0.3934459 },
+    { "lat": 39.4827697, "lon": -0.3935061 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572277,
+  "bounds": {
+    "minlat": 39.4818265,
+    "minlon": -0.3932387,
+    "maxlat": 39.4819836,
+    "maxlon": -0.3931634
+  },
+  "geometry": [
+    { "lat": 39.4818265, "lon": -0.3932387 },
+    { "lat": 39.4819064, "lon": -0.3931995 },
+    { "lat": 39.4819836, "lon": -0.3931634 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572278,
+  "bounds": {
+    "minlat": 39.4817828,
+    "minlon": -0.3932663,
+    "maxlat": 39.4818265,
+    "maxlon": -0.3932387
+  },
+  "geometry": [
+    { "lat": 39.4817828, "lon": -0.3932663 },
+    { "lat": 39.4818265, "lon": -0.3932387 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572279,
+  "bounds": {
+    "minlat": 39.4816478,
+    "minlon": -0.3933521,
+    "maxlat": 39.4817828,
+    "maxlon": -0.3932663
+  },
+  "geometry": [
+    { "lat": 39.4816478, "lon": -0.3933521 },
+    { "lat": 39.4817391, "lon": -0.3932940 },
+    { "lat": 39.4817828, "lon": -0.3932663 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572280,
+  "bounds": {
+    "minlat": 39.4816135,
+    "minlon": -0.3933991,
+    "maxlat": 39.4816478,
+    "maxlon": -0.3933521
+  },
+  "geometry": [
+    { "lat": 39.4816135, "lon": -0.3933991 },
+    { "lat": 39.4816361, "lon": -0.3933720 },
+    { "lat": 39.4816478, "lon": -0.3933521 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572281,
+  "bounds": {
+    "minlat": 39.4815110,
+    "minlon": -0.3934809,
+    "maxlat": 39.4816135,
+    "maxlon": -0.3933991
+  },
+  "geometry": [
+    { "lat": 39.4815110, "lon": -0.3934809 },
+    { "lat": 39.4815735, "lon": -0.3934315 },
+    { "lat": 39.4816135, "lon": -0.3933991 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572282,
+  "bounds": {
+    "minlat": 39.4812579,
+    "minlon": -0.3934809,
+    "maxlat": 39.4815110,
+    "maxlon": -0.3933648
+  },
+  "geometry": [
+    { "lat": 39.4812579, "lon": -0.3933934 },
+    { "lat": 39.4812742, "lon": -0.3933907 },
+    { "lat": 39.4812917, "lon": -0.3933782 },
+    { "lat": 39.4813129, "lon": -0.3933685 },
+    { "lat": 39.4813382, "lon": -0.3933648 },
+    { "lat": 39.4813596, "lon": -0.3933715 },
+    { "lat": 39.4814868, "lon": -0.3934624 },
+    { "lat": 39.4815110, "lon": -0.3934809 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572283,
+  "bounds": {
+    "minlat": 39.4811586,
+    "minlon": -0.3933934,
+    "maxlat": 39.4812579,
+    "maxlon": -0.3933354
+  },
+  "geometry": [
+    { "lat": 39.4811586, "lon": -0.3933354 },
+    { "lat": 39.4811988, "lon": -0.3933605 },
+    { "lat": 39.4812579, "lon": -0.3933934 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "concrete:plates"
+  }
+},
+{
+  "type": "way",
+  "id": 1313572284,
+  "bounds": {
+    "minlat": 39.4811491,
+    "minlon": -0.3934321,
+    "maxlat": 39.4812602,
+    "maxlon": -0.3933694
+  },
+  "geometry": [
+    { "lat": 39.4812602, "lon": -0.3934321 },
+    { "lat": 39.4811860, "lon": -0.3933902 },
+    { "lat": 39.4811491, "lon": -0.3933694 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007864,
+  "bounds": {
+    "minlat": 39.4821008,
+    "minlon": -0.3939815,
+    "maxlat": 39.4821437,
+    "maxlon": -0.3939558
+  },
+  "geometry": [
+    { "lat": 39.4821437, "lon": -0.3939815 },
+    { "lat": 39.4821241, "lon": -0.3939674 },
+    { "lat": 39.4821008, "lon": -0.3939558 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007865,
+  "bounds": {
+    "minlat": 39.4815110,
+    "minlon": -0.3937293,
+    "maxlat": 39.4818416,
+    "maxlon": -0.3934809
+  },
+  "geometry": [
+    { "lat": 39.4818416, "lon": -0.3937293 },
+    { "lat": 39.4815110, "lon": -0.3934809 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007866,
+  "bounds": {
+    "minlat": 39.4821568,
+    "minlon": -0.3940079,
+    "maxlat": 39.4822446,
+    "maxlon": -0.3939436
+  },
+  "geometry": [
+    { "lat": 39.4822446, "lon": -0.3940079 },
+    { "lat": 39.4821964, "lon": -0.3939735 },
+    { "lat": 39.4821568, "lon": -0.3939436 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007867,
+  "bounds": {
+    "minlat": 39.4818174,
+    "minlon": -0.3937649,
+    "maxlat": 39.4818315,
+    "maxlon": -0.3937647
+  },
+  "geometry": [
+    { "lat": 39.4818315, "lon": -0.3937649 },
+    { "lat": 39.4818174, "lon": -0.3937647 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007868,
+  "bounds": {
+    "minlat": 39.4819899,
+    "minlon": -0.3938760,
+    "maxlat": 39.4819965,
+    "maxlon": -0.3938716
+  },
+  "geometry": [
+    { "lat": 39.4819965, "lon": -0.3938760 },
+    { "lat": 39.4819899, "lon": -0.3938716 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007869,
+  "bounds": {
+    "minlat": 39.4819261,
+    "minlon": -0.3938716,
+    "maxlat": 39.4819899,
+    "maxlon": -0.3938280
+  },
+  "geometry": [
+    { "lat": 39.4819899, "lon": -0.3938716 },
+    { "lat": 39.4819399, "lon": -0.3938369 },
+    { "lat": 39.4819261, "lon": -0.3938280 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "yes",
+    "crossing:markings": "zebra",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007870,
+  "bounds": {
+    "minlat": 39.4818830,
+    "minlon": -0.3938280,
+    "maxlat": 39.4819261,
+    "maxlon": -0.3937994
+  },
+  "geometry": [
+    { "lat": 39.4819261, "lon": -0.3938280 },
+    { "lat": 39.4818830, "lon": -0.3937994 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007871,
+  "bounds": {
+    "minlat": 39.4820038,
+    "minlon": -0.3939436,
+    "maxlat": 39.4821568,
+    "maxlon": -0.3938440
+  },
+  "geometry": [
+    { "lat": 39.4821568, "lon": -0.3939436 },
+    { "lat": 39.4821355, "lon": -0.3939343 },
+    { "lat": 39.4821215, "lon": -0.3939324 },
+    { "lat": 39.4821093, "lon": -0.3939237 },
+    { "lat": 39.4820038, "lon": -0.3938440 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007872,
+  "bounds": {
+    "minlat": 39.4819390,
+    "minlon": -0.3938440,
+    "maxlat": 39.4820038,
+    "maxlon": -0.3937947
+  },
+  "geometry": [
+    { "lat": 39.4820038, "lon": -0.3938440 },
+    { "lat": 39.4819515, "lon": -0.3938037 },
+    { "lat": 39.4819390, "lon": -0.3937947 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007873,
+  "bounds": {
+    "minlat": 39.4818416,
+    "minlon": -0.3937693,
+    "maxlat": 39.4819001,
+    "maxlon": -0.3937293
+  },
+  "geometry": [
+    { "lat": 39.4819001, "lon": -0.3937693 },
+    { "lat": 39.4818750, "lon": -0.3937544 },
+    { "lat": 39.4818416, "lon": -0.3937293 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316007874,
+  "bounds": {
+    "minlat": 39.4819001,
+    "minlon": -0.3937947,
+    "maxlat": 39.4819390,
+    "maxlon": -0.3937693
+  },
+  "geometry": [
+    { "lat": 39.4819390, "lon": -0.3937947 },
+    { "lat": 39.4819001, "lon": -0.3937693 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506083,
+  "bounds": {
+    "minlat": 39.4818994,
+    "minlon": -0.3931545,
+    "maxlat": 39.4820052,
+    "maxlon": -0.3928383
+  },
+  "geometry": [
+    { "lat": 39.4820052, "lon": -0.3931545 },
+    { "lat": 39.4820005, "lon": -0.3931290 },
+    { "lat": 39.4819794, "lon": -0.3931120 },
+    { "lat": 39.4819372, "lon": -0.3930821 },
+    { "lat": 39.4819210, "lon": -0.3930662 },
+    { "lat": 39.4819087, "lon": -0.3930439 },
+    { "lat": 39.4819018, "lon": -0.3930185 },
+    { "lat": 39.4818994, "lon": -0.3929829 },
+    { "lat": 39.4819026, "lon": -0.3929620 },
+    { "lat": 39.4819097, "lon": -0.3929377 },
+    { "lat": 39.4819191, "lon": -0.3929133 },
+    { "lat": 39.4819252, "lon": -0.3928916 },
+    { "lat": 39.4819246, "lon": -0.3928600 },
+    { "lat": 39.4819203, "lon": -0.3928383 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506084,
+  "bounds": {
+    "minlat": 39.4818877,
+    "minlon": -0.3928383,
+    "maxlat": 39.4819203,
+    "maxlon": -0.3927369
+  },
+  "geometry": [
+    { "lat": 39.4819203, "lon": -0.3928383 },
+    { "lat": 39.4819041, "lon": -0.3927862 },
+    { "lat": 39.4818877, "lon": -0.3927369 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506085,
+  "bounds": {
+    "minlat": 39.4818362,
+    "minlon": -0.3926836,
+    "maxlat": 39.4818734,
+    "maxlon": -0.3926008
+  },
+  "geometry": [
+    { "lat": 39.4818734, "lon": -0.3926836 },
+    { "lat": 39.4818569, "lon": -0.3926446 },
+    { "lat": 39.4818362, "lon": -0.3926008 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506086,
+  "bounds": {
+    "minlat": 39.4818734,
+    "minlon": -0.3927369,
+    "maxlat": 39.4818877,
+    "maxlon": -0.3926836
+  },
+  "geometry": [
+    { "lat": 39.4818877, "lon": -0.3927369 },
+    { "lat": 39.4818734, "lon": -0.3926836 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506087,
+  "bounds": {
+    "minlat": 39.4819049,
+    "minlon": -0.3926565,
+    "maxlat": 39.4819291,
+    "maxlon": -0.3925788
+  },
+  "geometry": [
+    { "lat": 39.4819291, "lon": -0.3926565 },
+    { "lat": 39.4819183, "lon": -0.3926202 },
+    { "lat": 39.4819049, "lon": -0.3925788 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "zebra",
+    "crossing:signals": "yes",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506088,
+  "bounds": {
+    "minlat": 39.4818977,
+    "minlon": -0.3925788,
+    "maxlat": 39.4819049,
+    "maxlon": -0.3925551
+  },
+  "geometry": [
+    { "lat": 39.4819049, "lon": -0.3925788 },
+    { "lat": 39.4818977, "lon": -0.3925551 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506089,
+  "bounds": {
+    "minlat": 39.4819746,
+    "minlon": -0.3928493,
+    "maxlat": 39.4819908,
+    "maxlon": -0.3927981
+  },
+  "geometry": [
+    { "lat": 39.4819908, "lon": -0.3928493 },
+    { "lat": 39.4819746, "lon": -0.3927981 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506090,
+  "bounds": {
+    "minlat": 39.4819291,
+    "minlon": -0.3927099,
+    "maxlat": 39.4819482,
+    "maxlon": -0.3926565
+  },
+  "geometry": [
+    { "lat": 39.4819482, "lon": -0.3927099 },
+    { "lat": 39.4819291, "lon": -0.3926565 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1316506095,
+  "bounds": {
+    "minlat": 39.4817435,
+    "minlon": -0.3926008,
+    "maxlat": 39.4824158,
+    "maxlon": -0.3908467
+  },
+  "geometry": [
+    { "lat": 39.4818362, "lon": -0.3926008 },
+    { "lat": 39.4818225, "lon": -0.3925850 },
+    { "lat": 39.4818068, "lon": -0.3925782 },
+    { "lat": 39.4817889, "lon": -0.3925724 },
+    { "lat": 39.4817689, "lon": -0.3925648 },
+    { "lat": 39.4817570, "lon": -0.3925514 },
+    { "lat": 39.4817485, "lon": -0.3925353 },
+    { "lat": 39.4817435, "lon": -0.3925080 },
+    { "lat": 39.4817461, "lon": -0.3924879 },
+    { "lat": 39.4817538, "lon": -0.3924667 },
+    { "lat": 39.4817748, "lon": -0.3924243 },
+    { "lat": 39.4817878, "lon": -0.3923920 },
+    { "lat": 39.4817907, "lon": -0.3923777 },
+    { "lat": 39.4817942, "lon": -0.3923620 },
+    { "lat": 39.4817997, "lon": -0.3923460 },
+    { "lat": 39.4820003, "lon": -0.3918775 },
+    { "lat": 39.4820050, "lon": -0.3918630 },
+    { "lat": 39.4820024, "lon": -0.3918389 },
+    { "lat": 39.4820026, "lon": -0.3918262 },
+    { "lat": 39.4820606, "lon": -0.3916779 },
+    { "lat": 39.4820683, "lon": -0.3916707 },
+    { "lat": 39.4820838, "lon": -0.3916642 },
+    { "lat": 39.4820915, "lon": -0.3916576 },
+    { "lat": 39.4823443, "lon": -0.3910668 },
+    { "lat": 39.4823482, "lon": -0.3910544 },
+    { "lat": 39.4823478, "lon": -0.3910419 },
+    { "lat": 39.4823432, "lon": -0.3910216 },
+    { "lat": 39.4823463, "lon": -0.3910085 },
+    { "lat": 39.4823850, "lon": -0.3909205 },
+    { "lat": 39.4823965, "lon": -0.3909122 },
+    { "lat": 39.4824087, "lon": -0.3909046 },
+    { "lat": 39.4824133, "lon": -0.3908946 },
+    { "lat": 39.4824158, "lon": -0.3908683 },
+    { "lat": 39.4824040, "lon": -0.3908467 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1334673043,
+  "bounds": {
+    "minlat": 39.4819512,
+    "minlon": -0.3941844,
+    "maxlat": 39.4832527,
+    "maxlon": -0.3932325
+  },
+  "geometry": [
+    { "lat": 39.4819512, "lon": -0.3932325 },
+    { "lat": 39.4832527, "lon": -0.3941844 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:type": "ES:urban",
+    "name": "Avinguda de Pius XII",
+    "name:ca": "Avinguda de Pius XII",
+    "name:es": "Avenida de Pío XII",
+    "name:etymology:wikidata": "Q2604",
+    "oneway": "yes",
+    "sidewalk": "separate",
+    "source:maxspeed": "ES:urban",
+    "surface": "asphalt"
+  }
+}
+
+  ]
+}

@@ -1,0 +1,1648 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-04T11:41:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 246089337,
+  "lat": 39.4690011,
+  "lon": -0.3998448,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Cid - Burgos",
+    "network": "EMT",
+    "network:wikidata": "Q11007711",
+    "operator": "Empresa Municipal de Transportes de Valencia",
+    "public_transport": "platform",
+    "ref": "483",
+    "shelter": "yes",
+    "source": "www.emtvalencia.es"
+  }
+},
+{
+  "type": "node",
+  "id": 246089363,
+  "lat": 39.4685854,
+  "lon": -0.3999303,
+  "tags": {
+    "bench": "yes",
+    "bin": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Central de Policia Local de València",
+    "network": "EMT",
+    "network:wikidata": "Q11007711",
+    "old_name": "Cid - Santa Cruz de Tenerife",
+    "operator": "Empresa Municipal de Transportes de Valencia",
+    "public_transport": "platform",
+    "ref": "507",
+    "shelter": "yes",
+    "source": "www.emtvalencia.es"
+  }
+},
+{
+  "type": "node",
+  "id": 475183452,
+  "lat": 39.4685744,
+  "lon": -0.3998595,
+  "tags": {
+    "bench": "yes",
+    "bin": "yes",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "València, Central de Policia Local de València",
+    "network": "Metrobús",
+    "network:wikidata": "Q5712403",
+    "operator": "Autoritat de Transport Metropolità de València",
+    "operator:short": "ATMV",
+    "operator:wikidata": "Q26084999",
+    "public_transport": "platform",
+    "ref": "507",
+    "shelter": "yes",
+    "source": "https://www.fernanbus.es/"
+  }
+},
+{
+  "type": "node",
+  "id": 992003879,
+  "lat": 39.4687060,
+  "lon": -0.3989945,
+  "tags": {
+    "description": "SEM CUBE Valencia Av del Cid CRUCE Burgos DIR Madrid CL",
+    "highway": "speed_camera"
+  }
+},
+{
+  "type": "node",
+  "id": 1307522764,
+  "lat": 39.4694093,
+  "lon": -0.3992671,
+  "tags": {
+    "crossing": "yes",
+    "crossing:island": "no",
+    "crossing:markings": "yes",
+    "crossing:signals": "no",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 1316130973,
+  "lat": 39.4689936,
+  "lon": -0.3995840,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "no",
+    "crossing:markings": "zebra",
+    "crossing:signals": "no",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 1567974721,
+  "lat": 39.4687438,
+  "lon": -0.3996717,
+  "tags": {
+    "highway": "traffic_signals"
+  }
+},
+{
+  "type": "node",
+  "id": 1724202278,
+  "lat": 39.4692855,
+  "lon": -0.3993769,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "no",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 2821231911,
+  "lat": 39.4686501,
+  "lon": -0.3997868,
+  "tags": {
+    "highway": "traffic_signals"
+  }
+},
+{
+  "type": "node",
+  "id": 2821231912,
+  "lat": 39.4687794,
+  "lon": -0.3994011,
+  "tags": {
+    "bicycle": "yes",
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "crossing:signals": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 6604012892,
+  "lat": 39.4687655,
+  "lon": -0.3993203,
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "zebra",
+    "crossing:signals": "yes",
+    "highway": "crossing",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6604012895,
+  "lat": 39.4685806,
+  "lon": -0.3993753,
+  "tags": {
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "highway": "crossing",
+    "tactile_paving": "yes",
+    "traffic_signals:sound": "no",
+    "traffic_signals:vibration": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6604012903,
+  "lat": 39.4683126,
+  "lon": -0.3986311,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6604012907,
+  "lat": 39.4684417,
+  "lon": -0.3996057,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 6604012909,
+  "lat": 39.4684648,
+  "lon": -0.3997500,
+  "tags": {
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "crossing:markings": "yes",
+    "crossing:signals": "yes",
+    "highway": "crossing",
+    "tactile_paving": "yes",
+    "traffic_signals:sound": "no",
+    "traffic_signals:vibration": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6604012938,
+  "lat": 39.4685882,
+  "lon": -0.3994162,
+  "tags": {
+    "bicycle": "yes",
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 6868146189,
+  "lat": 39.4687553,
+  "lon": -0.3992606,
+  "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+  }
+},
+{
+  "type": "node",
+  "id": 9274741083,
+  "lat": 39.4687998,
+  "lon": -0.3987579,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing",
+    "tactile_paving": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10093567332,
+  "lat": 39.4685286,
+  "lon": -0.3997082,
+  "tags": {
+    "bicycle": "yes",
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 10093567480,
+  "lat": 39.4682921,
+  "lon": -0.3986368,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "no",
+    "crossing:markings": "zebra",
+    "crossing:signals": "no",
+    "highway": "crossing"
+  }
+},
+{
+  "type": "node",
+  "id": 12379244944,
+  "lat": 39.4693085,
+  "lon": -0.3994923,
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "no",
+    "crossing:markings": "zebra",
+    "highway": "crossing",
+    "tactile_paving": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12901730095,
+  "lat": 39.4690129,
+  "lon": -0.3998973,
+  "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "València, Cid - Burgos",
+    "network": "Metrobús",
+    "network:wikidata": "Q5712403",
+    "operator": "Autoritat de Transport Metropolità de València",
+    "operator:short": "ATMV",
+    "operator:wikidata": "Q26084999",
+    "public_transport": "platform",
+    "ref": "483"
+  }
+},
+{
+  "type": "way",
+  "id": 23548208,
+  "bounds": {
+    "minlat": 39.4680702,
+    "minlon": -0.3989020,
+    "maxlat": 39.4684930,
+    "maxlon": -0.3968499
+  },
+  "geometry": [
+    { "lat": 39.4684930, "lon": -0.3989020 },
+    { "lat": 39.4683940, "lon": -0.3988568 },
+    { "lat": 39.4683696, "lon": -0.3988245 },
+    { "lat": 39.4683498, "lon": -0.3987890 },
+    { "lat": 39.4683346, "lon": -0.3987384 },
+    { "lat": 39.4683126, "lon": -0.3986311 },
+    { "lat": 39.4681631, "lon": -0.3977929 },
+    { "lat": 39.4681343, "lon": -0.3976294 },
+    { "lat": 39.4681069, "lon": -0.3974894 },
+    { "lat": 39.4680787, "lon": -0.3973358 },
+    { "lat": 39.4680740, "lon": -0.3972870 },
+    { "lat": 39.4680702, "lon": -0.3972388 },
+    { "lat": 39.4680725, "lon": -0.3971924 },
+    { "lat": 39.4680839, "lon": -0.3971366 },
+    { "lat": 39.4681006, "lon": -0.3970771 },
+    { "lat": 39.4681306, "lon": -0.3968499 }
+  ],
+  "tags": {
+    "highway": "service",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:urban",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 23557380,
+  "bounds": {
+    "minlat": 39.4692245,
+    "minlon": -0.3988725,
+    "maxlat": 39.4695756,
+    "maxlon": -0.3979922
+  },
+  "geometry": [
+    { "lat": 39.4692245, "lon": -0.3988725 },
+    { "lat": 39.4693940, "lon": -0.3984361 },
+    { "lat": 39.4695756, "lon": -0.3979922 }
+  ],
+  "tags": {
+    "access": "destination",
+    "highway": "residential",
+    "lane_markings": "no",
+    "name": "Carrer de la Mare de Déu de Rebollet",
+    "name:ca": "Carrer de la Mare de Déu de Rebollet",
+    "name:es": "Calle de la Virgen del Rebollet",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 23557381,
+  "bounds": {
+    "minlat": 39.4688336,
+    "minlon": -0.3986473,
+    "maxlat": 39.4689448,
+    "maxlon": -0.3986151
+  },
+  "geometry": [
+    { "lat": 39.4688336, "lon": -0.3986473 },
+    { "lat": 39.4689448, "lon": -0.3986151 }
+  ],
+  "tags": {
+    "highway": "pedestrian",
+    "lit": "yes",
+    "name": "Carrer de la Mare de Déu de la Salut",
+    "name:ca": "Carrer de la Mare de Déu de la Salut",
+    "name:es": "Calle de la Virgen de la Salud",
+    "name:etymology:wikidata": "Q429437",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 37032672,
+  "bounds": {
+    "minlat": 39.4667998,
+    "minlon": -0.4002562,
+    "maxlat": 39.4684976,
+    "maxlon": -0.3997385
+  },
+  "geometry": [
+    { "lat": 39.4667998, "lon": -0.4002562 },
+    { "lat": 39.4668670, "lon": -0.4002352 },
+    { "lat": 39.4673540, "lon": -0.4000849 },
+    { "lat": 39.4674388, "lon": -0.4000603 },
+    { "lat": 39.4680347, "lon": -0.3998753 },
+    { "lat": 39.4684648, "lon": -0.3997500 },
+    { "lat": 39.4684976, "lon": -0.3997385 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:urban",
+    "name": "Carrer de Santa Cruz de Tenerife",
+    "name:ca": "Carrer de Santa Cruz de Tenerife",
+    "name:es": "Calle de Santa Cruz de Tenerife",
+    "name:etymology:wikidata": "Q14328",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 115829323,
+  "bounds": {
+    "minlat": 39.4663403,
+    "minlon": -0.4002628,
+    "maxlat": 39.4684654,
+    "maxlon": -0.3995682
+  },
+  "geometry": [
+    { "lat": 39.4663403, "lon": -0.4002628 },
+    { "lat": 39.4663619, "lon": -0.4002603 },
+    { "lat": 39.4664347, "lon": -0.4002362 },
+    { "lat": 39.4664614, "lon": -0.4002264 },
+    { "lat": 39.4664733, "lon": -0.4002210 },
+    { "lat": 39.4664836, "lon": -0.4002083 },
+    { "lat": 39.4664955, "lon": -0.4002024 },
+    { "lat": 39.4673295, "lon": -0.3999490 },
+    { "lat": 39.4674137, "lon": -0.3999218 },
+    { "lat": 39.4684243, "lon": -0.3996145 },
+    { "lat": 39.4684417, "lon": -0.3996057 },
+    { "lat": 39.4684583, "lon": -0.3995828 },
+    { "lat": 39.4684654, "lon": -0.3995682 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "oneway": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 116822299,
+  "bounds": {
+    "minlat": 39.4688159,
+    "minlon": -0.3996133,
+    "maxlat": 39.4703224,
+    "maxlon": -0.3991836
+  },
+  "geometry": [
+    { "lat": 39.4688159, "lon": -0.3996133 },
+    { "lat": 39.4689936, "lon": -0.3995840 },
+    { "lat": 39.4693085, "lon": -0.3994923 },
+    { "lat": 39.4694436, "lon": -0.3994514 },
+    { "lat": 39.4695779, "lon": -0.3994105 },
+    { "lat": 39.4699323, "lon": -0.3992991 },
+    { "lat": 39.4702135, "lon": -0.3992158 },
+    { "lat": 39.4703224, "lon": -0.3991836 }
+  ],
+  "tags": {
+    "cycleway:right": "separate",
+    "highway": "residential",
+    "lanes": "1",
+    "lit": "yes",
+    "name": "Carrer de Burgos",
+    "name:ca": "Carrer de Burgos",
+    "name:es": "Calle de Burgos",
+    "name:etymology:wikidata": "Q9580",
+    "oneway": "yes",
+    "sidewalk:left": "yes",
+    "sidewalk:right": "separate",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 143277287,
+  "bounds": {
+    "minlat": 39.4683155,
+    "minlon": -0.3992457,
+    "maxlat": 39.4688210,
+    "maxlon": -0.3966979
+  },
+  "geometry": [
+    { "lat": 39.4683155, "lon": -0.3966979 },
+    { "lat": 39.4683742, "lon": -0.3968694 },
+    { "lat": 39.4684266, "lon": -0.3969833 },
+    { "lat": 39.4684851, "lon": -0.3970839 },
+    { "lat": 39.4685006, "lon": -0.3971209 },
+    { "lat": 39.4685114, "lon": -0.3971637 },
+    { "lat": 39.4685162, "lon": -0.3971903 },
+    { "lat": 39.4686146, "lon": -0.3977256 },
+    { "lat": 39.4687852, "lon": -0.3986747 },
+    { "lat": 39.4687998, "lon": -0.3987579 },
+    { "lat": 39.4688188, "lon": -0.3988664 },
+    { "lat": 39.4688210, "lon": -0.3989290 },
+    { "lat": 39.4687997, "lon": -0.3990198 },
+    { "lat": 39.4687688, "lon": -0.3991281 },
+    { "lat": 39.4687527, "lon": -0.3992457 }
+  ],
+  "tags": {
+    "highway": "service",
+    "lanes": "1",
+    "lit": "yes",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 143277290,
+  "bounds": {
+    "minlat": 39.4687390,
+    "minlon": -0.4010880,
+    "maxlat": 39.4688884,
+    "maxlon": -0.3996133
+  },
+  "geometry": [
+    { "lat": 39.4688884, "lon": -0.4010880 },
+    { "lat": 39.4688697, "lon": -0.4005229 },
+    { "lat": 39.4688551, "lon": -0.4003604 },
+    { "lat": 39.4687424, "lon": -0.3997516 },
+    { "lat": 39.4687390, "lon": -0.3997042 },
+    { "lat": 39.4687438, "lon": -0.3996717 },
+    { "lat": 39.4687696, "lon": -0.3996324 },
+    { "lat": 39.4688159, "lon": -0.3996133 }
+  ],
+  "tags": {
+    "highway": "primary_link",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 143277291,
+  "bounds": {
+    "minlat": 39.4684875,
+    "minlon": -0.3989023,
+    "maxlat": 39.4685841,
+    "maxlon": -0.3978304
+  },
+  "geometry": [
+    { "lat": 39.4684997, "lon": -0.3978304 },
+    { "lat": 39.4685048, "lon": -0.3979226 },
+    { "lat": 39.4684992, "lon": -0.3979911 },
+    { "lat": 39.4684903, "lon": -0.3980575 },
+    { "lat": 39.4684875, "lon": -0.3981323 },
+    { "lat": 39.4684959, "lon": -0.3982649 },
+    { "lat": 39.4685119, "lon": -0.3983964 },
+    { "lat": 39.4685841, "lon": -0.3987829 },
+    { "lat": 39.4685801, "lon": -0.3988321 },
+    { "lat": 39.4685654, "lon": -0.3988794 },
+    { "lat": 39.4685301, "lon": -0.3989023 },
+    { "lat": 39.4684930, "lon": -0.3989020 }
+  ],
+  "tags": {
+    "highway": "primary_link",
+    "lanes": "1",
+    "lit": "yes",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 156338324,
+  "bounds": {
+    "minlat": 39.4689448,
+    "minlon": -0.3986151,
+    "maxlat": 39.4691066,
+    "maxlon": -0.3982509
+  },
+  "geometry": [
+    { "lat": 39.4689448, "lon": -0.3986151 },
+    { "lat": 39.4691066, "lon": -0.3982509 }
+  ],
+  "tags": {
+    "highway": "pedestrian",
+    "lit": "yes",
+    "name": "Carrer de la Mare de Déu de la Salut",
+    "name:ca": "Carrer de la Mare de Déu de la Salut",
+    "name:es": "Calle de la Virgen de la Salud",
+    "name:etymology:wikidata": "Q429437",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 156338332,
+  "bounds": {
+    "minlat": 39.4688925,
+    "minlon": -0.4027200,
+    "maxlat": 39.4694887,
+    "maxlon": -0.4000261
+  },
+  "geometry": [
+    { "lat": 39.4688925, "lon": -0.4000261 },
+    { "lat": 39.4690009, "lon": -0.4001642 },
+    { "lat": 39.4690454, "lon": -0.4002271 },
+    { "lat": 39.4690664, "lon": -0.4002761 },
+    { "lat": 39.4690793, "lon": -0.4003288 },
+    { "lat": 39.4693329, "lon": -0.4017276 },
+    { "lat": 39.4694887, "lon": -0.4025927 },
+    { "lat": 39.4694271, "lon": -0.4027200 }
+  ],
+  "tags": {
+    "highway": "service",
+    "lit": "yes",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 277642340,
+  "bounds": {
+    "minlat": 39.4673351,
+    "minlon": -0.3994546,
+    "maxlat": 39.4681609,
+    "maxlon": -0.3991530
+  },
+  "geometry": [
+    { "lat": 39.4681609, "lon": -0.3993754 },
+    { "lat": 39.4679149, "lon": -0.3994546 },
+    { "lat": 39.4678567, "lon": -0.3991530 },
+    { "lat": 39.4673351, "lon": -0.3993254 }
+  ],
+  "tags": {
+    "access": "private",
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 290242672,
+  "bounds": {
+    "minlat": 39.4675310,
+    "minlon": -0.3996773,
+    "maxlat": 39.4684541,
+    "maxlon": -0.3955146
+  },
+  "geometry": [
+    { "lat": 39.4675441, "lon": -0.3955146 },
+    { "lat": 39.4675310, "lon": -0.3955241 },
+    { "lat": 39.4677155, "lon": -0.3960296 },
+    { "lat": 39.4678749, "lon": -0.3964663 },
+    { "lat": 39.4678908, "lon": -0.3965100 },
+    { "lat": 39.4679463, "lon": -0.3968078 },
+    { "lat": 39.4680000, "lon": -0.3971128 },
+    { "lat": 39.4680206, "lon": -0.3972531 },
+    { "lat": 39.4680351, "lon": -0.3973493 },
+    { "lat": 39.4680622, "lon": -0.3975022 },
+    { "lat": 39.4680873, "lon": -0.3976443 },
+    { "lat": 39.4681161, "lon": -0.3978067 },
+    { "lat": 39.4682648, "lon": -0.3986455 },
+    { "lat": 39.4684101, "lon": -0.3994287 },
+    { "lat": 39.4684372, "lon": -0.3995805 },
+    { "lat": 39.4684417, "lon": -0.3996057 },
+    { "lat": 39.4684541, "lon": -0.3996773 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 290242674,
+  "bounds": {
+    "minlat": 39.4684672,
+    "minlon": -0.3994917,
+    "maxlat": 39.4689786,
+    "maxlon": -0.3966552
+  },
+  "geometry": [
+    { "lat": 39.4684672, "lon": -0.3966552 },
+    { "lat": 39.4685527, "lon": -0.3971550 },
+    { "lat": 39.4685572, "lon": -0.3971791 },
+    { "lat": 39.4686574, "lon": -0.3977114 },
+    { "lat": 39.4688336, "lon": -0.3986473 },
+    { "lat": 39.4688494, "lon": -0.3987435 },
+    { "lat": 39.4689355, "lon": -0.3992666 },
+    { "lat": 39.4689737, "lon": -0.3994446 },
+    { "lat": 39.4689768, "lon": -0.3994703 },
+    { "lat": 39.4689786, "lon": -0.3994917 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 479391347,
+  "bounds": {
+    "minlat": 39.4684769,
+    "minlon": -0.4027787,
+    "maxlat": 39.4690181,
+    "maxlon": -0.3998275
+  },
+  "geometry": [
+    { "lat": 39.4684769, "lon": -0.3998275 },
+    { "lat": 39.4685007, "lon": -0.3999571 },
+    { "lat": 39.4689963, "lon": -0.4026510 },
+    { "lat": 39.4690181, "lon": -0.4027787 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 561325350,
+  "bounds": {
+    "minlat": 39.4684976,
+    "minlon": -0.3997385,
+    "maxlat": 39.4686005,
+    "maxlon": -0.3994825
+  },
+  "geometry": [
+    { "lat": 39.4684976, "lon": -0.3997385 },
+    { "lat": 39.4685286, "lon": -0.3997082 },
+    { "lat": 39.4685601, "lon": -0.3996506 },
+    { "lat": 39.4685875, "lon": -0.3995840 },
+    { "lat": 39.4686005, "lon": -0.3994825 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lane_markings": "no",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:urban",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 703228815,
+  "bounds": {
+    "minlat": 39.4687110,
+    "minlon": -0.3993371,
+    "maxlat": 39.4688499,
+    "maxlon": -0.3992936
+  },
+  "geometry": [
+    { "lat": 39.4688499, "lon": -0.3992936 },
+    { "lat": 39.4687655, "lon": -0.3993203 },
+    { "lat": 39.4687110, "lon": -0.3993371 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "zebra",
+    "crossing:signals": "yes",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 703228816,
+  "bounds": {
+    "minlat": 39.4686397,
+    "minlon": -0.3993594,
+    "maxlat": 39.4687110,
+    "maxlon": -0.3993371
+  },
+  "geometry": [
+    { "lat": 39.4687110, "lon": -0.3993371 },
+    { "lat": 39.4686397, "lon": -0.3993594 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 703228817,
+  "bounds": {
+    "minlat": 39.4684936,
+    "minlon": -0.3994030,
+    "maxlat": 39.4686397,
+    "maxlon": -0.3993594
+  },
+  "geometry": [
+    { "lat": 39.4686397, "lon": -0.3993594 },
+    { "lat": 39.4685806, "lon": -0.3993753 },
+    { "lat": 39.4685051, "lon": -0.3993994 },
+    { "lat": 39.4684936, "lon": -0.3994030 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 703228818,
+  "bounds": {
+    "minlat": 39.4688499,
+    "minlon": -0.3992936,
+    "maxlat": 39.4689355,
+    "maxlon": -0.3992666
+  },
+  "geometry": [
+    { "lat": 39.4689355, "lon": -0.3992666 },
+    { "lat": 39.4688499, "lon": -0.3992936 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 703228819,
+  "bounds": {
+    "minlat": 39.4690049,
+    "minlon": -0.4026022,
+    "maxlat": 39.4695429,
+    "maxlon": -0.3996689
+  },
+  "geometry": [
+    { "lat": 39.4690049, "lon": -0.3996689 },
+    { "lat": 39.4690263, "lon": -0.3997861 },
+    { "lat": 39.4690858, "lon": -0.4001128 },
+    { "lat": 39.4693771, "lon": -0.4017124 },
+    { "lat": 39.4695429, "lon": -0.4026022 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 703228820,
+  "bounds": {
+    "minlat": 39.4689786,
+    "minlon": -0.3996689,
+    "maxlat": 39.4690049,
+    "maxlon": -0.3994917
+  },
+  "geometry": [
+    { "lat": 39.4689786, "lon": -0.3994917 },
+    { "lat": 39.4689936, "lon": -0.3995840 },
+    { "lat": 39.4690049, "lon": -0.3996689 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "crossing:signals": "no",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 703228822,
+  "bounds": {
+    "minlat": 39.4684541,
+    "minlon": -0.3998275,
+    "maxlat": 39.4684769,
+    "maxlon": -0.3996773
+  },
+  "geometry": [
+    { "lat": 39.4684541, "lon": -0.3996773 },
+    { "lat": 39.4684648, "lon": -0.3997500 },
+    { "lat": 39.4684769, "lon": -0.3998275 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "yes",
+    "crossing:signals": "yes",
+    "footway": "crossing",
+    "highway": "footway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 703228823,
+  "bounds": {
+    "minlat": 39.4684101,
+    "minlon": -0.3994287,
+    "maxlat": 39.4684936,
+    "maxlon": -0.3994030
+  },
+  "geometry": [
+    { "lat": 39.4684101, "lon": -0.3994287 },
+    { "lat": 39.4684936, "lon": -0.3994030 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1005231662,
+  "bounds": {
+    "minlat": 39.4687845,
+    "minlon": -0.3987623,
+    "maxlat": 39.4688143,
+    "maxlon": -0.3987534
+  },
+  "geometry": [
+    { "lat": 39.4688143, "lon": -0.3987534 },
+    { "lat": 39.4687998, "lon": -0.3987579 },
+    { "lat": 39.4687845, "lon": -0.3987623 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1005231663,
+  "bounds": {
+    "minlat": 39.4688143,
+    "minlon": -0.3987534,
+    "maxlat": 39.4688494,
+    "maxlon": -0.3987435
+  },
+  "geometry": [
+    { "lat": 39.4688494, "lon": -0.3987435 },
+    { "lat": 39.4688143, "lon": -0.3987534 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1005231664,
+  "bounds": {
+    "minlat": 39.4685805,
+    "minlon": -0.3987676,
+    "maxlat": 39.4687845,
+    "maxlon": -0.3977280
+  },
+  "geometry": [
+    { "lat": 39.4687845, "lon": -0.3987623 },
+    { "lat": 39.4687661, "lon": -0.3987676 },
+    { "lat": 39.4685805, "lon": -0.3977335 },
+    { "lat": 39.4685998, "lon": -0.3977280 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1005231700,
+  "bounds": {
+    "minlat": 39.4674396,
+    "minlon": -0.3998915,
+    "maxlat": 39.4684372,
+    "maxlon": -0.3995805
+  },
+  "geometry": [
+    { "lat": 39.4684372, "lon": -0.3995805 },
+    { "lat": 39.4674396, "lon": -0.3998915 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1313811029,
+  "bounds": {
+    "minlat": 39.4685245,
+    "minlon": -0.3998387,
+    "maxlat": 39.4685341,
+    "maxlon": -0.3996305
+  },
+  "geometry": [
+    { "lat": 39.4685245, "lon": -0.3996305 },
+    { "lat": 39.4685286, "lon": -0.3997082 },
+    { "lat": 39.4685341, "lon": -0.3998387 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:markings": "zebra",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1315346422,
+  "bounds": {
+    "minlat": 39.4675825,
+    "minlon": -0.3996305,
+    "maxlat": 39.4685245,
+    "maxlon": -0.3955029
+  },
+  "geometry": [
+    { "lat": 39.4675891, "lon": -0.3955029 },
+    { "lat": 39.4675841, "lon": -0.3955250 },
+    { "lat": 39.4675825, "lon": -0.3955525 },
+    { "lat": 39.4675897, "lon": -0.3955760 },
+    { "lat": 39.4677433, "lon": -0.3960103 },
+    { "lat": 39.4679063, "lon": -0.3964499 },
+    { "lat": 39.4680010, "lon": -0.3966887 },
+    { "lat": 39.4680343, "lon": -0.3967821 },
+    { "lat": 39.4680407, "lon": -0.3968025 },
+    { "lat": 39.4680475, "lon": -0.3968363 },
+    { "lat": 39.4680572, "lon": -0.3969163 },
+    { "lat": 39.4680621, "lon": -0.3969749 },
+    { "lat": 39.4680621, "lon": -0.3970459 },
+    { "lat": 39.4680578, "lon": -0.3971128 },
+    { "lat": 39.4680464, "lon": -0.3972000 },
+    { "lat": 39.4680454, "lon": -0.3972602 },
+    { "lat": 39.4680579, "lon": -0.3973400 },
+    { "lat": 39.4680862, "lon": -0.3974951 },
+    { "lat": 39.4681119, "lon": -0.3976361 },
+    { "lat": 39.4681415, "lon": -0.3977990 },
+    { "lat": 39.4682921, "lon": -0.3986368 },
+    { "lat": 39.4683126, "lon": -0.3987458 },
+    { "lat": 39.4683265, "lon": -0.3987916 },
+    { "lat": 39.4683429, "lon": -0.3988316 },
+    { "lat": 39.4683831, "lon": -0.3989022 },
+    { "lat": 39.4684238, "lon": -0.3989978 },
+    { "lat": 39.4684498, "lon": -0.3990846 },
+    { "lat": 39.4684744, "lon": -0.3992082 },
+    { "lat": 39.4685051, "lon": -0.3993994 },
+    { "lat": 39.4685080, "lon": -0.3994180 },
+    { "lat": 39.4685131, "lon": -0.3994612 },
+    { "lat": 39.4685190, "lon": -0.3995113 },
+    { "lat": 39.4685245, "lon": -0.3996305 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1315350260,
+  "bounds": {
+    "minlat": 39.4685273,
+    "minlon": -0.3994355,
+    "maxlat": 39.4686473,
+    "maxlon": -0.3993992
+  },
+  "geometry": [
+    { "lat": 39.4685273, "lon": -0.3994355 },
+    { "lat": 39.4685882, "lon": -0.3994162 },
+    { "lat": 39.4686473, "lon": -0.3993992 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:signals": "yes",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1315350261,
+  "bounds": {
+    "minlat": 39.4684654,
+    "minlon": -0.3995682,
+    "maxlat": 39.4685273,
+    "maxlon": -0.3994355
+  },
+  "geometry": [
+    { "lat": 39.4684654, "lon": -0.3995682 },
+    { "lat": 39.4685131, "lon": -0.3994612 },
+    { "lat": 39.4685273, "lon": -0.3994355 }
+  ],
+  "tags": {
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1315350262,
+  "bounds": {
+    "minlat": 39.4686473,
+    "minlon": -0.3993992,
+    "maxlat": 39.4687192,
+    "maxlon": -0.3993789
+  },
+  "geometry": [
+    { "lat": 39.4686473, "lon": -0.3993992 },
+    { "lat": 39.4687192, "lon": -0.3993789 }
+  ],
+  "tags": {
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1315350263,
+  "bounds": {
+    "minlat": 39.4687192,
+    "minlon": -0.3994628,
+    "maxlat": 39.4689349,
+    "maxlon": -0.3993789
+  },
+  "geometry": [
+    { "lat": 39.4687192, "lon": -0.3993789 },
+    { "lat": 39.4687794, "lon": -0.3994011 },
+    { "lat": 39.4689349, "lon": -0.3994628 }
+  ],
+  "tags": {
+    "crossing": "traffic_signals",
+    "crossing:markings": "dots",
+    "crossing:signals": "yes",
+    "cycleway": "crossing",
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "no",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1315350264,
+  "bounds": {
+    "minlat": 39.4689349,
+    "minlon": -0.3994710,
+    "maxlat": 39.4702842,
+    "maxlon": -0.3990306
+  },
+  "geometry": [
+    { "lat": 39.4689349, "lon": -0.3994628 },
+    { "lat": 39.4689768, "lon": -0.3994703 },
+    { "lat": 39.4690029, "lon": -0.3994710 },
+    { "lat": 39.4692796, "lon": -0.3993886 },
+    { "lat": 39.4692855, "lon": -0.3993769 },
+    { "lat": 39.4693274, "lon": -0.3992936 },
+    { "lat": 39.4694093, "lon": -0.3992671 },
+    { "lat": 39.4695271, "lon": -0.3992312 },
+    { "lat": 39.4695409, "lon": -0.3992306 },
+    { "lat": 39.4695531, "lon": -0.3992377 },
+    { "lat": 39.4695775, "lon": -0.3992552 },
+    { "lat": 39.4695903, "lon": -0.3992637 },
+    { "lat": 39.4696061, "lon": -0.3992705 },
+    { "lat": 39.4696213, "lon": -0.3992718 },
+    { "lat": 39.4696445, "lon": -0.3992684 },
+    { "lat": 39.4700581, "lon": -0.3991510 },
+    { "lat": 39.4700862, "lon": -0.3991324 },
+    { "lat": 39.4701307, "lon": -0.3991210 },
+    { "lat": 39.4701962, "lon": -0.3991323 },
+    { "lat": 39.4702274, "lon": -0.3991393 },
+    { "lat": 39.4702399, "lon": -0.3991327 },
+    { "lat": 39.4702518, "lon": -0.3991192 },
+    { "lat": 39.4702629, "lon": -0.3991006 },
+    { "lat": 39.4702709, "lon": -0.3990799 },
+    { "lat": 39.4702774, "lon": -0.3990387 },
+    { "lat": 39.4702842, "lon": -0.3990306 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "lit": "yes",
+    "oneway": "no",
+    "sidewalk": "right",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1334489756,
+  "bounds": {
+    "minlat": 39.4686005,
+    "minlon": -0.4010880,
+    "maxlat": 39.4688884,
+    "maxlon": -0.3994825
+  },
+  "geometry": [
+    { "lat": 39.4688884, "lon": -0.4010880 },
+    { "lat": 39.4686501, "lon": -0.3997868 },
+    { "lat": 39.4686005, "lon": -0.3994825 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "lanes:psv": "1",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "psv:lanes": "yes|yes|yes|designated",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1334489757,
+  "bounds": {
+    "minlat": 39.4684930,
+    "minlon": -0.3994825,
+    "maxlat": 39.4686005,
+    "maxlon": -0.3989020
+  },
+  "geometry": [
+    { "lat": 39.4686005, "lon": -0.3994825 },
+    { "lat": 39.4685882, "lon": -0.3994162 },
+    { "lat": 39.4685806, "lon": -0.3993753 },
+    { "lat": 39.4684930, "lon": -0.3989020 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "lanes:psv": "1",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "psv:lanes": "yes|yes|yes|designated",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1334489758,
+  "bounds": {
+    "minlat": 39.4681306,
+    "minlon": -0.3989020,
+    "maxlat": 39.4684930,
+    "maxlon": -0.3968499
+  },
+  "geometry": [
+    { "lat": 39.4684930, "lon": -0.3989020 },
+    { "lat": 39.4681306, "lon": -0.3968499 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "4",
+    "lanes:psv": "1",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "psv:lanes": "yes|yes|yes|designated",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1338340870,
+  "bounds": {
+    "minlat": 39.4692949,
+    "minlon": -0.3994923,
+    "maxlat": 39.4693085,
+    "maxlon": -0.3994240
+  },
+  "geometry": [
+    { "lat": 39.4692949, "lon": -0.3994240 },
+    { "lat": 39.4693085, "lon": -0.3994923 }
+  ],
+  "tags": {
+    "crossing": "uncontrolled",
+    "crossing:island": "no",
+    "crossing:markings": "zebra",
+    "footway": "crossing",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1338340873,
+  "bounds": {
+    "minlat": 39.4692855,
+    "minlon": -0.3994240,
+    "maxlat": 39.4692949,
+    "maxlon": -0.3993769
+  },
+  "geometry": [
+    { "lat": 39.4692855, "lon": -0.3993769 },
+    { "lat": 39.4692949, "lon": -0.3994240 }
+  ],
+  "tags": {
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 1340610447,
+  "bounds": {
+    "minlat": 39.4689737,
+    "minlon": -0.3994446,
+    "maxlat": 39.4701837,
+    "maxlon": -0.3990753
+  },
+  "geometry": [
+    { "lat": 39.4689737, "lon": -0.3994446 },
+    { "lat": 39.4692688, "lon": -0.3993645 },
+    { "lat": 39.4693193, "lon": -0.3992678 },
+    { "lat": 39.4694321, "lon": -0.3992330 },
+    { "lat": 39.4695480, "lon": -0.3991990 },
+    { "lat": 39.4696223, "lon": -0.3992387 },
+    { "lat": 39.4701837, "lon": -0.3990753 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "lit": "yes",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1393798496,
+  "bounds": {
+    "minlat": 39.4684997,
+    "minlon": -0.3992457,
+    "maxlat": 39.4687527,
+    "maxlon": -0.3978304
+  },
+  "geometry": [
+    { "lat": 39.4684997, "lon": -0.3978304 },
+    { "lat": 39.4687060, "lon": -0.3989945 },
+    { "lat": 39.4687527, "lon": -0.3992457 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "lit": "yes",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1393798497,
+  "bounds": {
+    "minlat": 39.4687527,
+    "minlon": -0.3996133,
+    "maxlat": 39.4688159,
+    "maxlon": -0.3992457
+  },
+  "geometry": [
+    { "lat": 39.4687527, "lon": -0.3992457 },
+    { "lat": 39.4687553, "lon": -0.3992606 },
+    { "lat": 39.4687655, "lon": -0.3993203 },
+    { "lat": 39.4687794, "lon": -0.3994011 },
+    { "lat": 39.4688159, "lon": -0.3996133 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "lit": "yes",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1393798498,
+  "bounds": {
+    "minlat": 39.4688159,
+    "minlon": -0.4000261,
+    "maxlat": 39.4688925,
+    "maxlon": -0.3996133
+  },
+  "geometry": [
+    { "lat": 39.4688159, "lon": -0.3996133 },
+    { "lat": 39.4688925, "lon": -0.4000261 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "lit": "yes",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1393798499,
+  "bounds": {
+    "minlat": 39.4688925,
+    "minlon": -0.4009853,
+    "maxlat": 39.4690698,
+    "maxlon": -0.4000261
+  },
+  "geometry": [
+    { "lat": 39.4688925, "lon": -0.4000261 },
+    { "lat": 39.4690698, "lon": -0.4009853 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "lit": "yes",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1524377278,
+  "bounds": {
+    "minlat": 39.4685183,
+    "minlon": -0.3998597,
+    "maxlat": 39.4685341,
+    "maxlon": -0.3998387
+  },
+  "geometry": [
+    { "lat": 39.4685183, "lon": -0.3998597 },
+    { "lat": 39.4685341, "lon": -0.3998387 }
+  ],
+  "tags": {
+    "highway": "cycleway",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1524377279,
+  "bounds": {
+    "minlat": 39.4685341,
+    "minlon": -0.4003707,
+    "maxlat": 39.4686242,
+    "maxlon": -0.3998387
+  },
+  "geometry": [
+    { "lat": 39.4685341, "lon": -0.3998387 },
+    { "lat": 39.4685395, "lon": -0.3999168 },
+    { "lat": 39.4685443, "lon": -0.3999441 },
+    { "lat": 39.4686129, "lon": -0.4003345 },
+    { "lat": 39.4686242, "lon": -0.4003707 }
+  ],
+  "tags": {
+    "cycleway": "segregated",
+    "highway": "cycleway",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1524377281,
+  "bounds": {
+    "minlat": 39.4685183,
+    "minlon": -0.4003281,
+    "maxlat": 39.4685991,
+    "maxlon": -0.3998597
+  },
+  "geometry": [
+    { "lat": 39.4685991, "lon": -0.4003281 },
+    { "lat": 39.4685857, "lon": -0.4002546 },
+    { "lat": 39.4685333, "lon": -0.3999474 },
+    { "lat": 39.4685183, "lon": -0.3998597 }
+  ],
+  "tags": {
+    "cyclestreet": "yes",
+    "highway": "service",
+    "lanes": "1",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:urban",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1524377282,
+  "bounds": {
+    "minlat": 39.4684976,
+    "minlon": -0.3998597,
+    "maxlat": 39.4685183,
+    "maxlon": -0.3997385
+  },
+  "geometry": [
+    { "lat": 39.4685183, "lon": -0.3998597 },
+    { "lat": 39.4684976, "lon": -0.3997385 }
+  ],
+  "tags": {
+    "highway": "service",
+    "lanes": "1",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:urban",
+    "name": "Avinguda del Cid",
+    "name:ca": "Avinguda del Cid",
+    "name:es": "Avenida del Cid",
+    "name:etymology:wikidata": "Q43958",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1524381017,
+  "bounds": {
+    "minlat": 39.4685007,
+    "minlon": -0.4002760,
+    "maxlat": 39.4686560,
+    "maxlon": -0.3999372
+  },
+  "geometry": [
+    { "lat": 39.4685007, "lon": -0.3999571 },
+    { "lat": 39.4685333, "lon": -0.3999474 },
+    { "lat": 39.4685443, "lon": -0.3999441 },
+    { "lat": 39.4685674, "lon": -0.3999372 },
+    { "lat": 39.4686295, "lon": -0.4002760 },
+    { "lat": 39.4686560, "lon": -0.4002670 },
+    { "lat": 39.4686530, "lon": -0.4002509 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "surface": "paving_stones"
+  }
+},
+{
+  "type": "way",
+  "id": 1524381021,
+  "bounds": {
+    "minlat": 39.4689946,
+    "minlon": -0.3997955,
+    "maxlat": 39.4690263,
+    "maxlon": -0.3997861
+  },
+  "geometry": [
+    { "lat": 39.4689946, "lon": -0.3997955 },
+    { "lat": 39.4690263, "lon": -0.3997861 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway",
+    "surface": "paving_stones"
+  }
+}
+
+  ]
+}
