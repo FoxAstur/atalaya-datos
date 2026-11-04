@@ -10,7 +10,7 @@ on:
       solo: { description: "Ids separados por espacios (vacío = todos)", required: false, default: "" }
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: posiciones-${{ inputs.desde }}
@@ -33,8 +33,13 @@ jobs:
           HASTA: ${{ inputs.hasta }}
           SOLO: ${{ inputs.solo }}
         run: python posiciones_mapillary.py hojas
-      - uses: actions/upload-artifact@v4
-        with:
-          name: hojas-pos-${{ inputs.desde }}
-          path: hojas_pos/
-          retention-days: 14
+      - name: Subir a una rama aparte
+        run: |
+          mkdir /tmp/s && mv hojas_pos /tmp/s/
+          cd /tmp/s
+          git init -q -b "hojas-pos-${{ inputs.desde }}"
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          printf 'Fotos de Mapillary (CC BY-SA 4.0, https://www.mapillary.com) para revisión manual.\n' > LEEME.txt
+          git add -A && git commit -qm "Hojas de posición"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "hojas-pos-${{ inputs.desde }}"
