@@ -9,6 +9,8 @@ on:
       hasta: { description: "Hasta (sin incluir)", required: false, default: "100000" }
       solo: { description: "Ids separados por espacios (vacío = todos)", required: false, default: "" }
       modo: { description: "hojas | zoom", required: false, default: "hojas" }
+      ns: { description: "zoom: índices de objetivos separados por espacios", required: false, default: "" }
+      offs: { description: "zoom: distancias (m) de las fotos", required: false, default: "-125,-70,-15" }
 
 permissions:
   contents: write
@@ -33,6 +35,8 @@ jobs:
           DESDE: ${{ inputs.desde }}
           HASTA: ${{ inputs.hasta }}
           SOLO: ${{ inputs.solo }}
+          NS: ${{ inputs.ns }}
+          OFFS: ${{ inputs.offs }}
         run: python posiciones_mapillary.py ${{ inputs.modo }}
       - name: Subir a una rama aparte
         run: |

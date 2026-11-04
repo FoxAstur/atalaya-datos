@@ -163,7 +163,7 @@ def proyectar(la, lo, linea):
     return mejor
 
 
-def fotos_de(token, o):
+def fotos_de(token, o, todas=False):
     linea = pares(o["linea"])
     # consultas pequeñas a lo largo de la línea (una grande se queda en el límite de 2000 en ciudad)
     trozos, acum, ult = [linea[0]], 0.0, linea[0]
@@ -200,6 +200,8 @@ def fotos_de(token, o):
         esf = f.get("camera_type") not in (None, "perspective", "fisheye")
         cand.append({"id": f["id"], "url": f["thumb_1024_url"], "url2": f.get("thumb_2048_url"), "la": g[1], "lo": g[0], "s": s, "d": d,
                      "h": h, "esf": esf, "ms": f.get("captured_at") or 0})
+    if todas:
+        return cand, len(cand)
     # una por tramo de 40 m: la más reciente que no sea 360º (mejor si va centrada en el carril)
     elegidas = []
     k = -ATRAS
@@ -223,15 +225,22 @@ def zoom():
     os.makedirs("hojas_pos", exist_ok=True)
     indice = []
     for n, o in enumerate(objetivos):
-        if n < desde or n >= hasta:
+        ns = set(map(int, os.environ.get("NS", "").split()))
+        if n < desde or n >= hasta or (ns and n not in ns):
             continue
-        global ATRAS, DELANTE
-        elegidas, total = fotos_de(token, o)
+        elegidas, total = fotos_de(token, o, todas=True)
         # todas las candidatas, no solo una por hueco: se reconsulta con huecos de 30 m entre -110 y -20
-        cand = [c for c in elegidas if c and -125 <= c["s"] <= -15 and not c["esf"] and c.get("url2")]
-        cand.sort(key=lambda c: c["s"])
+        todas = [c for c in elegidas if not c["esf"] and c.get("url2")]
+        offs = [float(x) for x in os.environ.get("OFFS", "-125,-70,-15").split(",")]
+        cand, usadas = [], set()
+        for off in offs:   # la foto más reciente a ±25 m de cada distancia pedida
+            cerca = [c for c in todas if abs(c["s"] - off) <= 25 and c["id"] not in usadas]
+            if cerca:
+                c = max(cerca, key=lambda c: (c["ms"] // (90 * 86400_000), -abs(c["s"] - off)))
+                usadas.add(c["id"])
+                cand.append(c)
         ims = []
-        for c in cand[:3]:
+        for c in cand:
             b = pedir(c["url2"], binario=True)
             if not b:
                 continue
@@ -243,7 +252,7 @@ def zoom():
             d.rectangle([0, 0, 10 + 7 * len(et), 18], fill=(0, 0, 0))
             d.text((4, 4), et, fill=(255, 255, 0))
             ims.append(im)
-        reg = {"n": n, "clave": o["clave"], "fotos": [{"id": c["id"], "s": round(c["s"])} for c in cand[:3]]}
+        reg = {"n": n, "clave": o["clave"], "fotos": [{"id": c["id"], "s": round(c["s"]), "la": round(c["la"], 6), "lo": round(c["lo"], 6)} for c in cand]}
         if ims:
             hoja = Image.new("RGB", (1600, sum(i.height for i in ims)), "white")
             y = 0
