@@ -811,6 +811,10 @@
   "mu": "Marbella",
   "pr": "Málaga"
  },
+ "36.496,-4.950": {
+  "mu": "Marbella",
+  "pr": "Málaga"
+ },
  "36.496,-4.951": {
   "mu": "Marbella",
   "pr": "Málaga"
@@ -1088,6 +1092,10 @@
   "mu": "Coín",
   "pr": "Málaga"
  },
+ "36.688,-4.723": {
+  "mu": "Coín",
+  "pr": "Málaga"
+ },
  "36.692,-4.442": {
   "mu": "Málaga",
   "pr": "Málaga"
@@ -1240,6 +1248,10 @@
   "mu": "Ronda",
   "pr": "Málaga"
  },
+ "36.727,-6.088": {
+  "mu": "Jerez de la Frontera",
+  "pr": "Cádiz"
+ },
  "36.727,-6.425": {
   "mu": "Chipiona",
   "pr": "Cádiz"
@@ -1278,6 +1290,10 @@
   "pr": "Málaga"
  },
  "36.731,-4.454": {
+  "mu": "Málaga",
+  "pr": "Málaga"
+ },
+ "36.732,-4.454": {
   "mu": "Málaga",
   "pr": "Málaga"
  },
@@ -1636,6 +1652,10 @@
  "36.885,-5.027": {
   "mu": "Cañete la Real",
   "pr": "Málaga"
+ },
+ "36.886,-2.456": {
+  "mu": "Huércal de Almería",
+  "pr": "Almería"
  },
  "36.886,-5.382": {
   "mu": "Algodonales",
@@ -3410,6 +3430,10 @@
   "mu": "Montoro",
   "pr": "Córdoba"
  },
+ "38.007,-4.393": {
+  "mu": "Montoro",
+  "pr": "Córdoba"
+ },
  "38.008,-3.429": {
   "mu": "Baeza",
   "pr": "Jaén"
@@ -3722,6 +3746,10 @@
   "mu": "Sorihuela del Guadalimar",
   "pr": "Jaén"
  },
+ "38.251,-0.766": {
+  "mu": "Elx/Elche",
+  "pr": "Alicante"
+ },
  "38.251,-1.427": {
   "mu": "Cieza",
   "pr": "Murcia"
@@ -3739,6 +3767,10 @@
   "pr": "Badajoz"
  },
  "38.253,-1.428": {
+  "mu": "Cieza",
+  "pr": "Murcia"
+ },
+ "38.253,-1.429": {
   "mu": "Cieza",
   "pr": "Murcia"
  },
@@ -4062,6 +4094,10 @@
   "pr": "Badajoz"
  },
  "38.431,-3.498": {
+  "mu": "Almuradiel",
+  "pr": "Ciudad Real"
+ },
+ "38.432,-3.497": {
   "mu": "Almuradiel",
   "pr": "Ciudad Real"
  },
@@ -5623,6 +5659,10 @@
   "mu": "València",
   "pr": "Valencia"
  },
+ "39.471,-0.679": {
+  "mu": "Chiva",
+  "pr": "Valencia"
+ },
  "39.472,-0.431": {
   "mu": "Mislata",
   "pr": "Valencia"
@@ -5781,6 +5821,14 @@
  },
  "39.506,-2.857": {
   "mu": "Mota del Cuervo",
+  "pr": "Cuenca"
+ },
+ "39.508,-1.655": {
+  "mu": "Graja de Iniesta",
+  "pr": "Cuenca"
+ },
+ "39.508,-1.694": {
+  "mu": "Graja de Iniesta",
   "pr": "Cuenca"
  },
  "39.509,-1.655": {
@@ -6003,6 +6051,10 @@
  "39.582,2.673": {
   "mu": "Palma",
   "pr": "Illes Balears"
+ },
+ "39.586,-0.397": {
+  "mu": "Montcada/Moncada",
+  "pr": "Valencia"
  },
  "39.586,-0.706": {
   "mu": "Pedralba",
@@ -6493,6 +6545,10 @@
   "mu": "Saelices",
   "pr": "Cuenca"
  },
+ "39.919,-2.815": {
+  "mu": "Saelices",
+  "pr": "Cuenca"
+ },
  "39.920,-5.082": null,
  "39.921,-0.583": {
   "mu": "Jérica",
@@ -6608,6 +6664,10 @@
  },
  "39.976,-0.060": {
   "mu": "Castelló de la Plana/Castellón de la Plana",
+  "pr": "Castellón"
+ },
+ "39.976,-0.108": {
+  "mu": "Almassora",
   "pr": "Castellón"
  },
  "39.977,-0.108": {
@@ -6901,6 +6961,10 @@
   "pr": "Cuenca"
  },
  "40.085,-5.017": {
+  "mu": "Velada",
+  "pr": "Toledo"
+ },
+ "40.085,-5.018": {
   "mu": "Velada",
   "pr": "Toledo"
  },
@@ -7519,10 +7583,12 @@
   "pr": "Madrid"
  },
  "40.399,-4.030": null,
+ "40.399,-4.250": null,
  "40.400,-3.721": {
   "mu": "Madrid",
   "pr": "Madrid"
  },
+ "40.400,-4.030": null,
  "40.400,0.368": {
   "mu": "Peníscola/Peñíscola",
   "pr": "Castellón"
@@ -7886,6 +7952,10 @@
  },
  "40.460,-4.349": null,
  "40.460,-4.350": {
+  "mu": "Cebreros",
+  "pr": "Ávila"
+ },
+ "40.460,-4.367": {
   "mu": "Cebreros",
   "pr": "Ávila"
  },
@@ -8284,6 +8354,10 @@
   "pr": "Madrid"
  },
  "40.574,-3.052": null,
+ "40.575,-3.240": {
+  "mu": "Alovera",
+  "pr": "Guadalajara"
+ },
  "40.575,-3.254": {
   "mu": "Azuqueca de Henares",
   "pr": "Guadalajara"
@@ -8688,6 +8762,10 @@
   "mu": "El Espinar",
   "pr": "Segovia"
  },
+ "40.718,-4.191": {
+  "mu": "El Espinar",
+  "pr": "Segovia"
+ },
  "40.719,-4.192": {
   "mu": "El Espinar",
   "pr": "Segovia"
@@ -8852,6 +8930,7 @@
   "mu": "El Cubillo de Uceda",
   "pr": "Guadalajara"
  },
+ "40.829,-3.614": null,
  "40.829,-3.615": null,
  "40.835,-4.158": {
   "mu": "La Losa",
@@ -8977,6 +9056,10 @@
  "40.918,-4.072": {
   "mu": "Palazuelos de Eresma",
   "pr": "Segovia"
+ },
+ "40.919,-2.730": {
+  "mu": "Mandayona",
+  "pr": "Guadalajara"
  },
  "40.921,-4.100": {
   "mu": "Segovia",
@@ -9610,6 +9693,10 @@
  "41.211,1.688": {
   "mu": "Vilanova i la Geltrú",
   "pr": "Barcelona"
+ },
+ "41.212,-0.467": {
+  "mu": "La Puebla de Híjar",
+  "pr": "Teruel"
  },
  "41.212,1.752": null,
  "41.214,-3.935": {
@@ -13199,6 +13286,10 @@
   "mu": "Murchante",
   "pr": "Navarra"
  },
+ "42.038,-1.646": {
+  "mu": "Murchante",
+  "pr": "Navarra"
+ },
  "42.038,-4.560": {
   "mu": "Palencia",
   "pr": "Palencia"
@@ -13308,6 +13399,10 @@
  "42.063,-7.686": {
   "mu": "Xinzo de Limia",
   "pr": "Ourense"
+ },
+ "42.066,-5.665": {
+  "mu": "San Cristóbal de Entreviñas",
+  "pr": "Zamora"
  },
  "42.066,-5.666": {
   "mu": "San Cristóbal de Entreviñas",
@@ -13625,6 +13720,10 @@
   "mu": "Mos",
   "pr": "Pontevedra"
  },
+ "42.184,-8.697": {
+  "mu": "Vigo",
+  "pr": "Pontevedra"
+ },
  "42.184,2.470": {
   "mu": "Olot",
   "pr": "Girona"
@@ -13632,6 +13731,10 @@
  "42.185,-7.943": {
   "mu": "Celanova",
   "pr": "Ourense"
+ },
+ "42.185,-8.672": {
+  "mu": "Vigo",
+  "pr": "Pontevedra"
  },
  "42.185,-8.697": {
   "mu": "Vigo",
@@ -13805,6 +13908,10 @@
  "42.240,-4.928": {
   "mu": "Villada",
   "pr": "Palencia"
+ },
+ "42.240,-8.661": {
+  "mu": "Vigo",
+  "pr": "Pontevedra"
  },
  "42.240,-8.714": {
   "mu": "Vigo",
@@ -14280,6 +14387,7 @@
   "pr": "Ourense"
  },
  "42.358,-3.804": null,
+ "42.359,-3.804": null,
  "42.360,-3.673": {
   "mu": "Burgos",
   "pr": "Burgos"
@@ -14633,6 +14741,10 @@
   "mu": "Fuenmayor",
   "pr": "La Rioja"
  },
+ "42.468,-2.418": {
+  "mu": "Logroño",
+  "pr": "La Rioja"
+ },
  "42.469,-2.418": {
   "mu": "Logroño",
   "pr": "La Rioja"
@@ -14932,6 +15044,10 @@
  },
  "42.577,-5.649": {
   "mu": "Valverde de la Virgen",
+  "pr": "León"
+ },
+ "42.577,-6.532": {
+  "mu": "Congosto",
   "pr": "León"
  },
  "42.578,-2.642": {
@@ -16527,6 +16643,10 @@
   "pr": "Bizkaia"
  },
  "43.211,-8.692": {
+  "mu": "Carballo",
+  "pr": "A Coruña"
+ },
+ "43.212,-8.692": {
   "mu": "Carballo",
   "pr": "A Coruña"
  },
