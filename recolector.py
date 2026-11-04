@@ -1549,7 +1549,8 @@ def completar_regiones(puntos: list[dict]) -> None:
             p["_dudoso"] = True
             continue
         if not p.get("mu") and r.get("mu"):
-            p["mu"] = r["mu"]
+            # CartoCiudad devuelve los apóstrofos como comillas dobles (L"Hospitalet, Sant Joan d"Alacant)
+            p["mu"] = r["mu"].replace('"', "'")
         prov = propia or r.get("pr")
         if prov:
             p["pr"] = prov
