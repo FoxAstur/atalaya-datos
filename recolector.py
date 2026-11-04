@@ -1789,6 +1789,106 @@ def reutilizar_caminos(puntos: list[dict], anterior: dict) -> int:
 SENALES_OPL = "red/camaras.opl"   # los stops y semáforos van con las cámaras (misma pasada de osmium, recolectar.yml)
 
 
+_SENALES: dict = {}
+
+
+def cargar_senales(ruta: str = SENALES_OPL) -> tuple[dict, int]:
+    """Stops y semáforos de OSM en una rejilla de ~100 m: {(cy, cx): [(la, lo, clase)]}. Se lee una vez."""
+    if ruta in _SENALES:
+        return _SENALES[ruta]
+    rej: dict = {}
+    n_sen = 0
+    if os.path.exists(ruta):
+        with open(ruta, encoding="utf-8") as f:
+            for linea in f:
+                if not linea.startswith("n"):
+                    continue
+                campos = linea.split()
+                tags = next((c[1:] for c in campos if c.startswith("T")), "")
+                x = next((c[1:] for c in campos if c.startswith("x")), "")
+                y = next((c[1:] for c in campos if c.startswith("y")), "")
+                if not x or not y:
+                    continue
+                clase = "stop" if "highway=stop" in tags else "semaforo" if "highway=traffic_signals" in tags else None
+                if not clase:
+                    continue
+                la, lo = float(y), float(x)
+                rej.setdefault((int(la // 0.001), int(lo // 0.001)), []).append((la, lo, clase))
+                n_sen += 1
+    _SENALES[ruta] = (rej, n_sen)
+    return rej, n_sen
+
+
+def semaforos_por_su_cruce(puntos: list[dict], ruta_red: str, zbe, ruta: str = SENALES_OPL) -> str:
+    """
+    Cámaras de semáforo, ya con sus caminos de aproximación. Una cámara de foto-rojo está unos metros ANTES de
+    su semáforo, en el carril que vigila: si por uno de sus caminos el semáforo queda delante (a menos de 50 m)
+    y por el contrario no hay ninguno cerca, ese es su sentido. Así se resuelven las de sentido dudoso de las
+    calles de doble sentido (antes se avisaba en los dos) y se llevan a su línea de detención. Las que no tienen
+    ningún semáforo delante por ninguno de sus caminos se cuentan aparte: su posición es sospechosa.
+    """
+    import caminos
+    rej, _ = cargar_senales(ruta)
+    if not rej:
+        return "sin fichero de stops y semáforos"
+
+    def delante(la, lo, rumbo_ap, maximo):
+        mejor = None
+        cy, cx = int(la // 0.001), int(lo // 0.001)
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                for sla, slo, clase in rej.get((cy + dy, cx + dx), ()):
+                    if clase != "semaforo":
+                        continue
+                    d = distancia(la, lo, sla, slo)
+                    if d > maximo:
+                        continue
+                    if d > 6 and abs((rumbo_entre(la, lo, sla, slo) - rumbo_ap + 180) % 360 - 180) > 35:
+                        continue
+                    if mejor is None or d < mejor[0]:
+                        mejor = (d, sla, slo)
+        return mejor
+
+    resueltos, a_la_linea, sin_semaforo, rehacer = 0, 0, [], []
+    for p in puntos:
+        if p["t"] != "SEMAFORO" or not p.get("ap"):
+            continue
+        la0, lo0 = p.get("_la0", p["la"]), p.get("_lo0", p["lo"])
+        por_sentido = []   # (rumbo de llegada, semáforo delante o None, caminos de ese sentido)
+        for ap in p["ap"]:
+            h = caminos.llegada(ap)
+            grupo = next((g for g in por_sentido if abs((g[0] - h + 180) % 360 - 180) <= 60), None)
+            if grupo is None:
+                por_sentido.append([h, delante(la0, lo0, h, 50), [ap]])
+            else:
+                grupo[2].append(ap)
+        con = [g for g in por_sentido if g[1] is not None]
+        if not con:
+            sin_semaforo.append(p["id"])
+            continue
+        if p.get("rb") is None and len(con) == 1 and len(por_sentido) >= 2:
+            h, sem, aps = con[0]
+            # el contrario no puede tener un semáforo delante ni a 80 m: si no, es un cruce de dos semáforos seguidos
+            otros = [g for g in por_sentido if g is not con[0]]
+            if all(delante(la0, lo0, g[0], 80) is None for g in otros):
+                p["rb"] = round(h, 1)
+                p.pop("s2", None)
+                resueltos += 1
+        if p.get("rb") is not None:
+            g = next((g for g in con if abs((g[0] - p["rb"] + 180) % 360 - 180) <= 60), None)
+            if g is not None and g[1][0] >= 3 and (p["la"], p["lo"]) != (round(g[1][1], 6), round(g[1][2], 6)):
+                p["la"], p["lo"] = round(g[1][1], 6), round(g[1][2], 6)
+                p.pop("ap", None)
+                rehacer.append(p)
+                a_la_linea += 1
+    if rehacer:
+        caminos.anadir_caminos(rehacer, ruta_red, zbe, aviso=log)
+    msg = (f"{resueltos} cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; "
+           f"{a_la_linea} llevadas a su línea; {len(sin_semaforo)} sin ningún semáforo de OSM delante (posición por revisar)")
+    log(msg + (": " + ", ".join(sin_semaforo[:25]) if sin_semaforo else ""))
+    return msg
+
+
 def a_la_linea_de_detencion(puntos: list[dict], ruta: str = SENALES_OPL) -> str:
     """
     Una cámara de stop o de semáforo está en un poste unos metros antes (o al lado) de la línea donde hay que
@@ -1797,29 +1897,17 @@ def a_la_linea_de_detencion(puntos: list[dict], ruta: str = SENALES_OPL) -> str:
     semáforo de OSM que tiene delante (en su sentido, a menos de 45 m); sin sentido conocido, al más
     cercano a menos de 25 m.
     """
-    if not os.path.exists(ruta):
+    rej, n_sen = cargar_senales(ruta)
+    if not rej:
         return "sin fichero de stops y semáforos"
-    rej: dict = {}
-    n_sen = 0
-    with open(ruta, encoding="utf-8") as f:
-        for linea in f:
-            if not linea.startswith("n"):
-                continue
-            campos = linea.split()
-            tags = next((c[1:] for c in campos if c.startswith("T")), "")
-            x = next((c[1:] for c in campos if c.startswith("x")), "")
-            y = next((c[1:] for c in campos if c.startswith("y")), "")
-            if not x or not y:
-                continue
-            clase = "stop" if "highway=stop" in tags else "semaforo" if "highway=traffic_signals" in tags else None
-            if not clase:
-                continue
-            la, lo = float(y), float(x)
-            rej.setdefault((int(la // 0.001), int(lo // 0.001)), []).append((la, lo, clase))
-            n_sen += 1
     movidos = 0
     for p in puntos:
         if p["t"] not in ("SEMAFORO", "STOP_CEDA"):
+            continue
+        p["_la0"], p["_lo0"] = p["la"], p["lo"]   # dónde estaba (para deducir su sentido por su semáforo)
+        if p.get("rb") is None and p["t"] == "SEMAFORO":
+            # sin sentido, en un cruce el semáforo más cercano puede ser el de la otra calle: se decide después,
+            # con los caminos de aproximación (semaforos_por_su_cruce)
             continue
         quiero = "stop" if p["t"] == "STOP_CEDA" else "semaforo"
         cy, cx = int(p["la"] // 0.001), int(p["lo"] // 0.001)
@@ -1973,6 +2061,28 @@ def unir_tramos(puntos: list[dict]) -> list[dict]:
         return rb is None or abs((rumbo_entre(t["la"], t["lo"], t["la2"], t["lo2"]) - rb + 180) % 360 - 180) <= 70
 
     fuera, sueltos, camaras = set(), 0, 0
+    # El mismo tramo entero por dos fuentes (la DGT situada por PK, con ~100 m de error en cada extremo, y OSM,
+    # trazada sobre la foto aérea): se queda el oficial con los extremos de OSM, que son más exactos
+    osm_t = [t for t in tramos if t["f"] == "OSM"]
+    duplicados = 0
+    for t in tramos:
+        if t["f"] == "OSM" or t["id"] in fuera:
+            continue
+        mejor = None
+        for o in osm_t:
+            if o["id"] in fuera:
+                continue
+            d = max(distancia(t["la"], t["lo"], o["la"], o["lo"]), distancia(t["la2"], t["lo2"], o["la2"], o["lo2"]))
+            if d < 400 and (mejor is None or d < mejor[0]):
+                mejor = (d, o)
+        if mejor:
+            o = mejor[1]
+            if t["id"].startswith("dgtpdf:"):   # situado por PK: los extremos de OSM son mejores
+                t["la"], t["lo"], t["la2"], t["lo2"] = o["la"], o["lo"], o["la2"], o["lo2"]
+            for k in ("v",):
+                if k not in t and k in o:
+                    t[k] = o[k]
+            fuera.add(o["id"]); duplicados += 1
     for p in puntos:
         if p["t"] == "RADAR_TRAMO" and "la2" not in p:
             e = rej.cerca(p["la"], p["lo"], 300, lambda q: sentido_ok(p, q["_t"]))
@@ -1987,7 +2097,8 @@ def unir_tramos(puntos: list[dict]) -> list[dict]:
             e = rej.cerca(p["la"], p["lo"], 150, lambda q: sentido_ok(p, q["_t"]))
             if e is not None:
                 fuera.add(p["id"]); camaras += 1
-    log(f"tramos: {sueltos} puntos sueltos unidos a su tramo, {camaras} cámaras de entrada/salida absorbidas")
+    log(f"tramos: {duplicados} tramos repetidos (oficial y OSM) unidos, {sueltos} puntos sueltos unidos a su tramo, "
+        f"{camaras} cámaras de entrada/salida absorbidas")
     return [p for p in puntos if p["id"] not in fuera]
 
 
@@ -2122,25 +2233,31 @@ def main() -> int:
                     if f.get("longitud"):
                         q.setdefault("lm", f["longitud"])
                         if "la2" not in q:
-                            # el feed solo trae la cámara de entrada: calculamos el final por PK
+                            # El PK de los tramos del PDF es el de la cámara de SALIDA (comprobado con los 13 tramos
+                            # nuevos de 2026, que la DGT anunció con PK de inicio y fin, y con los tramos de OSM): la
+                            # cámara del feed que casa por ese PK es la de salida, y la entrada está «largo» antes.
+                            # Antes se ponía la entrada aquí y el tramo quedaba corrido un tramo entero más allá.
                             largo = f["longitud"] / 1000
-                            pk_fin = f["pk"] - largo if f["sentido"] == "Decreciente" else f["pk"] + largo
-                            c2 = geo.pk(via, pk_fin, prov) if pk_fin >= 0 else None
-                            if c2:
-                                q["la2"], q["lo2"], q["pk2"] = round(c2[0], 6), round(c2[1], 6), round(pk_fin, 3)
+                            pk_ini = f["pk"] + largo if f["sentido"] == "Decreciente" else f["pk"] - largo
+                            c1 = geo.pk(via, pk_ini, prov) if pk_ini >= 0 else None
+                            if c1:
+                                q["la2"], q["lo2"], q["pk2"] = q["la"], q["lo"], q.get("pk", f["pk"])
+                                q["la"], q["lo"], q["pk"] = round(c1[0], 6), round(c1[1], 6), round(pk_ini, 3)
                 continue
             base = dict(c=via, pk=f["pk"], s=f["sentido"], pr=prov, ca=PROVINCIAS[prov][1] if prov else None)
             if f["tipo"] == "Tramo" and f.get("longitud"):
                 largo = f["longitud"] / 1000
                 sentidos = ["Creciente", "Decreciente"] if f["sentido"] == "Ambos" else [f["sentido"]]
                 for s in sentidos:
-                    pk_fin = f["pk"] + largo if s != "Decreciente" else f["pk"] - largo
-                    c2 = geo.pk(via, pk_fin, prov) if pk_fin >= 0 else None
-                    ini, fin = (c, c2)
-                    if c2:
-                        salida.append(punto(f"dgtpdf:T:{via}:{f['pk']}:{s[0]}", "RADAR_TRAMO", "DGT", ini[0], ini[1],
-                                            la2=round(fin[0], 6), lo2=round(fin[1], 6), pk2=round(pk_fin, 3),
-                                            lm=f["longitud"], **{**base, "s": s}))
+                    # el PK del PDF es la cámara de salida (ver arriba): la entrada está «largo» antes en su sentido
+                    pk_ini = f["pk"] - largo if s != "Decreciente" else f["pk"] + largo
+                    c1 = geo.pk(via, pk_ini, prov) if pk_ini >= 0 else None
+                    if c1:
+                        salida.append(punto(f"dgtpdf:T:{via}:{f['pk']}:{s[0]}", "RADAR_TRAMO", "DGT", c1[0], c1[1],
+                                            la2=round(c[0], 6), lo2=round(c[1], 6), pk2=f["pk"],
+                                            lm=f["longitud"], **{**base, "pk": round(pk_ini, 3), "s": s}))
+                    else:
+                        log(f"  tramo {via} PK {f['pk']} ({s}): no se pudo situar su entrada (PK {pk_ini:.3f})")
             else:
                 salida.append(punto(f"dgtpdf:F:{via}:{f['pk']}:{f['sentido'][0]}",
                                     "RADAR_TRAMO" if f["tipo"] == "Tramo" else "RADAR_FIJO", "DGT", c[0], c[1], **base))
@@ -2307,12 +2424,24 @@ def main() -> int:
             fuera = {o["id"] for o, f, m in pares
                      if not (o.get("rb") is not None and f.get("rb") is not None
                              and abs((o["rb"] - f["rb"] + 180) % 360 - 180) > 60)}
+            # Los del PDF de la DGT están situados por su PK (hitos de CartoCiudad, ~100 m de error); su copia de
+            # OSM está puesta sobre la foto aérea: el radar se queda con la posición de OSM
+            recolocados = 0
+            for o, f, m in pares:
+                if o["id"] in fuera and f["id"].startswith("dgtpdf:F") and m > 20:
+                    f["la"], f["lo"] = o["la"], o["lo"]
+                    f.pop("ap", None)
+                    if f not in reencajar:
+                        reencajar.append(f)
+                    recolocados += 1
+            log(f"radares del PDF de la DGT recolocados en su copia de OSM: {recolocados}")
             todos[:] = [p for p in todos if p["id"] not in fuera]
             if reencajar:
                 caminos.anadir_caminos(reencajar, ruta_red, zbe, aviso=log)   # su camino, ya en un solo sentido
             estado["Copias de OSM de radares oficiales"] = (
                 f"{len(fuera)} quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: "
-                f"{ok}/{n} → " + (f"heredado en {len(reencajar)}" if heredar else "no se hereda"))
+                f"{ok}/{n} → " + (f"heredado en {len(reencajar) - recolocados}" if heredar else "no se hereda")
+                + f"; {recolocados} radares del PDF de la DGT llevados a la posición de su copia de OSM")
             log(estado["Copias de OSM de radares oficiales"])
             quitados = caminos.quitar_viejos_repetidos(todos)
             if quitados:
@@ -2367,6 +2496,12 @@ def main() -> int:
         n = reutilizar_caminos(todos, anterior)
         estado["Caminos de aproximación"] = f"⚠️ sin red viaria; {n} puntos con los caminos de la vez anterior"
 
+    if os.path.exists(ruta_red):
+        try:
+            estado["Cámaras de semáforo"] = semaforos_por_su_cruce(todos, ruta_red, zbe)
+        except Exception as e:  # noqa: BLE001
+            estado["Cámaras de semáforo"] = f"⚠️ falló ({e})"
+            log(f"semáforos: ERROR {e}")
     # Segunda pasada de los comprobados, ya con todos los pasos que ponen o cambian sentidos (segunda opinión de
     # la DGT, herencia de OSM, gemelos…): si alguno se los ha cambiado, se vuelven a poner y se recalcula su camino
     try:
@@ -2387,7 +2522,7 @@ def main() -> int:
         estado["Puntos comprobados"] = f"⚠️ sin camino de aproximación (no avisarían): {', '.join(sin_camino)}"
         log(f"verificados SIN CAMINO: {sin_camino}")
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
