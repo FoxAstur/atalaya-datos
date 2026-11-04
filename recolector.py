@@ -2142,7 +2142,7 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
     import caminos
     import statistics
     por_pk = [p for p in puntos if p["id"].startswith(("dgtpdf:", "dgteq:")) and p.get("c") and p.get("pk") is not None
-              and not p.get("_pos_osm")]
+              and not p.get("_pos_osm") and not p.get("_verif")]   # lo comprobado a ojo no se toca
     prueba = [p for p in puntos if p["id"].startswith("dgt:") and p["t"] == "RADAR_FIJO" and p.get("c")
               and p.get("pk") is not None and p.get("pr")][:400]
     semillas = por_pk + prueba
@@ -2580,7 +2580,7 @@ def main() -> int:
             for o, f, m in pares:
                 if o["id"] in fuera and f["id"].startswith(("dgtpdf:", "dgteq:")):
                     f["_en_osm"] = True   # su copia de OSM confirma dónde está
-                if o["id"] in fuera and f["id"].startswith(("dgtpdf:F", "dgteq:")) and m > 20:
+                if o["id"] in fuera and f["id"].startswith(("dgtpdf:F", "dgteq:")) and m > 20 and not f.get("_verif"):
                     f["la"], f["lo"] = o["la"], o["lo"]
                     f.pop("ap", None)
                     if f not in reencajar:
