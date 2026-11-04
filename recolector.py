@@ -1850,6 +1850,22 @@ def semaforos_por_su_cruce(puntos: list[dict], ruta_red: str, zbe, ruta: str = S
                         mejor = (d, sla, slo)
         return mejor
 
+    # Comprobación con las de sentido conocido (de su fuente): ¿su semáforo queda delante (cámara antes de la
+    # línea) o detrás (cámara pasado el cruce, mirando hacia atrás)? Si no es casi siempre delante, el método
+    # no vale y no se deduce ningún sentido.
+    a_favor = en_contra = 0
+    for p in puntos:
+        if p["t"] == "SEMAFORO" and p.get("rb") is not None:
+            la0, lo0 = p.get("_la0", p["la"]), p.get("_lo0", p["lo"])
+            dl, dt = delante(la0, lo0, p["rb"], 50), delante(la0, lo0, (p["rb"] + 180) % 360, 50)
+            if dl and not dt:
+                a_favor += 1
+            elif dt and not dl:
+                en_contra += 1
+    fiable = a_favor >= 20 and a_favor / max(1, a_favor + en_contra) >= 0.85
+    log(f"semáforos: con sentido conocido, su semáforo delante {a_favor}, detrás {en_contra} → "
+        + ("se deducen sentidos" if fiable else "no se deducen sentidos"))
+
     resueltos, a_la_linea, sin_semaforo, rehacer = 0, 0, [], []
     for p in puntos:
         if p["t"] != "SEMAFORO" or not p.get("ap"):
@@ -1867,7 +1883,7 @@ def semaforos_por_su_cruce(puntos: list[dict], ruta_red: str, zbe, ruta: str = S
         if not con:
             sin_semaforo.append(p["id"])
             continue
-        if p.get("rb") is None and len(con) == 1 and len(por_sentido) >= 2:
+        if fiable and p.get("rb") is None and len(con) == 1 and len(por_sentido) >= 2:
             h, sem, aps = con[0]
             # el contrario no puede tener un semáforo delante ni a 80 m: si no, es un cruce de dos semáforos seguidos
             otros = [g for g in por_sentido if g is not con[0]]
@@ -1884,7 +1900,8 @@ def semaforos_por_su_cruce(puntos: list[dict], ruta_red: str, zbe, ruta: str = S
                 a_la_linea += 1
     if rehacer:
         caminos.anadir_caminos(rehacer, ruta_red, zbe, aviso=log)
-    msg = (f"{resueltos} cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; "
+    msg = (f"comprobación con las de sentido conocido: semáforo delante en {a_favor}, detrás en {en_contra}; "
+           f"{resueltos} cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; "
            f"{a_la_linea} llevadas a su línea; {len(sin_semaforo)} sin ningún semáforo de OSM delante (posición por revisar)")
     log(msg + (": " + ", ".join(sin_semaforo[:25]) if sin_semaforo else ""))
     return msg
