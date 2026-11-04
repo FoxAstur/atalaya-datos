@@ -1,0 +1,40 @@
+name: Hojas de posición (Mapillary)
+
+# Fotos de Mapillary (CC BY-SA 4.0) a lo largo de la carretera de cada punto de posición dudosa, para
+# situarlo a ojo. Se dejan como artefacto de la ejecución (no entran en main).
+on:
+  workflow_dispatch:
+    inputs:
+      desde: { description: "Primer objetivo (índice)", required: false, default: "0" }
+      hasta: { description: "Hasta (sin incluir)", required: false, default: "100000" }
+      solo: { description: "Ids separados por espacios (vacío = todos)", required: false, default: "" }
+
+permissions:
+  contents: read
+
+concurrency:
+  group: posiciones-${{ inputs.desde }}
+  cancel-in-progress: false
+
+jobs:
+  hojas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Hojas
+        env:
+          MAPILLARY_TOKEN: ${{ secrets.MAPILLARY_TOKEN }}
+          DESDE: ${{ inputs.desde }}
+          HASTA: ${{ inputs.hasta }}
+          SOLO: ${{ inputs.solo }}
+        run: python posiciones_mapillary.py hojas
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hojas-pos-${{ inputs.desde }}
+          path: hojas_pos/
+          retention-days: 14
