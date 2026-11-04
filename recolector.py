@@ -2009,7 +2009,11 @@ def aplicar_verificados(puntos: list[dict], cambiados: list | None = None) -> st
         cambios = []
         if distancia(p["la"], p["lo"], la, lo) > float(r.get("tol", 25)):
             p["la"], p["lo"] = la, lo
-            cambios.append("posición")
+            # los situados a ojo sobre una fuente que solo da el PK se recolocan siempre: no es una avería
+            if "radio" not in r:
+                cambios.append("posición")
+            elif cambiados is not None:
+                cambiados.append(p)
         if r.get("s") == "Ambos":
             if p.get("s") != "Ambos" or "rb" in p:
                 p["s"] = "Ambos"
@@ -2024,7 +2028,10 @@ def aplicar_verificados(puntos: list[dict], cambiados: list | None = None) -> st
         for k in ("v", "n", "la2", "lo2", "tu"):
             if k in r and p.get(k) != r[k]:
                 p[k] = r[k]
-                cambios.append(k)
+                if not ("radio" in r and k in ("la2", "lo2")):
+                    cambios.append(k)
+                elif cambiados is not None and p not in cambiados:
+                    cambiados.append(p)
         if cambios:
             arreglos.append(f"{r['id']} ({', '.join(cambios)})")
             if cambiados is not None:
