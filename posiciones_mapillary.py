@@ -23,7 +23,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 API = "https://graph.mapillary.com/images"
-CAMPOS = "id,captured_at,computed_compass_angle,compass_angle,computed_geometry,geometry,thumb_1024_url,camera_type"
+CAMPOS = "id,captured_at,computed_compass_angle,compass_angle,computed_geometry,geometry,thumb_1024_url,thumb_2048_url,camera_type"
 OBJETIVOS = "depurar/objetivos_posicion.json"
 ATRAS, DELANTE, PASO = 400.0, 240.0, 40.0
 
@@ -198,7 +198,7 @@ def fotos_de(token, o):
         if d > 18 or not -ATRAS - 20 <= s <= DELANTE or dif(h, rs) > 30:
             continue
         esf = f.get("camera_type") not in (None, "perspective", "fisheye")
-        cand.append({"id": f["id"], "url": f["thumb_1024_url"], "la": g[1], "lo": g[0], "s": s, "d": d,
+        cand.append({"id": f["id"], "url": f["thumb_1024_url"], "url2": f.get("thumb_2048_url"), "la": g[1], "lo": g[0], "s": s, "d": d,
                      "h": h, "esf": esf, "ms": f.get("captured_at") or 0})
     # una por tramo de 40 m: la más reciente que no sea 360º (mejor si va centrada en el carril)
     elegidas = []
@@ -212,6 +212,48 @@ def fotos_de(token, o):
             elegidas.append(None)
         k += PASO
     return elegidas, len(cand)
+
+
+def zoom():
+    """Validación / detalle: 3 fotos a 2048 px de los 110-20 m antes del punto, en una franja ancha."""
+    from PIL import Image, ImageDraw
+    token = os.environ["MAPILLARY_TOKEN"]
+    objetivos = json.load(open(OBJETIVOS, encoding="utf-8"))
+    desde, hasta = int(os.environ.get("DESDE", "0")), int(os.environ.get("HASTA", "100000"))
+    os.makedirs("hojas_pos", exist_ok=True)
+    indice = []
+    for n, o in enumerate(objetivos):
+        if n < desde or n >= hasta:
+            continue
+        global ATRAS, DELANTE
+        elegidas, total = fotos_de(token, o)
+        # todas las candidatas, no solo una por hueco: se reconsulta con huecos de 30 m entre -110 y -20
+        cand = [c for c in elegidas if c and -125 <= c["s"] <= -15 and not c["esf"] and c.get("url2")]
+        cand.sort(key=lambda c: c["s"])
+        ims = []
+        for c in cand[:3]:
+            b = pedir(c["url2"], binario=True)
+            if not b:
+                continue
+            im = Image.open(io.BytesIO(b)).convert("RGB")
+            w, h = im.size
+            im = im.crop((0, int(h * 0.22), w, int(h * 0.72))).resize((1600, int(1600 * h * 0.5 / w)))
+            d = ImageDraw.Draw(im)
+            et = f"#{n} s={int(round(c['s'])):+d} m {time.strftime('%Y-%m', time.gmtime(c['ms'] / 1000))} {o['id']}"
+            d.rectangle([0, 0, 10 + 7 * len(et), 18], fill=(0, 0, 0))
+            d.text((4, 4), et, fill=(255, 255, 0))
+            ims.append(im)
+        reg = {"n": n, "clave": o["clave"], "fotos": [{"id": c["id"], "s": round(c["s"])} for c in cand[:3]]}
+        if ims:
+            hoja = Image.new("RGB", (1600, sum(i.height for i in ims)), "white")
+            y = 0
+            for i in ims:
+                hoja.paste(i, (0, y))
+                y += i.height
+            hoja.save(os.path.join("hojas_pos", f"z{n:03d}.jpg"), quality=78)
+            reg["hoja"] = f"z{n:03d}.jpg"
+        indice.append(reg)
+    json.dump(indice, open("hojas_pos/indice_zoom.json", "w", encoding="utf-8"), ensure_ascii=False)
 
 
 def hojas():
@@ -290,5 +332,7 @@ if __name__ == "__main__":
     if sys.argv[1:2] == ["preparar"]:
         extra = open(sys.argv[2], encoding="utf-8").read().splitlines() if len(sys.argv) > 2 else []
         preparar(extra_ids=tuple(x.strip() for x in extra if x.strip()))
+    elif sys.argv[1:2] == ["zoom"]:
+        zoom()
     else:
         hojas()

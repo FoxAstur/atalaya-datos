@@ -8,6 +8,7 @@ on:
       desde: { description: "Primer objetivo (índice)", required: false, default: "0" }
       hasta: { description: "Hasta (sin incluir)", required: false, default: "100000" }
       solo: { description: "Ids separados por espacios (vacío = todos)", required: false, default: "" }
+      modo: { description: "hojas | zoom", required: false, default: "hojas" }
 
 permissions:
   contents: write
@@ -32,14 +33,14 @@ jobs:
           DESDE: ${{ inputs.desde }}
           HASTA: ${{ inputs.hasta }}
           SOLO: ${{ inputs.solo }}
-        run: python posiciones_mapillary.py hojas
+        run: python posiciones_mapillary.py ${{ inputs.modo }}
       - name: Subir a una rama aparte
         run: |
           mkdir /tmp/s && mv hojas_pos /tmp/s/
           cd /tmp/s
-          git init -q -b "hojas-pos-${{ inputs.desde }}"
+          git init -q -b "hojas-pos-${{ inputs.modo }}-${{ inputs.desde }}"
           git config user.name "atalaya-bot"
           git config user.email "atalaya-bot@users.noreply.github.com"
           printf 'Fotos de Mapillary (CC BY-SA 4.0, https://www.mapillary.com) para revisión manual.\n' > LEEME.txt
           git add -A && git commit -qm "Hojas de posición"
-          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "hojas-pos-${{ inputs.desde }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "hojas-pos-${{ inputs.modo }}-${{ inputs.desde }}"

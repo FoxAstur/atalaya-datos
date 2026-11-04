@@ -1992,7 +1992,8 @@ def aplicar_verificados(puntos: list[dict], cambiados: list | None = None) -> st
     for r in lista:
         la, lo, t = float(r["la"]), float(r["lo"]), r["t"]
         p = por_id.get(r["id"])
-        if p is not None and (p["t"] != t or distancia(p["la"], p["lo"], la, lo) > 150):
+        # "radio": hasta dónde puede estar el punto de la fuente (los situados por PK pueden estar a cientos de m)
+        if p is not None and (p["t"] != t or distancia(p["la"], p["lo"], la, lo) > float(r.get("radio", 150))):
             p = None   # ese id ahora es otra cosa
         if p is None:
             cerca = [(distancia(q["la"], q["lo"], la, lo), q) for q in puntos if q["t"] == t]
@@ -2029,6 +2030,8 @@ def aplicar_verificados(puntos: list[dict], cambiados: list | None = None) -> st
             if cambiados is not None:
                 cambiados.append(p)
         p["_verif"] = r["id"]
+        if r.get("px"):
+            p["_verif_px"] = 1   # comprobado solo en parte (p. ej. un extremo de un tramo): sigue siendo aproximado
     msg = f"{len(lista)} comprobados sobre el terreno" + (f"; arreglados: {'; '.join(arreglos)}" if arreglos else ", todos en su sitio")
     log(f"verificados: {msg}")
     return msg if not arreglos else "⚠️ " + msg
@@ -2674,12 +2677,13 @@ def main() -> int:
     # («a unos 300 metros», «muy cerca») en vez de dar por exacto un sitio con decenas de metros de error
     aprox = 0
     for p in todos:
-        if p["id"].startswith(("dgtpdf:", "dgteq:")) and not p.get("_pos_osm") and not p.get("_en_osm"):
+        if (p["id"].startswith(("dgtpdf:", "dgteq:")) and not p.get("_pos_osm") and not p.get("_en_osm")
+                and not (p.get("_verif") and not p.get("_verif_px"))):
             p["px"] = 1
             aprox += 1
     estado["Posición aproximada (solo PK)"] = f"{aprox} puntos"
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
