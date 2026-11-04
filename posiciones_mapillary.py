@@ -267,7 +267,7 @@ def hojas():
                 else:
                     dr.rectangle([x, y, x + W - 1, y + H - 1], fill=(60, 60, 60))
                 cero = k <= 0 < k + PASO
-                et = f"{i:02d} s={round(c['s']) if c else k:+d} m" + (f" {time.strftime('%Y-%m', time.gmtime(c['ms'] / 1000))}" if c else " (sin foto)")
+                et = f"{i:02d} s={int(round(c['s'] if c else k)):+d} m" + (f" {time.strftime('%Y-%m', time.gmtime(c['ms'] / 1000))}" if c else " (sin foto)")
                 dr.rectangle([x, y, x + 9 + 7 * len(et), y + 18], fill=(200, 0, 0) if cero else (0, 0, 0))
                 dr.text((x + 4, y + 4), et, fill=(255, 255, 0))
                 if cero:
