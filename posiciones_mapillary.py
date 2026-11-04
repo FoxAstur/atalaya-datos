@@ -226,7 +226,7 @@ def zoom():
     indice = []
     for n, o in enumerate(objetivos):
         ns = set(map(int, os.environ.get("NS", "").split()))
-        if n < desde or n >= hasta or (ns and n not in ns):
+        if (n not in ns) if ns else (n < desde or n >= hasta):
             continue
         elegidas, total = fotos_de(token, o, todas=True)
         # todas las candidatas, no solo una por hueco: se reconsulta con huecos de 30 m entre -110 y -20
