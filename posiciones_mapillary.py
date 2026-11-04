@@ -222,7 +222,7 @@ def hojas():
     desde, hasta = int(os.environ.get("DESDE", "0")), int(os.environ.get("HASTA", "100000"))
     os.makedirs("hojas_pos", exist_ok=True)
     indice = []
-    W, H = 400, 250
+    W, H = 400, 300
     t0 = time.time()
 
     def preparar_foto(c):
@@ -235,9 +235,12 @@ def hojas():
         w, h = im.size
         if c["esf"]:   # 360º: el trozo que mira hacia delante
             im = im.crop((int(w * 0.375), int(h * 0.3), int(w * 0.625), int(h * 0.6)))
-        else:
-            im = im.crop((0, int(h * 0.08), w, int(h * 0.72)))
-        return im.resize((W, H))
+            return im.resize((W, H))
+        # la foto entera (hay móviles que apuntan al cielo y otros al capó): encajada sin deformar
+        lienzo = Image.new("RGB", (W, H), (30, 30, 30))
+        im.thumbnail((W, H))
+        lienzo.paste(im, ((W - im.width) // 2, (H - im.height) // 2))
+        return lienzo
 
     for n, o in enumerate(objetivos):
         if n < desde or n >= hasta or (solo and o["id"] not in solo):
