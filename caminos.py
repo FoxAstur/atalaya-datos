@@ -930,7 +930,7 @@ def seguidos(puntos: list[dict], max_m=300.0) -> list:
 
 
 # --------------------------------------------------------------------------- zonas de radar móvil
-def _ruta_entre(red: Red, a, b, ref: str):
+def _ruta_entre(red: Red, a, b, ref: str, radio_objetivo: float = 200.0):
     """Recorrido por carretera de a hasta b (siguiendo la misma vía), o None."""
     directo = dist(a, b)
     cand, vistas = [], set()
@@ -948,7 +948,7 @@ def _ruta_entre(red: Red, a, b, ref: str):
         for paso in (1, -1):
             if not se_puede(red.vias[wi], paso):
                 continue
-            ruta, ok = caminar(red, wi, i, t, paso, directo * 1.8 + 2000, False, objetivo=b, radio_objetivo=200.0)
+            ruta, ok = caminar(red, wi, i, t, paso, directo * 1.8 + 2000, False, objetivo=b, radio_objetivo=radio_objetivo)
             if ok and (mejor is None or longitud(ruta) < longitud(mejor)):
                 mejor = ruta
     return mejor

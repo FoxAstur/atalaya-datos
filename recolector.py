@@ -1866,7 +1866,7 @@ def semaforos_por_su_cruce(puntos: list[dict], ruta_red: str, zbe, ruta: str = S
     log(f"semáforos: con sentido conocido, su semáforo delante {a_favor}, detrás {en_contra} → "
         + ("se deducen sentidos" if fiable else "no se deducen sentidos"))
 
-    resueltos, a_la_linea, sin_semaforo, rehacer = 0, 0, [], []
+    resueltos, a_la_linea, sin_semaforo, rehacer, pasado_el_cruce = 0, 0, [], [], 0
     for p in puntos:
         if p["t"] != "SEMAFORO" or not p.get("ap"):
             continue
@@ -1881,6 +1881,28 @@ def semaforos_por_su_cruce(puntos: list[dict], ruta_red: str, zbe, ruta: str = S
                 grupo[2].append(ap)
         con = [g for g in por_sentido if g[1] is not None]
         if not con:
+            # ¿cámara pasado el cruce, mirando atrás? (en las de sentido conocido pasa en 1 de cada 12): su
+            # semáforo queda detrás, a pocos metros, por uno solo de sus sentidos
+            detras = []
+            for g in por_sentido:
+                if p.get("rb") is not None and abs((g[0] - p["rb"] + 180) % 360 - 180) > 60:
+                    continue
+                sem = delante(la0, lo0, (g[0] + 180) % 360, 40)
+                if sem is not None:
+                    detras.append((g, sem))
+            if len(detras) == 1:
+                g, sem = detras[0]
+                if p.get("rb") is None and fiable:
+                    p["rb"] = round(g[0], 1)
+                    p.pop("s2", None)
+                    resueltos += 1
+                if p.get("rb") is not None:
+                    p["la"], p["lo"] = round(sem[1], 6), round(sem[2], 6)
+                    p.pop("ap", None)
+                    rehacer.append(p)
+                    a_la_linea += 1
+                    pasado_el_cruce += 1
+                    continue
             sin_semaforo.append(p["id"])
             continue
         if fiable and p.get("rb") is None and len(con) == 1 and len(por_sentido) >= 2:
@@ -1902,8 +1924,9 @@ def semaforos_por_su_cruce(puntos: list[dict], ruta_red: str, zbe, ruta: str = S
         caminos.anadir_caminos(rehacer, ruta_red, zbe, aviso=log)
     msg = (f"comprobación con las de sentido conocido: semáforo delante en {a_favor}, detrás en {en_contra}; "
            f"{resueltos} cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; "
-           f"{a_la_linea} llevadas a su línea; {len(sin_semaforo)} sin ningún semáforo de OSM delante (posición por revisar)")
-    log(msg + (": " + ", ".join(sin_semaforo[:25]) if sin_semaforo else ""))
+           f"{a_la_linea} llevadas a su línea ({pasado_el_cruce} estaban pasado el cruce); "
+           f"{len(sin_semaforo)} sin ningún semáforo de OSM a 50 m (posición por revisar)")
+    log(msg + (": " + ", ".join(sin_semaforo[:120]) if sin_semaforo else ""))
     return msg
 
 
@@ -2062,6 +2085,106 @@ def aplicar_correcciones(puntos: list[dict]) -> list[dict]:
     return puntos
 
 
+def _sobre_la_via(red, via: str, pk: float, prov: str | None, geo) -> tuple | None:
+    """
+    (lat, lon) del PK medido POR LA CARRETERA entre los hitos km⌊pk⌋ y km⌊pk⌋+1, o None. La recta entre dos
+    hitos se separa de la vía en las curvas (y la distancia por la vía no es la de la recta): era el error de
+    ~100 m de todo lo que se sitúa por PK.
+    """
+    import caminos
+    k = int(math.floor(pk))
+    a, b = geo._hito(via, k, prov), geo._hito(via, k + 1, prov)
+    if not a or not b or not (300 < distancia(a[0], a[1], b[0], b[1]) < 2500):
+        return None
+    # hasta pasar pegado al hito b (con 200 m, el de las zonas, la ruta acababa antes de llegar a él)
+    ruta = None
+    for radio in (35.0, 70.0):
+        ruta = caminos._ruta_entre(red, (a[0], a[1]), (b[0], b[1]), caminos.norm_ref(via), radio_objetivo=radio)
+        if ruta:
+            break
+    if not ruta or len(ruta) < 2:
+        return None
+    # recorrido hasta donde más se acerca al hito b
+    acum, mejor = 0.0, None
+    for i in range(len(ruta) - 1):
+        d, t = caminos.proyectar((b[0], b[1]), ruta[i], ruta[i + 1])
+        seg = caminos.dist(ruta[i], ruta[i + 1])
+        if mejor is None or d < mejor[0]:
+            mejor = (d, acum + seg * t)
+        acum += seg
+    if mejor is None or mejor[0] > 80:
+        return None
+    total = mejor[1]
+    # los hitos se sitúan a un lado de la vía: el inicio de la ruta es su proyección; el recorrido entre
+    # hitos tiene que parecerse a 1 km (si no, la ruta no es la de esa carretera)
+    if not 700 < total < 1500:
+        return None
+    objetivo = (pk - k) * total
+    acum = 0.0
+    for i in range(len(ruta) - 1):
+        seg = caminos.dist(ruta[i], ruta[i + 1])
+        if acum + seg >= objetivo:
+            q = caminos.interpolar(ruta[i], ruta[i + 1], (objetivo - acum) / seg if seg else 0)
+            return q[0], q[1]
+        acum += seg
+    return None
+
+
+def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
+    """
+    Recoloca lo situado por PK (PDF de radares y de cámaras de la DGT) midiendo por la carretera. Antes, se
+    comprueba el método con los radares del feed de la DGT, que traen PK y coordenadas exactas: se mide el
+    error de la recta entre hitos y el de ir por la carretera, y solo se aplica si mejora.
+    """
+    import caminos
+    import statistics
+    por_pk = [p for p in puntos if p["id"].startswith(("dgtpdf:", "dgteq:")) and p.get("c") and p.get("pk") is not None
+              and not p.get("_pos_osm")]
+    prueba = [p for p in puntos if p["id"].startswith("dgt:") and p["t"] == "RADAR_FIJO" and p.get("c")
+              and p.get("pk") is not None and p.get("pr")][:400]
+    semillas = por_pk + prueba
+    if not semillas:
+        return "nada que situar por PK"
+    geo.precargar({(via_normalizada(p["c"]), int(math.floor(k)) + d, provincia_canonica(p.get("pr")))
+                   for p in prueba for k in [float(p["pk"])] for d in (0, 1)})
+    red = caminos.cargar_red(ruta_red, semillas)
+    # 1) comprobación con el feed
+    recta, carretera = [], []
+    for p in prueba:
+        via, prov, pk = via_normalizada(p["c"]), provincia_canonica(p.get("pr")), float(p["pk"])
+        c1 = geo.pk(via, pk, prov)
+        c2 = _sobre_la_via(red, via, pk, prov, geo)
+        if c1 and c2:
+            recta.append(distancia(p["la"], p["lo"], c1[0], c1[1]))
+            carretera.append(distancia(p["la"], p["lo"], c2[0], c2[1]))
+    if len(recta) < 30:
+        return f"⚠️ sin bastantes radares del feed para comprobar ({len(recta)}): no se recoloca nada"
+
+    def resumen(v):
+        v = sorted(v)
+        return f"mediana {statistics.median(v):.0f} m, p75 {v[int(len(v) * .75)]:.0f} m, p90 {v[int(len(v) * .9)]:.0f} m"
+    mejora = statistics.median(carretera) < statistics.median(recta) and \
+        sorted(carretera)[int(len(carretera) * .9)] <= sorted(recta)[int(len(recta) * .9)]
+    texto = (f"comprobado con {len(recta)} radares del feed (PK y coordenadas): en recta {resumen(recta)}; "
+             f"por la carretera {resumen(carretera)}")
+    log(f"PK por la carretera: {texto}")
+    if not mejora:
+        return f"⚠️ {texto} → no mejora, no se recoloca"
+    # 2) recolocar lo situado por PK
+    movidos = 0
+    for p in por_pk:
+        via, prov = via_normalizada(p["c"]), provincia_canonica(p.get("pr"))
+        c = _sobre_la_via(red, via, float(p["pk"]), prov, geo)
+        if c and distancia(p["la"], p["lo"], c[0], c[1]) < 400:
+            p["la"], p["lo"] = round(c[0], 6), round(c[1], 6)
+            movidos += 1
+        if p.get("la2") is not None and p.get("pk2") is not None:
+            c2 = _sobre_la_via(red, via, float(p["pk2"]), prov, geo)
+            if c2 and distancia(p["la2"], p["lo2"], c2[0], c2[1]) < 400:
+                p["la2"], p["lo2"] = round(c2[0], 6), round(c2[1], 6)
+    return f"✅ {texto} → {movidos} de {len(por_pk)} situados por PK recolocados por la carretera"
+
+
 def unir_tramos(puntos: list[dict]) -> list[dict]:
     """
     Un mismo radar de tramo puede llegar por varias fuentes de forma distinta: OSM con entrada y salida,
@@ -2097,6 +2220,7 @@ def unir_tramos(puntos: list[dict]) -> list[dict]:
             o = mejor[1]
             if t["id"].startswith("dgtpdf:"):   # situado por PK: los extremos de OSM son mejores
                 t["la"], t["lo"], t["la2"], t["lo2"] = o["la"], o["lo"], o["la2"], o["lo2"]
+                t["_pos_osm"] = True
             for k in ("v",):
                 if k not in t and k in o:
                     t[k] = o[k]
@@ -2408,6 +2532,11 @@ def main() -> int:
     if os.path.exists(ruta_red):
         try:
             import caminos
+            try:
+                estado["Situados por PK"] = pk_por_la_carretera(todos, ruta_red, geo)
+            except Exception as e:  # noqa: BLE001
+                estado["Situados por PK"] = f"⚠️ falló ({e})"
+                log(f"PK por la carretera: ERROR {e}")
             st = caminos.anadir_caminos(todos, ruta_red, zbe, aviso=log)
             try:
                 sz = caminos.trazar_zonas([p for p in todos if p["t"] == "ZONA_MOVIL" and p.get("tr")], ruta_red, aviso=log)
@@ -2446,7 +2575,9 @@ def main() -> int:
             # OSM está puesta sobre la foto aérea: el radar se queda con la posición de OSM
             recolocados = 0
             for o, f, m in pares:
-                if o["id"] in fuera and f["id"].startswith("dgtpdf:F") and m > 20:
+                if o["id"] in fuera and f["id"].startswith(("dgtpdf:", "dgteq:")):
+                    f["_en_osm"] = True   # su copia de OSM confirma dónde está
+                if o["id"] in fuera and f["id"].startswith(("dgtpdf:F", "dgteq:")) and m > 20:
                     f["la"], f["lo"] = o["la"], o["lo"]
                     f.pop("ap", None)
                     if f not in reencajar:
@@ -2539,8 +2670,16 @@ def main() -> int:
     if sin_camino:
         estado["Puntos comprobados"] = f"⚠️ sin camino de aproximación (no avisarían): {', '.join(sin_camino)}"
         log(f"verificados SIN CAMINO: {sin_camino}")
+    # Situados solo por su PK (sin coordenadas de la fuente ni copia de OSM que los confirme): la app lo dice
+    # («a unos 300 metros», «muy cerca») en vez de dar por exacto un sitio con decenas de metros de error
+    aprox = 0
+    for p in todos:
+        if p["id"].startswith(("dgtpdf:", "dgteq:")) and not p.get("_pos_osm") and not p.get("_en_osm"):
+            p["px"] = 1
+            aprox += 1
+    estado["Posición aproximada (solo PK)"] = f"{aprox} puntos"
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
