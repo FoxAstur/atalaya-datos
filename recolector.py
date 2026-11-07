@@ -2657,12 +2657,6 @@ def main() -> int:
         log(f"rumbos por sentido: {n}")
     except Exception as e:  # noqa: BLE001
         log(f"rumbos: ERROR {e}")
-    # con los rumbos (y la provincia) ya puestos: los tramos del feed que vienen con la salida primero
-    try:
-        estado["Sentido de los tramos de la DGT"] = orientar_tramos_feed(todos, geo)
-        todos = unir_tramos(todos)   # ya en su sentido, se unen con su copia de OSM
-    except Exception as e:  # noqa: BLE001
-        estado["Sentido de los tramos de la DGT"] = f"falló ({e})"
     # "hacia Vitoria", "hacia Logroño": la ciudad a la que va el tráfico que vigila el radar
     hacia = 0
     muestras = []
@@ -2696,6 +2690,14 @@ def main() -> int:
         log(r)
     except Exception as e:  # noqa: BLE001
         log(f"direcciones OSM: ERROR {e}")
+
+    # con todos los sentidos ya puestos (hitos, segunda opinión, herencia de OSM): los tramos del feed que vienen
+    # con la salida primero se giran, y ya en su sentido se unen con su copia de OSM
+    try:
+        estado["Sentido de los tramos de la DGT"] = orientar_tramos_feed(todos, geo)
+        todos = unir_tramos(todos)
+    except Exception as e:  # noqa: BLE001
+        estado["Sentido de los tramos de la DGT"] = f"falló ({e})"
 
     zbe = ejecutar_zbe(anterior, estado)
 
