@@ -1,0 +1,2 @@
+https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf -> 200 999394 application/pdf
+https://nap.dgt.es/datex2/dgt/PredefinedLocationsPublication/radares/content.xml -> 200 2051128 text/xml; charset=utf-8
