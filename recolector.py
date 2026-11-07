@@ -351,7 +351,37 @@ class Geocodificador:
             return a
         if b and f >= 0.5:
             return b
-        return a or b
+        if a or b:
+            return a or b
+        return self._pk_lejos(via, pk, provincia)
+
+    def _pk_lejos(self, via: str, pk: float, provincia: str | None):
+        """
+        Sin hitos en ⌊pk⌋ ni ⌊pk⌋+1 (CartoCiudad no tiene todos: en la V-30 faltan del 0 al 3), con los dos más
+        cercanos que haya de esa vía (hasta 4 km a cada lado): se interpola entre ellos o, si los dos quedan del
+        mismo lado, se prolonga la recta. Es aproximado (se marca como posición aproximada); después se lleva
+        sobre la carretera.
+        """
+        k = int(math.floor(pk))
+        cerca = []
+        for d in range(1, 5):
+            for km in (k - d, k + 1 + d):
+                if km >= 0:
+                    h = self._hito(via, km, provincia)
+                    if h:
+                        cerca.append((abs(km - pk), km, h))
+            if len(cerca) >= 2:
+                break
+        if len(cerca) < 2:
+            return None
+        cerca.sort()
+        (_, k1, h1), (_, k2, h2) = cerca[:2]
+        if k1 == k2 or not 200 < distancia(h1[0], h1[1], h2[0], h2[1]) < 6000 * abs(k2 - k1):
+            return None
+        f = (pk - k1) / (k2 - k1)
+        if f < -1.5 or f > 2.5:
+            return None
+        return [h1[0] + (h2[0] - h1[0]) * f, h1[1] + (h2[1] - h1[1]) * f]
 
     def rumbo(self, via: str, pk: float, provincia: str | None, sentido: str | None):
         """Rumbo (grados) de la circulación en ese PK y sentido; None si no se puede saber."""
@@ -1462,6 +1492,78 @@ def fuente_zonas() -> list[dict]:
     return salida
 
 
+# --------------------------------------------------------- tramos de concentración de accidentes
+URL_SEG_VIAL = "https://www.transportes.gob.es/carreteras/nuestra-red/seguridad-vial"
+URLS_TCA = {  # por si la página cambia: los últimos publicados (2024)
+    "TCA": "https://cdn.transportes.gob.es/portal-web-transportes/carreteras/nuestrared/Seguridad_vial/NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf",
+    "TCAM": "https://cdn.transportes.gob.es/portal-web-transportes/carreteras/nuestrared/Seguridad_vial/tca-con-implicacion-de-motoristas.pdf",
+}
+RE_TCA = re.compile(r"\b((?:A|AP|N|AC|AG|AL|AS|AV|CA|CL|CM|CV|EX|GC|LO|MA|ML|MU|SE|TF|V|Z|B|M|C|H|GR|SA|TO|PA|LE|BU|SG|VA|ZA|SO|GU|CU|TE|HU|LR|NA|BI|GI|SS|PO|OU|LU|CO|JA|J|AB|CC|BA|IB|PM|E)-\d{1,4}[A-Z]?)\s+(\d{1,4}[.,]\d{1,3})\s+(\d{1,4}[.,]\d{1,3})")
+
+
+def fuente_tca(geo: "Geocodificador") -> list[dict]:
+    """
+    Tramos de concentración de accidentes (TCA) del Ministerio de Transportes en la Red de Carreteras del
+    Estado, y los de accidentes con motoristas (TCAM). Vienen como vía + PK inicial y final, sin sentido (se
+    avisa en los dos). Se trazan con los hitos de CartoCiudad y después por la carretera (trazar_zonas).
+    """
+    urls = dict(URLS_TCA)
+    try:
+        html = http(URL_SEG_VIAL, timeout=60).decode("utf-8", "replace")
+        for href in re.findall(r'href="([^"]+\.pdf)"', html, re.I):
+            u = urllib.parse.urljoin(URL_SEG_VIAL, href)
+            nombre = urllib.parse.unquote(href).lower()
+            if "motorist" in nombre or "motocic" in nombre:
+                urls["TCAM"] = u
+            elif "tca" in nombre:
+                urls["TCA"] = u
+    except Exception as e:  # noqa: BLE001
+        log(f"  TCA: página del Ministerio no disponible ({e}); se usan los PDF conocidos")
+    filas = {}
+    for clase, url in urls.items():
+        try:
+            lineas = lineas_pdf(http(url, timeout=120))
+        except Exception as e:  # noqa: BLE001
+            log(f"  TCA: {clase} no se pudo leer ({e})")
+            continue
+        n = 0
+        for l in lineas:
+            for via, a, b in RE_TCA.findall(l):
+                pki, pkf = sorted((num_km(a), num_km(b)))
+                if not 0 < pkf - pki <= 15:
+                    continue
+                clave = (via_normalizada(via), round(pki, 1), round(pkf, 1))
+                filas.setdefault(clave, set()).add(clase)
+                n += 1
+        log(f"  TCA: {clase} {n} filas ({url.rsplit('/', 1)[-1]})")
+    pet = set()
+    for via, pki, pkf in filas:
+        for k in range(int(math.floor(pki)), int(math.floor(pkf)) + 2):
+            pet.add((via, k, None))
+    geo.precargar(pet)
+    salida, sin = [], []
+    for (via, pki, pkf), clases in sorted(filas.items()):
+        pts = []
+        for pk in [pki] + [float(k) for k in range(int(math.floor(pki)) + 1, int(math.ceil(pkf)))] + [pkf]:
+            c = geo.pk(via, pk, None)
+            if c and (not pts or distancia(pts[-1][0], pts[-1][1], c[0], c[1]) > 30):
+                pts.append((round(c[0], 5), round(c[1], 5)))
+        largo = sum(distancia(*pts[i], *pts[i + 1]) for i in range(len(pts) - 1)) if len(pts) >= 2 else 0
+        if len(pts) < 2 or not 0.4 * (pkf - pki) * 1000 < largo < 2.5 * (pkf - pki) * 1000 + 300:
+            sin.append(f"{via} {pki}-{pkf}")
+            continue
+        motos = "TCAM" in clases
+        salida.append(punto(
+            f"tca:{via}:{pki}-{pkf}", "TCA", "MINISTERIO", pts[0][0], pts[0][1],
+            tr=[x for q in pts for x in q], c=via, pk=pki, pk2=pkf, s="Ambos", lm=round((pkf - pki) * 1000),
+            n=("Tramo de concentración de accidentes" + (" (también con motoristas)" if "TCA" in clases and motos
+               else "") if "TCA" in clases else "Tramo de concentración de accidentes con motoristas"),
+            at="Ministerio de Transportes y Movilidad Sostenible"))
+    if sin:
+        log(f"  TCA: {len(sin)} sin poder situar: {sin[:20]}")
+    return salida
+
+
 # ------------------------------------------------------------------------- límites de velocidad
 def completar_limites(puntos: list[dict]) -> int:
     """Límite de la vía más cercana (OSM maxspeed) para radares y tramos que no lo traen. Con caché."""
@@ -2195,6 +2297,52 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
     return f"✅ {texto} → {movidos} de {len(por_pk)} situados por PK recolocados por la carretera"
 
 
+def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
+    """
+    Los tramos del feed de la DGT traen dos puntos, pero no siempre la entrada primero: en muchos el primero es la
+    cámara de SALIDA (en la V-30, "hacia Alicante", el primero era el PK 4,7, el final del tramo). Con el sentido
+    oficial (creciente/decreciente) y los hitos se sabe hacia dónde se circula; si el tramo va al revés, se le da
+    la vuelta. Si no, la app lo avisaba en la otra calzada y en el sentido contrario. Se comprueba antes contra
+    los tramos de OSM y del PDF que coinciden: solo se aplica si en la gran mayoría el sentido oficial acierta.
+    """
+    tramos = [p for p in puntos if p["id"].startswith("dgt:") and p["t"] == "RADAR_TRAMO" and p.get("la2") is not None]
+    completar_rumbos(tramos, geo)
+    ref = [p for p in puntos if p["t"] == "RADAR_TRAMO" and p.get("la2") is not None
+           and p["id"].startswith(("osm:", "dgtpdf:", "ansr:"))]
+
+    def al_reves(p):
+        return abs((rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]) - p["rb"] + 180) % 360 - 180) > 120
+
+    a_favor = en_contra = 0
+    for p in tramos:
+        if p.get("rb") is None:
+            continue
+        for o in ref:
+            igual = max(distancia(p["la"], p["lo"], o["la"], o["lo"]), distancia(p["la2"], p["lo2"], o["la2"], o["lo2"]))
+            inverso = max(distancia(p["la"], p["lo"], o["la2"], o["lo2"]), distancia(p["la2"], p["lo2"], o["la"], o["lo"]))
+            if min(igual, inverso) < 300:
+                # el sentido oficial acierta si dice "al revés" justo cuando la otra fuente lo tiene al revés
+                if al_reves(p) == (inverso < igual):
+                    a_favor += 1
+                else:
+                    en_contra += 1
+                break
+    if a_favor < 8 or a_favor < 3 * en_contra:
+        return f"⚠️ el sentido oficial no cuadra con OSM/PDF ({a_favor} a favor, {en_contra} en contra): no se toca"
+    girados = []
+    for p in tramos:
+        if p.get("rb") is not None and al_reves(p):
+            p["la"], p["lo"], p["la2"], p["lo2"] = p["la2"], p["lo2"], p["la"], p["lo"]
+            if p.get("pk2") is not None:
+                p["pk"], p["pk2"] = p["pk2"], p["pk"]
+            for k in ("ap", "rt"):
+                p.pop(k, None)
+            girados.append(p["id"])
+    log(f"tramos del feed girados: {girados}")
+    return (f"{len(girados)} de {len(tramos)} tramos del feed de la DGT venían con la salida primero y se les ha dado "
+            f"la vuelta (comprobado con OSM/PDF: {a_favor} a favor, {en_contra} en contra)")
+
+
 def unir_tramos(puntos: list[dict]) -> list[dict]:
     """
     Un mismo radar de tramo puede llegar por varias fuentes de forma distinta: OSM con entrada y salida,
@@ -2372,6 +2520,7 @@ def main() -> int:
                 c = geo.pk(via, f["pk"], prov)
                 if not c:
                     sin_situar += 1
+                    log(f"    sin situar: {f['tipo']} {via} PK {f['pk']} {f['sentido']} ({f['prov']})")
                     continue
                 # respaldo espacial por si el feed escribe la vía de otra forma
                 q = rej.cerca(c[0], c[1], 400, lambda q: via_normalizada(q.get("c")) == via)
@@ -2468,6 +2617,10 @@ def main() -> int:
     todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, ansr, lisboa, viladecans, santacruz, pamplona,
                       camaras_dgt, comunitario, osm, zonas])
     log(f"fusión: {FUSION['opuestos']} radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)")
+    try:
+        estado["Sentido de los tramos de la DGT"] = orientar_tramos_feed(todos, geo)
+    except Exception as e:  # noqa: BLE001
+        estado["Sentido de los tramos de la DGT"] = f"falló ({e})"
     todos = unir_tramos(todos)
     try:
         msg = a_la_linea_de_detencion(todos)
@@ -2696,8 +2849,19 @@ def main() -> int:
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     # Freno de emergencia: si desaparece más del 15 % de los radares y cámaras de golpe, algo ha ido mal
     # (una fuente grande caída sin datos de la vez anterior, un fallo en la fusión…): no se publica.
-    fijos = sum(1 for p in todos if p["t"] != "ZONA_MOVIL")
-    fijos_antes = sum(1 for p in anterior.get("puntos", []) if p["t"] != "ZONA_MOVIL")
+    # Tramos de concentración de accidentes: van aparte (no son equipos: sin caminos, sin cruces con radares)
+    tca = ejecutar("Ministerio: tramos de concentración de accidentes", lambda: fuente_tca(geo))
+    geo.guardar()
+    if tca and os.path.exists(ruta_red):
+        try:
+            st_tca = caminos.trazar_zonas(tca, ruta_red, aviso=log)
+            estado["Ministerio: tramos de concentración de accidentes"] += (
+                f"; trazados por la carretera {st_tca['zonas_trazadas']} de {st_tca['zonas_rectas']}")
+        except Exception as e:  # noqa: BLE001
+            log(f"TCA: trazado falló ({e})")
+    todos = [p for p in todos if p["t"] != "TCA"] + tca
+    fijos = sum(1 for p in todos if p["t"] not in ("ZONA_MOVIL", "TCA"))
+    fijos_antes = sum(1 for p in anterior.get("puntos", []) if p["t"] not in ("ZONA_MOVIL", "TCA"))
     if fijos_antes >= 1000 and fijos < 0.85 * fijos_antes:
         estado["⛔ No publicado"] = f"solo {fijos} radares y cámaras frente a {fijos_antes} de la vez anterior"
         log(f"NO SE PUBLICA: {fijos} frente a {fijos_antes}")
@@ -2719,9 +2883,9 @@ def main() -> int:
 
 def escribir_informe(puntos: list[dict], estado: dict, version: str, zbe: list | None = None) -> None:
     from collections import Counter
-    tipos = ["RADAR_FIJO", "RADAR_TRAMO", "SEMAFORO", "STOP_CEDA", "OTRA_CAMARA", "ZONA_MOVIL"]
+    tipos = ["RADAR_FIJO", "RADAR_TRAMO", "SEMAFORO", "STOP_CEDA", "OTRA_CAMARA", "ZONA_MOVIL", "TCA"]
     nombres = {"RADAR_FIJO": "Fijos", "RADAR_TRAMO": "Tramo", "SEMAFORO": "Semáforo", "STOP_CEDA": "Stop/ceda",
-               "OTRA_CAMARA": "Otras cám.", "ZONA_MOVIL": "Zonas móvil"}
+               "OTRA_CAMARA": "Otras cám.", "ZONA_MOVIL": "Zonas móvil", "TCA": "Accidentes"}
     por_ccaa = Counter((p.get("ca") or "Sin asignar", p["t"]) for p in puntos)
     ccaas = sorted({p.get("ca") or "Sin asignar" for p in puntos}, key=lambda x: (x == "Sin asignar", normalizar(x)))
     l = [f"# Datos de Atalaya\n\nVersión: {version} · Total: **{len(puntos)}** puntos\n", "## Fuentes\n"]
