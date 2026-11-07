@@ -2448,6 +2448,79 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
     return f"✅ {texto} → {movidos} de {len(por_pk)} situados por PK recolocados por la carretera"
 
 
+def rumbo_oficial(p: dict, geo: "Geocodificador") -> float | None:
+    """
+    Rumbo de circulación que dice la fuente oficial (vía + PK + creciente/decreciente) con los hitos de CartoCiudad.
+    Solo si es claro: dos pares de hitos seguidos (k→k+1 y el de al lado) de longitud normal que apuntan igual
+    (en una curva cerrada la cuerda de 1 km no dice nada) y el PK cae cerca del punto (o del otro extremo del tramo).
+    """
+    s = p.get("s")
+    if s not in ("Creciente", "Decreciente") or not p.get("c") or p.get("pk") is None or p["t"] in ("ZONA_MOVIL", "TCA"):
+        return None
+    pk = float(p["pk"])
+    k = int(math.floor(pk))
+    hs = {km: geo._hito(p["c"], km, p.get("pr")) for km in (k - 1, k, k + 1, k + 2) if km >= 0}
+
+    def cuerda(a, b):
+        ha, hb = hs.get(a), hs.get(b)
+        if ha and hb and 450 < distancia(ha[0], ha[1], hb[0], hb[1]) < 1700:
+            return rumbo_entre(ha[0], ha[1], hb[0], hb[1])
+        return None
+    c0 = cuerda(k, k + 1)
+    otra = cuerda(k - 1, k) if pk - k < 0.5 else cuerda(k + 1, k + 2)
+    otra = otra if otra is not None else (cuerda(k + 1, k + 2) if pk - k < 0.5 else cuerda(k - 1, k))
+    if c0 is None or otra is None or abs((c0 - otra + 180) % 360 - 180) > 60:
+        return None
+    pos = geo.pk(p["c"], pk, p.get("pr"))
+    extremos = [(p["la"], p["lo"])] + ([(p["la2"], p["lo2"])] if p.get("la2") is not None else [])
+    if not pos or min(distancia(pos[0], pos[1], la, lo) for la, lo in extremos) > 2000:
+        return None
+    return round((c0 + 180) % 360 if s == "Decreciente" else c0, 1)
+
+
+def imponer_sentido_oficial(puntos: list[dict], geo: "Geocodificador") -> tuple[str, list]:
+    """
+    Última palabra del sentido oficial. Varios pasos ponen o cambian rumbos (segunda opinión de radares-datos,
+    herencia de OSM, gemelos, orientación de tramos...) y alguno puede dejarlo al revés de lo que dice la DGT: en la
+    N-601 (Mansilla) y la CL-613/CL-615 (Palencia) los tramos «decrecientes» avisaban en el sentido creciente y
+    los gemelos de la N-332 en Cullera estaban cambiados. Aquí, si el rumbo va contra el sentido oficial (más de
+    120°) y los hitos lo dejan claro, manda el oficial; a los tramos se les orienta la entrada. Lo comprobado sobre
+    el terreno no se toca. Devuelve el resumen y los puntos cambiados (hay que rehacer sus caminos).
+    """
+    cambiados, revisados = [], 0
+    pet = set()
+    for p in puntos:
+        if p.get("s") in ("Creciente", "Decreciente") and p.get("c") and p.get("pk") is not None \
+                and p["t"] not in ("ZONA_MOVIL", "TCA"):
+            k = int(math.floor(float(p["pk"])))
+            pet |= {(p["c"], km, p.get("pr")) for km in (k - 1, k, k + 1, k + 2) if km >= 0}
+    geo.precargar(pet)
+    for p in puntos:
+        if p.get("_verif") or p.get("_camara_entrada"):
+            continue
+        ro = rumbo_oficial(p, geo)
+        if ro is None:
+            continue
+        revisados += 1
+        rb = p.get("rb")
+        girar_tramo = p.get("la2") is not None and abs(
+            (rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]) - ro + 180) % 360 - 180) > 100 and \
+            distancia(p["la"], p["lo"], p["la2"], p["lo2"]) > 250
+        if (rb is not None and abs((rb - ro + 180) % 360 - 180) > 120) or girar_tramo:
+            log(f"  sentido oficial: {p['id']} {p.get('c')} PK {p.get('pk')} {p.get('s')}: rumbo {rb} → {ro}"
+                + (" (tramo girado)" if girar_tramo else ""))
+            p["rb"] = ro
+            if girar_tramo:
+                p["la"], p["lo"], p["la2"], p["lo2"] = p["la2"], p["lo2"], p["la"], p["lo"]
+                if p.get("pk2") is not None:
+                    p["pk"], p["pk2"] = p["pk2"], p["pk"]
+            for k in ("ap", "rt", "pl"):
+                p.pop(k, None)
+            cambiados.append(p)
+    return (f"{revisados} con sentido oficial comprobable; {len(cambiados)} corregidos: "
+            + ", ".join(p["id"] for p in cambiados[:30])), cambiados
+
+
 def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
     """
     Los tramos del feed de la DGT traen dos puntos, pero no siempre la entrada primero: en muchos el primero es la
@@ -2460,6 +2533,11 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
     tramos = [p for p in puntos if p["id"].startswith("dgt:") and p["t"] == "RADAR_TRAMO" and p.get("la2") is not None
               and not p.get("_orient_pdf")]
     completar_rumbos(tramos, geo)
+    # el rumbo que traiga (segunda opinión, OSM...) puede estar al revés: para decidir manda el oficial
+    for p in tramos:
+        ro = rumbo_oficial(p, geo)
+        if ro is not None:
+            p["rb"] = ro
     ref = [p for p in puntos if p["t"] == "RADAR_TRAMO" and p.get("la2") is not None
            and p["id"].startswith(("osm:", "dgtpdf:", "ansr:"))]
 
@@ -2996,6 +3074,15 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             estado["Cámaras de semáforo"] = f"⚠️ falló ({e})"
             log(f"semáforos: ERROR {e}")
+    # El sentido oficial (creciente/decreciente con los hitos) por encima de lo que hayan dejado los demás pasos
+    try:
+        msg, cambiados = imponer_sentido_oficial(todos, geo)
+        estado["Sentido oficial (última comprobación)"] = msg
+        if cambiados and os.path.exists(ruta_red):
+            caminos.anadir_caminos(cambiados, ruta_red, zbe, aviso=log)
+    except Exception as e:  # noqa: BLE001
+        log(f"sentido oficial: ERROR {e}")
+        estado["Sentido oficial (última comprobación)"] = f"⚠️ falló ({e})"
     # Segunda pasada de los comprobados, ya con todos los pasos que ponen o cambian sentidos (segunda opinión de
     # la DGT, herencia de OSM, gemelos…): si alguno se los ha cambiado, se vuelven a poner y se recalcula su camino
     try:
