@@ -2318,13 +2318,12 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
                 p["_camara_entrada"] = True
                 log(f"  tramo {p['id']}: la cámara del feed es la entrada (su calzada va hacia el otro extremo) → {p['s']}")
                 p["rb"] = round(rumbo_cam, 1)
-                continue   # la entrada ya es la cámara real: no se mueve
-            # entrada de un tramo del PDF (la salida es la cámara real del feed): sobre la calzada de la carretera
-            # que va hacia la salida. En la V-30 el PK caía en un enlace a 250 m y el tramo se quedaba sin recorrido.
+            # el extremo hecho por PK (la entrada, o la salida si se ha girado) sobre la calzada que va en el sentido
+            # del tramo: el PK de la recta entre hitos puede caer en un enlace o en la otra calzada
+            k_la, k_lo = ("la2", "lo2") if p.get("_camara_entrada") else ("la", "lo")
             rb_t = rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"])
-            ref = caminos.norm_ref(via)
             mejor = None
-            for d, t, wi, i in red.cercanos((p["la"], p["lo"]), 350.0):
+            for d, t, wi, i in red.cercanos((p[k_la], p[k_lo]), 350.0):
                 w = red.vias[wi]
                 if w.ref != ref or w.tipo.endswith("_link"):
                     continue
@@ -2335,8 +2334,9 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
                 if mejor is None or d < mejor[0]:
                     mejor = (d, caminos.interpolar(w.pts[i], w.pts[i + 1], t))
             if mejor and mejor[0] > 15:
-                p["la"], p["lo"] = round(mejor[1][0], 6), round(mejor[1][1], 6)
+                p[k_la], p[k_lo] = round(mejor[1][0], 6), round(mejor[1][1], 6)
                 movidos += 1
+            continue
         if p.get("la2") is not None and p.get("pk2") is not None and not p.get("_orient_pdf"):
             c2 = _sobre_la_via(red, via, float(p["pk2"]), prov, geo)
             if c2 and distancia(p["la2"], p["lo2"], c2[0], c2[1]) < 400:
@@ -2921,7 +2921,7 @@ def main() -> int:
             aprox += 1
     estado["Posición aproximada (solo PK)"] = f"{aprox} puntos"
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px", "_orient_pdf"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px", "_orient_pdf", "_camara_entrada"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
