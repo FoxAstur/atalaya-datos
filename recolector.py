@@ -2291,6 +2291,52 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
         if c and distancia(p["la"], p["lo"], c[0], c[1]) < 400:
             p["la"], p["lo"] = round(c[0], 6), round(c[1], 6)
             movidos += 1
+        if p.get("_orient_pdf") and p.get("la2") is not None:
+            # ¿Entrada o salida? La cámara del feed (la2) es real y está sobre su calzada: si allí se circula hacia el
+            # otro extremo, la cámara es la ENTRADA y el tramo va al revés de lo supuesto. En la V-30 el PDF dice
+            # creciente, pero la cámara del PK 8,77 está en la calzada que va hacia el puerto (decreciente, como dice
+            # el feed). El otro extremo no cambia (PK ± largo en los dos casos): solo se giran los papeles.
+            ref = caminos.norm_ref(via)
+            hacia_otro = rumbo_entre(p["la2"], p["lo2"], p["la"], p["lo"])
+            votos, rumbo_cam = [], None
+            for d, t, wi, i in sorted(red.cercanos((p["la2"], p["lo2"]), 40.0)):
+                w = red.vias[wi]
+                if w.ref == ref and not w.tipo.endswith("_link") and w.sentido != 0:
+                    fb = caminos.rumbo(w.pts[i], w.pts[i + 1])
+                    if w.sentido == -1:
+                        fb = (fb + 180) % 360
+                    votos.append(abs((fb - hacia_otro + 180) % 360 - 180) < 90)
+                    if rumbo_cam is None:
+                        rumbo_cam = fb   # el de la calzada más cercana a la cámara
+            if votos and all(votos):
+                p["la"], p["lo"], p["la2"], p["lo2"] = p["la2"], p["lo2"], p["la"], p["lo"]
+                if p.get("pk2") is not None:
+                    p["pk"], p["pk2"] = p["pk2"], p["pk"]
+                if p.get("s") in ("Creciente", "Decreciente"):
+                    p["s"] = "Decreciente" if p["s"] == "Creciente" else "Creciente"
+                p.pop("rb", None)
+                p["_camara_entrada"] = True
+                log(f"  tramo {p['id']}: la cámara del feed es la entrada (su calzada va hacia el otro extremo) → {p['s']}")
+                p["rb"] = round(rumbo_cam, 1)
+                continue   # la entrada ya es la cámara real: no se mueve
+            # entrada de un tramo del PDF (la salida es la cámara real del feed): sobre la calzada de la carretera
+            # que va hacia la salida. En la V-30 el PK caía en un enlace a 250 m y el tramo se quedaba sin recorrido.
+            rb_t = rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"])
+            ref = caminos.norm_ref(via)
+            mejor = None
+            for d, t, wi, i in red.cercanos((p["la"], p["lo"]), 350.0):
+                w = red.vias[wi]
+                if w.ref != ref or w.tipo.endswith("_link"):
+                    continue
+                fb = caminos.rumbo(w.pts[i], w.pts[i + 1])
+                sentidos = [fb] if w.sentido == 1 else [(fb + 180) % 360] if w.sentido == -1 else [fb, (fb + 180) % 360]
+                if not any(abs((x - rb_t + 180) % 360 - 180) < 70 for x in sentidos):
+                    continue
+                if mejor is None or d < mejor[0]:
+                    mejor = (d, caminos.interpolar(w.pts[i], w.pts[i + 1], t))
+            if mejor and mejor[0] > 15:
+                p["la"], p["lo"] = round(mejor[1][0], 6), round(mejor[1][1], 6)
+                movidos += 1
         if p.get("la2") is not None and p.get("pk2") is not None and not p.get("_orient_pdf"):
             c2 = _sobre_la_via(red, via, float(p["pk2"]), prov, geo)
             if c2 and distancia(p["la2"], p["lo2"], c2[0], c2[1]) < 400:
