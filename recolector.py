@@ -2317,6 +2317,13 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
     for p in tramos:
         if p.get("rb") is None:
             continue
+        # con los dos PK: la entrada es el PK menor si es creciente y el mayor si es decreciente
+        if p.get("pk2") is not None and p.get("pk") != p.get("pk2") and p.get("s") in ("Creciente", "Decreciente"):
+            entra_la2 = (p["s"] == "Creciente") == (p["pk2"] < p["pk"])
+            if al_reves(p) == entra_la2:
+                a_favor += 1
+            else:
+                en_contra += 1
         for o in ref:
             igual = max(distancia(p["la"], p["lo"], o["la"], o["lo"]), distancia(p["la2"], p["lo2"], o["la2"], o["lo2"]))
             inverso = max(distancia(p["la"], p["lo"], o["la2"], o["lo2"]), distancia(p["la2"], p["lo2"], o["la"], o["lo"]))
