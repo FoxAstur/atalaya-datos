@@ -1,0 +1,4 @@
+https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/Ficheros_microdatos_de_accidentalidad_con_victimas/TABLA_ACCIDENTES_2025.XLSX -> 200 25795727 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_23.XLSX -> 200 25213703 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_22.xlsx -> 200 24305477 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_21.xlsx -> 200 22396586 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
