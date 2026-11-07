@@ -19,6 +19,7 @@ y el límite de velocidad de la vía con OpenStreetMap cuando la fuente no lo tr
 """
 from __future__ import annotations
 
+import bisect
 import csv
 import gzip
 import io
@@ -32,7 +33,7 @@ import unicodedata
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
+from datetime import date as _fecha, datetime, timezone
 
 UA = "AtalayaRecolector/1.0 (+https://github.com/FoxAstur/atalaya-datos)"
 SALIDA = "datos/radares.json"
@@ -40,6 +41,7 @@ INFORME = "datos/INFORME.md"
 CACHE_GEO = "cache/geocodificacion.json"
 CACHE_REV = "cache/regiones.json"
 CACHE_VEL = "cache/limites.json"
+CACHE_ACC = "cache/accidentes.json"
 
 URL_DGT_FEED = "https://nap.dgt.es/datex2/dgt/PredefinedLocationsPublication/radares/content.xml"
 URL_DGT_PAGINA = "https://www.dgt.es/conoce-el-estado-del-trafico/vigilancia-y-control/equipos-y-tramos-de-vigilancia/"
@@ -1501,6 +1503,117 @@ URLS_TCA = {  # por si la página cambia: los últimos publicados (2024)
 RE_TCA = re.compile(r"\b((?:A|AP|N|AC|AG|AL|AS|AV|CA|CL|CM|CV|EX|GC|LO|MA|ML|MU|SE|TF|V|Z|B|M|C|H|GR|SA|TO|PA|LE|BU|SG|VA|ZA|SO|GU|CU|TE|HU|LR|NA|BI|GI|SS|PO|OU|LU|CO|JA|J|AB|CC|BA|IB|PM|E)-\d{1,4}[A-Z]?)\s+(\d{1,4}[.,]\d{1,3})\s+(\d{1,4}[.,]\d{1,3})")
 
 
+def trazar_por_pk(geo: "Geocodificador", tramos: list[tuple]) -> dict:
+    """(vía, PK inicial, PK final, provincia) → [(lat, lon), …] por los hitos de CartoCiudad (luego se lleva a la
+    carretera con trazar_zonas). Solo si la longitud cuadra con la de los PK."""
+    pet = set()
+    for via, pki, pkf, prov in tramos:
+        for k in range(int(math.floor(pki)), int(math.floor(pkf)) + 2):
+            pet.add((via, k, prov))
+    geo.precargar(pet)
+    salida = {}
+    for via, pki, pkf, prov in tramos:
+        pts = []
+        for pk in [pki] + [float(k) for k in range(int(math.floor(pki)) + 1, int(math.ceil(pkf)))] + [pkf]:
+            c = geo.pk(via, pk, prov)
+            if c and (not pts or distancia(pts[-1][0], pts[-1][1], c[0], c[1]) > 30):
+                pts.append((round(c[0], 5), round(c[1], 5)))
+        largo = sum(distancia(*pts[i], *pts[i + 1]) for i in range(len(pts) - 1)) if len(pts) >= 2 else 0
+        if len(pts) >= 2 and 0.4 * (pkf - pki) * 1000 < largo < 2.5 * (pkf - pki) * 1000 + 300:
+            salida[(via, pki, pkf, prov)] = pts
+    return salida
+
+
+# Accidentes con víctimas de la DGT (microdatos): vía + km de cada accidente. Los cinco últimos años.
+URLS_ACCIDENTES = [
+    "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_21.xlsx",
+    "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_22.xlsx",
+    "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_23.XLSX",
+    "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/Ficheros_microdatos_de_accidentalidad_con_victimas/TABLA_ACCIDENTES_24.XLSX",
+    "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/Ficheros_microdatos_de_accidentalidad_con_victimas/TABLA_ACCIDENTES_2025.XLSX",
+]
+UMBRAL_ACC_KM = 12   # accidentes con víctimas en 1 km en cinco años (≈ uno cada cinco meses)
+COD_PROV = {v[0]: k for k, v in PROVINCIAS.items()}
+
+
+def fuente_accidentes_dgt(geo: "Geocodificador") -> list[dict]:
+    """
+    Tramos con muchos accidentes en las carreteras autonómicas y de diputación, cuyas listas de TCA no son
+    públicas (la Generalitat Valenciana solo publica cuántos hay). Con los microdatos de la DGT: todo kilómetro
+    (ventana de 1 km que se desliza cada 100 m) con al menos UMBRAL_ACC_KM accidentes con víctimas en cinco años;
+    los que se solapan se unen. No es la lista oficial (que pondera por el tráfico): en la red del Estado, con los
+    mismos datos, este criterio cubre 103 de los 109 TCA oficiales, pero marca más tramos (vías con mucho tráfico).
+    Por eso solo se usa donde no hay lista oficial. El cálculo se guarda y se repite cada 30 días.
+    """
+    import openpyxl
+    cache = cargar_json(CACHE_ACC, {})
+    hoy = _fecha.today()
+    if cache.get("urls") != URLS_ACCIDENTES or not cache.get("fecha") or \
+            (hoy - _fecha.fromisoformat(cache["fecha"])).days > 30:
+        kms: dict = {}
+        anyos = set()
+        for url in URLS_ACCIDENTES:
+            wb = openpyxl.load_workbook(io.BytesIO(http(url, timeout=300)), read_only=True)
+            it = wb.worksheets[0].iter_rows(values_only=True)
+            h = list(next(it))
+            ix = {k: h.index(k) for k in ("ANYO", "COD_PROVINCIA", "CARRETERA", "KM", "TITULARIDAD_VIA")}
+            for r in it:
+                car, km, tit = r[ix["CARRETERA"]], r[ix["KM"]], r[ix["TITULARIDAD_VIA"]]
+                if not car or km is None or str(tit) not in ("2", "3"):   # 2 autonómica, 3 diputación/cabildo
+                    continue
+                try:
+                    km = float(km)
+                except (TypeError, ValueError):
+                    continue
+                prov = COD_PROV.get(f"{int(r[ix['COD_PROVINCIA']]):02d}") if r[ix["COD_PROVINCIA"]] else None
+                kms.setdefault(f"{via_normalizada(str(car))}|{prov or ''}", []).append(km)
+                anyos.add(r[ix["ANYO"]])
+            log(f"  accidentes: {url.rsplit('/', 1)[-1]} leído")
+        tramos = []
+        for clave, lista in kms.items():
+            if len(lista) < UMBRAL_ACC_KM:
+                continue
+            lista.sort()
+            cur = None
+            a = math.floor(lista[0] * 10) / 10 - 1
+            while a <= lista[-1]:
+                n = bisect.bisect_left(lista, a + 1.0) - bisect.bisect_left(lista, a)
+                if n >= UMBRAL_ACC_KM:
+                    if cur and a <= cur[1]:
+                        cur[1], cur[2] = round(a + 1.0, 1), max(cur[2], n)
+                    else:
+                        if cur:
+                            tramos.append([clave] + cur)
+                        cur = [round(max(a, 0), 1), round(a + 1.0, 1), n]
+                a = round(a + 0.1, 1)
+            if cur:
+                tramos.append([clave] + cur)
+        # accidentes de cada tramo (no el máximo de la ventana)
+        for t in tramos:
+            lista = kms[t[0]]
+            t.append(bisect.bisect_left(lista, t[2]) - bisect.bisect_left(lista, t[1]))
+        cache = {"urls": URLS_ACCIDENTES, "fecha": hoy.isoformat(), "anyos": sorted(anyos), "tramos": tramos}
+        guardar_json(CACHE_ACC, cache)
+    anyos = cache.get("anyos") or []
+    periodo = f"{anyos[0]}-{anyos[-1]}" if anyos else "últimos cinco años"
+    lista = [(t[0].split("|")[0], t[1], t[2], t[0].split("|")[1] or None, t[4]) for t in cache["tramos"]]
+    trazados = trazar_por_pk(geo, [(v, a, b, pr) for v, a, b, pr, _ in lista])
+    salida, sin = [], 0
+    for via, a, b, prov, n in lista:
+        pts = trazados.get((via, a, b, prov))
+        if not pts:
+            sin += 1
+            continue
+        salida.append(punto(
+            f"acc:{via}:{a}-{b}", "TCA", "ACCIDENTES_DGT", pts[0][0], pts[0][1],
+            tr=[x for q in pts for x in q], c=via, pk=a, pk2=b, s="Ambos", lm=round((b - a) * 1000), pr=prov,
+            ca=PROVINCIAS[prov][1] if prov else None,
+            n=f"Tramo con muchos accidentes: {n} con víctimas en {periodo} (microdatos DGT)",
+            at="Calculado con los microdatos de accidentes con víctimas de la DGT"))
+    log(f"  accidentes: {len(lista)} tramos, {len(salida)} situados, {sin} sin poder situar")
+    return salida
+
+
 def fuente_tca(geo: "Geocodificador") -> list[dict]:
     """
     Tramos de concentración de accidentes (TCA) del Ministerio de Transportes en la Red de Carreteras del
@@ -1536,20 +1649,11 @@ def fuente_tca(geo: "Geocodificador") -> list[dict]:
                 filas.setdefault(clave, set()).add(clase)
                 n += 1
         log(f"  TCA: {clase} {n} filas ({url.rsplit('/', 1)[-1]})")
-    pet = set()
-    for via, pki, pkf in filas:
-        for k in range(int(math.floor(pki)), int(math.floor(pkf)) + 2):
-            pet.add((via, k, None))
-    geo.precargar(pet)
+    trazados = trazar_por_pk(geo, [(via, pki, pkf, None) for via, pki, pkf in filas])
     salida, sin = [], []
     for (via, pki, pkf), clases in sorted(filas.items()):
-        pts = []
-        for pk in [pki] + [float(k) for k in range(int(math.floor(pki)) + 1, int(math.ceil(pkf)))] + [pkf]:
-            c = geo.pk(via, pk, None)
-            if c and (not pts or distancia(pts[-1][0], pts[-1][1], c[0], c[1]) > 30):
-                pts.append((round(c[0], 5), round(c[1], 5)))
-        largo = sum(distancia(*pts[i], *pts[i + 1]) for i in range(len(pts) - 1)) if len(pts) >= 2 else 0
-        if len(pts) < 2 or not 0.4 * (pkf - pki) * 1000 < largo < 2.5 * (pkf - pki) * 1000 + 300:
+        pts = trazados.get((via, pki, pkf, None))
+        if not pts:
             sin.append(f"{via} {pki}-{pkf}")
             continue
         motos = "TCAM" in clases
@@ -2929,7 +3033,9 @@ def main() -> int:
     # (una fuente grande caída sin datos de la vez anterior, un fallo en la fusión…): no se publica.
     # Tramos de concentración de accidentes: van aparte (no son equipos: sin caminos, sin cruces con radares)
     tca = ejecutar("Ministerio: tramos de concentración de accidentes", lambda: fuente_tca(geo))
+    tca_ac = ejecutar("Tramos con muchos accidentes (autonómicas y provinciales, microdatos DGT)", lambda: fuente_accidentes_dgt(geo))
     geo.guardar()
+    tca = tca + tca_ac
     if tca and os.path.exists(ruta_red):
         try:
             st_tca = caminos.trazar_zonas(tca, ruta_red, aviso=log)
