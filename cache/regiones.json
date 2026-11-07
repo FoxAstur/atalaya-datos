@@ -2469,6 +2469,10 @@
   "mu": "Sevilla",
   "pr": "Sevilla"
  },
+ "37.414,-5.997": {
+  "mu": "Sevilla",
+  "pr": "Sevilla"
+ },
  "37.415,-5.953": {
   "mu": "Sevilla",
   "pr": "Sevilla"
@@ -9359,6 +9363,10 @@
  "40.997,-3.062": {
   "mu": "Cogolludo",
   "pr": "Guadalajara"
+ },
+ "40.997,-5.634": {
+  "mu": "Villares de la Reina",
+  "pr": "Salamanca"
  },
  "40.997,-5.899": {
   "mu": "Golpejas",
@@ -18360,6 +18368,10 @@
  },
  "43.554,-5.943": {
   "mu": "Avilés",
+  "pr": "Asturias"
+ },
+ "43.555,-5.739": {
+  "mu": "Carreño",
   "pr": "Asturias"
  },
  "43.556,-6.188": {
