@@ -167,14 +167,18 @@ class Red:
             self.nodos.setdefault(self.clave(p), []).append((wi, i))
         for i in range(len(pts) - 1):
             a, b = pts[i], pts[i + 1]
-            # todas las celdas que toca el segmento (los de autovía pueden medir cientos de metros)
+            # todas las celdas que toca el segmento (los de autovía pueden medir cientos de metros, y en los
+            # túneles kilómetros): si es corto, su recuadro; si es largo, las celdas a lo largo de la línea
             y0, y1 = sorted((int(a[0] // CELDA_SEG), int(b[0] // CELDA_SEG)))
             x0, x1 = sorted((int(a[1] // CELDA_SEG), int(b[1] // CELDA_SEG)))
-            if (y1 - y0 + 1) * (x1 - x0 + 1) > 400:
-                y1, x1 = min(y1, y0 + 19), min(x1, x0 + 19)
-            for cy in range(y0, y1 + 1):
-                for cx in range(x0, x1 + 1):
-                    self.segs.setdefault((cy, cx), []).append((wi, i))
+            if (y1 - y0 + 1) * (x1 - x0 + 1) <= 9:
+                celdas = [(cy, cx) for cy in range(y0, y1 + 1) for cx in range(x0, x1 + 1)]
+            else:
+                n = int(max(abs(b[0] - a[0]), abs(b[1] - a[1])) / (CELDA_SEG / 2)) + 1
+                celdas = {(int((a[0] + (b[0] - a[0]) * k / n) // CELDA_SEG), int((a[1] + (b[1] - a[1]) * k / n) // CELDA_SEG))
+                          for k in range(n + 1)}
+            for c in celdas:
+                self.segs.setdefault(c, []).append((wi, i))
 
     def cercanos(self, p, radio=RADIO_ENCAJE):
         cy, cx = int(p[0] // CELDA_SEG), int(p[1] // CELDA_SEG)
@@ -189,6 +193,31 @@ class Red:
                     d, t = proyectar(p, w.pts[s[1]], w.pts[s[1] + 1])
                     if d <= radio:
                         yield d, t, s[0], s[1]
+
+
+def toca_por_dentro(c: list, interes: set) -> bool:
+    """
+    ¿Pasa la vía por alguna celda de interés entre sus nodos? Los túneles y viaductos largos tienen pocos nodos
+    muy separados (Somport: 8 km sin nodos intermedios): mirando solo los nodos no se cargaban, y los radares de
+    dentro se quedaban sin camino de aproximación.
+    """
+    if len(c) < 2:
+        return False
+    las = [x[1] for x in c]
+    los = [x[0] for x in c]
+    if max(las) - min(las) < CELDA_INTERES and max(los) - min(los) < CELDA_INTERES:
+        return False   # vía corta: ya se ha mirado por sus nodos
+    for (lo1, la1), (lo2, la2) in zip(c, c[1:]):
+        salto = max(abs(la2 - la1), abs(lo2 - lo1))
+        if salto < CELDA_INTERES / 2:
+            continue
+        n = int(salto / (CELDA_INTERES / 3)) + 1
+        for k in range(1, n):
+            t = k / n
+            la, lo = la1 + (la2 - la1) * t, lo1 + (lo2 - lo1) * t
+            if (int(la // CELDA_INTERES), int(lo // CELDA_INTERES)) in interes:
+                return True
+    return False
 
 
 def cargar_red(ruta: str, puntos: list[dict]) -> Red:
@@ -214,7 +243,8 @@ def cargar_red(ruta: str, puntos: list[dict]) -> Red:
             if g.get("type") != "LineString":
                 continue
             c = g.get("coordinates") or []
-            if not any((int(la // CELDA_INTERES), int(lo // CELDA_INTERES)) in interes for lo, la in c[::3] + c[-1:]):
+            if not any((int(la // CELDA_INTERES), int(lo // CELDA_INTERES)) in interes for lo, la in c[::3] + c[-1:]) \
+                    and not toca_por_dentro(c, interes):
                 continue
             tags = ft.get("properties") or {}
             if tags.get("highway") not in CLASE:

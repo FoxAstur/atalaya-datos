@@ -2448,6 +2448,205 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
     return f"✅ {texto} → {movidos} de {len(por_pk)} situados por PK recolocados por la carretera"
 
 
+PRIORIDAD_FUENTE = ("dgt:", "sct:", "ansr:", "mad:", "madfr:", "madzbe:", "vlc:", "dss:", "slmt:", "lis:", "vdc:",
+                    "mlgfr:", "dgtpdf:", "dgteq:", "com:", "osm:")
+
+
+def prioridad(p: dict) -> int:
+    for i, pre in enumerate(PRIORIDAD_FUENTE):
+        if p["id"].startswith(pre):
+            return i
+    return len(PRIORIDAD_FUENTE)
+
+
+def pos_pk(p: dict, geo: "Geocodificador"):
+    """Dónde cae su PK con los hitos de CartoCiudad (solo si los dos hitos son normales: 400-1700 m)."""
+    if p.get("pk") is None or not p.get("c"):
+        return None
+    pk = float(p["pk"])
+    k = int(math.floor(pk))
+    a, b = geo._hito(p["c"], k, p.get("pr")), geo._hito(p["c"], k + 1, p.get("pr"))
+    if not (a and b) or not 400 < distancia(a[0], a[1], b[0], b[1]) < 1700:
+        return None
+    f = pk - k
+    return a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f
+
+
+def camaras_osm_opl(ruta: str) -> list:
+    """Todas las cámaras de velocidad de OSM del extracto (también las quitadas por copia de un oficial)."""
+    if not os.path.exists(ruta):
+        return []
+    out = []
+    for e in opl_a_overpass(ruta)["elements"]:
+        t = e.get("tags") or {}
+        if e["type"] == "node" and (t.get("highway") == "speed_camera" or t.get("enforcement") == "maxspeed"
+                                    or "speed_camera" in t):
+            out.append((e["lat"], e["lon"], t))
+        elif e["type"] == "relation" and t.get("enforcement") == "maxspeed":
+            for m in e.get("members") or []:
+                if m["type"] == "node" and m.get("role") in ("device", ""):
+                    out.append((m["lat"], m["lon"], t))
+    return out
+
+
+def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> tuple[str, list]:
+    """
+    Última revisión, con testigos independientes (auditoría del 7-11-2026):
+      1. Tercer testigo: un radar oficial a más de 150 m de su propio PK, con una cámara de OSM a menos de 100 m de
+         ese PK → la coordenada era la mala (en el feed de la DGT pasa en ~1 de cada 6: A-40 km 299,5 a 446 m,
+         A-4 km 40,4 a 409 m, N-432 km 111,6 a 347 m...). Se lleva a la cámara de OSM.
+      2. Situados solo por su PK que han acabado sobre otra vía (una calle a 20 m y su carretera a 150 m) → a su
+         carretera.
+      3. Rumbo cruzado con su carretera (avisaría en la que la cruza) → el del sentido oficial, o en los dos.
+      4. El mismo radar dos veces (misma clase, < 25 m, mismo sentido) → se queda el de la fuente más fiable.
+    Devuelve el resumen y los puntos a los que hay que rehacer el camino.
+    """
+    import caminos
+    FIJOS = ("RADAR_FIJO", "OTRA_CAMARA", "SEMAFORO", "STOP_CEDA")
+    cambiados: dict = {}
+    res = {"testigo": [], "su_via": [], "cruzado": [], "duplicados": []}
+
+    # 1. tercer testigo
+    cams = camaras_osm_opl(CAMARAS_OPL)
+    rej = Rejilla()
+    for la, lo, t in cams:
+        rej.add({"la": la, "lo": lo, "t": "_osm", "tags": t})
+    nuestros = Rejilla()
+    for p in todos:
+        if p["t"] in FIJOS:
+            nuestros.add(p)
+    for p in todos:
+        if p["t"] != "RADAR_FIJO" or p.get("_verif") or not p["id"].startswith(("dgt:", "dgtpdf:F")):
+            continue
+        e = pos_pk(p, geo)
+        if not e or distancia(e[0], e[1], p["la"], p["lo"]) <= 150:
+            continue
+        c = rej.cerca(e[0], e[1], 100)
+        if c is None:
+            continue
+        # que la cámara no sea otro radar nuestro (uno distinto ya puesto ahí)
+        otro = nuestros.cerca(c["la"], c["lo"], 40, lambda q: q is not p and q["t"] == "RADAR_FIJO")
+        if otro is not None:
+            continue
+        d_osm = c["tags"].get("direction")
+        if p.get("rb") is not None and d_osm and d_osm.replace(".", "").isdigit() and \
+                abs((float(d_osm) - p["rb"] + 180) % 360 - 180) > 60 and \
+                abs((float(d_osm) + 180 - p["rb"] + 180) % 360 - 180) > 60:
+            continue
+        m = distancia(c["la"], c["lo"], p["la"], p["lo"])
+        if m > 700:
+            continue
+        log(f"  testigo: {p['id']} {p.get('c')} PK {p.get('pk')} a {distancia(e[0], e[1], p['la'], p['lo']):.0f} m de su PK; "
+            f"la cámara de OSM, a {distancia(e[0], e[1], c['la'], c['lo']):.0f} m → se mueve {m:.0f} m")
+        p["la"], p["lo"] = round(c["la"], 6), round(c["lo"], 6)
+        p.pop("px", None)
+        p["_pos_osm"] = True
+        res["testigo"].append(p["id"])
+        cambiados[p["id"]] = p
+
+    # 2 y 3 necesitan la red
+    if os.path.exists(ruta_red):
+        fijos = [p for p in todos if p["t"] in FIJOS and not p.get("_verif")]
+        red = caminos.cargar_red(ruta_red, fijos)
+
+        def ref_de(c):
+            if not c or not re.fullmatch(r"[A-Z]{1,5}-?\d{1,4}[A-Z]?(-\d+)?", c.strip().upper()):
+                return None
+            return caminos.norm_ref(c)
+
+        for p in fijos:
+            rc = ref_de(p.get("c"))
+            pos = (p["la"], p["lo"])
+            cerca = sorted(((d, wi, i, t) for d, t, wi, i in red.cercanos(pos, 400)), key=lambda x: x[0])
+            if not cerca:
+                continue
+            propios = [x for x in cerca if rc and red.vias[x[1]].ref == rc]
+            # 2. situado por PK sobre otra vía
+            if (p.get("px") or p["id"].startswith(("dgtpdf:", "dgteq:"))) and propios and \
+                    propios[0][0] > max(60.0, cerca[0][0] + 40) and not p.get("_pos_osm"):
+                d, wi, i, t = propios[0]
+                w = red.vias[wi]
+                a, b = w.pts[i], w.pts[i + 1]
+                nueva = caminos.interpolar(a, b, t)
+                log(f"  su vía: {p['id']} {p.get('c')} PK {p.get('pk')}: estaba a {d:.0f} m de su carretera → a ella")
+                p["la"], p["lo"] = round(nueva[0], 6), round(nueva[1], 6)
+                res["su_via"].append(p["id"])
+                cambiados[p["id"]] = p
+                continue
+            # 3. rumbo cruzado
+            rb = p.get("rb")
+            if rb is None:
+                continue
+            base = [x for x in (propios or cerca) if x[0] <= 30]
+            if not base:
+                continue
+            ejes = [caminos.rumbo(red.vias[x[1]].pts[x[2]], red.vias[x[1]].pts[x[2] + 1]) for x in base]
+            if any(min(caminos.dif(rb, r), caminos.dif(rb, (r + 180) % 360)) <= 50 for r in ejes):
+                continue
+            ro = rumbo_oficial(p, geo)
+            nuevo = None
+            if ro is not None:
+                for r in ejes:
+                    for rr in (r, (r + 180) % 360):
+                        if caminos.dif(ro, rr) <= 50:
+                            nuevo = round(rr, 1)
+            log(f"  rumbo cruzado: {p['id']} {p.get('c')} rumbo {rb} y su vía va a {[round(r) for r in ejes]} → {nuevo}")
+            if nuevo is None:
+                p.pop("rb", None)
+            else:
+                p["rb"] = nuevo
+            res["cruzado"].append(p["id"])
+            cambiados[p["id"]] = p
+
+    # 4. el mismo radar dos veces
+    fuera = set()
+    rej2 = Rejilla()
+    for p in todos:
+        if p["t"] in FIJOS or p["t"] == "RADAR_TRAMO":
+            rej2.add(p)
+
+    def compatibles(p, q):
+        if p.get("s") in ("Creciente", "Decreciente") and q.get("s") in ("Creciente", "Decreciente") and p["s"] != q["s"]:
+            return False
+        rp, rq = p.get("rb"), q.get("rb")
+        return rp is None or rq is None or abs((rp - rq + 180) % 360 - 180) <= 45
+
+    for p in todos:
+        if p["id"] in fuera or not (p["t"] in FIJOS or p["t"] == "RADAR_TRAMO"):
+            continue
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                kx, ky = rej2._k(p["la"], p["lo"])
+                for q in rej2.d.get((kx + dx, ky + dy), []):
+                    if q is p or q["id"] in fuera or p["id"] in fuera or q["t"] != p["t"] or not compatibles(p, q):
+                        continue
+                    if distancia(p["la"], p["lo"], q["la"], q["lo"]) > 25:
+                        continue
+                    if p["t"] == "RADAR_TRAMO":
+                        if p.get("la2") is None or q.get("la2") is None or \
+                                distancia(p["la2"], p["lo2"], q["la2"], q["lo2"]) > 60:
+                            continue
+                    if p.get("_verif") or q.get("_verif"):
+                        continue
+                    queda, va = (p, q) if prioridad(p) <= prioridad(q) else (q, p)
+                    if queda.get("rb") is None and va.get("rb") is not None and queda.get("s") != "Ambos":
+                        queda["rb"] = va["rb"]
+                        cambiados[queda["id"]] = queda
+                    fuera.add(va["id"])
+                    res["duplicados"].append(f"{va['id']}→{queda['id']}")
+    todos[:] = [p for p in todos if p["id"] not in fuera]
+    for i in fuera:
+        cambiados.pop(i, None)
+    for p in cambiados.values():
+        for k in ("ap", "rt", "pl"):
+            p.pop(k, None)
+    msg = (f"{len(res['testigo'])} movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); "
+           f"{len(res['su_via'])} llevados a su carretera; {len(res['cruzado'])} con el rumbo cruzado corregido; "
+           f"{len(res['duplicados'])} duplicados quitados")
+    log(f"revisión final: {msg}: {res}")
+    return msg, list(cambiados.values())
+
+
 def rumbo_oficial(p: dict, geo: "Geocodificador") -> float | None:
     """
     Rumbo de circulación que dice la fuente oficial (vía + PK + creciente/decreciente) con los hitos de CartoCiudad.
@@ -3074,15 +3273,32 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             estado["Cámaras de semáforo"] = f"⚠️ falló ({e})"
             log(f"semáforos: ERROR {e}")
-    # El sentido oficial (creciente/decreciente con los hitos) por encima de lo que hayan dejado los demás pasos
+    # Revisión final con testigos independientes y el sentido oficial (creciente/decreciente con los hitos) por
+    # encima de lo que hayan dejado los demás pasos; después se rehacen los caminos de lo que haya cambiado
+    rehacer: dict = {}
     try:
         msg, cambiados = imponer_sentido_oficial(todos, geo)
         estado["Sentido oficial (última comprobación)"] = msg
-        if cambiados and os.path.exists(ruta_red):
-            caminos.anadir_caminos(cambiados, ruta_red, zbe, aviso=log)
+        rehacer.update({p["id"]: p for p in cambiados})
     except Exception as e:  # noqa: BLE001
         log(f"sentido oficial: ERROR {e}")
         estado["Sentido oficial (última comprobación)"] = f"⚠️ falló ({e})"
+    try:
+        msg, cambiados = revision_final(todos, ruta_red, geo)
+        estado["Revisión final"] = msg
+        rehacer.update({p["id"]: p for p in cambiados})
+    except Exception as e:  # noqa: BLE001
+        log(f"revisión final: ERROR {e}")
+        estado["Revisión final"] = f"⚠️ falló ({e})"
+    if rehacer and os.path.exists(ruta_red):
+        try:
+            import caminos
+            for p in rehacer.values():
+                for k in ("ap", "rt", "pl"):
+                    p.pop(k, None)
+            caminos.anadir_caminos(list(rehacer.values()), ruta_red, zbe, aviso=log)
+        except Exception as e:  # noqa: BLE001
+            log(f"caminos de los revisados: ERROR {e}")
     # Segunda pasada de los comprobados, ya con todos los pasos que ponen o cambian sentidos (segunda opinión de
     # la DGT, herencia de OSM, gemelos…): si alguno se los ha cambiado, se vuelven a poner y se recalcula su camino
     try:
