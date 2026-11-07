@@ -1,0 +1,238 @@
+[
+{
+"clave": "v30-madrid-km0.9|ini",
+"id": "v30-madrid-km0.9",
+"ext": "ini",
+"t": "RADAR_FIJO",
+"la": 39.43162,
+"lo": -0.350059,
+"rb": 285,
+"c": "V-30",
+"pk": 0.9,
+"mu": "València",
+"v": null,
+"nombre": "Buscar radar V-30 sentido Madrid (Mercavalencia)",
+"n": 537,
+"fotos_linea": 37,
+"huecos": [
+{
+"id": "1241480383914154",
+"s": -368,
+"la": 39.430402,
+"lo": -0.346082,
+"h": 294,
+"fecha": "2023-07"
+},
+{
+"id": "6075662132540353",
+"s": -327,
+"la": 39.430557,
+"lo": -0.346516,
+"h": 294,
+"fecha": "2023-07"
+},
+{
+"id": "1467839373763381",
+"s": -307,
+"la": 39.430635,
+"lo": -0.346734,
+"h": 294,
+"fecha": "2023-07"
+},
+{
+"id": "1474073506465370",
+"s": -249,
+"la": 39.430848,
+"lo": -0.347345,
+"h": 293,
+"fecha": "2023-07"
+},
+{
+"id": "2254694031407184",
+"s": -207,
+"la": 39.430984,
+"lo": -0.347801,
+"h": 293,
+"fecha": "2023-07"
+},
+{
+"id": "1969009280158910",
+"s": -171,
+"la": 39.431117,
+"lo": -0.348188,
+"h": 293,
+"fecha": "2023-07"
+},
+{
+"id": "1348697842657931",
+"s": -139,
+"la": 39.431234,
+"lo": -0.348523,
+"h": 293,
+"fecha": "2023-07"
+},
+{
+"id": "1638354603328852",
+"s": -111,
+"la": 39.431338,
+"lo": -0.348818,
+"h": 293,
+"fecha": "2023-07"
+},
+{
+"id": "273524378616773",
+"s": -59,
+"la": 39.431532,
+"lo": -0.349378,
+"h": 293,
+"fecha": "2023-07"
+},
+{
+"id": "291513576764667",
+"s": -31,
+"la": 39.431635,
+"lo": -0.349677,
+"h": 294,
+"fecha": "2023-07"
+},
+{
+"id": "287675237270676",
+"s": 16,
+"la": 39.431813,
+"lo": -0.350181,
+"h": 294,
+"fecha": "2023-07"
+},
+null,
+null,
+null,
+null,
+null
+],
+"hoja": "537.jpg"
+},
+{
+"clave": "v30-madrid-km1.5|ini",
+"id": "v30-madrid-km1.5",
+"ext": "ini",
+"t": "RADAR_FIJO",
+"la": 39.433157,
+"lo": -0.356748,
+"rb": 285,
+"c": "V-30",
+"pk": 1.5,
+"mu": "València",
+"v": null,
+"nombre": "Buscar radar V-30 sentido Madrid (Mercavalencia)",
+"n": 538,
+"fotos_linea": 0,
+"huecos": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"clave": "v30-madrid-km2.1|ini",
+"id": "v30-madrid-km2.1",
+"ext": "ini",
+"t": "RADAR_FIJO",
+"la": 39.434693,
+"lo": -0.363437,
+"rb": 285,
+"c": "V-30",
+"pk": 2.1,
+"mu": "València",
+"v": null,
+"nombre": "Buscar radar V-30 sentido Madrid (Mercavalencia)",
+"n": 539,
+"fotos_linea": 0,
+"huecos": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"clave": "v30-madrid-km2.7|ini",
+"id": "v30-madrid-km2.7",
+"ext": "ini",
+"t": "RADAR_FIJO",
+"la": 39.43623,
+"lo": -0.370126,
+"rb": 285,
+"c": "V-30",
+"pk": 2.7,
+"mu": "València",
+"v": null,
+"nombre": "Buscar radar V-30 sentido Madrid (Mercavalencia)",
+"n": 540,
+"fotos_linea": 5,
+"huecos": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+{
+"id": "237396082522367",
+"s": 153,
+"la": 39.436761,
+"lo": -0.371774,
+"h": 277,
+"fecha": "2023-07"
+},
+{
+"id": "3592017377789737",
+"s": 178,
+"la": 39.436786,
+"lo": -0.372066,
+"h": 276,
+"fecha": "2023-07"
+},
+{
+"id": "1017980619642024",
+"s": 234,
+"la": 39.436844,
+"lo": -0.372731,
+"h": 276,
+"fecha": "2023-07"
+}
+],
+"hoja": "540.jpg"
+}
+]
