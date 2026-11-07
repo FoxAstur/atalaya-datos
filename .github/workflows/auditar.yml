@@ -1,0 +1,41 @@
+name: Auditar
+
+# Auditoría de posiciones, sentidos y cobertura (auditoria.py). El resultado va a la rama «auditoria».
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber==0.11.10 openpyxl==3.1.5
+      - name: Red viaria (la de la última recolección)
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            red/vias.geojsonseq
+            red/camaras.opl
+          key: red-v7-auditoria-no-existe
+          restore-keys: red-v7-
+      - name: Auditar
+        run: |
+          ls -la red
+          timeout 90m python auditoria.py
+      - name: Subir a la rama auditoria
+        if: always()
+        run: |
+          mkdir -p /tmp/a && cp -r auditoria/* /tmp/a/ 2>/dev/null; cp cache/geocodificacion.json /tmp/a/ || true
+          cd /tmp/a
+          git init -q -b auditoria
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add -A && git commit -qm "Auditoría ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" auditoria
