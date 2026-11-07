@@ -2250,7 +2250,8 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
     """
     import caminos
     import statistics
-    por_pk = [p for p in puntos if p["id"].startswith(("dgtpdf:", "dgteq:")) and p.get("c") and p.get("pk") is not None
+    por_pk = [p for p in puntos if (p["id"].startswith(("dgtpdf:", "dgteq:")) or p.get("_orient_pdf"))
+              and p.get("c") and p.get("pk") is not None
               and not p.get("_pos_osm") and not p.get("_verif")]   # lo comprobado a ojo no se toca
     prueba = [p for p in puntos if p["id"].startswith("dgt:") and p["t"] == "RADAR_FIJO" and p.get("c")
               and p.get("pk") is not None and p.get("pr")][:400]
@@ -2290,7 +2291,7 @@ def pk_por_la_carretera(puntos: list[dict], ruta_red: str, geo) -> str:
         if c and distancia(p["la"], p["lo"], c[0], c[1]) < 400:
             p["la"], p["lo"] = round(c[0], 6), round(c[1], 6)
             movidos += 1
-        if p.get("la2") is not None and p.get("pk2") is not None:
+        if p.get("la2") is not None and p.get("pk2") is not None and not p.get("_orient_pdf"):
             c2 = _sobre_la_via(red, via, float(p["pk2"]), prov, geo)
             if c2 and distancia(p["la2"], p["lo2"], c2[0], c2[1]) < 400:
                 p["la2"], p["lo2"] = round(c2[0], 6), round(c2[1], 6)
@@ -2305,7 +2306,9 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
     la vuelta. Si no, la app lo avisaba en la otra calzada y en el sentido contrario. Se comprueba antes contra
     los tramos de OSM y del PDF que coinciden: solo se aplica si en la gran mayoría el sentido oficial acierta.
     """
-    tramos = [p for p in puntos if p["id"].startswith("dgt:") and p["t"] == "RADAR_TRAMO" and p.get("la2") is not None]
+    # (los que se han hecho con el PDF ya están orientados por él)
+    tramos = [p for p in puntos if p["id"].startswith("dgt:") and p["t"] == "RADAR_TRAMO" and p.get("la2") is not None
+              and not p.get("_orient_pdf")]
     completar_rumbos(tramos, geo)
     ref = [p for p in puntos if p["t"] == "RADAR_TRAMO" and p.get("la2") is not None
            and p["id"].startswith(("osm:", "dgtpdf:", "ansr:"))]
@@ -2490,13 +2493,22 @@ def main() -> int:
             rej.add(p)
             indice.setdefault(via_normalizada(p.get("c")), []).append(p)
 
-        def en_feed(via, pk):
-            """El feed trae vía y PK: se casa por ahí, sin depender de geocodificar."""
+        tomados: set = set()
+
+        def en_feed(via, pk, sentido=None):
+            """
+            El feed trae vía y PK: se casa por ahí, sin depender de geocodificar. Una cámara del feed solo casa con
+            una fila: en la V-31 el radar fijo del PK 6,125 (decreciente) se casaba con el tramo del 6,35
+            (creciente) y se perdía el fijo. Por eso se casan primero los fijos y, a igual distancia, gana el sentido.
+            """
             mejor, dmin = None, 0.35
             for q in indice.get(via, []):
-                if q.get("pk") is None:
+                if q.get("pk") is None or q["id"] in tomados:
                     continue
                 dd = abs(q["pk"] - pk)
+                if sentido in ("Creciente", "Decreciente") and q.get("s") in ("Creciente", "Decreciente") \
+                        and q["s"] != sentido:
+                    dd += 0.2   # de otro sentido: solo si no hay nada mejor
                 if dd < dmin:
                     mejor, dmin = q, dd
             return mejor
@@ -2516,12 +2528,12 @@ def main() -> int:
                     pet |= {(via, int(math.floor(pk)), prov), (via, int(math.floor(pk)) + 1, prov)}
         geo.precargar(pet)
         salida, sin_situar = [], 0
-        for f in filas:
+        for f in sorted(filas, key=lambda f: f["tipo"] != "Fijo"):   # los fijos primero (ver en_feed)
             if f["tipo"] == "Movil":
                 continue
             prov = provincia_canonica(f["prov"])
             via = via_normalizada(f["via"])
-            q = en_feed(via, f["pk"])
+            q = en_feed(via, f["pk"], f["sentido"])
             c = None
             if q is None:
                 c = geo.pk(via, f["pk"], prov)
@@ -2530,14 +2542,22 @@ def main() -> int:
                     log(f"    sin situar: {f['tipo']} {via} PK {f['pk']} {f['sentido']} ({f['prov']})")
                     continue
                 # respaldo espacial por si el feed escribe la vía de otra forma
-                q = rej.cerca(c[0], c[1], 400, lambda q: via_normalizada(q.get("c")) == via)
+                q = rej.cerca(c[0], c[1], 400, lambda q: via_normalizada(q.get("c")) == via and q["id"] not in tomados)
             if q is not None:
                 casados += 1
+                tomados.add(q["id"])
                 if not q.get("s") or q.get("s") == "Ambos":
                     q["s"] = f["sentido"]
                 q.setdefault("pr", prov)
                 if f["tipo"] == "Tramo":
                     q["t"] = "RADAR_TRAMO"
+                    if "la2" not in q and f["sentido"] in ("Creciente", "Decreciente") and q.get("s") != f["sentido"]:
+                        # el feed da una sola cámara (la de salida) y a veces el sentido contrario al del PDF: en la
+                        # V-30 el feed dice decreciente y el PDF y la prensa, creciente (del PK 4,65 al 8,85). Para el
+                        # tramo manda el PDF.
+                        log(f"    tramo {via} PK {f['pk']}: sentido del feed {q.get('s')} → {f['sentido']} (PDF)")
+                        q["s"] = f["sentido"]
+                        q.pop("rb", None)
                     if f.get("longitud"):
                         q.setdefault("lm", f["longitud"])
                         if "la2" not in q:
@@ -2551,6 +2571,7 @@ def main() -> int:
                             if c1:
                                 q["la2"], q["lo2"], q["pk2"] = q["la"], q["lo"], q.get("pk", f["pk"])
                                 q["la"], q["lo"], q["pk"] = round(c1[0], 6), round(c1[1], 6), round(pk_ini, 3)
+                                q["_orient_pdf"] = True   # entrada por su PK (y orientado por el PDF)
                 continue
             base = dict(c=via, pk=f["pk"], s=f["sentido"], pr=prov, ca=PROVINCIAS[prov][1] if prov else None)
             if f["tipo"] == "Tramo" and f.get("longitud"):
@@ -2854,7 +2875,7 @@ def main() -> int:
             aprox += 1
     estado["Posición aproximada (solo PK)"] = f"{aprox} puntos"
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px", "_orient_pdf"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
