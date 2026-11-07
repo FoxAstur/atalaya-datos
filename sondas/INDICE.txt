@@ -1,0 +1,2 @@
+https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/Diccionario_Tabla_Accidentes.xlsx -> 200 42553 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/Ficheros_microdatos_de_accidentalidad_con_victimas/TABLA_ACCIDENTES_24.XLSX -> 200 25357990 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
