@@ -1,100 +1,100 @@
       1s  DGT feed: 737 puntos
-      6s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
-     10s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
-     10s    CartoCiudad: 672 hitos necesarios, 0 por consultar
-     16s      sin situar: Fijo N-357B PK 1.219 Decreciente (Cádiz)
-     16s      sin situar: Fijo N-357B PK 1.64 Creciente (Cádiz)
-     21s      sin situar: Fijo N-340A PK 1049.45 Decreciente (Castellón)
-     23s      sin situar: Tramo GR-30 PK 10.02 Decreciente (Granada)
-     25s    tramo LZ-67 PK 16.22 (Decreciente): no se pudo situar su entrada (PK 21.724)
-     29s      sin situar: Fijo SE-020 PK 2.738 Creciente (Sevilla)
-     31s      sin situar: Tramo N-401A PK 91.62 Decreciente (Toledo)
-     32s      sin situar: Tramo N-401A PK 93.86 Creciente (Toledo)
-     32s    cinemómetros: 641 ya estaban en el feed, 184 añadidos, 7 sin poder situar
-     32s  DGT PDF radares: 184 puntos
-     33s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
-     33s    CartoCiudad: 496 hitos necesarios, 0 por consultar
-     73s    equipos: 252 situados, 8 sin poder situar
-     73s  DGT PDF cámaras: 252 puntos
-     81s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
-     88s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
-     88s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
-     88s    SCT radars.txt: 230 radares
-     88s  Cataluña (SCT): 230 puntos
-     88s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
-     88s  Ayto. Madrid: 23 puntos
-     88s  Ayto. València: 11 puntos
-    153s  OpenStreetMap: 3217 puntos
-    153s  Tramos radar móvil: 1152 puntos
-    155s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
-    155s  Ayto. Málaga foto-rojo: 7 puntos
-    157s  Ayto. Salamanca: 24 puntos
-    158s  Ayto. Donostia: 12 puntos
-    158s  Câmara Municipal de Lisboa: 18 puntos
-    160s  Ajuntament de Viladecans: 24 puntos
-    161s  Portugal: ANSR (red SINCRO): 121 puntos
-    178s  Ayto. Santa Cruz de Tenerife foto-rojo: no responde (www.santacruzdetenerife.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
-    196s  Ayto. Pamplona cinemómetros: no responde (sig.pamplona.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
-    196s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1798 puntos
-    196s  feed comunitario tras quitar tramos ya situados: 627
-    196s  fusión: 264 radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)
-    196s    CartoCiudad: 128 hitos necesarios, 49 por consultar
-    201s  tramos: 2 tramos repetidos (oficial y OSM) unidos, 4 puntos sueltos unidos a su tramo, 13 cámaras de entrada/salida absorbidas
-    201s  100 cámaras de stop o semáforo llevadas a su línea de detención (140751 stops y semáforos de OSM)
-    201s  correcciones: 2 quitados, 37 sentidos fijados, 1 añadidos, 1 con el tipo corregido
-    201s  verificados: 96 comprobados sobre el terreno; arreglados: osm:r9933664 (la2, lo2)
-    201s    límites: 212 sin límite, 1 por consultar
-    237s  límites deducidos de OSM: 130
-    237s    regiones: 3 celdas nuevas que consultar
-    238s    regiones: ejemplo de respuesta {"id": "330140087370", "province": "Asturias", "provinceCode": "33", "comunidadAutonoma": "Principado de Asturias", "comunidadAutonomaCode": "03", "muni": "Carreño", "muniCode": "33014", "type": "portal", "address": "AS-19", "postalCode": "33492", "poblacion": null, "geom": "POINT(-5.73912430199573 
-    238s    CartoCiudad: 1850 hitos necesarios, 0 por consultar
-    238s  rumbos por sentido: 935
-    238s  sentido hacia una ciudad: 74 puntos; ['VITORIA - GASTEIZ → 42.840,-2.722 (12 km)', 'IRUN → 43.327,-1.826 (33 km)', 'BILBAO → 43.254,-2.937 (28 km)', 'BILBAO → 43.254,-2.937 (30 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (8 km)', 'IRUN → 43.327,-1.826 (21 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (6 km)', 'VITORIA-GASTEIZ → 42.848,-2.679 (5 km)']
-    238s  52 sentidos nuevos, 586 coinciden con los nuestros, 8 en desacuerdo (se avisa en los dos)
-    238s  copias de OSM con sentido frente a oficiales: 562/585 → se usa en 317 puntos y en 42 vigila los dos sentidos
-    238s  61 radares de OSM con direction; frente a los oficiales: 3 igual, 1 al revés → no se usa
-    259s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
-    272s    ZBE: 45 ficheros
-    293s  ZBE: 57 zonas
-    293s    CartoCiudad: 745 hitos necesarios, 0 por consultar
-    349s  PK por la carretera: comprobado con 357 radares del feed (PK y coordenadas): en recta mediana 46 m, p75 93 m, p90 256 m; por la carretera mediana 34 m, p75 76 m, p90 247 m
-    405s    caminos: red cargada (1097726 vías) en 52s
-    405s    caminos: regla del lado probada en 53s
-    406s    caminos: regla del cruce probada en 53s
-    406s    caminos: 0/3930 en 53s (dgt:GUID_CVM_161274)
-    407s    caminos: 500/3930 en 54s (dgt:GUID_CABINACINEMOMETRO_120569)
-    408s    caminos: 1000/3930 en 55s (sct:41.31141,2.03136)
-    412s    caminos: 1500/3930 en 59s (dss:43.29166,-1.97345)
-    414s    caminos: 2000/3930 en 61s (com:euskadi-zorroza)
-    417s    caminos: 2500/3930 en 64s (osm:n2334938901)
-    420s    caminos: 3000/3930 en 67s (osm:n13043403920)
-    422s    caminos: 3500/3930 en 69s (osm:r16148491)
-    488s    zonas: red cargada (1153793 vías) para 1301 zonas en 61s
-    500s  zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 70}
-    500s  radares del PDF de la DGT recolocados en su copia de OSM: 9
-    517s    caminos: red cargada (19732 vías) en 16s
-    517s    caminos: regla del lado probada en 16s
-    517s    caminos: regla del cruce probada en 16s
-    517s    caminos: 0/27 en 16s (sct:41.53823,0.45946)
-    517s  67 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 42/43 → heredado en 18; 9 radares del PDF de la DGT llevados a la posición de su copia de OSM
-    517s  radares de OSM mapeados dos veces: 0 quitados []
-    533s    caminos: red cargada (5749 vías) en 16s
-    533s    caminos: regla del lado probada en 16s
-    533s    caminos: regla del cruce probada en 16s
-    533s    caminos: 0/5 en 16s (dgt:GUID_CABINACINEMOMETRO_120285)
-    533s  gemelos de sentido contrario corregidos: 5 ['dgt:GUID_CABINACINEMOMETRO_120285', 'dgt:GUID_CABINACINEMOMETRO_120288', 'dgteq:SE-30:23.2:C:cintur', 'dgteq:SE-30:23.2:D:cintur', 'dgt:GUID_CABINACINEMOMETRO_120603']
-    533s  caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 38/41 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 93/116; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 1/2; dgtpdf ciudad 12-25 m: 3/5; dgtpdf carretera 25-41 m: 1/2; dgtpdf carretera 4-7 m: 1/1; dgtpdf carretera 7-12 m: 0/1; dgtpdf ciudad 7-12 m: 1/1; dgtpdf carretera todas: 3/6; dgtpdf ciudad todas: 4/6; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm ciudad 25-41 m: 0/1; osm carretera 4-7 m: 96/122; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/31; osm carretera todas: 156/202; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/32; cruce+lado 1/2; cruce 33/42; lado+limite 8/9', 'rumbo_por_cardinal': 46, 'con_camino': 3890, 'sin_via': 29, 'tramos_con_recorrido': 318, 'tramos': 357, 'caminos_alternativos': 11, 'mediana_dos': 29, 'con_paralela': 1212, 'en_enlace': 41, 'sospechosos': [], 'dos_sentidos': 277, 'limites_via': 148, 'limites_quitados': 5, 'en_tunel': 69, 'ramas': 3105, 'calzada_corregida': 8, 'caminos_cortos': 8, 'segundos': 71}
-    533s  semáforos: con sentido conocido, su semáforo delante 99, detrás 8 → se deducen sentidos
-    551s    caminos: red cargada (66302 vías) en 18s
-    551s    caminos: regla del lado probada en 18s
-    551s    caminos: regla del cruce probada en 18s
-    551s    caminos: 0/41 en 18s (madfr:40.43521,-3.67502)
-    552s  comprobación con las de sentido conocido: semáforo delante en 99, detrás en 8; 10 cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; 41 llevadas a su línea (7 estaban pasado el cruce); 40 sin ningún semáforo de OSM a 50 m (posición por revisar): madfr:40.45464,-3.69056, madfr:40.46227,-3.79330, madfr:40.38409,-3.75977, madfr:40.39694,-3.77433, madfr:40.41074,-3.65479, madfr:40.42034,-3.62522, madfr:40.44164,-3.62408, mlgfr:36.71300,-4.45466, dgteq:N-603:62.9:C:foto r, osm:n992000541, osm:n992001267, osm:n992002942, osm:n992003252, osm:n992003267, osm:n2004518514, osm:n2004518665, osm:n2378266833, osm:n2378266933, osm:n2378267261, osm:n4029561801, osm:n4029562016, osm:n4087504678, osm:n4258221018, osm:n9757953611, osm:n12736058897, osm:n12736232082, osm:n12993247575, osm:n12993247583, osm:n12993898230, osm:n14169267684, osm:n3015095098, osm:n3015103519, osm:n1416249515, osm:n4349063327, osm:r19801864, osm:n7821371292, osm:r19964592, osm:r19964593, osm:n11692022938, osm:n5326355963
-    552s  verificados: 96 comprobados sobre el terreno, todos en su sitio
-    572s    TCA: página del Ministerio no disponible (www.transportes.gob.es: HTTP Error 403: Forbidden); se usan los PDF conocidos
-    574s    TCA: TCA 130 filas (NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf)
-    575s    TCA: TCAM 21 filas (tca-con-implicacion-de-motoristas.pdf)
-    575s    CartoCiudad: 295 hitos necesarios, 293 por consultar
-    608s    TCA: 11 sin poder situar: ['B-24 9.6-10.7', 'B-40 1.4-2.1', 'GR-30 9.1-10.1', 'GR-30 10.1-10.6', 'N-240 19.0-19.5', 'N-332 216.3-217.3', 'N-340 1144.7-1145.2', 'N-340 1154.3-1154.8', 'N-340 1159.8-1160.3', 'N-349 2.7-3.2', 'N-351 5.9-6.5']
-    608s  Ministerio: tramos de concentración de accidentes: 109 puntos
-    629s    zonas: red cargada (148895 vías) para 103 zonas en 21s
+      1s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
+      7s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
+      7s    CartoCiudad: 672 hitos necesarios, 0 por consultar
+     12s      sin situar: Fijo N-357B PK 1.219 Decreciente (Cádiz)
+     12s      sin situar: Fijo N-357B PK 1.64 Creciente (Cádiz)
+     18s      sin situar: Fijo N-340A PK 1049.45 Decreciente (Castellón)
+     20s      sin situar: Tramo GR-30 PK 10.02 Decreciente (Granada)
+     21s    tramo LZ-67 PK 16.22 (Decreciente): no se pudo situar su entrada (PK 21.724)
+     26s      sin situar: Fijo SE-020 PK 2.738 Creciente (Sevilla)
+     28s      sin situar: Tramo N-401A PK 91.62 Decreciente (Toledo)
+     28s      sin situar: Tramo N-401A PK 93.86 Creciente (Toledo)
+     28s    cinemómetros: 641 ya estaban en el feed, 184 añadidos, 7 sin poder situar
+     28s  DGT PDF radares: 184 puntos
+     29s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
+     29s    CartoCiudad: 496 hitos necesarios, 0 por consultar
+     70s    equipos: 252 situados, 8 sin poder situar
+     70s  DGT PDF cámaras: 252 puntos
+     77s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
+     84s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
+     84s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
+     84s    SCT radars.txt: 230 radares
+     84s  Cataluña (SCT): 230 puntos
+     85s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
+     85s  Ayto. Madrid: 23 puntos
+     85s  Ayto. València: 11 puntos
+    169s  OpenStreetMap: 3217 puntos
+    169s  Tramos radar móvil: 1152 puntos
+    171s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
+    181s  Ayto. Málaga foto-rojo: 7 puntos
+    183s  Ayto. Salamanca: 24 puntos
+    184s  Ayto. Donostia: 12 puntos
+    184s  Câmara Municipal de Lisboa: 18 puntos
+    186s  Ajuntament de Viladecans: 24 puntos
+    187s  Portugal: ANSR (red SINCRO): 121 puntos
+    204s  Ayto. Santa Cruz de Tenerife foto-rojo: no responde (www.santacruzdetenerife.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
+    221s  Ayto. Pamplona cinemómetros: no responde (sig.pamplona.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
+    222s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1798 puntos
+    222s  feed comunitario tras quitar tramos ya situados: 627
+    222s  fusión: 264 radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)
+    222s    CartoCiudad: 128 hitos necesarios, 49 por consultar
+    226s  tramos: 2 tramos repetidos (oficial y OSM) unidos, 4 puntos sueltos unidos a su tramo, 13 cámaras de entrada/salida absorbidas
+    227s  100 cámaras de stop o semáforo llevadas a su línea de detención (140751 stops y semáforos de OSM)
+    227s  correcciones: 2 quitados, 37 sentidos fijados, 1 añadidos, 1 con el tipo corregido
+    227s  verificados: 96 comprobados sobre el terreno; arreglados: osm:r9933664 (la2, lo2)
+    227s    límites: 212 sin límite, 1 por consultar
+    258s  límites deducidos de OSM: 130
+    258s    regiones: 3 celdas nuevas que consultar
+    259s    regiones: ejemplo de respuesta {"id": "410910488975", "province": "Sevilla", "provinceCode": "41", "comunidadAutonoma": "Andalucía", "comunidadAutonomaCode": "01", "muni": "Sevilla", "muniCode": "41091", "type": "portal", "address": "A-8083", "postalCode": "41015", "poblacion": "Sevilla", "geom": "POINT(-5.9968106201443 37.413480
+    259s    CartoCiudad: 1850 hitos necesarios, 0 por consultar
+    259s  rumbos por sentido: 935
+    259s  sentido hacia una ciudad: 74 puntos; ['VITORIA - GASTEIZ → 42.840,-2.722 (12 km)', 'IRUN → 43.327,-1.826 (33 km)', 'BILBAO → 43.254,-2.937 (28 km)', 'BILBAO → 43.254,-2.937 (30 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (8 km)', 'IRUN → 43.327,-1.826 (21 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (6 km)', 'VITORIA-GASTEIZ → 42.848,-2.679 (5 km)']
+    259s  52 sentidos nuevos, 586 coinciden con los nuestros, 8 en desacuerdo (se avisa en los dos)
+    259s  copias de OSM con sentido frente a oficiales: 562/585 → se usa en 317 puntos y en 42 vigila los dos sentidos
+    259s  61 radares de OSM con direction; frente a los oficiales: 3 igual, 1 al revés → no se usa
+    280s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
+    294s    ZBE: 45 ficheros
+    313s  ZBE: 57 zonas
+    313s    CartoCiudad: 745 hitos necesarios, 0 por consultar
+    375s  PK por la carretera: comprobado con 357 radares del feed (PK y coordenadas): en recta mediana 46 m, p75 93 m, p90 256 m; por la carretera mediana 34 m, p75 76 m, p90 247 m
+    439s    caminos: red cargada (1097726 vías) en 60s
+    439s    caminos: regla del lado probada en 60s
+    440s    caminos: regla del cruce probada en 61s
+    440s    caminos: 0/3930 en 61s (dgt:GUID_CVM_161274)
+    441s    caminos: 500/3930 en 62s (dgt:GUID_CABINACINEMOMETRO_120569)
+    443s    caminos: 1000/3930 en 64s (sct:41.31141,2.03136)
+    447s    caminos: 1500/3930 en 68s (dss:43.29166,-1.97345)
+    450s    caminos: 2000/3930 en 71s (com:euskadi-zorroza)
+    453s    caminos: 2500/3930 en 74s (osm:n2334938901)
+    457s    caminos: 3000/3930 en 78s (osm:n13043403920)
+    460s    caminos: 3500/3930 en 81s (osm:r16148491)
+    535s    zonas: red cargada (1153793 vías) para 1301 zonas en 69s
+    549s  zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 79}
+    549s  radares del PDF de la DGT recolocados en su copia de OSM: 9
+    570s    caminos: red cargada (19732 vías) en 20s
+    570s    caminos: regla del lado probada en 20s
+    570s    caminos: regla del cruce probada en 20s
+    570s    caminos: 0/27 en 20s (sct:41.53823,0.45946)
+    570s  67 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 42/43 → heredado en 18; 9 radares del PDF de la DGT llevados a la posición de su copia de OSM
+    570s  radares de OSM mapeados dos veces: 0 quitados []
+    590s    caminos: red cargada (5749 vías) en 20s
+    590s    caminos: regla del lado probada en 20s
+    590s    caminos: regla del cruce probada en 20s
+    590s    caminos: 0/5 en 20s (dgt:GUID_CABINACINEMOMETRO_120285)
+    590s  gemelos de sentido contrario corregidos: 5 ['dgt:GUID_CABINACINEMOMETRO_120285', 'dgt:GUID_CABINACINEMOMETRO_120288', 'dgteq:SE-30:23.2:C:cintur', 'dgteq:SE-30:23.2:D:cintur', 'dgt:GUID_CABINACINEMOMETRO_120603']
+    590s  caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 38/41 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 93/116; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 1/2; dgtpdf ciudad 12-25 m: 3/5; dgtpdf carretera 25-41 m: 1/2; dgtpdf carretera 4-7 m: 1/1; dgtpdf carretera 7-12 m: 0/1; dgtpdf ciudad 7-12 m: 1/1; dgtpdf carretera todas: 3/6; dgtpdf ciudad todas: 4/6; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm ciudad 25-41 m: 0/1; osm carretera 4-7 m: 96/122; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/31; osm carretera todas: 156/202; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/32; cruce+lado 1/2; cruce 33/42; lado+limite 8/9', 'rumbo_por_cardinal': 46, 'con_camino': 3890, 'sin_via': 29, 'tramos_con_recorrido': 318, 'tramos': 357, 'caminos_alternativos': 11, 'mediana_dos': 29, 'con_paralela': 1212, 'en_enlace': 41, 'sospechosos': [], 'dos_sentidos': 277, 'limites_via': 148, 'limites_quitados': 5, 'en_tunel': 69, 'ramas': 3105, 'calzada_corregida': 8, 'caminos_cortos': 8, 'segundos': 83}
+    590s  semáforos: con sentido conocido, su semáforo delante 99, detrás 8 → se deducen sentidos
+    612s    caminos: red cargada (66302 vías) en 22s
+    612s    caminos: regla del lado probada en 22s
+    612s    caminos: regla del cruce probada en 22s
+    612s    caminos: 0/41 en 22s (madfr:40.43521,-3.67502)
+    612s  comprobación con las de sentido conocido: semáforo delante en 99, detrás en 8; 10 cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; 41 llevadas a su línea (7 estaban pasado el cruce); 40 sin ningún semáforo de OSM a 50 m (posición por revisar): madfr:40.45464,-3.69056, madfr:40.46227,-3.79330, madfr:40.38409,-3.75977, madfr:40.39694,-3.77433, madfr:40.41074,-3.65479, madfr:40.42034,-3.62522, madfr:40.44164,-3.62408, mlgfr:36.71300,-4.45466, dgteq:N-603:62.9:C:foto r, osm:n992000541, osm:n992001267, osm:n992002942, osm:n992003252, osm:n992003267, osm:n2004518514, osm:n2004518665, osm:n2378266833, osm:n2378266933, osm:n2378267261, osm:n4029561801, osm:n4029562016, osm:n4087504678, osm:n4258221018, osm:n9757953611, osm:n12736058897, osm:n12736232082, osm:n12993247575, osm:n12993247583, osm:n12993898230, osm:n14169267684, osm:n3015095098, osm:n3015103519, osm:n1416249515, osm:n4349063327, osm:r19801864, osm:n7821371292, osm:r19964592, osm:r19964593, osm:n11692022938, osm:n5326355963
+    612s  verificados: 96 comprobados sobre el terreno, todos en su sitio
+    633s    TCA: página del Ministerio no disponible (www.transportes.gob.es: HTTP Error 403: Forbidden); se usan los PDF conocidos
+    633s    TCA: TCA 130 filas (NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf)
+    634s    TCA: TCAM 21 filas (tca-con-implicacion-de-motoristas.pdf)
+    634s    CartoCiudad: 295 hitos necesarios, 293 por consultar
+    667s    TCA: 11 sin poder situar: ['B-24 9.6-10.7', 'B-40 1.4-2.1', 'GR-30 9.1-10.1', 'GR-30 10.1-10.6', 'N-240 19.0-19.5', 'N-332 216.3-217.3', 'N-340 1144.7-1145.2', 'N-340 1154.3-1154.8', 'N-340 1159.8-1160.3', 'N-349 2.7-3.2', 'N-351 5.9-6.5']
+    667s  Ministerio: tramos de concentración de accidentes: 109 puntos
+    692s    zonas: red cargada (148895 vías) para 103 zonas en 25s
