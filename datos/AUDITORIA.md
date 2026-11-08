@@ -1,11 +1,11 @@
-# Auditoría 2026-11-08T18:07:40+00:00
+# Auditoría 2026-11-08T18:20:15+00:00
 
 ## Resumen
 
 - comprobados_pk: 1232
-- comprobados_sentido_pk: 1019
+- comprobados_sentido_pk: 1023
 - con_ref: 1481
-- con_rumbo: 2712
+- con_rumbo: 2718
 - con_via: 3669
 - osm_camaras: 5655
 - osm_sin_nuestro: 105
@@ -18,10 +18,10 @@
 | tramo_raro | 25 | 3 |
 | duplicado | 17 | 0 |
 | fuera_de_via | 16 | 7 |
-| camino_incoherente | 4 | 0 |
+| camino_incoherente | 5 | 0 |
+| rumbo_cruzado | 3 | 0 |
 | salida_otra_via | 3 | 0 |
-| rumbo_cruzado | 2 | 0 |
-| sentido_dudoso | 2 | 0 |
+| sentido_dudoso | 3 | 0 |
 | contra_direccion | 1 | 1 |
 | salida_fuera_de_via | 1 | 0 |
 
@@ -186,9 +186,16 @@
 ## camino_incoherente
 
 - [2] `dgteq:N-351:6.8:C:cintur` (DGT PDF cámaras; N-351 PK 6.8 Creciente) 36.15754,-5.35226: 3 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
+- [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n2378266833` (OpenStreetMap; None PK None ) 41.53422,2.21058: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n2378267261` (OpenStreetMap; None PK None ) 43.21176,-8.69152: 5 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n8376349411` (OpenStreetMap; None PK None ) 41.62987,2.16581: 2 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
+
+## rumbo_cruzado
+
+- [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK 1084.318 ) 40.73136,0.59085: rumbo 56° y las vías a menos de 30 m van a [2, 178]° (o su opuesto)
+- [2] `dgt:GUID_CABINACINEMOMETRO_120601` (DGT feed; CV-91 PK 18.888 Decreciente) 38.09746,-0.72200: rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)
+- [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: rumbo 31° y las vías a menos de 30 m van a [122, 124]° (o su opuesto)
 
 ## salida_otra_via
 
@@ -196,15 +203,11 @@
 - [2] `dgtpdf:T:N-401A:93.86:C` (DGT PDF radares; N-401A PK 91.488 Creciente) 39.71700,-3.97801: la salida no está sobre la N-401A
 - [2] `ansr:EN261:97.06:A` (Portugal: ANSR (red SINCRO); EN261 PK 97.06 Ambos) 37.88866,-8.20341: la salida no está sobre la EN261
 
-## rumbo_cruzado
-
-- [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK 1084.318 ) 40.73136,0.59085: rumbo 56° y las vías a menos de 30 m van a [2, 178]° (o su opuesto)
-- [2] `dgt:GUID_CABINACINEMOMETRO_120601` (DGT feed; CV-91 PK 18.888 Decreciente) 38.09746,-0.72200: rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)
-
 ## sentido_dudoso
 
 - [3] `dgt:GUID_CABINACINEMOMETRO_120025` (DGT feed; N-234 PK 75.808 Decreciente) 40.12388,-0.76951: «Decreciente» va hacia 117° y el rumbo es 189°
 - [3] `dgt:GUID_CABINACINEMOMETRO_165670` (DGT feed; AC-862 PK 37.6 Creciente) 43.64023,-7.92840: «Creciente» va hacia 84° y el rumbo es 154°
+- [3] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: «Creciente» va hacia 312° y el rumbo es 31°
 
 ## contra_direccion
 
