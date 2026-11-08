@@ -19,7 +19,7 @@ concurrency:
 jobs:
   recolectar:
     runs-on: ubuntu-latest
-    timeout-minutes: 115
+    timeout-minutes: 135
     steps:
       - uses: actions/checkout@v4
 
@@ -80,6 +80,10 @@ jobs:
 
       - name: Recolectar
         run: timeout 100m python recolector.py || echo "::warning::El recolector terminó con aviso; se publica lo obtenido"
+
+      - name: Auditar lo recolectado
+        if: always()
+        run: timeout 15m python auditoria.py --publicar || echo "::warning::La auditoría no ha terminado"
 
       - name: Publicar si hay cambios
         if: always()

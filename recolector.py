@@ -147,6 +147,8 @@ PORTUGAL = [(41.87, -8.88), (42.15, -8.19), (41.84, -7.89), (41.95, -7.20), (41.
 
 
 def en_portugal(lat, lon) -> bool:
+    if (32.3 <= lat <= 33.2 and -17.4 <= lon <= -16.2) or (36.8 <= lat <= 39.9 and -31.5 <= lon <= -24.8):
+        return True   # Madeira y Azores
     d = False
     n = len(PORTUGAL)
     for k in range(n):
@@ -157,7 +159,9 @@ def en_portugal(lat, lon) -> bool:
 
 
 def en_espana(lat, lon) -> bool:
-    return (35.0 <= lat <= 44.5 and -10.0 <= lon <= 5.0) or (27.4 <= lat <= 29.6 and -18.5 <= lon <= -13.2)
+    # península y Baleares, Canarias, Madeira y Azores (estas dos venían en OSM y se quedaban fuera)
+    return (35.0 <= lat <= 44.5 and -10.0 <= lon <= 5.0) or (27.4 <= lat <= 29.6 and -18.5 <= lon <= -13.2) \
+        or (32.3 <= lat <= 33.2 and -17.4 <= lon <= -16.2) or (36.8 <= lat <= 39.9 and -31.5 <= lon <= -24.8)
 
 
 def utm_a_latlon(x: float, y: float, huso: int):
@@ -1873,6 +1877,50 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
 FUSION = {"opuestos": 0}
 
 
+class Rastro:
+    """
+    En qué paso desaparece cada punto que entra de las fuentes (auditoría del 8-11-2026: había cámaras de OSM
+    que no salían y no se sabía por qué). Al final se apunta en el registro, por paso, con ejemplos.
+    """
+
+    def __init__(self):
+        self.origen: dict[str, str] = {}
+        self.pasos: list[tuple[str, set]] = []
+
+    def fuentes(self, capas: dict):
+        for nombre, capa in capas.items():
+            for p in capa or []:
+                self.origen.setdefault(p["id"], nombre)
+
+    def paso(self, nombre: str, puntos: list):
+        try:
+            self.pasos.append((nombre, {p["id"] for p in puntos}))
+        except Exception:  # noqa: BLE001
+            pass
+
+    def resumen(self) -> list[str]:
+        if not self.pasos:
+            return []
+        final = self.pasos[-1][1]
+        perdidos: dict[str, list] = {}
+        for i, fuente in self.origen.items():
+            if i in final:
+                continue
+            donde = "fusión de fuentes (mismo punto en otra fuente más fiable)"
+            for nombre, ids in self.pasos:
+                if i not in ids:
+                    donde = nombre
+                    break
+            perdidos.setdefault(donde, []).append(f"{i} ({fuente})")
+        out = []
+        for donde, lista in sorted(perdidos.items(), key=lambda x: -len(x[1])):
+            out.append(f"{donde}: {len(lista)}: " + ", ".join(sorted(lista)[:60]) + (" …" if len(lista) > 60 else ""))
+        return out
+
+
+RASTRO = Rastro()
+
+
 def segunda_opinion_sentidos(puntos: list[dict]) -> str:
     """
     radares-datos (ODbL) calcula por su cuenta el rumbo de cada radar de la DGT. Si nosotros no lo tenemos,
@@ -3116,10 +3164,16 @@ def main() -> int:
     comunitario = solo_tramos_nuevos(comunitario, zonas)
     log(f"feed comunitario tras quitar tramos ya situados: {len(comunitario)}")
 
+    RASTRO.fuentes({"DGT": feed, "PDF DGT": pdf_radares, "SCT": sct, "Madrid": madrid, "Madrid 2": madrid2,
+                    "València": valencia, "Málaga": malaga, "Salamanca": salamanca, "Donostia": donostia, "ANSR": ansr,
+                    "Lisboa": lisboa, "Viladecans": viladecans, "Santa Cruz": santacruz, "Pamplona": pamplona,
+                    "cámaras DGT": camaras_dgt, "comunitario": comunitario, "OSM": osm})
     todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, ansr, lisboa, viladecans, santacruz, pamplona,
                       camaras_dgt, comunitario, osm, zonas])
+    RASTRO.paso("fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m)", todos)
     log(f"fusión: {FUSION['opuestos']} radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)")
     todos = unir_tramos(todos)
+    RASTRO.paso("unir tramos (cámara de entrada o salida de un tramo)", todos)
     try:
         msg = a_la_linea_de_detencion(todos)
     except Exception as e:  # noqa: BLE001
@@ -3147,6 +3201,7 @@ def main() -> int:
             + ", ".join(f"{p.get('c')} PK {p.get('pk')} ({p.get('pr')})" for p in dudosos[:15]))
         ids = {p["id"] for p in dudosos}
         todos = [p for p in todos if p["id"] not in ids]
+    RASTRO.paso("correcciones, caducados y situados en otra provincia", todos)
     try:
         n = completar_rumbos(todos, geo)
         log(f"rumbos por sentido: {n}")
@@ -3191,6 +3246,7 @@ def main() -> int:
     try:
         estado["Sentido de los tramos de la DGT"] = orientar_tramos_feed(todos, geo)
         todos = unir_tramos(todos)
+        RASTRO.paso("unir tramos tras orientarlos", todos)
     except Exception as e:  # noqa: BLE001
         estado["Sentido de los tramos de la DGT"] = f"falló ({e})"
 
@@ -3254,6 +3310,7 @@ def main() -> int:
                     recolocados += 1
             log(f"radares del PDF de la DGT recolocados en su copia de OSM: {recolocados}")
             todos[:] = [p for p in todos if p["id"] not in fuera]
+            RASTRO.paso("copias de OSM de radares oficiales (misma calle y sentido, < 450 m)", todos)
             if reencajar:
                 caminos.anadir_caminos(reencajar, ruta_red, zbe, aviso=log)   # su camino, ya en un solo sentido
             estado["Copias de OSM de radares oficiales"] = (
@@ -3265,6 +3322,7 @@ def main() -> int:
             if quitados:
                 ids = {p["id"] for p in quitados}
                 todos[:] = [p for p in todos if p["id"] not in ids]
+                RASTRO.paso("radares viejos de OSM repetidos", todos)
             estado["Radares viejos de OSM repetidos"] = (
                 f"{len(quitados)} quitados (de OSM sin sentido, con otro radar más fiable en la misma calle y sentido a menos de 300 m; 450 m si no tiene datos; 600 m si además es de 2015 o antes)"
                 + (": " + ", ".join(p["id"] for p in quitados[:15]) if quitados else ""))
@@ -3275,6 +3333,7 @@ def main() -> int:
                       and q.get("rb") is None and p.get("rb") is None and len(q["ap"]) == len(p["ap"]) == 1
                       and q.get("v") == p.get("v")}
             todos[:] = [p for p in todos if p["id"] not in dobles]
+            RASTRO.paso("seguidos casi encima (< 200 m, mismo sentido)", todos)
             log(f"radares de OSM mapeados dos veces: {len(dobles)} quitados {sorted(dobles)[:10]}")
             seg = caminos.seguidos(todos)
             # Gemelos: dos radares oficiales en el mismo sitio, uno "creciente" y otro "decreciente" (una cabina por
@@ -3382,6 +3441,8 @@ def main() -> int:
     # Freno de emergencia: si desaparece más del 15 % de los radares y cámaras de golpe, algo ha ido mal
     # (una fuente grande caída sin datos de la vez anterior, un fallo en la fusión…): no se publica.
     # Tramos de concentración de accidentes: van aparte (no son equipos: sin caminos, sin cruces con radares)
+    RASTRO.paso("revisión final (duplicados) y comprobados", todos)
+    estado["Descartados por paso"] = " | ".join(RASTRO.resumen()) or "ninguno"
     tca = ejecutar("Ministerio: tramos de concentración de accidentes", lambda: fuente_tca(geo))
     tca_ac = ejecutar("Tramos con muchos accidentes (autonómicas y provinciales, microdatos DGT)", lambda: fuente_accidentes_dgt(geo))
     geo.guardar()

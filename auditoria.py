@@ -314,6 +314,25 @@ def main():
     open("auditoria/INFORME.md", "w", encoding="utf-8").write("\n".join(L) + "\n")
     log(f"hecho: {len(H)} hallazgos {dict(por)}")
 
+    # Tras cada recolección: el detalle en datos/AUDITORIA.md, un resumen en el informe y aviso si algo grave vuelve
+    if "--publicar" in sys.argv:
+        import shutil
+        shutil.copy("auditoria/INFORME.md", "datos/AUDITORIA.md")
+        LIMITES = {"sentido_al_reves": 0, "tramo_al_reves": 0, "contra_direccion": 2, "rumbo_cruzado": 3,
+                   "otra_via": 5, "duplicado": 25}
+        graves = Counter(h["tipo"] for h in H if h["grave"] == 1)
+        malos = {k: por.get(k, 0) for k, lim in LIMITES.items() if por.get(k, 0) > lim}
+        res = (f"{len(H)} avisos ({sum(graves.values())} graves) en {stats['con_via']} radares y cámaras; "
+               + ", ".join(f"{k} {v}" for k, v in por.most_common()) + ". Detalle en AUDITORIA.md")
+        if malos:
+            res = "⚠️ " + ", ".join(f"{k}: {v}" for k, v in malos.items()) + " (por encima de lo normal). " + res
+            for k, v in malos.items():
+                print(f"::error title=Auditoría::{k}: {v} (límite {LIMITES[k]})")
+        inf = open("datos/INFORME.md", encoding="utf-8").read()
+        inf = re.sub(r"\n## Auditoría automática\n.*?(?=\n## |\Z)", "", inf, flags=re.S)
+        inf = inf.rstrip("\n") + f"\n\n## Auditoría automática\n\n{res}\n"
+        open("datos/INFORME.md", "w", encoding="utf-8").write(inf)
+
 
 if __name__ == "__main__":
     main()
