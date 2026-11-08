@@ -337,11 +337,44 @@ def hojas():
     print(f"hojas: {sum(1 for r in indice if r.get('hoja'))} de {len(indice)}", flush=True)
 
 
+def rasgos():
+    """
+    Objetos que Mapillary ha detectado (y situado en el mapa) cerca de unos puntos: para ver si detecta las
+    cabinas de radar y usarlo de testigo. PUNTOS: "id la lo" por línea (env RASGOS_PUNTOS, fichero).
+    """
+    token = os.environ["MAPILLARY_TOKEN"]
+    os.makedirs("hojas_pos", exist_ok=True)
+    out = []
+    for linea in open(os.environ.get("RASGOS_PUNTOS", "depurar/rasgos_puntos.txt"), encoding="utf-8"):
+        if not linea.strip():
+            continue
+        pid, la, lo = linea.split()[:3]
+        la, lo = float(la), float(lo)
+        m = 700 / 111320
+        mlo = m / math.cos(math.radians(la))
+        q = urllib.parse.urlencode({"access_token": token, "fields": "id,object_value,geometry,first_seen_at,last_seen_at",
+                                    "bbox": f"{lo - mlo:.6f},{la - m:.6f},{lo + mlo:.6f},{la + m:.6f}", "limit": 2000})
+        d = pedir(f"https://graph.mapillary.com/map_features?{q}") or {}
+        feats = []
+        for f in d.get("data", []):
+            g = (f.get("geometry") or {}).get("coordinates")
+            if not g:
+                continue
+            feats.append({"v": f.get("object_value"), "d": round(dist(la, lo, g[1], g[0])), "la": g[1], "lo": g[0],
+                          "ult": str(f.get("last_seen_at") or "")[:10]})
+        feats.sort(key=lambda x: x["d"])
+        out.append({"id": pid, "la": la, "lo": lo, "n": len(feats), "rasgos": feats})
+        print(pid, len(feats), [(x["v"], x["d"]) for x in feats if "camera" in (x["v"] or "") or "cctv" in (x["v"] or "")][:8], flush=True)
+    json.dump(out, open("hojas_pos/rasgos.json", "w", encoding="utf-8"), ensure_ascii=False)
+
+
 if __name__ == "__main__":
     if sys.argv[1:2] == ["preparar"]:
         extra = open(sys.argv[2], encoding="utf-8").read().splitlines() if len(sys.argv) > 2 else []
         preparar(extra_ids=tuple(x.strip() for x in extra if x.strip()))
     elif sys.argv[1:2] == ["zoom"]:
         zoom()
+    elif sys.argv[1:2] == ["rasgos"]:
+        rasgos()
     else:
         hojas()
