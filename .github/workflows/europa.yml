@@ -1,0 +1,34 @@
+name: Radares de Europa (viajes)
+
+# Radares y cámaras de Francia, Italia, Bélgica, Países Bajos, Luxemburgo, Austria, Andorra y Mónaco
+# (OpenStreetMap) para los viajes fuera de España. Cambian poco: una vez por semana.
+on:
+  schedule:
+    - cron: "41 3 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: europa
+  cancel-in-progress: false
+
+jobs:
+  europa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber==0.11.10 openpyxl==3.1.5
+      - run: python europa.py
+      - name: Publicar
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add datos/europa.json
+          git diff --cached --quiet || git commit -qm "Europa: $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
