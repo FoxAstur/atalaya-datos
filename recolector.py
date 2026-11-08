@@ -2735,6 +2735,61 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
             res["cruzado"].append(p["id"])
             cambiados[p["id"]] = p
 
+        # 3b. Sentido oficial (creciente/decreciente) sin rumbo porque los hitos de CartoCiudad no sirven (en la A-70
+        # van desplazados kilómetros): el sentido en que crece el PK sale de los radares oficiales vecinos de la misma
+        # carretera, cuyo PK y posición se conocen
+        oficiales = [q for q in todos if q.get("pk") is not None and q.get("c") and not q.get("px")
+                     and q["id"].startswith(("dgt:", "sct:", "ansr:"))]
+        por_via: dict = {}
+        for q in oficiales:
+            por_via.setdefault(via_normalizada(q["c"]), []).append(q)
+        for p in todos:
+            if p.get("rb") is not None or p.get("s") not in ("Creciente", "Decreciente") or p.get("_verif") \
+                    or p["t"] in ("ZONA_MOVIL", "TCA") or p.get("pk") is None or not p.get("c"):
+                continue
+            vec = []
+            for q in por_via.get(via_normalizada(p["c"]), []):
+                if q is p:
+                    continue
+                dpk = float(q["pk"]) - float(p["pk"])
+                d = distancia(p["la"], p["lo"], q["la"], q["lo"])
+                if 0.3 <= abs(dpk) <= 20 and abs(dpk) * 1000 * 0.3 <= d <= abs(dpk) * 1000 * 1.5 + 300:
+                    vec.append((abs(dpk), dpk, q))
+            if not vec:
+                continue
+            vec.sort(key=lambda x: x[0])
+            arriba = next((q for _, dpk, q in vec if dpk > 0), None)
+            abajo = next((q for _, dpk, q in vec if dpk < 0), None)
+            if arriba is not None and abajo is not None:
+                crece = rumbo_entre(abajo["la"], abajo["lo"], arriba["la"], arriba["lo"])
+            elif arriba is not None:
+                crece = rumbo_entre(p["la"], p["lo"], arriba["la"], arriba["lo"])
+            else:
+                crece = rumbo_entre(abajo["la"], abajo["lo"], p["la"], p["lo"])
+            quiere = crece if p["s"] == "Creciente" else (crece + 180) % 360
+            rc = ref_de(p.get("c"))
+            seg = [(d, wi, i) for d, t, wi, i in red.cercanos((p["la"], p["lo"]), 60)
+                   if not rc or red.vias[wi].ref == rc]
+            dirs = []
+            for d, wi, i in seg:
+                w = red.vias[wi]
+                r0 = caminos.rumbo(w.pts[i], w.pts[i + 1])
+                dirs += [r0] if w.sentido == 1 else ([(r0 + 180) % 360] if w.sentido == -1 else [r0, (r0 + 180) % 360])
+            if not dirs:
+                continue
+            mejor = min(dirs, key=lambda x: caminos.dif(x, quiere))
+            if caminos.dif(mejor, quiere) > 70:
+                continue
+            p["rb"] = round(mejor, 1)
+            if p.get("la2") is not None and distancia(p["la"], p["lo"], p["la2"], p["lo2"]) > 250 and \
+                    caminos.dif(rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]), p["rb"]) > 100:
+                p["la"], p["lo"], p["la2"], p["lo2"] = p["la2"], p["lo2"], p["la"], p["lo"]
+                if p.get("pk2") is not None:
+                    p["pk"], p["pk2"] = p["pk2"], p["pk"]
+            log(f"  rumbo por los vecinos: {p['id']} {p['c']} PK {p['pk']} {p['s']} → {p['rb']}")
+            res.setdefault("vecinos", []).append(p["id"])
+            cambiados[p["id"]] = p
+
     # 4. el mismo radar dos veces
     fuera = set()
     rej2 = Rejilla()
@@ -2779,7 +2834,7 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
             p.pop(k, None)
     msg = (f"{len(res['testigo'])} movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); "
            f"{len(res['su_via'])} llevados a su carretera; {len(res['cruzado'])} con el rumbo cruzado corregido; "
-           f"{len(res['duplicados'])} duplicados quitados")
+           f"{len(res['duplicados'])} duplicados quitados; {len(res.get('vecinos', []))} con el sentido sacado de los radares vecinos")
     log(f"revisión final: {msg}: {res}")
     return msg, list(cambiados.values())
 
