@@ -337,6 +337,78 @@ def hojas():
     print(f"hojas: {sum(1 for r in indice if r.get('hoja'))} de {len(indice)}", flush=True)
 
 
+def dos():
+    """
+    Dos candidatos por radar (A = donde está ahora, B = donde cae su PK): 4 fotos acercándose a cada uno (a unos
+    120, 80, 45 y 15 m, mirando en su sentido). La fila en la que la cabina aparece justo delante es la buena.
+    Entrada (DOS_PUNTOS): "id laA loA laB loB rumbo" por línea.
+    """
+    from PIL import Image, ImageDraw
+    token = os.environ["MAPILLARY_TOKEN"]
+    os.makedirs("hojas_pos", exist_ok=True)
+    W, H = 400, 300
+    indice = []
+    for n, linea in enumerate(open(os.environ.get("DOS_PUNTOS", "depurar/dos_puntos.txt"), encoding="utf-8")):
+        if not linea.strip():
+            continue
+        pid, laA, loA, laB, loB, rb = linea.split()[:6]
+        laA, loA, laB, loB, rb = map(float, (laA, loA, laB, loB, rb))
+        filas, reg = [], {"n": n, "id": pid, "A": [laA, loA], "B": [laB, loB], "rb": rb}
+        for nombre, (la, lo) in (("A", (laA, loA)), ("B", (laB, loB))):
+            m = 180 / 111320
+            mlo = m / math.cos(math.radians(la))
+            q = urllib.parse.urlencode({"access_token": token, "fields": CAMPOS, "limit": 2000,
+                                        "bbox": f"{lo - mlo:.6f},{la - m:.6f},{lo + mlo:.6f},{la + m:.6f}"})
+            cand = []
+            ux, uy = math.sin(math.radians(rb)), math.cos(math.radians(rb))
+            for f in (pedir(f"{API}?{q}") or {}).get("data", []):
+                g = (f.get("computed_geometry") or f.get("geometry") or {}).get("coordinates")
+                h = f.get("computed_compass_angle", f.get("compass_angle"))
+                if not g or h is None or not f.get("thumb_1024_url") or dif(h, rb) > 35:
+                    continue
+                if f.get("camera_type") not in (None, "perspective", "fisheye"):
+                    continue
+                dx = (lo - g[0]) * math.cos(math.radians(la)) * 111320
+                dy = (la - g[1]) * 111320
+                delante, lado = dx * ux + dy * uy, dx * uy - dy * ux
+                if 5 <= delante <= 160 and abs(lado) <= 25:
+                    cand.append({"id": f["id"], "url": f["thumb_1024_url"], "a": delante, "ms": f.get("captured_at") or 0})
+            elegidas = []
+            for obj in (120, 80, 45, 15):
+                cerca = [c for c in cand if abs(c["a"] - obj) <= 20 and c not in elegidas]
+                elegidas.append(max(cerca, key=lambda c: (c["ms"] // (180 * 86400_000), -abs(c["a"] - obj))) if cerca else None)
+            filas.append((nombre, elegidas))
+            reg[nombre + "_fotos"] = [None if c is None else {"id": c["id"], "a": round(c["a"]),
+                                      "fecha": time.strftime("%Y-%m", time.gmtime(c["ms"] / 1000))} for c in elegidas]
+        if not any(c for _, el in filas for c in el):
+            indice.append(reg)
+            continue
+        hoja = Image.new("RGB", (W * 4, 30 + 2 * H), "white")
+        dr = ImageDraw.Draw(hoja)
+        dr.text((6, 9), f"#{n} {pid}  A = ahora, B = su PK ({dist(laA, loA, laB, loB):.0f} m)  rumbo {rb:.0f}", fill=(0, 0, 0))
+        for fi, (nombre, el) in enumerate(filas):
+            for ci, c in enumerate(el):
+                x, y = ci * W, 30 + fi * H
+                if c is None:
+                    dr.rectangle([x, y, x + W - 1, y + H - 1], fill=(60, 60, 60))
+                else:
+                    b = pedir(c["url"], binario=True)
+                    if b:
+                        im = Image.open(io.BytesIO(b)).convert("RGB")
+                        lienzo = Image.new("RGB", (W, H), (30, 30, 30))
+                        im.thumbnail((W, H))
+                        lienzo.paste(im, ((W - im.width) // 2, (H - im.height) // 2))
+                        hoja.paste(lienzo, (x, y))
+                et = f"{nombre} a {int(c['a'])} m " + time.strftime("%Y-%m", time.gmtime(c["ms"] / 1000)) if c else f"{nombre} sin foto"
+                dr.rectangle([x, y, x + 9 + 7 * len(et), y + 18], fill=(0, 0, 160) if nombre == "A" else (160, 0, 0))
+                dr.text((x + 4, y + 4), et, fill=(255, 255, 0))
+        hoja.save(os.path.join("hojas_pos", f"d{n:03d}.jpg"), quality=72)
+        reg["hoja"] = f"d{n:03d}.jpg"
+        indice.append(reg)
+        print(n, pid, "hoja", flush=True)
+    json.dump(indice, open("hojas_pos/indice_dos.json", "w", encoding="utf-8"), ensure_ascii=False)
+
+
 def rasgos():
     """
     Objetos que Mapillary ha detectado (y situado en el mapa) cerca de unos puntos: para ver si detecta las
@@ -376,5 +448,7 @@ if __name__ == "__main__":
         zoom()
     elif sys.argv[1:2] == ["rasgos"]:
         rasgos()
+    elif sys.argv[1:2] == ["dos"]:
+        dos()
     else:
         hojas()
