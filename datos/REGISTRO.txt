@@ -1,207 +1,209 @@
       1s  DGT feed: 737 puntos
       5s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
-     10s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
-     10s    CartoCiudad: 670 hitos necesarios, 0 por consultar
-     10s      sin situar: Tramo GR-30 PK 10.02 Decreciente (Granada)
-     10s    tramo LZ-67 PK 16.22 (Decreciente): no se pudo situar su entrada (PK 21.724)
-     10s      tramo V-30 PK 8.85: sentido del feed Decreciente → Creciente (PDF)
-     10s      tramo N-125 PK 5.7: sentido del feed Creciente → Decreciente (PDF)
-     10s    cinemómetros: 636 ya estaban en el feed, 195 añadidos, 1 sin poder situar
-     10s  DGT PDF radares: 195 puntos
-     12s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
-     12s    CartoCiudad: 496 hitos necesarios, 0 por consultar
-     12s    equipos: 252 situados, 8 sin poder situar
-     12s  DGT PDF cámaras: 252 puntos
-     19s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
-     26s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
-     27s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
-     27s    SCT radars.txt: 230 radares
-     27s  Cataluña (SCT): 230 puntos
+     12s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
+     12s    CartoCiudad: 670 hitos necesarios, 0 por consultar
+     12s      sin situar: Tramo GR-30 PK 10.02 Decreciente (Granada)
+     12s    tramo LZ-67 PK 16.22 (Decreciente): no se pudo situar su entrada (PK 21.724)
+     12s      tramo V-30 PK 8.85: sentido del feed Decreciente → Creciente (PDF)
+     12s      tramo N-125 PK 5.7: sentido del feed Creciente → Decreciente (PDF)
+     12s    cinemómetros: 636 ya estaban en el feed, 195 añadidos, 1 sin poder situar
+     12s  DGT PDF radares: 195 puntos
+     13s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
+     13s    CartoCiudad: 496 hitos necesarios, 0 por consultar
+     13s    equipos: 252 situados, 8 sin poder situar
+     13s  DGT PDF cámaras: 252 puntos
+     20s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
+     27s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
+     28s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
+     28s    SCT radars.txt: 230 radares
+     28s  Cataluña (SCT): 230 puntos
      28s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
      28s  Ayto. Madrid: 23 puntos
      28s  Ayto. València: 11 puntos
-    101s  OpenStreetMap: 3226 puntos
-    102s  Tramos radar móvil: 1152 puntos
-    105s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
-    105s  Ayto. Málaga foto-rojo: 7 puntos
-    107s  Ayto. Salamanca: 24 puntos
-    108s  Ayto. Donostia: 12 puntos
-    108s  Câmara Municipal de Lisboa: 18 puntos
-    110s  Ajuntament de Viladecans: 24 puntos
-    110s  Portugal: ANSR (red SINCRO): 121 puntos
-    128s  Ayto. Santa Cruz de Tenerife foto-rojo: no responde (www.santacruzdetenerife.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
-    145s  Ayto. Pamplona cinemómetros: no responde (sig.pamplona.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
-    145s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1802 puntos
-    145s  feed comunitario tras quitar tramos ya situados: 631
-    145s  fusión: 267 radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120193 (PK 10.18 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120059 (PK 10.18 Decreciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120282 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120283 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120286 (PK 0.29 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120285 (PK 0.131 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120301 (PK 14.56 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120290 (PK 14.56 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120316 (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120336 (PK 452.27 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120091 (PK 452.27 Decreciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120474 (PK 9.237 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120473 (PK 9.237 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120476 (PK 11.78 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120475 (PK 11.78 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_120559 (PK 314.878 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120557 (PK 314.878 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_160988 (PK 12.462 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120307 (PK 12.462 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_160989 (PK 16.379 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120292 (PK 16.379 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_161529 (PK 12.532 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_161527 (PK 12.532 Decreciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_163710 (PK 397.638 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_163709 (PK 397.638 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_165204 (PK 13.335 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120303 (PK 13.335 Decreciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_165889 (PK 1.73 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165876 (PK 1.73 Creciente) a 67 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_165891 (PK 7.01 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165877 (PK 7.01 Creciente) a 22 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_165893 (PK 8.14 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165879 (PK 8.14 Creciente) a 28 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_169363 (PK 1024.854 Creciente) junto a dgt:GUID_CVM_161588 (PK 1019.7 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_169365 (PK 140.276 Creciente) junto a dgt:GUID_CVM_161609 (PK 134.178 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_169367 (PK 125.958 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_169366 (PK 125.958 Creciente) a 66 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_169368 (PK 28.02 Creciente) junto a dgt:GUID_CVM_169184 (PK 30.05 Creciente) a 0 m
-    145s    fusión: dgt:GUID_CABINACINEMOMETRO_169369 (PK 30.05 Creciente) junto a dgt:GUID_CVM_169183 (PK 28.02 Creciente) a 0 m
-    145s    fusión: dgtpdf:F:A-6:7.75:D (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 68 m
-    145s    fusión: dgtpdf:F:A-7:568.028:D (PK 568.028 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120622 (PK 136.028 Decreciente) a 18 m
-    145s    fusión: dgtpdf:F:MU-32:13.1:D (PK 13.1 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120687 (PK 122.896 Creciente) a 11 m
-    145s    fusión: dgtpdf:F:SE-30:11.114:D (PK 11.114 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120165 (PK 11.106 Decreciente) a 17 m
-    145s    fusión: dgtpdf:T:TF-5:20.66:D (PK 22.38 Decreciente) junto a dgt:GUID_CVM_165315 (PK 22.4 Decreciente) a 37 m
-    145s    fusión: sct:41.56801,2.39602 (PK 3.413 None) junto a sct:41.56761,2.39625 (PK 3.364 None) a 49 m
-    145s    fusión: sct:42.06667,2.81312 (PK 38.147 None) junto a sct:42.06633,2.81297 (PK 38.107 None) a 40 m
-    145s  tramos: 2 tramos repetidos (oficial y OSM) unidos, 4 puntos sueltos unidos a su tramo, 13 cámaras de entrada/salida absorbidas
-    146s  100 cámaras de stop o semáforo llevadas a su línea de detención (140751 stops y semáforos de OSM)
-    146s  correcciones: 2 quitados, 37 sentidos fijados, 1 añadidos, 1 con el tipo corregido
-    146s  verificados: 103 comprobados sobre el terreno; arreglados: osm:r9933664 (la2, lo2)
-    146s    límites: 220 sin límite, 0 por consultar
-    146s  límites deducidos de OSM: 135
-    146s    regiones: 0 celdas nuevas que consultar
-    146s    CartoCiudad: 1901 hitos necesarios, 0 por consultar
-    146s  rumbos por sentido: 968
-    146s  sentido hacia una ciudad: 74 puntos; ['VITORIA - GASTEIZ → 42.840,-2.722 (12 km)', 'IRUN → 43.327,-1.826 (33 km)', 'BILBAO → 43.254,-2.937 (28 km)', 'BILBAO → 43.254,-2.937 (30 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (8 km)', 'IRUN → 43.327,-1.826 (21 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (6 km)', 'VITORIA-GASTEIZ → 42.848,-2.679 (5 km)']
-    146s  52 sentidos nuevos, 585 coinciden con los nuestros, 10 en desacuerdo (se avisa en los dos)
-    146s  copias de OSM con sentido frente a oficiales: 565/588 → se usa en 319 puntos y en 42 vigila los dos sentidos
-    146s  62 radares de OSM con direction; frente a los oficiales: 3 igual, 1 al revés → no se usa
-    146s    CartoCiudad: 10 hitos necesarios, 0 por consultar
-    146s  tramos del feed girados: ['dgt:GUID_CVM_161274', 'dgt:GUID_CVM_161319', 'dgt:GUID_CVM_161340', 'dgt:GUID_CVM_161341', 'dgt:GUID_CVM_161420', 'dgt:GUID_CVM_161427', 'dgt:GUID_CVM_161436', 'dgt:GUID_CVM_161445', 'dgt:GUID_CVM_161489', 'dgt:GUID_CVM_161570', 'dgt:GUID_CVM_161588', 'dgt:GUID_CVM_161609', 'dgt:GUID_CVM_161629', 'dgt:GUID_CVM_162907', 'dgt:GUID_CVM_162916', 'dgt:GUID_CVM_162925', 'dgt:GUID_CVM_163339', 'dgt:GUID_CVM_163340', 'dgt:GUID_CVM_164150', 'dgt:GUID_CVM_164230', 'dgt:GUID_CVM_164237', 'dgt:GUID_CVM_164265', 'dgt:GUID_CVM_164997', 'dgt:GUID_CVM_165001', 'dgt:GUID_CVM_165285', 'dgt:GUID_CVM_165289', 'dgt:GUID_CVM_165308', 'dgt:GUID_CVM_165336', 'dgt:GUID_CVM_165337', 'dgt:GUID_CVM_165410', 'dgt:GUID_CVM_165415', 'dgt:GUID_CVM_166399', 'dgt:GUID_CVM_166402', 'dgt:GUID_CVM_166405', 'dgt:GUID_CVM_166407', 'dgt:GUID_CVM_169183']
-    146s  tramos: 14 tramos repetidos (oficial y OSM) unidos, 0 puntos sueltos unidos a su tramo, 0 cámaras de entrada/salida absorbidas
-    167s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
-    179s    ZBE: 45 ficheros
-    202s  ZBE: 57 zonas
-    202s    CartoCiudad: 745 hitos necesarios, 0 por consultar
-    237s  PK por la carretera: comprobado con 357 radares del feed (PK y coordenadas): en recta mediana 47 m, p75 93 m, p90 256 m; por la carretera mediana 34 m, p75 76 m, p90 247 m
-    237s    tramo dgt:GUID_CABINACINEMOMETRO_120569: la cámara del feed es la entrada (su calzada va hacia el otro extremo) → Decreciente
-    300s    caminos: red cargada (1100844 vías) en 61s
-    301s    caminos: regla del lado probada en 62s
-    301s    caminos: regla del cruce probada en 62s
-    301s    caminos: 0/3942 en 62s (dgt:GUID_CVM_161274)
-    302s    caminos: 500/3942 en 63s (dgt:GUID_CABINACINEMOMETRO_120569)
-    303s    caminos: 1000/3942 en 64s (sct:41.80835,3.03429)
-    307s    caminos: 1500/3942 en 68s (slm:40.96858,-5.64917)
-    309s    caminos: 2000/3942 en 70s (com:euskadi-subijana-za-cabina)
-    312s    caminos: 2500/3942 en 73s (osm:n2334938842)
-    315s    caminos: 3000/3942 en 76s (osm:n12668200487)
-    317s    caminos: 3500/3942 en 78s (osm:n1416249502)
-    388s    zonas: red cargada (1153793 vías) para 1301 zonas en 65s
-    401s  zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 73}
-    401s  radares del PDF de la DGT recolocados en su copia de OSM: 8
-    421s    caminos: red cargada (19521 vías) en 19s
-    421s    caminos: regla del lado probada en 19s
-    421s    caminos: regla del cruce probada en 19s
-    421s    caminos: 0/26 en 19s (sct:41.53823,0.45946)
-    421s  66 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 41/42 → heredado en 18; 8 radares del PDF de la DGT llevados a la posición de su copia de OSM
-    421s  radares de OSM mapeados dos veces: 0 quitados []
-    440s    caminos: red cargada (5749 vías) en 19s
-    440s    caminos: regla del lado probada en 19s
-    440s    caminos: regla del cruce probada en 19s
-    440s    caminos: 0/5 en 19s (dgt:GUID_CABINACINEMOMETRO_120285)
-    440s  gemelos de sentido contrario corregidos: 5 ['dgt:GUID_CABINACINEMOMETRO_120285', 'dgt:GUID_CABINACINEMOMETRO_120288', 'dgteq:SE-30:23.2:C:cintur', 'dgteq:SE-30:23.2:D:cintur', 'dgt:GUID_CABINACINEMOMETRO_120603']
-    440s  caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 39/42 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 94/117; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 1/2; dgtpdf ciudad 12-25 m: 3/5; dgtpdf carretera 25-41 m: 1/2; dgtpdf carretera 4-7 m: 1/1; dgtpdf carretera 7-12 m: 1/2; dgtpdf ciudad 7-12 m: 1/1; dgtpdf carretera todas: 4/7; dgtpdf ciudad todas: 4/6; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm ciudad 25-41 m: 0/1; osm carretera 4-7 m: 94/120; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/31; osm carretera todas: 154/200; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/32; cruce+lado 1/2; cruce 33/42; lado+limite 8/9', 'rumbo_por_cardinal': 47, 'con_camino': 3903, 'sin_via': 28, 'tramos_con_recorrido': 317, 'tramos': 347, 'caminos_alternativos': 11, 'mediana_dos': 29, 'con_paralela': 1216, 'en_enlace': 40, 'sospechosos': [], 'dos_sentidos': 285, 'limites_via': 154, 'limites_quitados': 5, 'ramas': 3128, 'calzada_corregida': 8, 'en_tunel': 68, 'caminos_cortos': 8, 'segundos': 80}
-    440s  semáforos: con sentido conocido, su semáforo delante 99, detrás 8 → se deducen sentidos
-    461s    caminos: red cargada (66302 vías) en 21s
-    461s    caminos: regla del lado probada en 21s
-    461s    caminos: regla del cruce probada en 21s
-    461s    caminos: 0/41 en 21s (madfr:40.43521,-3.67502)
-    461s  comprobación con las de sentido conocido: semáforo delante en 99, detrás en 8; 10 cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; 41 llevadas a su línea (7 estaban pasado el cruce); 40 sin ningún semáforo de OSM a 50 m (posición por revisar): madfr:40.45464,-3.69056, madfr:40.46227,-3.79330, madfr:40.38409,-3.75977, madfr:40.39694,-3.77433, madfr:40.41074,-3.65479, madfr:40.42034,-3.62522, madfr:40.44164,-3.62408, mlgfr:36.71300,-4.45466, dgteq:N-603:62.9:C:foto r, osm:n992000541, osm:n992001267, osm:n992002942, osm:n992003252, osm:n992003267, osm:n2004518514, osm:n2004518665, osm:n2378266833, osm:n2378266933, osm:n2378267261, osm:n4029561801, osm:n4029562016, osm:n4087504678, osm:n4258221018, osm:n9757953611, osm:n12736058897, osm:n12736232082, osm:n12993247575, osm:n12993247583, osm:n12993898230, osm:n14169267684, osm:n3015095098, osm:n3015103519, osm:n1416249515, osm:n4349063327, osm:r19801864, osm:n7821371292, osm:r19964592, osm:r19964593, osm:n11692022938, osm:n5326355963
-    461s    CartoCiudad: 3809 hitos necesarios, 0 por consultar
-    461s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120602 N-332 PK 203.2 Creciente: rumbo 113.1 → 306.4
-    461s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120603 N-332 PK 204.45 Decreciente: rumbo 293.1 → 124.5
-    461s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120647 EI-600 PK 9.635 Creciente: rumbo 99.0 → 286.2
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120095 A-92N PK 9.25 a 430 m de su PK; la cámara de OSM, a 89 m → se mueve 368 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120129 A-220 PK 9.366 a 244 m de su PK; la cámara de OSM, a 18 m → se mueve 227 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120233 N-432 PK 111.654 a 347 m de su PK; la cámara de OSM, a 8 m → se mueve 355 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120261 A-4 PK 40.406 a 411 m de su PK; la cámara de OSM, a 20 m → se mueve 401 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120304 A-2 PK 53.559 a 210 m de su PK; la cámara de OSM, a 19 m → se mueve 214 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120311 A-31 PK 11.635 a 366 m de su PK; la cámara de OSM, a 32 m → se mueve 391 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120314 A-40 PK 299.452 a 445 m de su PK; la cámara de OSM, a 20 m → se mueve 442 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120391 A-6050 PK 0.95 a 392 m de su PK; la cámara de OSM, a 29 m → se mueve 417 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_120667 N-122 PK 142.26 a 263 m de su PK; la cámara de OSM, a 47 m → se mueve 310 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_160238 CA-34 PK 0.71 a 185 m de su PK; la cámara de OSM, a 94 m → se mueve 279 m
-    462s    testigo: dgt:GUID_CABINACINEMOMETRO_165621 M-40 PK 20.265 a 465 m de su PK; la cámara de OSM, a 64 m → se mueve 445 m
-    462s    testigo: dgtpdf:F:CL-623:7.11:D CL-623 PK 7.11 a 161 m de su PK; la cámara de OSM, a 12 m → se mueve 160 m
-    462s    testigo: dgtpdf:F:M-300:31.325:D M-300 PK 31.325 a 266 m de su PK; la cámara de OSM, a 54 m → se mueve 256 m
-    462s    testigo: dgtpdf:F:TF-66:9.0:D TF-66 PK 9.0 a 171 m de su PK; la cámara de OSM, a 20 m → se mueve 184 m
-    462s    testigo: dgtpdf:F:N-332:245.0:C N-332 PK 245.0 a 152 m de su PK; la cámara de OSM, a 33 m → se mueve 120 m
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120009 N-240 rumbo 274.5 y su vía va a [157, 153] → 333.1
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120010 N-330 PK 668.655: a 9999 m de su carretera → a ella (en su PK, 571 m)
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120011 N-330 PK 667.435: a 135 m de su carretera → a ella (en su PK, 321 m)
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120025 N-234 rumbo 117.0 y su vía va a [192, 12, 12, 190, 9, 12] → 189.0
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120027 A-12 rumbo 262.3 y su vía va a [343, 343, 345, 343, 341, 347, 341] → None
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120037 A-4 rumbo 2.9 y su vía va a [286, 286, 105, 106] → None
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120133 N-232 PK 293.875: a 269 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 270 m)
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120140 N-211 PK 228.153: a 213 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 214 m)
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120203 N-330 PK 670.101: a 9999 m de su carretera → a ella (en su PK, 572 m)
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120204 N-330 PK 671.745: a 407 m de su carretera → a ella (en su PK, 486 m)
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120435 AC-552 rumbo 195.2 y su vía va a [124, 136, 131] → 135.8
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120601 CV-91 PK 18.888: a 266 m de su carretera → a ella (en su PK, 278 m)
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_120651 MA-19 PK 30.125: a 74 m de su carretera → a ella (en su PK, 76 m)
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_163776 N-6 rumbo 114.5 y su vía va a [206, 205, 206, 205, 206] → None
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_165670 AC-862 rumbo 84.1 y su vía va a [154] → 154.3
-    522s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_165816 VG-4.4 rumbo 249.8 y su vía va a [306] → 306.4
-    522s    su vía: dgt:GUID_CABINACINEMOMETRO_166987 A-68 PK 246.017: a 172 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 276 m)
-    522s    rumbo cruzado: dgtpdf:F:CA-141:21.3:C CA-141 rumbo 114.2 y su vía va a [178, 184, 168] → 168.3
-    522s    su vía: dgtpdf:F:N-611:194.33:D N-611 PK 194.33: a 138 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 139 m)
-    522s    rumbo cruzado: dgtpdf:F:AC-221:2.55:C AC-221 rumbo 116.2 y su vía va a [356, 356] → 176.4
-    522s    su vía: dgtpdf:F:H-30:8.502:D H-30 PK 8.502: a 217 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 219 m)
-    522s    su vía: dgtpdf:F:A-7052:7.5:C A-7052 PK 7.5: a 141 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 168 m)
-    522s    su vía: dgtpdf:F:A-49:0.7:C A-49 PK 0.7: a 120 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
-    522s    su vía: dgtpdf:F:A-8077:3.18:D A-8077 PK 3.18: a 72 m de su carretera → a ella (en su PK, 72 m)
-    522s    su vía: dgtpdf:F:N-234:119.66:D N-234 PK 119.66: a 185 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 185 m)
-    522s    su vía: sct:41.25502,1.17357 C-14 PK 20.029: a 63 m de su carretera → a ella (en su PK, 166 m)
-    522s    su vía: sct:41.74640,2.63225 C-35 PK 69.887: a 140 m de su carretera → a ella (en su PK, 146 m)
-    522s    su vía: sct:40.73027,0.59360 N-340 PK 1084.318: a 224 m de su carretera → a ella (en su PK, 261 m)
-    522s    su vía: ansr:EN125:102:O EN125 PK 102.0: a 207 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 208 m)
-    522s    su vía: ansr:IC17:19.1:E IC17 PK 19.1: a 62 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
-    522s    su vía: ansr:IC17:14.1:N IC17 PK 14.1: a 210 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 210 m)
-    522s    su vía: dgteq:AI-81:1.9:D:cintur AI-81 PK 1.9: a 62 m de su carretera → a ella (en su PK, 62 m)
-    522s    su vía: dgteq:A-492:0.2:C:cintur A-492 PK 0.2: a 171 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 172 m)
-    522s    su vía: dgteq:H-30:8.585:D:cintur H-30 PK 8.585: a 183 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 184 m)
-    522s    su vía: dgteq:N-550:116.74:D:cintur N-550 PK 116.74: a 81 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 81 m)
-    522s    su vía: dgteq:N-552:4.35:C:cintur N-552 PK 4.35: a 83 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 84 m)
-    522s    su vía: dgteq:PO-11:1.56:D:cintur PO-11 PK 1.56: a 146 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 146 m)
-    522s    su vía: dgteq:N-330:501.3:C:cintur N-330 PK 501.3: a 312 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 315 m)
-    522s    rumbo cruzado: com:euskadi-hondarribia-santaengrazi None rumbo 37.2 y su vía va a [153, 150, 156, 147] → None
-    522s    rumbo cruzado: osm:n992005494 None rumbo 244.5 y su vía va a [314, 314, 314, 314, 314, 314] → None
-    522s    rumbo cruzado: osm:n2334938864 None rumbo 235.6 y su vía va a [321, 142, 142, 140, 322, 140, 319] → None
-    522s    su vía: osm:n5435143134 A-26 PK None: a 70 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 71 m)
-    523s    rumbo cruzado: osm:n13070637359 None rumbo 22.2 y su vía va a [273, 92, 92, 273, 273, 92, 93, 144] → None
-    523s    rumbo cruzado: osm:n8119271103 None rumbo 293.6 y su vía va a [29, 31, 31, 30, 198] → None
-    523s    rumbo cruzado: osm:n13311195241b None rumbo 262.6 y su vía va a [32, 32, 32] → None
-    523s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_120318 A-2 PK 122.0 Decreciente → 234.5
-    523s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_120331 AP-6 PK 53.126 Creciente → 328.4
-    523s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_165908 N-320 PK 264.11 Creciente → 31.0
-    523s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_165909 N-320 PK 263.933 Decreciente → 114.2
-    523s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_174089 N-125 PK 7.771 Decreciente → 284.7
-    523s    rumbo por los vecinos: dgteq:A-68:242.23:C:cintur A-68 PK 242.23 Creciente → 348.5
-    523s  revisión final: 15 movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); 29 llevados a su carretera; 16 con el rumbo cruzado corregido; 16 duplicados quitados; 6 con el sentido sacado de los radares vecinos: {'testigo': ['dgt:GUID_CABINACINEMOMETRO_120095', 'dgt:GUID_CABINACINEMOMETRO_120129', 'dgt:GUID_CABINACINEMOMETRO_120233', 'dgt:GUID_CABINACINEMOMETRO_120261', 'dgt:GUID_CABINACINEMOMETRO_120304', 'dgt:GUID_CABINACINEMOMETRO_120311', 'dgt:GUID_CABINACINEMOMETRO_120314', 'dgt:GUID_CABINACINEMOMETRO_120391', 'dgt:GUID_CABINACINEMOMETRO_120667', 'dgt:GUID_CABINACINEMOMETRO_160238', 'dgt:GUID_CABINACINEMOMETRO_165621', 'dgtpdf:F:CL-623:7.11:D', 'dgtpdf:F:M-300:31.325:D', 'dgtpdf:F:TF-66:9.0:D', 'dgtpdf:F:N-332:245.0:C'], 'su_via': ['dgt:GUID_CABINACINEMOMETRO_120010', 'dgt:GUID_CABINACINEMOMETRO_120011', 'dgt:GUID_CABINACINEMOMETRO_120133', 'dgt:GUID_CABINACINEMOMETRO_120140', 'dgt:GUID_CABINACINEMOMETRO_120203', 'dgt:GUID_CABINACINEMOMETRO_120204', 'dgt:GUID_CABINACINEMOMETRO_120601', 'dgt:GUID_CABINACINEMOMETRO_120651', 'dgt:GUID_CABINACINEMOMETRO_166987', 'dgtpdf:F:N-611:194.33:D', 'dgtpdf:F:H-30:8.502:D', 'dgtpdf:F:A-7052:7.5:C', 'dgtpdf:F:A-49:0.7:C', 'dgtpdf:F:A-8077:3.18:D', 'dgtpdf:F:N-234:119.66:D', 'sct:41.25502,1.17357', 'sct:41.74640,2.63225', 'sct:40.73027,0.59360', 'ansr:EN125:102:O', 'ansr:IC17:19.1:E', 'ansr:IC17:14.1:N', 'dgteq:AI-81:1.9:D:cintur', 'dgteq:A-492:0.2:C:cintur', 'dgteq:H-30:8.585:D:cintur', 'dgteq:N-550:116.74:D:cintur', 'dgteq:N-552:4.35:C:cintur', 'dgteq:PO-11:1.56:D:cintur', 'dgteq:N-330:501.3:C:cintur', 'osm:n5435143134'], 'cruzado': ['dgt:GUID_CABINACINEMOMETRO_120009', 'dgt:GUID_CABINACINEMOMETRO_120025', 'dgt:GUID_CABINACINEMOMETRO_120027', 'dgt:GUID_CABINACINEMOMETRO_120037', 'dgt:GUID_CABINACINEMOMETRO_120435', 'dgt:GUID_CABINACINEMOMETRO_163776', 'dgt:GUID_CABINACINEMOMETRO_165670', 'dgt:GUID_CABINACINEMOMETRO_165816', 'dgtpdf:F:CA-141:21.3:C', 'dgtpdf:F:AC-221:2.55:C', 'com:euskadi-hondarribia-santaengrazi', 'osm:n992005494', 'osm:n2334938864', 'osm:n13070637359', 'osm:n8119271103', 'osm:n13311195241b'], 'duplicados': ['dgt:GUID_CABINACINEMOMETRO_169360→dgt:GUID_CVM_161570', 'dgt:GUID_CABINACINEMOMETRO_169362→dgt:GUID_CVM_161588', 'dgt:GUID_CABINACINEMOMETRO_169364→dgt:GUID_CVM_161609', 'dgt:GUID_CABINACINEMOMETRO_169366→dgt:GUID_CVM_161629', 'dgt:GUID_CVM_164265→dgt:GUID_CVM_163929', 'dgt:GUID_CVM_165001→dgt:GUID_CVM_164999', 'dgt:GUID_CVM_165415→dgt:GUID_CVM_165414', 'dgt:GUID_CVM_169184→dgt:GUID_CVM_169183', 'osm:n13512708762→dgt:GUID_CABINACINEMOMETRO_120011', 'osm:n992001271→dgt:GUID_CABINACINEMOMETRO_120204', 'osm:n806985872→dgtpdf:F:A-49:0.7:C', 'osm:n4587378949→sct:41.25502,1.17357', 'osm:n7655766543→sct:41.74640,2.63225', 'vdc:2→vdc:1', 'osm:n13070637359b→osm:n13070637359', 'osm:n13311195241b→osm:n13311195241'], 'vecinos': ['dgt:GUID_CABINACINEMOMETRO_120318', 'dgt:GUID_CABINACINEMOMETRO_120331', 'dgt:GUID_CABINACINEMOMETRO_165908', 'dgt:GUID_CABINACINEMOMETRO_165909', 'dgt:GUID_CABINACINEMOMETRO_174089', 'dgteq:A-68:242.23:C:cintur']}
-    547s    caminos: red cargada (71591 vías) en 21s
-    547s    caminos: regla del lado probada en 21s
-    547s    caminos: regla del cruce probada en 21s
-    547s    caminos: 0/68 en 21s (dgt:GUID_CABINACINEMOMETRO_120602)
-    548s  verificados: 103 comprobados sobre el terreno, todos en su sitio
-    568s    TCA: página del Ministerio no disponible (www.transportes.gob.es: HTTP Error 403: Forbidden); se usan los PDF conocidos
-    570s    TCA: TCA 130 filas (NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf)
-    571s    TCA: TCAM 21 filas (tca-con-implicacion-de-motoristas.pdf)
-    571s    CartoCiudad: 295 hitos necesarios, 0 por consultar
-    571s    TCA: 11 sin poder situar: ['B-24 9.6-10.7', 'B-40 1.4-2.1', 'GR-30 9.1-10.1', 'GR-30 10.1-10.6', 'N-240 19.0-19.5', 'N-332 216.3-217.3', 'N-340 1144.7-1145.2', 'N-340 1154.3-1154.8', 'N-340 1159.8-1160.3', 'N-349 2.7-3.2', 'N-351 5.9-6.5']
-    571s  Ministerio: tramos de concentración de accidentes: 109 puntos
-    571s    CartoCiudad: 1877 hitos necesarios, 0 por consultar
-    571s    accidentes: 461 tramos, 425 situados, 36 sin poder situar
-    571s  Tramos con muchos accidentes (autonómicas y provinciales, microdatos DGT): 425 puntos
-    607s    zonas: red cargada (501709 vías) para 528 zonas en 35s
-     61s    CartoCiudad: 2391 hitos necesarios, 0 por consultar
+    434s    Overpass no responde (overpass.kumi.systems: HTTP Error 502: Bad Gateway); uso las cámaras del extracto de Geofabrik
+    436s  OpenStreetMap: 3229 puntos
+    436s  Tramos radar móvil: 1152 puntos
+    439s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
+    440s  Ayto. Málaga foto-rojo: 7 puntos
+    442s  Ayto. Salamanca: 24 puntos
+    443s  Ayto. Donostia: 12 puntos
+    444s  Câmara Municipal de Lisboa: 18 puntos
+    445s  Ajuntament de Viladecans: 24 puntos
+    446s  Portugal: ANSR (red SINCRO): 121 puntos
+    463s  Ayto. Santa Cruz de Tenerife foto-rojo: no responde (www.santacruzdetenerife.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
+    481s  Ayto. Pamplona cinemómetros: no responde (sig.pamplona.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
+    482s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1802 puntos
+    482s  feed comunitario tras quitar tramos ya situados: 631
+    482s  fusión: 268 radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120193 (PK 10.18 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120059 (PK 10.18 Decreciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120282 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120283 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120286 (PK 0.29 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120285 (PK 0.131 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120301 (PK 14.56 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120290 (PK 14.56 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120316 (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120336 (PK 452.27 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120091 (PK 452.27 Decreciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120474 (PK 9.237 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120473 (PK 9.237 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120476 (PK 11.78 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120475 (PK 11.78 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_120559 (PK 314.878 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120557 (PK 314.878 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_160988 (PK 12.462 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120307 (PK 12.462 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_160989 (PK 16.379 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120292 (PK 16.379 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_161529 (PK 12.532 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_161527 (PK 12.532 Decreciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_163710 (PK 397.638 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_163709 (PK 397.638 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_165204 (PK 13.335 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120303 (PK 13.335 Decreciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_165889 (PK 1.73 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165876 (PK 1.73 Creciente) a 67 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_165891 (PK 7.01 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165877 (PK 7.01 Creciente) a 22 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_165893 (PK 8.14 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165879 (PK 8.14 Creciente) a 28 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_169363 (PK 1024.854 Creciente) junto a dgt:GUID_CVM_161588 (PK 1019.7 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_169365 (PK 140.276 Creciente) junto a dgt:GUID_CVM_161609 (PK 134.178 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_169367 (PK 125.958 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_169366 (PK 125.958 Creciente) a 66 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_169368 (PK 28.02 Creciente) junto a dgt:GUID_CVM_169184 (PK 30.05 Creciente) a 0 m
+    482s    fusión: dgt:GUID_CABINACINEMOMETRO_169369 (PK 30.05 Creciente) junto a dgt:GUID_CVM_169183 (PK 28.02 Creciente) a 0 m
+    482s    fusión: dgtpdf:F:A-6:7.75:D (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 68 m
+    482s    fusión: dgtpdf:F:A-7:568.028:D (PK 568.028 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120622 (PK 136.028 Decreciente) a 18 m
+    482s    fusión: dgtpdf:F:MU-32:13.1:D (PK 13.1 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120687 (PK 122.896 Creciente) a 11 m
+    482s    fusión: dgtpdf:F:SE-30:11.114:D (PK 11.114 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120165 (PK 11.106 Decreciente) a 17 m
+    482s    fusión: dgtpdf:T:TF-5:20.66:D (PK 22.38 Decreciente) junto a dgt:GUID_CVM_165315 (PK 22.4 Decreciente) a 37 m
+    482s    fusión: sct:41.56801,2.39602 (PK 3.413 None) junto a sct:41.56761,2.39625 (PK 3.364 None) a 49 m
+    482s    fusión: sct:42.06667,2.81312 (PK 38.147 None) junto a sct:42.06633,2.81297 (PK 38.107 None) a 40 m
+    482s  tramos: 2 tramos repetidos (oficial y OSM) unidos, 4 puntos sueltos unidos a su tramo, 13 cámaras de entrada/salida absorbidas
+    484s  100 cámaras de stop o semáforo llevadas a su línea de detención (140751 stops y semáforos de OSM)
+    484s  correcciones: 2 quitados, 37 sentidos fijados, 1 añadidos, 1 con el tipo corregido
+    484s  verificados: 108 comprobados sobre el terreno; arreglados: osm:r9933664 (la2, lo2)
+    484s    límites: 220 sin límite, 0 por consultar
+    484s  límites deducidos de OSM: 135
+    484s    regiones: 1 celdas nuevas que consultar
+    484s    regiones: ejemplo de respuesta {"id": "10.46.G46_460130378397", "province": "València/Valencia", "provinceCode": "46", "comunidadAutonoma": "Comunitat Valenciana", "comunidadAutonomaCode": "10", "muni": "Alboraia/Alboraya", "muniCode": "46013", "type": "portal", "address": "HORTA", "postalCode": "46120", "poblacion": "Urbanitzaci
+    484s    CartoCiudad: 1891 hitos necesarios, 0 por consultar
+    485s  rumbos por sentido: 963
+    485s  sentido hacia una ciudad: 74 puntos; ['VITORIA - GASTEIZ → 42.840,-2.722 (12 km)', 'IRUN → 43.327,-1.826 (33 km)', 'BILBAO → 43.254,-2.937 (28 km)', 'BILBAO → 43.254,-2.937 (30 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (8 km)', 'IRUN → 43.327,-1.826 (21 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (6 km)', 'VITORIA-GASTEIZ → 42.848,-2.679 (5 km)']
+    485s  52 sentidos nuevos, 585 coinciden con los nuestros, 10 en desacuerdo (se avisa en los dos)
+    485s  copias de OSM con sentido frente a oficiales: 565/588 → se usa en 319 puntos y en 42 vigila los dos sentidos
+    485s  62 radares de OSM con direction; frente a los oficiales: 3 igual, 1 al revés → no se usa
+    485s    CartoCiudad: 10 hitos necesarios, 0 por consultar
+    485s  tramos del feed girados: ['dgt:GUID_CVM_161274', 'dgt:GUID_CVM_161319', 'dgt:GUID_CVM_161340', 'dgt:GUID_CVM_161341', 'dgt:GUID_CVM_161420', 'dgt:GUID_CVM_161427', 'dgt:GUID_CVM_161436', 'dgt:GUID_CVM_161445', 'dgt:GUID_CVM_161489', 'dgt:GUID_CVM_161570', 'dgt:GUID_CVM_161588', 'dgt:GUID_CVM_161609', 'dgt:GUID_CVM_161629', 'dgt:GUID_CVM_162907', 'dgt:GUID_CVM_162916', 'dgt:GUID_CVM_162925', 'dgt:GUID_CVM_163339', 'dgt:GUID_CVM_163340', 'dgt:GUID_CVM_164150', 'dgt:GUID_CVM_164230', 'dgt:GUID_CVM_164237', 'dgt:GUID_CVM_164265', 'dgt:GUID_CVM_164997', 'dgt:GUID_CVM_165001', 'dgt:GUID_CVM_165285', 'dgt:GUID_CVM_165289', 'dgt:GUID_CVM_165308', 'dgt:GUID_CVM_165336', 'dgt:GUID_CVM_165337', 'dgt:GUID_CVM_165410', 'dgt:GUID_CVM_165415', 'dgt:GUID_CVM_166399', 'dgt:GUID_CVM_166402', 'dgt:GUID_CVM_166405', 'dgt:GUID_CVM_166407', 'dgt:GUID_CVM_169183']
+    485s  tramos: 14 tramos repetidos (oficial y OSM) unidos, 0 puntos sueltos unidos a su tramo, 0 cámaras de entrada/salida absorbidas
+    506s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
+    522s    ZBE: 45 ficheros
+    549s  ZBE: 57 zonas
+    549s    CartoCiudad: 745 hitos necesarios, 0 por consultar
+    598s  PK por la carretera: comprobado con 357 radares del feed (PK y coordenadas): en recta mediana 47 m, p75 93 m, p90 256 m; por la carretera mediana 34 m, p75 76 m, p90 247 m
+    598s    tramo dgt:GUID_CABINACINEMOMETRO_120569: la cámara del feed es la entrada (su calzada va hacia el otro extremo) → Decreciente
+    680s    caminos: red cargada (1101367 vías) en 80s
+    681s    caminos: regla del lado probada en 81s
+    682s    caminos: regla del cruce probada en 82s
+    682s    caminos: 0/3945 en 82s (dgt:GUID_CVM_161274)
+    683s    caminos: 500/3945 en 83s (dgt:GUID_CABINACINEMOMETRO_120569)
+    685s    caminos: 1000/3945 en 85s (sct:41.80835,3.03429)
+    691s    caminos: 1500/3945 en 91s (slm:40.96858,-5.64917)
+    694s    caminos: 2000/3945 en 94s (com:euskadi-subijana-za-cabina)
+    699s    caminos: 2500/3945 en 99s (osm:n2334938903)
+    703s    caminos: 3000/3945 en 103s (osm:n13458588173)
+    707s    caminos: 3500/3945 en 107s (osm:r16150126)
+    805s    zonas: red cargada (1153793 vías) para 1301 zonas en 91s
+    822s  zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 104}
+    822s  radares del PDF de la DGT recolocados en su copia de OSM: 8
+    855s    caminos: red cargada (19521 vías) en 32s
+    855s    caminos: regla del lado probada en 32s
+    855s    caminos: regla del cruce probada en 32s
+    855s    caminos: 0/26 en 32s (sct:41.53823,0.45946)
+    855s  66 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 41/42 → heredado en 18; 8 radares del PDF de la DGT llevados a la posición de su copia de OSM
+    855s  radares de OSM mapeados dos veces: 0 quitados []
+    886s    caminos: red cargada (5749 vías) en 32s
+    886s    caminos: regla del lado probada en 32s
+    886s    caminos: regla del cruce probada en 32s
+    886s    caminos: 0/5 en 32s (dgt:GUID_CABINACINEMOMETRO_120285)
+    887s  gemelos de sentido contrario corregidos: 5 ['dgt:GUID_CABINACINEMOMETRO_120285', 'dgt:GUID_CABINACINEMOMETRO_120288', 'dgteq:SE-30:23.2:C:cintur', 'dgteq:SE-30:23.2:D:cintur', 'dgt:GUID_CABINACINEMOMETRO_120603']
+    887s  caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 39/42 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 94/117; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 1/2; dgtpdf ciudad 12-25 m: 3/5; dgtpdf carretera 25-41 m: 1/2; dgtpdf carretera 4-7 m: 1/1; dgtpdf carretera 7-12 m: 1/2; dgtpdf ciudad 7-12 m: 1/1; dgtpdf carretera todas: 4/7; dgtpdf ciudad todas: 4/6; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm ciudad 25-41 m: 0/1; osm carretera 4-7 m: 94/120; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 60/81; osm ciudad 7-12 m: 22/31; osm carretera todas: 156/203; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/32; cruce+lado 1/2; cruce 33/42; lado+limite 8/9', 'rumbo_por_cardinal': 47, 'con_camino': 3906, 'sin_via': 28, 'tramos_con_recorrido': 317, 'tramos': 347, 'caminos_alternativos': 11, 'mediana_dos': 29, 'con_paralela': 1216, 'en_enlace': 40, 'sospechosos': [], 'dos_sentidos': 285, 'limites_via': 154, 'limites_quitados': 5, 'ramas': 3128, 'calzada_corregida': 8, 'en_tunel': 69, 'caminos_cortos': 8, 'segundos': 110}
+    887s  semáforos: con sentido conocido, su semáforo delante 99, detrás 8 → se deducen sentidos
+    920s    caminos: red cargada (66302 vías) en 33s
+    920s    caminos: regla del lado probada en 33s
+    920s    caminos: regla del cruce probada en 33s
+    920s    caminos: 0/41 en 33s (madfr:40.43521,-3.67502)
+    921s  comprobación con las de sentido conocido: semáforo delante en 99, detrás en 8; 10 cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; 41 llevadas a su línea (7 estaban pasado el cruce); 40 sin ningún semáforo de OSM a 50 m (posición por revisar): madfr:40.45464,-3.69056, madfr:40.46227,-3.79330, madfr:40.38409,-3.75977, madfr:40.39694,-3.77433, madfr:40.41074,-3.65479, madfr:40.42034,-3.62522, madfr:40.44164,-3.62408, mlgfr:36.71300,-4.45466, dgteq:N-603:62.9:C:foto r, osm:n992000541, osm:n992001267, osm:n992002942, osm:n992003252, osm:n992003267, osm:n2004518514, osm:n2004518665, osm:n2378266833, osm:n2378266933, osm:n2378267261, osm:n4258221018, osm:n9757953611, osm:n12736058897, osm:n12736232082, osm:n12993247575, osm:n12993247583, osm:n12993898230, osm:n14169267684, osm:n4029561801, osm:n4029562016, osm:n4087504678, osm:n3015095098, osm:n3015103519, osm:n1416249515, osm:n4349063327, osm:r19801864, osm:n7821371292, osm:r19964592, osm:r19964593, osm:n11692022938, osm:n5326355963
+    921s    CartoCiudad: 3809 hitos necesarios, 0 por consultar
+    921s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120602 N-332 PK 203.2 Creciente: rumbo 113.1 → 306.4
+    921s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120603 N-332 PK 204.45 Decreciente: rumbo 293.1 → 124.5
+    921s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120647 EI-600 PK 9.635 Creciente: rumbo 99.0 → 286.2
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120095 A-92N PK 9.25 a 430 m de su PK; la cámara de OSM, a 89 m → se mueve 368 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120129 A-220 PK 9.366 a 244 m de su PK; la cámara de OSM, a 18 m → se mueve 227 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120233 N-432 PK 111.654 a 347 m de su PK; la cámara de OSM, a 8 m → se mueve 355 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120261 A-4 PK 40.406 a 411 m de su PK; la cámara de OSM, a 20 m → se mueve 401 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120304 A-2 PK 53.559 a 210 m de su PK; la cámara de OSM, a 19 m → se mueve 214 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120311 A-31 PK 11.635 a 366 m de su PK; la cámara de OSM, a 32 m → se mueve 391 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120314 A-40 PK 299.452 a 445 m de su PK; la cámara de OSM, a 20 m → se mueve 442 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120391 A-6050 PK 0.95 a 392 m de su PK; la cámara de OSM, a 29 m → se mueve 417 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_120667 N-122 PK 142.26 a 263 m de su PK; la cámara de OSM, a 47 m → se mueve 310 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_160238 CA-34 PK 0.71 a 185 m de su PK; la cámara de OSM, a 94 m → se mueve 279 m
+    922s    testigo: dgt:GUID_CABINACINEMOMETRO_165621 M-40 PK 20.265 a 465 m de su PK; la cámara de OSM, a 64 m → se mueve 445 m
+    922s    testigo: dgtpdf:F:CL-623:7.11:D CL-623 PK 7.11 a 161 m de su PK; la cámara de OSM, a 12 m → se mueve 160 m
+    922s    testigo: dgtpdf:F:M-300:31.325:D M-300 PK 31.325 a 266 m de su PK; la cámara de OSM, a 54 m → se mueve 256 m
+    922s    testigo: dgtpdf:F:TF-66:9.0:D TF-66 PK 9.0 a 171 m de su PK; la cámara de OSM, a 20 m → se mueve 184 m
+    922s    testigo: dgtpdf:F:N-332:245.0:C N-332 PK 245.0 a 152 m de su PK; la cámara de OSM, a 33 m → se mueve 120 m
+    997s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120009 N-240 rumbo 274.5 y su vía va a [157, 153] → 333.1
+    997s    su vía: dgt:GUID_CABINACINEMOMETRO_120010 N-330 PK 668.655: a 9999 m de su carretera → a ella (en su PK, 571 m)
+    997s    su vía: dgt:GUID_CABINACINEMOMETRO_120011 N-330 PK 667.435: a 135 m de su carretera → a ella (en su PK, 321 m)
+    997s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120025 N-234 rumbo 117.0 y su vía va a [192, 12, 12, 190, 9, 12] → 189.0
+    997s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120027 A-12 rumbo 262.3 y su vía va a [343, 343, 345, 343, 341, 347, 341] → None
+    997s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120037 A-4 rumbo 2.9 y su vía va a [286, 286, 105, 106] → None
+    997s    su vía: dgt:GUID_CABINACINEMOMETRO_120133 N-232 PK 293.875: a 269 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 270 m)
+    997s    su vía: dgt:GUID_CABINACINEMOMETRO_120140 N-211 PK 228.153: a 213 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 214 m)
+    997s    su vía: dgt:GUID_CABINACINEMOMETRO_120203 N-330 PK 670.101: a 9999 m de su carretera → a ella (en su PK, 572 m)
+    997s    su vía: dgt:GUID_CABINACINEMOMETRO_120204 N-330 PK 671.745: a 407 m de su carretera → a ella (en su PK, 486 m)
+    998s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120435 AC-552 rumbo 195.2 y su vía va a [124, 136, 131] → 135.8
+    998s    su vía: dgt:GUID_CABINACINEMOMETRO_120601 CV-91 PK 18.888: a 266 m de su carretera → a ella (en su PK, 278 m)
+    998s    su vía: dgt:GUID_CABINACINEMOMETRO_120651 MA-19 PK 30.125: a 74 m de su carretera → a ella (en su PK, 76 m)
+    998s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_163776 N-6 rumbo 114.5 y su vía va a [206, 205, 206, 205, 206] → None
+    998s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_165670 AC-862 rumbo 84.1 y su vía va a [154] → 154.3
+    998s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_165816 VG-4.4 rumbo 249.8 y su vía va a [306] → 306.4
+    998s    su vía: dgt:GUID_CABINACINEMOMETRO_166987 A-68 PK 246.017: a 172 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 276 m)
+    998s    rumbo cruzado: dgtpdf:F:CA-141:21.3:C CA-141 rumbo 114.2 y su vía va a [178, 184, 168] → 168.3
+    998s    su vía: dgtpdf:F:N-611:194.33:D N-611 PK 194.33: a 138 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 139 m)
+    998s    rumbo cruzado: dgtpdf:F:AC-221:2.55:C AC-221 rumbo 116.2 y su vía va a [356, 356] → 176.4
+    998s    su vía: dgtpdf:F:H-30:8.502:D H-30 PK 8.502: a 217 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 219 m)
+    998s    su vía: dgtpdf:F:A-7052:7.5:C A-7052 PK 7.5: a 141 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 168 m)
+    998s    su vía: dgtpdf:F:A-49:0.7:C A-49 PK 0.7: a 120 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
+    998s    su vía: dgtpdf:F:A-8077:3.18:D A-8077 PK 3.18: a 72 m de su carretera → a ella (en su PK, 72 m)
+    998s    su vía: dgtpdf:F:N-234:119.66:D N-234 PK 119.66: a 185 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 185 m)
+    998s    su vía: sct:41.25502,1.17357 C-14 PK 20.029: a 63 m de su carretera → a ella (en su PK, 166 m)
+    998s    su vía: sct:41.74640,2.63225 C-35 PK 69.887: a 140 m de su carretera → a ella (en su PK, 146 m)
+    998s    su vía: sct:40.73027,0.59360 N-340 PK 1084.318: a 224 m de su carretera → a ella (en su PK, 261 m)
+    998s    su vía: ansr:EN125:102:O EN125 PK 102.0: a 207 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 208 m)
+    998s    su vía: ansr:IC17:19.1:E IC17 PK 19.1: a 62 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
+    998s    su vía: ansr:IC17:14.1:N IC17 PK 14.1: a 210 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 210 m)
+    998s    su vía: dgteq:AI-81:1.9:D:cintur AI-81 PK 1.9: a 62 m de su carretera → a ella (en su PK, 62 m)
+    998s    su vía: dgteq:A-492:0.2:C:cintur A-492 PK 0.2: a 171 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 172 m)
+    998s    su vía: dgteq:H-30:8.585:D:cintur H-30 PK 8.585: a 183 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 184 m)
+    998s    su vía: dgteq:N-550:116.74:D:cintur N-550 PK 116.74: a 81 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 81 m)
+    998s    su vía: dgteq:N-552:4.35:C:cintur N-552 PK 4.35: a 83 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 84 m)
+    998s    su vía: dgteq:PO-11:1.56:D:cintur PO-11 PK 1.56: a 146 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 146 m)
+    998s    su vía: dgteq:N-330:501.3:C:cintur N-330 PK 501.3: a 312 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 315 m)
+    998s    rumbo cruzado: com:euskadi-hondarribia-santaengrazi None rumbo 37.2 y su vía va a [153, 150, 156, 147] → None
+    998s    rumbo cruzado: osm:n992005494 None rumbo 244.5 y su vía va a [314, 314, 314, 314, 314, 314] → None
+    998s    rumbo cruzado: osm:n2334938864 None rumbo 235.6 y su vía va a [321, 142, 142, 140, 322, 140, 319] → None
+    998s    rumbo cruzado: osm:n13070637359 None rumbo 22.2 y su vía va a [273, 92, 92, 273, 273, 92, 93, 144] → None
+    998s    su vía: osm:n5435143134 A-26 PK None: a 70 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 71 m)
+    999s    rumbo cruzado: osm:n8119271103 None rumbo 293.6 y su vía va a [29, 31, 31, 30, 198] → None
+    999s    rumbo cruzado: osm:n13311195241b None rumbo 262.6 y su vía va a [32, 32, 32] → None
+    999s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_120318 A-2 PK 122.0 Decreciente → 234.5
+    999s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_120331 AP-6 PK 53.126 Creciente → 328.4
+    999s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_165908 N-320 PK 264.11 Creciente → 31.0
+    999s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_165909 N-320 PK 263.933 Decreciente → 114.2
+    999s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_174089 N-125 PK 7.771 Decreciente → 284.7
+    999s    rumbo por los vecinos: dgteq:A-68:242.23:C:cintur A-68 PK 242.23 Creciente → 348.5
+    999s  revisión final: 15 movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); 29 llevados a su carretera; 16 con el rumbo cruzado corregido; 16 duplicados quitados; 6 con el sentido sacado de los radares vecinos: {'testigo': ['dgt:GUID_CABINACINEMOMETRO_120095', 'dgt:GUID_CABINACINEMOMETRO_120129', 'dgt:GUID_CABINACINEMOMETRO_120233', 'dgt:GUID_CABINACINEMOMETRO_120261', 'dgt:GUID_CABINACINEMOMETRO_120304', 'dgt:GUID_CABINACINEMOMETRO_120311', 'dgt:GUID_CABINACINEMOMETRO_120314', 'dgt:GUID_CABINACINEMOMETRO_120391', 'dgt:GUID_CABINACINEMOMETRO_120667', 'dgt:GUID_CABINACINEMOMETRO_160238', 'dgt:GUID_CABINACINEMOMETRO_165621', 'dgtpdf:F:CL-623:7.11:D', 'dgtpdf:F:M-300:31.325:D', 'dgtpdf:F:TF-66:9.0:D', 'dgtpdf:F:N-332:245.0:C'], 'su_via': ['dgt:GUID_CABINACINEMOMETRO_120010', 'dgt:GUID_CABINACINEMOMETRO_120011', 'dgt:GUID_CABINACINEMOMETRO_120133', 'dgt:GUID_CABINACINEMOMETRO_120140', 'dgt:GUID_CABINACINEMOMETRO_120203', 'dgt:GUID_CABINACINEMOMETRO_120204', 'dgt:GUID_CABINACINEMOMETRO_120601', 'dgt:GUID_CABINACINEMOMETRO_120651', 'dgt:GUID_CABINACINEMOMETRO_166987', 'dgtpdf:F:N-611:194.33:D', 'dgtpdf:F:H-30:8.502:D', 'dgtpdf:F:A-7052:7.5:C', 'dgtpdf:F:A-49:0.7:C', 'dgtpdf:F:A-8077:3.18:D', 'dgtpdf:F:N-234:119.66:D', 'sct:41.25502,1.17357', 'sct:41.74640,2.63225', 'sct:40.73027,0.59360', 'ansr:EN125:102:O', 'ansr:IC17:19.1:E', 'ansr:IC17:14.1:N', 'dgteq:AI-81:1.9:D:cintur', 'dgteq:A-492:0.2:C:cintur', 'dgteq:H-30:8.585:D:cintur', 'dgteq:N-550:116.74:D:cintur', 'dgteq:N-552:4.35:C:cintur', 'dgteq:PO-11:1.56:D:cintur', 'dgteq:N-330:501.3:C:cintur', 'osm:n5435143134'], 'cruzado': ['dgt:GUID_CABINACINEMOMETRO_120009', 'dgt:GUID_CABINACINEMOMETRO_120025', 'dgt:GUID_CABINACINEMOMETRO_120027', 'dgt:GUID_CABINACINEMOMETRO_120037', 'dgt:GUID_CABINACINEMOMETRO_120435', 'dgt:GUID_CABINACINEMOMETRO_163776', 'dgt:GUID_CABINACINEMOMETRO_165670', 'dgt:GUID_CABINACINEMOMETRO_165816', 'dgtpdf:F:CA-141:21.3:C', 'dgtpdf:F:AC-221:2.55:C', 'com:euskadi-hondarribia-santaengrazi', 'osm:n992005494', 'osm:n2334938864', 'osm:n13070637359', 'osm:n8119271103', 'osm:n13311195241b'], 'duplicados': ['dgt:GUID_CABINACINEMOMETRO_169360→dgt:GUID_CVM_161570', 'dgt:GUID_CABINACINEMOMETRO_169362→dgt:GUID_CVM_161588', 'dgt:GUID_CABINACINEMOMETRO_169364→dgt:GUID_CVM_161609', 'dgt:GUID_CABINACINEMOMETRO_169366→dgt:GUID_CVM_161629', 'dgt:GUID_CVM_164265→dgt:GUID_CVM_163929', 'dgt:GUID_CVM_165001→dgt:GUID_CVM_164999', 'dgt:GUID_CVM_165415→dgt:GUID_CVM_165414', 'dgt:GUID_CVM_169184→dgt:GUID_CVM_169183', 'osm:n13512708762→dgt:GUID_CABINACINEMOMETRO_120011', 'osm:n992001271→dgt:GUID_CABINACINEMOMETRO_120204', 'osm:n806985872→dgtpdf:F:A-49:0.7:C', 'osm:n4587378949→sct:41.25502,1.17357', 'osm:n7655766543→sct:41.74640,2.63225', 'vdc:2→vdc:1', 'osm:n13070637359b→osm:n13070637359', 'osm:n13311195241b→osm:n13311195241'], 'vecinos': ['dgt:GUID_CABINACINEMOMETRO_120318', 'dgt:GUID_CABINACINEMOMETRO_120331', 'dgt:GUID_CABINACINEMOMETRO_165908', 'dgt:GUID_CABINACINEMOMETRO_165909', 'dgt:GUID_CABINACINEMOMETRO_174089', 'dgteq:A-68:242.23:C:cintur']}
+   1036s    caminos: red cargada (71591 vías) en 34s
+   1036s    caminos: regla del lado probada en 34s
+   1036s    caminos: regla del cruce probada en 34s
+   1036s    caminos: 0/68 en 34s (dgt:GUID_CABINACINEMOMETRO_120602)
+   1037s  verificados: 108 comprobados sobre el terreno, todos en su sitio
+   1057s    TCA: página del Ministerio no disponible (www.transportes.gob.es: HTTP Error 403: Forbidden); se usan los PDF conocidos
+   1059s    TCA: TCA 130 filas (NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf)
+   1061s    TCA: TCAM 21 filas (tca-con-implicacion-de-motoristas.pdf)
+   1061s    CartoCiudad: 295 hitos necesarios, 0 por consultar
+   1061s    TCA: 11 sin poder situar: ['B-24 9.6-10.7', 'B-40 1.4-2.1', 'GR-30 9.1-10.1', 'GR-30 10.1-10.6', 'N-240 19.0-19.5', 'N-332 216.3-217.3', 'N-340 1144.7-1145.2', 'N-340 1154.3-1154.8', 'N-340 1159.8-1160.3', 'N-349 2.7-3.2', 'N-351 5.9-6.5']
+   1061s  Ministerio: tramos de concentración de accidentes: 109 puntos
+   1061s    CartoCiudad: 1877 hitos necesarios, 0 por consultar
+   1061s    accidentes: 461 tramos, 425 situados, 36 sin poder situar
+   1061s  Tramos con muchos accidentes (autonómicas y provinciales, microdatos DGT): 425 puntos
+   1114s    zonas: red cargada (501709 vías) para 528 zonas en 53s
+     83s    CartoCiudad: 2391 hitos necesarios, 0 por consultar
