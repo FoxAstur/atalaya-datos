@@ -2554,11 +2554,23 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
                 return None
             return caminos.norm_ref(c)
 
-        def en_su_via(pos, rc, radio):
-            """(distancia, punto) de la vía con esa ref más cercana a pos, o None."""
+        def a_favor(wi, i, rb):
+            """¿Se circula por ese tramo con rumbo rb? (en una autovía, que no sea la calzada del otro sentido)"""
+            if rb is None:
+                return True
+            w = red.vias[wi]
+            r = caminos.rumbo(w.pts[i], w.pts[i + 1])
+            if w.sentido == 1:
+                return caminos.dif(rb, r) <= 60
+            if w.sentido == -1:
+                return caminos.dif(rb, (r + 180) % 360) <= 60
+            return min(caminos.dif(rb, r), caminos.dif(rb, (r + 180) % 360)) <= 60
+
+        def en_su_via(pos, rc, radio, rb=None):
+            """(distancia, punto) de la vía con esa ref (en su sentido) más cercana a pos, o None."""
             mejor = None
             for d, t, wi, i in red.cercanos(pos, radio):
-                if red.vias[wi].ref == rc and (mejor is None or d < mejor[0]):
+                if red.vias[wi].ref == rc and a_favor(wi, i, rb) and (mejor is None or d < mejor[0]):
                     w = red.vias[wi]
                     mejor = (d, caminos.interpolar(w.pts[i], w.pts[i + 1], t))
             return mejor
@@ -2569,6 +2581,7 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
             cerca = sorted(((d, wi, i, t) for d, t, wi, i in red.cercanos(pos, 400)), key=lambda x: x[0])
             d0 = cerca[0][0] if cerca else 9999.0
             propios = [x for x in cerca if rc and red.vias[x[1]].ref == rc]
+            propios_favor = [x for x in propios if a_favor(x[1], x[2], p.get("rb"))]
             # 2. lejos de su carretera (situado por PK sobre otra vía, o coordenada oficial desplazada: los radares
             # del túnel de Somport vienen a 400-540 m del túnel). Al punto de su PK si cae sobre su carretera; si
             # no, al punto de su carretera más cercano (hasta 700 m)
@@ -2576,23 +2589,25 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
                 propio = (propios[0][0], None) if propios else None
                 if propio is None or propio[0] > 400:
                     propio = en_su_via(pos, rc, 700)
+                # a dónde llevarlo: a la calzada de su sentido
+                destino_favor = (propios_favor[0][0], None) if propios_favor else en_su_via(pos, rc, 700, p.get("rb"))
                 lejos = propio is not None and propio[0] > 60 and (propio[0] > d0 + 40 or d0 > 60)
                 sin_via = propio is None and d0 > 100
                 if lejos or sin_via:
                     destino, como = None, ""
                     e = pos_pk(p, geo)
                     if e:
-                        sv = en_su_via(e, rc, 80)
+                        sv = en_su_via(e, rc, 80, p.get("rb"))
                         if sv and distancia(sv[1][0], sv[1][1], pos[0], pos[1]) < 1500:
                             destino, como = sv[1], "en su PK"
-                    if destino is None and propio is not None:
-                        if propio[1] is None:
-                            d, wi, i, t = propios[0]
+                    if destino is None and destino_favor is not None:
+                        if destino_favor[1] is None:
+                            d, wi, i, t = propios_favor[0]
                             w = red.vias[wi]
                             destino = caminos.interpolar(w.pts[i], w.pts[i + 1], t)
                         else:
-                            destino = propio[1]
-                        como = "al punto más cercano"
+                            destino = destino_favor[1]
+                        como = "al punto más cercano de la calzada de su sentido"
                     if destino is not None:
                         log(f"  su vía: {p['id']} {p.get('c')} PK {p.get('pk')}: a {propio[0] if propio else d0:.0f} m "
                             f"de su carretera → a ella ({como}, {distancia(destino[0], destino[1], pos[0], pos[1]):.0f} m)")
