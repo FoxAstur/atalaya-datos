@@ -1,0 +1,1 @@
+https://www.ign.es/wmts/pnoa-ma?request=GetTile&service=WMTS&VERSION=1.0.0&Layer=OI.OrthoimageCoverage&Style=default&Format=image/jpeg&TileMatrixSet=GoogleMapsCompatible&TileMatrix=14&TileRow=6247&TileCol=8167 -> 200 15276 image/jpeg
