@@ -2554,24 +2554,53 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
                 return None
             return caminos.norm_ref(c)
 
+        def en_su_via(pos, rc, radio):
+            """(distancia, punto) de la vía con esa ref más cercana a pos, o None."""
+            mejor = None
+            for d, t, wi, i in red.cercanos(pos, radio):
+                if red.vias[wi].ref == rc and (mejor is None or d < mejor[0]):
+                    w = red.vias[wi]
+                    mejor = (d, caminos.interpolar(w.pts[i], w.pts[i + 1], t))
+            return mejor
+
         for p in fijos:
             rc = ref_de(p.get("c"))
             pos = (p["la"], p["lo"])
             cerca = sorted(((d, wi, i, t) for d, t, wi, i in red.cercanos(pos, 400)), key=lambda x: x[0])
-            if not cerca:
-                continue
+            d0 = cerca[0][0] if cerca else 9999.0
             propios = [x for x in cerca if rc and red.vias[x[1]].ref == rc]
-            # 2. situado por PK sobre otra vía
-            if (p.get("px") or p["id"].startswith(("dgtpdf:", "dgteq:"))) and propios and \
-                    propios[0][0] > max(60.0, cerca[0][0] + 40) and not p.get("_pos_osm"):
-                d, wi, i, t = propios[0]
-                w = red.vias[wi]
-                a, b = w.pts[i], w.pts[i + 1]
-                nueva = caminos.interpolar(a, b, t)
-                log(f"  su vía: {p['id']} {p.get('c')} PK {p.get('pk')}: estaba a {d:.0f} m de su carretera → a ella")
-                p["la"], p["lo"] = round(nueva[0], 6), round(nueva[1], 6)
-                res["su_via"].append(p["id"])
-                cambiados[p["id"]] = p
+            # 2. lejos de su carretera (situado por PK sobre otra vía, o coordenada oficial desplazada: los radares
+            # del túnel de Somport vienen a 400-540 m del túnel). Al punto de su PK si cae sobre su carretera; si
+            # no, al punto de su carretera más cercano (hasta 700 m)
+            if rc and not p.get("_pos_osm"):
+                propio = (propios[0][0], None) if propios else None
+                if propio is None or propio[0] > 400:
+                    propio = en_su_via(pos, rc, 700)
+                lejos = propio is not None and propio[0] > 60 and (propio[0] > d0 + 40 or d0 > 60)
+                sin_via = propio is None and d0 > 100
+                if lejos or sin_via:
+                    destino, como = None, ""
+                    e = pos_pk(p, geo)
+                    if e:
+                        sv = en_su_via(e, rc, 80)
+                        if sv and distancia(sv[1][0], sv[1][1], pos[0], pos[1]) < 1500:
+                            destino, como = sv[1], "en su PK"
+                    if destino is None and propio is not None:
+                        if propio[1] is None:
+                            d, wi, i, t = propios[0]
+                            w = red.vias[wi]
+                            destino = caminos.interpolar(w.pts[i], w.pts[i + 1], t)
+                        else:
+                            destino = propio[1]
+                        como = "al punto más cercano"
+                    if destino is not None:
+                        log(f"  su vía: {p['id']} {p.get('c')} PK {p.get('pk')}: a {propio[0] if propio else d0:.0f} m "
+                            f"de su carretera → a ella ({como}, {distancia(destino[0], destino[1], pos[0], pos[1]):.0f} m)")
+                        p["la"], p["lo"] = round(destino[0], 6), round(destino[1], 6)
+                        res["su_via"].append(p["id"])
+                        cambiados[p["id"]] = p
+                        continue
+            if not cerca:
                 continue
             # 3. rumbo cruzado
             rb = p.get("rb")
