@@ -1,0 +1,32 @@
+name: Precios de gasolineras
+
+# Precios oficiales (Ministerio) cada 3 horas, publicados como versión "gasolineras" (sin crecer el historial de git).
+on:
+  schedule:
+    - cron: "11 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gasolineras
+  cancel-in-progress: true
+
+jobs:
+  precios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python gasolineras.py
+      - name: Publicar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view gasolineras >/dev/null 2>&1 || gh release create gasolineras --title "Precios de gasolineras" \
+            --notes "Precios oficiales de los carburantes (Ministerio para la Transición Ecológica y el Reto Demográfico). Se actualiza cada 3 horas."
+          gh release upload gasolineras salida/gasolineras.json.gz --clobber
