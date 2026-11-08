@@ -2583,13 +2583,16 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
             ejes = [caminos.rumbo(red.vias[x[1]].pts[x[2]], red.vias[x[1]].pts[x[2] + 1]) for x in base]
             if any(min(caminos.dif(rb, r), caminos.dif(rb, (r + 180) % 360)) <= 50 for r in ejes):
                 continue
+            # para elegir entre las dos direcciones de su propia carretera basta un par de hitos (no hace falta la
+            # comprobación estricta de rumbo_oficial, que es para llevarle la contraria a otro rumbo)
             ro = rumbo_oficial(p, geo)
+            if ro is None and p.get("s") in ("Creciente", "Decreciente") and p.get("c") and p.get("pk") is not None:
+                ro = geo.rumbo(p["c"], float(p["pk"]), p.get("pr"), p["s"])
             nuevo = None
             if ro is not None:
-                for r in ejes:
-                    for rr in (r, (r + 180) % 360):
-                        if caminos.dif(ro, rr) <= 50:
-                            nuevo = round(rr, 1)
+                mejor = min(((caminos.dif(ro, rr), rr) for r in ejes for rr in (r, (r + 180) % 360)), key=lambda x: x[0])
+                if mejor[0] <= 75:
+                    nuevo = round(mejor[1], 1)
             log(f"  rumbo cruzado: {p['id']} {p.get('c')} rumbo {rb} y su vía va a {[round(r) for r in ejes]} → {nuevo}")
             if nuevo is None:
                 p.pop("rb", None)
