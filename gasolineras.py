@@ -27,6 +27,13 @@ def num(s):
         return None
 
 
+def coord(s):
+    try:
+        return float((s or "").strip().replace(",", "."))
+    except ValueError:
+        return None
+
+
 def bajar():
     ultimo = None
     for intento in range(4):
@@ -44,7 +51,7 @@ def main() -> int:
     d = bajar()
     lista = []
     for e in d.get("ListaEESSPrecio", []):
-        la, lo = num(e.get("Latitud")), num(e.get("Longitud (WGS84)"))
+        la, lo = coord(e.get("Latitud")), coord(e.get("Longitud (WGS84)"))
         if la is None or lo is None:
             continue
         precios = [num(e.get(c)) for c in CAMPOS]
