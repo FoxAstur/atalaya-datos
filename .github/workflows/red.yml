@@ -1,0 +1,55 @@
+name: Red viaria compacta (app 3)
+
+# La red de carreteras de España y Portugal (OpenStreetMap, Geofabrik) en teselas pequeñas para la app: con
+# ella sabe por qué vía vas y su límite. Se publica como versión "red" (no en el historial de git, que crecería
+# decenas de MB cada vez). La red cambia poco: una vez al mes basta.
+on:
+  schedule:
+    - cron: "23 2 9 * *"    # el día 9 de cada mes
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: red-compacta
+  cancel-in-progress: false
+
+jobs:
+  red:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Descargar y filtrar OpenStreetMap
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
+          mkdir -p red/tmp
+          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward","maxspeed:type","source:maxspeed","zone:maxspeed","lanes","tunnel"]}' > red/export.json
+          FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
+          : > red/vias.geojsonseq
+          for zona in europe/spain europe/portugal africa/canary-islands; do
+            f=red/tmp/$(basename $zona).osm.pbf
+            curl -sSL --retry 3 --connect-timeout 30 --max-time 1800 -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
+            osmium tags-filter "$f" "$FILTRO" -o red/tmp/filtrado.osm.pbf --overwrite
+            osmium export red/tmp/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o red/tmp/parte.geojsonseq --overwrite
+            cat red/tmp/parte.geojsonseq >> red/vias.geojsonseq
+            rm -f "$f" red/tmp/filtrado.osm.pbf red/tmp/parte.geojsonseq
+          done
+          wc -l red/vias.geojsonseq
+          test "$(wc -l < red/vias.geojsonseq)" -gt 1000000
+      - name: Teselas
+        run: |
+          python red_compacta.py red/vias.geojsonseq salida/red
+          cd salida/red && zip -q -0 ../red.zip *.bin indice.json && cd .. && ls -la red.zip
+          cp red/indice.json indice.json
+      - name: Publicar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view red >/dev/null 2>&1 || gh release create red --title "Red viaria compacta" \
+            --notes "Red de carreteras de España y Portugal para la app (datos © colaboradores de OpenStreetMap, ODbL). Se regenera cada mes."
+          gh release upload red salida/red.zip salida/indice.json --clobber
