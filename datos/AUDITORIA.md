@@ -1,20 +1,20 @@
-# Auditoría 2026-11-08T09:54:27+00:00
+# Auditoría 2026-11-08T10:09:48+00:00
 
 ## Resumen
 
-- comprobados_pk: 1054
-- comprobados_sentido_pk: 1018
-- con_ref: 1477
-- con_rumbo: 2708
-- con_via: 3667
+- comprobados_pk: 1232
+- comprobados_sentido_pk: 1019
+- con_ref: 1481
+- con_rumbo: 2712
+- con_via: 3669
 - osm_camaras: 5655
-- osm_sin_nuestro: 104
-- tramos: 340
+- osm_sin_nuestro: 105
+- tramos: 341
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
 | sin_su_carretera | 47 | 0 |
-| pk_lejos | 29 | 17 |
+| pk_lejos | 38 | 20 |
 | tramo_raro | 25 | 3 |
 | duplicado | 17 | 0 |
 | fuera_de_via | 16 | 7 |
@@ -27,18 +27,18 @@
 
 ## sin_su_carretera
 
-- [3] `sct:41.13621,1.14777` (Cataluña (SCT); N-420A PK None ) 41.13621,1.14777: no hay ninguna vía N-420A a menos de 600 m (la más cercana: T11 a 5 m)
+- [3] `sct:41.13621,1.14777` (Cataluña (SCT); N-420A PK 879.314 ) 41.13621,1.14777: no hay ninguna vía N-420A a menos de 600 m (la más cercana: T11 a 5 m)
 - [3] `sct:41.23833,1.68983` (Cataluña (SCT); C-31 PK None ) 41.23833,1.68983: no hay ninguna vía C-31 a menos de 600 m (la más cercana: camí del mas roig a 178 m)
-- [3] `sct:41.74607,2.75063` (Cataluña (SCT); N-2 PK None ) 41.74607,2.75063: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 10 m)
+- [3] `sct:41.74607,2.75063` (Cataluña (SCT); N-2 PK 687.863 ) 41.74607,2.75063: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 10 m)
 - [3] `sct:41.82887,2.89836` (Cataluña (SCT); C-65 PK None ) 41.82887,2.89836: no hay ninguna vía C-65 a menos de 600 m (la más cercana: C65Z a 2 m)
 - [3] `sct:41.93104,2.80224` (Cataluña (SCT); N-2 PK None Ambos) 41.93104,2.80224: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 1 m)
 - [3] `sct:41.95648,2.83821` (Cataluña (SCT); N-2 PK None Ambos) 41.95648,2.83821: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 4 m)
-- [3] `sct:41.96779,2.72539` (Cataluña (SCT); N-141A PK None ) 41.96779,2.72539: no hay ninguna vía N-141A a menos de 600 m (la más cercana: N141E a 4 m)
+- [3] `sct:41.96779,2.72539` (Cataluña (SCT); N-141A PK 108.811 ) 41.96779,2.72539: no hay ninguna vía N-141A a menos de 600 m (la más cercana: N141E a 4 m)
 - [3] `sct:41.97713,2.84591` (Cataluña (SCT); N-2 PK None Ambos) 41.97713,2.84591: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 2 m)
 - [3] `sct:42.00113,2.84804` (Cataluña (SCT); N-2 PK None Ambos) 42.00113,2.84804: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 1 m)
-- [3] `sct:42.07578,1.86583` (Cataluña (SCT); C-16 PK None ) 42.07578,1.86583: no hay ninguna vía C-16 a menos de 600 m (la más cercana: C16Z a 5 m)
-- [3] `sct:42.13254,2.90333` (Cataluña (SCT); N-2 PK None ) 42.13254,2.90333: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 33 m)
-- [3] `sct:42.30816,2.93551` (Cataluña (SCT); N-2 PK None ) 42.30816,2.93551: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 6 m)
+- [3] `sct:42.07578,1.86583` (Cataluña (SCT); C-16 PK 94.219 ) 42.07578,1.86583: no hay ninguna vía C-16 a menos de 600 m (la más cercana: C16Z a 5 m)
+- [3] `sct:42.13254,2.90333` (Cataluña (SCT); N-2 PK 736.539 ) 42.13254,2.90333: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 33 m)
+- [3] `sct:42.30816,2.93551` (Cataluña (SCT); N-2 PK 761.0 ) 42.30816,2.93551: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 6 m)
 - [3] `sct:42.37634,2.89225` (Cataluña (SCT); N-2 PK None ) 42.37635,2.89225: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 2 m)
 - [3] `sct:42.39079,2.88349` (Cataluña (SCT); N-2 PK None ) 42.39079,2.88349: no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 0 m)
 - [3] `dgteq:AI-81:0.0:C:cintur` (DGT PDF cámaras; AI-81 PK 0.0 Creciente) 43.55298,-5.89478: no hay ninguna vía AI-81 a menos de 600 m (la más cercana: AS392 a 0 m)
@@ -77,6 +77,9 @@
 
 ## pk_lejos
 
+- [1] `sct:41.50529,2.11305` (Cataluña (SCT); C-58 PK 15.726 ) 41.50529,2.11305: a 5.7 km de donde cae su PK 15.726 en C-58
+- [1] `sct:41.58766,1.91561` (Cataluña (SCT); C-58 PK 38.15 Ambos) 41.58766,1.91561: a 6.0 km de donde cae su PK 38.15 en C-58
+- [1] `sct:42.31009,2.15487` (Cataluña (SCT); N-260 PK 121.497 ) 42.31009,2.15487: a 8.5 km de donde cae su PK 121.497 en N-260
 - [1] `dgt:GUID_CABINACINEMOMETRO_120318` (DGT feed; A-2 PK 122.0 Decreciente) 40.95575,-2.67868: a 9.9 km de donde cae su PK 122.0 en A-2
 - [1] `dgt:GUID_CABINACINEMOMETRO_120586` (DGT feed; A-70 PK 27.39 Decreciente) 38.30612,-0.58833: a 3.8 km de donde cae su PK 27.39 en A-70
 - [1] `dgt:GUID_CABINACINEMOMETRO_120587` (DGT feed; A-70 PK 22.5 Decreciente) 38.33397,-0.55238: a 3.7 km de donde cae su PK 22.5 en A-70
@@ -94,6 +97,12 @@
 - [1] `dgt:GUID_CVM_164998` (DGT feed; CL-613 PK 11.92 Decreciente) 42.14100,-4.67310: a 3.7 km de donde cae su PK 11.92 en CL-613
 - [1] `dgt:GUID_CVM_164999` (DGT feed; CL-613 PK 32.7 Creciente) 42.14100,-4.67310: a 16.3 km de donde cae su PK 32.7 en CL-613
 - [1] `dgt:GUID_CVM_165000` (DGT feed; CL-613 PK 15.41 Creciente) 42.11750,-4.64570: a 3.1 km de donde cae su PK 15.41 en CL-613
+- [2] `sct:41.56549,1.96458` (Cataluña (SCT); C-58 PK 26.85 ) 41.56549,1.96458: a 1.4 km de donde cae su PK 26.85 en C-58
+- [2] `sct:41.57727,1.96043` (Cataluña (SCT); C-58 PK 29.27 ) 41.57727,1.96043: a 2.2 km de donde cae su PK 29.27 en C-58
+- [2] `sct:41.58463,1.92876` (Cataluña (SCT); C-58 PK 30.95 ) 41.58463,1.92876: a 1.1 km de donde cae su PK 30.95 en C-58
+- [2] `sct:41.89296,2.78438` (Cataluña (SCT); A-2 PK 707.467 ) 41.89296,2.78438: a 2.0 km de donde cae su PK 707.467 en A-2
+- [2] `sct:42.21515,2.62867` (Cataluña (SCT); A-26 PK 69.729 ) 42.21515,2.62866: a 1.6 km de donde cae su PK 69.729 en A-26
+- [2] `sct:42.22181,2.57607` (Cataluña (SCT); A-26 PK 74.64 ) 42.22181,2.57607: a 1.3 km de donde cae su PK 74.64 en A-26
 - [2] `dgt:GUID_CABINACINEMOMETRO_120269` (DGT feed; CM-4124 PK 8.004 Creciente) 38.92679,-3.62215: a 2.9 km de donde cae su PK 8.004 en CM-4124
 - [2] `dgt:GUID_CABINACINEMOMETRO_120362` (DGT feed; A-334 PK 49.87 Creciente) 37.35667,-2.34846: a 2.7 km de donde cae su PK 49.87 en A-334
 - [2] `dgt:GUID_CABINACINEMOMETRO_120430` (DGT feed; N-632 PK 98.75 Decreciente) 43.55430,-5.94290: a 1.6 km de donde cae su PK 98.75 en N-632
@@ -189,7 +198,7 @@
 
 ## rumbo_cruzado
 
-- [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK None ) 40.73013,0.59095: rumbo 56° y las vías a menos de 30 m van a [175, 176]° (o su opuesto)
+- [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK 1084.318 ) 40.73136,0.59085: rumbo 56° y las vías a menos de 30 m van a [2, 178]° (o su opuesto)
 - [2] `dgt:GUID_CABINACINEMOMETRO_120601` (DGT feed; CV-91 PK 18.888 Decreciente) 38.09746,-0.72200: rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)
 
 ## sentido_dudoso
@@ -287,6 +296,7 @@
 - `osm:n11223504298` 38.72497,-9.15482 2025-12-15 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050387414', 'ref': 'PT_FIXO 50'}
 - `osm:n13436748214` 28.04941,-16.63092 2026-01-07 {'direction': '320', 'highway': 'speed_camera', 'maxspeed': '50'}
 - `osm:r6309920` 40.59356,-3.58233  {'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r7228775` 40.72944,0.59212  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r7778337` 41.53876,0.45392  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r7778343` 41.62415,1.42033  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r8453561` 41.85213,3.07352  {'enforcement': 'maxspeed', 'maxspeed': '100', 'name': 'Radar fix C-31 (Calonge)'}
