@@ -28,6 +28,8 @@ jobs:
       - name: Auditar
         run: |
           ls -la red
+          mkdir -p auditoria
+          python vias_cerca.py | tee auditoria/vias_cerca.txt || true
           timeout 90m python auditoria.py
       - name: Subir a la rama auditoria
         if: always()
