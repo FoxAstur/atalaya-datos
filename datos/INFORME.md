@@ -1,20 +1,20 @@
 # Datos de Atalaya
 
-Versión: 2026-11-08T09:39:08+00:00 · Total: **5694** puntos
+Versión: 2026-11-08T09:54:27+00:00 · Total: **5694** puntos
 
 ## Fuentes
 
 - **DGT feed**: ✅ 737 (1s)
-- **DGT PDF radares**: ✅ 195 (11s)
-- **DGT PDF cámaras**: ✅ 252 (12s)
-- **Cataluña (SCT)**: ✅ 230 (14s)
+- **DGT PDF radares**: ✅ 195 (9s)
+- **DGT PDF cámaras**: ✅ 252 (14s)
+- **Cataluña (SCT)**: ✅ 230 (15s)
 - **Ayto. Madrid**: ✅ 23 (0s)
 - **Ayto. València**: ✅ 11 (0s)
-- **OpenStreetMap**: ✅ 3226 (65s)
+- **OpenStreetMap**: ✅ 3226 (62s)
 - **Tramos radar móvil**: ✅ 1152 (0s)
-- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (1s)
-- **Ayto. Málaga foto-rojo**: ✅ 7 (2s)
-- **Ayto. Salamanca**: ✅ 24 (1s)
+- **Ayto. Madrid foto-rojo y ZBE**: ✅ 454 (2s)
+- **Ayto. Málaga foto-rojo**: ✅ 7 (1s)
+- **Ayto. Salamanca**: ✅ 24 (2s)
 - **Ayto. Donostia**: ✅ 12 (1s)
 - **Câmara Municipal de Lisboa**: ✅ 18 (0s)
 - **Ajuntament de Viladecans**: ✅ 24 (95s)
@@ -31,7 +31,7 @@ Versión: 2026-11-08T09:39:08+00:00 · Total: **5694** puntos
 - **Zonas de bajas emisiones**: ✅ 57
 - **Situados por PK**: ✅ comprobado con 357 radares del feed (PK y coordenadas): en recta mediana 47 m, p75 93 m, p90 256 m; por la carretera mediana 34 m, p75 76 m, p90 247 m → 293 de 367 situados por PK recolocados por la carretera
 - **Zonas de radar móvil por carretera**: 1139 de 1301 que venían en línea recta siguen ya la carretera (162 sin poder trazar)
-- **Caminos de aproximación**: ✅ 3900 puntos con camino por su carretera, 316 de 346 tramos con recorrido real (28 sin vía cercana; 121s)
+- **Caminos de aproximación**: ✅ 3900 puntos con camino por su carretera, 316 de 346 tramos con recorrido real (28 sin vía cercana; 87s)
 - **Sentido por el lado de la calle**: 285 puntos de calles de doble sentido y 29 de medianas siguen en ambos sentidos. Prueba de la regla (✓ = se usa): dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 39/42 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 94/117; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 1/2; dgtpdf ciudad 12-25 m: 3/5; dgtpdf carretera 25-41 m: 1/2; dgtpdf carretera 4-7 m: 1/1; dgtpdf carretera 7-12 m: 1/2; dgtpdf ciudad 7-12 m: 1/1; dgtpdf carretera todas: 4/7; dgtpdf ciudad todas: 4/6; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm ciudad 25-41 m: 0/1; osm carretera 4-7 m: 94/120; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/31; osm carretera todas: 154/200; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1. Pistas combinadas: limite 23/32; cruce+lado 1/2; cruce 33/42; lado+limite 8/9
 - **Copias de OSM de radares oficiales**: 67 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 42/43 → heredado en 18; 8 radares del PDF de la DGT llevados a la posición de su copia de OSM
 - **Radares viejos de OSM repetidos**: 4 quitados (de OSM sin sentido, con otro radar más fiable en la misma calle y sentido a menos de 300 m; 450 m si no tiene datos; 600 m si además es de 2015 o antes): osm:n1123913886, osm:n5744469677, osm:n7171815050, osm:n14169137330
@@ -155,10 +155,10 @@ Zonas de bajas emisiones: **57**
   rumbo cruzado: osm:n8119271103 None rumbo 293.6 y su vía va a [29, 31, 31, 30, 198] → None
   rumbo cruzado: osm:n13311195241b None rumbo 262.6 y su vía va a [32, 32, 32] → None
 revisión final: 15 movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); 29 llevados a su carretera; 16 con el rumbo cruzado corregido; 14 duplicados quitados: {'testigo': ['dgt:GUID_CABINACINEMOMETRO_120095', 'dgt:GUID_CABINACINEMOMETRO_120129', 'dgt:GUID_CABINACINEMOMETRO_120233', 'dgt:GUID_CABINACINEMOMETRO_120261', 'dgt:GUID_CABINACINEMOMETRO_120304', 'dgt:GUID_CABINACINEMOMETRO_120311', 'dgt:GUID_CABINACINEMOMETRO_120314', 'dgt:GUID_CABINACINEMOMETRO_120391', 'dgt:GUID_CABINACINEMOMETRO_120667', 'dgt:GUID_CABINACINEMOMETRO_160238', 'dgt:GUID_CABINACINEMOMETRO_165621', 'dgtpdf:F:CL-623:7.11:D', 'dgtpdf:F:M-300:31.325:D', 'dgtpdf:F:TF-66:9.0:D', 'dgtpdf:F:N-332:245.0:C'], 'su_via': ['dgt:GUID_CABINACINEMOMETRO_120010', 'dgt:GUID_CABINACINEMOMETRO_120011', 'dgt:GUID_CABINACINEMOMETRO_120133', 'dgt:GUID_CABINACINEMOMETRO_120140', 'dgt:GUID_CABINACINEMOMETRO_120203', 'dgt:GUID_CABINACINEMOMETRO_120204', 'dgt:GUID_CABINACINEMOMETRO_120601', 'dgt:GUID_CABINACINEMOMETRO_120651', 'dgt:GUID_CABINACINEMOMETRO_166987', 'dgtpdf:F:N-611:194.33:D', 'dgtpdf:F:H-30:8.502:D', 'dgtpdf:F:A-7052:7.5:C', 'dgtpdf:F:A-49:0.7:C', 'dgtpdf:F:A-8077:3.18:D', 'dgtpdf:F:N-234:119.66:D', 'sct:41.25502,1.17357', 'sct:41.74640,2.63225', 'sct:40.73027,0.59360', 'ansr:EN125:102:O', 'ansr:IC17:19.1:E', 'ansr:IC17:14.1:N', 'dgteq:AI-81:1.9:D:cintur', 'dgteq:A-492:0.2:C:cintur', 'dgteq:H-30:8.585:D:cintur', 'dgteq:N-550:116.74:D:cintur', 'dgteq:N-552:4.35:C:cintur', 'dgteq:PO-11:1.56:D:cintur', 'dgteq:N-330:501.3:C:cintur', 'osm:n5435143134'], 'cruzado': ['dgt:GUID_CABINACINEMOMETRO_120009', 'dgt:GUID_CABINACINEMOMETRO_120025', 'dgt:GUID_CABINACINEMOMETRO_120027', 'dgt:GUID_CABINACINEMOMETRO_120037', 'dgt:GUID_CABINACINEMOMETRO_120435', 'dgt:GUID_CABINACINEMOMETRO_163776', 'dgt:GUID_CABINACINEMOMETRO_165670', 'dgt:GUID_CABINACINEMOMETRO_165816', 'dgtpdf:F:CA-141:21.3:C', 'dgtpdf:F:AC-221:2.55:C', 'com:euskadi-hondarribia-santaengrazi', 'osm:n992005494', 'osm:n2334938864', 'osm:n13070637359', 'osm:n8119271103', 'osm:n13311195241b'], 'duplicados': ['dgt:GUID_CABINACINEMOMETRO_169360→dgt:GUID_CVM_161570', 'dgt:GUID_CABINACINEMOMETRO_169362→dgt:GUID_CVM_161588', 'dgt:GUID_CABINACINEMOMETRO_169364→dgt:GUID_CVM_161609', 'dgt:GUID_CABINACINEMOMETRO_169366→dgt:GUID_CVM_161629', 'dgt:GUID_CVM_164265→dgt:GUID_CVM_163929', 'dgt:GUID_CVM_165001→dgt:GUID_CVM_164999', 'dgt:GUID_CVM_165415→dgt:GUID_CVM_165414', 'dgt:GUID_CVM_169184→dgt:GUID_CVM_169183', 'osm:n13512708762→dgt:GUID_CABINACINEMOMETRO_120011', 'osm:n992001271→dgt:GUID_CABINACINEMOMETRO_120204', 'osm:n806985872→dgtpdf:F:A-49:0.7:C', 'vdc:2→vdc:1', 'osm:n13070637359b→osm:n13070637359', 'osm:n13311195241b→osm:n13311195241']}
-  caminos: red cargada (69993 vías) en 36s
-  caminos: regla del lado probada en 36s
-  caminos: regla del cruce probada en 36s
-  caminos: 0/62 en 36s (dgt:GUID_CABINACINEMOMETRO_120602)
+  caminos: red cargada (69993 vías) en 23s
+  caminos: regla del lado probada en 23s
+  caminos: regla del cruce probada en 23s
+  caminos: 0/62 en 23s (dgt:GUID_CABINACINEMOMETRO_120602)
 verificados: 103 comprobados sobre el terreno, todos en su sitio
   TCA: página del Ministerio no disponible (www.transportes.gob.es: HTTP Error 403: Forbidden); se usan los PDF conocidos
   TCA: TCA 130 filas (NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf)
@@ -169,7 +169,7 @@ Ministerio: tramos de concentración de accidentes: 109 puntos
   CartoCiudad: 1877 hitos necesarios, 0 por consultar
   accidentes: 461 tramos, 425 situados, 36 sin poder situar
 Tramos con muchos accidentes (autonómicas y provinciales, microdatos DGT): 425 puntos
-  zonas: red cargada (501709 vías) para 528 zonas en 56s
+  zonas: red cargada (501709 vías) para 528 zonas en 41s
 ```
 
 ## Auditoría automática
