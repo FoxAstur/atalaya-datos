@@ -1,0 +1,1 @@
+https://nap.dgt.es/datex2/v3/dgt/SituationPublication/datex2_v37.xml -> 200 3171383 text/xml; charset=utf-8
