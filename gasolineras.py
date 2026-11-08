@@ -54,7 +54,11 @@ def main() -> int:
                       (e.get("Municipio") or "").strip().title(), (e.get("Dirección") or "").strip().title(),
                       (e.get("Horario") or "").strip()] + precios)
     if len(lista) < 5000:
-        print(f"solo {len(lista)} gasolineras: no se publica", flush=True)
+        todas = d.get("ListaEESSPrecio", [])
+        print(f"solo {len(lista)} de {len(todas)} gasolineras: no se publica", flush=True)
+        if todas:
+            print(json.dumps(todas[0], ensure_ascii=False)[:1500], flush=True)
+            print(json.dumps({k: v for k, v in d.items() if k != "ListaEESSPrecio"}, ensure_ascii=False)[:500], flush=True)
         return 1
     os.makedirs("salida", exist_ok=True)
     o = {"fecha": d.get("Fecha"), "generado": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
