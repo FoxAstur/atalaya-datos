@@ -1,0 +1,3490 @@
+{
+"stats": {
+"con_via": 3654,
+"con_ref": 1472,
+"con_rumbo": 2705,
+"tramos": 339,
+"comprobados_pk": 1054,
+"comprobados_sentido_pk": 1018,
+"osm_camaras": 5655,
+"osm_sin_nuestro": 114
+},
+"hallazgos": [
+{
+"id": "dgteq:A-7:978.95:C:cintur",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "A-7",
+"pk": 978.95,
+"s": "Creciente",
+"rb": 263.2,
+"la": 36.730914,
+"lo": -4.367353,
+"px": 1,
+"detalle": "a 42 m de la carretera más cercana",
+"d": 42
+},
+{
+"id": "dgteq:AI-81:0.0:C:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "AI-81",
+"pk": 0.0,
+"s": "Creciente",
+"rb": 93.2,
+"la": 43.552984,
+"lo": -5.894782,
+"px": 1,
+"detalle": "no hay ninguna vía AI-81 a menos de 600 m (la más cercana: AS392 a 0 m)"
+},
+{
+"id": "dgteq:CA-3101:0.0:C:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "CA-3101",
+"pk": 0.0,
+"s": "Creciente",
+"rb": 315.5,
+"la": 36.700719,
+"lo": -6.167751,
+"px": 1,
+"detalle": "no hay ninguna vía CA-3101 a menos de 600 m (la más cercana: carretera de el barroso a 0 m)"
+},
+{
+"id": "dgteq:N-1:251.3:D:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "N-1",
+"pk": 251.3,
+"s": "Decreciente",
+"rb": 233.6,
+"la": 42.3917,
+"lo": -3.564943,
+"px": 1,
+"detalle": "no hay ninguna vía N-1 a menos de 600 m (la más cercana: NI a 3 m)"
+},
+{
+"id": "dgteq:N-1:301.0:C:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "N-1",
+"pk": 301.0,
+"s": "Creciente",
+"rb": 99.3,
+"la": 42.628883,
+"lo": -3.125841,
+"px": 1,
+"detalle": "no hay ninguna vía N-1 a menos de 600 m (la más cercana: NI;N232 a 0 m)"
+},
+{
+"id": "dgteq:N-344:118.136:C:cintur",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "N-344",
+"pk": 118.136,
+"s": "Creciente",
+"rb": 38.2,
+"la": 38.728673,
+"lo": -0.941473,
+"px": 1,
+"detalle": "a 45 m de la carretera más cercana",
+"d": 45
+},
+{
+"id": "dgteq:N-351:6.8:C:cintur",
+"tipo": "camino_incoherente",
+"grave": 2,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "N-351",
+"pk": 6.8,
+"s": "Creciente",
+"rb": 140.1,
+"la": 36.157542,
+"lo": -5.352257,
+"px": 1,
+"detalle": "3 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo"
+},
+{
+"id": "dgteq:N-4:556.2:C:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "N-4",
+"pk": 556.2,
+"s": "Creciente",
+"rb": 145.1,
+"la": 37.268402,
+"lo": -5.9275,
+"px": 1,
+"detalle": "no hay ninguna vía N-4 a menos de 600 m (la más cercana: avenida 4 de diciembre a 0 m)"
+},
+{
+"id": "dgteq:N-4:643.1:C:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "N-4",
+"pk": 643.1,
+"s": "Creciente",
+"rb": 222.9,
+"la": 36.661057,
+"lo": -6.163346,
+"px": 1,
+"detalle": "no hay ninguna vía N-4 a menos de 600 m (la más cercana: A4R a 12 m)"
+},
+{
+"id": "dgteq:N-620:233.0:D:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "N-620",
+"pk": 233.0,
+"s": "Decreciente",
+"rb": null,
+"la": 40.997067,
+"lo": -5.633768,
+"px": 1,
+"detalle": "no hay ninguna vía N-620 a menos de 600 m (la más cercana: calle buenos aires a 1 m)"
+},
+{
+"id": "dgteq:SE-30:23.2:C:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "SE-30",
+"pk": 23.2,
+"s": "Creciente",
+"rb": 270.7,
+"la": 37.413666,
+"lo": -5.997107,
+"px": 1,
+"detalle": "no hay ninguna vía SE-30 a menos de 600 m (la más cercana: A8083 a 20 m)"
+},
+{
+"id": "dgteq:SE-30:23.2:D:cintur",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "OTRA_CAMARA",
+"src": "DGT PDF cámaras",
+"c": "SE-30",
+"pk": 23.2,
+"s": "Decreciente",
+"rb": 90.7,
+"la": 37.413666,
+"lo": -5.997107,
+"px": 1,
+"detalle": "no hay ninguna vía SE-30 a menos de 600 m (la más cercana: A8083 a 20 m)"
+},
+{
+"id": "madzbe:40.4761,-3.6380",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "OTRA_CAMARA",
+"src": "Ayto. Madrid foto-rojo y ZBE",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 40.476069,
+"lo": -3.638,
+"px": null,
+"detalle": "a 54 m de la carretera más cercana",
+"d": 54
+},
+{
+"id": "ansr:IC20:6.6:E",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "IC20",
+"pk": 6.6,
+"s": "Este-Oeste",
+"rb": null,
+"la": 38.648986,
+"lo": -9.228673,
+"px": null,
+"detalle": "no hay ninguna vía IC20 a menos de 600 m (la más cercana: ER3772 a 5 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120027",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-12",
+"pk": 93.88,
+"s": "Creciente",
+"rb": null,
+"la": 42.44163,
+"lo": -2.54181,
+"px": null,
+"detalle": "no hay ninguna vía A-12 a menos de 600 m (la más cercana: motorway_link a 17 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120039",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-431",
+"pk": 29.66,
+"s": "Creciente",
+"rb": 277.8,
+"la": 37.80637,
+"lo": -5.09753,
+"px": null,
+"detalle": "no hay ninguna vía A-431 a menos de 600 m (la más cercana: A431A a 1 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120131",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-220",
+"pk": 1.596,
+"s": "Creciente",
+"rb": 159.7,
+"la": 41.46667,
+"lo": -1.36487,
+"px": null,
+"detalle": "no hay ninguna vía A-220 a menos de 600 m (la más cercana: A220A a 1 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120249",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "EX-108",
+"pk": 90.759,
+"s": "Decreciente",
+"rb": 127.8,
+"la": 39.999466,
+"lo": -6.549115,
+"px": null,
+"detalle": "no hay ninguna vía EX-108 a menos de 600 m (la más cercana: EX109 a 5 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120287",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "M-111",
+"pk": 0.356,
+"s": "Decreciente",
+"rb": 84.0,
+"la": 40.492947,
+"lo": -3.56287,
+"px": null,
+"detalle": "a 47 m de la carretera más cercana",
+"d": 47
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120341",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-357",
+"pk": 3.013,
+"s": "Creciente",
+"rb": 182.0,
+"la": 36.1445,
+"lo": -5.441,
+"px": null,
+"detalle": "no hay ninguna vía N-357 a menos de 600 m (la más cercana: primary a 1 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120343",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-357",
+"pk": 3.515,
+"s": "Creciente",
+"rb": 175.3,
+"la": 36.14,
+"lo": -5.4412,
+"px": null,
+"detalle": "no hay ninguna vía N-357 a menos de 600 m (la más cercana: primary a 0 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120345",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-357",
+"pk": 3.91,
+"s": "Creciente",
+"rb": 182.0,
+"la": 36.1365,
+"lo": -5.4409,
+"px": null,
+"detalle": "no hay ninguna vía N-357 a menos de 600 m (la más cercana: primary a 18 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120348",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-357",
+"pk": 5.528,
+"s": "Creciente",
+"rb": 157.0,
+"la": 36.1264,
+"lo": -5.4423,
+"px": null,
+"detalle": "no hay ninguna vía N-357 a menos de 600 m (la más cercana: primary a 1 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120385",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-316",
+"pk": 4.0,
+"s": "Decreciente",
+"rb": 15.0,
+"la": 38.008347,
+"lo": -3.429426,
+"px": null,
+"detalle": "a 51 m de la carretera más cercana",
+"d": 51
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120385",
+"tipo": "contra_direccion",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-316",
+"pk": 4.0,
+"s": "Decreciente",
+"rb": 15.0,
+"la": 38.008347,
+"lo": -3.429426,
+"px": null,
+"detalle": "rumbo 15° contra el único sentido de A316 (a 51 m) y ninguna calzada a favor a menos de 60 m"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120411",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-1",
+"pk": 271.7,
+"s": "Creciente",
+"rb": 58.6,
+"la": 42.4913,
+"lo": -3.3667,
+"px": null,
+"detalle": "no hay ninguna vía N-1 a menos de 600 m (la más cercana: NI a 5 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120458",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "MA-14",
+"pk": 19.293,
+"s": "Decreciente",
+"rb": 203.7,
+"la": 39.489723,
+"lo": 3.160277,
+"px": null,
+"detalle": "a 55 m de la carretera más cercana",
+"d": 55
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120506",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-1",
+"pk": 303.8,
+"s": "Creciente",
+"rb": 52.7,
+"la": 42.6392,
+"lo": -3.1034,
+"px": null,
+"detalle": "no hay ninguna vía N-1 a menos de 600 m (la más cercana: NI a 0 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120582",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-344",
+"pk": 126.6,
+"s": "Creciente",
+"rb": 23.9,
+"la": 38.78386,
+"lo": -0.891247,
+"px": null,
+"detalle": "no hay ninguna vía N-344 a menos de 600 m (la más cercana: N344A a 0 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120601",
+"tipo": "rumbo_cruzado",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "CV-91",
+"pk": 18.888,
+"s": "Decreciente",
+"rb": 340.0,
+"la": 38.097463,
+"lo": -0.721995,
+"px": null,
+"detalle": "rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120622",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-30",
+"pk": 136.028,
+"s": "Decreciente",
+"rb": 7.4,
+"la": 38.023544,
+"lo": -1.164737,
+"px": null,
+"detalle": "no hay ninguna vía A-30 a menos de 600 m (la más cercana: A7 a 1 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120662",
+"tipo": "fuera_de_via",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-42",
+"pk": 55.7,
+"s": "Decreciente",
+"rb": null,
+"la": 39.986393,
+"lo": -3.864661,
+"px": null,
+"detalle": "a 265 m de la carretera más cercana",
+"d": 265
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120662",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-42",
+"pk": 55.7,
+"s": "Decreciente",
+"rb": null,
+"la": 39.986393,
+"lo": -3.864661,
+"px": null,
+"detalle": "no hay ninguna vía A-42 a menos de 600 m (la más cercana: AP41 a 265 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120673",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-1",
+"pk": 302.68,
+"s": "Decreciente",
+"rb": 205.3,
+"la": 42.6309,
+"lo": -3.1101,
+"px": null,
+"detalle": "no hay ninguna vía N-1 a menos de 600 m (la más cercana: NI a 6 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120675",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-1",
+"pk": 301.0,
+"s": "Creciente",
+"rb": 99.3,
+"la": 42.6289,
+"lo": -3.1258,
+"px": null,
+"detalle": "no hay ninguna vía N-1 a menos de 600 m (la más cercana: NI;N232 a 2 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120687",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-30",
+"pk": 122.896,
+"s": "Creciente",
+"rb": 159.0,
+"la": 38.11197,
+"lo": -1.239447,
+"px": null,
+"detalle": "no hay ninguna vía A-30 a menos de 600 m (la más cercana: MU32 a 0 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_163325",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 6.494,
+"s": "Decreciente",
+"rb": null,
+"la": 38.415024,
+"lo": -0.448904,
+"px": null,
+"detalle": "a 47 m de la carretera más cercana",
+"d": 47
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_163325",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 6.494,
+"s": "Decreciente",
+"rb": null,
+"la": 38.415024,
+"lo": -0.448904,
+"px": null,
+"detalle": "no hay ninguna vía A-70 a menos de 600 m (la más cercana: residential a 47 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_165292",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-7053",
+"pk": 11.1,
+"s": "Creciente",
+"rb": 101.3,
+"la": 36.54829,
+"lo": -4.673769,
+"px": null,
+"detalle": "no hay ninguna vía A-7053 a menos de 600 m (la más cercana: camino viejo de coín a 2 m)"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_166695",
+"tipo": "fuera_de_via",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "GR-30",
+"pk": 16.225,
+"s": "Creciente",
+"rb": null,
+"la": 37.121742,
+"lo": -3.757807,
+"px": null,
+"detalle": "ninguna carretera a menos de 600 m"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_174824",
+"tipo": "fuera_de_via",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "CV-10",
+"pk": 55.93,
+"s": "Creciente",
+"rb": null,
+"la": 40.2604,
+"lo": -0.077825,
+"px": null,
+"detalle": "ninguna carretera a menos de 600 m"
+},
+{
+"id": "osm:n14017317585",
+"tipo": "fuera_de_via",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": 330.5,
+"la": 43.550005,
+"lo": -5.696236,
+"px": null,
+"detalle": "a 222 m de la carretera más cercana",
+"d": 222
+},
+{
+"id": "osm:n14017317585b",
+"tipo": "fuera_de_via",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": 148.9,
+"la": 43.550005,
+"lo": -5.696236,
+"px": null,
+"detalle": "a 222 m de la carretera más cercana",
+"d": 222
+},
+{
+"id": "sct:40.73027,0.59360",
+"tipo": "rumbo_cruzado",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-340",
+"pk": null,
+"s": null,
+"rb": 55.7,
+"la": 40.730128,
+"lo": 0.590946,
+"px": null,
+"detalle": "rumbo 56° y las vías a menos de 30 m van a [175, 176]° (o su opuesto)"
+},
+{
+"id": "sct:41.13621,1.14777",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-420A",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.136213,
+"lo": 1.147774,
+"px": null,
+"detalle": "no hay ninguna vía N-420A a menos de 600 m (la más cercana: T11 a 5 m)"
+},
+{
+"id": "sct:41.21220,1.75249",
+"tipo": "fuera_de_via",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "C-31",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.2122,
+"lo": 1.752487,
+"px": null,
+"detalle": "ninguna carretera a menos de 600 m"
+},
+{
+"id": "sct:41.23833,1.68983",
+"tipo": "fuera_de_via",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "C-31",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.238329,
+"lo": 1.689832,
+"px": null,
+"detalle": "a 178 m de la carretera más cercana",
+"d": 178
+},
+{
+"id": "sct:41.23833,1.68983",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "C-31",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.238329,
+"lo": 1.689832,
+"px": null,
+"detalle": "no hay ninguna vía C-31 a menos de 600 m (la más cercana: camí del mas roig a 178 m)"
+},
+{
+"id": "sct:41.74607,2.75063",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": null,
+"rb": 22.0,
+"la": 41.746069,
+"lo": 2.750631,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 10 m)"
+},
+{
+"id": "sct:41.82887,2.89836",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "C-65",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.828871,
+"lo": 2.898364,
+"px": null,
+"detalle": "no hay ninguna vía C-65 a menos de 600 m (la más cercana: C65Z a 2 m)"
+},
+{
+"id": "sct:41.93104,2.80224",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": "Ambos",
+"rb": null,
+"la": 41.931037,
+"lo": 2.802244,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 1 m)"
+},
+{
+"id": "sct:41.95648,2.83821",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": "Ambos",
+"rb": null,
+"la": 41.956484,
+"lo": 2.838213,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 4 m)"
+},
+{
+"id": "sct:41.96779,2.72539",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-141A",
+"pk": null,
+"s": null,
+"rb": 97.8,
+"la": 41.967786,
+"lo": 2.725386,
+"px": null,
+"detalle": "no hay ninguna vía N-141A a menos de 600 m (la más cercana: N141E a 4 m)"
+},
+{
+"id": "sct:41.97713,2.84591",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": "Ambos",
+"rb": null,
+"la": 41.977129,
+"lo": 2.845912,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 2 m)"
+},
+{
+"id": "sct:42.00113,2.84804",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": "Ambos",
+"rb": null,
+"la": 42.001125,
+"lo": 2.848037,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 1 m)"
+},
+{
+"id": "sct:42.07578,1.86583",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "C-16",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.075781,
+"lo": 1.865831,
+"px": null,
+"detalle": "no hay ninguna vía C-16 a menos de 600 m (la más cercana: C16Z a 5 m)"
+},
+{
+"id": "sct:42.13254,2.90333",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.132543,
+"lo": 2.90333,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 33 m)"
+},
+{
+"id": "sct:42.30816,2.93551",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": null,
+"rb": 327.6,
+"la": 42.308164,
+"lo": 2.93551,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 6 m)"
+},
+{
+"id": "sct:42.37634,2.89225",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.376345,
+"lo": 2.892247,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 2 m)"
+},
+{
+"id": "sct:42.39079,2.88349",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "Cataluña (SCT)",
+"c": "N-2",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.390791,
+"lo": 2.883493,
+"px": null,
+"detalle": "no hay ninguna vía N-2 a menos de 600 m (la más cercana: NII a 0 m)"
+},
+{
+"id": "ansr:EN261:97.06:A",
+"tipo": "sin_su_carretera",
+"grave": 3,
+"t": "RADAR_TRAMO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "EN261",
+"pk": 97.06,
+"s": "Ambos",
+"rb": null,
+"la": 37.888664,
+"lo": -8.203411,
+"px": null,
+"detalle": "no hay ninguna vía EN261 a menos de 600 m (la más cercana: ER261 a 4 m)"
+},
+{
+"id": "ansr:EN261:97.06:A",
+"tipo": "salida_otra_via",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "EN261",
+"pk": 97.06,
+"s": "Ambos",
+"rb": null,
+"la": 37.888664,
+"lo": -8.203411,
+"px": null,
+"detalle": "la salida no está sobre la EN261"
+},
+{
+"id": "dgt:GUID_CVM_163340",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "A-7",
+"pk": 634.615,
+"s": "Creciente",
+"rb": 181.6,
+"la": 37.67964,
+"lo": -1.71095,
+"px": null,
+"detalle": "longitud 923 m con los extremos a 990 m en recta"
+},
+{
+"id": "dgt:GUID_CVM_163929",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "RM-603",
+"pk": 2.65,
+"s": "Creciente",
+"rb": 258.8,
+"la": 37.939655,
+"lo": -1.175882,
+"px": null,
+"detalle": "longitud 1261 m con los extremos a 1311 m en recta"
+},
+{
+"id": "dgt:GUID_CVM_164237",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "A-8",
+"pk": 506.2,
+"s": "Decreciente",
+"rb": 80.1,
+"la": 43.54282,
+"lo": -7.04073,
+"px": null,
+"detalle": "longitud 1041 m con los extremos a 1094 m en recta"
+},
+{
+"id": "dgt:GUID_CVM_164997",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "CL-615",
+"pk": 1.706,
+"s": "Creciente",
+"rb": 338.6,
+"la": 42.0378,
+"lo": -4.5596,
+"px": null,
+"detalle": "longitud 23136 m con los extremos a 31861 m en recta"
+},
+{
+"id": "dgt:GUID_CVM_164997",
+"tipo": "tramo_raro",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "CL-615",
+"pk": 1.706,
+"s": "Creciente",
+"rb": 338.6,
+"la": 42.0378,
+"lo": -4.5596,
+"px": null,
+"detalle": "extremos a 31.9 km"
+},
+{
+"id": "dgtpdf:T:AS-19:3.55:D",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "AS-19",
+"pk": 4.58,
+"s": "Decreciente",
+"rb": 107.5,
+"la": 43.555304,
+"lo": -5.739124,
+"px": 1,
+"detalle": "longitud 1030 m con los extremos a 1400 m en recta"
+},
+{
+"id": "dgtpdf:T:AS-19:3.55:D",
+"tipo": "salida_otra_via",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "AS-19",
+"pk": 4.58,
+"s": "Decreciente",
+"rb": 107.5,
+"la": 43.555304,
+"lo": -5.739124,
+"px": 1,
+"detalle": "la salida no está sobre la AS-19"
+},
+{
+"id": "dgtpdf:T:CL-615:34.61:C",
+"tipo": "fuera_de_via",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "CL-615",
+"pk": 1.715,
+"s": "Creciente",
+"rb": 338.6,
+"la": 42.038107,
+"lo": -4.558857,
+"px": 1,
+"detalle": "a 53 m de la carretera más cercana",
+"d": 53
+},
+{
+"id": "dgtpdf:T:CL-615:34.61:C",
+"tipo": "tramo_raro",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "CL-615",
+"pk": 1.715,
+"s": "Creciente",
+"rb": 338.6,
+"la": 42.038107,
+"lo": -4.558857,
+"px": 1,
+"detalle": "extremos a 31.6 km"
+},
+{
+"id": "dgtpdf:T:MA-20:10.3:C",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "MA-20",
+"pk": 9.306,
+"s": "Creciente",
+"rb": 18.3,
+"la": 36.719056,
+"lo": -4.457526,
+"px": 1,
+"detalle": "longitud 1004 m con los extremos a 1040 m en recta"
+},
+{
+"id": "dgtpdf:T:MA-6014:1.275:D",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "MA-6014",
+"pk": 2.287,
+"s": "Decreciente",
+"rb": 32.3,
+"la": 39.487332,
+"lo": 2.747951,
+"px": 1,
+"detalle": "longitud 803 m con los extremos a 828 m en recta"
+},
+{
+"id": "dgtpdf:T:N-340:80.65:C",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "N-340",
+"pk": 79.463,
+"s": "Creciente",
+"rb": 128.2,
+"la": 36.051391,
+"lo": -5.644106,
+"px": 1,
+"detalle": "longitud 1102 m con los extremos a 1143 m en recta"
+},
+{
+"id": "dgtpdf:T:N-340:960.05:D",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "N-340",
+"pk": 961.014,
+"s": "Decreciente",
+"rb": 212.5,
+"la": 39.885747,
+"lo": -0.130296,
+"px": 1,
+"detalle": "longitud 906 m con los extremos a 953 m en recta"
+},
+{
+"id": "dgtpdf:T:N-340:961.0:C",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "N-340",
+"pk": 960.027,
+"s": "Creciente",
+"rb": 35.6,
+"la": 39.878554,
+"lo": -0.136898,
+"px": 1,
+"detalle": "longitud 913 m con los extremos a 962 m en recta"
+},
+{
+"id": "dgtpdf:T:SA-20:92.436:C",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT PDF radares",
+"c": "SA-20",
+"pk": 91.961,
+"s": "Creciente",
+"rb": 271.0,
+"la": 40.942464,
+"lo": -5.642019,
+"px": 1,
+"detalle": "longitud 392 m con los extremos a 410 m en recta"
+},
+{
+"id": "osm:r11547740",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 37.683277,
+"lo": -1.710804,
+"px": null,
+"detalle": "longitud 1293 m con los extremos a 1337 m en recta"
+},
+{
+"id": "osm:r17026473",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 40.95498,
+"lo": -5.685989,
+"px": null,
+"detalle": "longitud 351 m con los extremos a 386 m en recta"
+},
+{
+"id": "osm:r18345241",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.413797,
+"lo": 2.166597,
+"px": null,
+"detalle": "longitud 1250 m con los extremos a 1295 m en recta"
+},
+{
+"id": "osm:r20344506",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.305603,
+"lo": 2.029317,
+"px": null,
+"detalle": "longitud 726 m con los extremos a 766 m en recta"
+},
+{
+"id": "osm:r20354143",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.343392,
+"lo": 1.952115,
+"px": null,
+"detalle": "longitud 2289 m con los extremos a 386 m en recta"
+},
+{
+"id": "osm:r20354144",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.346288,
+"lo": 1.954734,
+"px": null,
+"detalle": "longitud 2288 m con los extremos a 386 m en recta"
+},
+{
+"id": "osm:r21082899",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 38.894497,
+"lo": 1.360855,
+"px": null,
+"detalle": "longitud 2181 m con los extremos a 2270 m en recta"
+},
+{
+"id": "osm:r21440002",
+"tipo": "tramo_raro",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.272966,
+"lo": 2.955091,
+"px": null,
+"detalle": "entrada y salida a 72 m"
+},
+{
+"id": "osm:r21440004",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.267248,
+"lo": 2.993107,
+"px": null,
+"detalle": "longitud 225 m con los extremos a 281 m en recta"
+},
+{
+"id": "osm:r21842929",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 36.823003,
+"lo": -2.258002,
+"px": null,
+"detalle": "longitud 1463 m con los extremos a 1509 m en recta"
+},
+{
+"id": "slmt:0",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Ayto. Salamanca",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 40.954869,
+"lo": -5.691085,
+"px": null,
+"detalle": "longitud 367 m con los extremos a 424 m en recta"
+},
+{
+"id": "slmt:1",
+"tipo": "tramo_raro",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Ayto. Salamanca",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 40.965299,
+"lo": -5.682865,
+"px": null,
+"detalle": "longitud 615 m con los extremos a 642 m en recta"
+},
+{
+"id": "osm:n2378266833",
+"tipo": "camino_incoherente",
+"grave": 2,
+"t": "SEMAFORO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": 110.7,
+"la": 41.534216,
+"lo": 2.210577,
+"px": null,
+"detalle": "1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo"
+},
+{
+"id": "osm:n2378267261",
+"tipo": "camino_incoherente",
+"grave": 2,
+"t": "SEMAFORO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": 22.2,
+"la": 43.211757,
+"lo": -8.691522,
+"px": null,
+"detalle": "5 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo"
+},
+{
+"id": "osm:n8376349411",
+"tipo": "camino_incoherente",
+"grave": 2,
+"t": "SEMAFORO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": 240.8,
+"la": 41.629868,
+"lo": 2.165812,
+"px": null,
+"detalle": "2 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120025",
+"tipo": "sentido_dudoso",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-234",
+"pk": 75.808,
+"s": "Decreciente",
+"rb": 189.0,
+"la": 40.12388,
+"lo": -0.769511,
+"px": null,
+"detalle": "«Decreciente» va hacia 117° y el rumbo es 189°"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120269",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "CM-4124",
+"pk": 8.004,
+"s": "Creciente",
+"rb": 232.0,
+"la": 38.92679,
+"lo": -3.622145,
+"px": null,
+"detalle": "a 2.9 km de donde cae su PK 8.004 en CM-4124",
+"d": 2936,
+"en_pk": [
+38.90181,
+-3.63364
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120318",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-2",
+"pk": 122.0,
+"s": "Decreciente",
+"rb": null,
+"la": 40.95575,
+"lo": -2.67868,
+"px": null,
+"detalle": "a 9.9 km de donde cae su PK 122.0 en A-2",
+"d": 9861,
+"en_pk": [
+40.99998,
+-2.57678
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120362",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-334",
+"pk": 49.87,
+"s": "Creciente",
+"rb": 27.4,
+"la": 37.356667,
+"lo": -2.348463,
+"px": null,
+"detalle": "a 2.7 km de donde cae su PK 49.87 en A-334",
+"d": 2663,
+"en_pk": [
+37.36156,
+-2.319
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120430",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-632",
+"pk": 98.75,
+"s": "Decreciente",
+"rb": 157.0,
+"la": 43.5543,
+"lo": -5.9429,
+"px": null,
+"detalle": "a 1.6 km de donde cae su PK 98.75 en N-632",
+"d": 1557,
+"en_pk": [
+43.54516,
+-5.92822
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120586",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 27.39,
+"s": "Decreciente",
+"rb": 99.0,
+"la": 38.306118,
+"lo": -0.588334,
+"px": null,
+"detalle": "a 3.8 km de donde cae su PK 27.39 en A-70",
+"d": 3837,
+"en_pk": [
+38.30287,
+-0.63207
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120587",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 22.5,
+"s": "Decreciente",
+"rb": 49.3,
+"la": 38.333973,
+"lo": -0.552382,
+"px": null,
+"detalle": "a 3.7 km de donde cae su PK 22.5 en A-70",
+"d": 3738,
+"en_pk": [
+38.30721,
+-0.57855
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120597",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 8.375,
+"s": "Creciente",
+"rb": 57.0,
+"la": 38.413906,
+"lo": -0.432669,
+"px": null,
+"detalle": "a 5.1 km de donde cae su PK 8.375 en A-70",
+"d": 5055,
+"en_pk": [
+38.38218,
+-0.4744
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120602",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "N-332",
+"pk": 203.2,
+"s": "Creciente",
+"rb": 306.4,
+"la": 38.870167,
+"lo": -0.026754,
+"px": null,
+"detalle": "a 1.1 km de donde cae su PK 203.2 en N-332",
+"d": 1130,
+"en_pk": [
+38.86419,
+-0.01617
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120622",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-30",
+"pk": 136.028,
+"s": "Decreciente",
+"rb": 7.4,
+"la": 38.023544,
+"lo": -1.164737,
+"px": null,
+"detalle": "a 10.4 km de donde cae su PK 136.028 en A-30",
+"d": 10367,
+"en_pk": [
+38.00308,
+-1.28009
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120647",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "EI-600",
+"pk": 9.635,
+"s": "Creciente",
+"rb": 286.2,
+"la": 38.9643,
+"lo": 1.386659,
+"px": null,
+"detalle": "a 1.6 km de donde cae su PK 9.635 en EI-600",
+"d": 1642,
+"en_pk": [
+38.9675,
+1.36813
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120654",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "MA-13",
+"pk": 46.371,
+"s": "Creciente",
+"rb": 54.0,
+"la": 39.837074,
+"lo": 3.073067,
+"px": null,
+"detalle": "a 2.1 km de donde cae su PK 46.371 en MA-13",
+"d": 2123,
+"en_pk": [
+39.8217,
+3.05817
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120662",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-42",
+"pk": 55.7,
+"s": "Decreciente",
+"rb": null,
+"la": 39.986393,
+"lo": -3.864661,
+"px": null,
+"detalle": "a 8.6 km de donde cae su PK 55.7 en A-42",
+"d": 8586,
+"en_pk": [
+39.98524,
+-3.96531
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_120687",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-30",
+"pk": 122.896,
+"s": "Creciente",
+"rb": 159.0,
+"la": 38.11197,
+"lo": -1.239447,
+"px": null,
+"detalle": "a 3.6 km de donde cae su PK 122.896 en A-30",
+"d": 3591,
+"en_pk": [
+38.1049,
+-1.27946
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_163324",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 6.308,
+"s": "Creciente",
+"rb": 228.0,
+"la": 38.415024,
+"lo": -0.430965,
+"px": null,
+"detalle": "a 3.8 km de donde cae su PK 6.308 en A-70",
+"d": 3823,
+"en_pk": [
+38.38646,
+-0.45567
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_163325",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 6.494,
+"s": "Decreciente",
+"rb": null,
+"la": 38.415024,
+"lo": -0.448904,
+"px": null,
+"detalle": "a 3.4 km de donde cae su PK 6.494 en A-70",
+"d": 3385,
+"en_pk": [
+38.38506,
+-0.4569
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_163326",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-70",
+"pk": 8.629,
+"s": "Decreciente",
+"rb": 205.0,
+"la": 38.402733,
+"lo": -0.448626,
+"px": null,
+"detalle": "a 3.3 km de donde cae su PK 8.629 en A-70",
+"d": 3277,
+"en_pk": [
+38.38321,
+-0.4769
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_165270",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-4",
+"pk": 230.8,
+"s": "Decreciente",
+"rb": 350.0,
+"la": 38.5075,
+"lo": -3.497222,
+"px": null,
+"detalle": "a 1.4 km de donde cae su PK 230.8 en A-4",
+"d": 1353,
+"en_pk": [
+38.51882,
+-3.49132
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_165291",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-395",
+"pk": 8.723,
+"s": "Decreciente",
+"rb": 202.6,
+"la": 37.15784,
+"lo": -3.523661,
+"px": null,
+"detalle": "a 16.8 km de donde cae su PK 8.723 en A-395",
+"d": 16754,
+"en_pk": [
+37.06585,
+-3.37367
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_165293",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "A-358",
+"pk": 5.15,
+"s": "Creciente",
+"rb": 301.0,
+"la": 36.8353,
+"lo": -2.931927,
+"px": null,
+"detalle": "a 2.0 km de donde cae su PK 5.15 en A-358",
+"d": 2003,
+"en_pk": [
+36.83705,
+-2.90955
+]
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_165670",
+"tipo": "sentido_dudoso",
+"grave": 3,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "AC-862",
+"pk": 37.6,
+"s": "Creciente",
+"rb": 154.3,
+"la": 43.640232,
+"lo": -7.928395,
+"px": null,
+"detalle": "«Creciente» va hacia 84° y el rumbo es 154°"
+},
+{
+"id": "dgt:GUID_CABINACINEMOMETRO_174824",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_FIJO",
+"src": "DGT feed",
+"c": "CV-10",
+"pk": 55.93,
+"s": "Creciente",
+"rb": null,
+"la": 40.2604,
+"lo": -0.077825,
+"px": null,
+"detalle": "a 13.2 km de donde cae su PK 55.93 en CV-10",
+"d": 13185,
+"en_pk": [
+40.26025,
+0.07739
+]
+},
+{
+"id": "dgt:GUID_CVM_163929",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "RM-603",
+"pk": 2.65,
+"s": "Creciente",
+"rb": 258.8,
+"la": 37.939655,
+"lo": -1.175882,
+"px": null,
+"detalle": "a 1.2 km de donde cae su PK 2.65 en RM-603",
+"d": 1230,
+"en_pk": [
+37.93639,
+-1.18927
+]
+},
+{
+"id": "dgt:GUID_CVM_164566",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "N-601",
+"pk": 226.4,
+"s": "Decreciente",
+"rb": 153.3,
+"la": 41.8533,
+"lo": -5.0133,
+"px": null,
+"detalle": "a 1.7 km de donde cae su PK 226.4 en N-601",
+"d": 1671,
+"en_pk": [
+41.83833,
+-5.01054
+]
+},
+{
+"id": "dgt:GUID_CVM_164567",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "N-601",
+"pk": 228.2,
+"s": "Creciente",
+"rb": 324.9,
+"la": 41.8381,
+"lo": -5.0108,
+"px": null,
+"detalle": "a 1.7 km de donde cae su PK 228.2 en N-601",
+"d": 1689,
+"en_pk": [
+41.85325,
+-5.01347
+]
+},
+{
+"id": "dgt:GUID_CVM_164860",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "CL-615",
+"pk": 38.312,
+"s": "Decreciente",
+"rb": 152.8,
+"la": 42.4439,
+"lo": -4.6942,
+"px": null,
+"detalle": "a 11.8 km de donde cae su PK 38.312 en CL-615",
+"d": 11801,
+"en_pk": [
+42.35067,
+-4.62428
+]
+},
+{
+"id": "dgt:GUID_CVM_164861",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "CL-615",
+"pk": 49.975,
+"s": "Creciente",
+"rb": 333.1,
+"la": 42.3524,
+"lo": -4.6245,
+"px": null,
+"detalle": "a 11.3 km de donde cae su PK 49.975 en CL-615",
+"d": 11293,
+"en_pk": [
+42.44126,
+-4.69227
+]
+},
+{
+"id": "dgt:GUID_CVM_164998",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "CL-613",
+"pk": 11.92,
+"s": "Decreciente",
+"rb": 114.7,
+"la": 42.141,
+"lo": -4.6731,
+"px": null,
+"detalle": "a 3.7 km de donde cae su PK 11.92 en CL-613",
+"d": 3732,
+"en_pk": [
+42.11587,
+-4.64291
+]
+},
+{
+"id": "dgt:GUID_CVM_164999",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "CL-613",
+"pk": 32.7,
+"s": "Creciente",
+"rb": 291.7,
+"la": 42.141,
+"lo": -4.6731,
+"px": null,
+"detalle": "a 16.3 km de donde cae su PK 32.7 en CL-613",
+"d": 16338,
+"en_pk": [
+42.21415,
+-4.84519
+]
+},
+{
+"id": "dgt:GUID_CVM_165000",
+"tipo": "pk_lejos",
+"grave": 1,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "CL-613",
+"pk": 15.41,
+"s": "Creciente",
+"rb": 331.6,
+"la": 42.1175,
+"lo": -4.6457,
+"px": null,
+"detalle": "a 3.1 km de donde cae su PK 15.41 en CL-613",
+"d": 3132,
+"en_pk": [
+42.1384,
+-4.67132
+]
+},
+{
+"id": "dgt:GUID_CVM_165414",
+"tipo": "pk_lejos",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "N-120",
+"pk": 319.6,
+"s": "Creciente",
+"rb": 226.2,
+"la": 42.5536,
+"lo": -5.714,
+"px": null,
+"detalle": "a 2.0 km de donde cae su PK 319.6 en N-120",
+"d": 2034,
+"en_pk": [
+42.54173,
+-5.73295
+]
+},
+{
+"id": "osm:n4756348598",
+"tipo": "duplicado",
+"grave": 2,
+"t": "OTRA_CAMARA",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": 25.1,
+"la": 39.984848,
+"lo": -0.037052,
+"px": null,
+"detalle": "a 30 m de osm:n8119271103 (OpenStreetMap, rumbo None)",
+"otro": "osm:n8119271103"
+},
+{
+"id": "dgtpdf:F:N-611:194.33:D",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "DGT PDF radares",
+"c": "N-611",
+"pk": 194.33,
+"s": "Decreciente",
+"rb": 250.3,
+"la": 43.404952,
+"lo": -3.974829,
+"px": 1,
+"detalle": "a 28 m de osm:n13526606233b (OpenStreetMap, rumbo 251.0)",
+"otro": "osm:n13526606233b"
+},
+{
+"id": "osm:n12063659161",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 40.397323,
+"lo": -8.490355,
+"px": null,
+"detalle": "a 0 m de osm:r17857000 (OpenStreetMap, rumbo None)",
+"otro": "osm:r17857000"
+},
+{
+"id": "osm:n1732890075",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.493588,
+"lo": -8.464972,
+"px": null,
+"detalle": "a 0 m de osm:r17857001 (OpenStreetMap, rumbo None)",
+"otro": "osm:r17857001"
+},
+{
+"id": "osm:n4683840053",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_FIJO",
+"src": "OpenStreetMap",
+"c": "PT-FIXO80",
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.079268,
+"lo": -8.634818,
+"px": null,
+"detalle": "a 28 m de osm:r20019612 (OpenStreetMap, rumbo None)",
+"otro": "osm:r20019612"
+},
+{
+"id": "ansr:A25:42.5:E",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "A25",
+"pk": 42.5,
+"s": "Este-Oeste",
+"rb": 241.0,
+"la": 40.669187,
+"lo": -8.345346,
+"px": null,
+"detalle": "a 21 m de osm:n11196381123 (OpenStreetMap, rumbo None)",
+"otro": "osm:n11196381123"
+},
+{
+"id": "ansr:A3:16.9:N",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "A3",
+"pk": 16.9,
+"s": "Norte-Sul",
+"rb": 240.1,
+"la": 41.30526,
+"lo": -8.531012,
+"px": null,
+"detalle": "a 13 m de osm:n1516917421 (OpenStreetMap, rumbo None)",
+"otro": "osm:n1516917421"
+},
+{
+"id": "ansr:A42:9.1:E",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "A42",
+"pk": 9.1,
+"s": "Este-Oeste",
+"rb": 312.2,
+"la": 41.261041,
+"lo": -8.373113,
+"px": null,
+"detalle": "a 23 m de osm:n12066644039 (OpenStreetMap, rumbo None)",
+"otro": "osm:n12066644039"
+},
+{
+"id": "ansr:EN10:110.7:A",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "EN10",
+"pk": 110.7,
+"s": "Ambos",
+"rb": null,
+"la": 38.924628,
+"lo": -8.890871,
+"px": null,
+"detalle": "a 19 m de osm:n12572339373 (OpenStreetMap, rumbo 293.0)",
+"otro": "osm:n12572339373"
+},
+{
+"id": "ansr:EN10:110.7:A",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Portugal: ANSR (red SINCRO)",
+"c": "EN10",
+"pk": 110.7,
+"s": "Ambos",
+"rb": null,
+"la": 38.924628,
+"lo": -8.890871,
+"px": null,
+"detalle": "a 19 m de osm:n12572339373b (OpenStreetMap, rumbo 112.4)",
+"otro": "osm:n12572339373b"
+},
+{
+"id": "dgt:GUID_CVM_165308",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "DGT feed",
+"c": "TF-5",
+"pk": 20.66,
+"s": "Creciente",
+"rb": 265.4,
+"la": 28.47274,
+"lo": -16.42682,
+"px": null,
+"detalle": "a 8 m de osm:n992000673 (OpenStreetMap, rumbo 277.7)",
+"otro": "osm:n992000673"
+},
+{
+"id": "mad:40.40724,-3.74575",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "Ayto. Madrid",
+"c": "A-5 PK 5+750, SENTIDO SALIDA",
+"pk": null,
+"s": "Salida",
+"rb": null,
+"la": 40.407241,
+"lo": -3.745748,
+"px": null,
+"detalle": "a 34 m de mad:40.40745,-3.74545 (Ayto. Madrid, rumbo 248.0)",
+"otro": "mad:40.40745,-3.74545"
+},
+{
+"id": "osm:r16151426",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.00452,
+"lo": 3.001607,
+"px": null,
+"detalle": "a 4 m de sct:42.00451,3.00157 (Cataluña (SCT), rumbo None)",
+"otro": "sct:42.00451,3.00157"
+},
+{
+"id": "osm:r16152550",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.466272,
+"lo": 2.17395,
+"px": null,
+"detalle": "a 4 m de sct:41.46630,2.17392 (Cataluña (SCT), rumbo None)",
+"otro": "sct:41.46630,2.17392"
+},
+{
+"id": "osm:r16154986",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 42.672733,
+"lo": 0.7773,
+"px": null,
+"detalle": "a 13 m de sct:42.67263,0.77737 (Cataluña (SCT), rumbo None)",
+"otro": "sct:42.67263,0.77737"
+},
+{
+"id": "osm:r17072065",
+"tipo": "duplicado",
+"grave": 2,
+"t": "RADAR_TRAMO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.448429,
+"lo": 2.23639,
+"px": null,
+"detalle": "a 21 m de sct:41.44830,2.23620 (Cataluña (SCT), rumbo None)",
+"otro": "sct:41.44830,2.23620"
+},
+{
+"id": "osm:n992003228",
+"tipo": "duplicado",
+"grave": 2,
+"t": "SEMAFORO",
+"src": "OpenStreetMap",
+"c": null,
+"pk": null,
+"s": null,
+"rb": null,
+"la": 41.394373,
+"lo": 2.150975,
+"px": null,
+"detalle": "a 49 m de osm:n992006578 (OpenStreetMap, rumbo 323.8)",
+"otro": "osm:n992006578"
+}
+],
+"osm_faltan": [
+{
+"id": "osm:n29095584",
+"la": 37.6727399,
+"lo": -1.7078123,
+"fecha": "2023-12-18",
+"tags": {
+"direction": "21",
+"highway": "speed_camera",
+"maxspeed": "80",
+"note": "F100 XABI A-7 Km 593.28 Lorca DIR Valencia CL"
+}
+},
+{
+"id": "osm:n254625152",
+"la": 41.5585693,
+"lo": 2.1856543,
+"fecha": "2025-09-09",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "90",
+"note": "radar tram"
+}
+},
+{
+"id": "osm:n393808999",
+"la": 41.5382735,
+"lo": 0.4575866,
+"fecha": "2025-05-15",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "120",
+"note": "F120 K2o- A-2 Km 445.3 Soses DIR Lleida CLAV"
+}
+},
+{
+"id": "osm:n992000507",
+"la": 41.3861032,
+"lo": 2.1270904,
+"fecha": "2024-11-28",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "60",
+"note": "TUFI SIPU PREaviso F060 2R Barcelona Ronda Mig DIR Puerto-"
+}
+},
+{
+"id": "osm:n992000728",
+"la": 42.1929223,
+"lo": 2.5159954,
+"fecha": "2025-10-06",
+"tags": {
+"description": "F100 MAXA A-26 Km 82.6 Olot DIR Ripoll CL",
+"direction": "260",
+"highway": "speed_camera",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:n992001543",
+"la": 41.5398,
+"lo": 1.85767,
+"fecha": "2025-10-06",
+"tags": {
+"description": "F120 CARK A-2 Km 579.1 Esparreguera DIR BCN Speedcurb CL",
+"direction": "144",
+"highway": "speed_camera",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:n992003744",
+"la": 40.7302495,
+"lo": 0.5936954,
+"fecha": "2025-10-08",
+"tags": {
+"description": "F100 MONT N-340 Km 1084.32 Amposta DIR Tarragona CL",
+"highway": "speed_camera",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:n992004415",
+"la": 43.3105183,
+"lo": -1.9506839,
+"fecha": "2026-04-27",
+"tags": {
+"direction": "100",
+"highway": "speed_camera",
+"maxspeed": "50",
+"note": "F050 GOVI San Sebastión Paseo Otxoki DIR Garbera CL"
+}
+},
+{
+"id": "osm:n992004439",
+"la": 41.57685,
+"lo": 2.18732,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n992004756",
+"la": 42.8613588,
+"lo": -5.8738843,
+"fecha": "2026-01-27",
+"tags": {
+"direction": "160",
+"highway": "speed_camera",
+"maxspeed": "100",
+"note": "TUCE A300 100 AP-66 Km 101.2 Ext Túnel Barrios Luna DIR León"
+}
+},
+{
+"id": "osm:n992005704",
+"la": 40.9532524,
+"lo": -0.227873,
+"fecha": "2026-01-25",
+"tags": {
+"direction": "180",
+"highway": "speed_camera",
+"maxspeed": "90",
+"note": "F100 A300 N-211 Km 228.15 Entrada Calanda DIR Teruel CL\nXQ3C+8V6 Calanda (Plus CODE Google Maps)"
+}
+},
+{
+"id": "osm:n992006410",
+"la": 41.3757562,
+"lo": 2.1305869,
+"fecha": "2026-04-09",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "50",
+"note": "TUFI SIPU PREaviso F060 1R Barcelona Ronda Mig DIR Tibidabo-"
+}
+},
+{
+"id": "osm:n992006717",
+"la": 41.3135457,
+"lo": 2.068294,
+"fecha": "2026-03-18",
+"tags": {
+"direction": "50",
+"highway": "speed_camera",
+"maxspeed": "100",
+"note": "FVAR F080 CARK C-31-Sur Km 191.5 El Prat DIR Barcelona CL"
+}
+},
+{
+"id": "osm:n992007056",
+"la": 41.2662104,
+"lo": 1.5522812,
+"fecha": "2026-03-10",
+"tags": {
+"direction": "170",
+"highway": "speed_camera",
+"maxspeed": "90",
+"note": "F070 A300 JAAM TP-2125 Km 4.8 Banyeres-Penedes DIR Vendrell CL"
+}
+},
+{
+"id": "osm:n992007100",
+"la": 38.0261857,
+"lo": -3.7726018,
+"fecha": "2023-12-18",
+"tags": {
+"direction": "220",
+"highway": "speed_camera",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:n1039703176",
+"la": 40.59316,
+"lo": -3.5824148,
+"fecha": "2023-12-18",
+"tags": {
+"description": "A-1 Km 24.4 Circuito Jarama DIR Madrid",
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n1140674451",
+"la": 41.6232867,
+"lo": 1.4179545,
+"fecha": "2024-12-02",
+"tags": {
+"direction": "255",
+"highway": "speed_camera",
+"maxspeed": "120",
+"note": "F120 PLAY A-2 Km 534.1 Panadella DIR Madrid Speedcurb CL"
+}
+},
+{
+"id": "osm:n1760285628",
+"la": 43.2346393,
+"lo": -2.0274808,
+"fecha": "2026-04-09",
+"tags": {
+"direction": "320",
+"highway": "speed_camera",
+"maxspeed": "80",
+"note": "F080 GOVI TKTS N-I Km 448.8 Andoaón DIR Irún Mediana CL"
+}
+},
+{
+"id": "osm:n2087900247",
+"la": 41.4690227,
+"lo": 2.1691008,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n2191511334",
+"la": 37.3802796,
+"lo": -3.0560934,
+"fecha": "2025-12-31",
+"tags": {
+"direction": "30",
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n2334938812",
+"la": 37.3630932,
+"lo": -6.0326192,
+"fecha": "2025-12-12",
+"tags": {
+"direction": "100",
+"highway": "speed_camera",
+"maxspeed": "50",
+"note": "F050 BBS Ache A-8057 PK-0.1 Sentido Sevilla @"
+}
+},
+{
+"id": "osm:n2378266977",
+"la": 41.8521273,
+"lo": 3.0735184,
+"fecha": "2023-12-18",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:n3202405846",
+"la": 41.3353145,
+"lo": 2.095751,
+"fecha": "2026-03-10",
+"tags": {
+"direction": "50",
+"highway": "speed_camera",
+"maxspeed": "80",
+"note": "FVAR F080 MAIG C-31-Sur Km 195 el Prat DIR Barcelona CL"
+}
+},
+{
+"id": "osm:n3901483333",
+"la": 42.4553953,
+"lo": 1.9423509,
+"fecha": "2020-09-17",
+"tags": {
+"enforcement": "maxspeed",
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n4587398829",
+"la": 41.3147736,
+"lo": 1.1808659,
+"fecha": "2025-10-09",
+"tags": {
+"direction": "300",
+"highway": "speed_camera",
+"maxspeed": "60"
+}
+},
+{
+"id": "osm:n4838340298",
+"la": 42.2514008,
+"lo": -8.6857433,
+"fecha": "2025-10-02",
+"tags": {
+"direction": "20",
+"highway": "speed_camera",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:n4958102690",
+"la": 41.5236809,
+"lo": 2.1645386,
+"fecha": "2025-09-09",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n5744469677",
+"la": 41.6113879,
+"lo": 0.6235905,
+"fecha": "2022-01-30",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:n6926374946",
+"la": 36.5466337,
+"lo": -4.6693332,
+"fecha": "2023-05-08",
+"tags": {
+"direction": "90",
+"highway": "speed_camera",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:n7171815050",
+"la": 41.3676348,
+"lo": 2.1393108,
+"fecha": "2024-06-21",
+"tags": {
+"direction": "45",
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n7541702988",
+"la": 41.6863464,
+"lo": -0.954078,
+"fecha": "2026-01-31",
+"tags": {
+"direction": "280",
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n8968186514",
+"la": 42.040118,
+"lo": -4.5599328,
+"fecha": "2026-01-28",
+"tags": {
+"description": "Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)",
+"highway": "speed_camera",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:n8974875728",
+"la": 39.6671782,
+"lo": -2.3750002,
+"fecha": "2026-01-07",
+"tags": {
+"direction": "140",
+"highway": "speed_camera",
+"maxspeed": "120",
+"note": "A-3 PK 156.57 SENTIDO CRECIENTE"
+}
+},
+{
+"id": "osm:n9071289106",
+"la": 42.7328947,
+"lo": 0.1946018,
+"fecha": "2026-10-25",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "60"
+}
+},
+{
+"id": "osm:n9212434658",
+"la": 43.0112831,
+"lo": -1.6367305,
+"fecha": "2026-02-12",
+"tags": {
+"direction": "150",
+"highway": "speed_camera",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:n10182984432",
+"la": 43.3228762,
+"lo": -2.9811793,
+"fecha": "2026-06-10",
+"tags": {
+"direction": "290",
+"highway": "speed_camera",
+"maxspeed": "30"
+}
+},
+{
+"id": "osm:n11080765218",
+"la": 41.2119348,
+"lo": 1.6911532,
+"fecha": "2023-08-01",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11080765221",
+"la": 41.2254008,
+"lo": 1.7023883,
+"fecha": "2023-08-01",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11080765223",
+"la": 41.2260663,
+"lo": 1.7034599,
+"fecha": "2023-08-01",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11080765225",
+"la": 41.2322322,
+"lo": 1.7105836,
+"fecha": "2023-08-01",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11080765226",
+"la": 41.2366288,
+"lo": 1.727401,
+"fecha": "2023-08-01",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11080765228",
+"la": 41.2362783,
+"lo": 1.7408408,
+"fecha": "2023-08-01",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11080765231",
+"la": 41.2393029,
+"lo": 1.7530383,
+"fecha": "2023-08-01",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11083326336",
+"la": 41.5150976,
+"lo": 2.145176,
+"fecha": "2025-09-09",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n11083326337",
+"la": 41.5360451,
+"lo": 2.1719292,
+"fecha": "2025-09-09",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n11083746012",
+"la": 42.2641516,
+"lo": 2.9877976,
+"fecha": "2025-10-05",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:n11084641819",
+"la": 41.4716308,
+"lo": 2.0648637,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11084641820",
+"la": 41.4493149,
+"lo": 2.0696515,
+"fecha": "2025-06-25",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:n11084641821",
+"la": 41.4705214,
+"lo": 2.064904,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11084641823",
+"la": 41.4664721,
+"lo": 2.0638828,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11084641824",
+"la": 41.4567189,
+"lo": 2.0671383,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11084641825",
+"la": 41.4543247,
+"lo": 2.0678249,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11084641829",
+"la": 41.5245741,
+"lo": 2.0960889,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11084641830",
+"la": 41.5310616,
+"lo": 2.0922625,
+"fecha": "2023-08-02",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n11084641839",
+"la": 41.5926478,
+"lo": 2.1856456,
+"fecha": "2025-09-09",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "90",
+"note": "radar tram"
+}
+},
+{
+"id": "osm:n12029827822",
+"la": 41.4253441,
+"lo": 2.0012225,
+"fecha": "2026-03-08",
+"tags": {
+"direction": "-20",
+"highway": "speed_camera",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:n12670560708",
+"la": 39.4690167,
+"lo": -0.4208525,
+"fecha": "2025-03-16",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n12670560709",
+"la": 39.4388024,
+"lo": -0.3918422,
+"fecha": "2025-03-16",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n12670628830",
+"la": 39.4783289,
+"lo": -0.4483565,
+"fecha": "2025-03-16",
+"tags": {
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n12839568988",
+"la": 42.169682,
+"lo": 1.3184007,
+"fecha": "2026-03-17",
+"tags": {
+"direction": "10",
+"highway": "speed_camera",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:n13021240620",
+"la": 40.9444473,
+"lo": -5.6392249,
+"fecha": "2026-01-24",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:n13378020343",
+"la": 36.7169126,
+"lo": -4.4578656,
+"fecha": "2026-01-03",
+"tags": {
+"direction": "330",
+"highway": "speed_camera",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:n13438685208",
+"la": 42.2782116,
+"lo": 2.9760112,
+"fecha": "2026-01-07",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:n13450183821",
+"la": 38.2522553,
+"lo": -0.7645279,
+"fecha": "2026-01-19",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n13482273495",
+"la": 41.064107,
+"lo": -3.82667,
+"fecha": "2026-09-04",
+"tags": {
+"direction": "both",
+"highway": "speed_camera",
+"maxspeed": "70"
+}
+},
+{
+"id": "osm:n13504941198",
+"la": 42.2392451,
+"lo": -4.9247365,
+"fecha": "2026-01-27",
+"tags": {
+"direction": "280",
+"highway": "speed_camera",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:n13541586368",
+"la": 43.3561641,
+"lo": -3.2172082,
+"fecha": "2026-02-10",
+"tags": {
+"direction": "130",
+"highway": "speed_camera",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:n13610015791",
+"la": 36.9082763,
+"lo": -6.0596212,
+"fecha": "2026-07-14",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "70"
+}
+},
+{
+"id": "osm:n13610015792",
+"la": 36.9028601,
+"lo": -6.071389,
+"fecha": "2026-07-14",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "70"
+}
+},
+{
+"id": "osm:n13622823996",
+"la": 40.7143522,
+"lo": -3.7936391,
+"fecha": "2026-03-06",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:n13624945403",
+"la": 39.5010335,
+"lo": -0.3976541,
+"fecha": "2026-03-07",
+"tags": {
+"direction": "210",
+"highway": "speed_camera",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:n14169137330",
+"la": 37.3315651,
+"lo": -5.8404621,
+"fecha": "2026-09-10",
+"tags": {
+"direction": "280",
+"highway": "speed_camera",
+"maxspeed": "30"
+}
+},
+{
+"id": "osm:n1795696364",
+"la": 32.6447885,
+"lo": -16.8600268,
+"fecha": "2026-01-27",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "60"
+}
+},
+{
+"id": "osm:n2432059877",
+"la": 32.6763726,
+"lo": -17.0630228,
+"fecha": "2024-02-21",
+"tags": {
+"direction": "forward",
+"highway": "speed_camera",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:n3714381772",
+"la": 41.1970506,
+"lo": -8.5887508,
+"fecha": "2019-10-30",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:n3761891688",
+"la": 37.7456146,
+"lo": -25.6419638,
+"fecha": "2025-12-11",
+"tags": {
+"direction": "285",
+"highway": "speed_camera",
+"maxspeed": "40",
+"note": "F040390158",
+"ref": "PT_FIXO 40"
+}
+},
+{
+"id": "osm:n3761891694",
+"la": 37.7518509,
+"lo": -25.6244997,
+"fecha": "2025-12-11",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "40",
+"note": "F040390156",
+"ref": "PT_FIXO 40"
+}
+},
+{
+"id": "osm:n4139225820",
+"la": 38.7433756,
+"lo": -9.1824946,
+"fecha": "2025-12-12",
+"tags": {
+"direction": "forward",
+"highway": "speed_camera",
+"maxspeed": "80",
+"note": "F080387442",
+"ref": "PT_FIXO 80"
+}
+},
+{
+"id": "osm:n6701045442",
+"la": 37.0382386,
+"lo": -7.9499175,
+"fecha": "2025-12-12",
+"tags": {
+"direction": "forward",
+"highway": "speed_camera",
+"maxspeed": "70",
+"note": "F070387428",
+"ref": "PT_FIXO 70"
+}
+},
+{
+"id": "osm:n10635057610",
+"la": 40.2212834,
+"lo": -8.4394405,
+"fecha": "2025-12-15",
+"tags": {
+"direction": "forward",
+"highway": "speed_camera",
+"maxspeed": "60",
+"note": "F060390407",
+"ref": "PT_FIXO 60"
+}
+},
+{
+"id": "osm:n11206091734",
+"la": 38.7921115,
+"lo": -9.1686955,
+"fecha": "2025-12-12",
+"tags": {
+"direction": "forward",
+"highway": "speed_camera",
+"maxspeed": "90",
+"note": "F080390478",
+"ref": "PT_FIXO 80"
+}
+},
+{
+"id": "osm:n11221458631",
+"la": 37.7484219,
+"lo": -25.6340276,
+"fecha": "2025-12-11",
+"tags": {
+"direction": "forward",
+"highway": "speed_camera",
+"maxspeed": "40",
+"note": "F040390157",
+"ref": "PT_FIXO 40"
+}
+},
+{
+"id": "osm:n11223504298",
+"la": 38.7249749,
+"lo": -9.1548215,
+"fecha": "2025-12-15",
+"tags": {
+"direction": "forward",
+"highway": "speed_camera",
+"maxspeed": "50",
+"note": "F050387414",
+"ref": "PT_FIXO 50"
+}
+},
+{
+"id": "osm:n12288702357",
+"la": 32.6788822,
+"lo": -17.0605742,
+"fecha": "2024-10-25",
+"tags": {
+"direction": "215",
+"highway": "speed_camera"
+}
+},
+{
+"id": "osm:n12501419668",
+"la": 32.6447943,
+"lo": -16.8570171,
+"fecha": "2026-01-27",
+"tags": {
+"highway": "speed_camera",
+"maxspeed": "60"
+}
+},
+{
+"id": "osm:n13436748214",
+"la": 28.0494065,
+"lo": -16.6309237,
+"fecha": "2026-01-07",
+"tags": {
+"direction": "320",
+"highway": "speed_camera",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:r6309920",
+"la": 40.5935562,
+"lo": -3.5823346,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:r7778337",
+"la": 41.5387642,
+"lo": 0.4539214,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:r7778343",
+"la": 41.6241463,
+"lo": 1.4203326,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:r8453561",
+"la": 41.8521273,
+"lo": 3.0735184,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "100",
+"name": "Radar fix C-31 (Calonge)"
+}
+},
+{
+"id": "osm:r9959079",
+"la": 42.4553953,
+"lo": 1.9423509,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "80",
+"name": "Ur|NO->SE"
+}
+},
+{
+"id": "osm:r9959080",
+"la": 42.4553953,
+"lo": 1.9423509,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "80",
+"name": "Ur|SE->NO"
+}
+},
+{
+"id": "osm:r10358149",
+"la": 40.4681507,
+"lo": -3.4308419,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:r13180336",
+"la": 42.7328947,
+"lo": 0.1946018,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "60",
+"name": "Aragnouet - Tunnel Aragnouet Bielsa|N->S"
+}
+},
+{
+"id": "osm:r15824408",
+"la": 36.5466337,
+"lo": -4.6693332,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:r15896698",
+"la": 38.0261498,
+"lo": -3.7725559,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:r18375567",
+"la": 43.2558654,
+"lo": -4.0652222,
+"fecha": "",
+"tags": {
+"enforcement": "traffic_signals",
+"name": "Control semafórico del túnel"
+}
+},
+{
+"id": "osm:r18845440",
+"la": 39.4388024,
+"lo": -0.3918422,
+"fecha": "",
+"tags": {
+"enforcement": "average_speed",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:r19669928",
+"la": 42.248057,
+"lo": -8.6945358,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:r19685367",
+"la": 42.1950832,
+"lo": 2.5265347,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:r19685448",
+"la": 41.5398,
+"lo": 1.85767,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:r20056169",
+"la": 39.6671782,
+"lo": -2.3750002,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:r20134022",
+"la": 41.064107,
+"lo": -3.82667,
+"fecha": "",
+"tags": {
+"enforcement": "average_speed",
+"maxspeed": "70"
+}
+},
+{
+"id": "osm:r20135745",
+"la": 40.9532524,
+"lo": -0.227873,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:r20144509",
+"la": 42.2392451,
+"lo": -4.9247365,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:r20156679",
+"la": 41.6863464,
+"lo": -0.954078,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "120"
+}
+},
+{
+"id": "osm:r20305869",
+"la": 41.2662104,
+"lo": 1.5522812,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "90"
+}
+},
+{
+"id": "osm:r20347059",
+"la": 41.3135457,
+"lo": 2.068294,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "100"
+}
+},
+{
+"id": "osm:r20362061",
+"la": 43.2346393,
+"lo": -2.0274808,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "80"
+}
+},
+{
+"id": "osm:r20962638",
+"la": 43.3228762,
+"lo": -2.9811793,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "30"
+}
+},
+{
+"id": "osm:r7169424",
+"la": 37.7456503,
+"lo": -25.6423806,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:r17349588",
+"la": 38.5605142,
+"lo": -28.624363,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:r17349589",
+"la": 38.5600527,
+"lo": -28.6255286,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "50"
+}
+},
+{
+"id": "osm:r21426823",
+"la": 37.0382386,
+"lo": -7.9499175,
+"fecha": "",
+"tags": {
+"enforcement": "maxspeed",
+"maxspeed": "70"
+}
+}
+]
+}
