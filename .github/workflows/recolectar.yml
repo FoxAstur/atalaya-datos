@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: recolectar
@@ -84,6 +85,22 @@ jobs:
       - name: Auditar lo recolectado
         if: always()
         run: timeout 15m python auditoria.py --publicar || echo "::warning::La auditoría no ha terminado"
+
+      - name: Aviso si algo falla
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python vigilar_fuentes.py || exit 0
+          abierto=$(gh issue list --state open --label avisos --json number -q '.[0].number' 2>/dev/null || true)
+          if [ -s salud.md ]; then
+            gh label create avisos --color D93F0B --description "Avisos automáticos de la recolección" 2>/dev/null || true
+            if [ -n "$abierto" ]; then gh issue edit "$abierto" --body-file salud.md
+            else gh issue create --title "Atalaya: problemas con los datos" --label avisos --body-file salud.md; fi
+          elif [ -n "$abierto" ]; then
+            gh issue close "$abierto" --comment "Todo vuelve a ir bien ($(date -u +%Y-%m-%dT%H:%MZ))."
+          fi
+          rm -f salud.md
 
       - name: Publicar si hay cambios
         if: always()
