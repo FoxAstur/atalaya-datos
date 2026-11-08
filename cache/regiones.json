@@ -606,6 +606,14 @@
   "mu": "Algeciras",
   "pr": "Cádiz"
  },
+ "36.153,-5.449": {
+  "mu": "Algeciras",
+  "pr": "Cádiz"
+ },
+ "36.155,-5.449": {
+  "mu": "Algeciras",
+  "pr": "Cádiz"
+ },
  "36.156,-5.452": {
   "mu": "Algeciras",
   "pr": "Cádiz"
@@ -6206,6 +6214,10 @@
   "mu": "Ajofrín",
   "pr": "Toledo"
  },
+ "39.698,-3.970": {
+  "mu": "Ajofrín",
+  "pr": "Toledo"
+ },
  "39.710,2.907": {
   "mu": "Inca",
   "pr": "Illes Balears"
@@ -8005,6 +8017,10 @@
  },
  "40.470,0.417": {
   "mu": "Benicarló",
+  "pr": "Castellón"
+ },
+ "40.470,0.441": {
+  "mu": "Vinaròs",
   "pr": "Castellón"
  },
  "40.471,-3.412": {

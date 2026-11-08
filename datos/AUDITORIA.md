@@ -1,28 +1,29 @@
-# Auditoría 2026-11-08T09:21:48+00:00
+# Auditoría 2026-11-08T09:39:08+00:00
 
 ## Resumen
 
 - comprobados_pk: 1054
 - comprobados_sentido_pk: 1018
-- con_ref: 1472
+- con_ref: 1477
 - con_rumbo: 2708
-- con_via: 3663
+- con_via: 3667
 - osm_camaras: 5655
 - osm_sin_nuestro: 104
-- tramos: 339
+- tramos: 340
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
-| sin_su_carretera | 43 | 0 |
+| sin_su_carretera | 47 | 0 |
 | pk_lejos | 29 | 17 |
 | tramo_raro | 25 | 3 |
 | duplicado | 17 | 0 |
-| fuera_de_via | 15 | 7 |
+| fuera_de_via | 16 | 7 |
 | camino_incoherente | 4 | 0 |
+| salida_otra_via | 3 | 0 |
 | rumbo_cruzado | 2 | 0 |
-| salida_otra_via | 2 | 0 |
 | sentido_dudoso | 2 | 0 |
 | contra_direccion | 1 | 1 |
+| salida_fuera_de_via | 1 | 0 |
 
 ## sin_su_carretera
 
@@ -49,6 +50,10 @@
 - [3] `dgteq:N-620:233.0:D:cintur` (DGT PDF cámaras; N-620 PK 233.0 Decreciente) 40.99707,-5.63377: no hay ninguna vía N-620 a menos de 600 m (la más cercana: calle buenos aires a 1 m)
 - [3] `dgteq:SE-30:23.2:C:cintur` (DGT PDF cámaras; SE-30 PK 23.2 Creciente) 37.41367,-5.99711: no hay ninguna vía SE-30 a menos de 600 m (la más cercana: A8083 a 20 m)
 - [3] `dgteq:SE-30:23.2:D:cintur` (DGT PDF cámaras; SE-30 PK 23.2 Decreciente) 37.41367,-5.99711: no hay ninguna vía SE-30 a menos de 600 m (la más cercana: A8083 a 20 m)
+- [3] `dgtpdf:F:N-340A:1049.45:D` (DGT PDF radares; N-340A PK 1049.45 Decreciente) 40.47004,0.44133: no hay ninguna vía N-340A a menos de 600 m (la más cercana: N340 a 2 m)
+- [3] `dgtpdf:F:N-357B:1.219:D` (DGT PDF radares; N-357B PK 1.219 Decreciente) 36.15514,-5.44919: no hay ninguna vía N-357B a menos de 600 m (la más cercana: tertiary a 30 m)
+- [3] `dgtpdf:F:N-357B:1.64:C` (DGT PDF radares; N-357B PK 1.64 Creciente) 36.15344,-5.44881: no hay ninguna vía N-357B a menos de 600 m (la más cercana: urbanización alborán a 12 m)
+- [3] `dgtpdf:T:N-401A:91.62:D` (DGT PDF radares; N-401A PK 93.994 Decreciente) 39.69754,-3.96998: no hay ninguna vía N-401A a menos de 600 m (la más cercana: N401 a 0 m)
 - [3] `dgt:GUID_CABINACINEMOMETRO_120027` (DGT feed; A-12 PK 93.88 Creciente) 42.44163,-2.54181: no hay ninguna vía A-12 a menos de 600 m (la más cercana: motorway_link a 17 m)
 - [3] `dgt:GUID_CABINACINEMOMETRO_120039` (DGT feed; A-431 PK 29.66 Creciente) 37.80637,-5.09753: no hay ninguna vía A-431 a menos de 600 m (la más cercana: A431A a 1 m)
 - [3] `dgt:GUID_CABINACINEMOMETRO_120131` (DGT feed; A-220 PK 1.596 Creciente) 41.46667,-1.36487: no hay ninguna vía A-220 a menos de 600 m (la más cercana: A220A a 1 m)
@@ -163,6 +168,7 @@
 - [2] `dgteq:A-7:978.95:C:cintur` (DGT PDF cámaras; A-7 PK 978.95 Creciente) 36.73091,-4.36735: a 42 m de la carretera más cercana
 - [2] `dgteq:N-344:118.136:C:cintur` (DGT PDF cámaras; N-344 PK 118.136 Creciente) 38.72867,-0.94147: a 45 m de la carretera más cercana
 - [2] `dgtpdf:T:CL-615:34.61:C` (DGT PDF radares; CL-615 PK 1.715 Creciente) 42.03811,-4.55886: a 53 m de la carretera más cercana
+- [2] `dgtpdf:T:N-401A:93.86:C` (DGT PDF radares; N-401A PK 91.488 Creciente) 39.71700,-3.97801: a 51 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120287` (DGT feed; M-111 PK 0.356 Decreciente) 40.49295,-3.56287: a 47 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: a 51 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120458` (DGT feed; MA-14 PK 19.293 Decreciente) 39.48972,3.16028: a 55 m de la carretera más cercana
@@ -175,15 +181,16 @@
 - [2] `osm:n2378267261` (OpenStreetMap; None PK None ) 43.21176,-8.69152: 5 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n8376349411` (OpenStreetMap; None PK None ) 41.62987,2.16581: 2 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 
+## salida_otra_via
+
+- [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: la salida no está sobre la AS-19
+- [2] `dgtpdf:T:N-401A:93.86:C` (DGT PDF radares; N-401A PK 91.488 Creciente) 39.71700,-3.97801: la salida no está sobre la N-401A
+- [2] `ansr:EN261:97.06:A` (Portugal: ANSR (red SINCRO); EN261 PK 97.06 Ambos) 37.88866,-8.20341: la salida no está sobre la EN261
+
 ## rumbo_cruzado
 
 - [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK None ) 40.73013,0.59095: rumbo 56° y las vías a menos de 30 m van a [175, 176]° (o su opuesto)
 - [2] `dgt:GUID_CABINACINEMOMETRO_120601` (DGT feed; CV-91 PK 18.888 Decreciente) 38.09746,-0.72200: rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)
-
-## salida_otra_via
-
-- [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: la salida no está sobre la AS-19
-- [2] `ansr:EN261:97.06:A` (Portugal: ANSR (red SINCRO); EN261 PK 97.06 Ambos) 37.88866,-8.20341: la salida no está sobre la EN261
 
 ## sentido_dudoso
 
@@ -193,6 +200,10 @@
 ## contra_direccion
 
 - [1] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: rumbo 15° contra el único sentido de A316 (a 51 m) y ninguna calzada a favor a menos de 60 m
+
+## salida_fuera_de_via
+
+- [2] `dgtpdf:T:N-401A:91.62:D` (DGT PDF radares; N-401A PK 93.994 Decreciente) 39.69754,-3.96998: salida a 52 m de la carretera
 
 ## Cámaras de OSM sin punto nuestro a 150 m
 
