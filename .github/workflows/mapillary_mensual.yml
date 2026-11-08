@@ -1,0 +1,70 @@
+name: Fotos nuevas de Mapillary (mensual)
+
+# Una vez al mes: ¿hay fotos nuevas junto a los puntos de posición aproximada (situados solo por su PK)? Si las hay,
+# se hacen sus hojas (rama hojas-nuevas-AAAA-MM) y se abre un aviso en GitHub para revisarlas y afinar la posición.
+on:
+  schedule:
+    - cron: "37 5 3 * *"    # el día 3 de cada mes
+  workflow_dispatch:
+    inputs:
+      linea_base: { description: "1 = solo apuntar lo que hay (sin avisar)", required: false, default: "0" }
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: mapillary-mensual
+  cancel-in-progress: false
+
+jobs:
+  nuevas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Buscar fotos nuevas
+        env:
+          MAPILLARY_TOKEN: ${{ secrets.MAPILLARY_TOKEN }}
+          LINEA_BASE: ${{ inputs.linea_base || '0' }}
+        run: python posiciones_mapillary.py nuevas
+      - name: Hojas a su rama y aviso
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mes=$(date -u +%Y-%m)
+          n=$(python -c "import json;print(len(json.load(open('hojas_pos/nuevas.json'))))")
+          if [ "$n" -gt 0 ]; then
+            mkdir /tmp/s && cp -r hojas_pos /tmp/s/
+            ( cd /tmp/s
+              git init -q -b "hojas-nuevas-$mes"
+              git config user.name "atalaya-bot"
+              git config user.email "atalaya-bot@users.noreply.github.com"
+              printf 'Fotos de Mapillary (CC BY-SA 4.0, https://www.mapillary.com) para revisión manual.\n' > LEEME.txt
+              git add -A && git commit -qm "Hojas con fotos nuevas $mes"
+              git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "hojas-nuevas-$mes" )
+            python - > cuerpo.md <<'PY'
+          import json
+          L = json.load(open("hojas_pos/nuevas.json"))
+          print(f"Hay fotos nuevas de Mapillary junto a {len(L)} puntos situados solo por su PK. "
+                "Con ellas se puede afinar su posición (pídeselo a Claude: «revisa las hojas nuevas de Mapillary»).\n")
+          for x in L:
+              print(f"- `{x['id']}` [{x['ext']}] {x.get('c') or ''} PK {x.get('pk')} {x.get('mu') or ''}: "
+                    f"{x['fotos_nuevas']} fotos nuevas (hasta {x['fecha']})")
+          PY
+            echo "" >> cuerpo.md
+            echo "Hojas: rama \`hojas-nuevas-$mes\` (hojas_pos/*.jpg, índice en hojas_pos/indice.json)." >> cuerpo.md
+            gh label create revision --color 0E8A16 --description "Revisión manual pendiente" 2>/dev/null || true
+            gh issue create --title "Atalaya: fotos nuevas para afinar $n posiciones ($mes)" --label revision --body-file cuerpo.md
+          fi
+      - name: Guardar lo visto
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add cache/mapillary_px.json
+          git diff --cached --quiet || git commit -qm "Mapillary: fotos vistas hasta $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done

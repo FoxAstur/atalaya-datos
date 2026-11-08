@@ -409,6 +409,48 @@ def dos():
     json.dump(indice, open("hojas_pos/indice_dos.json", "w", encoding="utf-8"), ensure_ascii=False)
 
 
+ESTADO_NUEVAS = "cache/mapillary_px.json"
+
+
+def nuevas():
+    """
+    Revisión mensual: ¿hay fotos NUEVAS (posteriores a la última revisión, y de 2023 en adelante) junto a algún
+    punto de posición aproximada? Solo de esos se hacen hojas (hojas_pos/) y se deja la lista en hojas_pos/nuevas.json.
+    Con LINEA_BASE=1 solo se apunta lo que hay (para no volver a sacar lo ya revisado).
+    """
+    token = os.environ["MAPILLARY_TOKEN"]
+    base = os.environ.get("LINEA_BASE") == "1"
+    preparar()
+    objetivos = json.load(open(OBJETIVOS, encoding="utf-8"))
+    try:
+        estado = json.load(open(ESTADO_NUEVAS, encoding="utf-8"))
+    except (OSError, ValueError):
+        estado = {}
+    desde_2023 = 1672531200000   # 1-1-2023
+    novedades = []
+    t0 = time.time()
+    for n, o in enumerate(objetivos):
+        cand, _ = fotos_de(token, o, todas=True)
+        visto = estado.get(o["clave"], desde_2023)
+        recientes = [c for c in cand if c["ms"] > max(visto, desde_2023) and -250 <= c["s"] <= 120 and not c["esf"]]
+        if cand:
+            estado[o["clave"]] = max([visto] + [c["ms"] for c in cand])
+        if len(recientes) >= 4 and not base:
+            novedades.append({"n": n, "id": o["id"], "ext": o["ext"], "c": o.get("c"), "pk": o.get("pk"),
+                              "mu": o.get("mu"), "fotos_nuevas": len(recientes),
+                              "fecha": time.strftime("%Y-%m", time.gmtime(max(c["ms"] for c in recientes) / 1000))})
+        if n % 50 == 0:
+            print(f"{n}/{len(objetivos)} ({time.time() - t0:.0f}s), novedades {len(novedades)}", flush=True)
+    os.makedirs("cache", exist_ok=True)
+    json.dump(estado, open(ESTADO_NUEVAS, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    os.makedirs("hojas_pos", exist_ok=True)
+    json.dump(novedades, open("hojas_pos/nuevas.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(f"novedades: {len(novedades)}" + (" (línea base: solo se apunta)" if base else ""), flush=True)
+    if novedades:
+        os.environ["SOLO"] = " ".join(sorted({x["id"] for x in novedades}))
+        hojas()
+
+
 def rasgos():
     """
     Objetos que Mapillary ha detectado (y situado en el mapa) cerca de unos puntos: para ver si detecta las
@@ -450,5 +492,7 @@ if __name__ == "__main__":
         rasgos()
     elif sys.argv[1:2] == ["dos"]:
         dos()
+    elif sys.argv[1:2] == ["nuevas"]:
+        nuevas()
     else:
         hojas()
