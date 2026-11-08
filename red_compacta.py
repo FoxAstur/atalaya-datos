@@ -12,7 +12,8 @@ Formato de cada tesela (todo en enteros "varint" sin signo; los con signo, en zi
     clase (0-13, ver CLASES) | 16 si sentido único | 32 si túnel | 64 si glorieta
     límite en el sentido del dibujo (km/h; 0 = sin dato)
     límite en el sentido contrario (km/h; 0 = sin dato)
-    origen del límite: 0 sin dato, 1 señal (maxspeed numérico), 2 por tipo de zona (ES:urban, ES:rural...)
+    origen del límite: 0 sin dato, 1 señal (maxspeed numérico), 2 por tipo de zona (ES:urban, ES:rural...),
+                       3 genérico por el tipo de vía (autopista 120, calle de un carril por sentido 30...)
     referencia: 0 = ninguna, si no índice + 1 en la tabla de textos
     nº de puntos; el primero en 1e-5 grados relativo a la esquina SO de la tesela; los demás, diferencia con el
     anterior (zigzag)
@@ -74,6 +75,21 @@ def limites(p):
     return adelante, atras, origen
 
 
+def generico(pais, clase, unico, carriles):
+    """Límite genérico (sin señal) para un turismo, solo donde la ley no deja dudas; 0 si no se sabe."""
+    if clase == "motorway":
+        return 120
+    if clase == "living_street":
+        return 20
+    if clase == "residential":
+        if pais == "PT":
+            return 50
+        # España (RGC art. 50): 50 con dos o más carriles por sentido; 30 con uno
+        por_sentido = carriles if unico else carriles // 2
+        return 50 if por_sentido >= 2 else 30
+    return 0
+
+
 def zz(n):
     return (n << 1) ^ (n >> 63)
 
@@ -127,16 +143,25 @@ def dp(pts, fijos, tol):
 
 
 def main():
-    ruta = sys.argv[1] if len(sys.argv) > 1 else ENTRADA
-    salida = sys.argv[2] if len(sys.argv) > 2 else SALIDA
-    if not os.path.exists(ruta):
+    # uso: red_compacta.py SALIDA ES=ruta PT=ruta ...   (o sin argumentos: ES=red/vias.geojsonseq)
+    salida = sys.argv[1] if len(sys.argv) > 1 else SALIDA
+    entradas = [a.split("=", 1) for a in sys.argv[2:]] or [["ES", ENTRADA]]
+    entradas = [(p, r) for p, r in entradas if os.path.exists(r)]
+    if not entradas:
         print("sin red viaria; no se genera la red compacta")
         return
+
+    def lineas():
+        for pais, ruta in entradas:
+            with open(ruta, encoding="utf-8") as f:
+                for linea in f:
+                    yield pais, linea
+
     # 1ª pasada: cuántas vías usan cada vértice (los cruces no se simplifican)
     usos = defaultdict(int)
     n = 0
-    with open(ruta, encoding="utf-8") as f:
-        for linea in f:
+    if True:
+        for _, linea in lineas():
             g = json.loads(linea)
             cs = g["geometry"]["coordinates"]
             vistos = set()
@@ -152,8 +177,8 @@ def main():
 
     teselas = defaultdict(list)   # (fila, col) → [(flags, v1, v2, origen, ref, pts)]
     puntos_tot = 0
-    with open(ruta, encoding="utf-8") as f:
-        for linea in f:
+    if True:
+        for pais, linea in lineas():
             g = json.loads(linea)
             p = g["properties"]
             clase = p.get("highway")
@@ -169,6 +194,13 @@ def main():
             ow = p.get("oneway")
             unico = ow in ("yes", "true", "1", "-1") or p.get("junction") in ("roundabout", "circular") or clase == "motorway"
             v1, v2, origen = limites(p)
+            if not v1 and not v2:
+                try:
+                    carriles = int((p.get("lanes") or "1").split(";")[0])
+                except ValueError:
+                    carriles = 1
+                v1 = v2 = generico(pais, clase, unico, carriles)
+                origen = 3 if v1 else 0
             if ow == "-1":
                 pts.reverse()
                 v1, v2 = v2, v1

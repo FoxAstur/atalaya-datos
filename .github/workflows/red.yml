@@ -30,20 +30,19 @@ jobs:
           mkdir -p red/tmp
           echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward","maxspeed:type","source:maxspeed","zone:maxspeed","lanes","tunnel"]}' > red/export.json
           FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
-          : > red/vias.geojsonseq
           for zona in europe/spain europe/portugal africa/canary-islands; do
             f=red/tmp/$(basename $zona).osm.pbf
             curl -sSL --retry 3 --connect-timeout 30 --max-time 1800 -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
             osmium tags-filter "$f" "$FILTRO" -o red/tmp/filtrado.osm.pbf --overwrite
             osmium export red/tmp/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o red/tmp/parte.geojsonseq --overwrite
-            cat red/tmp/parte.geojsonseq >> red/vias.geojsonseq
-            rm -f "$f" red/tmp/filtrado.osm.pbf red/tmp/parte.geojsonseq
+            mv red/tmp/parte.geojsonseq red/$(basename $zona).geojsonseq
+            rm -f "$f" red/tmp/filtrado.osm.pbf
           done
-          wc -l red/vias.geojsonseq
-          test "$(wc -l < red/vias.geojsonseq)" -gt 1000000
+          wc -l red/*.geojsonseq
+          test "$(wc -l < red/spain.geojsonseq)" -gt 1000000
       - name: Teselas
         run: |
-          python red_compacta.py red/vias.geojsonseq salida/red
+          python red_compacta.py salida/red ES=red/spain.geojsonseq PT=red/portugal.geojsonseq ES=red/canary-islands.geojsonseq
           cd salida/red && zip -q -0 ../red.zip *.bin indice.json && cd .. && ls -la red.zip
           cp red/indice.json indice.json
       - name: Publicar
