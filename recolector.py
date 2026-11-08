@@ -659,10 +659,22 @@ def sct_texto(texto: str) -> list[dict]:
             la, lo = utm_a_latlon(x, y, 31)
         if la is None or lo is None or not en_espana(la, lo):
             continue
-        vel = next((int(n) for n in nums if n in (20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120)), None)
         via = next((c for c in campos if re.match(r"^[A-Z]{1,4}-?\d+[A-Z]?$", c.upper())), None)
+        # "Via PK Velocitat X Y": el PK va justo detrás de la vía y la velocidad detrás del PK (antes la velocidad
+        # se buscaba entre todos los números y un PK redondo, como 100, pasaba por velocidad)
+        pk = vel = None
+        if via is not None:
+            resto = campos[campos.index(via) + 1:]
+            try:
+                pk = float(resto[0].replace(",", "."))
+                v_ = float(resto[1].replace(",", "."))
+                vel = int(v_) if 10 <= v_ <= 150 else None
+            except (IndexError, ValueError):
+                pk = None
+        if vel is None:
+            vel = next((int(n) for n in nums if n in (20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120) and n != pk), None)
         salida.append(punto(f"sct:{la:.5f},{lo:.5f}", "RADAR_FIJO", "SCT", la, lo,
-                            c=via_normalizada(via) if via else None, v=vel, ca="Cataluña"))
+                            c=via_normalizada(via) if via else None, v=vel, ca="Cataluña", pk=pk))
     return salida
 
 
@@ -688,7 +700,7 @@ def fuente_sct() -> list[dict]:
     salida = []
     for i, o in enumerate(datos):
         lat = lon = x = y = None
-        via = vel = nombre = None
+        via = vel = nombre = pk_sct = None
         for k, v in o.items():
             kl = k.lower()
             if isinstance(v, dict):
@@ -714,6 +726,8 @@ def fuente_sct() -> list[dict]:
                 y = num
             elif ("veloc" in kl or "vmax" in kl or "limit" in kl) and num is not None:
                 vel = int(num)
+            elif kl in ("pk", "punt quilometric", "punt quilomètric") and num is not None:
+                pk_sct = num
             elif kl == "via" or "carretera" in kl or "via" in kl:
                 via = s
             elif nombre is None and ("nom" in kl or "denom" in kl or "municipi" in kl):
@@ -724,7 +738,7 @@ def fuente_sct() -> list[dict]:
             continue
         salida.append(punto(f"sct:{lat:.5f},{lon:.5f}", "RADAR_FIJO", "SCT", lat, lon,
                             c=via_normalizada(via) or via, v=vel if vel and 10 <= vel <= 150 else None,
-                            n=nombre, ca="Cataluña"))
+                            n=nombre, ca="Cataluña", pk=pk_sct))
     return salida
 
 
@@ -1838,6 +1852,21 @@ class Rejilla:
         return mejor
 
 
+def pk_distinto(a: dict, b: dict) -> bool:
+    """
+    Dos radares de la misma fuente con PK distinto y en sitios distintos son dos radares (en el SCT, uno por
+    sentido a unos cientos de metros: la fusión juntaba los de menos de 120 m y se perdía uno). Si están en el
+    mismo sitio exacto es la misma cabina repetida (la DGT la lista una vez por carril).
+    """
+    if a["id"].split(":")[0] != b["id"].split(":")[0] or a.get("pk") is None or b.get("pk") is None:
+        return False
+    try:
+        dpk = abs(float(a["pk"]) - float(b["pk"]))
+    except (TypeError, ValueError):
+        return False
+    return dpk >= 0.05 and distancia(a["la"], a["lo"], b["la"], b["lo"]) >= 15
+
+
 def sentidos_opuestos(a: dict, b: dict) -> bool:
     """
     ¿Vigilan sentidos contrarios? Entonces son dos radares (uno por calzada, a la misma altura) y no se
@@ -1866,7 +1895,7 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
                 salida.append(p)
                 continue
             previo = rej.cerca(p["la"], p["lo"], radios.get(p["t"], 80),
-                               lambda q: q["t"] == p["t"] and not sentidos_opuestos(p, q))
+                               lambda q: q["t"] == p["t"] and not sentidos_opuestos(p, q) and not pk_distinto(p, q))
             if previo is not None:
                 FUSION["absorbidos"][p["id"]] = (previo["id"], round(distancia(p["la"], p["lo"], previo["la"], previo["lo"])),
                                                  p.get("pk"), previo.get("pk"), p.get("s"), previo.get("s"))
