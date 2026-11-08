@@ -1868,6 +1868,8 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
             previo = rej.cerca(p["la"], p["lo"], radios.get(p["t"], 80),
                                lambda q: q["t"] == p["t"] and not sentidos_opuestos(p, q))
             if previo is not None:
+                FUSION["absorbidos"][p["id"]] = (previo["id"], round(distancia(p["la"], p["lo"], previo["la"], previo["lo"])),
+                                                 p.get("pk"), previo.get("pk"), p.get("s"), previo.get("s"))
                 for k in ("v", "c", "la2", "lo2"):
                     if k not in previo and k in p:
                         previo[k] = p[k]
@@ -1885,7 +1887,7 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
     return salida
 
 
-FUSION = {"opuestos": 0}
+FUSION = {"opuestos": 0, "absorbidos": {}}
 
 
 class Rastro:
@@ -3183,6 +3185,10 @@ def main() -> int:
                       camaras_dgt, comunitario, osm, zonas])
     RASTRO.paso("fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m)", todos)
     log(f"fusión: {FUSION['opuestos']} radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)")
+    # radares oficiales que la fusión junta con otro: si son dos radares distintos (PK distinto), se pierde uno
+    for i, (q, d, pk1, pk2, s1, s2) in FUSION["absorbidos"].items():
+        if i.startswith(("dgt:", "dgtpdf:", "sct:", "ansr:")):
+            log(f"  fusión: {i} (PK {pk1} {s1}) junto a {q} (PK {pk2} {s2}) a {d} m")
     todos = unir_tramos(todos)
     RASTRO.paso("unir tramos (cámara de entrada o salida de un tramo)", todos)
     try:
