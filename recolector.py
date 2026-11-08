@@ -266,7 +266,11 @@ def via_normalizada(v: str | None) -> str:
     s = v.upper().replace(" ", "").replace("_", "-")
     m = re.match(r"^([A-Z]+)-?([0-9][0-9A-Z.]*)$", s)
     if m:
-        return f"{m.group(1)}-{m.group(2)}"
+        num = m.group(2)
+        # "SE-020" es la SE-20 (el PDF de la DGT la escribe con un cero delante y no casaba con el feed)
+        if len(num) > 1 and num[0] == "0" and num[1].isdigit():
+            num = num.lstrip("0") or "0"
+        return f"{m.group(1)}-{num}"
     m = re.match(r"^N-?([IVX]+)([A-Z]?)$", s)
     if m:
         for rom, num in ROMANOS:
@@ -359,7 +363,14 @@ class Geocodificador:
             return b
         if a or b:
             return a or b
-        return self._pk_lejos(via, pk, provincia)
+        cerca = self._pk_lejos(via, pk, provincia)
+        if cerca is None:
+            # N-401A, N-340A...: los tramos viejos de una carretera conservan su numeración; con los hitos de la
+            # carretera madre se cae al lado y después se lleva a la suya (revisión final, «su vía»)
+            m = re.match(r"^([A-Z]+-\d+)[A-Z]$", via or "")
+            if m:
+                cerca = self.pk(m.group(1), pk, provincia)
+        return cerca
 
     def _pk_lejos(self, via: str, pk: float, provincia: str | None):
         """
