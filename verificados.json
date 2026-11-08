@@ -1088,6 +1088,83 @@
    "tol": 30,
    "radio": 600,
    "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini f2+30"
+  },
+  {
+   "id": "dgt:GUID_CABINACINEMOMETRO_120542",
+   "t": "RADAR_FIJO",
+   "f": "DGT",
+   "la": 43.0267,
+   "lo": -3.5044,
+   "rb": 211.3,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (A 18 m), no donde cae su PK con los hitos de CartoCiudad"
+  },
+  {
+   "id": "dgtpdf:F:N-432:260.42:C",
+   "t": "RADAR_FIJO",
+   "f": "DGT",
+   "la": 37.957958,
+   "lo": -4.766494,
+   "rb": 173.0,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (A 44 m), no donde cae su PK con los hitos de CartoCiudad"
+  },
+  {
+   "id": "dgtpdf:F:N-332:223.5:C",
+   "t": "RADAR_FIJO",
+   "f": "DGT",
+   "la": 38.970468,
+   "lo": -0.201784,
+   "rb": 12.9,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (A 46 m), no donde cae su PK con los hitos de CartoCiudad"
+  },
+  {
+   "id": "dgt:GUID_CABINACINEMOMETRO_120021",
+   "t": "RADAR_FIJO",
+   "f": "DGT",
+   "la": 42.52766,
+   "lo": -0.36098,
+   "rb": 315.9,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (A 11 m), no donde cae su PK con los hitos de CartoCiudad"
+  },
+  {
+   "id": "dgt:GUID_CABINACINEMOMETRO_120051",
+   "t": "RADAR_FIJO",
+   "f": "DGT",
+   "la": 37.38765,
+   "lo": -6.03394,
+   "rb": 42.2,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (pórtico «velocidad controlada por radar» A 18 m), no donde cae su PK con los hitos de CartoCiudad"
+  },
+  {
+   "id": "dgt:GUID_CABINACINEMOMETRO_120053",
+   "t": "RADAR_FIJO",
+   "f": "DGT",
+   "la": 37.371918,
+   "lo": -5.882567,
+   "rb": 314.5,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (A 10 m), no donde cae su PK con los hitos de CartoCiudad"
+  },
+  {
+   "id": "dgt:GUID_CABINACINEMOMETRO_120145",
+   "t": "RADAR_FIJO",
+   "f": "DGT",
+   "la": 37.869698,
+   "lo": -4.167153,
+   "rb": 140.5,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (A 41 m), no donde cae su PK con los hitos de CartoCiudad"
   }
  ]
 }
