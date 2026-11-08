@@ -1165,6 +1165,64 @@
    "tol": 30,
    "radio": 600,
    "motivo": "Comprobado con fotos de Mapillary (CC BY-SA) el 8-11-2026: la cabina está donde lo da la fuente (A 41 m), no donde cae su PK con los hitos de CartoCiudad"
+  },
+  {
+   "id": "dgteq:V-30:8.5:C:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 39.466357,
+   "lo": -0.418844,
+   "rb": 330.6,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h10+10"
+  },
+  {
+   "id": "dgteq:V-31:10.9:C:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 39.420497,
+   "lo": -0.375106,
+   "rb": 20.4,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h8+25"
+  },
+  {
+   "id": "dgteq:V-21:13.65:C:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 39.513299,
+   "lo": -0.322125,
+   "rb": 202.7,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h11+5"
+  },
+  {
+   "id": "dgtpdf:T:V-23:1.6:D",
+   "t": "RADAR_TRAMO",
+   "f": "DGT",
+   "la": 39.652661,
+   "lo": -0.28297,
+   "la2": 39.639143,
+   "lo2": -0.29138,
+   "px": 1,
+   "rb": 197.2,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: fin h9+10"
+  },
+  {
+   "id": "dgteq:V-23:1.6:D:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 39.639095,
+   "lo": -0.29129,
+   "rb": 217.1,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h9+10"
   }
  ]
 }
