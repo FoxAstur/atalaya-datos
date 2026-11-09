@@ -1058,6 +1058,7 @@ out geom;
                 id_ = f"osm:r{e['id']}"
                 por_id[id_] = punto(id_, "RADAR_TRAMO", "OSM", desde[0], desde[1], la2=round(hasta[0], 6),
                                     lo2=round(hasta[1], 6), c=ref, v=lim, n=tags.get("name"))
+                TRAMOS_OSM_VISTOS[id_] = (desde[0], desde[1], hasta[0], hasta[1])
                 for i, _ in disp:
                     por_id.pop(i, None)
             else:
@@ -1979,6 +1980,23 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
 
 FUSION = {"opuestos": 0, "absorbidos": {}}
 TRAMOS_UNIDOS: dict = {}
+# Cada tramo de OSM leído (relación con from/to): al final se comprueba que sale, él o un oficial, en su sentido
+TRAMOS_OSM_VISTOS: dict = {}
+
+
+def tramos_osm_sin_cubrir(puntos: list[dict]) -> list[str]:
+    """
+    Comprobación propia, en cada recogida y sin depender de Overpass: cada tramo de OSM debe acabar en los datos, él
+    mismo o un tramo oficial, con la entrada a menos de 500 m y la salida a menos de 800 m, en su sentido. Los que
+    no, se listan (el 9-11-2026 se perdían 15 sin que nada lo dijera).
+    """
+    tramos = [p for p in puntos if p["t"] == "RADAR_TRAMO" and p.get("la2") is not None]
+    sin = []
+    for i, (la, lo, la2, lo2) in sorted(TRAMOS_OSM_VISTOS.items()):
+        if not any(distancia(t["la"], t["lo"], la, lo) < 500 and distancia(t["la2"], t["lo2"], la2, lo2) < 800
+                   for t in tramos):
+            sin.append(i)
+    return sin
 
 
 class Rastro:
@@ -3755,11 +3773,27 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             log(f"TCA: trazado falló ({e})")
     todos = [p for p in todos if p["t"] != "TCA"] + tca
+    try:
+        sin = tramos_osm_sin_cubrir(todos)
+        estado["Tramos de OSM comprobados"] = (
+            f"{len(TRAMOS_OSM_VISTOS) - len(sin)} de {len(TRAMOS_OSM_VISTOS)} salen en su sentido"
+            + (f"; ⚠️ faltan: {', '.join(sin[:40])}" if sin else ""))
+        log(f"tramos de OSM sin cubrir: {sin}")
+    except Exception as e:  # noqa: BLE001
+        log(f"comprobación de tramos de OSM falló ({e})")
     fijos = sum(1 for p in todos if p["t"] not in ("ZONA_MOVIL", "TCA"))
     fijos_antes = sum(1 for p in anterior.get("puntos", []) if p["t"] not in ("ZONA_MOVIL", "TCA"))
     if fijos_antes >= 1000 and fijos < 0.85 * fijos_antes:
         estado["⛔ No publicado"] = f"solo {fijos} radares y cámaras frente a {fijos_antes} de la vez anterior"
         log(f"NO SE PUBLICA: {fijos} frente a {fijos_antes}")
+        escribir_informe(todos, estado, anterior.get("version", ahora), zbe)
+        return 1
+    # Lo mismo con los radares de tramo: son pocos (~350) y un fallo al unirlos o girarlos no llega al 15 % del total
+    tramos_n = sum(1 for p in todos if p["t"] == "RADAR_TRAMO")
+    tramos_antes = sum(1 for p in anterior.get("puntos", []) if p["t"] == "RADAR_TRAMO")
+    if tramos_antes >= 200 and tramos_n < 0.9 * tramos_antes:
+        estado["⛔ No publicado"] = f"solo {tramos_n} radares de tramo frente a {tramos_antes} de la vez anterior"
+        log(f"NO SE PUBLICA: {tramos_n} tramos frente a {tramos_antes}")
         escribir_informe(todos, estado, anterior.get("version", ahora), zbe)
         return 1
     # Solo se reescribe si cambia el contenido (así el móvil no descarga si no hay novedades)
