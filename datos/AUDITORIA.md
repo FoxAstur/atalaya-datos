@@ -1,25 +1,25 @@
-# Auditoría 2026-11-08T20:15:18+00:00
+# Auditoría 2026-11-09T11:48:59+00:00
 
 ## Resumen
 
 - comprobados_pk: 1232
 - comprobados_sentido_pk: 1023
 - con_ref: 1481
-- con_rumbo: 2721
-- con_via: 3672
-- osm_camaras: 5655
-- osm_sin_nuestro: 100
+- con_rumbo: 2720
+- con_via: 3671
+- osm_camaras: 5656
+- osm_sin_nuestro: 105
 - tramos: 341
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
 | sin_su_carretera | 47 | 0 |
 | pk_lejos | 38 | 20 |
-| tramo_raro | 25 | 3 |
+| tramo_raro | 23 | 2 |
 | duplicado | 17 | 0 |
-| fuera_de_via | 16 | 7 |
+| fuera_de_via | 15 | 7 |
 | camino_incoherente | 5 | 0 |
-| rumbo_cruzado | 3 | 0 |
+| rumbo_cruzado | 4 | 0 |
 | salida_otra_via | 3 | 0 |
 | sentido_dudoso | 3 | 0 |
 | contra_direccion | 1 | 1 |
@@ -118,7 +118,6 @@
 
 ## tramo_raro
 
-- [1] `dgtpdf:T:CL-615:34.61:C` (DGT PDF radares; CL-615 PK 1.715 Creciente) 42.03811,-4.55886: extremos a 31.6 km
 - [1] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: extremos a 31.9 km
 - [1] `osm:r21440002` (OpenStreetMap; None PK None ) 42.27297,2.95509: entrada y salida a 72 m
 - [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 367 m con los extremos a 424 m en recta
@@ -130,11 +129,10 @@
 - [2] `dgtpdf:T:N-340:960.05:D` (DGT PDF radares; N-340 PK 961.014 Decreciente) 39.88575,-0.13030: longitud 906 m con los extremos a 953 m en recta
 - [2] `dgtpdf:T:N-340:961.0:C` (DGT PDF radares; N-340 PK 960.027 Creciente) 39.87855,-0.13690: longitud 913 m con los extremos a 962 m en recta
 - [2] `dgtpdf:T:SA-20:92.436:C` (DGT PDF radares; SA-20 PK 91.961 Creciente) 40.94246,-5.64202: longitud 392 m con los extremos a 410 m en recta
+- [2] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Decreciente) 37.67441,-1.70734: longitud 557 m con los extremos a 584 m en recta
 - [2] `dgt:GUID_CVM_163340` (DGT feed; A-7 PK 634.615 Creciente) 37.67964,-1.71095: longitud 923 m con los extremos a 990 m en recta
 - [2] `dgt:GUID_CVM_163929` (DGT feed; RM-603 PK 2.65 Creciente) 37.93966,-1.17588: longitud 1261 m con los extremos a 1311 m en recta
 - [2] `dgt:GUID_CVM_164237` (DGT feed; A-8 PK 506.2 Decreciente) 43.54282,-7.04073: longitud 1041 m con los extremos a 1094 m en recta
-- [2] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: longitud 23136 m con los extremos a 31861 m en recta
-- [2] `osm:r11547740` (OpenStreetMap; None PK None ) 37.68328,-1.71080: longitud 1293 m con los extremos a 1336 m en recta
 - [2] `osm:r17026473` (OpenStreetMap; None PK None ) 40.95498,-5.68599: longitud 351 m con los extremos a 386 m en recta
 - [2] `osm:r18345241` (OpenStreetMap; None PK None ) 41.41380,2.16660: longitud 1250 m con los extremos a 1295 m en recta
 - [2] `osm:r20344506` (OpenStreetMap; None PK None ) 41.30560,2.02932: longitud 726 m con los extremos a 766 m en recta
@@ -176,7 +174,6 @@
 - [2] `madzbe:40.4761,-3.6380` (Ayto. Madrid foto-rojo y ZBE; None PK None ) 40.47607,-3.63800: a 54 m de la carretera más cercana
 - [2] `dgteq:A-7:978.95:C:cintur` (DGT PDF cámaras; A-7 PK 978.95 Creciente) 36.73091,-4.36735: a 42 m de la carretera más cercana
 - [2] `dgteq:N-344:118.136:C:cintur` (DGT PDF cámaras; N-344 PK 118.136 Creciente) 38.72867,-0.94147: a 45 m de la carretera más cercana
-- [2] `dgtpdf:T:CL-615:34.61:C` (DGT PDF radares; CL-615 PK 1.715 Creciente) 42.03811,-4.55886: a 53 m de la carretera más cercana
 - [2] `dgtpdf:T:N-401A:93.86:C` (DGT PDF radares; N-401A PK 91.488 Creciente) 39.71700,-3.97801: a 51 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120287` (DGT feed; M-111 PK 0.356 Decreciente) 40.49295,-3.56287: a 47 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: a 51 m de la carretera más cercana
@@ -193,6 +190,7 @@
 
 ## rumbo_cruzado
 
+- [2] `man:vinalesa-stop` (Ayuntamiento / prensa (situada a mano); Carrer Major PK None ) 39.53868,-0.36975: rumbo 18° y las vías a menos de 30 m van a [88, 90, 91, 94, 95]° (o su opuesto)
 - [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK 1084.318 ) 40.73136,0.59085: rumbo 56° y las vías a menos de 30 m van a [2, 178]° (o su opuesto)
 - [2] `dgt:GUID_CABINACINEMOMETRO_120601` (DGT feed; CV-91 PK 18.888 Decreciente) 38.09746,-0.72200: rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)
 - [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: rumbo 31° y las vías a menos de 30 m van a [122, 124]° (o su opuesto)
@@ -242,6 +240,7 @@
 - `osm:n2334938812` 37.36309,-6.03262 2025-12-12 {'direction': '100', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050 BBS Ache A-8057 PK-0.1 Sentido Sevilla @'}
 - `osm:n2378266977` 41.85213,3.07352 2023-12-18 {'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n3202405846` 41.33531,2.09575 2026-03-10 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '80', 'note': 'FVAR F080 MAIG C-31-Sur Km 195 el Prat DIR Barcelona CL'}
+- `osm:n3901483333` 42.45540,1.94235 2020-09-17 {'enforcement': 'maxspeed', 'highway': 'speed_camera'}
 - `osm:n4587398829` 41.31477,1.18087 2025-10-09 {'direction': '300', 'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n4838340298` 42.25140,-8.68574 2025-10-02 {'direction': '20', 'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n4958102690` 41.52368,2.16454 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '120'}
@@ -251,6 +250,7 @@
 - `osm:n7541702988` 41.68635,-0.95408 2026-01-31 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n8968186514` 42.04012,-4.55993 2026-01-28 {'description': 'Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n8974875728` 39.66718,-2.37500 2026-01-07 {'direction': '140', 'highway': 'speed_camera', 'maxspeed': '120', 'note': 'A-3 PK 156.57 SENTIDO CRECIENTE'}
+- `osm:n9071289106` 42.73289,0.19460 2026-10-25 {'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n9212434658` 43.01128,-1.63673 2026-02-12 {'direction': '150', 'highway': 'speed_camera', 'maxspeed': '50'}
 - `osm:n10182984432` 43.32288,-2.98118 2026-06-10 {'direction': '290', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n11080765218` 41.21193,1.69115 2023-08-01 {'highway': 'speed_camera'}
@@ -273,7 +273,7 @@
 - `osm:n11084641830` 41.53106,2.09226 2023-08-02 {'highway': 'speed_camera'}
 - `osm:n11084641839` 41.59265,2.18565 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '90', 'note': 'radar tram'}
 - `osm:n12029827822` 41.42534,2.00122 2026-03-08 {'direction': '-20', 'highway': 'speed_camera', 'maxspeed': '100'}
-- `osm:n12670560708` 39.46902,-0.42085 2025-03-16 {'highway': 'speed_camera'}
+- `osm:n12670560708` 39.46902,-0.42085 2026-11-03 {'direction': '350', 'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n12670560709` 39.43880,-0.39184 2025-03-16 {'highway': 'speed_camera'}
 - `osm:n12670628830` 39.47833,-0.44836 2025-03-16 {'highway': 'speed_camera'}
 - `osm:n12839568988` 42.16968,1.31840 2026-03-17 {'direction': '10', 'highway': 'speed_camera', 'maxspeed': '90'}
@@ -301,7 +301,10 @@
 - `osm:r7778337` 41.53876,0.45392  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r7778343` 41.62415,1.42033  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r8453561` 41.85213,3.07352  {'enforcement': 'maxspeed', 'maxspeed': '100', 'name': 'Radar fix C-31 (Calonge)'}
+- `osm:r9959079` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|NO->SE'}
+- `osm:r9959080` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|SE->NO'}
 - `osm:r10358149` 40.46815,-3.43084  {'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r13180336` 42.73289,0.19460  {'enforcement': 'maxspeed', 'maxspeed': '60', 'name': 'Aragnouet - Tunnel Aragnouet Bielsa|N->S'}
 - `osm:r15824408` 36.54663,-4.66933  {'enforcement': 'maxspeed', 'maxspeed': '50'}
 - `osm:r15896698` 38.02615,-3.77256  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r18375567` 43.25587,-4.06522  {'enforcement': 'traffic_signals', 'name': 'Control semafórico del túnel'}
