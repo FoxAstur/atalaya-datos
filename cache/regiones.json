@@ -80,6 +80,10 @@
   "pr": "Las Palmas"
  },
  "28.047,-15.424": null,
+ "28.049,-16.631": {
+  "mu": "San Miguel de Abona",
+  "pr": "Santa Cruz de Tenerife"
+ },
  "28.050,-16.633": {
   "mu": "San Miguel de Abona",
   "pr": "Santa Cruz de Tenerife"
@@ -553,6 +557,7 @@
   "mu": "Tarifa",
   "pr": "Cádiz"
  },
+ "36.045,-5.634": null,
  "36.046,-5.634": null,
  "36.051,-5.644": {
   "mu": "Tarifa",
@@ -3193,6 +3198,10 @@
   "mu": "Cortegana",
   "pr": "Huelva"
  },
+ "37.935,-6.858": {
+  "mu": "Cortegana",
+  "pr": "Huelva"
+ },
  "37.936,-1.190": {
   "mu": "Murcia",
   "pr": "Murcia"
@@ -3230,6 +3239,10 @@
   "pr": "Murcia"
  },
  "37.947,-6.905": {
+  "mu": "Aroche",
+  "pr": "Huelva"
+ },
+ "37.947,-6.906": {
   "mu": "Aroche",
   "pr": "Huelva"
  },
@@ -5166,6 +5179,10 @@
   "mu": "Xeraco",
   "pr": "Valencia"
  },
+ "39.042,-2.191": {
+  "mu": "Barrax",
+  "pr": "Albacete"
+ },
  "39.042,-2.193": {
   "mu": "Barrax",
   "pr": "Albacete"
@@ -6156,6 +6173,10 @@
   "mu": "Utiel",
   "pr": "Valencia"
  },
+ "39.634,2.739": {
+  "mu": "Marratxí",
+  "pr": "Illes Balears"
+ },
  "39.634,2.749": {
   "mu": "Marratxí",
   "pr": "Illes Balears"
@@ -6174,6 +6195,10 @@
   "pr": "Valencia"
  },
  "39.645,2.747": {
+  "mu": "Marratxí",
+  "pr": "Illes Balears"
+ },
+ "39.646,2.747": {
   "mu": "Marratxí",
   "pr": "Illes Balears"
  },
@@ -7453,6 +7478,10 @@
   "mu": "Santa Magdalena de Pulpis",
   "pr": "Castellón"
  },
+ "40.365,0.316": {
+  "mu": "Santa Magdalena de Pulpis",
+  "pr": "Castellón"
+ },
  "40.366,-3.275": {
   "mu": "Nuevo Baztán",
   "pr": "Madrid"
@@ -7550,6 +7579,10 @@
   "pr": "Teruel"
  },
  "40.390,-4.466": {
+  "mu": "El Tiemblo",
+  "pr": "Ávila"
+ },
+ "40.390,-4.467": {
   "mu": "El Tiemblo",
   "pr": "Ávila"
  },
@@ -8215,6 +8248,10 @@
  },
  "40.510,-4.216": {
   "mu": "Robledo de Chavela",
+  "pr": "Madrid"
+ },
+ "40.511,-4.208": {
+  "mu": "Zarzalejo",
   "pr": "Madrid"
  },
  "40.511,-4.209": {
@@ -9408,6 +9445,10 @@
   "mu": "Torrecaballeros",
   "pr": "Segovia"
  },
+ "40.998,-5.899": {
+  "mu": "Golpejas",
+  "pr": "Salamanca"
+ },
  "41.000,-2.577": {
   "mu": "Saúca",
   "pr": "Guadalajara"
@@ -9482,6 +9523,7 @@
   "mu": "Codorniz",
   "pr": "Segovia"
  },
+ "41.064,-3.827": null,
  "41.065,-3.825": {
   "mu": "Navafría",
   "pr": "Segovia"
@@ -9912,6 +9954,10 @@
   "pr": "Barcelona"
  },
  "41.299,2.035": {
+  "mu": "Viladecans",
+  "pr": "Barcelona"
+ },
+ "41.300,2.034": {
   "mu": "Viladecans",
   "pr": "Barcelona"
  },
@@ -12144,6 +12190,10 @@
   "mu": "Zaragoza",
   "pr": "Zaragoza"
  },
+ "41.662,-0.957": {
+  "mu": "Zaragoza",
+  "pr": "Zaragoza"
+ },
  "41.662,-0.958": {
   "mu": "Zaragoza",
   "pr": "Zaragoza"
@@ -14059,6 +14109,10 @@
   "mu": "Figueres",
   "pr": "Girona"
  },
+ "42.267,2.997": {
+  "mu": "Figueres",
+  "pr": "Girona"
+ },
  "42.269,3.169": {
   "mu": "Roses",
   "pr": "Girona"
@@ -14561,6 +14615,10 @@
  "42.402,-4.388": {
   "mu": "Osorno la Mayor",
   "pr": "Palencia"
+ },
+ "42.403,-3.284": {
+  "mu": "Espinosa del Camino",
+  "pr": "Burgos"
  },
  "42.403,-3.285": null,
  "42.403,-3.286": null,
@@ -16940,6 +16998,10 @@
   "mu": "Bilbao",
   "pr": "Bizkaia"
  },
+ "43.233,-8.651": {
+  "mu": "Carballo",
+  "pr": "A Coruña"
+ },
  "43.233,-8.652": {
   "mu": "Carballo",
   "pr": "A Coruña"
@@ -17208,6 +17270,10 @@
   "mu": "Langreo",
   "pr": "Asturias"
  },
+ "43.291,-5.668": {
+  "mu": "Langreo",
+  "pr": "Asturias"
+ },
  "43.292,-1.974": {
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
@@ -17255,6 +17321,10 @@
  "43.299,-8.810": {
   "mu": "Malpica de Bergantiños",
   "pr": "A Coruña"
+ },
+ "43.300,-5.691": {
+  "mu": "Langreo",
+  "pr": "Asturias"
  },
  "43.301,-5.690": {
   "mu": "Langreo",
@@ -17645,6 +17715,10 @@
   "pr": "Bizkaia"
  },
  "43.349,-3.164": {
+  "mu": "Castro-Urdiales",
+  "pr": "Cantabria"
+ },
+ "43.350,-3.166": {
   "mu": "Castro-Urdiales",
   "pr": "Cantabria"
  },
