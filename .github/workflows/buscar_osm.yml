@@ -40,6 +40,7 @@ jobs:
                   print("   miembros:", [(m["role"], m["type"], m["ref"]) for m in e.get("members", [])])
           PY
       - name: Miembros de las relaciones
+        continue-on-error: true
         if: inputs.relaciones != ''
         env:
           R: ${{ inputs.relaciones }}

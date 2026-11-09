@@ -20,6 +20,7 @@ jobs:
           python-version: "3.12"
       - run: pip install pdfplumber
       - name: Buscar
+        continue-on-error: true
         env:
           PATRON: ${{ inputs.patron }}
         run: |
