@@ -1,11 +1,11 @@
-# Auditoría 2026-11-09T17:31:45+00:00
+# Auditoría 2026-11-09T17:46:24+00:00
 
 ## Resumen
 
 - comprobados_pk: 1236
 - comprobados_sentido_pk: 1020
 - con_ref: 1486
-- con_rumbo: 2724
+- con_rumbo: 2741
 - con_via: 3685
 - osm_camaras: 5656
 - osm_sin_nuestro: 96
@@ -199,7 +199,7 @@
 ## camino_incoherente
 
 - [2] `dgteq:N-351:6.8:C:cintur` (DGT PDF cámaras; N-351 PK 6.8 Creciente) 36.15754,-5.35226: 3 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
-- [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
+- [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 259.332 Creciente) 40.57446,-3.05186: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n2378266833` (OpenStreetMap; None PK None ) 41.53422,2.21058: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n2378267261` (OpenStreetMap; None PK None ) 43.21176,-8.69152: 5 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n8376349411` (OpenStreetMap; None PK None ) 41.62987,2.16581: 2 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
@@ -209,13 +209,13 @@
 - [2] `man:vinalesa-stop` (Ayuntamiento / prensa (situada a mano); Carrer Major PK None ) 39.53868,-0.36975: rumbo 18° y las vías a menos de 30 m van a [88, 90, 91, 94, 95]° (o su opuesto)
 - [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK 1084.318 ) 40.73136,0.59085: rumbo 56° y las vías a menos de 30 m van a [2, 178]° (o su opuesto)
 - [2] `dgt:GUID_CABINACINEMOMETRO_120601` (DGT feed; CV-91 PK 18.888 Decreciente) 38.09746,-0.72200: rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)
-- [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: rumbo 31° y las vías a menos de 30 m van a [122, 124]° (o su opuesto)
+- [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 259.332 Creciente) 40.57446,-3.05186: rumbo 287° y las vías a menos de 30 m van a [31]° (o su opuesto)
 
 ## sentido_dudoso
 
 - [3] `dgt:GUID_CABINACINEMOMETRO_120025` (DGT feed; N-234 PK 75.808 Decreciente) 40.12388,-0.76951: «Decreciente» va hacia 117° y el rumbo es 189°
 - [3] `dgt:GUID_CABINACINEMOMETRO_165670` (DGT feed; AC-862 PK 37.6 Creciente) 43.64023,-7.92840: «Creciente» va hacia 84° y el rumbo es 154°
-- [3] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: «Creciente» va hacia 312° y el rumbo es 31°
+- [3] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 259.332 Creciente) 40.57446,-3.05186: «Creciente» va hacia 27° y el rumbo es 287°
 
 ## salida_otra_via
 
