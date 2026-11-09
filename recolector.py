@@ -3012,6 +3012,23 @@ def unir_tramos(puntos: list[dict]) -> list[dict]:
                 if k not in t and k in o:
                     t[k] = o[k]
             fuera.add(o["id"]); duplicados += 1
+    # El mismo tramo, en el mismo sentido, dos veces: el del feed (sus dos cámaras) y el del PDF situado por PK
+    # (añadido por ser del sentido contrario a una cámara suelta del feed, cuando aún no se sabía la otra). Si
+    # entrada y salida coinciden, se queda el del feed.
+    oficiales = [t for t in tramos if t["f"] != "OSM" and t["id"] not in fuera]
+    for t in oficiales:
+        if not t["id"].startswith("dgtpdf:T:"):
+            continue
+        for o in oficiales:
+            if o is t or o["id"] in fuera or o["id"].startswith("dgtpdf:"):
+                continue
+            if distancia(t["la"], t["lo"], o["la"], o["lo"]) < 700 and distancia(t["la2"], t["lo2"], o["la2"], o["lo2"]) < 700:
+                for k in ("v", "lm"):
+                    if k not in o and k in t:
+                        o[k] = t[k]
+                fuera.add(t["id"]); duplicados += 1
+                log(f"  tramo {t['id']} repetido: ya está como {o['id']}")
+                break
     for p in puntos:
         if p["t"] == "RADAR_TRAMO" and "la2" not in p:
             e = rej.cerca(p["la"], p["lo"], 300, lambda q: sentido_ok(p, q["_t"]))
