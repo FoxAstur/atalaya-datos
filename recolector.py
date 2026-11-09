@@ -3147,6 +3147,7 @@ def main() -> int:
                     pet |= {(via, int(math.floor(pk)), prov), (via, int(math.floor(pk)) + 1, prov)}
         geo.precargar(pet)
         salida, sin_situar = [], 0
+        extra_pdf = []   # tramos del PDF del sentido contrario a la cámara del feed con la que casan (se añaden aparte)
         for f in sorted(filas, key=lambda f: f["tipo"] != "Fijo"):   # los fijos primero (ver en_feed)
             if f["tipo"] == "Movil":
                 continue
@@ -3154,14 +3155,16 @@ def main() -> int:
             via = via_normalizada(f["via"])
             q = en_feed(via, f["pk"], f["sentido"])
             c = None
-            if (q is not None and f["tipo"] == "Tramo" and "la2" in q and q.get("t") == "RADAR_TRAMO"
+            if (q is not None and f["tipo"] == "Tramo" and f.get("longitud")
                     and f["sentido"] in ("Creciente", "Decreciente") and q.get("s") in ("Creciente", "Decreciente")
                     and q["s"] != f["sentido"]):
-                # El feed ya trae ese tramo completo (entrada y salida) en el OTRO sentido: son los dos sentidos del
-                # mismo trozo, no el mismo radar. V-30 PK 4,76-8,85: el feed da el de dirección Alicante
-                # (decreciente) y el PDF el de dirección Quart (creciente); los dos tienen sus pórticos y señales.
-                log(f"    tramo {via} PK {f['pk']} {f['sentido']}: el del feed es del otro sentido ({q['s']}); se añaden los dos")
-                q = None
+                # El feed da una cámara del mismo trozo pero en el OTRO sentido. Pueden ser los dos sentidos del
+                # mismo tramo (V-30 PK 4,76-8,85: la cámara del feed está en la calzada hacia el puerto y el PDF, OSM
+                # y quien pasa por allí lo dan hacia Quart, con sus pórticos y señales). Antes se juntaban en uno y,
+                # al orientarlo por la cámara, se perdía el del PDF. Ahora se queda lo del feed como estaba y,
+                # además, el tramo del PDF en su sentido.
+                extra_pdf.append((f, prov, via))
+                log(f"    tramo {via} PK {f['pk']} {f['sentido']}: el feed es del otro sentido ({q['s']}); se añaden los dos")
             if q is None:
                 c = geo.pk(via, f["pk"], prov)
                 if not c:
@@ -3217,6 +3220,19 @@ def main() -> int:
             else:
                 salida.append(punto(f"dgtpdf:F:{via}:{f['pk']}:{f['sentido'][0]}",
                                     "RADAR_TRAMO" if f["tipo"] == "Tramo" else "RADAR_FIJO", "DGT", c[0], c[1], **base))
+        for f, prov, via in extra_pdf:
+            c = geo.pk(via, f["pk"], prov)
+            if not c:
+                log(f"    sin situar: tramo {via} PK {f['pk']} {f['sentido']} (del otro sentido)")
+                continue
+            largo = f["longitud"] / 1000
+            s = f["sentido"]
+            pk_ini = f["pk"] - largo if s != "Decreciente" else f["pk"] + largo
+            c1 = geo.pk(via, pk_ini, prov) if pk_ini >= 0 else None
+            if c1:
+                salida.append(punto(f"dgtpdf:T:{via}:{f['pk']}:{s[0]}", "RADAR_TRAMO", "DGT", c1[0], c1[1],
+                                    la2=round(c[0], 6), lo2=round(c[1], 6), pk2=f["pk"], lm=f["longitud"],
+                                    c=via, pk=round(pk_ini, 3), s=s, pr=prov, ca=PROVINCIAS[prov][1] if prov else None))
         log(f"  cinemómetros: {casados} ya estaban en el feed, {len(salida)} añadidos, {sin_situar} sin poder situar")
         return salida
 
