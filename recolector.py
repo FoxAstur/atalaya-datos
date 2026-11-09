@@ -1884,6 +1884,44 @@ def sentidos_opuestos(a: dict, b: dict) -> bool:
     return False
 
 
+def _rumbo_tramo(t: dict):
+    return rumbo_entre(t["la"], t["lo"], t["la2"], t["lo2"]) if t.get("la2") is not None else None
+
+
+def tramos_distintos(p: dict, q: dict) -> bool:
+    """
+    Dos tramos completos (entrada y salida) que empiezan cerca no siempre son el mismo: dos relaciones de OSM que
+    comparten la cámara de entrada y acaban en sitios distintos, o el de la otra calzada (rumbo contrario). La
+    fusión miraba solo la entrada y se perdían (LZ-67 en Lanzarote).
+    """
+    if p.get("la2") is None or q.get("la2") is None:
+        return False
+    a, b = _rumbo_tramo(p), _rumbo_tramo(q)
+    if abs((a - b + 180) % 360 - 180) > 120:
+        return True
+    return p.get("f") == "OSM" and q.get("f") == "OSM" and distancia(p["la2"], p["lo2"], q["la2"], q["lo2"]) > 600
+
+
+def tramo_osm_en(previo: dict, o: dict) -> None:
+    """
+    Un tramo de OSM (relación con from/to: entrada y salida en su sentido, trazadas sobre la foto aérea) que coincide
+    con uno oficial. Se guarda en el oficial para orientarlo luego (la etiqueta creciente/decreciente del feed a
+    veces está mal: CL-613) y, si el oficial está situado solo por PK (PDF), se le ponen los extremos de OSM, que
+    son mejores: en la A-3 hacia Valencia la salida por PK caía a 880 m de la cámara real.
+    """
+    previo.setdefault("_osm_tramos", []).append((o["la"], o["lo"], o["la2"], o["lo2"], o["id"]))
+    if not previo["id"].startswith("dgtpdf:") or previo.get("la2") is None:
+        return
+    if abs((_rumbo_tramo(previo) - _rumbo_tramo(o) + 180) % 360 - 180) > 60:
+        return
+    if distancia(previo["la2"], previo["lo2"], o["la2"], o["lo2"]) > 2500:
+        return
+    previo["la"], previo["lo"], previo["la2"], previo["lo2"] = o["la"], o["lo"], o["la2"], o["lo2"]
+    for k in ("ap", "rt"):
+        previo.pop(k, None)
+    previo["_pos_osm"] = True
+
+
 def fusionar(capas: list[list[dict]]) -> list[dict]:
     """Une capas por orden de prioridad: un punto de una capa posterior que coincide con uno anterior se descarta."""
     radios = {"RADAR_FIJO": 120, "RADAR_TRAMO": 300, "SEMAFORO": 60, "STOP_CEDA": 60, "OTRA_CAMARA": 80, "ZONA_MOVIL": 50}
@@ -1895,8 +1933,11 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
                 salida.append(p)
                 continue
             previo = rej.cerca(p["la"], p["lo"], radios.get(p["t"], 80),
-                               lambda q: q["t"] == p["t"] and not sentidos_opuestos(p, q) and not pk_distinto(p, q))
+                               lambda q: q["t"] == p["t"] and not sentidos_opuestos(p, q) and not pk_distinto(p, q)
+                               and not tramos_distintos(p, q))
             if previo is not None:
+                if p["t"] == "RADAR_TRAMO" and p.get("f") == "OSM" and p.get("la2") is not None:
+                    tramo_osm_en(previo, p)
                 FUSION["absorbidos"][p["id"]] = (previo["id"], round(distancia(p["la"], p["lo"], previo["la"], previo["lo"])),
                                                  p.get("pk"), previo.get("pk"), p.get("s"), previo.get("s"))
                 for k in ("v", "c", "la2", "lo2"):
@@ -2973,18 +3014,32 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
                 break
     if a_favor < 8 or a_favor < 3 * en_contra:
         return f"⚠️ el sentido oficial no cuadra con OSM/PDF ({a_favor} a favor, {en_contra} en contra): no se toca"
-    girados = []
+    osm_sueltos = [(o["la"], o["lo"], o["la2"], o["lo2"], o["id"]) for o in ref if o.get("f") == "OSM"]
+    girados, por_osm = [], 0
     for p in tramos:
-        if p.get("rb") is not None and al_reves(p):
+        # si OSM tiene este mismo tramo (from → to), manda OSM: la etiqueta de sentido del feed a veces está mal
+        osm_dice = None
+        for la, lo, la2, lo2, _ in p.get("_osm_tramos", []) + osm_sueltos:
+            igual = max(distancia(p["la"], p["lo"], la, lo), distancia(p["la2"], p["lo2"], la2, lo2))
+            inverso = max(distancia(p["la"], p["lo"], la2, lo2), distancia(p["la2"], p["lo2"], la, lo))
+            if min(igual, inverso) < 500:
+                osm_dice = inverso < igual
+                break
+        if osm_dice is not None:
+            por_osm += 1
+            girar = osm_dice
+        else:
+            girar = p.get("rb") is not None and al_reves(p)
+        if girar:
             p["la"], p["lo"], p["la2"], p["lo2"] = p["la2"], p["lo2"], p["la"], p["lo"]
             if p.get("pk2") is not None:
                 p["pk"], p["pk2"] = p["pk2"], p["pk"]
             for k in ("ap", "rt"):
                 p.pop(k, None)
             girados.append(p["id"])
-    log(f"tramos del feed girados: {girados}")
+    log(f"tramos del feed girados: {girados} ({por_osm} orientados por su relación de OSM)")
     return (f"{len(girados)} de {len(tramos)} tramos del feed de la DGT venían con la salida primero y se les ha dado "
-            f"la vuelta (comprobado con OSM/PDF: {a_favor} a favor, {en_contra} en contra)")
+            f"la vuelta (comprobado con OSM/PDF: {a_favor} a favor, {en_contra} en contra; {por_osm} por su tramo de OSM)")
 
 
 def unir_tramos(puntos: list[dict]) -> list[dict]:
@@ -3622,7 +3677,7 @@ def main() -> int:
             aprox += 1
     estado["Posición aproximada (solo PK)"] = f"{aprox} puntos"
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px", "_orient_pdf", "_camara_entrada"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px", "_orient_pdf", "_camara_entrada", "_osm_tramos"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
