@@ -14,3 +14,4 @@ jobs:
           python-version: "3.12"
       - run: pip install pdfplumber==0.11.10 openpyxl==3.1.5
       - run: python comprobar_tramos.py datos/radares.json
+        timeout-minutes: 60

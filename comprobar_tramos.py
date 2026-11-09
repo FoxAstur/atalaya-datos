@@ -52,16 +52,32 @@ for x in etiqueta:
     print("  ETIQUETA", x)
 
 # --- 2) OpenStreetMap (España)
-Q = ('[out:json][timeout:300];area["ISO3166-1"="ES"][admin_level=2]->.es;'
-     'relation["type"="enforcement"]["enforcement"="average_speed"](area.es);out body;>;out skel qt;')
-d = None
-for u in r.OVERPASS + ["https://overpass.private.coffee/api/interpreter"]:
-    try:
-        req = urllib.request.Request(u, data=urllib.parse.urlencode({"data": Q}).encode(), headers={"User-Agent": r.UA})
-        d = json.load(urllib.request.urlopen(req, timeout=360))
-        break
-    except Exception as e:  # noqa: BLE001
-        print("overpass", u, e)
+# por trozos (la consulta de toda España de golpe no la aguanta el servidor)
+trozos = [(la, lo, la + 2.5, lo + 3.0) for la in (35.9, 38.4, 40.9) for lo in (-9.5, -6.5, -3.5, -0.5, 2.5)] + \
+         [(27.5, -18.5, 29.5, -13.3), (43.3, -9.5, 44.0, -1.0)]
+elementos, fallidos = {}, []
+for b in trozos:
+    Q = ('[out:json][timeout:180];relation["type"="enforcement"]["enforcement"="average_speed"]'
+         f'({b[0]},{b[1]},{b[2]},{b[3]});out body;>;out skel qt;')
+    hecho = False
+    for intento in range(3):
+        for u in r.OVERPASS + ["https://overpass.private.coffee/api/interpreter"]:
+            try:
+                req = urllib.request.Request(u, data=urllib.parse.urlencode({"data": Q}).encode(), headers={"User-Agent": r.UA})
+                for e in json.load(urllib.request.urlopen(req, timeout=240))["elements"]:
+                    elementos[(e["type"], e["id"])] = e
+                hecho = True
+                break
+            except Exception as ex:  # noqa: BLE001
+                print("overpass", u, b, ex)
+        if hecho:
+            break
+        import time; time.sleep(30)
+    if not hecho:
+        fallidos.append(b)
+d = {"elements": list(elementos.values())} if elementos else None
+if fallidos:
+    print("trozos sin respuesta:", fallidos)
 if d:
     nodos = {e["id"]: e for e in d["elements"] if e["type"] == "node"}
     rels = [e for e in d["elements"] if e["type"] == "relation"]
