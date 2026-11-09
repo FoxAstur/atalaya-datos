@@ -1928,6 +1928,20 @@ def tramo_osm_en(previo: dict, o: dict) -> None:
     previo["_pos_osm"] = True
 
 
+def osm_confirma(p: dict) -> bool:
+    """¿Coincide este tramo, tal como está orientado, con una relación de OSM absorbida en él (entrada y salida)?"""
+    if p.get("_orient_osm"):
+        return True
+    if p.get("la2") is None:
+        return False
+    for la, lo, la2, lo2, *_ in p.get("_osm_tramos", []):
+        igual = max(distancia(p["la"], p["lo"], la, lo), distancia(p["la2"], p["lo2"], la2, lo2))
+        inverso = max(distancia(p["la"], p["lo"], la2, lo2), distancia(p["la2"], p["lo2"], la, lo))
+        if igual < 300 and inverso > 2 * igual + 150:
+            return True
+    return False
+
+
 def fusionar(capas: list[list[dict]]) -> list[dict]:
     """Une capas por orden de prioridad: un punto de una capa posterior que coincide con uno anterior se descarta."""
     radios = {"RADAR_FIJO": 120, "RADAR_TRAMO": 300, "SEMAFORO": 60, "STOP_CEDA": 60, "OTRA_CAMARA": 80, "ZONA_MOVIL": 50}
@@ -2806,7 +2820,7 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
         for q in oficiales:
             por_via.setdefault(via_normalizada(q["c"]), []).append(q)
         for p in todos:
-            if p.get("_orient_osm") and p.get("la2") is not None and p.get("rb") is None:
+            if p.get("la2") is not None and p.get("rb") is None and osm_confirma(p):
                 # tramo orientado por su relación de OSM: el rumbo es el suyo (girarlo por los vecinos lo dejaba al
                 # revés en la N-320 de Guadalajara, cuya única cámara en el feed es la de salida)
                 p["rb"] = round(rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]), 1)
@@ -2964,7 +2978,7 @@ def imponer_sentido_oficial(puntos: list[dict], geo: "Geocodificador") -> tuple[
         girar_tramo = p.get("la2") is not None and abs(
             (rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]) - ro + 180) % 360 - 180) > 100 and \
             distancia(p["la"], p["lo"], p["la2"], p["lo2"]) > 250
-        if girar_tramo and p.get("_orient_osm"):
+        if girar_tramo and osm_confirma(p):
             # OSM tiene este tramo con su entrada y su salida: lo que está mal es la etiqueta de la DGT (CL-613 PK 15,41,
             # A-397 PK 28,02, RM-603 PK 1,4: el feed dice «Creciente» y el PDF de la DGT, «Decreciente»). Girarlo dejaba
             # los dos tramos de la carretera en el mismo sentido y luego uno se quitaba por repetido.
