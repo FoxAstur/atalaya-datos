@@ -3154,6 +3154,14 @@ def main() -> int:
             via = via_normalizada(f["via"])
             q = en_feed(via, f["pk"], f["sentido"])
             c = None
+            if (q is not None and f["tipo"] == "Tramo" and "la2" in q and q.get("t") == "RADAR_TRAMO"
+                    and f["sentido"] in ("Creciente", "Decreciente") and q.get("s") in ("Creciente", "Decreciente")
+                    and q["s"] != f["sentido"]):
+                # El feed ya trae ese tramo completo (entrada y salida) en el OTRO sentido: son los dos sentidos del
+                # mismo trozo, no el mismo radar. V-30 PK 4,76-8,85: el feed da el de dirección Alicante
+                # (decreciente) y el PDF el de dirección Quart (creciente); los dos tienen sus pórticos y señales.
+                log(f"    tramo {via} PK {f['pk']} {f['sentido']}: el del feed es del otro sentido ({q['s']}); se añaden los dos")
+                q = None
             if q is None:
                 c = geo.pk(via, f["pk"], prov)
                 if not c:
