@@ -1915,7 +1915,7 @@ def tramo_osm_en(previo: dict, o: dict) -> None:
     veces está mal: CL-613) y, si el oficial está situado solo por PK (PDF), se le ponen los extremos de OSM, que
     son mejores: en la A-3 hacia Valencia la salida por PK caía a 880 m de la cámara real.
     """
-    previo.setdefault("_osm_tramos", []).append((o["la"], o["lo"], o["la2"], o["lo2"], o["id"]))
+    previo.setdefault("_osm_tramos", []).append((o["la"], o["lo"], o["la2"], o["lo2"], o["id"], dict(o)))
     if not previo["id"].startswith("dgtpdf:") or previo.get("la2") is None:
         return
     if abs((_rumbo_tramo(previo) - _rumbo_tramo(o) + 180) % 360 - 180) > 60:
@@ -3036,7 +3036,7 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
                 break
     if a_favor < 8 or a_favor < 3 * en_contra:
         return f"⚠️ el sentido oficial no cuadra con OSM/PDF ({a_favor} a favor, {en_contra} en contra): no se toca"
-    osm_sueltos = [(o["la"], o["lo"], o["la2"], o["lo2"], o["id"]) for o in ref if o.get("f") == "OSM"]
+    osm_sueltos = [(o["la"], o["lo"], o["la2"], o["lo2"], o["id"], o) for o in ref if o.get("f") == "OSM"]
     girados, por_osm = [], 0
     for p in tramos:
         # si OSM tiene este mismo tramo (from → to), manda OSM: la etiqueta de sentido del feed a veces está mal
@@ -3044,7 +3044,7 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
         # autovía (A-7 en Lorca, ~1 km) las relaciones de las dos calzadas quedan casi igual de cerca y elegía mal.
         osm_dice = None
         mi = mv = 1e9
-        for la, lo, la2, lo2, _ in p.get("_osm_tramos", []) + osm_sueltos:
+        for la, lo, la2, lo2, *_ in p.get("_osm_tramos", []) + osm_sueltos:
             mi = min(mi, max(distancia(p["la"], p["lo"], la, lo), distancia(p["la2"], p["lo2"], la2, lo2)))
             mv = min(mv, max(distancia(p["la"], p["lo"], la2, lo2), distancia(p["la2"], p["lo2"], la, lo)))
         largo = distancia(p["la"], p["lo"], p["la2"], p["lo2"])
@@ -3065,6 +3065,22 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
                 p.pop(k, None)
             girados.append(p["id"])
     log(f"tramos del feed girados: {girados} ({por_osm} orientados por su relación de OSM)")
+    # Un tramo de OSM absorbido en la fusión por un oficial que al final va en el otro sentido se perdía: OSM tiene
+    # los dos sentidos (dos relaciones con las mismas cámaras) y la DGT solo uno, o el oficial se ha girado. Se
+    # recupera si ningún tramo oficial lo cubre ya en su sentido (León, N-320 en Guadalajara).
+    cubren = [q for q in puntos if q["t"] == "RADAR_TRAMO" and q.get("la2") is not None]
+    recuperados = []
+    for p in list(puntos):
+        for la, lo, la2, lo2, oid, o in p.get("_osm_tramos", []):
+            if any(distancia(q["la"], q["lo"], la, lo) < 400 and distancia(q["la2"], q["lo2"], la2, lo2) < 800
+                   for q in cubren):
+                continue
+            o = dict(o)
+            o.pop("_osm_tramos", None)
+            puntos.append(o)
+            cubren.append(o)
+            recuperados.append(f"{oid} (estaba en {p['id']})")
+    log(f"tramos de OSM recuperados (su oficial va en el otro sentido): {recuperados}")
     return (f"{len(girados)} de {len(tramos)} tramos del feed de la DGT venían con la salida primero y se les ha dado "
             f"la vuelta (comprobado con OSM/PDF: {a_favor} a favor, {en_contra} en contra; {por_osm} por su tramo de OSM)")
 
