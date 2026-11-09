@@ -309,6 +309,10 @@
   "mu": "El Sauzal",
   "pr": "Santa Cruz de Tenerife"
  },
+ "28.473,-16.428": {
+  "mu": "El Sauzal",
+  "pr": "Santa Cruz de Tenerife"
+ },
  "28.474,-13.868": {
   "mu": "Puerto del Rosario",
   "pr": "Las Palmas"
@@ -13874,6 +13878,10 @@
   "mu": "Vigo",
   "pr": "Pontevedra"
  },
+ "42.215,-4.847": {
+  "mu": "Cisneros",
+  "pr": "Palencia"
+ },
  "42.215,-4.848": {
   "mu": "Cisneros",
   "pr": "Palencia"
@@ -18381,6 +18389,10 @@
  "43.543,-7.027": {
   "mu": "Castropol",
   "pr": "Asturias"
+ },
+ "43.543,-7.040": {
+  "mu": "Ribadeo",
+  "pr": "Lugo"
  },
  "43.543,-7.042": {
   "mu": "Ribadeo",

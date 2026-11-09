@@ -1,21 +1,21 @@
-# Auditoría 2026-11-09T11:48:59+00:00
+# Auditoría 2026-11-09T12:11:36+00:00
 
 ## Resumen
 
-- comprobados_pk: 1232
-- comprobados_sentido_pk: 1023
-- con_ref: 1481
-- con_rumbo: 2720
-- con_via: 3671
+- comprobados_pk: 1237
+- comprobados_sentido_pk: 1028
+- con_ref: 1486
+- con_rumbo: 2726
+- con_via: 3677
 - osm_camaras: 5656
-- osm_sin_nuestro: 105
-- tramos: 341
+- osm_sin_nuestro: 99
+- tramos: 346
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
 | sin_su_carretera | 47 | 0 |
 | pk_lejos | 38 | 20 |
-| tramo_raro | 23 | 2 |
+| tramo_raro | 26 | 3 |
 | duplicado | 17 | 0 |
 | fuera_de_via | 15 | 7 |
 | camino_incoherente | 5 | 0 |
@@ -128,11 +128,13 @@
 - [2] `dgtpdf:T:N-340:80.65:C` (DGT PDF radares; N-340 PK 79.463 Creciente) 36.05139,-5.64411: longitud 1102 m con los extremos a 1143 m en recta
 - [2] `dgtpdf:T:N-340:960.05:D` (DGT PDF radares; N-340 PK 961.014 Decreciente) 39.88575,-0.13030: longitud 906 m con los extremos a 953 m en recta
 - [2] `dgtpdf:T:N-340:961.0:C` (DGT PDF radares; N-340 PK 960.027 Creciente) 39.87855,-0.13690: longitud 913 m con los extremos a 962 m en recta
+- [2] `dgtpdf:T:RM-603:1.4:D` (DGT PDF radares; RM-603 PK 2.737 Decreciente) 37.93568,-1.18986: longitud 1170 m con los extremos a 1223 m en recta
 - [2] `dgtpdf:T:SA-20:92.436:C` (DGT PDF radares; SA-20 PK 91.961 Creciente) 40.94246,-5.64202: longitud 392 m con los extremos a 410 m en recta
 - [2] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Decreciente) 37.67441,-1.70734: longitud 557 m con los extremos a 584 m en recta
 - [2] `dgt:GUID_CVM_163340` (DGT feed; A-7 PK 634.615 Creciente) 37.67964,-1.71095: longitud 923 m con los extremos a 990 m en recta
 - [2] `dgt:GUID_CVM_163929` (DGT feed; RM-603 PK 2.65 Creciente) 37.93966,-1.17588: longitud 1261 m con los extremos a 1311 m en recta
 - [2] `dgt:GUID_CVM_164237` (DGT feed; A-8 PK 506.2 Decreciente) 43.54282,-7.04073: longitud 1041 m con los extremos a 1094 m en recta
+- [2] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: longitud 23136 m con los extremos a 31861 m en recta
 - [2] `osm:r17026473` (OpenStreetMap; None PK None ) 40.95498,-5.68599: longitud 351 m con los extremos a 386 m en recta
 - [2] `osm:r18345241` (OpenStreetMap; None PK None ) 41.41380,2.16660: longitud 1250 m con los extremos a 1295 m en recta
 - [2] `osm:r20344506` (OpenStreetMap; None PK None ) 41.30560,2.02932: longitud 726 m con los extremos a 766 m en recta
@@ -248,7 +250,6 @@
 - `osm:n6926374946` 36.54663,-4.66933 2023-05-08 {'direction': '90', 'highway': 'speed_camera', 'maxspeed': '50'}
 - `osm:n7171815050` 41.36763,2.13931 2024-06-21 {'direction': '45', 'highway': 'speed_camera'}
 - `osm:n7541702988` 41.68635,-0.95408 2026-01-31 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '120'}
-- `osm:n8968186514` 42.04012,-4.55993 2026-01-28 {'description': 'Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n8974875728` 39.66718,-2.37500 2026-01-07 {'direction': '140', 'highway': 'speed_camera', 'maxspeed': '120', 'note': 'A-3 PK 156.57 SENTIDO CRECIENTE'}
 - `osm:n9071289106` 42.73289,0.19460 2026-10-25 {'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n9212434658` 43.01128,-1.63673 2026-02-12 {'direction': '150', 'highway': 'speed_camera', 'maxspeed': '50'}
