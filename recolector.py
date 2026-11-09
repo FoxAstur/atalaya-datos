@@ -3165,6 +3165,18 @@ def main() -> int:
                 # además, el tramo del PDF en su sentido.
                 extra_pdf.append((f, prov, via))
                 log(f"    tramo {via} PK {f['pk']} {f['sentido']}: el feed es del otro sentido ({q['s']}); se añaden los dos")
+                # la cámara del feed es la ENTRADA del tramo de su sentido, que acaba donde empieza el del PDF
+                largo = f["longitud"] / 1000
+                pk_otro = f["pk"] + largo if f["sentido"] == "Decreciente" else f["pk"] - largo
+                c2 = geo.pk(via, pk_otro, prov) if pk_otro >= 0 else None
+                casados += 1
+                tomados.add(q["id"])
+                q.setdefault("pr", prov)
+                q["t"] = "RADAR_TRAMO"
+                q.setdefault("lm", f["longitud"])
+                if c2 and "la2" not in q:
+                    q["la2"], q["lo2"], q["pk2"] = round(c2[0], 6), round(c2[1], 6), round(pk_otro, 3)
+                continue
             if q is None:
                 c = geo.pk(via, f["pk"], prov)
                 if not c:
