@@ -55,24 +55,31 @@ for x in etiqueta:
 # por trozos (la consulta de toda España de golpe no la aguanta el servidor)
 trozos = [(la, lo, la + 2.5, lo + 3.0) for la in (35.9, 38.4, 40.9) for lo in (-9.5, -6.5, -3.5, -0.5, 2.5)] + \
          [(27.5, -18.5, 29.5, -13.3), (43.3, -9.5, 44.0, -1.0)]
+import time
 elementos, fallidos = {}, []
+fin = time.time() + 20 * 60   # Overpass a veces no contesta: como mucho 20 min y se informa de lo que haya
 for b in trozos:
+    if time.time() > fin:
+        fallidos.append(b)
+        continue
     Q = ('[out:json][timeout:180];relation["type"="enforcement"]["enforcement"="average_speed"]'
          f'({b[0]},{b[1]},{b[2]},{b[3]});out body;>;out skel qt;')
     hecho = False
     for intento in range(3):
         for u in r.OVERPASS + ["https://overpass.private.coffee/api/interpreter"]:
+            if time.time() > fin:
+                break
             try:
                 req = urllib.request.Request(u, data=urllib.parse.urlencode({"data": Q}).encode(), headers={"User-Agent": r.UA})
-                for e in json.load(urllib.request.urlopen(req, timeout=240))["elements"]:
+                for e in json.load(urllib.request.urlopen(req, timeout=120))["elements"]:
                     elementos[(e["type"], e["id"])] = e
                 hecho = True
                 break
             except Exception as ex:  # noqa: BLE001
                 print("overpass", u, b, ex)
-        if hecho:
+        if hecho or time.time() > fin:
             break
-        import time; time.sleep(30)
+        time.sleep(30)
     if not hecho:
         fallidos.append(b)
 d = {"elements": list(elementos.values())} if elementos else None
