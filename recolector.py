@@ -3132,6 +3132,16 @@ def main() -> int:
                     mejor, dmin = q, dd
             return mejor
 
+        def pk_cercano(via, pk, prov):
+            """El PK o, si no se sitúa (fuera de la tabla de hitos, final de la carretera…), el más cercano a ±0,6 km."""
+            for dd in (0, -0.1, 0.1, -0.2, 0.2, -0.3, 0.3, -0.45, 0.45, -0.6, 0.6):
+                if pk + dd < 0:
+                    continue
+                c = geo.pk(via, pk + dd, prov)
+                if c:
+                    return c
+            return None
+
         pet = set()
         casados = 0
         for f in filas:
@@ -3140,11 +3150,12 @@ def main() -> int:
             prov, via = provincia_canonica(f["prov"]), via_normalizada(f["via"])
             q = en_feed(via, f["pk"])
             pks = [] if q is not None else [f["pk"]]
-            if f.get("longitud") and (q is None or "la2" not in q):
+            if f.get("longitud"):
                 pks += [f["pk"] + f["longitud"] / 1000, f["pk"] - f["longitud"] / 1000]
             for pk in pks:
-                if pk >= 0:
-                    pet |= {(via, int(math.floor(pk)), prov), (via, int(math.floor(pk)) + 1, prov)}
+                for k in (pk - 0.6, pk, pk + 0.6):
+                    if k >= 0:
+                        pet |= {(via, int(math.floor(k)), prov), (via, int(math.floor(k)) + 1, prov)}
         geo.precargar(pet)
         salida, sin_situar = [], 0
         extra_pdf = []   # tramos del PDF del sentido contrario a la cámara del feed con la que casan (se añaden aparte)
@@ -3178,7 +3189,7 @@ def main() -> int:
                     q["la2"], q["lo2"], q["pk2"] = round(c2[0], 6), round(c2[1], 6), round(pk_otro, 3)
                 continue
             if q is None:
-                c = geo.pk(via, f["pk"], prov)
+                c = pk_cercano(via, f["pk"], prov)
                 if not c:
                     sin_situar += 1
                     log(f"    sin situar: {f['tipo']} {via} PK {f['pk']} {f['sentido']} ({f['prov']})")
@@ -3222,7 +3233,7 @@ def main() -> int:
                 for s in sentidos:
                     # el PK del PDF es la cámara de salida (ver arriba): la entrada está «largo» antes en su sentido
                     pk_ini = f["pk"] - largo if s != "Decreciente" else f["pk"] + largo
-                    c1 = geo.pk(via, pk_ini, prov) if pk_ini >= 0 else None
+                    c1 = pk_cercano(via, pk_ini, prov) if pk_ini >= 0 else None
                     if c1:
                         salida.append(punto(f"dgtpdf:T:{via}:{f['pk']}:{s[0]}", "RADAR_TRAMO", "DGT", c1[0], c1[1],
                                             la2=round(c[0], 6), lo2=round(c[1], 6), pk2=f["pk"],
@@ -3233,14 +3244,21 @@ def main() -> int:
                 salida.append(punto(f"dgtpdf:F:{via}:{f['pk']}:{f['sentido'][0]}",
                                     "RADAR_TRAMO" if f["tipo"] == "Tramo" else "RADAR_FIJO", "DGT", c[0], c[1], **base))
         for f, prov, via in extra_pdf:
-            c = geo.pk(via, f["pk"], prov)
+            c = pk_cercano(via, f["pk"], prov)
             if not c:
                 log(f"    sin situar: tramo {via} PK {f['pk']} {f['sentido']} (del otro sentido)")
                 continue
             largo = f["longitud"] / 1000
             s = f["sentido"]
             pk_ini = f["pk"] - largo if s != "Decreciente" else f["pk"] + largo
-            c1 = geo.pk(via, pk_ini, prov) if pk_ini >= 0 else None
+            c1 = pk_cercano(via, pk_ini, prov) if pk_ini >= 0 else None
+            # ¿ya hay un tramo del feed con esa misma entrada y salida? Entonces el feed solo tenía mal la etiqueta
+            # del sentido (RM-603, CL-613 del PK 11,9 al 15,4): no se repite
+            ya = c1 and any("la2" in t and distancia(t["la"], t["lo"], c1[0], c1[1]) < 600
+                            and distancia(t["la2"], t["lo2"], c[0], c[1]) < 600 for t in indice.get(via, []))
+            if ya:
+                log(f"    tramo {via} PK {f['pk']} {s}: ya está en el feed (con otra etiqueta de sentido)")
+                continue
             if c1:
                 salida.append(punto(f"dgtpdf:T:{via}:{f['pk']}:{s[0]}", "RADAR_TRAMO", "DGT", c1[0], c1[1],
                                     la2=round(c[0], 6), lo2=round(c[1], 6), pk2=f["pk"], lm=f["longitud"],

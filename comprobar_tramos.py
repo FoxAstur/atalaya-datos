@@ -25,24 +25,31 @@ def rumbo(a, b, c, d):
 enl = r.enlaces_pdf_dgt()
 filas = r.parsear_cinemometros(r.lineas_pdf(r.http(enl["cinemometros"], timeout=180)))
 pdf = [f for f in filas if f["tipo"] == "Tramo"]
-faltan_pdf = []
+faltan_pdf, etiqueta = [], []
 for f in pdf:
     via = r.via_normalizada(f["via"])
     sentidos = ["Creciente", "Decreciente"] if f["sentido"] == "Ambos" else [f["sentido"]]
+    largo = (f.get("longitud") or 0) / 1000
     for s in sentidos:
-        ok = False
-        for t in tramos:
-            if r.via_normalizada(t.get("c")) != via or t.get("s") != s:
-                continue
-            pks = [x for x in (t.get("pk"), t.get("pk2")) if x is not None]
-            if any(abs(x - f["pk"]) < 0.6 for x in pks):
-                ok = True
-                break
-        if not ok:
+        # el PK del PDF es la salida; la entrada está «largo» antes en su sentido
+        ini = f["pk"] + largo if s == "Decreciente" else f["pk"] - largo
+        def casa(t):
+            pk, pk2 = t.get("pk"), t.get("pk2")
+            return (pk is not None and abs(pk - ini) < 0.6) or (pk2 is not None and abs(pk2 - f["pk"]) < 0.6) \
+                or (pk is not None and pk2 is None and abs(pk - f["pk"]) < 0.6)
+        mismos = [t for t in tramos if r.via_normalizada(t.get("c")) == via and casa(t)]
+        if any(t.get("s") == s for t in mismos):
+            continue
+        if mismos:
+            etiqueta.append(f"{f['prov']} {via} PK {f['pk']} {s}: está como {mismos[0].get('s')} ({mismos[0]['id']})")
+        else:
             faltan_pdf.append(f"{f['prov']} {via} PK {f['pk']} {s} ({f.get('longitud')} m)")
 print(f"PDF DGT: {len(pdf)} tramos; faltan {len(faltan_pdf)} (vía+sentido+PK):")
 for x in faltan_pdf:
     print("  FALTA PDF", x)
+print(f"con otra etiqueta de sentido ({len(etiqueta)}; puede ser el otro sentido o solo la etiqueta):")
+for x in etiqueta:
+    print("  ETIQUETA", x)
 
 # --- 2) OpenStreetMap (España)
 Q = ('[out:json][timeout:300];area["ISO3166-1"="ES"][admin_level=2]->.es;'
