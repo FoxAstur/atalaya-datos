@@ -2800,6 +2800,11 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
         for q in oficiales:
             por_via.setdefault(via_normalizada(q["c"]), []).append(q)
         for p in todos:
+            if p.get("_orient_osm") and p.get("la2") is not None and p.get("rb") is None:
+                # tramo orientado por su relación de OSM: el rumbo es el suyo (girarlo por los vecinos lo dejaba al
+                # revés en la N-320 de Guadalajara, cuya única cámara en el feed es la de salida)
+                p["rb"] = round(rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]), 1)
+                continue
             if p.get("rb") is not None or p.get("s") not in ("Creciente", "Decreciente") or p.get("_verif") \
                     or p["t"] in ("ZONA_MOVIL", "TCA") or p.get("pk") is None or not p.get("c"):
                 continue
@@ -3029,13 +3034,17 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
     girados, por_osm = [], 0
     for p in tramos:
         # si OSM tiene este mismo tramo (from → to), manda OSM: la etiqueta de sentido del feed a veces está mal
+        # Solo si no hay duda: el mejor en un sentido muy por delante del mejor en el otro. En tramos cortos de
+        # autovía (A-7 en Lorca, ~1 km) las relaciones de las dos calzadas quedan casi igual de cerca y elegía mal.
         osm_dice = None
+        mi = mv = 1e9
         for la, lo, la2, lo2, _ in p.get("_osm_tramos", []) + osm_sueltos:
-            igual = max(distancia(p["la"], p["lo"], la, lo), distancia(p["la2"], p["lo2"], la2, lo2))
-            inverso = max(distancia(p["la"], p["lo"], la2, lo2), distancia(p["la2"], p["lo2"], la, lo))
-            if min(igual, inverso) < 500:
-                osm_dice = inverso < igual
-                break
+            mi = min(mi, max(distancia(p["la"], p["lo"], la, lo), distancia(p["la2"], p["lo2"], la2, lo2)))
+            mv = min(mv, max(distancia(p["la"], p["lo"], la2, lo2), distancia(p["la2"], p["lo2"], la, lo)))
+        largo = distancia(p["la"], p["lo"], p["la2"], p["lo2"])
+        tol = min(500, max(150, 0.4 * largo))
+        if min(mi, mv) < tol and max(mi, mv) > 2 * min(mi, mv) + 150:
+            osm_dice = mv < mi
         if osm_dice is not None:
             por_osm += 1
             girar = osm_dice
