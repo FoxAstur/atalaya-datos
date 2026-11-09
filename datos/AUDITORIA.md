@@ -1,84 +1,29 @@
-# Auditoría 2026-11-09T16:38:44+00:00
+# Auditoría 2026-11-09T17:00:35+00:00
 
 ## Resumen
 
 - comprobados_pk: 1236
-- comprobados_sentido_pk: 1017
+- comprobados_sentido_pk: 1020
 - con_ref: 1486
-- con_rumbo: 2725
-- con_via: 3686
+- con_rumbo: 2692
+- con_via: 3623
 - osm_camaras: 5656
-- osm_sin_nuestro: 89
-- tramos: 355
+- osm_sin_nuestro: 213
+- tramos: 321
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
-| pk_lejos | 52 | 23 |
 | sin_su_carretera | 48 | 0 |
-| tramo_raro | 25 | 3 |
+| pk_lejos | 48 | 22 |
 | duplicado | 21 | 0 |
-| fuera_de_via | 14 | 7 |
-| camino_incoherente | 7 | 0 |
-| rumbo_cruzado | 5 | 0 |
+| tramo_raro | 20 | 1 |
+| fuera_de_via | 12 | 5 |
+| camino_incoherente | 5 | 0 |
+| rumbo_cruzado | 4 | 0 |
 | sentido_dudoso | 3 | 0 |
-| contra_direccion | 2 | 2 |
-| salida_otra_via | 2 | 0 |
+| contra_direccion | 1 | 1 |
+| salida_otra_via | 1 | 0 |
 | salida_fuera_de_via | 1 | 0 |
-
-## pk_lejos
-
-- [1] `sct:41.50529,2.11305` (Cataluña (SCT); C-58 PK 15.726 ) 41.50529,2.11305: a 5.7 km de donde cae su PK 15.726 en C-58
-- [1] `sct:41.58766,1.91561` (Cataluña (SCT); C-58 PK 38.15 Ambos) 41.58766,1.91561: a 6.0 km de donde cae su PK 38.15 en C-58
-- [1] `sct:42.31009,2.15487` (Cataluña (SCT); N-260 PK 121.497 ) 42.31009,2.15487: a 8.5 km de donde cae su PK 121.497 en N-260
-- [1] `dgt:GUID_CABINACINEMOMETRO_120318` (DGT feed; A-2 PK 122.0 Decreciente) 40.95575,-2.67868: a 9.9 km de donde cae su PK 122.0 en A-2
-- [1] `dgt:GUID_CABINACINEMOMETRO_120586` (DGT feed; A-70 PK 27.39 Decreciente) 38.30612,-0.58833: a 3.8 km de donde cae su PK 27.39 en A-70
-- [1] `dgt:GUID_CABINACINEMOMETRO_120587` (DGT feed; A-70 PK 22.5 Decreciente) 38.33397,-0.55238: a 3.7 km de donde cae su PK 22.5 en A-70
-- [1] `dgt:GUID_CABINACINEMOMETRO_120597` (DGT feed; A-70 PK 8.375 Creciente) 38.41391,-0.43267: a 5.1 km de donde cae su PK 8.375 en A-70
-- [1] `dgt:GUID_CABINACINEMOMETRO_120622` (DGT feed; A-30 PK 136.028 Decreciente) 38.02354,-1.16474: a 10.4 km de donde cae su PK 136.028 en A-30
-- [1] `dgt:GUID_CABINACINEMOMETRO_120662` (DGT feed; A-42 PK 55.7 Decreciente) 39.98639,-3.86466: a 8.6 km de donde cae su PK 55.7 en A-42
-- [1] `dgt:GUID_CABINACINEMOMETRO_120687` (DGT feed; A-30 PK 122.896 Creciente) 38.11197,-1.23945: a 3.6 km de donde cae su PK 122.896 en A-30
-- [1] `dgt:GUID_CABINACINEMOMETRO_163324` (DGT feed; A-70 PK 6.308 Creciente) 38.41502,-0.43096: a 3.8 km de donde cae su PK 6.308 en A-70
-- [1] `dgt:GUID_CABINACINEMOMETRO_163325` (DGT feed; A-70 PK 6.494 Decreciente) 38.41502,-0.44890: a 3.4 km de donde cae su PK 6.494 en A-70
-- [1] `dgt:GUID_CABINACINEMOMETRO_163326` (DGT feed; A-70 PK 8.629 Decreciente) 38.40273,-0.44863: a 3.3 km de donde cae su PK 8.629 en A-70
-- [1] `dgt:GUID_CABINACINEMOMETRO_165291` (DGT feed; A-395 PK 8.723 Decreciente) 37.15784,-3.52366: a 16.8 km de donde cae su PK 8.723 en A-395
-- [1] `dgt:GUID_CABINACINEMOMETRO_174824` (DGT feed; CV-10 PK 55.93 Creciente) 40.26040,-0.07783: a 13.2 km de donde cae su PK 55.93 en CV-10
-- [1] `dgt:GUID_CVM_161427` (DGT feed; A-8 PK 550.28 Creciente) 43.38320,-7.34922: a 4.8 km de donde cae su PK 550.28 en A-8
-- [1] `dgt:GUID_CVM_164150` (DGT feed; A-8 PK 545.5 Decreciente) 43.37759,-7.40731: a 4.4 km de donde cae su PK 545.5 en A-8
-- [1] `dgt:GUID_CVM_164860` (DGT feed; CL-615 PK 38.312 Decreciente) 42.44390,-4.69420: a 11.8 km de donde cae su PK 38.312 en CL-615
-- [1] `dgt:GUID_CVM_164861` (DGT feed; CL-615 PK 49.975 Creciente) 42.35240,-4.62450: a 11.3 km de donde cae su PK 49.975 en CL-615
-- [1] `dgt:GUID_CVM_164998` (DGT feed; CL-613 PK 11.92 Decreciente) 42.14100,-4.67310: a 3.7 km de donde cae su PK 11.92 en CL-613
-- [1] `dgt:GUID_CVM_164999` (DGT feed; CL-613 PK 32.7 Creciente) 42.14100,-4.67310: a 16.3 km de donde cae su PK 32.7 en CL-613
-- [1] `dgt:GUID_CVM_165000` (DGT feed; CL-613 PK 15.41 Creciente) 42.11750,-4.64570: a 3.1 km de donde cae su PK 15.41 en CL-613
-- [1] `dgt:GUID_CVM_165001` (DGT feed; CL-613 PK 15.41 Decreciente) 42.21500,-4.84790: a 16.8 km de donde cae su PK 15.41 en CL-613
-- [2] `sct:41.56549,1.96458` (Cataluña (SCT); C-58 PK 26.85 ) 41.56549,1.96458: a 1.4 km de donde cae su PK 26.85 en C-58
-- [2] `sct:41.57727,1.96043` (Cataluña (SCT); C-58 PK 29.27 ) 41.57727,1.96043: a 2.2 km de donde cae su PK 29.27 en C-58
-- [2] `sct:41.58463,1.92876` (Cataluña (SCT); C-58 PK 30.95 ) 41.58463,1.92876: a 1.1 km de donde cae su PK 30.95 en C-58
-- [2] `sct:41.89296,2.78438` (Cataluña (SCT); A-2 PK 707.467 ) 41.89296,2.78438: a 2.0 km de donde cae su PK 707.467 en A-2
-- [2] `sct:42.21515,2.62867` (Cataluña (SCT); A-26 PK 69.729 ) 42.21515,2.62866: a 1.6 km de donde cae su PK 69.729 en A-26
-- [2] `sct:42.22181,2.57607` (Cataluña (SCT); A-26 PK 74.64 ) 42.22181,2.57607: a 1.3 km de donde cae su PK 74.64 en A-26
-- [2] `dgt:GUID_CABINACINEMOMETRO_120269` (DGT feed; CM-4124 PK 8.004 Creciente) 38.92679,-3.62215: a 2.9 km de donde cae su PK 8.004 en CM-4124
-- [2] `dgt:GUID_CABINACINEMOMETRO_120362` (DGT feed; A-334 PK 49.87 Creciente) 37.35667,-2.34846: a 2.7 km de donde cae su PK 49.87 en A-334
-- [2] `dgt:GUID_CABINACINEMOMETRO_120430` (DGT feed; N-632 PK 98.75 Decreciente) 43.55430,-5.94290: a 1.6 km de donde cae su PK 98.75 en N-632
-- [2] `dgt:GUID_CABINACINEMOMETRO_120602` (DGT feed; N-332 PK 203.2 Creciente) 38.87017,-0.02675: a 1.1 km de donde cae su PK 203.2 en N-332
-- [2] `dgt:GUID_CABINACINEMOMETRO_120647` (DGT feed; EI-600 PK 9.635 Creciente) 38.96430,1.38666: a 1.6 km de donde cae su PK 9.635 en EI-600
-- [2] `dgt:GUID_CABINACINEMOMETRO_120654` (DGT feed; MA-13 PK 46.371 Creciente) 39.83707,3.07307: a 2.1 km de donde cae su PK 46.371 en MA-13
-- [2] `dgt:GUID_CABINACINEMOMETRO_165270` (DGT feed; A-4 PK 230.8 Decreciente) 38.50750,-3.49722: a 1.4 km de donde cae su PK 230.8 en A-4
-- [2] `dgt:GUID_CABINACINEMOMETRO_165293` (DGT feed; A-358 PK 5.15 Creciente) 36.83530,-2.93193: a 2.0 km de donde cae su PK 5.15 en A-358
-- [2] `dgt:GUID_CVM_161489` (DGT feed; AP-66 PK 99.15 Decreciente) 42.84710,-5.87530: a 1.7 km de donde cae su PK 99.15 en AP-66
-- [2] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Creciente) 37.67935,-1.70970: a 1.0 km de donde cae su PK 636.053 en A-7
-- [2] `dgt:GUID_CVM_163929` (DGT feed; RM-603 PK 2.65 Creciente) 37.93966,-1.17588: a 1.2 km de donde cae su PK 2.65 en RM-603
-- [2] `dgt:GUID_CVM_164230` (DGT feed; A-8 PK 505.09 Decreciente) 43.54287,-7.04189: a 1.2 km de donde cae su PK 505.09 en A-8
-- [2] `dgt:GUID_CVM_164237` (DGT feed; A-8 PK 506.2 Creciente) 43.54286,-7.02717: a 1.1 km de donde cae su PK 506.2 en A-8
-- [2] `dgt:GUID_CVM_164265` (DGT feed; RM-603 PK 1.4 Decreciente) 37.93577,-1.18999: a 1.3 km de donde cae su PK 1.4 en RM-603
-- [2] `dgt:GUID_CVM_164566` (DGT feed; N-601 PK 226.4 Decreciente) 41.85330,-5.01330: a 1.7 km de donde cae su PK 226.4 en N-601
-- [2] `dgt:GUID_CVM_164567` (DGT feed; N-601 PK 228.2 Creciente) 41.83810,-5.01080: a 1.7 km de donde cae su PK 228.2 en N-601
-- [2] `dgt:GUID_CVM_165336` (DGT feed; CA-33 PK 9.052 Decreciente) 36.46778,-6.17609: a 2.7 km de donde cae su PK 9.052 en CA-33
-- [2] `dgt:GUID_CVM_165337` (DGT feed; CA-33 PK 12.772 Creciente) 36.46985,-6.20537: a 3.0 km de donde cae su PK 12.772 en CA-33
-- [2] `dgt:GUID_CVM_165414` (DGT feed; N-120 PK 319.6 Creciente) 42.55360,-5.71400: a 2.0 km de donde cae su PK 319.6 en N-120
-- [2] `dgt:GUID_CVM_165415` (DGT feed; N-120 PK 317.6 Decreciente) 42.54160,-5.73330: a 2.0 km de donde cae su PK 317.6 en N-120
-- [2] `dgt:GUID_CVM_166405` (DGT feed; CL-602 PK 102.8 Decreciente) 41.40546,-4.39748: a 2.9 km de donde cae su PK 102.8 en CL-602
-- [2] `dgt:GUID_CVM_166407` (DGT feed; CL-602 PK 105.7 Creciente) 41.40152,-4.43120: a 2.8 km de donde cae su PK 105.7 en CL-602
-- [2] `dgt:GUID_CVM_169183` (DGT feed; A-397 PK 28.02 Decreciente) 36.58200,-5.06722: a 1.8 km de donde cae su PK 28.02 en A-397
 
 ## sin_su_carretera
 
@@ -131,40 +76,62 @@
 - [3] `ansr:IC20:6.6:E` (Portugal: ANSR (red SINCRO); IC20 PK 6.6 Este-Oeste) 38.64899,-9.22867: no hay ninguna vía IC20 a menos de 600 m (la más cercana: ER3772 a 5 m)
 - [3] `ansr:EN261:97.06:A` (Portugal: ANSR (red SINCRO); EN261 PK 97.06 Ambos) 37.88866,-8.20341: no hay ninguna vía EN261 a menos de 600 m (la más cercana: ER261 a 4 m)
 
-## tramo_raro
+## pk_lejos
 
-- [1] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: extremos a 31.9 km
-- [1] `osm:r21440002` (OpenStreetMap; None PK None ) 42.27297,2.95509: entrada y salida a 72 m
-- [1] `osm:r21440003` (OpenStreetMap; None PK None ) 42.27349,2.95458: entrada y salida a 72 m
-- [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 367 m con los extremos a 424 m en recta
-- [2] `slmt:1` (Ayto. Salamanca; None PK None ) 40.96530,-5.68286: longitud 615 m con los extremos a 642 m en recta
-- [2] `dgtpdf:T:A-370:8.4:D` (DGT PDF radares; A-370 PK 9.471 Decreciente) 37.17270,-1.83158: longitud 1115 m con los extremos a 1166 m en recta
-- [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: longitud 1030 m con los extremos a 1400 m en recta
-- [2] `dgtpdf:T:N-340:80.65:C` (DGT PDF radares; N-340 PK 79.463 Creciente) 36.05134,-5.64405: longitud 1102 m con los extremos a 1136 m en recta
-- [2] `dgtpdf:T:N-340:961.0:C` (DGT PDF radares; N-340 PK 960.027 Creciente) 39.87837,-0.13707: longitud 892 m con los extremos a 938 m en recta
-- [2] `dgtpdf:T:SA-20:92.436:C` (DGT PDF radares; SA-20 PK 91.961 Creciente) 40.94246,-5.64202: longitud 392 m con los extremos a 410 m en recta
-- [2] `dgt:GUID_CVM_163340` (DGT feed; A-7 PK 634.615 Creciente) 37.67964,-1.71095: longitud 923 m con los extremos a 990 m en recta
-- [2] `dgt:GUID_CVM_163929` (DGT feed; RM-603 PK 2.65 Creciente) 37.93966,-1.17588: longitud 1261 m con los extremos a 1311 m en recta
-- [2] `dgt:GUID_CVM_164265` (DGT feed; RM-603 PK 1.4 Decreciente) 37.93577,-1.18999: longitud 1266 m con los extremos a 1311 m en recta
-- [2] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: longitud 23136 m con los extremos a 31861 m en recta
-- [2] `dgt:GUID_CVM_165001` (DGT feed; CL-613 PK 15.41 Decreciente) 42.21500,-4.84790: longitud 3487 m con los extremos a 16579 m en recta
-- [2] `osm:r17026473` (OpenStreetMap; None PK None ) 40.95498,-5.68599: longitud 351 m con los extremos a 386 m en recta
-- [2] `osm:r18345241` (OpenStreetMap; None PK None ) 41.41380,2.16660: longitud 1250 m con los extremos a 1295 m en recta
-- [2] `osm:r20344505` (OpenStreetMap; None PK None ) 41.29988,2.03448: longitud 712 m con los extremos a 766 m en recta
-- [2] `osm:r20344506` (OpenStreetMap; None PK None ) 41.30560,2.02932: longitud 726 m con los extremos a 766 m en recta
-- [2] `osm:r20354143` (OpenStreetMap; None PK None ) 42.34339,1.95212: longitud 2289 m con los extremos a 386 m en recta
-- [2] `osm:r20354144` (OpenStreetMap; None PK None ) 42.34629,1.95473: longitud 2288 m con los extremos a 386 m en recta
-- [2] `osm:r21082899` (OpenStreetMap; None PK None ) 38.89450,1.36085: longitud 2181 m con los extremos a 2270 m en recta
-- [2] `osm:r21440004` (OpenStreetMap; None PK None ) 42.26725,2.99311: longitud 225 m con los extremos a 281 m en recta
-- [2] `osm:r21440005` (OpenStreetMap; None PK None ) 42.26745,2.99651: longitud 261 m con los extremos a 281 m en recta
-- [2] `osm:r21842929` (OpenStreetMap; None PK None ) 36.82300,-2.25800: longitud 1463 m con los extremos a 1509 m en recta
+- [1] `sct:41.50529,2.11305` (Cataluña (SCT); C-58 PK 15.726 ) 41.50529,2.11305: a 5.7 km de donde cae su PK 15.726 en C-58
+- [1] `sct:41.58766,1.91561` (Cataluña (SCT); C-58 PK 38.15 Ambos) 41.58766,1.91561: a 6.0 km de donde cae su PK 38.15 en C-58
+- [1] `sct:42.31009,2.15487` (Cataluña (SCT); N-260 PK 121.497 ) 42.31009,2.15487: a 8.5 km de donde cae su PK 121.497 en N-260
+- [1] `dgt:GUID_CABINACINEMOMETRO_120318` (DGT feed; A-2 PK 122.0 Decreciente) 40.95575,-2.67868: a 9.9 km de donde cae su PK 122.0 en A-2
+- [1] `dgt:GUID_CABINACINEMOMETRO_120586` (DGT feed; A-70 PK 27.39 Decreciente) 38.30612,-0.58833: a 3.8 km de donde cae su PK 27.39 en A-70
+- [1] `dgt:GUID_CABINACINEMOMETRO_120587` (DGT feed; A-70 PK 22.5 Decreciente) 38.33397,-0.55238: a 3.7 km de donde cae su PK 22.5 en A-70
+- [1] `dgt:GUID_CABINACINEMOMETRO_120597` (DGT feed; A-70 PK 8.375 Creciente) 38.41391,-0.43267: a 5.1 km de donde cae su PK 8.375 en A-70
+- [1] `dgt:GUID_CABINACINEMOMETRO_120622` (DGT feed; A-30 PK 136.028 Decreciente) 38.02354,-1.16474: a 10.4 km de donde cae su PK 136.028 en A-30
+- [1] `dgt:GUID_CABINACINEMOMETRO_120662` (DGT feed; A-42 PK 55.7 Decreciente) 39.98639,-3.86466: a 8.6 km de donde cae su PK 55.7 en A-42
+- [1] `dgt:GUID_CABINACINEMOMETRO_120687` (DGT feed; A-30 PK 122.896 Creciente) 38.11197,-1.23945: a 3.6 km de donde cae su PK 122.896 en A-30
+- [1] `dgt:GUID_CABINACINEMOMETRO_163324` (DGT feed; A-70 PK 6.308 Creciente) 38.41502,-0.43096: a 3.8 km de donde cae su PK 6.308 en A-70
+- [1] `dgt:GUID_CABINACINEMOMETRO_163325` (DGT feed; A-70 PK 6.494 Decreciente) 38.41502,-0.44890: a 3.4 km de donde cae su PK 6.494 en A-70
+- [1] `dgt:GUID_CABINACINEMOMETRO_163326` (DGT feed; A-70 PK 8.629 Decreciente) 38.40273,-0.44863: a 3.3 km de donde cae su PK 8.629 en A-70
+- [1] `dgt:GUID_CABINACINEMOMETRO_165291` (DGT feed; A-395 PK 8.723 Decreciente) 37.15784,-3.52366: a 16.8 km de donde cae su PK 8.723 en A-395
+- [1] `dgt:GUID_CABINACINEMOMETRO_174824` (DGT feed; CV-10 PK 55.93 Creciente) 40.26040,-0.07783: a 13.2 km de donde cae su PK 55.93 en CV-10
+- [1] `dgt:GUID_CVM_161427` (DGT feed; A-8 PK 550.28 Creciente) 43.38320,-7.34922: a 4.8 km de donde cae su PK 550.28 en A-8
+- [1] `dgt:GUID_CVM_164860` (DGT feed; CL-615 PK 38.312 Decreciente) 42.44390,-4.69420: a 11.8 km de donde cae su PK 38.312 en CL-615
+- [1] `dgt:GUID_CVM_164861` (DGT feed; CL-615 PK 49.975 Creciente) 42.35240,-4.62450: a 11.3 km de donde cae su PK 49.975 en CL-615
+- [1] `dgt:GUID_CVM_164998` (DGT feed; CL-613 PK 11.92 Decreciente) 42.14100,-4.67310: a 3.7 km de donde cae su PK 11.92 en CL-613
+- [1] `dgt:GUID_CVM_164999` (DGT feed; CL-613 PK 32.7 Creciente) 42.14100,-4.67310: a 16.3 km de donde cae su PK 32.7 en CL-613
+- [1] `dgt:GUID_CVM_165000` (DGT feed; CL-613 PK 15.41 Creciente) 42.11750,-4.64570: a 3.1 km de donde cae su PK 15.41 en CL-613
+- [1] `dgt:GUID_CVM_165001` (DGT feed; CL-613 PK 15.41 Decreciente) 42.21500,-4.84790: a 16.8 km de donde cae su PK 15.41 en CL-613
+- [2] `sct:41.56549,1.96458` (Cataluña (SCT); C-58 PK 26.85 ) 41.56549,1.96458: a 1.4 km de donde cae su PK 26.85 en C-58
+- [2] `sct:41.57727,1.96043` (Cataluña (SCT); C-58 PK 29.27 ) 41.57727,1.96043: a 2.2 km de donde cae su PK 29.27 en C-58
+- [2] `sct:41.58463,1.92876` (Cataluña (SCT); C-58 PK 30.95 ) 41.58463,1.92876: a 1.1 km de donde cae su PK 30.95 en C-58
+- [2] `sct:41.89296,2.78438` (Cataluña (SCT); A-2 PK 707.467 ) 41.89296,2.78438: a 2.0 km de donde cae su PK 707.467 en A-2
+- [2] `sct:42.21515,2.62867` (Cataluña (SCT); A-26 PK 69.729 ) 42.21515,2.62866: a 1.6 km de donde cae su PK 69.729 en A-26
+- [2] `sct:42.22181,2.57607` (Cataluña (SCT); A-26 PK 74.64 ) 42.22181,2.57607: a 1.3 km de donde cae su PK 74.64 en A-26
+- [2] `dgt:GUID_CABINACINEMOMETRO_120269` (DGT feed; CM-4124 PK 8.004 Creciente) 38.92679,-3.62215: a 2.9 km de donde cae su PK 8.004 en CM-4124
+- [2] `dgt:GUID_CABINACINEMOMETRO_120362` (DGT feed; A-334 PK 49.87 Creciente) 37.35667,-2.34846: a 2.7 km de donde cae su PK 49.87 en A-334
+- [2] `dgt:GUID_CABINACINEMOMETRO_120430` (DGT feed; N-632 PK 98.75 Decreciente) 43.55430,-5.94290: a 1.6 km de donde cae su PK 98.75 en N-632
+- [2] `dgt:GUID_CABINACINEMOMETRO_120602` (DGT feed; N-332 PK 203.2 Creciente) 38.87017,-0.02675: a 1.1 km de donde cae su PK 203.2 en N-332
+- [2] `dgt:GUID_CABINACINEMOMETRO_120647` (DGT feed; EI-600 PK 9.635 Creciente) 38.96430,1.38666: a 1.6 km de donde cae su PK 9.635 en EI-600
+- [2] `dgt:GUID_CABINACINEMOMETRO_120654` (DGT feed; MA-13 PK 46.371 Creciente) 39.83707,3.07307: a 2.1 km de donde cae su PK 46.371 en MA-13
+- [2] `dgt:GUID_CABINACINEMOMETRO_165270` (DGT feed; A-4 PK 230.8 Decreciente) 38.50750,-3.49722: a 1.4 km de donde cae su PK 230.8 en A-4
+- [2] `dgt:GUID_CABINACINEMOMETRO_165293` (DGT feed; A-358 PK 5.15 Creciente) 36.83530,-2.93193: a 2.0 km de donde cae su PK 5.15 en A-358
+- [2] `dgt:GUID_CVM_163929` (DGT feed; RM-603 PK 2.65 Creciente) 37.93966,-1.17588: a 1.2 km de donde cae su PK 2.65 en RM-603
+- [2] `dgt:GUID_CVM_164230` (DGT feed; A-8 PK 505.09 Decreciente) 43.54287,-7.04189: a 1.2 km de donde cae su PK 505.09 en A-8
+- [2] `dgt:GUID_CVM_164237` (DGT feed; A-8 PK 506.2 Creciente) 43.54286,-7.02717: a 1.1 km de donde cae su PK 506.2 en A-8
+- [2] `dgt:GUID_CVM_164265` (DGT feed; RM-603 PK 1.4 Decreciente) 37.93577,-1.18999: a 1.3 km de donde cae su PK 1.4 en RM-603
+- [2] `dgt:GUID_CVM_164566` (DGT feed; N-601 PK 226.4 Decreciente) 41.85330,-5.01330: a 1.7 km de donde cae su PK 226.4 en N-601
+- [2] `dgt:GUID_CVM_164567` (DGT feed; N-601 PK 228.2 Creciente) 41.83810,-5.01080: a 1.7 km de donde cae su PK 228.2 en N-601
+- [2] `dgt:GUID_CVM_165336` (DGT feed; CA-33 PK 9.052 Decreciente) 36.46778,-6.17609: a 2.7 km de donde cae su PK 9.052 en CA-33
+- [2] `dgt:GUID_CVM_165414` (DGT feed; N-120 PK 319.6 Creciente) 42.55360,-5.71400: a 2.0 km de donde cae su PK 319.6 en N-120
+- [2] `dgt:GUID_CVM_165415` (DGT feed; N-120 PK 317.6 Decreciente) 42.54160,-5.73330: a 2.0 km de donde cae su PK 317.6 en N-120
+- [2] `dgt:GUID_CVM_166405` (DGT feed; CL-602 PK 102.8 Decreciente) 41.40546,-4.39748: a 2.9 km de donde cae su PK 102.8 en CL-602
+- [2] `dgt:GUID_CVM_166407` (DGT feed; CL-602 PK 105.7 Creciente) 41.40152,-4.43120: a 2.8 km de donde cae su PK 105.7 en CL-602
+- [2] `dgt:GUID_CVM_169183` (DGT feed; A-397 PK 28.02 Decreciente) 36.58200,-5.06722: a 1.8 km de donde cae su PK 28.02 en A-397
 
 ## duplicado
 
 - [2] `mad:40.40724,-3.74575` (Ayto. Madrid; A-5 PK 5+750, SENTIDO SALIDA PK None Salida) 40.40724,-3.74575: a 34 m de mad:40.40745,-3.74545 (Ayto. Madrid, rumbo 248.0)
 - [2] `dgtpdf:F:N-611:194.33:D` (DGT PDF radares; N-611 PK 194.33 Decreciente) 43.40495,-3.97483: a 28 m de osm:n13526606233b (OpenStreetMap, rumbo 251.0)
 - [2] `dgtpdf:T:SA-20:92.436:C` (DGT PDF radares; SA-20 PK 91.961 Creciente) 40.94246,-5.64202: a 47 m de osm:r19471412 (OpenStreetMap, rumbo None)
-- [2] `dgt:GUID_CVM_164150` (DGT feed; A-8 PK 545.5 Decreciente) 43.37759,-7.40731: a 4 m de osm:n13528971892 (OpenStreetMap, rumbo None)
 - [2] `dgt:GUID_CVM_165308` (DGT feed; TF-5 PK 20.66 Creciente) 28.47274,-16.42682: a 8 m de osm:n992000673 (OpenStreetMap, rumbo 277.7)
 - [2] `osm:n4756348598` (OpenStreetMap; None PK None ) 39.98485,-0.03705: a 30 m de osm:n8119271103 (OpenStreetMap, rumbo None)
 - [2] `osm:n12063659161` (OpenStreetMap; None PK None ) 40.39732,-8.49035: a 0 m de osm:r17857000 (OpenStreetMap, rumbo None)
@@ -180,8 +147,32 @@
 - [2] `ansr:A25:42.5:E` (Portugal: ANSR (red SINCRO); A25 PK 42.5 Este-Oeste) 40.66919,-8.34535: a 21 m de osm:n11196381123 (OpenStreetMap, rumbo None)
 - [2] `ansr:A3:16.9:N` (Portugal: ANSR (red SINCRO); A3 PK 16.9 Norte-Sul) 41.30526,-8.53101: a 13 m de osm:n1516917421 (OpenStreetMap, rumbo None)
 - [2] `ansr:A42:9.1:E` (Portugal: ANSR (red SINCRO); A42 PK 9.1 Este-Oeste) 41.26104,-8.37311: a 23 m de osm:n12066644039 (OpenStreetMap, rumbo None)
-- [2] `ansr:EN10:110.7:A` (Portugal: ANSR (red SINCRO); EN10 PK 110.7 Ambos) 38.92463,-8.89087: a 19 m de osm:n12572339373 (OpenStreetMap, rumbo 293.0)
-- [2] `ansr:EN10:110.7:A` (Portugal: ANSR (red SINCRO); EN10 PK 110.7 Ambos) 38.92463,-8.89087: a 19 m de osm:n12572339373b (OpenStreetMap, rumbo 112.4)
+- [2] `ansr:EN10:110.7:A` (Portugal: ANSR (red SINCRO); EN10 PK 110.7 Ambos) 38.92463,-8.89087: a 19 m de osm:n12572339373 (OpenStreetMap, rumbo None)
+- [2] `ansr:IC1:538.9:A` (Portugal: ANSR (red SINCRO); IC1 PK 538.9 Ambos) 38.53642,-8.63742: a 34 m de osm:n11379847824 (OpenStreetMap, rumbo None)
+- [2] `ansr:IC1:686.9:A` (Portugal: ANSR (red SINCRO); IC1 PK 686.9 Ambos) 37.51233,-8.28680: a 35 m de osm:n11379847826 (OpenStreetMap, rumbo None)
+
+## tramo_raro
+
+- [1] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: extremos a 31.9 km
+- [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 367 m con los extremos a 424 m en recta
+- [2] `slmt:1` (Ayto. Salamanca; None PK None ) 40.96530,-5.68286: longitud 615 m con los extremos a 642 m en recta
+- [2] `dgtpdf:T:A-370:8.4:D` (DGT PDF radares; A-370 PK 9.471 Decreciente) 37.17270,-1.83158: longitud 1115 m con los extremos a 1166 m en recta
+- [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: longitud 1030 m con los extremos a 1400 m en recta
+- [2] `dgtpdf:T:N-340:80.65:C` (DGT PDF radares; N-340 PK 79.463 Creciente) 36.05134,-5.64405: longitud 1102 m con los extremos a 1136 m en recta
+- [2] `dgtpdf:T:N-340:961.0:C` (DGT PDF radares; N-340 PK 960.027 Creciente) 39.87837,-0.13707: longitud 892 m con los extremos a 938 m en recta
+- [2] `dgtpdf:T:SA-20:92.436:C` (DGT PDF radares; SA-20 PK 91.961 Creciente) 40.94246,-5.64202: longitud 392 m con los extremos a 410 m en recta
+- [2] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Decreciente) 37.67441,-1.70734: longitud 557 m con los extremos a 584 m en recta
+- [2] `dgt:GUID_CVM_163340` (DGT feed; A-7 PK 634.615 Creciente) 37.67964,-1.71095: longitud 923 m con los extremos a 990 m en recta
+- [2] `dgt:GUID_CVM_163929` (DGT feed; RM-603 PK 2.65 Creciente) 37.93966,-1.17588: longitud 1261 m con los extremos a 1311 m en recta
+- [2] `dgt:GUID_CVM_164265` (DGT feed; RM-603 PK 1.4 Decreciente) 37.93577,-1.18999: longitud 1266 m con los extremos a 1311 m en recta
+- [2] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: longitud 23136 m con los extremos a 31861 m en recta
+- [2] `dgt:GUID_CVM_165001` (DGT feed; CL-613 PK 15.41 Decreciente) 42.21500,-4.84790: longitud 3487 m con los extremos a 16579 m en recta
+- [2] `osm:r17026473` (OpenStreetMap; None PK None ) 40.95498,-5.68599: longitud 351 m con los extremos a 386 m en recta
+- [2] `osm:r18345241` (OpenStreetMap; None PK None ) 41.41380,2.16660: longitud 1250 m con los extremos a 1295 m en recta
+- [2] `osm:r20344505` (OpenStreetMap; None PK None ) 41.29988,2.03448: longitud 712 m con los extremos a 766 m en recta
+- [2] `osm:r20344506` (OpenStreetMap; None PK None ) 41.30560,2.02932: longitud 726 m con los extremos a 766 m en recta
+- [2] `osm:r20354143` (OpenStreetMap; None PK None ) 42.34339,1.95212: longitud 2289 m con los extremos a 386 m en recta
+- [2] `osm:r20354144` (OpenStreetMap; None PK None ) 42.34629,1.95473: longitud 2288 m con los extremos a 386 m en recta
 
 ## fuera_de_via
 
@@ -190,8 +181,6 @@
 - [1] `dgt:GUID_CABINACINEMOMETRO_120662` (DGT feed; A-42 PK 55.7 Decreciente) 39.98639,-3.86466: a 265 m de la carretera más cercana
 - [1] `dgt:GUID_CABINACINEMOMETRO_166695` (DGT feed; GR-30 PK 16.225 Creciente) 37.12174,-3.75781: ninguna carretera a menos de 600 m
 - [1] `dgt:GUID_CABINACINEMOMETRO_174824` (DGT feed; CV-10 PK 55.93 Creciente) 40.26040,-0.07783: ninguna carretera a menos de 600 m
-- [1] `osm:n14017317585` (OpenStreetMap; None PK None ) 43.55000,-5.69624: a 222 m de la carretera más cercana
-- [1] `osm:n14017317585b` (OpenStreetMap; None PK None ) 43.55000,-5.69624: a 222 m de la carretera más cercana
 - [2] `madzbe:40.4761,-3.6380` (Ayto. Madrid foto-rojo y ZBE; None PK None ) 40.47607,-3.63800: a 54 m de la carretera más cercana
 - [2] `dgteq:A-7:978.95:C:cintur` (DGT PDF cámaras; A-7 PK 978.95 Creciente) 36.73091,-4.36735: a 42 m de la carretera más cercana
 - [2] `dgteq:N-344:118.136:C:cintur` (DGT PDF cámaras; N-344 PK 118.136 Creciente) 38.72867,-0.94147: a 45 m de la carretera más cercana
@@ -204,8 +193,6 @@
 
 - [2] `dgteq:N-351:6.8:C:cintur` (DGT PDF cámaras; N-351 PK 6.8 Creciente) 36.15754,-5.35226: 3 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
-- [2] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Creciente) 37.67935,-1.70970: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
-- [2] `dgt:GUID_CVM_165337` (DGT feed; CA-33 PK 12.772 Creciente) 36.46985,-6.20537: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n2378266833` (OpenStreetMap; None PK None ) 41.53422,2.21058: 1 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n2378267261` (OpenStreetMap; None PK None ) 43.21176,-8.69152: 5 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
 - [2] `osm:n8376349411` (OpenStreetMap; None PK None ) 41.62987,2.16581: 2 camino(s) de aproximación que no acaban en el punto o llegan con otro rumbo
@@ -216,7 +203,6 @@
 - [2] `sct:40.73027,0.59360` (Cataluña (SCT); N-340 PK 1084.318 ) 40.73136,0.59085: rumbo 56° y las vías a menos de 30 m van a [2, 178]° (o su opuesto)
 - [2] `dgt:GUID_CABINACINEMOMETRO_120601` (DGT feed; CV-91 PK 18.888 Decreciente) 38.09746,-0.72200: rumbo 340° y las vías a menos de 30 m van a [102, 106, 109]° (o su opuesto)
 - [2] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: rumbo 31° y las vías a menos de 30 m van a [122, 124]° (o su opuesto)
-- [2] `dgt:GUID_CVM_165337` (DGT feed; CA-33 PK 12.772 Creciente) 36.46985,-6.20537: rumbo 95° y las vías a menos de 30 m van a [27, 28]° (o su opuesto)
 
 ## sentido_dudoso
 
@@ -227,12 +213,10 @@
 ## contra_direccion
 
 - [1] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: rumbo 15° contra el único sentido de A316 (a 51 m) y ninguna calzada a favor a menos de 60 m
-- [1] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Creciente) 37.67935,-1.70970: rumbo 159° contra el único sentido de A7 (a 1 m) y ninguna calzada a favor a menos de 60 m
 
 ## salida_otra_via
 
 - [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: la salida no está sobre la AS-19
-- [2] `ansr:EN261:97.06:A` (Portugal: ANSR (red SINCRO); EN261 PK 97.06 Ambos) 37.88866,-8.20341: la salida no está sobre la EN261
 
 ## salida_fuera_de_via
 
@@ -241,6 +225,7 @@
 ## Cámaras de OSM sin punto nuestro a 150 m
 
 - `osm:n29095584` 37.67274,-1.70781 2023-12-18 {'direction': '21', 'highway': 'speed_camera', 'maxspeed': '80', 'note': 'F100 XABI A-7 Km 593.28 Lorca DIR Valencia CL'}
+- `osm:n29221276` 40.95536,-4.13517 2026-10-06 {'direction': 'both', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n254625152` 41.55857,2.18565 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '90', 'note': 'radar tram'}
 - `osm:n393808999` 41.53827,0.45759 2025-05-15 {'highway': 'speed_camera', 'maxspeed': '120', 'note': 'F120 K2o- A-2 Km 445.3 Soses DIR Lleida CLAV'}
 - `osm:n992000507` 41.38610,2.12709 2024-11-28 {'highway': 'speed_camera', 'maxspeed': '60', 'note': 'TUFI SIPU PREaviso F060 2R Barcelona Ronda Mig DIR Puerto-'}
@@ -249,6 +234,7 @@
 - `osm:n992003744` 40.73025,0.59370 2025-10-08 {'description': 'F100 MONT N-340 Km 1084.32 Amposta DIR Tarragona CL', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n992004415` 43.31052,-1.95068 2026-04-27 {'direction': '100', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050 GOVI San Sebastión Paseo Otxoki DIR Garbera CL'}
 - `osm:n992004439` 41.57685,2.18732 2023-08-02 {'highway': 'speed_camera'}
+- `osm:n992004756` 42.86136,-5.87388 2026-01-27 {'direction': '160', 'highway': 'speed_camera', 'maxspeed': '100', 'note': 'TUCE A300 100 AP-66 Km 101.2 Ext Túnel Barrios Luna DIR León'}
 - `osm:n992005704` 40.95325,-0.22787 2026-01-25 {'direction': '180', 'highway': 'speed_camera', 'maxspeed': '90', 'note': 'F100 A300 N-211 Km 228.15 Entrada Calanda DIR Teruel CL\nXQ3C+8V6 Calanda (Plus CODE Google Maps)'}
 - `osm:n992006410` 41.37576,2.13059 2026-04-09 {'highway': 'speed_camera', 'maxspeed': '50', 'note': 'TUFI SIPU PREaviso F060 1R Barcelona Ronda Mig DIR Tibidabo-'}
 - `osm:n992006717` 41.31355,2.06829 2026-03-18 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '100', 'note': 'FVAR F080 CARK C-31-Sur Km 191.5 El Prat DIR Barcelona CL'}
@@ -262,17 +248,19 @@
 - `osm:n2334938812` 37.36309,-6.03262 2025-12-12 {'direction': '100', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050 BBS Ache A-8057 PK-0.1 Sentido Sevilla @'}
 - `osm:n2378266977` 41.85213,3.07352 2023-12-18 {'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n3202405846` 41.33531,2.09575 2026-03-10 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '80', 'note': 'FVAR F080 MAIG C-31-Sur Km 195 el Prat DIR Barcelona CL'}
+- `osm:n3901483333` 42.45540,1.94235 2020-09-17 {'enforcement': 'maxspeed', 'highway': 'speed_camera'}
 - `osm:n4587398829` 41.31477,1.18087 2025-10-09 {'direction': '300', 'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n4838340298` 42.25140,-8.68574 2025-10-02 {'direction': '20', 'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n4958102690` 41.52368,2.16454 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '120'}
+- `osm:n5264694695` 40.94754,-4.12476 2026-10-06 {'direction': 'both', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n5744469677` 41.61139,0.62359 2022-01-30 {'highway': 'speed_camera', 'maxspeed': '50'}
 - `osm:n6926374946` 36.54663,-4.66933 2023-05-08 {'direction': '90', 'highway': 'speed_camera', 'maxspeed': '50'}
 - `osm:n7171815050` 41.36763,2.13931 2024-06-21 {'direction': '45', 'highway': 'speed_camera'}
 - `osm:n7541702988` 41.68635,-0.95408 2026-01-31 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n8968186514` 42.04012,-4.55993 2026-01-28 {'description': 'Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n8974875728` 39.66718,-2.37500 2026-01-07 {'direction': '140', 'highway': 'speed_camera', 'maxspeed': '120', 'note': 'A-3 PK 156.57 SENTIDO CRECIENTE'}
+- `osm:n9071289106` 42.73289,0.19460 2026-10-25 {'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n9212434658` 43.01128,-1.63673 2026-02-12 {'direction': '150', 'highway': 'speed_camera', 'maxspeed': '50'}
-- `osm:n10182984432` 43.32288,-2.98118 2026-06-10 {'direction': '290', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n11080765218` 41.21193,1.69115 2023-08-01 {'highway': 'speed_camera'}
 - `osm:n11080765221` 41.22540,1.70239 2023-08-01 {'highway': 'speed_camera'}
 - `osm:n11080765223` 41.22607,1.70346 2023-08-01 {'highway': 'speed_camera'}
@@ -292,31 +280,85 @@
 - `osm:n11084641829` 41.52457,2.09609 2023-08-02 {'highway': 'speed_camera'}
 - `osm:n11084641830` 41.53106,2.09226 2023-08-02 {'highway': 'speed_camera'}
 - `osm:n11084641839` 41.59265,2.18565 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '90', 'note': 'radar tram'}
+- `osm:n11916779412` 40.95036,-4.11152 2026-10-19 {'description': 'Calle San Gabriel, por ahora es un fijo pedagógico que, pese a la estar indicado en la señalización, no está claro que ya multe. Se prevé que sea de tramo de toda la calle.', 'direction': '10;190', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n12029827822` 41.42534,2.00122 2026-03-08 {'direction': '-20', 'highway': 'speed_camera', 'maxspeed': '100'}
+- `osm:n12146813454` 37.41333,-5.98424 2026-07-17 {'highway': 'speed_camera'}
 - `osm:n12839568988` 42.16968,1.31840 2026-03-17 {'direction': '10', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n13438685208` 42.27821,2.97601 2026-01-07 {'highway': 'speed_camera', 'maxspeed': '80'}
 - `osm:n13450183821` 38.25226,-0.76453 2026-01-19 {'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n13504941198` 42.23925,-4.92474 2026-01-27 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '90'}
-- `osm:n13610015791` 36.90828,-6.05962 2026-07-14 {'highway': 'speed_camera', 'maxspeed': '70'}
-- `osm:n13610015792` 36.90286,-6.07139 2026-07-14 {'highway': 'speed_camera', 'maxspeed': '70'}
 - `osm:n13622823996` 40.71435,-3.79364 2026-03-06 {'highway': 'speed_camera', 'maxspeed': '80'}
 - `osm:n13624945402` 39.49454,-0.42485 2026-03-07 {'direction': '230', 'highway': 'speed_camera', 'maxspeed': '80'}
+- `osm:n13928803578` 43.31626,-6.31014 2026-06-11 {'highway': 'speed_camera', 'maxspeed': '60'}
+- `osm:n13928803579` 43.32598,-6.29574 2026-06-11 {'highway': 'speed_camera', 'maxspeed': '60'}
+- `osm:n13943289912` 38.97671,1.47078 2026-07-10 {'description': 'RADAR DE TRAMO', 'highway': 'speed_camera', 'maxspeed': '80'}
+- `osm:n13943289913` 38.98245,1.48479 2026-07-10 {'description': 'RADAR DE TRAMO', 'highway': 'speed_camera', 'maxspeed': '80'}
+- `osm:n13981133081` 40.43454,-2.51937 2026-07-01 {'highway': 'speed_camera'}
+- `osm:n13990668479` 43.05993,-2.66144 2026-07-05 {'direction': '30', 'highway': 'speed_camera', 'maxspeed': '50'}
+- `osm:n13991197952` 39.48174,-0.45924 2026-07-05 {'highway': 'speed_camera'}
+- `osm:n13991197953` 39.47221,-0.43154 2026-07-05 {'highway': 'speed_camera'}
+- `osm:n13997378766` 35.28738,-2.94107 2026-07-08 {'highway': 'speed_camera', 'maxspeed': '40'}
+- `osm:n14002254967` 36.54667,-4.61668 2026-07-10 {'highway': 'speed_camera', 'maxspeed': '30'}
+- `osm:n14002262067` 36.56031,-4.60831 2026-07-10 {'highway': 'speed_camera', 'maxspeed': '30'}
+- `osm:n14002280518` 36.54813,-4.61781 2026-07-10 {'highway': 'speed_camera', 'maxspeed': '30'}
+- `osm:n14017317585` 43.55001,-5.69624 2026-07-15 {'highway': 'speed_camera', 'maxspeed': '50'}
+- `osm:n14028418366` 38.03660,-3.29378 2026-07-20 {'direction': '210', 'highway': 'speed_camera'}
+- `osm:n14028418368` 38.03619,-3.29441 2026-07-20 {'direction': '70', 'highway': 'speed_camera'}
+- `osm:n14074729257` 38.97642,1.43916 2026-08-05 {'highway': 'speed_camera', 'maxspeed': '80'}
+- `osm:n14095018395` 43.14922,-9.17011 2026-08-16 {'direction': '360', 'highway': 'speed_camera', 'maxspeed': '70'}
+- `osm:n14106999079` 42.46074,1.97304 2026-08-20 {'direction': '190', 'highway': 'speed_camera', 'maxspeed': '50'}
+- `osm:n14106999084` 42.46247,1.98613 2026-08-20 {'direction': '130', 'highway': 'speed_camera', 'maxspeed': '50'}
+- `osm:n14116965974` 41.77296,2.73971 2026-08-24 {'highway': 'speed_camera'}
+- `osm:n14166515810` 37.82362,-0.76133 2026-09-10 {'direction': '145', 'highway': 'speed_camera', 'maxspeed': '30'}
+- `osm:n14169116116` 37.33071,-5.83818 2026-10-22 {'direction': '260', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n14169137330` 37.33157,-5.84046 2026-09-10 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '30'}
+- `osm:n14169267684` 38.17105,-0.84106 2026-09-11 {'enforcement': 'traffic_signals'}
+- `osm:n14170634961` 40.41918,-3.66146 2026-09-10 {'highway': 'speed_camera', 'name': 'Habitual radar móvil'}
+- `osm:n14173170778` 37.56707,-5.86074 2026-09-11 {'highway': 'speed_camera', 'maxspeed': '60'}
+- `osm:n14214352419` 42.27322,2.95480 2026-09-25 {'highway': 'speed_camera', 'maxspeed': '50'}
+- `osm:n14214352421` 42.26751,2.99492 2026-10-04 {'direction': '250', 'highway': 'speed_camera', 'maxspeed': '50'}
+- `osm:n14234273105` 41.71785,-5.81003 2026-09-30 {'highway': 'speed_camera', 'maxspeed': '90'}
+- `osm:n14234273106` 41.74850,-5.85160 2026-09-30 {'highway': 'speed_camera', 'maxspeed': '90'}
+- `osm:n14234309912` 42.15819,1.85898 2026-09-30 {'highway': 'speed_camera', 'maxspeed': '60'}
+- `osm:n14234309913` 42.17345,1.86115 2026-09-30 {'highway': 'speed_camera', 'maxspeed': '60'}
+- `osm:n14256007122` 36.78544,-2.74148 2026-10-06 {'highway': 'speed_camera', 'maxspeed': '120'}
+- `osm:n14256007123` 36.79198,-2.70169 2026-10-06 {'highway': 'speed_camera', 'maxspeed': '120'}
+- `osm:n14256052436` 36.81788,-2.54657 2026-10-06 {'highway': 'speed_camera', 'maxspeed': '60'}
+- `osm:n14256052437` 36.83094,-2.48956 2026-10-06 {'highway': 'speed_camera', 'maxspeed': '60'}
+- `osm:n14280731525` 43.12492,-2.98087 2026-10-13 {'direction': '10', 'highway': 'speed_camera', 'maxspeed': '50'}
+- `osm:n14285782446` 42.67696,-8.70351 2026-10-15 {'direction': '40', 'highway': 'speed_camera', 'maxspeed': '70'}
+- `osm:n14297435734` 43.36846,-2.99799 2026-10-18 {'direction': '350', 'highway': 'speed_camera', 'maxspeed': '30'}
+- `osm:n14318644800` 36.71184,-4.53950 2026-10-25 {'direction': '105', 'highway': 'speed_camera', 'maxspeed': '100'}
+- `osm:n14321373848` 36.88501,-5.02611 2026-10-26 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '90'}
+- `osm:n14321373850` 36.89795,-5.00819 2026-10-26 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '90'}
+- `osm:n14321406998` 37.19262,-3.68374 2026-10-26 {'direction': '250', 'highway': 'speed_camera', 'maxspeed': '80'}
+- `osm:n14329357094` 37.28986,-6.89659 2026-10-28 {'highway': 'speed_camera', 'maxspeed': '90'}
+- `osm:n14329357095` 37.27915,-6.90099 2026-10-28 {'highway': 'speed_camera', 'maxspeed': '90'}
+- `osm:n14334642718` 36.82326,-2.25831 2026-10-30 {'highway': 'speed_camera', 'maxspeed': '70'}
+- `osm:n14334642719` 36.83010,-2.27202 2026-10-30 {'highway': 'speed_camera', 'maxspeed': '70'}
 - `osm:n3714381772` 41.19705,-8.58875 2019-10-30 {'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n4139225820` 38.74338,-9.18249 2025-12-12 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '80', 'note': 'F080387442', 'ref': 'PT_FIXO 80'}
 - `osm:n6701045442` 37.03824,-7.94992 2025-12-12 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '70', 'note': 'F070387428', 'ref': 'PT_FIXO 70'}
 - `osm:n10635057610` 40.22128,-8.43944 2025-12-15 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '60', 'note': 'F060390407', 'ref': 'PT_FIXO 60'}
 - `osm:n11206091734` 38.79211,-9.16870 2025-12-12 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '90', 'note': 'F080390478', 'ref': 'PT_FIXO 80'}
 - `osm:n11223504298` 38.72497,-9.15482 2025-12-15 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050387414', 'ref': 'PT_FIXO 50'}
+- `osm:n12243850289` 40.44427,-8.51643 2026-09-07 {'description': 'Average Speed Limit Sign. National Sign Code is H42. Speed limit is 120 km/h.', 'highway': 'speed_camera', 'maxspeed': '120'}
+- `osm:n14169617189` 38.73459,-8.65189 2026-09-10 {'highway': 'speed_camera', 'maxspeed': '70'}
+- `osm:n14192250405` 38.75826,-9.29272 2026-09-18 {'highway': 'speed_camera', 'maxspeed': '80'}
+- `osm:n14203602333` 37.88281,-8.18910 2026-09-21 {'highway': 'speed_camera', 'maxspeed': '70'}
 - `osm:r6309920` 40.59356,-3.58233  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r7228775` 40.72944,0.59212  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r7778337` 41.53876,0.45392  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r7778343` 41.62415,1.42033  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r8453561` 41.85213,3.07352  {'enforcement': 'maxspeed', 'maxspeed': '100', 'name': 'Radar fix C-31 (Calonge)'}
+- `osm:r9959079` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|NO->SE'}
+- `osm:r9959080` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|SE->NO'}
 - `osm:r10358149` 40.46815,-3.43084  {'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r13180336` 42.73289,0.19460  {'enforcement': 'maxspeed', 'maxspeed': '60', 'name': 'Aragnouet - Tunnel Aragnouet Bielsa|N->S'}
 - `osm:r15824408` 36.54663,-4.66933  {'enforcement': 'maxspeed', 'maxspeed': '50'}
 - `osm:r15896698` 38.02615,-3.77256  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r18375567` 43.25587,-4.06522  {'enforcement': 'traffic_signals', 'name': 'Control semafórico del túnel'}
+- `osm:r19583152` 42.66137,-5.62451  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r19669928` 42.24806,-8.69454  {'enforcement': 'maxspeed', 'maxspeed': '100'}
 - `osm:r19685367` 42.19508,2.52653  {'enforcement': 'maxspeed', 'maxspeed': '100'}
 - `osm:r19685448` 41.53980,1.85767  {'enforcement': 'maxspeed', 'maxspeed': '100'}
@@ -324,8 +366,74 @@
 - `osm:r20135745` 40.95325,-0.22787  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r20144509` 42.23925,-4.92474  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r20156679` 41.68635,-0.95408  {'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20261325` 41.59535,1.56065  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20278812` 41.83735,2.74897  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20279058` 41.83567,2.74917  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20282436` 41.48784,2.07814  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '100'}
+- `osm:r20282464` 41.50843,2.13273  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '100'}
+- `osm:r20282500` 41.54910,2.22658  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '100'}
+- `osm:r20282540` 41.58389,2.29803  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20282560` 41.46104,2.01187  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r20285921` 41.48871,2.05997  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '110'}
+- `osm:r20285975` 41.56087,2.23546  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r20285986` 41.75779,1.85642  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20285989` 41.76514,1.86876  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20286002` 41.79710,1.92491  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20286017` 41.88121,2.02908  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20286060` 41.90107,2.08777  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20286082` 41.94923,2.29082  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20286231` 42.05354,2.30362  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '90'}
+- `osm:r20286241` 42.04587,2.29345  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '90'}
+- `osm:r20286289` 42.06962,2.34558  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r20287187` 42.12349,2.41870  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r20287229` 41.50228,2.14382  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '120'}
+- `osm:r20289440` 42.12713,2.43904  {'description': 'Ubicación itinerante radar de remolque (móvil).', 'enforcement': 'maxspeed', 'maxspeed': '80'}
 - `osm:r20305869` 41.26621,1.55228  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r20347059` 41.31355,2.06829  {'enforcement': 'maxspeed', 'maxspeed': '100'}
 - `osm:r20362061` 43.23464,-2.02748  {'enforcement': 'maxspeed', 'maxspeed': '80'}
-- `osm:r20962638` 43.32288,-2.98118  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r20966544` 43.31626,-6.31014  {'enforcement': 'average_speed', 'maxspeed': '60'}
+- `osm:r20966545` 43.32598,-6.29574  {'enforcement': 'average_speed', 'maxspeed': '60'}
+- `osm:r21067944` 43.05993,-2.66144  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21067945` 43.05993,-2.66144  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21068725` 39.47221,-0.43154  {'enforcement': 'average_speed', 'maxspeed': '100'}
+- `osm:r21084480` 36.54667,-4.61668  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r21084481` 36.54667,-4.61668  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r21084535` 36.56031,-4.60831  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r21084536` 36.56031,-4.60831  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r21084547` 36.54813,-4.61781  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r21084548` 36.54813,-4.61781  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r21084649` 38.97676,1.47081  {'enforcement': 'average_speed', 'maxspeed': '80'}
+- `osm:r21084650` 38.98245,1.48503  {'enforcement': 'average_speed', 'maxspeed': '80'}
+- `osm:r21102719` 43.55001,-5.69624  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21102720` 43.55001,-5.69624  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21191687` 38.97642,1.43916  {'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r21191688` 38.97642,1.43916  {'enforcement': 'maxspeed'}
+- `osm:r21223979` 43.54202,-6.53366  {'enforcement': 'traffic_signals'}
+- `osm:r21232578` 43.14922,-9.17011  {'enforcement': 'maxspeed', 'maxspeed': '70'}
+- `osm:r21254701` 42.45987,1.97183  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21254702` 42.46163,1.97452  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21254703` 42.46247,1.98613  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21254704` 42.46247,1.98613  {'enforcement': 'maxspeed'}
+- `osm:r21275849` 43.36317,-5.85837  {'enforcement': 'traffic_signals'}
+- `osm:r21440002` 42.27297,2.95509  {'enforcement': 'average_speed', 'maxspeed': '50'}
+- `osm:r21440003` 42.27349,2.95458  {'enforcement': 'average_speed', 'maxspeed': '50'}
+- `osm:r21440004` 42.26725,2.99311  {'enforcement': 'average_speed', 'maxspeed': '50'}
+- `osm:r21440005` 42.26745,2.99651  {'enforcement': 'average_speed', 'maxspeed': '50'}
+- `osm:r21440725` 40.05078,-2.12270  {'enforcement': 'traffic_signals'}
+- `osm:r21454436` 37.33071,-5.83818  {'enforcement': 'maxspeed', 'maxspeed': '30'}
+- `osm:r21462343` 41.71785,-5.81003  {'enforcement': 'average_speed', 'maxspeed': '90'}
+- `osm:r21462344` 41.71785,-5.81003  {'enforcement': 'average_speed', 'maxspeed': '90'}
+- `osm:r21462393` 42.17356,1.86125  {'enforcement': 'average_speed', 'maxspeed': '60'}
+- `osm:r21462394` 42.15805,1.85912  {'enforcement': 'average_speed', 'maxspeed': '60'}
+- `osm:r21520479` 36.79206,-2.70088  {'enforcement': 'average_speed', 'maxspeed': '120'}
+- `osm:r21520538` 36.83094,-2.48956  {'enforcement': 'average_speed', 'maxspeed': '60'}
+- `osm:r21522281` 40.95536,-4.13517  {'enforcement': 'average_speed', 'maxspeed': '30'}
+- `osm:r21646598` 43.12410,-2.98166  {'enforcement': 'maxspeed', 'maxspeed': '50'}
+- `osm:r21665469` 42.67696,-8.70351  {'enforcement': 'maxspeed', 'maxspeed': '70'}
+- `osm:r21665470` 42.67850,-8.70320  {'enforcement': 'maxspeed', 'maxspeed': '70'}
+- `osm:r21800671` 37.19262,-3.68374  {'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r21800710` 36.89795,-5.00819  {'enforcement': 'average_speed', 'maxspeed': '90'}
+- `osm:r21815998` 37.28986,-6.89659  {'enforcement': 'average_speed', 'maxspeed': '90'}
+- `osm:r21842928` 36.83010,-2.27202  {'enforcement': 'average_speed', 'maxspeed': '70'}
+- `osm:r21842929` 36.83010,-2.27202  {'enforcement': 'average_speed', 'maxspeed': '70'}
 - `osm:r21426823` 37.03824,-7.94992  {'enforcement': 'maxspeed', 'maxspeed': '70'}
