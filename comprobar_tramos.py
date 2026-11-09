@@ -96,6 +96,9 @@ if d:
                     return nodos[m["ref"]]
             return None
         a, b = nodo("from"), nodo("to")
+        froms = [nodos[m["ref"]] for m in e["members"] if m["type"] == "node" and m["role"] == "from" and m["ref"] in nodos]
+        if b and len(froms) > 1:   # varias entradas: el tramo empieza en la más lejana de la salida (como el recolector)
+            a = max(froms, key=lambda n: dist(n["lat"], n["lon"], b["lat"], b["lon"]))
         if not a or not b:
             devs = [nodos[m["ref"]] for m in e["members"] if m["type"] == "node" and m["role"] == "device" and m["ref"] in nodos]
             if len(devs) == 2:

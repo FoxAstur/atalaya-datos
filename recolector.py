@@ -1011,6 +1011,7 @@ out geom;
                 continue
             desde = hasta = via = None
             desde_via = hasta_via = None   # extremos de "from"/"to" cuando son vías (cruces de semáforo)
+            desdes: list = []
             disp = []
             for m in e.get("members", []):
                 g = m.get("geometry") if m.get("type") == "way" else None
@@ -1025,6 +1026,7 @@ out geom;
                 rol = m.get("role")
                 if rol == "from":
                     desde = c
+                    desdes.append(c)
                     if g:
                         desde_via = (c, (g[-1]["lat"], g[-1]["lon"]))
                 elif rol == "to":
@@ -1048,6 +1050,10 @@ out geom;
             elif via and not disp and tipo != "RADAR_TRAMO":
                 disp = [(f"osm:r{e['id']}", via)]
             lim, ref = limite(tags), via_normalizada(tags.get("ref")) or None
+            if tipo == "RADAR_TRAMO" and hasta and len(desdes) > 1:
+                # varias entradas con la misma salida (Ronda del Mig en Barcelona): el tramo empieza en la primera,
+                # la más lejana de la salida (antes se quedaba la última de la lista, a veces la de en medio)
+                desde = max(desdes, key=lambda x: distancia(*x, *hasta))
             if tipo == "RADAR_TRAMO" and desde and hasta:
                 id_ = f"osm:r{e['id']}"
                 por_id[id_] = punto(id_, "RADAR_TRAMO", "OSM", desde[0], desde[1], la2=round(hasta[0], 6),
