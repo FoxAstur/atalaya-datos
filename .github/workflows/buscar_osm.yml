@@ -45,29 +45,30 @@ jobs:
         env:
           R: ${{ inputs.relaciones }}
         run: |
-          Q="[out:json][timeout:120];relation(id:$R);out body;>;out body qt;"
-          for u in https://overpass-api.de/api/interpreter https://overpass.kumi.systems/api/interpreter https://overpass.private.coffee/api/interpreter https://overpass-api.de/api/interpreter; do
-            curl -sS --max-time 180 -A "AtalayaRecolector/1.0 (+https://github.com/FoxAstur/atalaya-datos)" --data-urlencode "data=$Q" "$u" -o m.json || true
-            if python3 -c "import json;json.load(open('m.json'))" 2>/dev/null; then echo "OK $u"; break; fi
-            echo "falla $u"; head -c 300 m.json; echo; sleep 20
-          done
           python3 - <<'PY'
-          import json
-          d = json.load(open("m.json"))
-          nodos = {e["id"]: e for e in d["elements"] if e["type"] == "node"}
-          vias = {e["id"]: e for e in d["elements"] if e["type"] == "way"}
-          for e in d["elements"]:
-              if e["type"] != "relation": continue
-              print("RELACION", e["id"], json.dumps(e.get("tags"), ensure_ascii=False))
-              for m in e["members"]:
-                  if m["type"] == "node":
-                      n = nodos.get(m["ref"], {})
-                      print("  ", m["role"], "nodo", m["ref"], n.get("lat"), n.get("lon"), json.dumps(n.get("tags", {}), ensure_ascii=False))
-                  else:
-                      w = vias.get(m["ref"], {})
-                      ns = w.get("nodes", [])
-                      ini = nodos.get(ns[0], {}) if ns else {}
-                      fin = nodos.get(ns[-1], {}) if ns else {}
-                      print("  ", m["role"], m["type"], m["ref"], json.dumps(w.get("tags", {}), ensure_ascii=False)[:200],
-                            "de", ini.get("lat"), ini.get("lon"), "a", fin.get("lat"), fin.get("lon"))
+          # API de OpenStreetMap (no Overpass): cada relación con sus miembros, uno a uno
+          import json, os, urllib.request
+          for rid in os.environ["R"].split(","):
+              rid = rid.strip()
+              try:
+                  req = urllib.request.Request(f"https://api.openstreetmap.org/api/0.6/relation/{rid}/full.json",
+                                               headers={"User-Agent": "AtalayaRecolector/1.0 (+https://github.com/FoxAstur/atalaya-datos)"})
+                  d = json.load(urllib.request.urlopen(req, timeout=60))
+              except Exception as e:
+                  print("RELACION", rid, "ERROR", e); continue
+              nodos = {e["id"]: e for e in d["elements"] if e["type"] == "node"}
+              vias = {e["id"]: e for e in d["elements"] if e["type"] == "way"}
+              for e in d["elements"]:
+                  if e["type"] != "relation" or str(e["id"]) != rid: continue
+                  print("RELACION", e["id"], json.dumps(e.get("tags"), ensure_ascii=False))
+                  for m in e["members"]:
+                      if m["type"] == "node":
+                          n = nodos.get(m["ref"], {})
+                          print("   ", m["role"] or "(sin rol)", "nodo", m["ref"], n.get("lat"), n.get("lon"), json.dumps(n.get("tags", {}), ensure_ascii=False))
+                      elif m["type"] == "way":
+                          w = vias.get(m["ref"], {}); ns = w.get("nodes", [])
+                          a = nodos.get(ns[0], {}) if ns else {}; b = nodos.get(ns[-1], {}) if ns else {}
+                          print("   ", m["role"] or "(sin rol)", "via", m["ref"], (w.get("tags") or {}).get("ref"), "de", a.get("lat"), a.get("lon"), "a", b.get("lat"), b.get("lon"))
+                      else:
+                          print("   ", m["role"], m["type"], m["ref"])
           PY
