@@ -8,6 +8,10 @@ on:
         description: "sur,oeste,norte,este"
         required: true
         default: "39.42,-0.47,39.51,-0.37"
+      relaciones:
+        description: "ids de relaciones enforcement para ver sus miembros (separados por comas; opcional)"
+        required: false
+        default: ""
 
 jobs:
   buscar:
@@ -33,4 +37,31 @@ jobs:
               print(e["type"], e["id"], c.get("lat"), c.get("lon"), json.dumps(t, ensure_ascii=False))
               if e["type"] == "relation":
                   print("   miembros:", [(m["role"], m["type"], m["ref"]) for m in e.get("members", [])])
+          PY
+      - name: Miembros de las relaciones
+        if: inputs.relaciones != ''
+        env:
+          R: ${{ inputs.relaciones }}
+        run: |
+          Q="[out:json][timeout:120];relation(id:$R);out body;>;out body qt;"
+          curl -sS --max-time 180 -A "AtalayaRecolector/1.0 (+https://github.com/FoxAstur/atalaya-datos)" --data-urlencode "data=$Q" https://overpass-api.de/api/interpreter -o m.json
+          python3 - <<'PY'
+          import json
+          d = json.load(open("m.json"))
+          nodos = {e["id"]: e for e in d["elements"] if e["type"] == "node"}
+          vias = {e["id"]: e for e in d["elements"] if e["type"] == "way"}
+          for e in d["elements"]:
+              if e["type"] != "relation": continue
+              print("RELACION", e["id"], json.dumps(e.get("tags"), ensure_ascii=False))
+              for m in e["members"]:
+                  if m["type"] == "node":
+                      n = nodos.get(m["ref"], {})
+                      print("  ", m["role"], "nodo", m["ref"], n.get("lat"), n.get("lon"), json.dumps(n.get("tags", {}), ensure_ascii=False))
+                  else:
+                      w = vias.get(m["ref"], {})
+                      ns = w.get("nodes", [])
+                      ini = nodos.get(ns[0], {}) if ns else {}
+                      fin = nodos.get(ns[-1], {}) if ns else {}
+                      print("  ", m["role"], m["type"], m["ref"], json.dumps(w.get("tags", {}), ensure_ascii=False)[:200],
+                            "de", ini.get("lat"), ini.get("lon"), "a", fin.get("lat"), fin.get("lon"))
           PY
