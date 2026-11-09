@@ -1,23 +1,23 @@
-# Auditoría 2026-11-09T12:11:36+00:00
+# Auditoría 2026-11-09T12:34:05+00:00
 
 ## Resumen
 
-- comprobados_pk: 1237
-- comprobados_sentido_pk: 1028
+- comprobados_pk: 1236
+- comprobados_sentido_pk: 1027
 - con_ref: 1486
-- con_rumbo: 2726
-- con_via: 3677
+- con_rumbo: 2724
+- con_via: 3676
 - osm_camaras: 5656
-- osm_sin_nuestro: 99
+- osm_sin_nuestro: 102
 - tramos: 346
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
-| sin_su_carretera | 47 | 0 |
+| sin_su_carretera | 48 | 0 |
 | pk_lejos | 38 | 20 |
-| tramo_raro | 26 | 3 |
+| tramo_raro | 25 | 3 |
 | duplicado | 17 | 0 |
-| fuera_de_via | 15 | 7 |
+| fuera_de_via | 16 | 7 |
 | camino_incoherente | 5 | 0 |
 | rumbo_cruzado | 4 | 0 |
 | salida_otra_via | 3 | 0 |
@@ -53,6 +53,7 @@
 - [3] `dgtpdf:F:N-340A:1049.45:D` (DGT PDF radares; N-340A PK 1049.45 Decreciente) 40.47004,0.44133: no hay ninguna vía N-340A a menos de 600 m (la más cercana: N340 a 2 m)
 - [3] `dgtpdf:F:N-357B:1.219:D` (DGT PDF radares; N-357B PK 1.219 Decreciente) 36.15514,-5.44919: no hay ninguna vía N-357B a menos de 600 m (la más cercana: tertiary a 30 m)
 - [3] `dgtpdf:F:N-357B:1.64:C` (DGT PDF radares; N-357B PK 1.64 Creciente) 36.15344,-5.44881: no hay ninguna vía N-357B a menos de 600 m (la más cercana: urbanización alborán a 12 m)
+- [3] `dgtpdf:T:LZ-67:16.22:D` (DGT PDF radares; LZ-67 PK 21.724 Decreciente) 28.94915,-13.76294: no hay ninguna vía LZ-67 a menos de 600 m (la más cercana: calle valle de fenauso a 23 m)
 - [3] `dgtpdf:T:N-401A:91.62:D` (DGT PDF radares; N-401A PK 93.994 Decreciente) 39.69754,-3.96998: no hay ninguna vía N-401A a menos de 600 m (la más cercana: N401 a 0 m)
 - [3] `dgt:GUID_CABINACINEMOMETRO_120027` (DGT feed; A-12 PK 93.88 Creciente) 42.44163,-2.54181: no hay ninguna vía A-12 a menos de 600 m (la más cercana: motorway_link a 17 m)
 - [3] `dgt:GUID_CABINACINEMOMETRO_120039` (DGT feed; A-431 PK 29.66 Creciente) 37.80637,-5.09753: no hay ninguna vía A-431 a menos de 600 m (la más cercana: A431A a 1 m)
@@ -118,6 +119,7 @@
 
 ## tramo_raro
 
+- [1] `dgtpdf:T:CL-615:34.61:C` (DGT PDF radares; CL-615 PK 1.715 Creciente) 42.03811,-4.55886: extremos a 31.6 km
 - [1] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: extremos a 31.9 km
 - [1] `osm:r21440002` (OpenStreetMap; None PK None ) 42.27297,2.95509: entrada y salida a 72 m
 - [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 367 m con los extremos a 424 m en recta
@@ -176,6 +178,7 @@
 - [2] `madzbe:40.4761,-3.6380` (Ayto. Madrid foto-rojo y ZBE; None PK None ) 40.47607,-3.63800: a 54 m de la carretera más cercana
 - [2] `dgteq:A-7:978.95:C:cintur` (DGT PDF cámaras; A-7 PK 978.95 Creciente) 36.73091,-4.36735: a 42 m de la carretera más cercana
 - [2] `dgteq:N-344:118.136:C:cintur` (DGT PDF cámaras; N-344 PK 118.136 Creciente) 38.72867,-0.94147: a 45 m de la carretera más cercana
+- [2] `dgtpdf:T:CL-615:34.61:C` (DGT PDF radares; CL-615 PK 1.715 Creciente) 42.03811,-4.55886: a 53 m de la carretera más cercana
 - [2] `dgtpdf:T:N-401A:93.86:C` (DGT PDF radares; N-401A PK 91.488 Creciente) 39.71700,-3.97801: a 51 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120287` (DGT feed; M-111 PK 0.356 Decreciente) 40.49295,-3.56287: a 47 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: a 51 m de la carretera más cercana
@@ -274,7 +277,6 @@
 - `osm:n11084641830` 41.53106,2.09226 2023-08-02 {'highway': 'speed_camera'}
 - `osm:n11084641839` 41.59265,2.18565 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '90', 'note': 'radar tram'}
 - `osm:n12029827822` 41.42534,2.00122 2026-03-08 {'direction': '-20', 'highway': 'speed_camera', 'maxspeed': '100'}
-- `osm:n12670560708` 39.46902,-0.42085 2026-11-03 {'direction': '350', 'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n12670560709` 39.43880,-0.39184 2025-03-16 {'highway': 'speed_camera'}
 - `osm:n12670628830` 39.47833,-0.44836 2025-03-16 {'highway': 'speed_camera'}
 - `osm:n12839568988` 42.16968,1.31840 2026-03-17 {'direction': '10', 'highway': 'speed_camera', 'maxspeed': '90'}
@@ -309,7 +311,6 @@
 - `osm:r15824408` 36.54663,-4.66933  {'enforcement': 'maxspeed', 'maxspeed': '50'}
 - `osm:r15896698` 38.02615,-3.77256  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r18375567` 43.25587,-4.06522  {'enforcement': 'traffic_signals', 'name': 'Control semafórico del túnel'}
-- `osm:r18845440` 39.43880,-0.39184  {'enforcement': 'average_speed', 'maxspeed': '100'}
 - `osm:r19669928` 42.24806,-8.69454  {'enforcement': 'maxspeed', 'maxspeed': '100'}
 - `osm:r19685367` 42.19508,2.52653  {'enforcement': 'maxspeed', 'maxspeed': '100'}
 - `osm:r19685448` 41.53980,1.85767  {'enforcement': 'maxspeed', 'maxspeed': '100'}
