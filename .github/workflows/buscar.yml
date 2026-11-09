@@ -1,0 +1,45 @@
+name: Buscar en las fuentes
+
+# Busca un texto (p. ej. «V-30») en las fuentes oficiales tal cual vienen: los PDF de cinemómetros y de equipos de la
+# DGT y su feed DATEX de radares. Para comprobar a mano qué publica la DGT de una carretera.
+on:
+  workflow_dispatch:
+    inputs:
+      patron:
+        description: "Texto a buscar (expresión regular)"
+        required: true
+        default: "V-30"
+
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber
+      - name: Buscar
+        env:
+          PATRON: ${{ inputs.patron }}
+        run: |
+          python3 - <<'PY'
+          import os, re, sys
+          sys.path.insert(0, ".")
+          import recolector as r
+          pat = re.compile(os.environ["PATRON"], re.I)
+          enl = r.enlaces_pdf_dgt()
+          print("PDF:", enl)
+          for nombre, url in enl.items():
+              lineas = r.lineas_pdf(r.http(url, timeout=120))
+              print(f"\n===== {nombre} ({len(lineas)} líneas) =====")
+              for i, l in enumerate(lineas):
+                  if pat.search(l):
+                      print(" | ".join(lineas[max(0, i - 1):i + 2]))
+          xml = r.http(r.URL_DGT_FEED, timeout=120).decode("utf-8", "replace")
+          print(f"\n===== feed DATEX ({len(xml)} bytes) =====")
+          for m in re.finditer(r"<[^>]*predefinedLocation\b.*?</[^>]*predefinedLocation>", xml, re.S):
+              b = m.group(0)
+              if pat.search(b):
+                  print(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", b))[:700])
+          PY
