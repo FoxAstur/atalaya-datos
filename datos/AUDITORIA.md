@@ -1,23 +1,23 @@
-# Auditoría 2026-11-09T12:34:05+00:00
+# Auditoría 2026-11-09T13:00:23+00:00
 
 ## Resumen
 
-- comprobados_pk: 1236
-- comprobados_sentido_pk: 1027
-- con_ref: 1486
-- con_rumbo: 2724
-- con_via: 3676
+- comprobados_pk: 1232
+- comprobados_sentido_pk: 1023
+- con_ref: 1482
+- con_rumbo: 2720
+- con_via: 3672
 - osm_camaras: 5656
-- osm_sin_nuestro: 102
-- tramos: 346
+- osm_sin_nuestro: 103
+- tramos: 342
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
 | sin_su_carretera | 48 | 0 |
 | pk_lejos | 38 | 20 |
-| tramo_raro | 25 | 3 |
+| tramo_raro | 24 | 2 |
 | duplicado | 17 | 0 |
-| fuera_de_via | 16 | 7 |
+| fuera_de_via | 15 | 7 |
 | camino_incoherente | 5 | 0 |
 | rumbo_cruzado | 4 | 0 |
 | salida_otra_via | 3 | 0 |
@@ -119,7 +119,6 @@
 
 ## tramo_raro
 
-- [1] `dgtpdf:T:CL-615:34.61:C` (DGT PDF radares; CL-615 PK 1.715 Creciente) 42.03811,-4.55886: extremos a 31.6 km
 - [1] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: extremos a 31.9 km
 - [1] `osm:r21440002` (OpenStreetMap; None PK None ) 42.27297,2.95509: entrada y salida a 72 m
 - [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 367 m con los extremos a 424 m en recta
@@ -130,7 +129,6 @@
 - [2] `dgtpdf:T:N-340:80.65:C` (DGT PDF radares; N-340 PK 79.463 Creciente) 36.05139,-5.64411: longitud 1102 m con los extremos a 1143 m en recta
 - [2] `dgtpdf:T:N-340:960.05:D` (DGT PDF radares; N-340 PK 961.014 Decreciente) 39.88575,-0.13030: longitud 906 m con los extremos a 953 m en recta
 - [2] `dgtpdf:T:N-340:961.0:C` (DGT PDF radares; N-340 PK 960.027 Creciente) 39.87855,-0.13690: longitud 913 m con los extremos a 962 m en recta
-- [2] `dgtpdf:T:RM-603:1.4:D` (DGT PDF radares; RM-603 PK 2.737 Decreciente) 37.93568,-1.18986: longitud 1170 m con los extremos a 1223 m en recta
 - [2] `dgtpdf:T:SA-20:92.436:C` (DGT PDF radares; SA-20 PK 91.961 Creciente) 40.94246,-5.64202: longitud 392 m con los extremos a 410 m en recta
 - [2] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Decreciente) 37.67441,-1.70734: longitud 557 m con los extremos a 584 m en recta
 - [2] `dgt:GUID_CVM_163340` (DGT feed; A-7 PK 634.615 Creciente) 37.67964,-1.71095: longitud 923 m con los extremos a 990 m en recta
@@ -178,7 +176,6 @@
 - [2] `madzbe:40.4761,-3.6380` (Ayto. Madrid foto-rojo y ZBE; None PK None ) 40.47607,-3.63800: a 54 m de la carretera más cercana
 - [2] `dgteq:A-7:978.95:C:cintur` (DGT PDF cámaras; A-7 PK 978.95 Creciente) 36.73091,-4.36735: a 42 m de la carretera más cercana
 - [2] `dgteq:N-344:118.136:C:cintur` (DGT PDF cámaras; N-344 PK 118.136 Creciente) 38.72867,-0.94147: a 45 m de la carretera más cercana
-- [2] `dgtpdf:T:CL-615:34.61:C` (DGT PDF radares; CL-615 PK 1.715 Creciente) 42.03811,-4.55886: a 53 m de la carretera más cercana
 - [2] `dgtpdf:T:N-401A:93.86:C` (DGT PDF radares; N-401A PK 91.488 Creciente) 39.71700,-3.97801: a 51 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120287` (DGT feed; M-111 PK 0.356 Decreciente) 40.49295,-3.56287: a 47 m de la carretera más cercana
 - [2] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: a 51 m de la carretera más cercana
@@ -253,6 +250,7 @@
 - `osm:n6926374946` 36.54663,-4.66933 2023-05-08 {'direction': '90', 'highway': 'speed_camera', 'maxspeed': '50'}
 - `osm:n7171815050` 41.36763,2.13931 2024-06-21 {'direction': '45', 'highway': 'speed_camera'}
 - `osm:n7541702988` 41.68635,-0.95408 2026-01-31 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '120'}
+- `osm:n8968186514` 42.04012,-4.55993 2026-01-28 {'description': 'Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n8974875728` 39.66718,-2.37500 2026-01-07 {'direction': '140', 'highway': 'speed_camera', 'maxspeed': '120', 'note': 'A-3 PK 156.57 SENTIDO CRECIENTE'}
 - `osm:n9071289106` 42.73289,0.19460 2026-10-25 {'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n9212434658` 43.01128,-1.63673 2026-02-12 {'direction': '150', 'highway': 'speed_camera', 'maxspeed': '50'}
