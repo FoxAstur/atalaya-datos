@@ -1,0 +1,34 @@
+name: Buscar en OpenStreetMap
+
+# Radares y tramos de control de velocidad que hay en OpenStreetMap dentro de un recuadro (para comprobar a mano).
+on:
+  workflow_dispatch:
+    inputs:
+      recuadro:
+        description: "sur,oeste,norte,este"
+        required: true
+        default: "39.42,-0.47,39.51,-0.37"
+
+jobs:
+  buscar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Overpass
+        env:
+          B: ${{ inputs.recuadro }}
+        run: |
+          Q="[out:json][timeout:120];(node[\"highway\"=\"speed_camera\"]($B);node[\"enforcement\"]($B);relation[\"type\"=\"enforcement\"]($B);node[\"traffic_sign\"~\"S-?990|R-?301|average|section\",i]($B););out tags center;>;out skel qt;"
+          for u in https://overpass-api.de/api/interpreter https://overpass.kumi.systems/api/interpreter; do
+            if curl -sS --max-time 180 --data-urlencode "data=$Q" "$u" -o r.json; then break; fi
+          done
+          python3 - <<'PY'
+          import json
+          d = json.load(open("r.json"))
+          for e in d["elements"]:
+              t = e.get("tags")
+              if not t: continue
+              c = e.get("center") or {"lat": e.get("lat"), "lon": e.get("lon")}
+              print(e["type"], e["id"], c.get("lat"), c.get("lon"), json.dumps(t, ensure_ascii=False))
+              if e["type"] == "relation":
+                  print("   miembros:", [(m["role"], m["type"], m["ref"]) for m in e.get("members", [])])
+          PY
