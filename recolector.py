@@ -1917,6 +1917,7 @@ def fusionar(capas: list[list[dict]]) -> list[dict]:
 
 
 FUSION = {"opuestos": 0, "absorbidos": {}}
+TRAMOS_UNIDOS: dict = {}
 
 
 class Rastro:
@@ -1955,6 +1956,20 @@ class Rastro:
                     break
             perdidos.setdefault(donde, []).append(f"{i} ({fuente})")
         out = []
+        # los tramos de OSM (relaciones), uno a uno y con quién se fundieron: se perdían sin saber dónde
+        tramos_osm = []
+        for i in self.origen:
+            if not i.startswith("osm:r") or i in final:
+                continue
+            donde = "fusión"
+            for nombre, ids in self.pasos:
+                if i not in ids:
+                    donde = nombre
+                    break
+            con = FUSION["absorbidos"].get(i) or TRAMOS_UNIDOS.get(i)
+            tramos_osm.append(f"{i} → {donde}" + (f" (con {con[0]} a {con[1]} m)" if con else ""))
+        if tramos_osm:
+            log("tramos de OSM que no salen: " + "; ".join(sorted(tramos_osm)))
         for donde, lista in sorted(perdidos.items(), key=lambda x: -len(x[1])):
             out.append(f"{donde}: {len(lista)}: " + ", ".join(sorted(lista)[:60]) + (" …" if len(lista) > 60 else ""))
         return out
@@ -3012,6 +3027,7 @@ def unir_tramos(puntos: list[dict]) -> list[dict]:
                 if k not in t and k in o:
                     t[k] = o[k]
             fuera.add(o["id"]); duplicados += 1
+            TRAMOS_UNIDOS[o["id"]] = (t["id"], round(mejor[0]))
     # El mismo tramo, en el mismo sentido, dos veces: el del feed (sus dos cámaras) y el del PDF situado por PK
     # (añadido por ser del sentido contrario a una cámara suelta del feed, cuando aún no se sabía la otra). Si
     # entrada y salida coinciden, se queda el del feed.
