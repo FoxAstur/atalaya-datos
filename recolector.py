@@ -2953,6 +2953,17 @@ def imponer_sentido_oficial(puntos: list[dict], geo: "Geocodificador") -> tuple[
         girar_tramo = p.get("la2") is not None and abs(
             (rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]) - ro + 180) % 360 - 180) > 100 and \
             distancia(p["la"], p["lo"], p["la2"], p["lo2"]) > 250
+        if girar_tramo and p.get("_orient_osm"):
+            # OSM tiene este tramo con su entrada y su salida: lo que está mal es la etiqueta de la DGT (CL-613 PK 15,41,
+            # A-397 PK 28,02, RM-603 PK 1,4: el feed dice «Creciente» y el PDF de la DGT, «Decreciente»). Girarlo dejaba
+            # los dos tramos de la carretera en el mismo sentido y luego uno se quitaba por repetido.
+            nuevo = "Decreciente" if p["s"] == "Creciente" else "Creciente"
+            log(f"  sentido oficial: {p['id']} {p.get('c')} PK {p.get('pk')}: OSM lo tiene al revés de la etiqueta "
+                f"{p['s']} → etiqueta {nuevo}, tramo sin girar")
+            p["s"] = nuevo
+            p["rb"] = round(rumbo_entre(p["la"], p["lo"], p["la2"], p["lo2"]), 1)
+            cambiados.append(p)
+            continue
         if (rb is not None and abs((rb - ro + 180) % 360 - 180) > 120) or girar_tramo:
             log(f"  sentido oficial: {p['id']} {p.get('c')} PK {p.get('pk')} {p.get('s')}: rumbo {rb} → {ro}"
                 + (" (tramo girado)" if girar_tramo else ""))
@@ -3028,6 +3039,7 @@ def orientar_tramos_feed(puntos: list[dict], geo: "Geocodificador") -> str:
         if osm_dice is not None:
             por_osm += 1
             girar = osm_dice
+            p["_orient_osm"] = True   # que el paso del sentido oficial no lo vuelva a girar por la etiqueta
         else:
             girar = p.get("rb") is not None and al_reves(p)
         if girar:
@@ -3677,7 +3689,7 @@ def main() -> int:
             aprox += 1
     estado["Posición aproximada (solo PK)"] = f"{aprox} puntos"
     for p in todos:  # campos de trabajo que no van al fichero
-        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px", "_orient_pdf", "_camara_entrada", "_osm_tramos"):
+        for k in ("_dir", "_dirg", "_osm_dirg", "_rbs_osm", "_viejo", "_hacia", "_hacia_txt", "_rel", "_card", "_verif", "_la0", "_lo0", "_pos_osm", "_en_osm", "_verif_px", "_orient_pdf", "_camara_entrada", "_osm_tramos", "_orient_osm"):
             p.pop(k, None)
     todos.sort(key=lambda p: (p["t"], p["id"]))
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
