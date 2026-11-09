@@ -1,28 +1,28 @@
-# Auditoría 2026-11-09T17:00:35+00:00
+# Auditoría 2026-11-09T17:13:22+00:00
 
 ## Resumen
 
 - comprobados_pk: 1236
 - comprobados_sentido_pk: 1020
 - con_ref: 1486
-- con_rumbo: 2692
-- con_via: 3623
+- con_rumbo: 2724
+- con_via: 3682
 - osm_camaras: 5656
-- osm_sin_nuestro: 213
-- tramos: 321
+- osm_sin_nuestro: 97
+- tramos: 352
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
 | sin_su_carretera | 48 | 0 |
 | pk_lejos | 48 | 22 |
-| duplicado | 21 | 0 |
-| tramo_raro | 20 | 1 |
-| fuera_de_via | 12 | 5 |
+| tramo_raro | 26 | 3 |
+| duplicado | 20 | 0 |
+| fuera_de_via | 14 | 7 |
 | camino_incoherente | 5 | 0 |
 | rumbo_cruzado | 4 | 0 |
 | sentido_dudoso | 3 | 0 |
+| salida_otra_via | 2 | 0 |
 | contra_direccion | 1 | 1 |
-| salida_otra_via | 1 | 0 |
 | salida_fuera_de_via | 1 | 0 |
 
 ## sin_su_carretera
@@ -127,6 +127,35 @@
 - [2] `dgt:GUID_CVM_166407` (DGT feed; CL-602 PK 105.7 Creciente) 41.40152,-4.43120: a 2.8 km de donde cae su PK 105.7 en CL-602
 - [2] `dgt:GUID_CVM_169183` (DGT feed; A-397 PK 28.02 Decreciente) 36.58200,-5.06722: a 1.8 km de donde cae su PK 28.02 en A-397
 
+## tramo_raro
+
+- [1] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: extremos a 31.9 km
+- [1] `osm:r21440002` (OpenStreetMap; None PK None ) 42.27297,2.95509: entrada y salida a 72 m
+- [1] `osm:r21440003` (OpenStreetMap; None PK None ) 42.27349,2.95458: entrada y salida a 72 m
+- [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 367 m con los extremos a 424 m en recta
+- [2] `slmt:1` (Ayto. Salamanca; None PK None ) 40.96530,-5.68286: longitud 615 m con los extremos a 642 m en recta
+- [2] `dgtpdf:T:A-370:8.4:D` (DGT PDF radares; A-370 PK 9.471 Decreciente) 37.17270,-1.83158: longitud 1115 m con los extremos a 1166 m en recta
+- [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: longitud 1030 m con los extremos a 1400 m en recta
+- [2] `dgtpdf:T:N-340:80.65:C` (DGT PDF radares; N-340 PK 79.463 Creciente) 36.05134,-5.64405: longitud 1102 m con los extremos a 1136 m en recta
+- [2] `dgtpdf:T:N-340:961.0:C` (DGT PDF radares; N-340 PK 960.027 Creciente) 39.87837,-0.13707: longitud 892 m con los extremos a 938 m en recta
+- [2] `dgtpdf:T:SA-20:92.436:C` (DGT PDF radares; SA-20 PK 91.961 Creciente) 40.94246,-5.64202: longitud 392 m con los extremos a 410 m en recta
+- [2] `dgt:GUID_CVM_163339` (DGT feed; A-7 PK 636.053 Decreciente) 37.67441,-1.70734: longitud 557 m con los extremos a 584 m en recta
+- [2] `dgt:GUID_CVM_163340` (DGT feed; A-7 PK 634.615 Creciente) 37.67964,-1.71095: longitud 923 m con los extremos a 990 m en recta
+- [2] `dgt:GUID_CVM_163929` (DGT feed; RM-603 PK 2.65 Creciente) 37.93966,-1.17588: longitud 1261 m con los extremos a 1311 m en recta
+- [2] `dgt:GUID_CVM_164265` (DGT feed; RM-603 PK 1.4 Decreciente) 37.93577,-1.18999: longitud 1266 m con los extremos a 1311 m en recta
+- [2] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: longitud 23136 m con los extremos a 31861 m en recta
+- [2] `dgt:GUID_CVM_165001` (DGT feed; CL-613 PK 15.41 Decreciente) 42.21500,-4.84790: longitud 3487 m con los extremos a 16579 m en recta
+- [2] `osm:r17026473` (OpenStreetMap; None PK None ) 40.95498,-5.68599: longitud 351 m con los extremos a 386 m en recta
+- [2] `osm:r18345241` (OpenStreetMap; None PK None ) 41.41380,2.16660: longitud 1250 m con los extremos a 1295 m en recta
+- [2] `osm:r20344505` (OpenStreetMap; None PK None ) 41.29988,2.03448: longitud 712 m con los extremos a 766 m en recta
+- [2] `osm:r20344506` (OpenStreetMap; None PK None ) 41.30560,2.02932: longitud 726 m con los extremos a 766 m en recta
+- [2] `osm:r20354143` (OpenStreetMap; None PK None ) 42.34339,1.95212: longitud 2289 m con los extremos a 386 m en recta
+- [2] `osm:r20354144` (OpenStreetMap; None PK None ) 42.34629,1.95473: longitud 2288 m con los extremos a 386 m en recta
+- [2] `osm:r21082899` (OpenStreetMap; None PK None ) 38.89450,1.36085: longitud 2181 m con los extremos a 2270 m en recta
+- [2] `osm:r21440004` (OpenStreetMap; None PK None ) 42.26725,2.99311: longitud 225 m con los extremos a 281 m en recta
+- [2] `osm:r21440005` (OpenStreetMap; None PK None ) 42.26745,2.99651: longitud 261 m con los extremos a 281 m en recta
+- [2] `osm:r21842929` (OpenStreetMap; None PK None ) 36.82300,-2.25800: longitud 1463 m con los extremos a 1509 m en recta
+
 ## duplicado
 
 - [2] `mad:40.40724,-3.74575` (Ayto. Madrid; A-5 PK 5+750, SENTIDO SALIDA PK None Salida) 40.40724,-3.74575: a 34 m de mad:40.40745,-3.74545 (Ayto. Madrid, rumbo 248.0)
@@ -210,13 +239,13 @@
 - [3] `dgt:GUID_CABINACINEMOMETRO_165670` (DGT feed; AC-862 PK 37.6 Creciente) 43.64023,-7.92840: «Creciente» va hacia 84° y el rumbo es 154°
 - [3] `dgt:GUID_CABINACINEMOMETRO_165908` (DGT feed; N-320 PK 264.11 Creciente) 40.58212,-3.08550: «Creciente» va hacia 312° y el rumbo es 31°
 
-## contra_direccion
-
-- [1] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: rumbo 15° contra el único sentido de A316 (a 51 m) y ninguna calzada a favor a menos de 60 m
-
 ## salida_otra_via
 
 - [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: la salida no está sobre la AS-19
+
+## contra_direccion
+
+- [1] `dgt:GUID_CABINACINEMOMETRO_120385` (DGT feed; A-316 PK 4.0 Decreciente) 38.00835,-3.42943: rumbo 15° contra el único sentido de A316 (a 51 m) y ninguna calzada a favor a menos de 60 m
 
 ## salida_fuera_de_via
 
@@ -228,13 +257,15 @@
 - `osm:n29221276` 40.95536,-4.13517 2026-10-06 {'direction': 'both', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n254625152` 41.55857,2.18565 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '90', 'note': 'radar tram'}
 - `osm:n393808999` 41.53827,0.45759 2025-05-15 {'highway': 'speed_camera', 'maxspeed': '120', 'note': 'F120 K2o- A-2 Km 445.3 Soses DIR Lleida CLAV'}
-- `osm:n992000507` 41.38610,2.12709 2024-11-28 {'highway': 'speed_camera', 'maxspeed': '60', 'note': 'TUFI SIPU PREaviso F060 2R Barcelona Ronda Mig DIR Puerto-'}
 - `osm:n992000728` 42.19292,2.51600 2025-10-06 {'description': 'F100 MAXA A-26 Km 82.6 Olot DIR Ripoll CL', 'direction': '260', 'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n992001543` 41.53980,1.85767 2025-10-06 {'description': 'F120 CARK A-2 Km 579.1 Esparreguera DIR BCN Speedcurb CL', 'direction': '144', 'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n992003744` 40.73025,0.59370 2025-10-08 {'description': 'F100 MONT N-340 Km 1084.32 Amposta DIR Tarragona CL', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n992004415` 43.31052,-1.95068 2026-04-27 {'direction': '100', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050 GOVI San Sebastión Paseo Otxoki DIR Garbera CL'}
 - `osm:n992004439` 41.57685,2.18732 2023-08-02 {'highway': 'speed_camera'}
+- `osm:n992004535` 41.37985,2.12847 2026-04-09 {'highway': 'speed_camera', 'maxspeed': '60', 'note': 'TUFI SIPU PREaviso F060 1R Barcelona Ronda Mig DIR Puerto-'}
 - `osm:n992004756` 42.86136,-5.87388 2026-01-27 {'direction': '160', 'highway': 'speed_camera', 'maxspeed': '100', 'note': 'TUCE A300 100 AP-66 Km 101.2 Ext Túnel Barrios Luna DIR León'}
+- `osm:n992004961` 41.37035,2.13257 2026-04-09 {'highway': 'speed_camera', 'maxspeed': '50', 'note': 'TUFI SIPU PREaviso F060 2R Barcelona Ronda Mig DIR Tibidabo-'}
+- `osm:n992005660` 41.37064,2.13220 2023-12-18 {'highway': 'speed_camera', 'maxspeed': '60', 'note': 'F060 SIPU Barcelona Ronda Mig-4 DIR Puerto-'}
 - `osm:n992005704` 40.95325,-0.22787 2026-01-25 {'direction': '180', 'highway': 'speed_camera', 'maxspeed': '90', 'note': 'F100 A300 N-211 Km 228.15 Entrada Calanda DIR Teruel CL\nXQ3C+8V6 Calanda (Plus CODE Google Maps)'}
 - `osm:n992006410` 41.37576,2.13059 2026-04-09 {'highway': 'speed_camera', 'maxspeed': '50', 'note': 'TUFI SIPU PREaviso F060 1R Barcelona Ronda Mig DIR Tibidabo-'}
 - `osm:n992006717` 41.31355,2.06829 2026-03-18 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '100', 'note': 'FVAR F080 CARK C-31-Sur Km 191.5 El Prat DIR Barcelona CL'}
