@@ -3045,6 +3045,18 @@
   "mu": "Córdoba",
   "pr": "Córdoba"
  },
+ "37.818,-1.077": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.818,-1.082": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.818,-1.087": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.824,-0.761": {
   "mu": "San Pedro del Pinatar",
   "pr": "Murcia"
@@ -3351,6 +3363,10 @@
   "mu": "Alcantarilla",
   "pr": "Murcia"
  },
+ "37.969,-1.131": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.969,-1.139": {
   "mu": "Murcia",
   "pr": "Murcia"
@@ -3423,11 +3439,19 @@
   "mu": "Torrevieja",
   "pr": "Alicante"
  },
+ "37.987,-1.045": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.988,-0.656": {
   "mu": "Torrevieja",
   "pr": "Alicante"
  },
  "37.988,-1.261": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.989,-1.041": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3443,7 +3467,19 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.992,-1.037": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.992,-1.187": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.994,-1.033": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.994,-1.124": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3451,11 +3487,27 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.997,-1.126": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.997,-1.185": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.998,-1.113": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.003,-1.129": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.004,-1.171": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.007,-1.130": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3475,7 +3527,15 @@
   "mu": "Baeza",
   "pr": "Jaén"
  },
+ "38.010,-1.131": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.011,-1.066": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.011,-1.103": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3495,6 +3555,14 @@
   "mu": "Úbeda",
   "pr": "Jaén"
  },
+ "38.014,-1.101": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.014,-1.133": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.015,-1.067": {
   "mu": "Murcia",
   "pr": "Murcia"
@@ -3503,12 +3571,24 @@
   "mu": "Torrevieja",
   "pr": "Alicante"
  },
+ "38.016,-1.162": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.016,-1.165": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
  "38.016,-1.380": {
   "mu": "Albudeite",
+  "pr": "Murcia"
+ },
+ "38.017,-1.136": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.017,-1.159": {
+  "mu": "Murcia",
   "pr": "Murcia"
  },
  "38.017,-1.161": {
@@ -3523,11 +3603,43 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "38.018,-1.157": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.019,-1.154": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.020,-1.152": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "38.020,-1.153": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.021,-1.094": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.021,-1.150": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.022,-1.149": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.023,-1.045": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.023,-1.148": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.024,-1.146": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3543,10 +3655,18 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "38.025,-1.145": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.025,-3.774": null,
  "38.026,-3.773": {
   "mu": "Jabalquinto",
   "pr": "Jaén"
+ },
+ "38.027,-1.048": {
+  "mu": "Murcia",
+  "pr": "Murcia"
  },
  "38.027,-3.436": {
   "mu": "Baeza",
@@ -3560,6 +3680,10 @@
   "mu": "Villanueva de la Reina",
   "pr": "Jaén"
  },
+ "38.030,-1.051": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.031,-1.497": {
   "mu": "Mula",
   "pr": "Murcia"
@@ -3567,6 +3691,10 @@
  "38.031,-3.329": {
   "mu": "Úbeda",
   "pr": "Jaén"
+ },
+ "38.034,-1.053": {
+  "mu": "Murcia",
+  "pr": "Murcia"
  },
  "38.034,-1.432": {
   "mu": "Mula",
