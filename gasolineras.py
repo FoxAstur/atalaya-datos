@@ -36,19 +36,30 @@ def coord(s):
 
 def bajar():
     ultimo = None
-    for intento in range(4):
+    # El servidor del Ministerio corta a veces la conexión («Connection reset by peer») durante un rato: se insiste
+    # unos 10 minutos con esperas crecientes
+    for intento in range(6):
         try:
             req = urllib.request.Request(URL, headers={"Accept": "application/json", "User-Agent": "atalaya-datos (github.com/FoxAstur)"})
             with urllib.request.urlopen(req, timeout=180) as r:
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:  # noqa: BLE001
             ultimo = e
-            time.sleep(20 * (intento + 1))
-    raise RuntimeError(f"Ministerio: {ultimo}")
+            print(f"intento {intento + 1}: {e}", flush=True)
+            if intento < 5:
+                time.sleep(30 * (intento + 1))
+    raise ConnectionError(f"Ministerio: {ultimo}")
+
+
+SIN_RESPUESTA = 3   # código de salida: el Ministerio no contesta (no es un fallo nuestro)
 
 
 def main() -> int:
-    d = bajar()
+    try:
+        d = bajar()
+    except ConnectionError as e:
+        print(f"::warning::{e}. Se mantienen los precios publicados la vez anterior.", flush=True)
+        return SIN_RESPUESTA
     lista = []
     for e in d.get("ListaEESSPrecio", []):
         la, lo = coord(e.get("Latitud")), coord(e.get("Longitud (WGS84)"))

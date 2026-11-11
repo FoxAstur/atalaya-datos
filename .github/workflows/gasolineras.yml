@@ -16,14 +16,36 @@ concurrency:
 jobs:
   precios:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python gasolineras.py
+      # Si el Ministerio no contesta (le pasa a ratos), no se publica y la app sigue con los precios anteriores.
+      # Solo se da por fallo (y llega correo) si los precios publicados tienen más de 2 días.
+      - name: Precios
+        id: precios
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python gasolineras.py
+          r=$?
+          set -e
+          if [ $r -eq 3 ]; then
+            fecha=$(gh release view gasolineras --json assets -q '.assets[]|select(.name=="gasolineras.json.gz")|.updatedAt' 2>/dev/null || true)
+            if [ -n "$fecha" ]; then
+              horas=$(( ( $(date -u +%s) - $(date -u -d "$fecha" +%s) ) / 3600 ))
+              echo "Precios publicados hace $horas h"
+              if [ $horas -gt 48 ]; then echo "::error::El Ministerio lleva más de 2 días sin contestar"; exit 1; fi
+            fi
+            echo "publicar=no" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          exit $r
       - name: Publicar
+        if: steps.precios.outputs.publicar != 'no'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
