@@ -8366,6 +8366,10 @@
   "mu": "Las Rozas de Madrid",
   "pr": "Madrid"
  },
+ "40.507,-4.387": {
+  "mu": "El Hoyo de Pinares",
+  "pr": "Ávila"
+ },
  "40.509,-3.363": {
   "mu": "Alcalá de Henares",
   "pr": "Madrid"
@@ -8393,6 +8397,10 @@
  "40.515,0.115": {
   "mu": "Xert",
   "pr": "Castellón"
+ },
+ "40.516,-4.366": {
+  "mu": "El Hoyo de Pinares",
+  "pr": "Ávila"
  },
  "40.523,0.294": {
   "mu": "Traiguera",
@@ -15366,6 +15374,10 @@
   "mu": "León",
   "pr": "León"
  },
+ "42.582,-5.566": {
+  "mu": "León",
+  "pr": "León"
+ },
  "42.582,-5.584": {
   "mu": "León",
   "pr": "León"
@@ -15407,6 +15419,10 @@
   "pr": "León"
  },
  "42.585,-5.565": {
+  "mu": "León",
+  "pr": "León"
+ },
+ "42.585,-5.566": {
   "mu": "León",
   "pr": "León"
  },
