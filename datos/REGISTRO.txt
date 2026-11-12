@@ -1,233 +1,553 @@
       1s  DGT feed: 737 puntos
-      8s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
-     16s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
-     16s    CartoCiudad: 1061 hitos necesarios, 0 por consultar
-     16s      tramo A-8 PK 505.05 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
-     16s      sin situar: Tramo GR-30 PK 10.02 Decreciente (Granada)
-     16s      tramo A-8 PK 506.28 Creciente: el feed es del otro sentido (Decreciente); se añaden los dos
-     16s      tramo A-397 PK 28.02 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
-     16s      tramo RM-603 PK 1.4 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
-     16s      tramo CL-613 PK 15.41 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
-     16s      tramo CL-615 PK 1.706 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
-     16s      tramo TF-5 PK 22.44 Creciente: el feed es del otro sentido (Decreciente); se añaden los dos
-     16s      tramo V-30 PK 8.85 Creciente: el feed es del otro sentido (Decreciente); se añaden los dos
-     16s      tramo N-125 PK 5.7 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
-     16s      tramo A-8 PK 505.05 Decreciente: ya está en el feed (con otra etiqueta de sentido)
-     16s      tramo A-8 PK 506.28 Creciente: ya está en el feed (con otra etiqueta de sentido)
-     16s      tramo RM-603 PK 1.4 Decreciente: ya está en el feed (con otra etiqueta de sentido)
-     16s      tramo CL-613 PK 15.41 Decreciente: ya está en el feed (con otra etiqueta de sentido)
-     16s    cinemómetros: 636 ya estaban en el feed, 201 añadidos, 1 sin poder situar
-     16s  DGT PDF radares: 201 puntos
-     18s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
-     18s    CartoCiudad: 496 hitos necesarios, 0 por consultar
-     18s    equipos: 252 situados, 8 sin poder situar
-     18s  DGT PDF cámaras: 252 puntos
-     26s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
-     33s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
-     33s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
-     33s    SCT radars.txt: 230 radares
-     33s  Cataluña (SCT): 230 puntos
-     34s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
-     34s  Ayto. Madrid: 23 puntos
-     34s  Ayto. València: 11 puntos
-    117s  OpenStreetMap: 3232 puntos
-    117s  Tramos radar móvil: 1152 puntos
-    119s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
+      5s  PDFs DGT: {'equipos': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/EQUIPOS.pdf', 'cinemometros': 'https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/INFORME_CINEMOMETROS_WEB_OK_20260803_extra.pdf'}
+     13s    cinemómetros: 2158 filas (707 fijos, 126 tramos, 1325 móviles)
+     13s    CartoCiudad: 1061 hitos necesarios, 0 por consultar
+     13s      tramo A-8 PK 505.05 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
+     13s      sin situar: Tramo GR-30 PK 10.02 Decreciente (Granada)
+     13s      tramo A-8 PK 506.28 Creciente: el feed es del otro sentido (Decreciente); se añaden los dos
+     13s      tramo A-397 PK 28.02 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
+     13s      tramo RM-603 PK 1.4 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
+     13s      tramo CL-613 PK 15.41 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
+     13s      tramo CL-615 PK 1.706 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
+     13s      tramo TF-5 PK 22.44 Creciente: el feed es del otro sentido (Decreciente); se añaden los dos
+     13s      tramo V-30 PK 8.85 Creciente: el feed es del otro sentido (Decreciente); se añaden los dos
+     13s      tramo N-125 PK 5.7 Decreciente: el feed es del otro sentido (Creciente); se añaden los dos
+     13s      tramo A-8 PK 505.05 Decreciente: ya está en el feed (con otra etiqueta de sentido)
+     13s      tramo A-8 PK 506.28 Creciente: ya está en el feed (con otra etiqueta de sentido)
+     13s      tramo RM-603 PK 1.4 Decreciente: ya está en el feed (con otra etiqueta de sentido)
+     13s      tramo CL-613 PK 15.41 Decreciente: ya está en el feed (con otra etiqueta de sentido)
+     13s    cinemómetros: 636 ya estaban en el feed, 201 añadidos, 1 sin poder situar
+     13s  DGT PDF radares: 201 puntos
+     14s    equipos: 260 filas; tipos: ['Cinturón', 'Foto Rojo', 'Línea Contínua', 'Video Stop']
+     14s    CartoCiudad: 496 hitos necesarios, 0 por consultar
+     14s    equipos: 252 situados, 8 sin poder situar
+     14s  DGT PDF cámaras: 252 puntos
+     22s    SCT JSON: analisi.transparenciacatalunya.cat: HTTP Error 403: Forbidden; pruebo CSV y TXT
+     29s    SCT https://analisi.transparenciacatalunya.cat/api/views/re3y-fftf/rows.csv?accessType=DOWNLOAD: analisi.transparenciacatalunya.cat: HTTP Error 400: Bad Request
+     29s    SCT muestra: '(ETRS89)' | 'Via         PK          Velocitat   X           Y           ' | 'A-2         445,35      120         288075,4643 4601625,063 '
+     29s    SCT radars.txt: 230 radares
+     29s  Cataluña (SCT): 230 puntos
+     29s    Madrid columnas: ['Nº RADAR', 'Ubicacion', 'Carretara o vial', 'UBICACIÓN Calle 30', 'PK', 'Sentido', 'Tipo', 'Carril', 'Longitud inicio tramo', 'Latitud inicio tramo', 'X (WGS84)', 'Y (WGS84)', 'Longitud', 'Latitud', 'Velocidad límite', 'Responsable']
+     29s  Ayto. Madrid: 23 puntos
+     29s  Ayto. València: 11 puntos
+     98s  OpenStreetMap: 3232 puntos
+     99s  Tramos radar móvil: 1152 puntos
+    100s  Ayto. Madrid foto-rojo y ZBE: 454 puntos
     120s  Ayto. Málaga foto-rojo: 7 puntos
-    122s  Ayto. Salamanca: 24 puntos
-    123s  Ayto. Donostia: 12 puntos
-    123s  Câmara Municipal de Lisboa: 18 puntos
-    126s  Ajuntament de Viladecans: 24 puntos
-    127s  Portugal: ANSR (red SINCRO): 121 puntos
-    144s  Ayto. Santa Cruz de Tenerife foto-rojo: no responde (www.santacruzdetenerife.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
-    162s  Ayto. Pamplona cinemómetros: no responde (sig.pamplona.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
-    162s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1836 puntos
-    162s  feed comunitario tras quitar tramos ya situados: 665
-    162s  fusión: 274 radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120193 (PK 10.18 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120059 (PK 10.18 Decreciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120282 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120283 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120286 (PK 0.29 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120285 (PK 0.131 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120301 (PK 14.56 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120290 (PK 14.56 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120316 (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120336 (PK 452.27 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120091 (PK 452.27 Decreciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120474 (PK 9.237 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120473 (PK 9.237 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120476 (PK 11.78 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120475 (PK 11.78 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_120559 (PK 314.878 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120557 (PK 314.878 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_160988 (PK 12.462 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120307 (PK 12.462 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_160989 (PK 16.379 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120292 (PK 16.379 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_161529 (PK 12.532 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_161527 (PK 12.532 Decreciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_163710 (PK 397.638 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_163709 (PK 397.638 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_165204 (PK 13.335 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120303 (PK 13.335 Decreciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_165889 (PK 1.73 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165876 (PK 1.73 Creciente) a 67 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_165891 (PK 7.01 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165877 (PK 7.01 Creciente) a 22 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_165893 (PK 8.14 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165879 (PK 8.14 Creciente) a 28 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_169363 (PK 1024.854 Creciente) junto a dgt:GUID_CVM_161588 (PK 1019.7 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_169365 (PK 140.276 Creciente) junto a dgt:GUID_CVM_161609 (PK 134.178 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_169367 (PK 125.958 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_169366 (PK 125.958 Creciente) a 66 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_169368 (PK 28.02 Creciente) junto a dgt:GUID_CVM_169184 (PK 30.05 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_169369 (PK 30.05 Creciente) junto a dgt:GUID_CVM_169183 (PK 28.02 Creciente) a 0 m
-    162s    fusión: dgt:GUID_CABINACINEMOMETRO_174090 (PK 5.729 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_174089 (PK 5.7 Creciente) a 23 m
-    162s    fusión: dgtpdf:F:A-6:7.75:D (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 68 m
-    162s    fusión: dgtpdf:F:A-7:568.028:D (PK 568.028 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120622 (PK 136.028 Decreciente) a 18 m
-    162s    fusión: dgtpdf:F:MU-32:13.1:D (PK 13.1 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120687 (PK 122.896 Creciente) a 11 m
-    162s    fusión: dgtpdf:F:SE-30:11.114:D (PK 11.114 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120165 (PK 11.106 Decreciente) a 17 m
-    162s    fusión: dgtpdf:T:TF-5:20.66:D (PK 22.38 Decreciente) junto a dgt:GUID_CVM_165315 (PK 22.4 Decreciente) a 37 m
-    162s    fusión: sct:41.56801,2.39602 (PK 3.413 None) junto a sct:41.56761,2.39625 (PK 3.364 None) a 49 m
-    162s    fusión: sct:42.06667,2.81312 (PK 38.147 None) junto a sct:42.06633,2.81297 (PK 38.107 None) a 40 m
-    162s    tramo dgtpdf:T:A-397:28.02:D repetido: ya está como dgt:GUID_CVM_169183
-    162s  tramos: 4 tramos repetidos (oficial y OSM) unidos, 4 puntos sueltos unidos a su tramo, 13 cámaras de entrada/salida absorbidas
-    164s  100 cámaras de stop o semáforo llevadas a su línea de detención (141157 stops y semáforos de OSM)
-    164s  correcciones: 2 quitados, 37 sentidos fijados, 1 añadidos, 1 con el tipo corregido
-    164s  verificados: 108 comprobados sobre el terreno; arreglados: osm:r9933664 (la2, lo2)
-    164s    límites: 223 sin límite, 1 por consultar
-    198s  límites deducidos de OSM: 136
-    198s    regiones: 9 celdas nuevas que consultar
-    199s    regiones: ejemplo de respuesta {"id": "07.24.G24_240890141542", "province": "León", "provinceCode": "24", "comunidadAutonoma": "Castilla y León", "comunidadAutonomaCode": "07", "muni": "León", "muniCode": "24089", "type": "portal", "address": "OBISPO ALMARCHA", "postalCode": "24006", "poblacion": "León", "geom": "POINT(-5.5620522
-    200s    CartoCiudad: 1895 hitos necesarios, 0 por consultar
-    200s  rumbos por sentido: 966
-    200s  sentido hacia una ciudad: 74 puntos; ['VITORIA - GASTEIZ → 42.840,-2.722 (12 km)', 'IRUN → 43.327,-1.826 (33 km)', 'BILBAO → 43.254,-2.937 (28 km)', 'BILBAO → 43.254,-2.937 (30 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (8 km)', 'IRUN → 43.327,-1.826 (21 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (6 km)', 'VITORIA-GASTEIZ → 42.848,-2.679 (5 km)']
-    200s  52 sentidos nuevos, 586 coinciden con los nuestros, 8 en desacuerdo (se avisa en los dos)
-    200s  copias de OSM con sentido frente a oficiales: 565/588 → se usa en 319 puntos y en 42 vigila los dos sentidos
-    200s  62 radares de OSM con direction; frente a los oficiales: 3 igual, 1 al revés → no se usa
-    200s    CartoCiudad: 10 hitos necesarios, 0 por consultar
-    200s  tramos del feed girados: ['dgt:GUID_CVM_161274', 'dgt:GUID_CVM_161319', 'dgt:GUID_CVM_161340', 'dgt:GUID_CVM_161341', 'dgt:GUID_CVM_161420', 'dgt:GUID_CVM_161436', 'dgt:GUID_CVM_161445', 'dgt:GUID_CVM_161489', 'dgt:GUID_CVM_161570', 'dgt:GUID_CVM_161588', 'dgt:GUID_CVM_161609', 'dgt:GUID_CVM_161629', 'dgt:GUID_CVM_162907', 'dgt:GUID_CVM_162916', 'dgt:GUID_CVM_162925', 'dgt:GUID_CVM_163339', 'dgt:GUID_CVM_163340', 'dgt:GUID_CVM_164150', 'dgt:GUID_CVM_164997', 'dgt:GUID_CVM_165285', 'dgt:GUID_CVM_165289', 'dgt:GUID_CVM_165308', 'dgt:GUID_CVM_165337', 'dgt:GUID_CVM_165410'] (40 orientados por su relación de OSM)
-    200s  tramos de OSM recuperados (su oficial va en el otro sentido): ['osm:r20142910 (estaba en dgt:GUID_CVM_161489)', 'osm:r20181704 (estaba en dgt:GUID_CVM_164150)', 'osm:r20031512 (estaba en dgt:GUID_CVM_165337)']
-    200s    tramo dgtpdf:T:CL-615:34.61:C repetido: ya está como dgt:GUID_CVM_164997
-    200s    tramo dgtpdf:T:CL-615:1.706:D repetido: ya está como dgt:GUID_CVM_165410
-    200s    tramo dgtpdf:T:TF-5:22.44:C repetido: ya está como dgt:GUID_CVM_165308
-    200s  tramos: 15 tramos repetidos (oficial y OSM) unidos, 0 puntos sueltos unidos a su tramo, 0 cámaras de entrada/salida absorbidas
-    221s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
-    235s    ZBE: 45 ficheros
-    262s  ZBE: 57 zonas
-    262s    CartoCiudad: 745 hitos necesarios, 0 por consultar
-    310s  PK por la carretera: comprobado con 357 radares del feed (PK y coordenadas): en recta mediana 47 m, p75 93 m, p90 256 m; por la carretera mediana 34 m, p75 76 m, p90 247 m
-    390s    caminos: red cargada (1101874 vías) en 79s
-    391s    caminos: regla del lado probada en 80s
-    391s    caminos: regla del cruce probada en 80s
-    391s    caminos: 0/3952 en 80s (dgt:GUID_CVM_161274)
-    393s    caminos: 500/3952 en 82s (dgt:GUID_CABINACINEMOMETRO_120569)
-    395s    caminos: 1000/3952 en 84s (sct:41.33459,2.09364)
-    401s    caminos: 1500/3952 en 89s (slm:40.96287,-5.67709)
-    404s    caminos: 2000/3952 en 92s (com:euskadi-subijana-bi-cabina)
-    408s    caminos: 2500/3952 en 97s (osm:n2334938854)
-    413s    caminos: 3000/3952 en 101s (osm:n12703115362)
-    416s    caminos: 3500/3952 en 105s (osm:n10288048525)
-    509s    zonas: red cargada (1154597 vías) para 1301 zonas en 86s
-    526s  zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 100}
-    526s  radares del PDF de la DGT recolocados en su copia de OSM: 8
-    559s    caminos: red cargada (19543 vías) en 32s
-    559s    caminos: regla del lado probada en 32s
-    559s    caminos: regla del cruce probada en 32s
-    559s    caminos: 0/26 en 32s (sct:41.53823,0.45946)
+    121s  Ayto. Salamanca: 24 puntos
+    122s  Ayto. Donostia: 12 puntos
+    122s  Câmara Municipal de Lisboa: 18 puntos
+    123s  Ajuntament de Viladecans: 24 puntos
+    123s  Portugal: ANSR (red SINCRO): 121 puntos
+    141s  Ayto. Santa Cruz de Tenerife foto-rojo: no responde (www.santacruzdetenerife.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
+    159s  Ayto. Pamplona cinemómetros: no responde (sig.pamplona.es: <urlopen error timed out>); desde GitHub no responde; la app lo descarga en el móvil (fuentes_movil.json)
+    159s  Euskadi, Navarra, Murcia, León, remolques SCT, multas (radares-anunciados): 1847 puntos
+    159s  feed comunitario tras quitar tramos ya situados: 676
+    159s  fusión: 274 radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120193 (PK 10.18 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120059 (PK 10.18 Decreciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120282 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120283 (PK 15.04 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120281 (PK 15.04 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120286 (PK 0.29 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120285 (PK 0.131 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120301 (PK 14.56 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120290 (PK 14.56 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120316 (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120336 (PK 452.27 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120091 (PK 452.27 Decreciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120474 (PK 9.237 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120473 (PK 9.237 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120476 (PK 11.78 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120475 (PK 11.78 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_120559 (PK 314.878 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120557 (PK 314.878 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_160988 (PK 12.462 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120307 (PK 12.462 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_160989 (PK 16.379 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_120292 (PK 16.379 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_161529 (PK 12.532 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_161527 (PK 12.532 Decreciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_163710 (PK 397.638 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_163709 (PK 397.638 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_165204 (PK 13.335 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120303 (PK 13.335 Decreciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_165889 (PK 1.73 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165876 (PK 1.73 Creciente) a 67 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_165891 (PK 7.01 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165877 (PK 7.01 Creciente) a 22 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_165893 (PK 8.14 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_165879 (PK 8.14 Creciente) a 28 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_169363 (PK 1024.854 Creciente) junto a dgt:GUID_CVM_161588 (PK 1019.7 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_169365 (PK 140.276 Creciente) junto a dgt:GUID_CVM_161609 (PK 134.178 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_169367 (PK 125.958 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_169366 (PK 125.958 Creciente) a 66 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_169368 (PK 28.02 Creciente) junto a dgt:GUID_CVM_169184 (PK 30.05 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_169369 (PK 30.05 Creciente) junto a dgt:GUID_CVM_169183 (PK 28.02 Creciente) a 0 m
+    159s    fusión: dgt:GUID_CABINACINEMOMETRO_174090 (PK 5.729 Creciente) junto a dgt:GUID_CABINACINEMOMETRO_174089 (PK 5.7 Creciente) a 23 m
+    159s    fusión: dgtpdf:F:A-6:7.75:D (PK 7.75 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120315 (PK 7.75 Decreciente) a 68 m
+    159s    fusión: dgtpdf:F:A-7:568.028:D (PK 568.028 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120622 (PK 136.028 Decreciente) a 18 m
+    159s    fusión: dgtpdf:F:MU-32:13.1:D (PK 13.1 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120687 (PK 122.896 Creciente) a 11 m
+    159s    fusión: dgtpdf:F:SE-30:11.114:D (PK 11.114 Decreciente) junto a dgt:GUID_CABINACINEMOMETRO_120165 (PK 11.106 Decreciente) a 17 m
+    159s    fusión: dgtpdf:T:TF-5:20.66:D (PK 22.38 Decreciente) junto a dgt:GUID_CVM_165315 (PK 22.4 Decreciente) a 37 m
+    159s    fusión: sct:41.56801,2.39602 (PK 3.413 None) junto a sct:41.56761,2.39625 (PK 3.364 None) a 49 m
+    159s    fusión: sct:42.06667,2.81312 (PK 38.147 None) junto a sct:42.06633,2.81297 (PK 38.107 None) a 40 m
+    159s    tramo dgtpdf:T:A-397:28.02:D repetido: ya está como dgt:GUID_CVM_169183
+    159s  tramos: 4 tramos repetidos (oficial y OSM) unidos, 4 puntos sueltos unidos a su tramo, 13 cámaras de entrada/salida absorbidas
+    160s  100 cámaras de stop o semáforo llevadas a su línea de detención (141157 stops y semáforos de OSM)
+    160s  correcciones: 2 quitados, 37 sentidos fijados, 1 añadidos, 1 con el tipo corregido
+    160s  verificados: 108 comprobados sobre el terreno; arreglados: osm:r9933664 (la2, lo2)
+    160s    límites: 223 sin límite, 0 por consultar
+    160s  límites deducidos de OSM: 136
+    160s    regiones: 11 celdas nuevas que consultar
+    161s    regiones: ejemplo de respuesta {"id": "140450209118", "province": "Córdoba", "provinceCode": "14", "comunidadAutonoma": "Andalucía", "comunidadAutonomaCode": "01", "muni": "Moriles", "muniCode": "14045", "type": "portal", "address": "A-318", "postalCode": "14510", "poblacion": null, "geom": "POINT(-4.65185803000585 37.41021246999
+    161s    CartoCiudad: 1895 hitos necesarios, 0 por consultar
+    161s  rumbos por sentido: 966
+    161s  sentido hacia una ciudad: 74 puntos; ['VITORIA - GASTEIZ → 42.840,-2.722 (12 km)', 'IRUN → 43.327,-1.826 (33 km)', 'BILBAO → 43.254,-2.937 (28 km)', 'BILBAO → 43.254,-2.937 (30 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (8 km)', 'IRUN → 43.327,-1.826 (21 km)', 'DONOSTIA / SAN SEBASTIÁN → 43.295,-1.988 (6 km)', 'VITORIA-GASTEIZ → 42.848,-2.679 (5 km)']
+    162s  52 sentidos nuevos, 586 coinciden con los nuestros, 8 en desacuerdo (se avisa en los dos)
+    162s  copias de OSM con sentido frente a oficiales: 565/588 → se usa en 319 puntos y en 42 vigila los dos sentidos
+    162s  62 radares de OSM con direction; frente a los oficiales: 3 igual, 1 al revés → no se usa
+    162s    CartoCiudad: 10 hitos necesarios, 0 por consultar
+    162s  tramos del feed girados: ['dgt:GUID_CVM_161274', 'dgt:GUID_CVM_161319', 'dgt:GUID_CVM_161340', 'dgt:GUID_CVM_161341', 'dgt:GUID_CVM_161420', 'dgt:GUID_CVM_161436', 'dgt:GUID_CVM_161445', 'dgt:GUID_CVM_161489', 'dgt:GUID_CVM_161570', 'dgt:GUID_CVM_161588', 'dgt:GUID_CVM_161609', 'dgt:GUID_CVM_161629', 'dgt:GUID_CVM_162907', 'dgt:GUID_CVM_162916', 'dgt:GUID_CVM_162925', 'dgt:GUID_CVM_163339', 'dgt:GUID_CVM_163340', 'dgt:GUID_CVM_164150', 'dgt:GUID_CVM_164997', 'dgt:GUID_CVM_165285', 'dgt:GUID_CVM_165289', 'dgt:GUID_CVM_165308', 'dgt:GUID_CVM_165337', 'dgt:GUID_CVM_165410'] (40 orientados por su relación de OSM)
+    162s  tramos de OSM recuperados (su oficial va en el otro sentido): ['osm:r20142910 (estaba en dgt:GUID_CVM_161489)', 'osm:r20181704 (estaba en dgt:GUID_CVM_164150)', 'osm:r20031512 (estaba en dgt:GUID_CVM_165337)']
+    162s    tramo dgtpdf:T:CL-615:34.61:C repetido: ya está como dgt:GUID_CVM_164997
+    162s    tramo dgtpdf:T:CL-615:1.706:D repetido: ya está como dgt:GUID_CVM_165410
+    162s    tramo dgtpdf:T:TF-5:22.44:C repetido: ya está como dgt:GUID_CVM_165308
+    162s  tramos: 15 tramos repetidos (oficial y OSM) unidos, 0 puntos sueltos unidos a su tramo, 0 cámaras de entrada/salida absorbidas
+    183s    ZBE: API CKAN no disponible (nap.dgt.es: HTTP Error 403: Forbidden); leo la página
+    195s    ZBE: 45 ficheros
+    213s  ZBE: 57 zonas
+    213s    CartoCiudad: 745 hitos necesarios, 0 por consultar
+    268s  PK por la carretera: comprobado con 357 radares del feed (PK y coordenadas): en recta mediana 47 m, p75 93 m, p90 256 m; por la carretera mediana 34 m, p75 76 m, p90 247 m
+    363s    caminos: red cargada (1104716 vías) en 93s
+    363s    caminos: regla del lado probada en 94s
+    364s    caminos: regla del cruce probada en 95s
+    364s    caminos: 0/3963 en 95s (dgt:GUID_CVM_161274)
+    366s    caminos: 500/3963 en 97s (dgt:GUID_CABINACINEMOMETRO_120569)
+    368s    caminos: 1000/3963 en 99s (sct:41.33459,2.09364)
+    375s    caminos: 1500/3963 en 106s (slm:40.96287,-5.67709)
+    379s    caminos: 2000/3963 en 109s (com:euskadi-subijana-bi-cabina)
+    384s    caminos: 2500/3963 en 115s (osm:n2334938833)
+    390s    caminos: 3000/3963 en 120s (osm:n12553549749)
+    394s    caminos: 3500/3963 en 125s (osm:r14126599)
+    502s    zonas: red cargada (1154597 vías) para 1301 zonas en 100s
+    523s  zonas: {'zonas_rectas': 1301, 'zonas_trazadas': 1139, 'zonas_sin_trazar': 162, 'segundos_zonas': 115}
+    523s  radares del PDF de la DGT recolocados en su copia de OSM: 8
+    558s    caminos: red cargada (19543 vías) en 35s
+    558s    caminos: regla del lado probada en 35s
+    558s    caminos: regla del cruce probada en 35s
+    558s    caminos: 0/26 en 35s (sct:41.53823,0.45946)
     559s  66 quitadas (misma calle y sentido a menos de 450 m); sentido de la copia frente al oficial: 41/42 → heredado en 18; 8 radares del PDF de la DGT llevados a la posición de su copia de OSM
     559s  radares de OSM mapeados dos veces: 0 quitados []
-    591s    caminos: red cargada (5749 vías) en 32s
-    591s    caminos: regla del lado probada en 32s
-    591s    caminos: regla del cruce probada en 32s
-    591s    caminos: 0/5 en 32s (dgt:GUID_CABINACINEMOMETRO_120285)
-    591s  gemelos de sentido contrario corregidos: 5 ['dgt:GUID_CABINACINEMOMETRO_120285', 'dgt:GUID_CABINACINEMOMETRO_120288', 'dgteq:SE-30:23.2:C:cintur', 'dgteq:SE-30:23.2:D:cintur', 'dgt:GUID_CABINACINEMOMETRO_120603']
-    591s  caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 39/42 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 94/117; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 1/2; dgtpdf ciudad 12-25 m: 3/5; dgtpdf carretera 25-41 m: 1/2; dgtpdf carretera 4-7 m: 1/1; dgtpdf carretera 7-12 m: 1/2; dgtpdf ciudad 7-12 m: 1/1; dgtpdf carretera todas: 4/7; dgtpdf ciudad todas: 4/6; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm ciudad 25-41 m: 0/1; osm carretera 4-7 m: 94/120; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/31; osm carretera todas: 154/200; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/32; cruce+lado 1/2; cruce 31/40; lado+limite 8/9', 'rumbo_por_cardinal': 47, 'con_camino': 3908, 'sin_via': 26, 'tramos_con_recorrido': 327, 'tramos': 360, 'caminos_alternativos': 11, 'mediana_dos': 29, 'con_paralela': 1214, 'en_enlace': 40, 'sospechosos': [], 'dos_sentidos': 278, 'limites_via': 156, 'limites_quitados': 5, 'ramas': 3136, 'calzada_corregida': 8, 'en_tunel': 67, 'caminos_cortos': 8, 'segundos': 108}
-    591s  semáforos: con sentido conocido, su semáforo delante 99, detrás 8 → se deducen sentidos
-    625s    caminos: red cargada (66339 vías) en 34s
-    625s    caminos: regla del lado probada en 34s
-    625s    caminos: regla del cruce probada en 34s
-    625s    caminos: 0/41 en 34s (madfr:40.43521,-3.67502)
-    626s  comprobación con las de sentido conocido: semáforo delante en 99, detrás en 8; 10 cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; 41 llevadas a su línea (7 estaban pasado el cruce); 40 sin ningún semáforo de OSM a 50 m (posición por revisar): madfr:40.45464,-3.69056, madfr:40.46227,-3.79330, madfr:40.38409,-3.75977, madfr:40.39694,-3.77433, madfr:40.41074,-3.65479, madfr:40.42034,-3.62522, madfr:40.44164,-3.62408, mlgfr:36.71300,-4.45466, dgteq:N-603:62.9:C:foto r, osm:n992000541, osm:n992001267, osm:n992002942, osm:n992003252, osm:n992003267, osm:n2004518514, osm:n2004518665, osm:n2378266833, osm:n2378266933, osm:n2378267261, osm:n4029561801, osm:n4029562016, osm:n4087504678, osm:n4258221018, osm:n9757953611, osm:n12736058897, osm:n12736232082, osm:n12993247575, osm:n12993247583, osm:n12993898230, osm:n14169267684, osm:n3015095098, osm:n3015103519, osm:n1416249515, osm:n4349063327, osm:r19801864, osm:n7821371292, osm:r19964592, osm:r19964593, osm:n11692022938, osm:n5326355963
-    626s    CartoCiudad: 3817 hitos necesarios, 0 por consultar
-    626s    sentido oficial: dgt:GUID_CVM_161427 A-8 PK 550.28: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_164230 A-8 PK 505.09: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_164237 A-8 PK 506.2: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_164265 RM-603 PK 1.4: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_165001 CL-613 PK 15.41: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_165336 CA-33 PK 9.052: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_165415 N-120 PK 317.6: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_166399 CL-602 PK 98.6: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_166402 CL-602 PK 99.65: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_166405 CL-602 PK 102.8: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_166407 CL-602 PK 105.7: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CVM_169183 A-397 PK 28.02: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
-    626s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120602 N-332 PK 203.2 Creciente: rumbo 113.1 → 306.4
-    626s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120603 N-332 PK 204.45 Decreciente: rumbo 293.1 → 124.5
-    626s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120647 EI-600 PK 9.635 Creciente: rumbo 99.0 → 286.2
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120095 A-92N PK 9.25 a 430 m de su PK; la cámara de OSM, a 89 m → se mueve 368 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120129 A-220 PK 9.366 a 244 m de su PK; la cámara de OSM, a 18 m → se mueve 227 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120233 N-432 PK 111.654 a 347 m de su PK; la cámara de OSM, a 8 m → se mueve 355 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120261 A-4 PK 40.406 a 411 m de su PK; la cámara de OSM, a 20 m → se mueve 401 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120304 A-2 PK 53.559 a 210 m de su PK; la cámara de OSM, a 19 m → se mueve 214 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120311 A-31 PK 11.635 a 366 m de su PK; la cámara de OSM, a 32 m → se mueve 391 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120314 A-40 PK 299.452 a 445 m de su PK; la cámara de OSM, a 20 m → se mueve 442 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120391 A-6050 PK 0.95 a 392 m de su PK; la cámara de OSM, a 29 m → se mueve 417 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_120667 N-122 PK 142.26 a 263 m de su PK; la cámara de OSM, a 47 m → se mueve 310 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_160238 CA-34 PK 0.71 a 185 m de su PK; la cámara de OSM, a 94 m → se mueve 279 m
-    627s    testigo: dgt:GUID_CABINACINEMOMETRO_165621 M-40 PK 20.265 a 465 m de su PK; la cámara de OSM, a 64 m → se mueve 445 m
-    627s    testigo: dgtpdf:F:CL-623:7.11:D CL-623 PK 7.11 a 161 m de su PK; la cámara de OSM, a 12 m → se mueve 160 m
-    627s    testigo: dgtpdf:F:M-300:31.325:D M-300 PK 31.325 a 266 m de su PK; la cámara de OSM, a 54 m → se mueve 256 m
-    627s    testigo: dgtpdf:F:TF-66:9.0:D TF-66 PK 9.0 a 171 m de su PK; la cámara de OSM, a 20 m → se mueve 184 m
-    627s    testigo: dgtpdf:F:N-332:245.0:C N-332 PK 245.0 a 152 m de su PK; la cámara de OSM, a 33 m → se mueve 120 m
-    704s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120009 N-240 rumbo 274.5 y su vía va a [157, 153] → 333.1
-    704s    su vía: dgt:GUID_CABINACINEMOMETRO_120010 N-330 PK 668.655: a 9999 m de su carretera → a ella (en su PK, 571 m)
-    704s    su vía: dgt:GUID_CABINACINEMOMETRO_120011 N-330 PK 667.435: a 135 m de su carretera → a ella (en su PK, 321 m)
-    704s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120025 N-234 rumbo 117.0 y su vía va a [192, 12, 12, 190, 9, 12] → 189.0
-    704s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120027 A-12 rumbo 262.3 y su vía va a [343, 343, 345, 343, 341, 347, 341] → None
-    704s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120037 A-4 rumbo 2.9 y su vía va a [286, 286, 105, 106] → None
-    704s    su vía: dgt:GUID_CABINACINEMOMETRO_120133 N-232 PK 293.875: a 269 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 270 m)
-    704s    su vía: dgt:GUID_CABINACINEMOMETRO_120140 N-211 PK 228.153: a 213 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 214 m)
-    704s    su vía: dgt:GUID_CABINACINEMOMETRO_120203 N-330 PK 670.101: a 9999 m de su carretera → a ella (en su PK, 572 m)
-    704s    su vía: dgt:GUID_CABINACINEMOMETRO_120204 N-330 PK 671.745: a 407 m de su carretera → a ella (en su PK, 486 m)
-    705s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120435 AC-552 rumbo 195.2 y su vía va a [124, 136, 131] → 135.8
-    705s    su vía: dgt:GUID_CABINACINEMOMETRO_120601 CV-91 PK 18.888: a 266 m de su carretera → a ella (en su PK, 278 m)
-    705s    su vía: dgt:GUID_CABINACINEMOMETRO_120651 MA-19 PK 30.125: a 74 m de su carretera → a ella (en su PK, 76 m)
-    705s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_163776 N-6 rumbo 114.5 y su vía va a [206, 205, 206, 205, 206] → None
-    705s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_165670 AC-862 rumbo 84.1 y su vía va a [154] → 154.3
-    705s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_165816 VG-4.4 rumbo 249.8 y su vía va a [306] → 306.4
-    705s    su vía: dgt:GUID_CABINACINEMOMETRO_166987 A-68 PK 246.017: a 172 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 276 m)
-    705s    rumbo cruzado: dgtpdf:F:CA-141:21.3:C CA-141 rumbo 114.2 y su vía va a [178, 184, 168] → 168.3
-    705s    su vía: dgtpdf:F:N-611:194.33:D N-611 PK 194.33: a 138 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 139 m)
-    705s    rumbo cruzado: dgtpdf:F:AC-221:2.55:C AC-221 rumbo 116.2 y su vía va a [356, 356] → 176.4
-    705s    su vía: dgtpdf:F:H-30:8.502:D H-30 PK 8.502: a 217 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 219 m)
-    705s    su vía: dgtpdf:F:A-7052:7.5:C A-7052 PK 7.5: a 141 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 168 m)
-    705s    su vía: dgtpdf:F:A-49:0.7:C A-49 PK 0.7: a 120 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
-    705s    su vía: dgtpdf:F:A-8077:3.18:D A-8077 PK 3.18: a 72 m de su carretera → a ella (en su PK, 72 m)
-    705s    su vía: dgtpdf:F:N-234:119.66:D N-234 PK 119.66: a 185 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 185 m)
-    705s    su vía: sct:41.25502,1.17357 C-14 PK 20.029: a 63 m de su carretera → a ella (en su PK, 166 m)
-    705s    su vía: sct:41.74640,2.63225 C-35 PK 69.887: a 140 m de su carretera → a ella (en su PK, 146 m)
-    705s    su vía: sct:40.73027,0.59360 N-340 PK 1084.318: a 224 m de su carretera → a ella (en su PK, 261 m)
-    705s    su vía: ansr:EN125:102:O EN125 PK 102.0: a 207 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 208 m)
-    705s    su vía: ansr:IC17:19.1:E IC17 PK 19.1: a 62 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
-    705s    su vía: ansr:IC17:14.1:N IC17 PK 14.1: a 210 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 210 m)
-    705s    su vía: dgteq:AI-81:1.9:D:cintur AI-81 PK 1.9: a 62 m de su carretera → a ella (en su PK, 62 m)
-    705s    su vía: dgteq:A-492:0.2:C:cintur A-492 PK 0.2: a 171 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 172 m)
-    705s    su vía: dgteq:H-30:8.585:D:cintur H-30 PK 8.585: a 183 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 184 m)
-    705s    su vía: dgteq:N-550:116.74:D:cintur N-550 PK 116.74: a 81 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 81 m)
-    705s    su vía: dgteq:N-552:4.35:C:cintur N-552 PK 4.35: a 83 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 84 m)
-    705s    su vía: dgteq:PO-11:1.56:D:cintur PO-11 PK 1.56: a 146 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 146 m)
-    705s    su vía: dgteq:N-330:501.3:C:cintur N-330 PK 501.3: a 312 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 315 m)
-    705s    rumbo cruzado: com:euskadi-hondarribia-santaengrazi None rumbo 37.2 y su vía va a [153, 150, 156, 147] → None
-    705s    rumbo cruzado: osm:n992005494 None rumbo 244.5 y su vía va a [314, 314, 314, 314, 314, 314] → None
-    705s    rumbo cruzado: osm:n2334938864 None rumbo 235.6 y su vía va a [321, 142, 142, 140, 322, 140, 319] → None
-    705s    su vía: osm:n5435143134 A-26 PK None: a 70 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 71 m)
-    705s    rumbo cruzado: osm:n13070637359 None rumbo 22.2 y su vía va a [273, 92, 92, 273, 273, 92, 93, 144] → None
-    705s    rumbo cruzado: osm:n8119271103 None rumbo 293.6 y su vía va a [29, 31, 31, 30, 198] → None
-    706s    rumbo cruzado: osm:n13311195241b None rumbo 262.6 y su vía va a [32, 32, 32] → None
-    706s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_120318 A-2 PK 122.0 Decreciente → 234.5
-    706s    rumbo por los vecinos: dgteq:A-68:242.23:C:cintur A-68 PK 242.23 Creciente → 348.5
-    706s  revisión final: 15 movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); 29 llevados a su carretera; 16 con el rumbo cruzado corregido; 12 duplicados quitados; 2 con el sentido sacado de los radares vecinos: {'testigo': ['dgt:GUID_CABINACINEMOMETRO_120095', 'dgt:GUID_CABINACINEMOMETRO_120129', 'dgt:GUID_CABINACINEMOMETRO_120233', 'dgt:GUID_CABINACINEMOMETRO_120261', 'dgt:GUID_CABINACINEMOMETRO_120304', 'dgt:GUID_CABINACINEMOMETRO_120311', 'dgt:GUID_CABINACINEMOMETRO_120314', 'dgt:GUID_CABINACINEMOMETRO_120391', 'dgt:GUID_CABINACINEMOMETRO_120667', 'dgt:GUID_CABINACINEMOMETRO_160238', 'dgt:GUID_CABINACINEMOMETRO_165621', 'dgtpdf:F:CL-623:7.11:D', 'dgtpdf:F:M-300:31.325:D', 'dgtpdf:F:TF-66:9.0:D', 'dgtpdf:F:N-332:245.0:C'], 'su_via': ['dgt:GUID_CABINACINEMOMETRO_120010', 'dgt:GUID_CABINACINEMOMETRO_120011', 'dgt:GUID_CABINACINEMOMETRO_120133', 'dgt:GUID_CABINACINEMOMETRO_120140', 'dgt:GUID_CABINACINEMOMETRO_120203', 'dgt:GUID_CABINACINEMOMETRO_120204', 'dgt:GUID_CABINACINEMOMETRO_120601', 'dgt:GUID_CABINACINEMOMETRO_120651', 'dgt:GUID_CABINACINEMOMETRO_166987', 'dgtpdf:F:N-611:194.33:D', 'dgtpdf:F:H-30:8.502:D', 'dgtpdf:F:A-7052:7.5:C', 'dgtpdf:F:A-49:0.7:C', 'dgtpdf:F:A-8077:3.18:D', 'dgtpdf:F:N-234:119.66:D', 'sct:41.25502,1.17357', 'sct:41.74640,2.63225', 'sct:40.73027,0.59360', 'ansr:EN125:102:O', 'ansr:IC17:19.1:E', 'ansr:IC17:14.1:N', 'dgteq:AI-81:1.9:D:cintur', 'dgteq:A-492:0.2:C:cintur', 'dgteq:H-30:8.585:D:cintur', 'dgteq:N-550:116.74:D:cintur', 'dgteq:N-552:4.35:C:cintur', 'dgteq:PO-11:1.56:D:cintur', 'dgteq:N-330:501.3:C:cintur', 'osm:n5435143134'], 'cruzado': ['dgt:GUID_CABINACINEMOMETRO_120009', 'dgt:GUID_CABINACINEMOMETRO_120025', 'dgt:GUID_CABINACINEMOMETRO_120027', 'dgt:GUID_CABINACINEMOMETRO_120037', 'dgt:GUID_CABINACINEMOMETRO_120435', 'dgt:GUID_CABINACINEMOMETRO_163776', 'dgt:GUID_CABINACINEMOMETRO_165670', 'dgt:GUID_CABINACINEMOMETRO_165816', 'dgtpdf:F:CA-141:21.3:C', 'dgtpdf:F:AC-221:2.55:C', 'com:euskadi-hondarribia-santaengrazi', 'osm:n992005494', 'osm:n2334938864', 'osm:n13070637359', 'osm:n8119271103', 'osm:n13311195241b'], 'duplicados': ['dgt:GUID_CABINACINEMOMETRO_169360→dgt:GUID_CVM_161570', 'dgt:GUID_CABINACINEMOMETRO_169362→dgt:GUID_CVM_161588', 'dgt:GUID_CABINACINEMOMETRO_169364→dgt:GUID_CVM_161609', 'dgt:GUID_CABINACINEMOMETRO_169366→dgt:GUID_CVM_161629', 'osm:n13512708762→dgt:GUID_CABINACINEMOMETRO_120011', 'osm:n992001271→dgt:GUID_CABINACINEMOMETRO_120204', 'osm:n806985872→dgtpdf:F:A-49:0.7:C', 'osm:n4587378949→sct:41.25502,1.17357', 'osm:n7655766543→sct:41.74640,2.63225', 'vdc:2→vdc:1', 'osm:n13070637359b→osm:n13070637359', 'osm:n13311195241b→osm:n13311195241'], 'vecinos': ['dgt:GUID_CABINACINEMOMETRO_120318', 'dgteq:A-68:242.23:C:cintur']}
-    743s    caminos: red cargada (74942 vías) en 34s
-    743s    caminos: regla del lado probada en 34s
-    743s    caminos: regla del cruce probada en 34s
-    743s    caminos: 0/76 en 34s (dgt:GUID_CVM_161427)
-    744s  verificados: 108 comprobados sobre el terreno, todos en su sitio
-    744s  tramos de OSM que no salen: osm:r10002560 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165415 a 14 m); osm:r10002561 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165414 a 10 m); osm:r10026551 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_163340 a 277 m); osm:r10057409 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166402 a 25 m); osm:r10057410 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166399 a 14 m); osm:r1019388 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.40724,-3.74575 a 2 m); osm:r10964471 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.38757,-3.69938 a 13 m); osm:r10967446 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.40012,-3.76359 a 22 m); osm:r11662542 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-234:337.565:D a 0 m); osm:r11662543 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-234:340.39:C a 0 m); osm:r11698405 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164861 a 51 m); osm:r11698406 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164860 a 29 m); osm:r13040121 → unir tramos (cámara de entrada o salida de un tramo) (con dgtpdf:T:CL-615:1.706:D a 369 m); osm:r13040122 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CL-615:34.61:C a 0 m); osm:r13365644 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con madfr:40.40694,-3.67309 a 27 m); osm:r14170001 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:TF-5:22.44:C a 0 m); osm:r15353023 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174832 a 46 m); osm:r15353024 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174831 a 37 m); osm:r15974337 → unir tramos tras orientarlos (con dgt:GUID_CVM_161341 a 48 m); osm:r16341789 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_165909 a 215 m); osm:r16341790 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_165908 a 94 m); osm:r16362670 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_169184 a 22 m); osm:r16362671 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_169183 a 74 m); osm:r16397381 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-432:80.98:D a 0 m); osm:r16397382 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-432:95.49:C a 0 m); osm:r16399361 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-122:474.725:D a 0 m); osm:r16399362 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-122:479.99:C a 0 m); osm:r16457794 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165000 a 10 m); osm:r16457795 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164998 a 16 m); osm:r16518737 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-430:486.58:D a 0 m); osm:r16518738 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-430:502.945:C a 0 m); osm:r16535058 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_120331 a 207 m); osm:r16552303 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN103:22.9:A a 77 m); osm:r16552304 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN103:22.9:A a 15 m); osm:r16567705 → unir tramos tras orientarlos (con dgt:GUID_CVM_165289 a 118 m); osm:r16567706 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165289 a 118 m); osm:r16646257 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CL-517:4.38:D a 0 m); osm:r16646258 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CL-517:16.35:C a 0 m); osm:r16683597 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:1035.8:C a 0 m); osm:r16683598 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:1033.05:D a 0 m); osm:r16732699 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164265 a 17 m); osm:r16770161 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.46021,-3.72821 a 5 m); osm:r16770162 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.46925,-3.71294 a 8 m); osm:r16920259 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-301:77.08:C a 0 m); osm:r16920260 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-301:70.765:D a 0 m); osm:r17021024 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-433:118.332:D a 0 m); osm:r17021025 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-433:122.961:C a 0 m); osm:r17026472 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con slmt:0 a 9 m); osm:r17135243 → unir tramos tras orientarlos (con dgt:GUID_CVM_161274 a 11 m); osm:r17135244 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174089 a 39 m); osm:r17135245 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-125:5.7:D a 0 m); osm:r17488225 → unir tramos (cámara de entrada o salida de un tramo) (con dgtpdf:T:N-403:113.16:D a 333 m); osm:r17488226 → unir tramos (cámara de entrada o salida de un tramo) (con dgtpdf:T:N-403:118.05:C a 368 m); osm:r17862257 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN109:100.7:A a 34 m); osm:r17862259 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:A42:9.1:E a 23 m); osm:r17888419 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con slmt:1 a 14 m); osm:r17907416 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169366 a 82 m); osm:r18049488 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-320:318.005:D a 0 m); osm:r18049489 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-320:329.97:C a 0 m); osm:r18345180 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con osm:r17039503 a 0 m); osm:r18432091 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:GC-23:4.03:C a 0 m); osm:r18460371 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:TF-655:3.132:C a 0 m); osm:r18460372 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:TF-655:2.165:D a 0 m); osm:r18482849 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:960.05:D a 0 m); osm:r18797099 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:V-31:6.35:C a 0 m); osm:r18845440 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:V-30:8.85:C a 0 m); osm:r18845490 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-3:349.15:C a 0 m); osm:r18884036 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-5:85.35:C a 0 m); osm:r18888485 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:961.0:C a 0 m); osm:r18947065 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:V-23:1.6:D a 0 m); osm:r18976732 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-120:74.62:D a 0 m); osm:r18976733 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-120:76.85:C a 0 m); osm:r1907383 → unir tramos tras orientarlos (con dgt:GUID_CVM_161436 a 12 m); osm:r19366197 → unir tramos tras orientarlos (con dgt:GUID_CVM_161420 a 6 m); osm:r19580289 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:48.99:D a 0 m); osm:r19580290 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:51.38:C a 0 m); osm:r19683903 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-8:140.425:D a 0 m); osm:r19947241 → unir tramos tras orientarlos (con dgt:GUID_CVM_165337 a 23 m); osm:r19949360 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:79.4:D a 0 m); osm:r19962993 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:EX-327:23.6:C a 0 m); osm:r19963494 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-20:10.3:C a 0 m); osm:r19979441 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:EX-109:52.29:D a 0 m); osm:r19982229 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:F:A-7054:3.5:C a 90 m); osm:r19982489 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169364 a 8 m); osm:r19983393 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-48:4.0:D a 0 m); osm:r19983447 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-7:1107.54:C a 0 m); osm:r19983497 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-7:1107.34:D a 0 m); osm:r19985398 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:80.65:C a 0 m); osm:r19985450 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-377:5.6:D a 0 m); osm:r20008106 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-4:531.0:D a 0 m); osm:r20012342 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-370:9.4:C a 0 m); osm:r20012343 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-370:8.4:D a 0 m); osm:r20019537 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:A29:35:S a 46 m); osm:r20019599 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:A29:45.8:S a 45 m); osm:r20055022 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AS-112:0.85:D a 0 m); osm:r20060700 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-31:203.995:D a 0 m); osm:r20063005 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-31:218.9:C a 0 m); osm:r20078196 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-7:519.2:D a 0 m); osm:r20087394 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-355:4.45:C a 0 m); osm:r20087395 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-355:0.99:D a 0 m); osm:r20106074 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-401A:93.86:C a 0 m); osm:r20127417 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174830 a 121 m); osm:r20129035 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174829 a 128 m); osm:r20132746 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:83.32:D a 0 m); osm:r20132747 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:86.25:C a 0 m); osm:r20133947 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166405 a 13 m); osm:r20133948 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166407 a 10 m); osm:r20134021 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-110:161.3:C a 0 m); osm:r20134022 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-110:158.7:D a 0 m); osm:r20140322 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-501:46.224:C a 0 m); osm:r20140323 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-501:42.375:D a 0 m); osm:r20140396 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-521:27.885:C a 0 m); osm:r20140397 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-521:26.915:D a 0 m); osm:r20142909 → unir tramos tras orientarlos (con dgt:GUID_CVM_161489 a 244 m); osm:r20144596 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165001 a 48 m); osm:r20147014 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164999 a 16 m); osm:r20164234 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN18:278.4:A a 141 m); osm:r20171243 → unir tramos tras orientarlos (con dgt:GUID_CVM_161445 a 78 m); osm:r20177080 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AC-552:27.3:C a 0 m); osm:r20177081 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AC-552:26.275:D a 0 m); osm:r20181657 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164237 a 58 m); osm:r20181658 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164230 a 10 m); osm:r20181703 → unir tramos tras orientarlos (con dgt:GUID_CVM_164150 a 14 m); osm:r20183129 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:OU-536:28.04:C a 0 m); osm:r20183369 → unir tramos tras orientarlos (con dgt:GUID_CVM_162907 a 47 m); osm:r20189733 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AP-9:158.98:C a 0 m); osm:r20193091 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-550:126.93:D a 0 m); osm:r20194075 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AS-117:4.55:D a 0 m); osm:r20194076 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AS-117:6.6:C a 0 m); osm:r20199955 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-8:146.98:C a 0 m); osm:r20233503 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-6014:1.275:D a 0 m); osm:r20233561 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-13A:12.25:C a 0 m); osm:r20233562 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-13A:10.95:D a 0 m); osm:r20234638 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-15:5.11:D a 0 m); osm:r20254912 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165315 a 16 m); osm:r20272541 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CM-412:202.5:D a 0 m); osm:r20274494 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AV-562:9.19:D a 0 m); osm:r20274495 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AV-562:11.435:C a 0 m); osm:r20295462 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CV-30:1.625:D a 0 m); osm:r21377135 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN4:25:A a 219 m); osm:r21377244 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN10:75.7:A a 68 m); osm:r21405896 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC1:538.9:A a 41 m); osm:r21410993 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC19:8.2:E a 32 m); osm:r21423274 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN261:97.06:A a 59 m); osm:r21424324 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC1:686.9:A a 118 m); osm:r21424406 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC1:679.8:A a 136 m); osm:r6319077 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_120355 a 272 m); osm:r6464184 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169362 a 8 m); osm:r6464310 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169360 a 10 m); osm:r6495325 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169358 a 25 m); osm:r6785317 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164567 a 10 m); osm:r6785318 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164566 a 99 m); osm:r7431334 → unir tramos tras orientarlos (con dgt:GUID_CVM_162916 a 25 m); osm:r8102473 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_163929 a 17 m); osm:r8812728 → unir tramos tras orientarlos (con dgt:GUID_CVM_162925 a 56 m); osm:r9933664 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174827 a 40 m)
-    764s    TCA: página del Ministerio no disponible (www.transportes.gob.es: HTTP Error 403: Forbidden); se usan los PDF conocidos
-    766s    TCA: TCA 130 filas (NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf)
-    767s    TCA: TCAM 21 filas (tca-con-implicacion-de-motoristas.pdf)
-    767s    CartoCiudad: 295 hitos necesarios, 0 por consultar
-    767s    TCA: 11 sin poder situar: ['B-24 9.6-10.7', 'B-40 1.4-2.1', 'GR-30 9.1-10.1', 'GR-30 10.1-10.6', 'N-240 19.0-19.5', 'N-332 216.3-217.3', 'N-340 1144.7-1145.2', 'N-340 1154.3-1154.8', 'N-340 1159.8-1160.3', 'N-349 2.7-3.2', 'N-351 5.9-6.5']
-    767s  Ministerio: tramos de concentración de accidentes: 109 puntos
-    767s    CartoCiudad: 1877 hitos necesarios, 0 por consultar
-    767s    accidentes: 461 tramos, 425 situados, 36 sin poder situar
-    767s  Tramos con muchos accidentes (autonómicas y provinciales, microdatos DGT): 425 puntos
-    819s    zonas: red cargada (501889 vías) para 528 zonas en 51s
-    822s  tramos de OSM sin cubrir: []
-     82s    CartoCiudad: 2401 hitos necesarios, 0 por consultar
+    593s    caminos: red cargada (5749 vías) en 34s
+    593s    caminos: regla del lado probada en 34s
+    593s    caminos: regla del cruce probada en 34s
+    593s    caminos: 0/5 en 34s (dgt:GUID_CABINACINEMOMETRO_120285)
+    593s  gemelos de sentido contrario corregidos: 5 ['dgt:GUID_CABINACINEMOMETRO_120285', 'dgt:GUID_CABINACINEMOMETRO_120288', 'dgteq:SE-30:23.2:C:cintur', 'dgteq:SE-30:23.2:D:cintur', 'dgt:GUID_CABINACINEMOMETRO_120603']
+    593s  caminos: {'lado': 'dgt carretera 12-25 m: 15/21; dgt ciudad 12-25 m: 2/4; dgt carretera 25-41 m: 5/7; dgt carretera 4-7 m: 35/47; dgt ciudad 4-7 m: 3/3; dgt carretera 7-12 m: 39/42 ✓; dgt ciudad 7-12 m: 1/2; dgt carretera todas: 94/117; dgt ciudad todas: 6/9; dgtpdf carretera 12-25 m: 1/2; dgtpdf ciudad 12-25 m: 3/5; dgtpdf carretera 25-41 m: 1/2; dgtpdf carretera 4-7 m: 1/1; dgtpdf carretera 7-12 m: 1/2; dgtpdf ciudad 7-12 m: 1/1; dgtpdf carretera todas: 4/7; dgtpdf ciudad todas: 4/6; osm carretera 12-25 m: 2/2; osm ciudad 12-25 m: 2/2; osm ciudad 25-41 m: 0/1; osm carretera 4-7 m: 94/120; osm ciudad 4-7 m: 72/110; osm carretera 7-12 m: 58/78; osm ciudad 7-12 m: 22/31; osm carretera todas: 154/200; osm ciudad todas: 96/144; otros carretera 4-7 m: 4/5; otros carretera 7-12 m: 4/5; otros ciudad 7-12 m: 0/1; otros carretera todas: 8/10; otros ciudad todas: 0/1; sct carretera 4-7 m: 10/15; sct ciudad 4-7 m: 1/1; sct carretera 7-12 m: 3/4; sct carretera todas: 13/19; sct ciudad todas: 1/1', 'cruce': 'limite 23/32; cruce+lado 1/2; cruce 31/40; lado+limite 8/9', 'rumbo_por_cardinal': 47, 'con_camino': 3919, 'sin_via': 26, 'tramos_con_recorrido': 327, 'tramos': 360, 'caminos_alternativos': 11, 'mediana_dos': 29, 'con_paralela': 1220, 'en_enlace': 40, 'sospechosos': [], 'dos_sentidos': 286, 'limites_via': 156, 'limites_quitados': 5, 'ramas': 3136, 'calzada_corregida': 8, 'en_tunel': 67, 'caminos_cortos': 8, 'segundos': 128}
+    593s  semáforos: con sentido conocido, su semáforo delante 99, detrás 8 → se deducen sentidos
+    631s    caminos: red cargada (66339 vías) en 37s
+    631s    caminos: regla del lado probada en 37s
+    631s    caminos: regla del cruce probada en 37s
+    631s    caminos: 0/41 en 37s (madfr:40.43521,-3.67502)
+    631s  comprobación con las de sentido conocido: semáforo delante en 99, detrás en 8; 10 cámaras de semáforo con su sentido deducido por el semáforo que tienen delante; 41 llevadas a su línea (7 estaban pasado el cruce); 40 sin ningún semáforo de OSM a 50 m (posición por revisar): madfr:40.45464,-3.69056, madfr:40.46227,-3.79330, madfr:40.38409,-3.75977, madfr:40.39694,-3.77433, madfr:40.41074,-3.65479, madfr:40.42034,-3.62522, madfr:40.44164,-3.62408, mlgfr:36.71300,-4.45466, dgteq:N-603:62.9:C:foto r, osm:n992000541, osm:n992001267, osm:n992002942, osm:n992003252, osm:n992003267, osm:n2004518514, osm:n2004518665, osm:n2378266833, osm:n2378266933, osm:n2378267261, osm:n4029561801, osm:n4029562016, osm:n4087504678, osm:n4258221018, osm:n9757953611, osm:n12736058897, osm:n12736232082, osm:n12993247575, osm:n12993247583, osm:n12993898230, osm:n14169267684, osm:n3015095098, osm:n3015103519, osm:n1416249515, osm:n4349063327, osm:r19801864, osm:n7821371292, osm:r19964592, osm:r19964593, osm:n11692022938, osm:n5326355963
+    631s    CartoCiudad: 3817 hitos necesarios, 0 por consultar
+    631s    sentido oficial: dgt:GUID_CVM_161427 A-8 PK 550.28: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_164230 A-8 PK 505.09: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_164237 A-8 PK 506.2: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_164265 RM-603 PK 1.4: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_165001 CL-613 PK 15.41: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_165336 CA-33 PK 9.052: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_165415 N-120 PK 317.6: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_166399 CL-602 PK 98.6: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_166402 CL-602 PK 99.65: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_166405 CL-602 PK 102.8: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_166407 CL-602 PK 105.7: OSM lo tiene al revés de la etiqueta Decreciente → etiqueta Creciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CVM_169183 A-397 PK 28.02: OSM lo tiene al revés de la etiqueta Creciente → etiqueta Decreciente, tramo sin girar
+    631s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120602 N-332 PK 203.2 Creciente: rumbo 113.1 → 306.4
+    631s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120603 N-332 PK 204.45 Decreciente: rumbo 293.1 → 124.5
+    631s    sentido oficial: dgt:GUID_CABINACINEMOMETRO_120647 EI-600 PK 9.635 Creciente: rumbo 99.0 → 286.2
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120095 A-92N PK 9.25 a 430 m de su PK; la cámara de OSM, a 89 m → se mueve 368 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120129 A-220 PK 9.366 a 244 m de su PK; la cámara de OSM, a 18 m → se mueve 227 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120233 N-432 PK 111.654 a 347 m de su PK; la cámara de OSM, a 8 m → se mueve 355 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120261 A-4 PK 40.406 a 411 m de su PK; la cámara de OSM, a 20 m → se mueve 401 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120304 A-2 PK 53.559 a 210 m de su PK; la cámara de OSM, a 19 m → se mueve 214 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120311 A-31 PK 11.635 a 366 m de su PK; la cámara de OSM, a 32 m → se mueve 391 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120314 A-40 PK 299.452 a 445 m de su PK; la cámara de OSM, a 20 m → se mueve 442 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120391 A-6050 PK 0.95 a 392 m de su PK; la cámara de OSM, a 29 m → se mueve 417 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_120667 N-122 PK 142.26 a 263 m de su PK; la cámara de OSM, a 47 m → se mueve 310 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_160238 CA-34 PK 0.71 a 185 m de su PK; la cámara de OSM, a 94 m → se mueve 279 m
+    633s    testigo: dgt:GUID_CABINACINEMOMETRO_165621 M-40 PK 20.265 a 465 m de su PK; la cámara de OSM, a 64 m → se mueve 445 m
+    633s    testigo: dgtpdf:F:CL-623:7.11:D CL-623 PK 7.11 a 161 m de su PK; la cámara de OSM, a 12 m → se mueve 160 m
+    633s    testigo: dgtpdf:F:M-300:31.325:D M-300 PK 31.325 a 266 m de su PK; la cámara de OSM, a 54 m → se mueve 256 m
+    633s    testigo: dgtpdf:F:TF-66:9.0:D TF-66 PK 9.0 a 171 m de su PK; la cámara de OSM, a 20 m → se mueve 184 m
+    633s    testigo: dgtpdf:F:N-332:245.0:C N-332 PK 245.0 a 152 m de su PK; la cámara de OSM, a 33 m → se mueve 120 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120004 A-2 PK 308.325 → cámara de OSM a 38 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120008 N-240 PK 186.83 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120014 A-23 PK 165.44 → cámara de OSM a 61 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120018 AP-68 PK 175.9 → cámara de OSM a 19 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120028 A-12 PK 123.97 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120041 N-432 PK 219.552 → cámara de OSM a 25 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120060 A-6 PK 470.054 → cámara de OSM a 34 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120077 A-6 PK 529.558 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120080 A-52 PK 222.025 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120085 N-550 PK 76.925 → cámara de OSM a 22 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120099 A-316 PK 59.72 → cámara de OSM a 32 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120126 A-308 PK 34.6 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120127 N-340 PK 347.859 → cámara de OSM a 41 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120128 A-401 PK 20.1 → cámara de OSM a 68 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120144 A-311 PK 25.5 → cámara de OSM a 18 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120151 N-332 PK 232.202 → cámara de OSM a 13 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120152 CV-610 PK 1.36 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120153 N-238 PK 5.002 → cámara de OSM a 25 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120165 SE-30 PK 11.106 → cámara de OSM a 22 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120166 CA-33 PK 4.4 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120189 N-433 PK 44.32 → cámara de OSM a 53 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120191 SE-30 PK 10.53 → cámara de OSM a 17 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120196 A-4 PK 645.4 → cámara de OSM a 13 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120221 A-3 PK 48.479 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120224 N-430 PK 404.783 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120226 A-5 PK 57.864 → cámara de OSM a 53 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120229 N-401 PK 150.203 → cámara de OSM a 19 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120231 CM-4124 PK 22.0 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120235 N-435 PK 68.048 → cámara de OSM a 55 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120241 CM-101 PK 4.764 → cámara de OSM a 96 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120242 EX-203 PK 22.254 → cámara de OSM a 19 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120247 A-4 PK 41.409 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120250 EX-109 PK 15.01 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120252 EX-206 PK 92.315 → cámara de OSM a 44 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120253 N-502 PK 109.6 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120256 A-42 PK 44.6 → cámara de OSM a 19 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120258 CM-42 PK 39.8 → cámara de OSM a 47 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120268 CM-4111 PK 7.452 → cámara de OSM a 23 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120271 N-430 PK 273.979 → cámara de OSM a 27 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120272 N-521 PK 53.956 → cámara de OSM a 54 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120308 A-1 PK 22.092 → cámara de OSM a 101 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120310 N-310 PK 191.425 → cámara de OSM a 19 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120325 M-50 PK 54.143 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120329 N-320 PK 306.364 → cámara de OSM a 25 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120332 A-312 PK 35.9 → cámara de OSM a 110 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120337 N-120 PK 550.74 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120345 N-357 PK 3.91 → cámara de OSM a 25 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120348 N-357 PK 5.528 → cámara de OSM a 52 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120350 N-630 PK 636.158 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120352 CM-403 PK 89.0 → cámara de OSM a 22 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120357 A-376 PK 1.97 → cámara de OSM a 28 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120359 A-8057 PK 0.46 → cámara de OSM a 48 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120364 N-340 PK 358.949 → cámara de OSM a 23 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120366 GR-30 PK 8.705 → cámara de OSM a 13 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120374 A-367 PK 22.8 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120377 A-7 PK 1049.2 → cámara de OSM a 23 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120384 A-356 PK 36.525 → cámara de OSM a 17 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120385 A-316 PK 4.0 → cámara de OSM a 100 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120386 A-319 PK 7.7 → cámara de OSM a 58 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120388 A-44 PK 39.01 → cámara de OSM a 17 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120389 A-44 PK 42.6 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120399 N-501 PK 76.8 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120403 A-52 PK 110.55 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120405 N-122 PK 171.65 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120407 N-120 PK 312.26 → cámara de OSM a 18 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120414 N-110 PK 260.0 → cámara de OSM a 25 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120415 N-120 PK 67.675 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120419 N-630 PK 364.95 → cámara de OSM a 29 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120424 A-52 PK 99.4 → cámara de OSM a 19 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120425 A-66 PK 35.28 → cámara de OSM a 16 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120426 A-66 PK 14.31 → cámara de OSM a 40 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120443 A-8 PK 579.159 → cámara de OSM a 46 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120444 A-8 PK 580.81 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120451 MA-1 PK 15.5 → cámara de OSM a 76 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120457 MA-15 PK 52.511 → cámara de OSM a 34 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120458 MA-14 PK 19.293 → cámara de OSM a 66 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120459 EI-700 PK 15.568 → cámara de OSM a 111 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120462 MA-1 PK 23.0 → cámara de OSM a 51 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120470 N-120 PK 459.068 → cámara de OSM a 62 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120471 OU-525 PK 230.694 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120494 GC-1 PK 5.35 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120504 N-6 PK 503.122 → cámara de OSM a 13 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120508 A-6 PK 262.377 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120511 S-10 PK 3.4 → cámara de OSM a 24 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120519 A-67 PK 7.15 → cámara de OSM a 17 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120520 N-6 PK 71.26 → cámara de OSM a 18 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120522 A-2 PK 141.431 → cámara de OSM a 16 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120527 A-8 PK 144.48 → cámara de OSM a 13 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120531 A-6 PK 270.567 → cámara de OSM a 29 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120532 A-6 PK 326.173 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120533 A-6 PK 347.911 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120535 AP-6 PK 106.97 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120547 A-62 PK 156.043 → cámara de OSM a 24 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120552 A-1 PK 234.417 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120553 A-62 PK 233.35 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120570 CV-50 PK 14.765 → cámara de OSM a 18 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120577 A-7 PK 305.1 → cámara de OSM a 29 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120578 V-31 PK 5.25 → cámara de OSM a 28 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120581 CV-81 PK 6.35 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120592 N-332 PK 151.675 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120593 N-332 PK 173.2 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120599 N-332 PK 70.95 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120612 AP-7 PK 390.675 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120617 N-340 PK 960.9 → cámara de OSM a 16 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120620 A-30 PK 112.936 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120633 A-31 PK 137.894 → cámara de OSM a 16 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120637 N-322 PK 315.988 → cámara de OSM a 57 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120643 MA-13 PK 8.987 → cámara de OSM a 63 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120644 MA-13 PK 16.139 → cámara de OSM a 16 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120645 MA-1 PK 15.92 → cámara de OSM a 48 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120648 ME-1 PK 20.442 → cámara de OSM a 26 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120649 MA-12 PK 24.109 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120650 MA-4020 PK 5.206 → cámara de OSM a 44 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120651 MA-19 PK 30.125 → cámara de OSM a 74 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120652 MA-2200 PK 50.29 → cámara de OSM a 94 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120653 EI-300 PK 5.432 → cámara de OSM a 66 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120654 MA-13 PK 46.371 → cámara de OSM a 13 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120658 N-401 PK 178.75 → cámara de OSM a 13 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120659 A-2 PK 50.05 → cámara de OSM a 18 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120664 A-4 PK 415.22 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120666 A-67 PK 195.4 → cámara de OSM a 20 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120670 A-8 PK 366.92 → cámara de OSM a 23 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120688 A-31 PK 127.006 → cámara de OSM a 17 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120692 A-6 PK 18.27 → cámara de OSM a 45 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_120693 A-2 PK 15.9 → cámara de OSM a 14 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_162754 A-8 PK 143.7 → cámara de OSM a 26 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_162917 N-550 PK 55.8 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_163323 A-3 PK 247.571 → cámara de OSM a 36 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_163344 M-305 PK 0.7 → cámara de OSM a 15 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_163711 A-6 PK 426.677 → cámara de OSM a 43 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_163774 N-6 PK 56.415 → cámara de OSM a 115 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_163775 N-6 PK 57.445 → cámara de OSM a 29 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165183 CL-613 PK 52.7 → cámara de OSM a 22 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165185 CL-615 PK 72.09 → cámara de OSM a 37 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165187 CL-615 PK 77.913 → cámara de OSM a 36 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165619 M-404 PK 27.5 → cámara de OSM a 50 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165803 AC-840 PK 14.8 → cámara de OSM a 50 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165804 CG-1.5 PK 16.1 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165808 AG-53 PK 71.1 → cámara de OSM a 43 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165813 N-120 PK 646.5 → cámara de OSM a 26 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165814 PO-552 PK 28.95 → cámara de OSM a 48 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165816 VG-4.4 PK 7.0 → cámara de OSM a 23 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165824 DP-1914 PK 7.7 → cámara de OSM a 27 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165877 EI-700 PK 7.01 → cámara de OSM a 39 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_165879 EI-200 PK 8.14 → cámara de OSM a 29 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_166669 N-550 PK 108.93 → cámara de OSM a 21 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_166687 A-4 PK 292.85 → cámara de OSM a 27 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_166689 A-4 PK 308.25 → cámara de OSM a 49 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_166691 A-4 PK 292.35 → cámara de OSM a 12 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_166697 A-395 PK 3.31 → cámara de OSM a 45 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_166989 A-68 PK 248.581 → cámara de OSM a 27 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_166991 A-68 PK 255.655 → cámara de OSM a 41 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_167034 N-260 PK 433.795 → cámara de OSM a 71 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_167169 A-8 PK 147.5 → cámara de OSM a 17 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_174823 A-77A PK 0.42 → cámara de OSM a 33 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_174825 CV-141 PK 2.93 → cámara de OSM a 53 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_174834 CV-905 PK 7.05 → cámara de OSM a 61 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_174836 N-225 PK 5.088 → cámara de OSM a 47 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_174838 N-332 PK 89.05 → cámara de OSM a 89 m
+    633s    afinado: dgt:GUID_CABINACINEMOMETRO_174839 N-332 PK 56.25 → cámara de OSM a 30 m
+    633s    afinado: dgtpdf:F:A-31:169.95:C A-31 PK 169.95 → cámara de OSM a 15 m
+    633s    afinado: dgtpdf:F:N-332:91.047:C N-332 PK 91.047 → cámara de OSM a 31 m
+    633s    afinado: dgtpdf:F:A-1050:1.2:D A-1050 PK 1.2 → cámara de OSM a 103 m
+    633s    afinado: dgtpdf:F:AS-377:1.15:C AS-377 PK 1.15 → cámara de OSM a 49 m
+    633s    afinado: dgtpdf:F:N-634:377.85:C N-634 PK 377.85 → cámara de OSM a 117 m
+    633s    afinado: dgtpdf:F:MA-20:1.9:D MA-20 PK 1.9 → cámara de OSM a 50 m
+    633s    afinado: dgtpdf:F:MA-30:1.25:D MA-30 PK 1.25 → cámara de OSM a 54 m
+    633s    afinado: dgtpdf:F:MA-5120:6.62:C MA-5120 PK 6.62 → cámara de OSM a 43 m
+    633s    afinado: dgtpdf:F:N-521:91.186:D N-521 PK 91.186 → cámara de OSM a 22 m
+    633s    afinado: dgtpdf:F:N-523:8.57:C N-523 PK 8.57 → cámara de OSM a 15 m
+    633s    afinado: dgtpdf:F:A-491:4.35:C A-491 PK 4.35 → cámara de OSM a 92 m
+    633s    afinado: dgtpdf:F:CA-142:23.36:D CA-142 PK 23.36 → cámara de OSM a 82 m
+    633s    afinado: dgtpdf:F:N-432:302.562:D N-432 PK 302.562 → cámara de OSM a 34 m
+    633s    afinado: dgtpdf:F:N-432:245.3:C N-432 PK 245.3 → cámara de OSM a 37 m
+    633s    afinado: dgtpdf:F:AC-841:9.8:D AC-841 PK 9.8 → cámara de OSM a 65 m
+    633s    afinado: dgtpdf:F:N-550:15.73:C N-550 PK 15.73 → cámara de OSM a 42 m
+    633s    afinado: dgtpdf:F:CM-101:17.46:D CM-101 PK 17.46 → cámara de OSM a 98 m
+    633s    afinado: dgtpdf:F:N-320:309.935:C N-320 PK 309.935 → cámara de OSM a 37 m
+    633s    afinado: dgtpdf:F:A-492:8.6:C A-492 PK 8.6 → cámara de OSM a 66 m
+    633s    afinado: dgtpdf:F:N-435:178.29:D N-435 PK 178.29 → cámara de OSM a 33 m
+    633s    afinado: dgtpdf:F:A-22:106.474:C A-22 PK 106.474 → cámara de OSM a 83 m
+    633s    afinado: dgtpdf:F:N-322:233.1:D N-322 PK 233.1 → cámara de OSM a 16 m
+    633s    afinado: dgtpdf:F:N-432:384.528:C N-432 PK 384.528 → cámara de OSM a 107 m
+    633s    afinado: dgtpdf:F:LE-311:11.25:C LE-311 PK 11.25 → cámara de OSM a 118 m
+    633s    afinado: dgtpdf:F:LU-862:74.15:D LU-862 PK 74.15 → cámara de OSM a 47 m
+    633s    afinado: dgtpdf:F:M-100:22.94:D M-100 PK 22.94 → cámara de OSM a 45 m
+    633s    afinado: dgtpdf:F:M-300:23.85:D M-300 PK 23.85 → cámara de OSM a 13 m
+    633s    afinado: dgtpdf:F:M-45:6.175:D M-45 PK 6.175 → cámara de OSM a 46 m
+    633s    afinado: dgtpdf:F:A-7054:3.5:C A-7054 PK 3.5 → cámara de OSM a 47 m
+    633s    afinado: dgtpdf:F:RM-620:4.228:C RM-620 PK 4.228 → cámara de OSM a 14 m
+    633s    afinado: dgtpdf:F:N-525:237.88:C N-525 PK 237.88 → cámara de OSM a 21 m
+    633s    afinado: dgtpdf:F:N-610:12.69:A N-610 PK 12.69 → cámara de OSM a 25 m
+    633s    afinado: dgtpdf:F:LZ-30:16.625:D LZ-30 PK 16.625 → cámara de OSM a 24 m
+    633s    afinado: dgtpdf:F:N-550:84.15:C N-550 PK 84.15 → cámara de OSM a 21 m
+    633s    afinado: dgtpdf:F:TF-1:76.94:D TF-1 PK 76.94 → cámara de OSM a 31 m
+    633s    afinado: dgtpdf:F:TF-2:1.11:C TF-2 PK 1.11 → cámara de OSM a 17 m
+    633s    afinado: dgtpdf:F:TF-5:49.4:C TF-5 PK 49.4 → cámara de OSM a 20 m
+    633s    afinado: dgtpdf:F:TF-652:2.9:D TF-652 PK 2.9 → cámara de OSM a 26 m
+    633s    afinado: dgtpdf:F:A-8005:5.818:C A-8005 PK 5.818 → cámara de OSM a 15 m
+    633s    afinado: dgtpdf:F:A-8058:10.17:C A-8058 PK 10.17 → cámara de OSM a 84 m
+    633s    afinado: dgtpdf:F:A-8077:3.18:D A-8077 PK 3.18 → cámara de OSM a 90 m
+    633s    afinado: dgtpdf:F:N-122:132.756:D N-122 PK 132.756 → cámara de OSM a 20 m
+    633s    afinado: dgtpdf:F:N-234:406.8:C N-234 PK 406.8 → cámara de OSM a 18 m
+    633s    afinado: dgtpdf:F:N-420:623.985:D N-420 PK 623.985 → cámara de OSM a 20 m
+    633s    afinado: dgtpdf:F:CM-4004:14.252:C CM-4004 PK 14.252 → cámara de OSM a 15 m
+    633s    afinado: dgtpdf:F:CM-4008:4.91:D CM-4008 PK 4.91 → cámara de OSM a 27 m
+    633s    afinado: dgtpdf:F:N-401:82.6:A N-401 PK 82.6 → cámara de OSM a 14 m
+    633s    afinado: dgtpdf:F:CV-400:0.735:C CV-400 PK 0.735 → cámara de OSM a 34 m
+    633s    afinado: dgtpdf:F:VA-30:16.16:D VA-30 PK 16.16 → cámara de OSM a 64 m
+    633s    afinado: dgtpdf:F:N-232:244.945:D N-232 PK 244.945 → cámara de OSM a 34 m
+    633s    afinado: sct:41.63657,0.79044 A-2 PK 477.4 → cámara de OSM a 15 m
+    633s    afinado: sct:41.66664,1.29696 A-2 PK 522.046 → cámara de OSM a 42 m
+    633s    afinado: sct:41.65517,1.31316 A-2 PK 524.0 → cámara de OSM a 90 m
+    633s    afinado: sct:41.59262,1.68038 A-2 PK 560.25 → cámara de OSM a 52 m
+    633s    afinado: sct:41.53767,1.85925 A-2 PK 579.4 → cámara de OSM a 40 m
+    633s    afinado: sct:41.38531,2.02180 A-2 PK 602.75 → cámara de OSM a 120 m
+    633s    afinado: sct:41.38188,2.02358 A-2 PK 603.2 → cámara de OSM a 25 m
+    633s    afinado: sct:41.34929,2.06250 A-2 PK 609.075 → cámara de OSM a 32 m
+    633s    afinado: sct:41.50678,0.77361 AP-2 PK 154.85 → cámara de OSM a 47 m
+    633s    afinado: sct:41.47992,0.87578 AP-2 PK 164.967 → cámara de OSM a 21 m
+    633s    afinado: sct:41.42547,0.94596 AP-2 PK 173.857 → cámara de OSM a 20 m
+    633s    afinado: sct:41.45527,1.98268 AP-7 PK 164.0 → cámara de OSM a 109 m
+    633s    afinado: sct:40.90491,0.81692 AP-7 PK 294.48 → cámara de OSM a 19 m
+    633s    afinado: sct:40.81291,0.70415 AP-7 PK 308.608 → cámara de OSM a 16 m
+    633s    afinado: sct:40.62723,0.49116 AP-7 PK 337.045 → cámara de OSM a 13 m
+    633s    afinado: sct:40.58193,0.45477 AP-7 PK None → cámara de OSM a 76 m
+    633s    afinado: sct:41.58966,2.08929 B-124 PK 4.7 → cámara de OSM a 82 m
+    633s    afinado: sct:41.53222,2.14503 B-140 PK 3.12 → cámara de OSM a 12 m
+    633s    afinado: sct:41.45844,2.21004 B-20 PK 18.1 → cámara de OSM a 21 m
+    633s    afinado: sct:41.46827,2.24474 B-20 PK 21.5 → cámara de OSM a 29 m
+    633s    afinado: sct:41.37588,2.07080 B-23 PK 3.35 → cámara de OSM a 12 m
+    633s    afinado: sct:41.37338,2.05435 B-23 PK 4.76 → cámara de OSM a 18 m
+    633s    afinado: sct:41.41775,2.00960 B-23 PK 11.65 → cámara de OSM a 40 m
+    633s    afinado: sct:41.65194,2.28795 BV-1433 PK 2.01 → cámara de OSM a 45 m
+    633s    afinado: sct:41.63537,2.23219 BV-1435 PK 9.57 → cámara de OSM a 45 m
+    633s    afinado: sct:41.24895,1.77161 BV-2113 PK 1.432 → cámara de OSM a 58 m
+    633s    afinado: sct:40.91416,0.48940 C-12 PK 30.719 → cámara de OSM a 102 m
+    633s    afinado: sct:41.12858,1.12239 C-14 PK 4.35 → cámara de OSM a 13 m
+    633s    afinado: sct:42.20465,1.32774 C-14 PK 161.016 → cámara de OSM a 98 m
+    633s    afinado: sct:41.83088,1.36258 C-1412A PK 19.3 → cámara de OSM a 18 m
+    633s    afinado: sct:41.43485,2.00179 C-1413A PK 2.4 → cámara de OSM a 57 m
+    633s    afinado: sct:41.58743,2.25179 C-155 PK 14.7 → cámara de OSM a 12 m
+    633s    afinado: sct:41.82321,1.88954 C-16 PK 63.29 → cámara de OSM a 16 m
+    633s    afinado: sct:41.86137,1.87065 C-16 PK 68.294 → cámara de OSM a 43 m
+    633s    afinado: sct:41.47671,2.06535 C-16 PK None → cámara de OSM a 41 m
+    633s    afinado: sct:41.44613,2.06910 C-16 PK None → cámara de OSM a 21 m
+    633s    afinado: sct:41.51019,2.20325 C-17 PK 7.9 → cámara de OSM a 30 m
+    633s    afinado: sct:41.74539,1.57943 C-25 PK 111.635 → cámara de OSM a 21 m
+    633s    afinado: sct:41.73416,1.76886 C-25 PK 128.724 → cámara de OSM a 23 m
+    633s    afinado: sct:41.78649,1.91010 C-25 PK 143.359 → cámara de OSM a 20 m
+    633s    afinado: sct:41.63431,2.33579 C-251 PK 5.156 → cámara de OSM a 43 m
+    633s    afinado: sct:41.81193,0.64371 C-26 PK 8.45 → cámara de OSM a 12 m
+    633s    afinado: sct:41.81014,0.86339 C-26 PK 30.613 → cámara de OSM a 26 m
+    633s    afinado: sct:41.27230,2.04064 C-31 PK 186.068 → cámara de OSM a 12 m
+    633s    afinado: sct:41.80835,3.03429 C-31 PK 312.787 → cámara de OSM a 26 m
+    633s    afinado: sct:41.93861,3.16143 C-31 PK 336.13 → cámara de OSM a 28 m
+    633s    afinado: sct:42.21872,3.01732 C-31 PK 376.51 → cámara de OSM a 19 m
+    633s    afinado: sct:41.44830,2.23620 C-31 PK None → cámara de OSM a 18 m
+    633s    afinado: sct:41.46058,2.26082 C-31 PK None → cámara de OSM a 65 m
+    633s    afinado: sct:41.10534,1.20405 C-31B PK 8.235 → cámara de OSM a 14 m
+    633s    afinado: sct:41.29760,2.01824 C-32 PK 50.07 → cámara de OSM a 15 m
+    633s    afinado: sct:41.32417,2.04486 C-32 PK 53.777 → cámara de OSM a 17 m
+    633s    afinado: sct:41.48335,2.29501 C-32 PK None → cámara de OSM a 40 m
+    633s    afinado: sct:41.28665,1.99948 C-32 PK None → cámara de OSM a 35 m
+    633s    afinado: sct:41.47618,2.18324 C-33 PK 80.048 → cámara de OSM a 23 m
+    633s    afinado: sct:41.57146,2.25332 C-35 PK 29.15 → cámara de OSM a 19 m
+    633s    afinado: sct:41.26873,1.21364 C-37 PK 3.2 → cámara de OSM a 34 m
+    633s    afinado: sct:42.25358,2.34334 C-38 PK 1.635 → cámara de OSM a 15 m
+    633s    afinado: sct:41.62018,1.84881 C-55 PK 15.297 → cámara de OSM a 15 m
+    633s    afinado: sct:41.64728,1.85730 C-55 PK 18.52 → cámara de OSM a 17 m
+    633s    afinado: sct:41.69897,1.84162 C-55 PK 25.5 → cámara de OSM a 19 m
+    633s    afinado: sct:41.71127,1.83566 C-55 PK 27.0 → cámara de OSM a 14 m
+    633s    afinado: sct:41.77199,1.78870 C-55 PK 39.129 → cámara de OSM a 24 m
+    633s    afinado: sct:41.49537,2.14960 C-58 PK 5.89 → cámara de OSM a 64 m
+    633s    afinado: sct:41.54295,2.06677 C-58 PK 25.38 → cámara de OSM a 40 m
+    633s    afinado: sct:41.57727,1.96043 C-58 PK 29.27 → cámara de OSM a 31 m
+    633s    afinado: sct:41.58418,1.93572 C-58 PK 29.8 → cámara de OSM a 37 m
+    633s    afinado: sct:41.58463,1.92876 C-58 PK 30.95 → cámara de OSM a 16 m
+    633s    afinado: sct:41.58766,1.91561 C-58 PK 38.15 → cámara de OSM a 35 m
+    633s    afinado: sct:41.62222,1.85870 C-58 PK None → cámara de OSM a 50 m
+    633s    afinado: sct:41.46630,2.17392 None PK None → cámara de OSM a 26 m
+    633s    afinado: sct:41.47306,2.16307 None PK None → cámara de OSM a 72 m
+    633s    afinado: sct:41.60605,2.17975 C-59 PK 11.05 → cámara de OSM a 37 m
+    633s    afinado: sct:41.67056,2.16505 C-59 PK 19.014 → cámara de OSM a 35 m
+    633s    afinado: sct:41.77859,2.77749 C-63 PK 10.778 → cámara de OSM a 13 m
+    633s    afinado: sct:41.82749,2.96049 C-65 PK 6.662 → cámara de OSM a 105 m
+    633s    afinado: sct:42.18155,2.74245 C-66 PK 54.117 → cámara de OSM a 56 m
+    633s    afinado: sct:42.00451,3.00157 C-66 PK None → cámara de OSM a 37 m
+    633s    afinado: sct:41.71862,2.71106 GI-512 PK 2.69 → cámara de OSM a 19 m
+    633s    afinado: sct:41.67425,2.76560 GI-682 PK 3.55 → cámara de OSM a 18 m
+    633s    afinado: sct:41.71983,2.90474 GI-682 PK 18.468 → cámara de OSM a 16 m
+    633s    afinado: sct:41.61501,0.88576 L-200 PK 1.733 → cámara de OSM a 29 m
+    633s    afinado: sct:41.69538,1.17179 L-310 PK 5.403 → cámara de OSM a 15 m
+    633s    afinado: sct:41.48683,2.15694 N-150 PK 3.318 → cámara de OSM a 78 m
+    633s    afinado: sct:41.55448,2.05221 N-150 PK 15.555 → cámara de OSM a 39 m
+    633s    afinado: sct:42.13254,2.90333 N-2 PK 736.539 → cámara de OSM a 92 m
+    633s    afinado: sct:42.30816,2.93551 N-2 PK 761.0 → cámara de OSM a 14 m
+    633s    afinado: sct:41.93104,2.80224 N-2 PK None → cámara de OSM a 35 m
+    633s    afinado: sct:41.95648,2.83821 N-2 PK None → cámara de OSM a 37 m
+    633s    afinado: sct:41.97713,2.84591 N-2 PK None → cámara de OSM a 78 m
+    633s    afinado: sct:42.46037,0.71099 N-230 PK 130.157 → cámara de OSM a 103 m
+    633s    afinado: sct:42.84593,0.73306 N-230 PK 186.7 → cámara de OSM a 45 m
+    633s    afinado: sct:42.67263,0.77737 N-230 PK None → cámara de OSM a 114 m
+    633s    afinado: sct:42.62532,0.76410 N-230 PK None → cámara de OSM a 92 m
+    633s    afinado: sct:41.25667,1.24849 N-240 PK 15.7 → cámara de OSM a 76 m
+    633s    afinado: sct:41.57805,0.75348 N-240 PK 80.475 → cámara de OSM a 12 m
+    633s    afinado: sct:40.86926,0.71605 N-340 PK 1104.766 → cámara de OSM a 18 m
+    633s    afinado: sct:40.97181,0.88119 N-340 PK 1125.327 → cámara de OSM a 16 m
+    633s    afinado: sct:41.33286,1.66487 N-340 PK 1208.271 → cámara de OSM a 108 m
+    633s    afinado: sct:41.39413,1.85698 N-340 PK 1226.862 → cámara de OSM a 52 m
+    633s    afinado: sct:41.40425,1.99746 N-340 PK 1242.245 → cámara de OSM a 39 m
+    633s    afinado: sct:40.64828,0.59161 N-340 PK None → cámara de OSM a 65 m
+    633s    afinado: sct:40.68706,0.58302 N-340 PK None → cámara de OSM a 28 m
+    633s    afinado: sct:41.13621,1.14777 N-420A PK 879.314 → cámara de OSM a 96 m
+    633s    afinado: sct:41.48503,2.34490 None PK None → cámara de OSM a 13 m
+    633s    afinado: sct:41.51240,2.40922 N-2 PK None → cámara de OSM a 118 m
+    633s    afinado: sct:41.58076,2.56279 None PK None → cámara de OSM a 25 m
+    633s    afinado: sct:41.60472,2.63445 None PK None → cámara de OSM a 111 m
+    633s    afinado: sct:41.15468,1.07652 T-11 PK 2.337 → cámara de OSM a 21 m
+    633s    afinado: sct:41.13434,1.10309 T-11 PK 5.87 → cámara de OSM a 14 m
+    633s    afinado: sct:41.15701,1.27118 TP-2031 PK 4.766 → cámara de OSM a 52 m
+    633s  afinado con OSM: {'<12': 485, '12-25': 152, '25-50': 98, '50-80': 38, '80-120': 33, 'sin cámara': 107, 'dudosa': 29}
+    723s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120009 N-240 rumbo 274.5 y su vía va a [157, 153] → 333.1
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_120010 N-330 PK 668.655: a 9999 m de su carretera → a ella (en su PK, 571 m)
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_120011 N-330 PK 667.435: a 135 m de su carretera → a ella (en su PK, 321 m)
+    723s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120025 N-234 rumbo 117.0 y su vía va a [192, 12, 12, 190, 9, 12] → 189.0
+    723s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120027 A-12 rumbo 262.3 y su vía va a [343, 343, 345, 343, 341, 347, 341] → None
+    723s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120037 A-4 rumbo 2.9 y su vía va a [286, 286, 105, 106] → None
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_120133 N-232 PK 293.875: a 269 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 270 m)
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_120140 N-211 PK 228.153: a 213 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 214 m)
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_120203 N-330 PK 670.101: a 9999 m de su carretera → a ella (en su PK, 572 m)
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_120204 N-330 PK 671.745: a 407 m de su carretera → a ella (en su PK, 486 m)
+    723s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_120435 AC-552 rumbo 195.2 y su vía va a [124, 136, 131] → 135.8
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_120601 CV-91 PK 18.888: a 266 m de su carretera → a ella (en su PK, 278 m)
+    723s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_163776 N-6 rumbo 114.5 y su vía va a [206, 205, 206, 205, 206] → None
+    723s    rumbo cruzado: dgt:GUID_CABINACINEMOMETRO_165670 AC-862 rumbo 84.1 y su vía va a [154] → 154.3
+    723s    su vía: dgt:GUID_CABINACINEMOMETRO_166987 A-68 PK 246.017: a 172 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 276 m)
+    723s    rumbo cruzado: dgtpdf:F:CA-141:21.3:C CA-141 rumbo 114.2 y su vía va a [178, 184, 168] → 168.3
+    723s    su vía: dgtpdf:F:N-611:194.33:D N-611 PK 194.33: a 138 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 139 m)
+    723s    rumbo cruzado: dgtpdf:F:AC-221:2.55:C AC-221 rumbo 116.2 y su vía va a [356, 356] → 176.4
+    723s    su vía: dgtpdf:F:H-30:8.502:D H-30 PK 8.502: a 217 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 219 m)
+    723s    su vía: dgtpdf:F:A-7052:7.5:C A-7052 PK 7.5: a 141 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 168 m)
+    724s    su vía: dgtpdf:F:A-49:0.7:C A-49 PK 0.7: a 120 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
+    724s    su vía: dgtpdf:F:N-234:119.66:D N-234 PK 119.66: a 185 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 185 m)
+    724s    su vía: sct:41.25502,1.17357 C-14 PK 20.029: a 63 m de su carretera → a ella (en su PK, 166 m)
+    724s    su vía: sct:41.74640,2.63225 C-35 PK 69.887: a 140 m de su carretera → a ella (en su PK, 146 m)
+    724s    rumbo cruzado: sct:42.18155,2.74245 C-66 rumbo 334.9 y su vía va a [278, 281, 97, 100] → None
+    724s    su vía: sct:40.73027,0.59360 N-340 PK 1084.318: a 224 m de su carretera → a ella (en su PK, 261 m)
+    724s    su vía: ansr:EN125:102:O EN125 PK 102.0: a 207 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 208 m)
+    724s    su vía: ansr:IC17:19.1:E IC17 PK 19.1: a 62 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 134 m)
+    724s    su vía: ansr:IC17:14.1:N IC17 PK 14.1: a 210 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 210 m)
+    724s    su vía: dgteq:AI-81:1.9:D:cintur AI-81 PK 1.9: a 62 m de su carretera → a ella (en su PK, 62 m)
+    724s    su vía: dgteq:A-492:0.2:C:cintur A-492 PK 0.2: a 171 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 172 m)
+    724s    su vía: dgteq:H-30:8.585:D:cintur H-30 PK 8.585: a 183 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 184 m)
+    724s    su vía: dgteq:N-550:116.74:D:cintur N-550 PK 116.74: a 81 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 81 m)
+    724s    su vía: dgteq:N-552:4.35:C:cintur N-552 PK 4.35: a 83 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 84 m)
+    724s    su vía: dgteq:PO-11:1.56:D:cintur PO-11 PK 1.56: a 146 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 146 m)
+    724s    su vía: dgteq:N-330:501.3:C:cintur N-330 PK 501.3: a 312 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 315 m)
+    724s    rumbo cruzado: com:euskadi-hondarribia-santaengrazi None rumbo 37.2 y su vía va a [153, 150, 156, 147] → None
+    724s    rumbo cruzado: osm:n992005494 None rumbo 244.5 y su vía va a [314, 314, 314, 314, 314, 314] → None
+    724s    rumbo cruzado: osm:n2334938864 None rumbo 235.6 y su vía va a [321, 142, 142, 140, 322, 140, 319] → None
+    724s    su vía: osm:n5435143134 A-26 PK None: a 70 m de su carretera → a ella (al punto más cercano de la calzada de su sentido, 71 m)
+    724s    rumbo cruzado: osm:n13070637359 None rumbo 22.2 y su vía va a [273, 92, 92, 273, 273, 92, 93, 144] → None
+    725s    rumbo cruzado: osm:n8119271103 None rumbo 293.6 y su vía va a [29, 31, 31, 30, 198] → None
+    725s    rumbo cruzado: osm:n13311195241b None rumbo 262.6 y su vía va a [32, 32, 32] → None
+    725s    rumbo por los vecinos: dgt:GUID_CABINACINEMOMETRO_120318 A-2 PK 122.0 Decreciente → 234.5
+    725s    rumbo por los vecinos: dgteq:A-68:242.23:C:cintur A-68 PK 242.23 Creciente → 348.5
+    725s  revisión final: 321 afinados con su cámara de OSM (12-120 m; reparto: {'<12': 485, '12-25': 152, '25-50': 98, '50-80': 38, '80-120': 33, 'sin cámara': 107, 'dudosa': 29}); 15 movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); 27 llevados a su carretera; 16 con el rumbo cruzado corregido; 12 duplicados quitados; 2 con el sentido sacado de los radares vecinos: {'testigo': ['dgt:GUID_CABINACINEMOMETRO_120095', 'dgt:GUID_CABINACINEMOMETRO_120129', 'dgt:GUID_CABINACINEMOMETRO_120233', 'dgt:GUID_CABINACINEMOMETRO_120261', 'dgt:GUID_CABINACINEMOMETRO_120304', 'dgt:GUID_CABINACINEMOMETRO_120311', 'dgt:GUID_CABINACINEMOMETRO_120314', 'dgt:GUID_CABINACINEMOMETRO_120391', 'dgt:GUID_CABINACINEMOMETRO_120667', 'dgt:GUID_CABINACINEMOMETRO_160238', 'dgt:GUID_CABINACINEMOMETRO_165621', 'dgtpdf:F:CL-623:7.11:D', 'dgtpdf:F:M-300:31.325:D', 'dgtpdf:F:TF-66:9.0:D', 'dgtpdf:F:N-332:245.0:C'], 'su_via': ['dgt:GUID_CABINACINEMOMETRO_120010', 'dgt:GUID_CABINACINEMOMETRO_120011', 'dgt:GUID_CABINACINEMOMETRO_120133', 'dgt:GUID_CABINACINEMOMETRO_120140', 'dgt:GUID_CABINACINEMOMETRO_120203', 'dgt:GUID_CABINACINEMOMETRO_120204', 'dgt:GUID_CABINACINEMOMETRO_120601', 'dgt:GUID_CABINACINEMOMETRO_166987', 'dgtpdf:F:N-611:194.33:D', 'dgtpdf:F:H-30:8.502:D', 'dgtpdf:F:A-7052:7.5:C', 'dgtpdf:F:A-49:0.7:C', 'dgtpdf:F:N-234:119.66:D', 'sct:41.25502,1.17357', 'sct:41.74640,2.63225', 'sct:40.73027,0.59360', 'ansr:EN125:102:O', 'ansr:IC17:19.1:E', 'ansr:IC17:14.1:N', 'dgteq:AI-81:1.9:D:cintur', 'dgteq:A-492:0.2:C:cintur', 'dgteq:H-30:8.585:D:cintur', 'dgteq:N-550:116.74:D:cintur', 'dgteq:N-552:4.35:C:cintur', 'dgteq:PO-11:1.56:D:cintur', 'dgteq:N-330:501.3:C:cintur', 'osm:n5435143134'], 'cruzado': ['dgt:GUID_CABINACINEMOMETRO_120009', 'dgt:GUID_CABINACINEMOMETRO_120025', 'dgt:GUID_CABINACINEMOMETRO_120027', 'dgt:GUID_CABINACINEMOMETRO_120037', 'dgt:GUID_CABINACINEMOMETRO_120435', 'dgt:GUID_CABINACINEMOMETRO_163776', 'dgt:GUID_CABINACINEMOMETRO_165670', 'dgtpdf:F:CA-141:21.3:C', 'dgtpdf:F:AC-221:2.55:C', 'sct:42.18155,2.74245', 'com:euskadi-hondarribia-santaengrazi', 'osm:n992005494', 'osm:n2334938864', 'osm:n13070637359', 'osm:n8119271103', 'osm:n13311195241b'], 'duplicados': ['dgt:GUID_CABINACINEMOMETRO_169360→dgt:GUID_CVM_161570', 'dgt:GUID_CABINACINEMOMETRO_169362→dgt:GUID_CVM_161588', 'dgt:GUID_CABINACINEMOMETRO_169364→dgt:GUID_CVM_161609', 'dgt:GUID_CABINACINEMOMETRO_169366→dgt:GUID_CVM_161629', 'osm:n13512708762→dgt:GUID_CABINACINEMOMETRO_120011', 'osm:n992001271→dgt:GUID_CABINACINEMOMETRO_120204', 'osm:n806985872→dgtpdf:F:A-49:0.7:C', 'osm:n4587378949→sct:41.25502,1.17357', 'osm:n7655766543→sct:41.74640,2.63225', 'vdc:2→vdc:1', 'osm:n13070637359b→osm:n13070637359', 'osm:n13311195241b→osm:n13311195241'], 'afinados': ['dgt:GUID_CABINACINEMOMETRO_120004', 'dgt:GUID_CABINACINEMOMETRO_120008', 'dgt:GUID_CABINACINEMOMETRO_120014', 'dgt:GUID_CABINACINEMOMETRO_120018', 'dgt:GUID_CABINACINEMOMETRO_120028', 'dgt:GUID_CABINACINEMOMETRO_120041', 'dgt:GUID_CABINACINEMOMETRO_120060', 'dgt:GUID_CABINACINEMOMETRO_120077', 'dgt:GUID_CABINACINEMOMETRO_120080', 'dgt:GUID_CABINACINEMOMETRO_120085', 'dgt:GUID_CABINACINEMOMETRO_120099', 'dgt:GUID_CABINACINEMOMETRO_120126', 'dgt:GUID_CABINACINEMOMETRO_120127', 'dgt:GUID_CABINACINEMOMETRO_120128', 'dgt:GUID_CABINACINEMOMETRO_120144', 'dgt:GUID_CABINACINEMOMETRO_120151', 'dgt:GUID_CABINACINEMOMETRO_120152', 'dgt:GUID_CABINACINEMOMETRO_120153', 'dgt:GUID_CABINACINEMOMETRO_120165', 'dgt:GUID_CABINACINEMOMETRO_120166', 'dgt:GUID_CABINACINEMOMETRO_120189', 'dgt:GUID_CABINACINEMOMETRO_120191', 'dgt:GUID_CABINACINEMOMETRO_120196', 'dgt:GUID_CABINACINEMOMETRO_120221', 'dgt:GUID_CABINACINEMOMETRO_120224', 'dgt:GUID_CABINACINEMOMETRO_120226', 'dgt:GUID_CABINACINEMOMETRO_120229', 'dgt:GUID_CABINACINEMOMETRO_120231', 'dgt:GUID_CABINACINEMOMETRO_120235', 'dgt:GUID_CABINACINEMOMETRO_120241', 'dgt:GUID_CABINACINEMOMETRO_120242', 'dgt:GUID_CABINACINEMOMETRO_120247', 'dgt:GUID_CABINACINEMOMETRO_120250', 'dgt:GUID_CABINACINEMOMETRO_120252', 'dgt:GUID_CABINACINEMOMETRO_120253', 'dgt:GUID_CABINACINEMOMETRO_120256', 'dgt:GUID_CABINACINEMOMETRO_120258', 'dgt:GUID_CABINACINEMOMETRO_120268', 'dgt:GUID_CABINACINEMOMETRO_120271', 'dgt:GUID_CABINACINEMOMETRO_120272', 'dgt:GUID_CABINACINEMOMETRO_120308', 'dgt:GUID_CABINACINEMOMETRO_120310', 'dgt:GUID_CABINACINEMOMETRO_120325', 'dgt:GUID_CABINACINEMOMETRO_120329', 'dgt:GUID_CABINACINEMOMETRO_120332', 'dgt:GUID_CABINACINEMOMETRO_120337', 'dgt:GUID_CABINACINEMOMETRO_120345', 'dgt:GUID_CABINACINEMOMETRO_120348', 'dgt:GUID_CABINACINEMOMETRO_120350', 'dgt:GUID_CABINACINEMOMETRO_120352', 'dgt:GUID_CABINACINEMOMETRO_120357', 'dgt:GUID_CABINACINEMOMETRO_120359', 'dgt:GUID_CABINACINEMOMETRO_120364', 'dgt:GUID_CABINACINEMOMETRO_120366', 'dgt:GUID_CABINACINEMOMETRO_120374', 'dgt:GUID_CABINACINEMOMETRO_120377', 'dgt:GUID_CABINACINEMOMETRO_120384', 'dgt:GUID_CABINACINEMOMETRO_120385', 'dgt:GUID_CABINACINEMOMETRO_120386', 'dgt:GUID_CABINACINEMOMETRO_120388', 'dgt:GUID_CABINACINEMOMETRO_120389', 'dgt:GUID_CABINACINEMOMETRO_120399', 'dgt:GUID_CABINACINEMOMETRO_120403', 'dgt:GUID_CABINACINEMOMETRO_120405', 'dgt:GUID_CABINACINEMOMETRO_120407', 'dgt:GUID_CABINACINEMOMETRO_120414', 'dgt:GUID_CABINACINEMOMETRO_120415', 'dgt:GUID_CABINACINEMOMETRO_120419', 'dgt:GUID_CABINACINEMOMETRO_120424', 'dgt:GUID_CABINACINEMOMETRO_120425', 'dgt:GUID_CABINACINEMOMETRO_120426', 'dgt:GUID_CABINACINEMOMETRO_120443', 'dgt:GUID_CABINACINEMOMETRO_120444', 'dgt:GUID_CABINACINEMOMETRO_120451', 'dgt:GUID_CABINACINEMOMETRO_120457', 'dgt:GUID_CABINACINEMOMETRO_120458', 'dgt:GUID_CABINACINEMOMETRO_120459', 'dgt:GUID_CABINACINEMOMETRO_120462', 'dgt:GUID_CABINACINEMOMETRO_120470', 'dgt:GUID_CABINACINEMOMETRO_120471', 'dgt:GUID_CABINACINEMOMETRO_120494', 'dgt:GUID_CABINACINEMOMETRO_120504', 'dgt:GUID_CABINACINEMOMETRO_120508', 'dgt:GUID_CABINACINEMOMETRO_120511', 'dgt:GUID_CABINACINEMOMETRO_120519', 'dgt:GUID_CABINACINEMOMETRO_120520', 'dgt:GUID_CABINACINEMOMETRO_120522', 'dgt:GUID_CABINACINEMOMETRO_120527', 'dgt:GUID_CABINACINEMOMETRO_120531', 'dgt:GUID_CABINACINEMOMETRO_120532', 'dgt:GUID_CABINACINEMOMETRO_120533', 'dgt:GUID_CABINACINEMOMETRO_120535', 'dgt:GUID_CABINACINEMOMETRO_120547', 'dgt:GUID_CABINACINEMOMETRO_120552', 'dgt:GUID_CABINACINEMOMETRO_120553', 'dgt:GUID_CABINACINEMOMETRO_120570', 'dgt:GUID_CABINACINEMOMETRO_120577', 'dgt:GUID_CABINACINEMOMETRO_120578', 'dgt:GUID_CABINACINEMOMETRO_120581', 'dgt:GUID_CABINACINEMOMETRO_120592', 'dgt:GUID_CABINACINEMOMETRO_120593', 'dgt:GUID_CABINACINEMOMETRO_120599', 'dgt:GUID_CABINACINEMOMETRO_120612', 'dgt:GUID_CABINACINEMOMETRO_120617', 'dgt:GUID_CABINACINEMOMETRO_120620', 'dgt:GUID_CABINACINEMOMETRO_120633', 'dgt:GUID_CABINACINEMOMETRO_120637', 'dgt:GUID_CABINACINEMOMETRO_120643', 'dgt:GUID_CABINACINEMOMETRO_120644', 'dgt:GUID_CABINACINEMOMETRO_120645', 'dgt:GUID_CABINACINEMOMETRO_120648', 'dgt:GUID_CABINACINEMOMETRO_120649', 'dgt:GUID_CABINACINEMOMETRO_120650', 'dgt:GUID_CABINACINEMOMETRO_120651', 'dgt:GUID_CABINACINEMOMETRO_120652', 'dgt:GUID_CABINACINEMOMETRO_120653', 'dgt:GUID_CABINACINEMOMETRO_120654', 'dgt:GUID_CABINACINEMOMETRO_120658', 'dgt:GUID_CABINACINEMOMETRO_120659', 'dgt:GUID_CABINACINEMOMETRO_120664', 'dgt:GUID_CABINACINEMOMETRO_120666', 'dgt:GUID_CABINACINEMOMETRO_120670', 'dgt:GUID_CABINACINEMOMETRO_120688', 'dgt:GUID_CABINACINEMOMETRO_120692', 'dgt:GUID_CABINACINEMOMETRO_120693', 'dgt:GUID_CABINACINEMOMETRO_162754', 'dgt:GUID_CABINACINEMOMETRO_162917', 'dgt:GUID_CABINACINEMOMETRO_163323', 'dgt:GUID_CABINACINEMOMETRO_163344', 'dgt:GUID_CABINACINEMOMETRO_163711', 'dgt:GUID_CABINACINEMOMETRO_163774', 'dgt:GUID_CABINACINEMOMETRO_163775', 'dgt:GUID_CABINACINEMOMETRO_165183', 'dgt:GUID_CABINACINEMOMETRO_165185', 'dgt:GUID_CABINACINEMOMETRO_165187', 'dgt:GUID_CABINACINEMOMETRO_165619', 'dgt:GUID_CABINACINEMOMETRO_165803', 'dgt:GUID_CABINACINEMOMETRO_165804', 'dgt:GUID_CABINACINEMOMETRO_165808', 'dgt:GUID_CABINACINEMOMETRO_165813', 'dgt:GUID_CABINACINEMOMETRO_165814', 'dgt:GUID_CABINACINEMOMETRO_165816', 'dgt:GUID_CABINACINEMOMETRO_165824', 'dgt:GUID_CABINACINEMOMETRO_165877', 'dgt:GUID_CABINACINEMOMETRO_165879', 'dgt:GUID_CABINACINEMOMETRO_166669', 'dgt:GUID_CABINACINEMOMETRO_166687', 'dgt:GUID_CABINACINEMOMETRO_166689', 'dgt:GUID_CABINACINEMOMETRO_166691', 'dgt:GUID_CABINACINEMOMETRO_166697', 'dgt:GUID_CABINACINEMOMETRO_166989', 'dgt:GUID_CABINACINEMOMETRO_166991', 'dgt:GUID_CABINACINEMOMETRO_167034', 'dgt:GUID_CABINACINEMOMETRO_167169', 'dgt:GUID_CABINACINEMOMETRO_174823', 'dgt:GUID_CABINACINEMOMETRO_174825', 'dgt:GUID_CABINACINEMOMETRO_174834', 'dgt:GUID_CABINACINEMOMETRO_174836', 'dgt:GUID_CABINACINEMOMETRO_174838', 'dgt:GUID_CABINACINEMOMETRO_174839', 'dgtpdf:F:A-31:169.95:C', 'dgtpdf:F:N-332:91.047:C', 'dgtpdf:F:A-1050:1.2:D', 'dgtpdf:F:AS-377:1.15:C', 'dgtpdf:F:N-634:377.85:C', 'dgtpdf:F:MA-20:1.9:D', 'dgtpdf:F:MA-30:1.25:D', 'dgtpdf:F:MA-5120:6.62:C', 'dgtpdf:F:N-521:91.186:D', 'dgtpdf:F:N-523:8.57:C', 'dgtpdf:F:A-491:4.35:C', 'dgtpdf:F:CA-142:23.36:D', 'dgtpdf:F:N-432:302.562:D', 'dgtpdf:F:N-432:245.3:C', 'dgtpdf:F:AC-841:9.8:D', 'dgtpdf:F:N-550:15.73:C', 'dgtpdf:F:CM-101:17.46:D', 'dgtpdf:F:N-320:309.935:C', 'dgtpdf:F:A-492:8.6:C', 'dgtpdf:F:N-435:178.29:D', 'dgtpdf:F:A-22:106.474:C', 'dgtpdf:F:N-322:233.1:D', 'dgtpdf:F:N-432:384.528:C', 'dgtpdf:F:LE-311:11.25:C', 'dgtpdf:F:LU-862:74.15:D', 'dgtpdf:F:M-100:22.94:D', 'dgtpdf:F:M-300:23.85:D', 'dgtpdf:F:M-45:6.175:D', 'dgtpdf:F:A-7054:3.5:C', 'dgtpdf:F:RM-620:4.228:C', 'dgtpdf:F:N-525:237.88:C', 'dgtpdf:F:N-610:12.69:A', 'dgtpdf:F:LZ-30:16.625:D', 'dgtpdf:F:N-550:84.15:C', 'dgtpdf:F:TF-1:76.94:D', 'dgtpdf:F:TF-2:1.11:C', 'dgtpdf:F:TF-5:49.4:C', 'dgtpdf:F:TF-652:2.9:D', 'dgtpdf:F:A-8005:5.818:C', 'dgtpdf:F:A-8058:10.17:C', 'dgtpdf:F:A-8077:3.18:D', 'dgtpdf:F:N-122:132.756:D', 'dgtpdf:F:N-234:406.8:C', 'dgtpdf:F:N-420:623.985:D', 'dgtpdf:F:CM-4004:14.252:C', 'dgtpdf:F:CM-4008:4.91:D', 'dgtpdf:F:N-401:82.6:A', 'dgtpdf:F:CV-400:0.735:C', 'dgtpdf:F:VA-30:16.16:D', 'dgtpdf:F:N-232:244.945:D', 'sct:41.63657,0.79044', 'sct:41.66664,1.29696', 'sct:41.65517,1.31316', 'sct:41.59262,1.68038', 'sct:41.53767,1.85925', 'sct:41.38531,2.02180', 'sct:41.38188,2.02358', 'sct:41.34929,2.06250', 'sct:41.50678,0.77361', 'sct:41.47992,0.87578', 'sct:41.42547,0.94596', 'sct:41.45527,1.98268', 'sct:40.90491,0.81692', 'sct:40.81291,0.70415', 'sct:40.62723,0.49116', 'sct:40.58193,0.45477', 'sct:41.58966,2.08929', 'sct:41.53222,2.14503', 'sct:41.45844,2.21004', 'sct:41.46827,2.24474', 'sct:41.37588,2.07080', 'sct:41.37338,2.05435', 'sct:41.41775,2.00960', 'sct:41.65194,2.28795', 'sct:41.63537,2.23219', 'sct:41.24895,1.77161', 'sct:40.91416,0.48940', 'sct:41.12858,1.12239', 'sct:42.20465,1.32774', 'sct:41.83088,1.36258', 'sct:41.43485,2.00179', 'sct:41.58743,2.25179', 'sct:41.82321,1.88954', 'sct:41.86137,1.87065', 'sct:41.47671,2.06535', 'sct:41.44613,2.06910', 'sct:41.51019,2.20325', 'sct:41.74539,1.57943', 'sct:41.73416,1.76886', 'sct:41.78649,1.91010', 'sct:41.63431,2.33579', 'sct:41.81193,0.64371', 'sct:41.81014,0.86339', 'sct:41.27230,2.04064', 'sct:41.80835,3.03429', 'sct:41.93861,3.16143', 'sct:42.21872,3.01732', 'sct:41.44830,2.23620', 'sct:41.46058,2.26082', 'sct:41.10534,1.20405', 'sct:41.29760,2.01824', 'sct:41.32417,2.04486', 'sct:41.48335,2.29501', 'sct:41.28665,1.99948', 'sct:41.47618,2.18324', 'sct:41.57146,2.25332', 'sct:41.26873,1.21364', 'sct:42.25358,2.34334', 'sct:41.62018,1.84881', 'sct:41.64728,1.85730', 'sct:41.69897,1.84162', 'sct:41.71127,1.83566', 'sct:41.77199,1.78870', 'sct:41.49537,2.14960', 'sct:41.54295,2.06677', 'sct:41.57727,1.96043', 'sct:41.58418,1.93572', 'sct:41.58463,1.92876', 'sct:41.58766,1.91561', 'sct:41.62222,1.85870', 'sct:41.46630,2.17392', 'sct:41.47306,2.16307', 'sct:41.60605,2.17975', 'sct:41.67056,2.16505', 'sct:41.77859,2.77749', 'sct:41.82749,2.96049', 'sct:42.18155,2.74245', 'sct:42.00451,3.00157', 'sct:41.71862,2.71106', 'sct:41.67425,2.76560', 'sct:41.71983,2.90474', 'sct:41.61501,0.88576', 'sct:41.69538,1.17179', 'sct:41.48683,2.15694', 'sct:41.55448,2.05221', 'sct:42.13254,2.90333', 'sct:42.30816,2.93551', 'sct:41.93104,2.80224', 'sct:41.95648,2.83821', 'sct:41.97713,2.84591', 'sct:42.46037,0.71099', 'sct:42.84593,0.73306', 'sct:42.67263,0.77737', 'sct:42.62532,0.76410', 'sct:41.25667,1.24849', 'sct:41.57805,0.75348', 'sct:40.86926,0.71605', 'sct:40.97181,0.88119', 'sct:41.33286,1.66487', 'sct:41.39413,1.85698', 'sct:41.40425,1.99746', 'sct:40.64828,0.59161', 'sct:40.68706,0.58302', 'sct:41.13621,1.14777', 'sct:41.48503,2.34490', 'sct:41.51240,2.40922', 'sct:41.58076,2.56279', 'sct:41.60472,2.63445', 'sct:41.15468,1.07652', 'sct:41.13434,1.10309', 'sct:41.15701,1.27118'], 'vecinos': ['dgt:GUID_CABINACINEMOMETRO_120318', 'dgteq:A-68:242.23:C:cintur']}
+    776s    caminos: red cargada (293423 vías) en 47s
+    776s    caminos: regla del lado probada en 47s
+    776s    caminos: regla del cruce probada en 47s
+    776s    caminos: 0/394 en 47s (dgt:GUID_CVM_161427)
+    780s  verificados: 108 comprobados sobre el terreno, todos en su sitio
+    780s  tramos de OSM que no salen: osm:r10002560 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165415 a 14 m); osm:r10002561 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165414 a 10 m); osm:r10026551 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_163340 a 277 m); osm:r10057409 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166402 a 25 m); osm:r10057410 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166399 a 14 m); osm:r1019388 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.40724,-3.74575 a 2 m); osm:r10964471 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.38757,-3.69938 a 13 m); osm:r10967446 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.40012,-3.76359 a 22 m); osm:r11662542 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-234:337.565:D a 0 m); osm:r11662543 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-234:340.39:C a 0 m); osm:r11698405 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164861 a 51 m); osm:r11698406 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164860 a 29 m); osm:r13040121 → unir tramos (cámara de entrada o salida de un tramo) (con dgtpdf:T:CL-615:1.706:D a 369 m); osm:r13040122 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CL-615:34.61:C a 0 m); osm:r13365644 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con madfr:40.40694,-3.67309 a 27 m); osm:r14170001 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:TF-5:22.44:C a 0 m); osm:r15353023 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174832 a 46 m); osm:r15353024 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174831 a 37 m); osm:r15974337 → unir tramos tras orientarlos (con dgt:GUID_CVM_161341 a 48 m); osm:r16341789 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_165909 a 215 m); osm:r16341790 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_165908 a 94 m); osm:r16362670 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_169184 a 22 m); osm:r16362671 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_169183 a 74 m); osm:r16397381 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-432:80.98:D a 0 m); osm:r16397382 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-432:95.49:C a 0 m); osm:r16399361 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-122:474.725:D a 0 m); osm:r16399362 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-122:479.99:C a 0 m); osm:r16457794 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165000 a 10 m); osm:r16457795 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164998 a 16 m); osm:r16518737 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-430:486.58:D a 0 m); osm:r16518738 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-430:502.945:C a 0 m); osm:r16535058 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_120331 a 207 m); osm:r16552303 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN103:22.9:A a 77 m); osm:r16552304 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN103:22.9:A a 15 m); osm:r16567705 → unir tramos tras orientarlos (con dgt:GUID_CVM_165289 a 118 m); osm:r16567706 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165289 a 118 m); osm:r16646257 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CL-517:4.38:D a 0 m); osm:r16646258 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CL-517:16.35:C a 0 m); osm:r16683597 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:1035.8:C a 0 m); osm:r16683598 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:1033.05:D a 0 m); osm:r16732699 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164265 a 17 m); osm:r16770161 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.46021,-3.72821 a 5 m); osm:r16770162 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con mad:40.46925,-3.71294 a 8 m); osm:r16920259 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-301:77.08:C a 0 m); osm:r16920260 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-301:70.765:D a 0 m); osm:r17021024 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-433:118.332:D a 0 m); osm:r17021025 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-433:122.961:C a 0 m); osm:r17026472 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con slmt:0 a 9 m); osm:r17135243 → unir tramos tras orientarlos (con dgt:GUID_CVM_161274 a 11 m); osm:r17135244 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174089 a 39 m); osm:r17135245 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-125:5.7:D a 0 m); osm:r17488225 → unir tramos (cámara de entrada o salida de un tramo) (con dgtpdf:T:N-403:113.16:D a 333 m); osm:r17488226 → unir tramos (cámara de entrada o salida de un tramo) (con dgtpdf:T:N-403:118.05:C a 368 m); osm:r17862257 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN109:100.7:A a 34 m); osm:r17862259 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:A42:9.1:E a 23 m); osm:r17888419 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con slmt:1 a 14 m); osm:r17907416 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169366 a 82 m); osm:r18049488 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-320:318.005:D a 0 m); osm:r18049489 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-320:329.97:C a 0 m); osm:r18345180 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con osm:r17039503 a 0 m); osm:r18432091 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:GC-23:4.03:C a 0 m); osm:r18460371 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:TF-655:3.132:C a 0 m); osm:r18460372 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:TF-655:2.165:D a 0 m); osm:r18482849 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:960.05:D a 0 m); osm:r18797099 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:V-31:6.35:C a 0 m); osm:r18845440 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:V-30:8.85:C a 0 m); osm:r18845490 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-3:349.15:C a 0 m); osm:r18884036 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-5:85.35:C a 0 m); osm:r18888485 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:961.0:C a 0 m); osm:r18947065 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:V-23:1.6:D a 0 m); osm:r18976732 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-120:74.62:D a 0 m); osm:r18976733 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-120:76.85:C a 0 m); osm:r1907383 → unir tramos tras orientarlos (con dgt:GUID_CVM_161436 a 12 m); osm:r19366197 → unir tramos tras orientarlos (con dgt:GUID_CVM_161420 a 6 m); osm:r19580289 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:48.99:D a 0 m); osm:r19580290 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:51.38:C a 0 m); osm:r19683903 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-8:140.425:D a 0 m); osm:r19947241 → unir tramos tras orientarlos (con dgt:GUID_CVM_165337 a 23 m); osm:r19949360 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:79.4:D a 0 m); osm:r19962993 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:EX-327:23.6:C a 0 m); osm:r19963494 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-20:10.3:C a 0 m); osm:r19979441 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:EX-109:52.29:D a 0 m); osm:r19982229 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:F:A-7054:3.5:C a 90 m); osm:r19982489 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169364 a 8 m); osm:r19983393 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-48:4.0:D a 0 m); osm:r19983447 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-7:1107.54:C a 0 m); osm:r19983497 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-7:1107.34:D a 0 m); osm:r19985398 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-340:80.65:C a 0 m); osm:r19985450 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-377:5.6:D a 0 m); osm:r20008106 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-4:531.0:D a 0 m); osm:r20012342 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-370:9.4:C a 0 m); osm:r20012343 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-370:8.4:D a 0 m); osm:r20019537 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:A29:35:S a 46 m); osm:r20019599 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:A29:45.8:S a 45 m); osm:r20055022 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AS-112:0.85:D a 0 m); osm:r20060700 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-31:203.995:D a 0 m); osm:r20063005 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-31:218.9:C a 0 m); osm:r20078196 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-7:519.2:D a 0 m); osm:r20087394 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-355:4.45:C a 0 m); osm:r20087395 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-355:0.99:D a 0 m); osm:r20106074 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-401A:93.86:C a 0 m); osm:r20127417 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174830 a 121 m); osm:r20129035 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174829 a 128 m); osm:r20132746 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:83.32:D a 0 m); osm:r20132747 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-403:86.25:C a 0 m); osm:r20133947 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166405 a 13 m); osm:r20133948 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_166407 a 10 m); osm:r20134021 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-110:161.3:C a 0 m); osm:r20134022 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-110:158.7:D a 0 m); osm:r20140322 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-501:46.224:C a 0 m); osm:r20140323 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-501:42.375:D a 0 m); osm:r20140396 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-521:27.885:C a 0 m); osm:r20140397 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:M-521:26.915:D a 0 m); osm:r20142909 → unir tramos tras orientarlos (con dgt:GUID_CVM_161489 a 244 m); osm:r20144596 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165001 a 48 m); osm:r20147014 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164999 a 16 m); osm:r20164234 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN18:278.4:A a 141 m); osm:r20171243 → unir tramos tras orientarlos (con dgt:GUID_CVM_161445 a 78 m); osm:r20177080 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AC-552:27.3:C a 0 m); osm:r20177081 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AC-552:26.275:D a 0 m); osm:r20181657 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164237 a 58 m); osm:r20181658 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164230 a 10 m); osm:r20181703 → unir tramos tras orientarlos (con dgt:GUID_CVM_164150 a 14 m); osm:r20183129 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:OU-536:28.04:C a 0 m); osm:r20183369 → unir tramos tras orientarlos (con dgt:GUID_CVM_162907 a 47 m); osm:r20189733 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AP-9:158.98:C a 0 m); osm:r20193091 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:N-550:126.93:D a 0 m); osm:r20194075 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AS-117:4.55:D a 0 m); osm:r20194076 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AS-117:6.6:C a 0 m); osm:r20199955 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:A-8:146.98:C a 0 m); osm:r20233503 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-6014:1.275:D a 0 m); osm:r20233561 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-13A:12.25:C a 0 m); osm:r20233562 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-13A:10.95:D a 0 m); osm:r20234638 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:MA-15:5.11:D a 0 m); osm:r20254912 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_165315 a 16 m); osm:r20272541 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CM-412:202.5:D a 0 m); osm:r20274494 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AV-562:9.19:D a 0 m); osm:r20274495 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:AV-562:11.435:C a 0 m); osm:r20295462 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgtpdf:T:CV-30:1.625:D a 0 m); osm:r21377135 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN4:25:A a 219 m); osm:r21377244 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN10:75.7:A a 68 m); osm:r21405896 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC1:538.9:A a 41 m); osm:r21410993 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC19:8.2:E a 32 m); osm:r21423274 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:EN261:97.06:A a 59 m); osm:r21424324 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC1:686.9:A a 118 m); osm:r21424406 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con ansr:IC1:679.8:A a 136 m); osm:r6319077 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_120355 a 272 m); osm:r6464184 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169362 a 8 m); osm:r6464310 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169360 a 10 m); osm:r6495325 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_169358 a 25 m); osm:r6785317 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164567 a 10 m); osm:r6785318 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_164566 a 99 m); osm:r7431334 → unir tramos tras orientarlos (con dgt:GUID_CVM_162916 a 25 m); osm:r8102473 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CVM_163929 a 17 m); osm:r8812728 → unir tramos tras orientarlos (con dgt:GUID_CVM_162925 a 56 m); osm:r9933664 → fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m) (con dgt:GUID_CABINACINEMOMETRO_174827 a 40 m)
+    800s    TCA: página del Ministerio no disponible (www.transportes.gob.es: HTTP Error 403: Forbidden); se usan los PDF conocidos
+    802s    TCA: TCA 130 filas (NOTA-TCA-2024-Para-Publicar-en-WEB%20%28105%29-Def.pdf)
+    803s    TCA: TCAM 21 filas (tca-con-implicacion-de-motoristas.pdf)
+    803s    CartoCiudad: 295 hitos necesarios, 0 por consultar
+    803s    TCA: 11 sin poder situar: ['B-24 9.6-10.7', 'B-40 1.4-2.1', 'GR-30 9.1-10.1', 'GR-30 10.1-10.6', 'N-240 19.0-19.5', 'N-332 216.3-217.3', 'N-340 1144.7-1145.2', 'N-340 1154.3-1154.8', 'N-340 1159.8-1160.3', 'N-349 2.7-3.2', 'N-351 5.9-6.5']
+    803s  Ministerio: tramos de concentración de accidentes: 109 puntos
+    803s    CartoCiudad: 1877 hitos necesarios, 0 por consultar
+    803s    accidentes: 461 tramos, 425 situados, 36 sin poder situar
+    803s  Tramos con muchos accidentes (autonómicas y provinciales, microdatos DGT): 425 puntos
+    863s    zonas: red cargada (501889 vías) para 528 zonas en 60s
+    867s  tramos de OSM sin cubrir: []
+     96s    CartoCiudad: 2401 hitos necesarios, 0 por consultar

@@ -2434,6 +2434,7 @@
   "mu": "Sevilla",
   "pr": "Sevilla"
  },
+ "37.396,-4.784": null,
  "37.396,-6.012": {
   "mu": "Sevilla",
   "pr": "Sevilla"
@@ -2485,6 +2486,10 @@
  "37.407,-5.993": {
   "mu": "Sevilla",
   "pr": "Sevilla"
+ },
+ "37.410,-4.649": {
+  "mu": "Moriles",
+  "pr": "Córdoba"
  },
  "37.410,-6.068": {
   "mu": "Valencina de la Concepción",
@@ -13416,6 +13421,10 @@
   "mu": "Girona",
   "pr": "Girona"
  },
+ "42.000,2.275": {
+  "mu": "Manlleu",
+  "pr": "Barcelona"
+ },
  "42.001,-4.518": {
   "mu": "Palencia",
   "pr": "Palencia"
@@ -13423,6 +13432,18 @@
  "42.001,2.848": {
   "mu": "Girona",
   "pr": "Girona"
+ },
+ "42.002,2.276": {
+  "mu": "Manlleu",
+  "pr": "Barcelona"
+ },
+ "42.003,2.285": {
+  "mu": "Manlleu",
+  "pr": "Barcelona"
+ },
+ "42.003,2.293": {
+  "mu": "Manlleu",
+  "pr": "Barcelona"
  },
  "42.004,2.847": {
   "mu": "Girona",
@@ -13435,6 +13456,14 @@
  "42.006,-5.661": {
   "mu": "Benavente",
   "pr": "Zamora"
+ },
+ "42.006,2.288": {
+  "mu": "Manlleu",
+  "pr": "Barcelona"
+ },
+ "42.007,2.281": {
+  "mu": "Manlleu",
+  "pr": "Barcelona"
  },
  "42.008,-4.520": {
   "mu": "Palencia",
@@ -17874,6 +17903,10 @@
   "mu": "Arteixo",
   "pr": "A Coruña"
  },
+ "43.336,-3.041": {
+  "mu": "Santurtzi",
+  "pr": "Bizkaia"
+ },
  "43.336,-8.300": {
   "mu": "Sada",
   "pr": "A Coruña"
@@ -17900,6 +17933,10 @@
  },
  "43.343,-2.995": {
   "mu": "Getxo",
+  "pr": "Bizkaia"
+ },
+ "43.343,-3.060": {
+  "mu": "Santurtzi",
   "pr": "Bizkaia"
  },
  "43.347,-3.000": {
@@ -18009,6 +18046,10 @@
  "43.357,-1.797": {
   "mu": "Hondarribia",
   "pr": "Gipuzkoa"
+ },
+ "43.357,-3.074": {
+  "mu": "Zierbena",
+  "pr": "Bizkaia"
  },
  "43.357,-5.137": {
   "mu": "Parres",
