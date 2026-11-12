@@ -1845,6 +1845,11 @@ class Rejilla:
     def add(self, p):
         self.d.setdefault(self._k(p["la"], p["lo"]), []).append(p)
 
+    def vecinos(self, la, lo, radio):
+        """Todos los de las celdas de alrededor (radio ≤ ~1 km); quien llama mide la distancia."""
+        kx, ky = self._k(la, lo)
+        return [p for dx in (-1, 0, 1) for dy in (-1, 0, 1) for p in self.d.get((kx + dx, ky + dy), [])]
+
     def cerca(self, la, lo, radio, filtro=lambda p: True):
         kx, ky = self._k(la, lo)
         mejor, dmin = None, radio
@@ -2728,6 +2733,47 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
         res["testigo"].append(p["id"])
         cambiados[p["id"]] = p
 
+    # 1b. Afinado con OSM. La coordenada oficial (feed de la DGT, SCT) sale de convertir un PK y se va unas decenas
+    # de metros (mediana ~35-45 m frente a los hitos, con cola de cientos); la cámara de OSM está puesta sobre la
+    # foto aérea, en la cabina. Si junto al radar oficial hay UNA cámara de OSM (12-120 m, ninguna otra que pueda
+    # confundirse, que no sea ya otro radar nuestro y sin sentido contrario), el radar se lleva a ella.
+    res["afinados"] = []
+    hist = {"<12": 0, "12-25": 0, "25-50": 0, "50-80": 0, "80-120": 0, "sin cámara": 0, "dudosa": 0}
+    for p in todos:
+        if p["t"] != "RADAR_FIJO" or p.get("_verif") or p.get("_pos_osm") or p.get("_en_osm") \
+                or not p["id"].startswith(("dgt:", "dgtpdf:F", "sct:")):
+            continue
+        cerca = sorted(((distancia(p["la"], p["lo"], c["la"], c["lo"]), id(c), c)
+                        for c in rej.vecinos(p["la"], p["lo"], 300)
+                        if c["tags"].get("type") != "enforcement"), key=lambda x: x[0])   # (sin las de los tramos)
+        cerca = [x for x in cerca if x[0] <= 300]
+        # la misma cámara dos veces (nodo repetido) no es una segunda cámara
+        cerca = cerca[:1] + [x for x in cerca[1:] if distancia(x[2]["la"], x[2]["lo"], cerca[0][2]["la"], cerca[0][2]["lo"]) > 8]
+        if not cerca or cerca[0][0] > 120:
+            hist["sin cámara"] += 1
+            continue
+        d, _, c = cerca[0]
+        if d < 12:
+            hist["<12"] += 1
+            continue
+        d_osm = c["tags"].get("direction")
+        contrario = (p.get("rb") is not None and d_osm and d_osm.replace(".", "").isdigit()
+                     and abs((float(d_osm) - p["rb"] + 180) % 360 - 180) > 60
+                     and abs((float(d_osm) + 180 - p["rb"] + 180) % 360 - 180) > 60)
+        confusa = len(cerca) > 1 and cerca[1][0] < 2 * d + 60
+        otro = nuestros.cerca(c["la"], c["lo"], 60, lambda q: q is not p and q["t"] in ("RADAR_FIJO", "RADAR_TRAMO"))
+        if contrario or confusa or otro is not None:
+            hist["dudosa"] += 1
+            continue
+        hist["12-25" if d < 25 else "25-50" if d < 50 else "50-80" if d < 80 else "80-120"] += 1
+        log(f"  afinado: {p['id']} {p.get('c')} PK {p.get('pk')} → cámara de OSM a {d:.0f} m")
+        p["la"], p["lo"] = round(c["la"], 6), round(c["lo"], 6)
+        p.pop("px", None)
+        p["_pos_osm"] = True
+        res["afinados"].append(p["id"])
+        cambiados[p["id"]] = p
+    log(f"afinado con OSM: {hist}")
+
     # 2 y 3 necesitan la red
     if os.path.exists(ruta_red):
         fijos = [p for p in todos if p["t"] in FIJOS and not p.get("_verif")]
@@ -2931,7 +2977,8 @@ def revision_final(todos: list[dict], ruta_red: str, geo: "Geocodificador") -> t
     for p in cambiados.values():
         for k in ("ap", "rt", "pl"):
             p.pop(k, None)
-    msg = (f"{len(res['testigo'])} movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); "
+    msg = (f"{len(res['afinados'])} afinados con su cámara de OSM (12-120 m; reparto: {hist}); "
+           f"{len(res['testigo'])} movidos a su cámara de OSM (estaban a más de 150 m de su PK y OSM la tiene en él); "
            f"{len(res['su_via'])} llevados a su carretera; {len(res['cruzado'])} con el rumbo cruzado corregido; "
            f"{len(res['duplicados'])} duplicados quitados; {len(res.get('vecinos', []))} con el sentido sacado de los radares vecinos")
     log(f"revisión final: {msg}: {res}")
