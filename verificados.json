@@ -1223,6 +1223,105 @@
    "tol": 30,
    "radio": 600,
    "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h9+10"
+  },
+  {
+   "id": "dgteq:N-6:63.2:C:foto r",
+   "t": "SEMAFORO",
+   "f": "DGT",
+   "la": 40.715497,
+   "lo": -4.198048,
+   "rb": 286.7,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini ok"
+  },
+  {
+   "id": "dgteq:A-23:19.8:C:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 39.791793,
+   "lo": -0.399879,
+   "rb": 332.3,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini ok"
+  },
+  {
+   "id": "dgteq:A-6:128.25:D:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 41.077308,
+   "lo": -4.729478,
+   "rb": 125.9,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini ok"
+  },
+  {
+   "id": "dgteq:A-8:385.125:C:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 43.518725,
+   "lo": -5.718384,
+   "rb": 248.7,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini ok"
+  },
+  {
+   "id": "dgteq:AP-68:126.0:C:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 42.431303,
+   "lo": -2.48023,
+   "rb": 82.0,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini ok"
+  },
+  {
+   "id": "dgteq:A-49:50.8:D:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 37.352601,
+   "lo": -6.575354,
+   "rb": 82.3,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h8+25"
+  },
+  {
+   "id": "dgteq:A-5:37.5:D:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 40.245973,
+   "lo": -4.057908,
+   "rb": 31.1,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h8+115"
+  },
+  {
+   "id": "dgteq:A-70:29.56:C:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 38.299895,
+   "lo": -0.656642,
+   "rb": 268.6,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h9+15"
+  },
+  {
+   "id": "dgteq:AP-68:220.75:D:cintur",
+   "t": "OTRA_CAMARA",
+   "f": "DGT",
+   "la": 42.022267,
+   "lo": -1.62146,
+   "rb": 317.4,
+   "tol": 30,
+   "radio": 600,
+   "motivo": "Situado con fotos de Mapillary (CC BY-SA) a lo largo de la vía: ini h7+8"
   }
  ]
 }
