@@ -1,15 +1,15 @@
-# Auditoría 2026-11-12T20:41:05+00:00
+# Auditoría 2026-11-13T12:28:06+00:00
 
 ## Resumen
 
 - comprobados_pk: 1236
 - comprobados_sentido_pk: 1020
 - con_ref: 1486
-- con_rumbo: 2740
-- con_via: 3689
+- con_rumbo: 2741
+- con_via: 3686
 - osm_camaras: 5656
-- osm_sin_nuestro: 96
-- tramos: 356
+- osm_sin_nuestro: 91
+- tramos: 355
 
 | Tipo | Hallazgos | Graves |
 |---|---:|---:|
@@ -253,7 +253,6 @@
 - `osm:n2334938812` 37.36309,-6.03262 2025-12-12 {'direction': '100', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050 BBS Ache A-8057 PK-0.1 Sentido Sevilla @'}
 - `osm:n2378266977` 41.85213,3.07352 2023-12-18 {'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n3202405846` 41.33531,2.09575 2026-03-10 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '80', 'note': 'FVAR F080 MAIG C-31-Sur Km 195 el Prat DIR Barcelona CL'}
-- `osm:n3901483333` 42.45540,1.94235 2020-09-17 {'enforcement': 'maxspeed', 'highway': 'speed_camera'}
 - `osm:n4587398829` 41.31477,1.18087 2025-10-09 {'direction': '300', 'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n4838340298` 42.25140,-8.68574 2025-10-02 {'direction': '20', 'highway': 'speed_camera', 'maxspeed': '100'}
 - `osm:n4958102690` 41.52368,2.16454 2025-09-09 {'highway': 'speed_camera', 'maxspeed': '120'}
@@ -263,7 +262,6 @@
 - `osm:n7541702988` 41.68635,-0.95408 2026-01-31 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n8968186514` 42.04012,-4.55993 2026-01-28 {'description': 'Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)', 'highway': 'speed_camera', 'maxspeed': '90'}
 - `osm:n8974875728` 39.66718,-2.37500 2026-01-07 {'direction': '140', 'highway': 'speed_camera', 'maxspeed': '120', 'note': 'A-3 PK 156.57 SENTIDO CRECIENTE'}
-- `osm:n9071289106` 42.73289,0.19460 2026-10-25 {'highway': 'speed_camera', 'maxspeed': '60'}
 - `osm:n9212434658` 43.01128,-1.63673 2026-02-12 {'direction': '150', 'highway': 'speed_camera', 'maxspeed': '50'}
 - `osm:n10182984432` 43.32288,-2.98118 2026-06-10 {'direction': '290', 'highway': 'speed_camera', 'maxspeed': '30'}
 - `osm:n11080765218` 41.21193,1.69115 2023-08-01 {'highway': 'speed_camera'}
@@ -306,10 +304,7 @@
 - `osm:r7778337` 41.53876,0.45392  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r7778343` 41.62415,1.42033  {'enforcement': 'maxspeed', 'maxspeed': '120'}
 - `osm:r8453561` 41.85213,3.07352  {'enforcement': 'maxspeed', 'maxspeed': '100', 'name': 'Radar fix C-31 (Calonge)'}
-- `osm:r9959079` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|NO->SE'}
-- `osm:r9959080` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|SE->NO'}
 - `osm:r10358149` 40.46815,-3.43084  {'enforcement': 'maxspeed', 'maxspeed': '80'}
-- `osm:r13180336` 42.73289,0.19460  {'enforcement': 'maxspeed', 'maxspeed': '60', 'name': 'Aragnouet - Tunnel Aragnouet Bielsa|N->S'}
 - `osm:r15824408` 36.54663,-4.66933  {'enforcement': 'maxspeed', 'maxspeed': '50'}
 - `osm:r15896698` 38.02615,-3.77256  {'enforcement': 'maxspeed', 'maxspeed': '90'}
 - `osm:r18375567` 43.25587,-4.06522  {'enforcement': 'traffic_signals', 'name': 'Control semafórico del túnel'}
