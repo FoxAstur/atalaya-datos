@@ -1,1 +1,10 @@
-{}
+{
+ "Ayto. Madrid foto-rojo y ZBE": {
+  "desde": "2026-11-14T20:23+00:00",
+  "ultimo": "⚠️ falló (datos.madrid.es: The read operation timed out); se mantienen 326 de la vez anterior"
+ },
+ "Ayto. Donostia": {
+  "desde": "2026-11-14T20:23+00:00",
+  "ultimo": "⚠️ falló (www.donostia.eus: <urlopen error [Errno 111] Connection refused>); se mantienen 12 de la vez anterior"
+ }
+}

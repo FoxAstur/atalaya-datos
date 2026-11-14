@@ -1,12 +1,12 @@
-# Auditoría 2026-11-14T11:41:30+00:00
+# Auditoría 2026-11-14T20:21:34+00:00
 
 ## Resumen
 
 - comprobados_pk: 1236
 - comprobados_sentido_pk: 1020
 - con_ref: 1486
-- con_rumbo: 2740
-- con_via: 3689
+- con_rumbo: 2741
+- con_via: 3690
 - osm_camaras: 5656
 - osm_sin_nuestro: 96
 - tramos: 356
