@@ -1,0 +1,27 @@
+name: Muestras de fuentes
+# Baja una muestra de fuentes nuevas (para estudiar su formato antes de usarlas). No toca los datos ni falla.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "URLs separadas por espacios"
+        required: true
+jobs:
+  muestras:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Bajar
+        continue-on-error: true
+        run: |
+          mkdir m; n=0
+          for u in ${{ inputs.urls }}; do
+            n=$((n+1))
+            curl -sS -L -m 120 --compressed -A "atalaya-datos (github.com/FoxAstur)" -o "m/$n.xml" -w "$n $u -> %{http_code} %{size_download} bytes %{content_type}\n" "$u" || echo "$n $u FALLO"
+          done
+          ls -la m
+      - uses: actions/upload-artifact@v4
+        with:
+          name: muestras
+          path: m
+          retention-days: 3
