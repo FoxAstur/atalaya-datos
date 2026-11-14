@@ -9,6 +9,8 @@ on:
 jobs:
   muestras:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     timeout-minutes: 10
     steps:
       - name: Bajar
@@ -20,8 +22,10 @@ jobs:
             curl -sS -L -m 120 --compressed -A "atalaya-datos (github.com/FoxAstur)" -o "m/$n.xml" -w "$n $u -> %{http_code} %{size_download} bytes %{content_type}\n" "$u" || echo "$n $u FALLO"
           done
           ls -la m
-      - uses: actions/upload-artifact@v4
-        with:
-          name: muestras
-          path: m
-          retention-days: 3
+      - name: A la rama «muestras»
+        continue-on-error: true
+        run: |
+          cd m && git init -q && git checkout -q -b muestras
+          git config user.name "atalaya-datos" && git config user.email "actions@users.noreply.github.com"
+          git add -A && git commit -qm "muestras" 
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" muestras
