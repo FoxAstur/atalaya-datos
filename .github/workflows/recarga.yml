@@ -1,0 +1,53 @@
+name: Puntos de recarga
+
+# Registro oficial de puntos de recarga (Ministerio / DGT), una vez al día, publicado como versión "recarga"
+# (sin crecer el historial de git).
+on:
+  schedule:
+    - cron: "37 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recarga
+  cancel-in-progress: true
+
+jobs:
+  recarga:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Si la DGT no contesta, no se publica y la app sigue con lo anterior. Solo es fallo si lleva más de 10 días.
+      - name: Puntos
+        id: puntos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python recarga.py
+          r=$?
+          set -e
+          if [ $r -eq 3 ]; then
+            fecha=$(gh release view recarga --json assets -q '.assets[]|select(.name=="recarga.json.gz")|.updatedAt' 2>/dev/null || true)
+            if [ -n "$fecha" ]; then
+              dias=$(( ( $(date -u +%s) - $(date -u -d "$fecha" +%s) ) / 86400 ))
+              if [ $dias -gt 10 ]; then echo "::error::La DGT lleva más de 10 días sin contestar"; exit 1; fi
+            fi
+            echo "publicar=no" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          exit $r
+      - name: Publicar
+        if: steps.puntos.outputs.publicar != 'no'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view recarga >/dev/null 2>&1 || gh release create recarga --title "Puntos de recarga" \
+            --notes "Puntos de recarga para vehículos eléctricos (registro del Ministerio para la Transición Ecológica, publicado por la DGT en el Punto de Acceso Nacional). Se actualiza a diario."
+          gh release upload recarga salida/recarga.json.gz --clobber
