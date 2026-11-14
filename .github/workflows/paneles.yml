@@ -1,0 +1,32 @@
+name: Paneles de la DGT
+# Dónde está cada panel de mensaje variable y hacia dónde mira (el mensaje lo baja el móvil en tiempo real).
+on:
+  schedule:
+    - cron: "17 3 * * 2"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: paneles
+jobs:
+  paneles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber==0.11.10 openpyxl==3.1.5
+      - name: Paneles
+        continue-on-error: true
+        run: python -u paneles.py
+      - name: Guardar
+        continue-on-error: true
+        run: |
+          git config user.name "atalaya-datos"
+          git config user.email "actions@users.noreply.github.com"
+          git add datos/paneles.json cache/geocodificacion.json
+          if git diff --cached --quiet; then echo "sin cambios"; exit 0; fi
+          git commit -qm "Paneles de la DGT"
+          git pull -q --rebase && git push -q
