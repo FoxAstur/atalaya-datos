@@ -15,9 +15,12 @@ jobs:
     steps:
       - name: Bajar
         continue-on-error: true
+        # las URLs van por una variable de entorno: así un «&» o un «;» de la URL no se ejecuta como orden
+        env:
+          URLS: ${{ inputs.urls }}
         run: |
           mkdir m; n=0
-          for u in ${{ inputs.urls }}; do
+          for u in $URLS; do
             n=$((n+1))
             curl -sS -L -m 120 --compressed -A "atalaya-datos (github.com/FoxAstur)" -o "m/$n.xml" -w "$n $u -> %{http_code} %{size_download} bytes %{content_type}\n" "$u" || echo "$n $u FALLO"
           done
