@@ -1,4 +1,4 @@
-# Auditoría 2026-11-15T20:46:18+00:00
+# Auditoría 2026-11-16T13:23:50+00:00
 
 ## Resumen
 
@@ -7,8 +7,8 @@
 - con_ref: 1486
 - con_rumbo: 2741
 - con_via: 3690
-- osm_camaras: 5656
-- osm_sin_nuestro: 96
+- osm_camaras: 5668
+- osm_sin_nuestro: 97
 - tramos: 356
 
 | Tipo | Hallazgos | Graves |
@@ -295,6 +295,7 @@
 - `osm:n13622823996` 40.71435,-3.79364 2026-03-06 {'highway': 'speed_camera', 'maxspeed': '80'}
 - `osm:n13624945402` 39.49454,-0.42485 2026-03-07 {'direction': '230', 'highway': 'speed_camera', 'maxspeed': '80'}
 - `osm:n14169137330` 37.33157,-5.84046 2026-09-10 {'direction': '280', 'highway': 'speed_camera', 'maxspeed': '30'}
+- `osm:n14367109504` 38.34068,-0.57628 2026-11-11 {'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n3714381772` 41.19705,-8.58875 2019-10-30 {'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n4139225820` 38.74338,-9.18249 2025-12-12 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '80', 'note': 'F080387442', 'ref': 'PT_FIXO 80'}
 - `osm:n6701045442` 37.03824,-7.94992 2025-12-12 {'direction': 'forward', 'highway': 'speed_camera', 'maxspeed': '70', 'note': 'F070387428', 'ref': 'PT_FIXO 70'}
