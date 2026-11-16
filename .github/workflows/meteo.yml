@@ -1,0 +1,63 @@
+name: Avisos meteorológicos
+
+# Avisos de AEMET (vía Meteoalarm) cada media hora, publicados como versión «meteo» (sin crecer el historial).
+# Los contornos de las zonas se renuevan el día 1 de cada mes (o si faltan).
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: meteo
+  cancel-in-progress: true
+
+jobs:
+  meteo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Zonas
+        if: github.event_name == 'workflow_dispatch' || hashFiles('datos/zonas_meteo.json') == ''
+        continue-on-error: true
+        run: |
+          python meteo.py --zonas
+          git config user.name "atalaya-datos"
+          git config user.email "actions@users.noreply.github.com"
+          git add datos/zonas_meteo.json
+          if git diff --cached --quiet; then echo "sin cambios"; else git commit -qm "Zonas de avisos meteorológicos" && git pull -q --rebase && git push -q; fi
+      - name: Zonas del mes
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        run: |
+          if [ "$(date -u +%d%H)" = "0103" ] && [ "$(date -u +%M)" -lt 30 ]; then
+            python meteo.py --zonas
+            git config user.name "atalaya-datos"
+            git config user.email "actions@users.noreply.github.com"
+            git add datos/zonas_meteo.json
+            if ! git diff --cached --quiet; then git commit -qm "Zonas de avisos meteorológicos" && git pull -q --rebase && git push -q; fi
+          fi
+      # Si Meteoalarm no contesta, no se publica y la app sigue con lo anterior (y deja de enseñar lo caducado)
+      - name: Avisos
+        id: avisos
+        run: |
+          set +e
+          python meteo.py
+          r=$?
+          set -e
+          if [ $r -eq 3 ]; then echo "publicar=no" >> "$GITHUB_OUTPUT"; exit 0; fi
+          exit $r
+      - name: Publicar
+        if: steps.avisos.outputs.publicar != 'no'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view meteo >/dev/null 2>&1 || gh release create meteo --title "Avisos meteorológicos" \
+            --notes "Avisos meteorológicos de AEMET (Meteoalerta) vía Meteoalarm (EUMETNET). Se actualiza cada media hora."
+          gh release upload meteo salida/avisos.json.gz --clobber

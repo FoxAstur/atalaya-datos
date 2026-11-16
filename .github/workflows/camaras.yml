@@ -1,0 +1,29 @@
+name: Cámaras de la DGT
+# Dónde está cada cámara de tráfico de la DGT (la imagen la baja el móvil en directo).
+on:
+  schedule:
+    - cron: "41 3 * * 3"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: camaras
+jobs:
+  camaras:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Cámaras
+        run: python -u camaras.py
+      - name: Guardar
+        run: |
+          git config user.name "atalaya-datos"
+          git config user.email "actions@users.noreply.github.com"
+          git add datos/camaras.json
+          if git diff --cached --quiet; then echo "sin cambios"; exit 0; fi
+          git commit -qm "Cámaras de la DGT"
+          git pull -q --rebase && git push -q
