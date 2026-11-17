@@ -18,6 +18,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -246,6 +247,69 @@ def juntar(sitios, radio=40.0):
     return grupos
 
 
+OVERPASS = "https://overpass-api.de/api/interpreter"
+CONSULTA_OSM = ('[out:json][timeout:240];area["ISO3166-1"="ES"][admin_level=2]->.a;'
+                '(node["amenity"="charging_station"](area.a);way["amenity"="charging_station"](area.a););out center tags;')
+ENCHUFES_OSM = {"type2_combo": "CCS", "chademo": "CHA", "type2": "T2", "type2_cable": "T2", "type1": "T1", "schuko": "SCH",
+                "cee_blue": "CEE", "tesla_supercharger": "CCS", "type3c": "T3"}
+
+
+def osm():
+    """Cargadores de OpenStreetMap con enchufes conocidos (los que faltan en el registro oficial, como algunos de
+    supermercados). Si Overpass no contesta, lista vacía: se publica solo el registro."""
+    try:
+        req = urllib.request.Request(OVERPASS, data=urllib.parse.urlencode({"data": CONSULTA_OSM}).encode(),
+                                     headers={"User-Agent": "atalaya-datos (github.com/FoxAstur/atalaya-datos)"})
+        with urllib.request.urlopen(req, timeout=300) as r:
+            datos = json.load(r)
+    except Exception as e:  # noqa: BLE001
+        print(f"::warning::OpenStreetMap no ha contestado ({e}): solo el registro oficial", flush=True)
+        return []
+    sitios = []
+    for el in datos.get("elements", []):
+        t = el.get("tags", {})
+        la = el.get("lat") or el.get("center", {}).get("lat")
+        lo = el.get("lon") or el.get("center", {}).get("lon")
+        if la is None or lo is None or t.get("access") in ("private", "no", "customers_only"):
+            continue
+        con = {}
+        for clave, tipo_ in ENCHUFES_OSM.items():
+            v = t.get(f"socket:{clave}")
+            if not v or v == "no":
+                continue
+            try:
+                n = int(v)
+            except ValueError:
+                n = 1
+            potencia = kw(t.get(f"socket:{clave}:output", "")) or {"CCS": 50, "CHA": 50}.get(tipo_, 0)
+            if potencia <= 0:
+                continue
+            k = (tipo_, round(potencia))
+            con[k] = con.get(k, 0) + max(1, n)
+        if not con:
+            continue
+        op = t.get("operator") or t.get("brand") or t.get("network") or "Otros"
+        calle = " ".join(x for x in (t.get("addr:street", ""), t.get("addr:housenumber", "")) if x)
+        oh = t.get("opening_hours", "")
+        sitios.append({"id": f"osm:{el['type'][0]}{el['id']}", "la": la, "lo": lo, "op": marca(op), "nombre": (t.get("name") or t.get("brand") or op).strip(),
+                       "mun": t.get("addr:city", ""), "dir": calle, "h": "" if oh == "24/7" else (oh[:40] or "Horario sin datos"),
+                       "tarjeta": t.get("payment:credit_cards") == "yes" or t.get("payment:debit_cards") == "yes", "con": con})
+    return sitios
+
+
+def nuevos_de_osm(oficiales, de_osm, radio=80.0):
+    """Los de OpenStreetMap que no están ya en el registro (nada oficial a menos de [radio] metros)."""
+    celdas = {}
+    for s in oficiales:
+        celdas.setdefault((int(s["la"] * 500), int(s["lo"] * 500)), []).append(s)
+    fuera = []
+    for s in de_osm:
+        cy, cx = int(s["la"] * 500), int(s["lo"] * 500)
+        if not any(distancia(c, s) <= radio for dy in (-1, 0, 1) for dx in (-1, 0, 1) for c in celdas.get((cy + dy, cx + dx), ())):
+            fuera.append(s)
+    return fuera
+
+
 def nombre_comun(n: str) -> str:
     # «Centro Porsche Baleares CP2» -> «Centro Porsche Baleares»; códigos de poste al final fuera
     return re.sub(r"\s*[-_ ]\s*(CP|PR|P|N[ºo]?)?\s*\d{1,3}$", "", n).strip() or n
@@ -265,6 +329,9 @@ def main() -> int:
     if len(sitios) < 4000:
         print(f"solo {len(sitios)} sitios ({len(postes)} postes): no se publica", flush=True)
         return 1
+    extra = nuevos_de_osm(sitios, osm()) if "--sin-osm" not in sys.argv else []
+    print(f"{len(extra)} cargadores de OpenStreetMap que no están en el registro", flush=True)
+    sitios += extra
     cuenta = {}
     for s in sitios:
         cuenta[s["op"]] = cuenta.get(s["op"], 0) + 1
@@ -278,7 +345,7 @@ def main() -> int:
                       s["dir"][:70], s["h"], 1 if s["tarjeta"] else 0, con])
     os.makedirs("salida", exist_ok=True)
     o = {"generado": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-         "fuente": "Ministerio para la Transición Ecológica / DGT (Punto de Acceso Nacional)",
+         "fuente": "Ministerio para la Transición Ecológica / DGT (Punto de Acceso Nacional) y © OpenStreetMap (ODbL)",
          "campos": ["id", "la", "lo", "operador", "nombre", "municipio", "direccion", "horario", "tarjeta", "conectores"],
          "operadores": operadores, "sitios": lista}
     with gzip.open("salida/recarga.json.gz", "wt", encoding="utf-8") as f:
