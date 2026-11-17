@@ -12,9 +12,11 @@ import time
 
 import recolector as R
 
-# por comunidades: una consulta de toda España es demasiado grande para Overpass
-REGIONES = ["ES-AN", "ES-AR", "ES-AS", "ES-IB", "ES-CN", "ES-CB", "ES-CL", "ES-CM", "ES-CT", "ES-EX", "ES-GA", "ES-MD",
-            "ES-MC", "ES-NC", "ES-PV", "ES-RI", "ES-VC", "ES-CE", "ES-ML"]
+# por provincias: por comunidades Overpass cortaba la respuesta (salían 236 en la Comunitat Valenciana)
+REGIONES = ["ES-A", "ES-AB", "ES-AL", "ES-AV", "ES-B", "ES-BA", "ES-BI", "ES-BU", "ES-C", "ES-CA", "ES-CC", "ES-CO", "ES-CR",
+            "ES-CS", "ES-CU", "ES-GC", "ES-GI", "ES-GR", "ES-GU", "ES-H", "ES-HU", "ES-J", "ES-L", "ES-LE", "ES-LO", "ES-LU",
+            "ES-M", "ES-MA", "ES-MU", "ES-NA", "ES-O", "ES-OR", "ES-P", "ES-PM", "ES-PO", "ES-S", "ES-SA", "ES-SE", "ES-SG",
+            "ES-SO", "ES-SS", "ES-T", "ES-TE", "ES-TF", "ES-TO", "ES-V", "ES-VA", "ES-VI", "ES-Z", "ES-ZA", "ES-CE", "ES-ML"]
 NO_ESCUELA = ("autoescuela", "escuela de idiomas", "academia", "universidad", "conservatorio", "escuela de música",
               "escuela de musica", "escuela oficial de idiomas", "escuela de adultos")
 
@@ -34,7 +36,7 @@ def main() -> int:
     vistos = set()
     for reg in REGIONES:
         q = f"""
-[out:json][timeout:280];
+[out:json][timeout:600][maxsize:536870912];
 area["ISO3166-2"="{reg}"]->.r;
 nwr["amenity"~"^(school|kindergarten)$"](area.r);
 out center bb tags;
@@ -44,6 +46,8 @@ out center bb tags;
         except Exception as e:  # noqa: BLE001
             print(reg, "error", e, flush=True)
             continue
+        if d.get("remark"):
+            print(reg, "aviso de Overpass:", d["remark"][:200], flush=True)
         n = 0
         for e in d.get("elements", []):
             la = e.get("lat") or (e.get("center") or {}).get("lat")
@@ -62,8 +66,8 @@ out center bb tags;
             todos.append([round(la, 5), round(lo, 5), int(radio(e)), nombre[:60]])
             n += 1
         print(reg, n, flush=True)
-        time.sleep(5)
-    if len(todos) < 10000:
+        time.sleep(3)
+    if len(todos) < 8000:
         print("Muy pocos colegios:", len(todos))
         return 1
     R.guardar_json("datos/colegios.json", {"generado": time.strftime("%Y-%m-%d"), "colegios": todos}, compacto=True)
