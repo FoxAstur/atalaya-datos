@@ -247,7 +247,8 @@ def juntar(sitios, radio=40.0):
     return grupos
 
 
-OVERPASS = "https://overpass-api.de/api/interpreter"
+OVERPASS_SERVIDORES = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter",
+                       "https://overpass.private.coffee/api/interpreter"]
 CONSULTA_OSM = ('[out:json][timeout:240];area["ISO3166-1"="ES"][admin_level=2]->.a;'
                 '(node["amenity"="charging_station"](area.a);way["amenity"="charging_station"](area.a););out center tags;')
 ENCHUFES_OSM = {"type2_combo": "CCS", "chademo": "CHA", "type2": "T2", "type2_cable": "T2", "type1": "T1", "schuko": "SCH",
@@ -257,13 +258,21 @@ ENCHUFES_OSM = {"type2_combo": "CCS", "chademo": "CHA", "type2": "T2", "type2_ca
 def osm():
     """Cargadores de OpenStreetMap con enchufes conocidos (los que faltan en el registro oficial, como algunos de
     supermercados). Si Overpass no contesta, lista vacía: se publica solo el registro."""
-    try:
-        req = urllib.request.Request(OVERPASS, data=urllib.parse.urlencode({"data": CONSULTA_OSM}).encode(),
-                                     headers={"User-Agent": "atalaya-datos (github.com/FoxAstur/atalaya-datos)"})
-        with urllib.request.urlopen(req, timeout=300) as r:
-            datos = json.load(r)
-    except Exception as e:  # noqa: BLE001
-        print(f"::warning::OpenStreetMap no ha contestado ({e}): solo el registro oficial", flush=True)
+    datos = None
+    ultimo = None
+    for intento, url in enumerate(OVERPASS_SERVIDORES * 2):
+        try:
+            req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": CONSULTA_OSM}).encode(),
+                                         headers={"User-Agent": "atalaya-datos (github.com/FoxAstur/atalaya-datos)"})
+            with urllib.request.urlopen(req, timeout=300) as r:
+                datos = json.load(r)
+            break
+        except Exception as e:  # noqa: BLE001
+            ultimo = e
+            print(f"Overpass {url}: {e}", flush=True)
+            time.sleep(20 * (intento + 1))
+    if datos is None:
+        print(f"::warning::OpenStreetMap no ha contestado ({ultimo}): solo el registro oficial", flush=True)
         return []
     sitios = []
     for el in datos.get("elements", []):
