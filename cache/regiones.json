@@ -3183,6 +3183,14 @@
   "mu": "Orihuela",
   "pr": "Alicante"
  },
+ "37.909,-1.223": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.913,-1.225": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.915,-4.785": {
   "mu": "Córdoba",
   "pr": "Córdoba"
@@ -3190,6 +3198,10 @@
  "37.916,-4.593": {
   "mu": "Córdoba",
   "pr": "Córdoba"
+ },
+ "37.917,-1.224": {
+  "mu": "Murcia",
+  "pr": "Murcia"
  },
  "37.917,-3.329": {
   "mu": "Úbeda",
@@ -3199,9 +3211,17 @@
   "mu": "Cazorla",
   "pr": "Jaén"
  },
+ "37.921,-1.225": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.922,-4.584": {
   "mu": "Córdoba",
   "pr": "Córdoba"
+ },
+ "37.924,-1.226": {
+  "mu": "Murcia",
+  "pr": "Murcia"
  },
  "37.927,-4.766": {
   "mu": "Córdoba",
@@ -3320,6 +3340,10 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.963,-1.088": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.963,-1.138": {
   "mu": "Murcia",
   "pr": "Murcia"
@@ -3328,11 +3352,19 @@
   "mu": "Lahiguera",
   "pr": "Jaén"
  },
+ "37.964,-1.118": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.964,-1.128": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
  "37.964,-1.168": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.965,-1.092": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3348,7 +3380,15 @@
   "mu": "Torrevieja",
   "pr": "Alicante"
  },
+ "37.966,-1.138": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.966,-1.161": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.967,-1.096": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3364,12 +3404,20 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.968,-1.132": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.968,-1.156": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
  "37.968,-1.253": {
   "mu": "Alcantarilla",
+  "pr": "Murcia"
+ },
+ "37.969,-1.125": {
+  "mu": "Murcia",
   "pr": "Murcia"
  },
  "37.969,-1.131": {
@@ -3384,6 +3432,14 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.971,-1.098": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.971,-1.121": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.971,-1.149": {
   "mu": "Murcia",
   "pr": "Murcia"
@@ -3392,7 +3448,15 @@
   "mu": "Torrevieja",
   "pr": "Alicante"
  },
+ "37.973,-1.173": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.974,-1.101": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.974,-1.117": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3400,15 +3464,35 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.974,-1.155": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.975,-1.149": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.976,-0.697": {
   "mu": "Torrevieja",
   "pr": "Alicante"
+ },
+ "37.976,-1.135": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.976,-1.140": {
+  "mu": "Murcia",
+  "pr": "Murcia"
  },
  "37.976,-1.177": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
  "37.977,-1.104": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.977,-1.178": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3440,7 +3524,19 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.983,-1.107": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.984,-1.089": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.984,-1.103": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.985,-1.098": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3448,7 +3544,15 @@
   "mu": "Torrevieja",
   "pr": "Alicante"
  },
+ "37.986,-1.093": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.987,-1.045": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.987,-1.088": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3476,6 +3580,10 @@
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "37.991,-1.119": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "37.992,-1.037": {
   "mu": "Murcia",
   "pr": "Murcia"
@@ -3485,6 +3593,10 @@
   "pr": "Murcia"
  },
  "37.994,-1.033": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "37.994,-1.117": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -3701,6 +3813,10 @@
   "mu": "Úbeda",
   "pr": "Jaén"
  },
+ "38.034,-1.039": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.034,-1.053": {
   "mu": "Murcia",
   "pr": "Murcia"
@@ -3709,15 +3825,43 @@
   "mu": "Mula",
   "pr": "Murcia"
  },
+ "38.036,-1.035": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.037,-3.294": {
   "mu": "Torreperogil",
   "pr": "Jaén"
+ },
+ "38.039,-1.030": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.041,-1.026": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.043,-1.022": {
+  "mu": "Murcia",
+  "pr": "Murcia"
  },
  "38.044,-1.133": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
+ "38.046,-1.018": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.049,-1.013": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
  "38.049,-1.085": {
+  "mu": "Murcia",
+  "pr": "Murcia"
+ },
+ "38.051,-1.106": {
   "mu": "Murcia",
   "pr": "Murcia"
  },
@@ -15915,7 +16059,15 @@
   "mu": "León",
   "pr": "León"
  },
+ "42.612,-5.590": {
+  "mu": "León",
+  "pr": "León"
+ },
  "42.613,-5.565": {
+  "mu": "León",
+  "pr": "León"
+ },
+ "42.613,-5.585": {
   "mu": "León",
   "pr": "León"
  },
