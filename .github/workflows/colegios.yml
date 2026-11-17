@@ -30,7 +30,7 @@ jobs:
           mkdir -p tmp && : > tmp/colegios.geojsonseq
           for zona in europe/spain africa/canary-islands; do
             f=tmp/$(basename $zona).osm.pbf
-            curl -sSL --retry 2 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1200 \
+            curl -sSL --retry 6 --retry-all-errors --retry-delay 20 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1200 \
               -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
             osmium tags-filter "$f" nwr/amenity=school,kindergarten -o tmp/c.osm.pbf --overwrite
             osmium export tmp/c.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
