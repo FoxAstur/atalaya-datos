@@ -31,10 +31,59 @@ def radio(e) -> float:
     return max(40.0, min(250.0, math.hypot(dx, dy) / 2))
 
 
+def de_geofabrik(ruta: str):
+    """Los colegios del extracto de Geofabrik (osmium export a geojsonseq), como elementos de Overpass."""
+    with open(ruta, encoding="utf-8") as f:
+        for linea in f:
+            linea = linea.strip().lstrip("\x1e")
+            if not linea:
+                continue
+            try:
+                g = json.loads(linea)
+            except ValueError:
+                continue
+            geo = g.get("geometry") or {}
+            pts = []
+
+            def recoger(c):
+                if c and isinstance(c[0], (int, float)):
+                    pts.append(c)
+                else:
+                    for x in c or []:
+                        recoger(x)
+            recoger(geo.get("coordinates"))
+            if not pts:
+                continue
+            los = [p[0] for p in pts]; las = [p[1] for p in pts]
+            e = {"tags": g.get("properties") or {}, "center": {"lat": (min(las) + max(las)) / 2, "lon": (min(los) + max(los)) / 2}}
+            if len(pts) > 1:
+                e["bounds"] = {"minlat": min(las), "maxlat": max(las), "minlon": min(los), "maxlon": max(los)}
+            yield e
+
+
 def main() -> int:
     todos = []
     vistos = set()
-    for reg in REGIONES:
+    if len(sys.argv) > 1:
+        # del extracto de Geofabrik (colegios.yml): mucho más rápido y completo que Overpass
+        for e in de_geofabrik(sys.argv[1]):
+            la = e["center"]["lat"]; lo = e["center"]["lon"]
+            t = e["tags"]
+            if t.get("amenity") not in ("school", "kindergarten"):
+                continue
+            nombre = (t.get("name") or "").strip()
+            if any(x in nombre.lower() for x in NO_ESCUELA):
+                continue
+            clave = (round(la, 3), round(lo, 3), nombre[:20])
+            if clave in vistos:
+                continue
+            vistos.add(clave)
+            todos.append([round(la, 5), round(lo, 5), int(radio(e)), nombre[:60]])
+        print("Geofabrik:", len(todos), flush=True)
+        REGIONES_A_PEDIR = []
+    else:
+        REGIONES_A_PEDIR = REGIONES
+    for reg in REGIONES_A_PEDIR:
         q = f"""
 [out:json][timeout:600][maxsize:536870912];
 area["ISO3166-2"="{reg}"]->.r;

@@ -1,5 +1,7 @@
 name: Colegios
 
+# Colegios y escuelas infantiles de España (OpenStreetMap) para el aviso de zona escolar: del extracto de Geofabrik
+# con osmium (Overpass, por regiones, cortaba las respuestas y tardaba horas).
 on:
   schedule:
     - cron: "47 3 1 * *"
@@ -10,19 +12,33 @@ permissions:
 
 concurrency:
   group: colegios
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   colegios:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install pdfplumber==0.11.10 openpyxl==3.1.5
-      - run: python -u colegios.py
+      - name: Extracto de OpenStreetMap
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
+          mkdir -p tmp && : > tmp/colegios.geojsonseq
+          for zona in europe/spain africa/canary-islands; do
+            f=tmp/$(basename $zona).osm.pbf
+            curl -sSL --retry 2 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1200 \
+              -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
+            osmium tags-filter "$f" nwr/amenity=school,kindergarten -o tmp/c.osm.pbf --overwrite
+            osmium export tmp/c.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
+            cat tmp/parte.geojsonseq >> tmp/colegios.geojsonseq
+            rm -f "$f"
+          done
+          wc -l tmp/colegios.geojsonseq
+      - run: python -u colegios.py tmp/colegios.geojsonseq
       - name: Publicar
         run: |
           git config user.name "atalaya-bot"
