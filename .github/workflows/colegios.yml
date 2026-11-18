@@ -1,4 +1,4 @@
-name: Colegios
+name: Colegios y señales
 
 # Colegios y escuelas infantiles de España (OpenStreetMap) para el aviso de zona escolar: del extracto de Geofabrik
 # con osmium (Overpass, por regiones, cortaba las respuestas y tardaba horas).
@@ -27,7 +27,7 @@ jobs:
       - name: Extracto de OpenStreetMap
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
-          mkdir -p tmp && : > tmp/colegios.geojsonseq
+          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl
           for zona in europe/spain africa/canary-islands; do
             f=tmp/$(basename $zona).osm.pbf
             curl -sSL --retry 6 --retry-all-errors --retry-delay 20 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1200 \
@@ -35,14 +35,19 @@ jobs:
             osmium tags-filter "$f" nwr/amenity=school,kindergarten -o tmp/c.osm.pbf --overwrite
             osmium export tmp/c.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
             cat tmp/parte.geojsonseq >> tmp/colegios.geojsonseq
+            # stops, cedas el paso y semáforos (solo los nodos)
+            osmium tags-filter "$f" n/highway=stop,give_way,traffic_signals -R -o tmp/s.osm.pbf --overwrite
+            osmium cat tmp/s.osm.pbf -f opl -o tmp/s.opl --overwrite
+            cat tmp/s.opl >> tmp/senales.opl
             rm -f "$f"
           done
           wc -l tmp/colegios.geojsonseq
       - run: python -u colegios.py tmp/colegios.geojsonseq
+      - run: python -u senales.py tmp/senales.opl
       - name: Publicar
         run: |
           git config user.name "atalaya-bot"
           git config user.email "atalaya-bot@users.noreply.github.com"
-          git add datos/colegios.json
+          git add datos/colegios.json datos/senales.csv.gz
           git diff --cached --quiet || git commit -qm "Colegios: $(date -u +%Y-%m-%d)"
           for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
