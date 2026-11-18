@@ -1,6 +1,6 @@
 {
- "Ayto. Málaga foto-rojo": {
-  "desde": "2026-11-16T13:26+00:00",
-  "ultimo": "⚠️ falló (Expecting value: line 1 column 1 (char 0)); se mantienen 5 de la vez anterior"
+ "Ayto. Salamanca": {
+  "desde": "2026-11-18T13:17+00:00",
+  "ultimo": "⚠️ falló (ide.aytosalamanca.es: HTTP Error 503: Service Unavailable); se mantienen 22 de la vez anterior"
  }
 }

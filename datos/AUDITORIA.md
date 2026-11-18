@@ -1,4 +1,4 @@
-# Auditoría 2026-11-17T13:39:44+00:00
+# Auditoría 2026-11-18T13:15:14+00:00
 
 ## Resumen
 
@@ -131,7 +131,7 @@
 - [1] `dgt:GUID_CVM_164997` (DGT feed; CL-615 PK 1.706 Creciente) 42.03780,-4.55960: extremos a 31.9 km
 - [1] `osm:r21440002` (OpenStreetMap; None PK None ) 42.27297,2.95509: entrada y salida a 72 m
 - [1] `osm:r21440003` (OpenStreetMap; None PK None ) 42.27349,2.95458: entrada y salida a 72 m
-- [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 367 m con los extremos a 424 m en recta
+- [2] `slmt:0` (Ayto. Salamanca; None PK None ) 40.95487,-5.69109: longitud 363 m con los extremos a 424 m en recta
 - [2] `slmt:1` (Ayto. Salamanca; None PK None ) 40.96530,-5.68286: longitud 615 m con los extremos a 642 m en recta
 - [2] `dgtpdf:T:A-370:8.4:D` (DGT PDF radares; A-370 PK 9.471 Decreciente) 37.17270,-1.83158: longitud 1115 m con los extremos a 1166 m en recta
 - [2] `dgtpdf:T:AS-19:3.55:D` (DGT PDF radares; AS-19 PK 4.58 Decreciente) 43.55530,-5.73912: longitud 1030 m con los extremos a 1400 m en recta
