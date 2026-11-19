@@ -15503,6 +15503,10 @@
   "mu": "Leza",
   "pr": "Álava"
  },
+ "42.578,-5.545": {
+  "mu": "León",
+  "pr": "León"
+ },
  "42.578,-5.583": {
   "mu": "León",
   "pr": "León"
@@ -15513,6 +15517,10 @@
  },
  "42.578,-6.533": {
   "mu": "Congosto",
+  "pr": "León"
+ },
+ "42.579,-5.549": {
+  "mu": "León",
   "pr": "León"
  },
  "42.579,-5.584": {
@@ -15537,6 +15545,10 @@
  },
  "42.580,-6.783": {
   "mu": "Villafranca del Bierzo",
+  "pr": "León"
+ },
+ "42.581,-5.552": {
+  "mu": "León",
   "pr": "León"
  },
  "42.581,-5.558": {
@@ -17907,6 +17919,10 @@
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
  },
+ "43.313,-1.978": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
  "43.313,-2.966": {
   "mu": "Erandio",
   "pr": "Bizkaia"
@@ -17952,6 +17968,10 @@
   "pr": "Gipuzkoa"
  },
  "43.317,-1.956": {
+  "mu": "Donostia/San Sebastián",
+  "pr": "Gipuzkoa"
+ },
+ "43.317,-1.977": {
   "mu": "Donostia/San Sebastián",
   "pr": "Gipuzkoa"
  },
