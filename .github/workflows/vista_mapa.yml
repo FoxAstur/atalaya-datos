@@ -1,0 +1,53 @@
+name: Vista del mapa propio
+
+# Baja espana.pmtiles (publicación «mapas»), lo sirve en local con go-pmtiles y pinta el estilo de Atalaya encima en
+# varios sitios (Valencia, Oviedo, el Huerna, Palma, Tenerife, Ceuta, la A-7 en 3D). Capturas en la rama «vista-mapas».
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Mapas propios"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  vista:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Mapa y servidor
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p tmp/teselas
+          gh release download mapas -p espana.pmtiles -D tmp/teselas --clobber
+          ls -la tmp/teselas
+          V=$(curl -sSfL https://api.github.com/repos/protomaps/go-pmtiles/releases/latest | python3 -c "import json,sys;print(json.load(sys.stdin)['tag_name'])")
+          curl -sSfL -o tmp/pm.tgz "https://github.com/protomaps/go-pmtiles/releases/download/$V/go-pmtiles_${V#v}_Linux_x86_64.tar.gz"
+          tar -xzf tmp/pm.tgz -C tmp pmtiles
+          tmp/pmtiles show tmp/teselas/espana.pmtiles | head -30
+          (tmp/pmtiles serve tmp/teselas --port 8080 --cors='*' > tmp/serve.log 2>&1 &)
+          sleep 3
+          curl -sS -o /dev/null -w "z5: %{http_code} %{size_download}\n" http://localhost:8080/espana/5/15/12.mvt
+      - name: Pintar
+        run: |
+          npm i --no-save playwright@1.47.2 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+          node vista_mapa/pintar.mjs
+          ls -la vista_mapa/salida
+      - name: Publicar
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          mv vista_mapa/salida /tmp/salida
+          git checkout --orphan vista-mapas
+          git rm -rfq . >/dev/null
+          mv /tmp/salida/* .
+          git add -f *.png
+          git commit -qm "Vista del mapa propio" && git push -f origin vista-mapas
