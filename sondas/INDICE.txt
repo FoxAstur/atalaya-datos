@@ -1,0 +1,3 @@
+https://www.vitoria-gasteiz.org/wb021/was/we001Action.do?idioma=es&accionWe001=adjunto&nombre=54090.pdf -> 200 219056 application/pdf
+https://www.vitoria-gasteiz.org/geovitoria/geo -> 200 69176 text/html; charset=UTF-8
+https://www.vitoria-gasteiz.org/geovitoria/geo?accion=showColeccion&tipo=t&nombre=radar%20m%F3vil&aplicacion=J16 -> 200 69176 text/html; charset=UTF-8
