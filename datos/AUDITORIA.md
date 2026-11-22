@@ -1,14 +1,14 @@
-# Auditoría 2026-11-21T21:21:36+00:00
+# Auditoría 2026-11-22T12:49:04+00:00
 
 ## Resumen
 
 - comprobados_pk: 1236
 - comprobados_sentido_pk: 1020
 - con_ref: 1486
-- con_rumbo: 2741
-- con_via: 3691
+- con_rumbo: 2740
+- con_via: 3690
 - osm_camaras: 5668
-- osm_sin_nuestro: 97
+- osm_sin_nuestro: 99
 - tramos: 356
 
 | Tipo | Hallazgos | Graves |
@@ -252,6 +252,7 @@
 - `osm:n2191511334` 37.38028,-3.05609 2025-12-31 {'direction': '30', 'highway': 'speed_camera', 'maxspeed': '120'}
 - `osm:n2334938812` 37.36309,-6.03262 2025-12-12 {'direction': '100', 'highway': 'speed_camera', 'maxspeed': '50', 'note': 'F050 BBS Ache A-8057 PK-0.1 Sentido Sevilla @'}
 - `osm:n2378266977` 41.85213,3.07352 2023-12-18 {'highway': 'speed_camera', 'maxspeed': '100'}
+- `osm:n2392880710` 40.55619,0.52507 2021-08-02 {'description': 'Radar 70 kmh', 'direction': '50', 'highway': 'speed_camera', 'maxspeed': '70', 'note': 'F070 USB N-340 Km 1062.5 Cruce Las Casas de Alcanar DIR BCN CL'}
 - `osm:n3202405846` 41.33531,2.09575 2026-03-10 {'direction': '50', 'highway': 'speed_camera', 'maxspeed': '80', 'note': 'FVAR F080 MAIG C-31-Sur Km 195 el Prat DIR Barcelona CL'}
 - `osm:n3901483333` 42.45540,1.94235 2020-09-17 {'enforcement': 'maxspeed', 'highway': 'speed_camera'}
 - `osm:n4587398829` 41.31477,1.18087 2025-10-09 {'direction': '300', 'highway': 'speed_camera', 'maxspeed': '60'}
@@ -310,6 +311,7 @@
 - `osm:r9959079` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|NO->SE'}
 - `osm:r9959080` 42.45540,1.94235  {'enforcement': 'maxspeed', 'maxspeed': '80', 'name': 'Ur|SE->NO'}
 - `osm:r10358149` 40.46815,-3.43084  {'enforcement': 'maxspeed', 'maxspeed': '80'}
+- `osm:r12133968` 40.55591,0.52436  {'enforcement': 'maxspeed', 'maxspeed': '70'}
 - `osm:r13180336` 42.73289,0.19460  {'enforcement': 'maxspeed', 'maxspeed': '60', 'name': 'Aragnouet - Tunnel Aragnouet Bielsa|N->S'}
 - `osm:r15824408` 36.54663,-4.66933  {'enforcement': 'maxspeed', 'maxspeed': '50'}
 - `osm:r15896698` 38.02615,-3.77256  {'enforcement': 'maxspeed', 'maxspeed': '90'}
