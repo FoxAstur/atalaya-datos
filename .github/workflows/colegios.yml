@@ -36,9 +36,9 @@ jobs:
             osmium tags-filter "$f" nwr/amenity=school,kindergarten -o tmp/c.osm.pbf --overwrite
             osmium export tmp/c.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
             cat tmp/parte.geojsonseq >> tmp/colegios.geojsonseq
-            # stops, cedas el paso, semáforos y peligros de la vía (pasos a nivel, resaltos, animales), solo los nodos
+            # stops, cedas el paso, semáforos y peligros de la vía (pasos a nivel, resaltos, animales, desprendimientos, peajes), solo los nodos
             osmium tags-filter "$f" n/highway=stop,give_way,traffic_signals n/railway=level_crossing n/traffic_calming \
-              n/hazard=animal_crossing n/traffic_sign -R -o tmp/s.osm.pbf --overwrite
+              n/hazard n/traffic_sign n/barrier=toll_booth -R -o tmp/s.osm.pbf --overwrite
             osmium cat tmp/s.osm.pbf -f opl -o tmp/s.opl --overwrite
             cat tmp/s.opl >> tmp/senales.opl
             # las vías de tranvía (sus cruces con la calle no son «pasos a nivel» de tren: en ciudad avisaba sin parar)
