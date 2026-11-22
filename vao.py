@@ -31,6 +31,44 @@ def plano(g) -> list[float]:
     return out
 
 
+def unir(carriles: list[dict]) -> list[dict]:
+    """OSM corta las vías en cada puente o cambio de carriles: se juntan las seguidas del mismo nombre y sentido."""
+    def ini(c):
+        return (c["a"][0], c["a"][1])
+
+    def fin(c):
+        return (c["a"][-2], c["a"][-1])
+
+    pend = carriles[:]
+    out = []
+    while pend:
+        c = pend.pop(0)
+        cambio = True
+        while cambio:
+            cambio = False
+            for i, o in enumerate(pend):
+                if o["n"] != c["n"] or o["r"] != c["r"]:
+                    continue
+                if ini(o) == fin(c):
+                    c = dict(c, a=c["a"] + o["a"][2:])
+                elif fin(o) == ini(c):
+                    c = dict(c, a=o["a"] + c["a"][2:])
+                else:
+                    continue
+                c["m"] = max(c["m"], o["m"])
+                c["c"] = c["c"] or o["c"]
+                pend.pop(i)
+                cambio = True
+                break
+        out.append(c)
+    return out
+
+
+def largo(c) -> float:
+    a = c["a"]
+    return sum(R.distancia(a[i], a[i + 1], a[i + 2], a[i + 3]) for i in range(0, len(a) - 2, 2))
+
+
 def main() -> int:
     d = R.overpass(CONSULTA)
     carriles = []
@@ -57,9 +95,11 @@ def main() -> int:
             sentidos = [-s for s in sentidos]
         for s in sorted(set(sentidos)):
             carriles.append({"n": nombre[:40], "m": minimo, "r": reversible, "c": cond, "a": plano(g if s > 0 else g[::-1])})
-    print("vías:", len(d.get("elements", [])), "carriles:", len(carriles), flush=True)
-    for c in carriles[:40]:
-        print(c["n"], c["m"], c["r"], c["c"], len(c["a"]) // 2, c["a"][:2], flush=True)
+    print("vías:", len(d.get("elements", [])), "trozos:", len(carriles), flush=True)
+    carriles = [c for c in unir(carriles) if largo(c) >= 200]
+    print("carriles (juntos, de 200 m o más):", len(carriles), flush=True)
+    for c in carriles:
+        print(c["n"], c["m"], c["r"], c["c"], round(largo(c)), c["a"][:2], flush=True)
     if len(carriles) < 3:
         return 1
     R.guardar_json("datos/vao.json", {"generado": time.strftime("%Y-%m-%d"), "carriles": carriles}, compacto=True)
