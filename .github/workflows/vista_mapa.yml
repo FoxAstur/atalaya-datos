@@ -27,6 +27,7 @@ jobs:
         run: |
           mkdir -p tmp/teselas
           gh release download mapas -p espana.pmtiles -D tmp/teselas --clobber
+          gh release download mapas -p extras.pmtiles -D tmp/teselas --clobber || true
           ls -la tmp/teselas
           V=$(curl -sSfL https://api.github.com/repos/protomaps/go-pmtiles/releases/latest | python3 -c "import json,sys;print(json.load(sys.stdin)['tag_name'])")
           curl -sSfL -o tmp/pm.tgz "https://github.com/protomaps/go-pmtiles/releases/download/$V/go-pmtiles_${V#v}_Linux_x86_64.tar.gz"
