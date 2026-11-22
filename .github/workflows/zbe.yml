@@ -1,0 +1,31 @@
+name: Zonas de bajas emisiones
+
+on:
+  schedule:
+    - cron: "41 4 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zbe
+  cancel-in-progress: false
+
+jobs:
+  zbe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python zbe.py
+      - name: Publicar
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add datos/zbe.json
+          git diff --cached --quiet || git commit -qm "Zonas de bajas emisiones: $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
