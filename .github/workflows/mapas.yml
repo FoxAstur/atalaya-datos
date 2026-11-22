@@ -36,6 +36,8 @@ jobs:
           B=https://download.geofabrik.de/europe
           curl -sSfL --retry 4 -o tmp/osm/espana.osm.pbf "$B/spain-latest.osm.pbf"
           curl -sSfL --retry 4 -o tmp/osm/andorra.osm.pbf "$B/andorra-latest.osm.pbf"
+          # Canarias: Geofabrik la tiene en África, no dentro de España
+          curl -sSfL --retry 4 -o tmp/osm/canarias.osm.pbf "https://download.geofabrik.de/africa/canary-islands-latest.osm.pbf"
           ls -la tmp/osm
           osmium merge tmp/osm/*.osm.pbf -o tmp/espana.osm.pbf --overwrite
           rm -rf tmp/osm
@@ -66,7 +68,7 @@ jobs:
           bytes_, sha = int(sys.argv[1]), sys.argv[2]
           ficha = {"version": 1, "mapas": [{
               "id": "espana", "nombre": "España (con las islas, Ceuta y Melilla) y Andorra", "bytes": bytes_, "sha256": sha,
-              "fecha": datetime.date.today().isoformat(),
+              "fecha": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M"),
               "url": "https://github.com/FoxAstur/atalaya-datos/releases/download/mapas/espana.pmtiles",
               # lo que cubre (oeste, sur, este, norte): península y Baleares, Canarias, Ceuta y Melilla; solo se usa dentro
               "zonas": [[-9.6, 35.9, 4.6, 43.9], [-18.4, 27.5, -13.2, 29.6], [-5.45, 35.15, -2.85, 35.95]],
