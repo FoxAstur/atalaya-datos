@@ -1,0 +1,117 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-22T17:37:36Z",
+    "timestamp_areas_base": "2026-11-22T12:18:36Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 27653349,
+  "tags": {
+    "highway": "secondary",
+    "lanes": "3",
+    "maxspeed": "30",
+    "name": "Salburua bulebarra",
+    "name:es": "Bulevar de Salburua",
+    "name:eu": "Salburua bulebarra",
+    "official_name": "Salburua bulebarra / Bulevar de Salburua",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 521182105,
+  "lat": 42.8573318,
+  "lon": -2.6539770
+},
+{
+  "type": "way",
+  "id": 26720911,
+  "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "name": "Deba arroaren kalea",
+    "name:es": "Calle Cuenca del Deba",
+    "name:eu": "Deba arroaren kalea",
+    "official_name": "Deba arroaren kalea / Calle Cuenca del Deba",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2449778762,
+  "lat": 42.8697672,
+  "lon": -2.6895348
+},
+{
+  "type": "node",
+  "id": 2449778767,
+  "lat": 42.8696371,
+  "lon": -2.6894466
+},
+{
+  "type": "way",
+  "id": 23725923,
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:lanes": "50|50|30",
+    "name": "Forondako atea",
+    "name:es": "Portal de Foronda",
+    "name:eu": "Forondako atea",
+    "official_name": "Forondako atea / Portal de Foronda",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 37882079,
+  "tags": {
+    "highway": "primary",
+    "name": "Zabalgana hiribidea",
+    "name:es": "Avenida de Zabalgana",
+    "name:eu": "Zabalgana hiribidea",
+    "official_name": "Zabalgana hiribidea / Avenida de Zabalgana",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "node",
+  "id": 296211345,
+  "lat": 42.8705929,
+  "lon": -2.6890804
+},
+{
+  "type": "node",
+  "id": 2133728885,
+  "lat": 42.8702611,
+  "lon": -2.6898673
+},
+{
+  "type": "way",
+  "id": 23725923,
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:lanes": "50|50|30",
+    "name": "Forondako atea",
+    "name:es": "Portal de Foronda",
+    "name:eu": "Forondako atea",
+    "official_name": "Forondako atea / Portal de Foronda",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+}
+
+  ]
+}
