@@ -23,30 +23,35 @@ out tags geom;
 """
 
 
+def _igual(a, b, tol=0.0004) -> bool:
+    return abs(a[0] - b[0]) < tol and abs(a[1] - b[1]) < tol
+
+
 def unir(trozos: list[list[tuple[float, float]]]) -> list[list[tuple[float, float]]]:
-    """Une las vías de un multipolígono en anillos cerrados (por sus extremos)."""
+    """Une las vías de un multipolígono en anillos (por sus extremos, con una tolerancia de ~40 m para huecos)."""
     trozos = [t[:] for t in trozos if len(t) >= 2]
     anillos = []
     while trozos:
         a = trozos.pop(0)
         cambio = True
-        while a[0] != a[-1] and cambio:
+        while not (len(a) > 3 and _igual(a[0], a[-1], 1e-7)) and cambio:
             cambio = False
             for i, t in enumerate(trozos):
-                if t[0] == a[-1]:
+                if _igual(t[0], a[-1]):
                     a += t[1:]
-                elif t[-1] == a[-1]:
+                elif _igual(t[-1], a[-1]):
                     a += t[-2::-1]
-                elif t[-1] == a[0]:
+                elif _igual(t[-1], a[0]):
                     a = t[:-1] + a
-                elif t[0] == a[0]:
+                elif _igual(t[0], a[0]):
                     a = t[:0:-1] + a
                 else:
                     continue
                 trozos.pop(i)
                 cambio = True
                 break
-        if len(a) >= 4:
+        # casi cerrado (un hueco pequeño en OSM): se cierra
+        if len(a) >= 4 and (a[0] == a[-1] or _igual(a[0], a[-1], 0.003)):
             anillos.append(a)
     return anillos
 
@@ -66,13 +71,15 @@ def main() -> int:
         nombre = t.get("name") or t.get("name:es") or "Zona de bajas emisiones"
         if e["type"] == "way":
             g = [(p["lat"], p["lon"]) for p in e.get("geometry", [])]
-            anillos = [g] if len(g) >= 4 and g[0] == g[-1] else []
+            anillos = unir([g])
         else:
             trozos = [[(p["lat"], p["lon"]) for p in m.get("geometry", [])]
                       for m in e.get("members", []) if m.get("type") == "way" and m.get("role", "outer") in ("outer", "")]
             anillos = unir(trozos)
         if not anillos:
-            print("sin anillos:", nombre, flush=True)
+            ms = e.get("members", [])
+            print("sin anillos:", nombre, e["type"], e.get("id"), "miembros", len(ms),
+                  sorted({(m.get("type"), m.get("role")) for m in ms}), "puntos", len(e.get("geometry", [])), flush=True)
             continue
         zonas.append({"n": nombre[:80], "w": (t.get("website") or t.get("url") or "")[:200], "a": [plano(a) for a in anillos]})
         print(nombre, len(anillos), sum(len(a) for a in anillos), flush=True)
