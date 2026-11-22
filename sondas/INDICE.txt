@@ -1,0 +1,7 @@
+https://opendata-ajuntament.barcelona.cat/data/dataset/518b7979-760e-414c-8b8d-db9d31afb21f/resource/ef54fda5-f363-40fe-99c8-948b6a40aa1e/download -> 403 548 text/html
+https://opendata-ajuntament.barcelona.cat/data/dataset/740f191e-49bb-41a9-8f84-ea887495b74a/resource/cd1957a6-a06e-4a90-80bb-83e0e4c2d6e9/download -> 403 548 text/html
+https://opendata-ajuntament.barcelona.cat/data/dataset/2059b2e0-7ee5-40fd-96a2-e98a06302445/resource/3f86d13b-c47e-485e-b611-8a522dc81dc1/download -> 403 548 text/html
+https://opendata.vlci.valencia.es/api/3/action/package_search?q=radar&rows=10 -> 200 225 application/json;charset=utf-8
+https://opendata.vlci.valencia.es/api/3/action/package_search?q=semaforo&rows=10 -> 200 12707 application/json;charset=utf-8
+https://www.zaragoza.es/sede/servicio/catalogo/5505 -> 200 111115 text/html;charset=UTF-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_search?q=semafor&rows=10 -> 200 15035 application/json;charset=utf-8
