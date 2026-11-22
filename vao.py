@@ -16,7 +16,7 @@ CONSULTA = """
 area["ISO3166-1"="ES"]["admin_level"="2"]->.p;
 (
   way["highway"]["hov"~"^(designated|lane)$"](area.p);
-  way["highway"]["name"~"VAO",i](area.p);
+  way["highway"]["name"~"VAO"](area.p);
   way["highway"]["hov:lanes"~"designated"](area.p);
   way["highway"]["hov:lanes:forward"~"designated"](area.p);
   way["highway"]["hov:lanes:backward"~"designated"](area.p);
@@ -97,7 +97,7 @@ def main() -> int:
         sentidos = []
         if "hov:lanes:backward" in t and "designated" in t["hov:lanes:backward"]:
             sentidos.append(-1)
-        if t.get("hov") in ("designated", "lane") or "vao" in (t.get("name") or "").lower() or "designated" in t.get("hov:lanes", "") or "designated" in t.get("hov:lanes:forward", ""):
+        if t.get("hov") in ("designated", "lane") or "VAO" in (t.get("name") or "") or "designated" in t.get("hov:lanes", "") or "designated" in t.get("hov:lanes:forward", ""):
             sentidos.append(1)
             if reversible or t.get("oneway") not in ("yes", "1", "-1") and "hov:lanes" not in t:
                 sentidos.append(-1)
