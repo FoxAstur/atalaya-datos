@@ -1426,6 +1426,41 @@ def fuente_donostia() -> list[dict]:
                           mu="Donostia / San Sebastián", pr="Gipuzkoa", ca="País Vasco")
 
 
+# Vitoria-Gasteiz: los 47 puntos donde la Policía Local pone el radar móvil («Localización Puntos Radar», PDF del
+# Ayuntamiento, vitoria-gasteiz.org nombre=54090.pdf), situados por el portal con CartoCiudad (o el cruce que dice
+# el PDF, con OSM). Los dos sentidos de un mismo portal, un punto. El orden fija el id (vit:0, vit:1…): lo nuevo, al final
+VITORIA = [
+    ("Aguirrelanda, 4", 42.865632, -2.675273), ("Alibarra, 20 (hacia la Avenida del Zadorra)", 42.861529, -2.715689),
+    ("Alto de Armentia, 16 (sentido Madrid)", 42.836886, -2.701812), ("Alto de Armentia, 11 (sentido centro)", 42.83619, -2.70033),
+    ("Aragón, 1 (antes del puente de la Avenida Santiago)", 42.849692, -2.65801), ("Artapadura, 9", 42.869873, -2.669432),
+    ("Avenida de Bruselas, 1-2 (junto a la Avenida de París)", 42.850964, -2.652493),
+    ("Avenida de los Huetos, 46 (sentido Asteguieta)", 42.85676, -2.709924),
+    ("Avenida de los Huetos, 66 (sentido Asteguieta)", 42.857691, -2.717911),
+    ("Avenida de los Huetos, 73 (sentido centro)", 42.856858, -2.717198),
+    ("Avenida de los Huetos, 81 (sentido centro)", 42.857428, -2.721829),
+    ("Bulevar de Mariturri, 18-20", 42.837884, -2.711034), ("Bulevar de Mariturri, 32", 42.846327, -2.709917),
+    ("Canal de Santo Tomás, 4", 42.867369, -2.657095), ("Cuenca del Deba (antes de la calle Helsinki)", 42.857332, -2.653977),
+    ("Juan de Garay, 9", 42.860344, -2.676709), ("Las Arenas, 1", 42.850999, -2.718914), ("Luis Olariaga, 8", 42.867542, -2.685639),
+    ("Madrid, 32-36", 42.856752, -2.659804), ("Portal de Arriaga, 28", 42.863449, -2.675593),
+    ("Portal de Arriaga, 76", 42.870384, -2.67978), ("Portal de Betoño, 18", 42.859918, -2.659652),
+    ("Portal de Castilla, 81-106", 42.838952, -2.693124), ("Portal de Foronda, 66 (sentido Bilbao)", 42.868956, -2.687775),
+    ("Portal de Foronda (junto a la N-622, sentido centro)", 42.870593, -2.68908),
+    ("Portal de Foronda (pasada la calle Landaberde, sentido centro)", 42.869702, -2.6895),
+    ("Portal de Gamarra, 3", 42.861877, -2.662632), ("Portal de Gamarra, 9A", 42.866322, -2.660726),
+    ("Portal de Gamarra, 27", 42.871467, -2.659706), ("Portal de Gamarra, 44", 42.866615, -2.659756),
+    ("Portal de Vergara, 34", 42.870335, -2.648744), ("Portal de Zurbano, 13", 42.864282, -2.649674),
+    ("Zaramaga, 14 (vía de servicio, sentido Madrid)", 42.860517, -2.667174),
+]
+
+
+def fuente_vitoria() -> list[dict]:
+    return [punto(f"vit:{i}", "ZONA_MOVIL", "AYUNTAMIENTO", la, lo, c=re.split(r",| \(", n)[0],
+                  n="Punto de radar móvil de la Policía Local · " + n,
+                  mu="Vitoria-Gasteiz", pr="Álava", ca="País Vasco",
+                  at="Ayuntamiento de Vitoria-Gasteiz (Localización puntos radar)")
+            for i, (n, la, lo) in enumerate(VITORIA)]
+
+
 # --------------------------------------------------------- feed comunitario (radares-anunciados)
 # Proyecto abierto que publica (ODbL) fuentes que solo responden desde IP española o que se leen de
 # avisos de la Policía Local. Solo se toman las que no recogemos ya por nuestra cuenta.
@@ -3515,6 +3550,7 @@ def main() -> int:
     malaga = ejecutar("Ayto. Málaga foto-rojo", fuente_malaga)
     salamanca = ejecutar("Ayto. Salamanca", fuente_salamanca)
     donostia = ejecutar("Ayto. Donostia", fuente_donostia)
+    vitoria = ejecutar("Ayto. Vitoria-Gasteiz (puntos de radar móvil)", fuente_vitoria)
     lisboa = ejecutar("Câmara Municipal de Lisboa", fuente_lisboa)
     viladecans = ejecutar("Ajuntament de Viladecans", fuente_viladecans)
     ansr = ejecutar("Portugal: ANSR (red SINCRO)", fuente_ansr)
@@ -3526,10 +3562,10 @@ def main() -> int:
     log(f"feed comunitario tras quitar tramos ya situados: {len(comunitario)}")
 
     RASTRO.fuentes({"DGT": feed, "PDF DGT": pdf_radares, "SCT": sct, "Madrid": madrid, "Madrid 2": madrid2,
-                    "València": valencia, "Málaga": malaga, "Salamanca": salamanca, "Donostia": donostia, "ANSR": ansr,
+                    "València": valencia, "Málaga": malaga, "Salamanca": salamanca, "Donostia": donostia, "Vitoria": vitoria, "ANSR": ansr,
                     "Lisboa": lisboa, "Viladecans": viladecans, "Santa Cruz": santacruz, "Pamplona": pamplona,
                     "cámaras DGT": camaras_dgt, "comunitario": comunitario, "OSM": osm})
-    todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, ansr, lisboa, viladecans, santacruz, pamplona,
+    todos = fusionar([feed, pdf_radares, sct, madrid, madrid2, valencia, malaga, salamanca, donostia, vitoria, ansr, lisboa, viladecans, santacruz, pamplona,
                       camaras_dgt, comunitario, osm, zonas])
     RASTRO.paso("fusión de fuentes (mismo punto en otra fuente más fiable, < 60-300 m)", todos)
     log(f"fusión: {FUSION['opuestos']} radares que estaban junto a otro del sentido contrario se mantienen (antes se perdían)")
