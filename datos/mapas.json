@@ -1,0 +1,34 @@
+{
+ "version": 1,
+ "mapas": [
+  {
+   "id": "espana",
+   "nombre": "España (con las islas, Ceuta y Melilla) y Andorra",
+   "bytes": 1307484133,
+   "sha256": "6bed6d94bf9bb8f0442bb44ee3c4e4a2b7eb3a39ab8e0f38976ffd30b5aca112",
+   "fecha": "2026-11-22",
+   "url": "https://github.com/FoxAstur/atalaya-datos/releases/download/mapas/espana.pmtiles",
+   "zonas": [
+    [
+     -9.6,
+     35.9,
+     4.6,
+     43.9
+    ],
+    [
+     -18.4,
+     27.5,
+     -13.2,
+     29.6
+    ],
+    [
+     -5.45,
+     35.15,
+     -2.85,
+     35.95
+    ]
+   ],
+   "atribucion": "© colaboradores de OpenStreetMap"
+  }
+ ]
+}
