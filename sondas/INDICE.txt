@@ -1,0 +1,5 @@
+https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/192?f=json -> 200 6949 application/json;charset=UTF-8
+https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/192/query?where=1%3D1&outFields=*&outSR=4326&f=geojson&resultRecordCount=5 -> 200 2131 application/geo+json;charset=UTF-8
+https://www.bcn.cat/transit/dades/dadestrams.dat -> 200 12660 binary/octet-stream
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=trams -> 200 144718 application/json;charset=utf-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=estat-transit-temps-real -> 404 181 application/json;charset=utf-8
