@@ -15,7 +15,8 @@ CONSULTA = """
 [out:json][timeout:280];
 area["ISO3166-1"="ES"]["admin_level"="2"]->.p;
 (
-  way["highway"]["hov"="designated"](area.p);
+  way["highway"]["hov"~"^(designated|lane)$"](area.p);
+  way["highway"]["name"~"VAO",i](area.p);
   way["highway"]["hov:lanes"~"designated"](area.p);
   way["highway"]["hov:lanes:forward"~"designated"](area.p);
   way["highway"]["hov:lanes:backward"~"designated"](area.p);
@@ -70,7 +71,16 @@ def largo(c) -> float:
 
 
 def main() -> int:
-    d = R.overpass(CONSULTA)
+    d = None
+    for intento in range(3):
+        try:
+            d = R.overpass(CONSULTA)
+            break
+        except Exception as e:  # noqa: BLE001
+            print("Overpass:", e, flush=True)
+            time.sleep(60)
+    if d is None:
+        return 1
     carriles = []
     for e in d.get("elements", []):
         t = e.get("tags") or {}
@@ -87,9 +97,9 @@ def main() -> int:
         sentidos = []
         if "hov:lanes:backward" in t and "designated" in t["hov:lanes:backward"]:
             sentidos.append(-1)
-        if t.get("hov") == "designated" or "designated" in t.get("hov:lanes", "") or "designated" in t.get("hov:lanes:forward", ""):
+        if t.get("hov") in ("designated", "lane") or "vao" in (t.get("name") or "").lower() or "designated" in t.get("hov:lanes", "") or "designated" in t.get("hov:lanes:forward", ""):
             sentidos.append(1)
-            if reversible or t.get("oneway") not in ("yes", "1", "-1") and t.get("hov") == "designated" and "hov:lanes" not in t:
+            if reversible or t.get("oneway") not in ("yes", "1", "-1") and "hov:lanes" not in t:
                 sentidos.append(-1)
         if t.get("oneway") == "-1":
             sentidos = [-s for s in sentidos]
