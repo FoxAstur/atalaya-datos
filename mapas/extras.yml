@@ -1,0 +1,39 @@
+# Lo que el mapa de Atalaya pinta y OpenMapTiles no trae: el límite de velocidad y los carriles de cada vía
+# (OpenStreetMap). Se genera con Planetiler («generate-custom») junto al mapa base, en mapas.yml.
+schema_name: Atalaya extras
+schema_description: Límites de velocidad y carriles de las vías (OpenStreetMap)
+attribution: <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>
+sources:
+  osm:
+    type: osm
+    local_path: tmp/espana.osm.pbf
+layers:
+  - id: velocidad
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 13
+        include_when:
+          __all__:
+            - highway:
+                - motorway
+                - motorway_link
+                - trunk
+                - trunk_link
+                - primary
+                - primary_link
+                - secondary
+                - secondary_link
+                - tertiary
+                - tertiary_link
+                - unclassified
+                - residential
+                - living_street
+            - maxspeed: __any__
+        attributes:
+          - key: v
+            tag_value: maxspeed
+          - key: c
+            tag_value: highway
+          - key: carriles
+            tag_value: lanes

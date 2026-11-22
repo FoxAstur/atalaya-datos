@@ -45,6 +45,12 @@ jobs:
       - name: Teselas (Planetiler)
         run: |
           curl -sSfL -o tmp/planetiler.jar https://github.com/onthegomap/planetiler/releases/latest/download/planetiler.jar
+          # lo nuestro (límites de velocidad y carriles de cada vía): extras.pmtiles
+          java -Xmx8g -jar tmp/planetiler.jar generate-custom --schema=mapas/extras.yml --output=tmp/extras.pmtiles \
+            --tmpdir=tmp/trabajo --force --maxzoom=14 --nodemap-type=sparsearray --storage=mmap 2>&1 | tail -15
+          ls -la tmp/extras.pmtiles
+          rm -rf tmp/trabajo
+          test -s tmp/extras.pmtiles
           java -Xmx11g -jar tmp/planetiler.jar --osm-path=tmp/espana.osm.pbf --output=tmp/espana.pmtiles \
             --download --download-dir=tmp/fuentes --tmpdir=tmp/trabajo --force \
             --languages=es,ca,eu,gl,ast,en --nodemap-type=sparsearray --storage=mmap 2>&1 | tail -40
@@ -62,10 +68,11 @@ jobs:
           SHA=$(sha256sum tmp/espana.pmtiles | cut -d' ' -f1)
           gh release view mapas >/dev/null 2>&1 || gh release create mapas --title "Mapas de Atalaya" \
             --notes "Teselas vectoriales (OpenMapTiles) para usar Atalaya sin conexión. Datos © colaboradores de OpenStreetMap (ODbL)."
-          gh release upload mapas tmp/espana.pmtiles --clobber
-          python3 - "$BYTES" "$SHA" <<'EOF'
+          gh release upload mapas tmp/espana.pmtiles tmp/extras.pmtiles --clobber
+          EXTRAS=$(stat -c %s tmp/extras.pmtiles)
+          python3 - "$BYTES" "$SHA" "$EXTRAS" <<'EOF'
           import json, sys, datetime
-          bytes_, sha = int(sys.argv[1]), sys.argv[2]
+          bytes_, sha, extras = int(sys.argv[1]), sys.argv[2], int(sys.argv[3])
           ficha = {"version": 1, "mapas": [{
               "id": "espana", "nombre": "España (con las islas, Ceuta y Melilla) y Andorra", "bytes": bytes_, "sha256": sha,
               "fecha": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M"),
@@ -73,6 +80,8 @@ jobs:
               # lo que cubre (oeste, sur, este, norte): península y Baleares, Canarias, Ceuta y Melilla; solo se usa dentro
               "zonas": [[-9.6, 35.9, 4.6, 43.9], [-18.4, 27.5, -13.2, 29.6], [-5.45, 35.15, -2.85, 35.95]],
               "atribucion": "© colaboradores de OpenStreetMap",
+              # lo nuestro (límites de velocidad de cada vía), aparte: se puede leer por internet o bajar con el mapa
+              "extras": {"url": "https://github.com/FoxAstur/atalaya-datos/releases/download/mapas/extras.pmtiles", "bytes": extras},
           }]}
           json.dump(ficha, open("datos/mapas.json", "w"), ensure_ascii=False, indent=1)
           EOF
