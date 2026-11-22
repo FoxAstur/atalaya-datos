@@ -1,0 +1,4 @@
+https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer?f=json -> 200 15699 application/json;charset=UTF-8
+https://geoportal.valencia.es/server/rest/services/OPENDATA?f=json -> 200 365 application/json;charset=UTF-8
+https://www.zaragoza.es/sede/servicio/catalogo/5505.json -> 200 111115 text/html;charset=UTF-8
+https://www.zaragoza.es/sede/api/open-data/v1/dataset?q=radar -> 404 1164 text/html; charset=UTF-8
