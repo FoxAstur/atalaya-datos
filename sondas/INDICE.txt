@@ -1,0 +1,8 @@
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=infraestructures-inventari-senyals -> 200 7023 application/json;charset=utf-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=infraestructures-inventari-cameres -> 200 6097 application/json;charset=utf-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_search?q=reductors&rows=5 -> 200 36297 application/json;charset=utf-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_search?q=tipologia%20senyals&rows=5 -> 200 6414 application/json;charset=utf-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_search?q=radar&rows=10 -> 200 53012 application/json;charset=utf-8
+https://nap.dgt.es/api/3/action/package_list -> 403 520 text/html
+https://valencia.opendatasoft.com/api/explore/v2.1/catalog/datasets?where=search(%22radar%22)&limit=20 -> 404 188436 text/html
+https://www.zaragoza.es/sede/servicio/catalogo?q=radar -> 200 130109 text/html;charset=UTF-8
