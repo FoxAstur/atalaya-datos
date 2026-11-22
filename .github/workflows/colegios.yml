@@ -28,7 +28,7 @@ jobs:
       - name: Extracto de OpenStreetMap
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
-          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl
+          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl && : > tmp/tranvias.opl
           for zona in europe/spain africa/canary-islands; do
             f=tmp/$(basename $zona).osm.pbf
             curl -sSL --retry 6 --retry-all-errors --retry-delay 20 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1200 \
@@ -41,11 +41,15 @@ jobs:
               n/hazard=animal_crossing n/traffic_sign -R -o tmp/s.osm.pbf --overwrite
             osmium cat tmp/s.osm.pbf -f opl -o tmp/s.opl --overwrite
             cat tmp/s.opl >> tmp/senales.opl
+            # las vías de tranvía (sus cruces con la calle no son «pasos a nivel» de tren: en ciudad avisaba sin parar)
+            osmium tags-filter "$f" w/railway=tram,light_rail -R -o tmp/t.osm.pbf --overwrite
+            osmium cat tmp/t.osm.pbf -f opl -o tmp/t.opl --overwrite
+            cat tmp/t.opl >> tmp/tranvias.opl
             rm -f "$f"
           done
           wc -l tmp/colegios.geojsonseq
       - run: python -u colegios.py tmp/colegios.geojsonseq
-      - run: python -u senales.py tmp/senales.opl
+      - run: python -u senales.py tmp/senales.opl tmp/tranvias.opl
       - name: Publicar
         run: |
           git config user.name "atalaya-bot"

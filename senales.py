@@ -54,7 +54,24 @@ def tipo_de(tg: dict) -> str | None:
     return None
 
 
+def nodos_de_tranvia(ruta: str) -> set[str]:
+    """Los nodos de las vías de tranvía y metro ligero (OPL de vías: «w… N n1,n2,…»)."""
+    out = set()
+    if not ruta or not os.path.exists(ruta):
+        return out
+    for linea in open(ruta, encoding="utf-8"):
+        if not linea.startswith("w"):
+            continue
+        for p in linea.split(" "):
+            if p.startswith("N"):
+                out.update(x for x in p[1:].strip().split(",") if x)
+    return out
+
+
 def main() -> int:
+    tranvia = nodos_de_tranvia(sys.argv[2] if len(sys.argv) > 2 else "")
+    print("nodos de tranvía", len(tranvia))
+    quitados = 0
     vistos = set()
     n = {k: 0 for k in "scfbnrda"}
     os.makedirs("datos", exist_ok=True)
@@ -71,6 +88,9 @@ def main() -> int:
             t = tipo_de(etiquetas(partes))
             if not t:
                 continue
+            if t in ("b", "n") and partes[0] in tranvia:
+                quitados += 1
+                continue
             la = round(float(y) * 1e5); lo = round(float(x) * 1e5)
             ra, ro = REJILLA.get(t, (4, 5))
             clave = (t, la // ra, lo // ro)
@@ -81,7 +101,7 @@ def main() -> int:
             n[t] += 1
     total = n["s"] + n["c"] + n["f"]
     print("stops", n["s"], "cedas", n["c"], "semáforos", n["f"], "| pasos a nivel con barreras", n["b"], "sin", n["n"],
-          "| resaltos", n["r"], "badenes", n["d"], "| animales", n["a"])
+          "(", quitados, "de tranvía quitados) | resaltos", n["r"], "badenes", n["d"], "| animales", n["a"])
     if total < 50_000:
         print("Muy pocas señales")
         os.remove(tmp)
