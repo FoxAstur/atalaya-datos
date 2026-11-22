@@ -1,6 +1,7 @@
 name: Colegios y señales
 
-# Colegios y escuelas infantiles de España (OpenStreetMap) para el aviso de zona escolar: del extracto de Geofabrik
+# Colegios y escuelas infantiles de España (OpenStreetMap) para el aviso de zona escolar, y señales y peligros de la
+# vía (stops, cedas, semáforos, pasos a nivel, resaltos, animales): del extracto de Geofabrik
 # con osmium (Overpass, por regiones, cortaba las respuestas y tardaba horas).
 on:
   schedule:
@@ -35,8 +36,9 @@ jobs:
             osmium tags-filter "$f" nwr/amenity=school,kindergarten -o tmp/c.osm.pbf --overwrite
             osmium export tmp/c.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
             cat tmp/parte.geojsonseq >> tmp/colegios.geojsonseq
-            # stops, cedas el paso y semáforos (solo los nodos)
-            osmium tags-filter "$f" n/highway=stop,give_way,traffic_signals -R -o tmp/s.osm.pbf --overwrite
+            # stops, cedas el paso, semáforos y peligros de la vía (pasos a nivel, resaltos, animales), solo los nodos
+            osmium tags-filter "$f" n/highway=stop,give_way,traffic_signals n/railway=level_crossing n/traffic_calming \
+              n/hazard=animal_crossing n/traffic_sign -R -o tmp/s.osm.pbf --overwrite
             osmium cat tmp/s.osm.pbf -f opl -o tmp/s.opl --overwrite
             cat tmp/s.opl >> tmp/senales.opl
             rm -f "$f"
