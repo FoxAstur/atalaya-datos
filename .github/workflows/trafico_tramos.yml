@@ -1,0 +1,26 @@
+name: Tramos de tráfico de Barcelona
+
+# Las líneas de los tramos de tráfico de Barcelona (el estado lo pide la app en tiempo real). Una vez al mes.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 3 7 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  tramos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tramos
+        run: python3 -u trafico_tramos.py
+      - name: Publicar
+        run: |
+          git config user.name "atalaya-bot"
+          git config user.email "atalaya-bot@users.noreply.github.com"
+          git add datos/trafico_bcn.json
+          git commit -qm "Tramos de tráfico de Barcelona" || exit 0
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
