@@ -34,10 +34,12 @@ jobs:
           sudo apt-get -qq update && sudo apt-get -qq install -y osmium-tool >/dev/null
           mkdir -p tmp/osm
           B=https://download.geofabrik.de/europe
-          curl -sSfL --retry 4 -o tmp/osm/espana.osm.pbf "$B/spain-latest.osm.pbf"
-          curl -sSfL --retry 4 -o tmp/osm/andorra.osm.pbf "$B/andorra-latest.osm.pbf"
+          # Geofabrik a veces da 404 un rato mientras renueva sus archivos (de madrugada): se reintenta con calma
+          bajar() { for i in 1 2 3 4 5 6; do curl -sSfL --retry 4 -o "$1" "$2" && return 0; echo "reintento $i: $2"; sleep 90; done; return 1; }
+          bajar tmp/osm/espana.osm.pbf "$B/spain-latest.osm.pbf"
+          bajar tmp/osm/andorra.osm.pbf "$B/andorra-latest.osm.pbf"
           # Canarias: Geofabrik la tiene en África, no dentro de España
-          curl -sSfL --retry 4 -o tmp/osm/canarias.osm.pbf "https://download.geofabrik.de/africa/canary-islands-latest.osm.pbf"
+          bajar tmp/osm/canarias.osm.pbf "https://download.geofabrik.de/africa/canary-islands-latest.osm.pbf"
           ls -la tmp/osm
           osmium merge tmp/osm/*.osm.pbf -o tmp/espana.osm.pbf --overwrite
           rm -rf tmp/osm
