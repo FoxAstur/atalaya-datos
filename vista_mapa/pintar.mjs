@@ -8,7 +8,7 @@ const SITIOS = [
   ["huerna", [-5.84, 43.02], 12, 0], ["palma", [2.65, 39.57], 13, 0], ["tenerife", [-16.55, 28.3], 9.5, 0],
   ["a7-3d", [-0.33, 39.61], 16.5, 60], ["ceuta", [-5.31, 35.888], 14, 0],
   ["ruzafa-limites", [-0.3745, 39.4625], 16.5, 0], ["gijon", [-5.665, 43.538], 15, 0], ["picos-europa", [-4.85, 43.19], 11.5, 0],
-  ["aeropuerto-vlc", [-0.4815, 39.4893], 12.5, 0], ["pirineo", [0.65, 42.65], 11, 0], ["barcelona", [2.17, 41.39], 13, 0],
+  ["aeropuerto-vlc", [-0.4815, 39.4893], 12.5, 0], ["v21-carriles", [-0.3655, 39.5065], 17, 0], ["a7-sagunto-placas", [-0.28, 39.68], 11, 0], ["pirineo", [0.65, 42.65], 11, 0], ["barcelona", [2.17, 41.39], 13, 0],
 ];
 const navegador = await chromium.launch();
 const pagina = await navegador.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1 });
@@ -29,6 +29,16 @@ for (const modo of ["dia", "noche"]) {
     window.mapa = new maplibregl.Map({ container: "m", style: e, center: [-3.7, 40.2], zoom: 5, preserveDrawingBuffer: true, attributionControl: false });
     // las señales de límite (en la app las dibuja Kotlin): círculo blanco con borde rojo y el número
     window.mapa.on("styleimagemissing", (ev) => {
+      const pl = /^placa-(\w+)$/.exec(ev.id);
+      if (pl) {
+        const col = { azul: ["#0B4EA2", "#fff"], roja: ["#C8102E", "#fff"], verde: ["#00843D", "#fff"], naranja: ["#F39200", "#1A1A1A"], amarilla: ["#FFD200", "#1A1A1A"] }[pl[1]];
+        if (!col) return;
+        const w = 68, h = 48, cv = document.createElement("canvas"); cv.width = w; cv.height = h; const g = cv.getContext("2d");
+        g.beginPath(); g.roundRect(1.5, 1.5, w - 3, h - 3, 9); g.fillStyle = col[0]; g.fill(); g.lineWidth = 3; g.strokeStyle = "rgba(0,0,0,.43)"; g.stroke();
+        g.beginPath(); g.roundRect(5.2, 5.2, w - 10.4, h - 10.4, 5.2); g.lineWidth = 2.6; g.strokeStyle = col[1]; g.stroke();
+        window.mapa.addImage(ev.id, g.getImageData(0, 0, w, h), { pixelRatio: 2, stretchX: [[18, 50]], stretchY: [[18, 30]], content: [10, 8, 58, 40] });
+        return;
+      }
       const m = /^lim-(\d+)$/.exec(ev.id); if (!m) return;
       const t = 64, cv = document.createElement("canvas"); cv.width = t; cv.height = t; const g = cv.getContext("2d");
       g.beginPath(); g.arc(t / 2, t / 2, t / 2 - 1, 0, 7); g.fillStyle = "#fff"; g.fill();
@@ -40,7 +50,7 @@ for (const modo of ["dia", "noche"]) {
     await new Promise((r) => window.mapa.once("load", r));
   }, estilo);
   for (const [nombre, centro, zoom, pitch] of SITIOS) {
-    if (modo === "noche" && !["valencia", "a7-3d", "huerna", "ruzafa-limites"].includes(nombre)) continue;
+    if (modo === "noche" && !["valencia", "a7-3d", "huerna", "ruzafa-limites", "v21-carriles"].includes(nombre)) continue;
     await pagina.evaluate(async ([c, z, p]) => { window.mapa.jumpTo({ center: c, zoom: z, pitch: p, bearing: p ? 20 : 0 });
       await new Promise((r) => window.mapa.once("idle", () => r(true))); }, [centro, zoom, pitch]);
     await pagina.waitForTimeout(800);
