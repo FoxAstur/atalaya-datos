@@ -11,6 +11,10 @@ datos/senales.csv.gz, una línea por punto «tipo;lat;lon» (lat y lon en 1e-5 g
   a  paso de animales (hazard=animal_crossing o las señales P-23 y P-24)
   k  desprendimientos (hazard=falling_rocks / rock_fall o la señal P-26)
   p  peaje (barrier=toll_booth; las cabinas de una misma estación, una)
+  v  curva peligrosa señalizada (hazard=curve/curves/dangerous_curve o las señales P-13 y P-14)
+  e  estrechamiento de calzada (hazard=road_narrows o la señal P-17)
+  g  bajada peligrosa (hazard=steep_descent / downhill o la señal P-16a)
+  x  cruce peligroso (hazard=dangerous_junction / intersection)
 Las versiones viejas de la app solo leen las letras que conocen y se saltan el resto.
 Entrada: el OPL de osmium (colegios.yml). Datos © colaboradores de OpenStreetMap (ODbL).
 """
@@ -22,7 +26,8 @@ TIPOS = {"stop": "s", "give_way": "c", "traffic_signals": "f"}
 RESALTOS = {"bump", "hump", "table", "cushion", "speed_bump", "speed_hump", "speed_table"}
 # rejilla para juntar duplicados (en 1e-5 grados): semáforos de un cruce ~25 m; el resto ~5 m; animales y
 # desprendimientos ~200 m (señales repetidas del mismo tramo); peajes ~150 m (todas las cabinas de la estación)
-REJILLA = {"f": (25, 30), "a": (200, 250), "k": (200, 250), "p": (150, 200), "r": (8, 10), "d": (8, 10), "b": (10, 12), "n": (10, 12)}
+REJILLA = {"f": (25, 30), "a": (200, 250), "k": (200, 250), "p": (150, 200), "r": (8, 10), "d": (8, 10), "b": (10, 12), "n": (10, 12),
+           "v": (30, 40), "e": (60, 80), "g": (100, 120), "x": (30, 40)}
 
 
 def etiquetas(partes: list[str]) -> dict:
@@ -56,11 +61,25 @@ def tipo_de(tg: dict) -> str | None:
         return "a"
     if hz in ("falling_rocks", "rock_fall", "rockfall", "landslide"):
         return "k"
+    if hz in ("curve", "curves", "dangerous_curve", "sharp_curve", "bend"):
+        return "v"
+    if hz in ("road_narrows", "narrowing"):
+        return "e"
+    if hz in ("steep_descent", "downhill", "steep_downhill"):
+        return "g"
+    if hz in ("dangerous_junction", "intersection", "junction"):
+        return "x"
     ts = tg.get("traffic_sign", "").upper().replace("-", "").replace(" ", "")
     if any(c in ts for c in ("ES:P23", "ES:P24")):
         return "a"
     if "ES:P26" in ts:
         return "k"
+    if any(c in ts for c in ("ES:P13", "ES:P14")):
+        return "v"
+    if "ES:P17" in ts:
+        return "e"
+    if "ES:P16A" in ts:
+        return "g"
     return None
 
 
@@ -83,7 +102,7 @@ def main() -> int:
     print("nodos de tranvía", len(tranvia))
     quitados = 0
     vistos = set()
-    n = {k: 0 for k in "scfbnrdakp"}
+    n = {k: 0 for k in "scfbnrdakpvegx"}
     os.makedirs("datos", exist_ok=True)
     tmp = "datos/senales.csv.gz.tmp"
     with open(sys.argv[1], encoding="utf-8") as f, gzip.open(tmp, "wt", encoding="utf-8", compresslevel=9) as out:
@@ -112,7 +131,7 @@ def main() -> int:
     total = n["s"] + n["c"] + n["f"]
     print("stops", n["s"], "cedas", n["c"], "semáforos", n["f"], "| pasos a nivel con barreras", n["b"], "sin", n["n"],
           "(", quitados, "de tranvía quitados) | resaltos", n["r"], "badenes", n["d"], "| animales", n["a"],
-          "desprendimientos", n["k"], "peajes", n["p"])
+          "desprendimientos", n["k"], "peajes", n["p"], "| curvas", n["v"], "estrechamientos", n["e"], "bajadas", n["g"], "cruces", n["x"])
     if total < 50_000:
         print("Muy pocas señales")
         os.remove(tmp)
