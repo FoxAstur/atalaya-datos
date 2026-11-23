@@ -8,7 +8,7 @@ const SITIOS = [
   ["huerna", [-5.84, 43.02], 12, 0], ["palma", [2.65, 39.57], 13, 0], ["tenerife", [-16.55, 28.3], 9.5, 0],
   ["a7-3d", [-0.33, 39.61], 16.5, 60], ["ceuta", [-5.31, 35.888], 14, 0],
   ["ruzafa-limites", [-0.3745, 39.4625], 16.5, 0], ["gijon", [-5.665, 43.538], 15, 0], ["picos-europa", [-4.85, 43.19], 11.5, 0],
-  ["aeropuerto-vlc", [-0.4815, 39.4893], 12.5, 0], ["v21-carriles", [-0.3655, 39.5065], 17, 0], ["a7-sagunto-placas", [-0.28, 39.68], 11, 0], ["pirineo", [0.65, 42.65], 11, 0], ["barcelona", [2.17, 41.39], 13, 0],
+  ["aeropuerto-vlc", [-0.4815, 39.4893], 12.5, 0], ["v21-carriles", [-0.3435, 39.4867], 17, 0], ["a7-sagunto-placas", [-0.28, 39.68], 11, 0], ["pirineo", [0.65, 42.65], 11, 0], ["barcelona", [2.17, 41.39], 13, 0],
 ];
 const navegador = await chromium.launch();
 const pagina = await navegador.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1 });
