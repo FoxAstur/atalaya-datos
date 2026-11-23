@@ -1,0 +1,6 @@
+https://router.project-osrm.org/route/v1/driving/-0.3763,39.4699;-5.8448,43.3614?overview=full&geometries=polyline6&steps=false -> 200 41083 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/-3.7038,40.4168;-4.1088,40.9429?overview=full&geometries=polyline6&steps=false -> 200 7815 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/-0.4907,38.3452;-0.9857,37.6257?overview=full&geometries=polyline6&steps=false -> 200 10298 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/-3.7038,40.4168;-3.6970,42.3439?overview=full&geometries=polyline6&steps=false -> 200 20603 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/-0.3763,39.4699;-3.7038,40.4168?overview=full&geometries=polyline6&steps=false -> 200 18344 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/2.1734,41.3851;1.9283,42.4317?overview=full&geometries=polyline6&steps=false -> 200 18226 application/json; charset=UTF-8
