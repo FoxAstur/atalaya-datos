@@ -29,7 +29,7 @@ jobs:
           gh release download mapas -p espana.pmtiles -D tmp/teselas --clobber
           gh release download mapas -p extras.pmtiles -D tmp/teselas --clobber || true
           ls -la tmp/teselas
-          V=$(curl -sSfL https://api.github.com/repos/protomaps/go-pmtiles/releases/latest | python3 -c "import json,sys;print(json.load(sys.stdin)['tag_name'])")
+          V=$(gh api repos/protomaps/go-pmtiles/releases/latest --jq .tag_name)
           curl -sSfL -o tmp/pm.tgz "https://github.com/protomaps/go-pmtiles/releases/download/$V/go-pmtiles_${V#v}_Linux_x86_64.tar.gz"
           tar -xzf tmp/pm.tgz -C tmp pmtiles
           tmp/pmtiles show tmp/teselas/espana.pmtiles | head -30 || { echo "espana.pmtiles roto"; exit 1; }
