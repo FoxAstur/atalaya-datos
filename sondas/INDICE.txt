@@ -1,0 +1,4 @@
+https://router.project-osrm.org/route/v1/driving/-5.8280,43.1580;-5.7647,42.9917;-5.6600,42.9500?overview=full&geometries=geojson&steps=true&exclude=motorway -> 400 78 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/-5.8280,43.1580;-5.8000,42.9300?overview=full&geometries=geojson&steps=true -> 200 62031 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/-0.6000,39.6300;-0.8700,39.7000;-0.9970,39.7500?overview=full&geometries=geojson&steps=true -> 200 55109 application/json; charset=UTF-8
+https://router.project-osrm.org/route/v1/driving/2.8430,39.8230;2.8060,39.8510?overview=full&geometries=geojson&steps=true -> 200 62508 application/json; charset=UTF-8
