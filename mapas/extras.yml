@@ -37,3 +37,98 @@ layers:
             tag_value: highway
           - key: carriles
             tag_value: lanes
+
+  # las placas de las carreteras con el color de su red: azul (autovías y autopistas del Estado), roja (nacionales),
+  # verde (europeas y autonómicas de 2.º orden), naranja (autonómicas de 1.º orden) y amarilla (provinciales y locales)
+  - id: placas
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 6
+        include_when:
+          __all__:
+            - highway:
+                - motorway
+                - trunk
+            - ref: __any__
+        attributes:
+          - key: ref
+            tag_value: ref
+          - key: color
+            value: >-
+              ${ feature.tags.ref.matches('^E-?[0-9]') ? 'verde'
+                 : feature.tags.ref.matches('^(AP|R)-[0-9]') ? 'azul'
+                 : feature.tags.ref.matches('^A-[0-9]{1,2}([^0-9]|$)') ? 'azul'
+                 : feature.tags.ref.matches('^N-[0-9]') ? 'roja'
+                 : (feature.tags.highway == 'motorway' && feature.tags.ref.matches('^[A-Z]{1,2}-[0-9]{2}([^0-9]|$)')
+                    && !feature.tags.ref.matches('^(CV|CM|CL|AS|EX|AG|LR|BI|GI|TF|GC|PM|CA)-')) ? 'azul'
+                 : feature.tags.ref.matches('^[A-Za-z]+-?[0-9]{1,2}([^0-9]|$)') ? 'naranja'
+                 : feature.tags.ref.matches('^[A-Za-z]+-?[0-9]{3}([^0-9]|$)') ? 'verde'
+                 : 'amarilla' }
+      - source: osm
+        geometry: line
+        min_zoom: 8
+        include_when:
+          __all__:
+            - highway:
+                - primary
+            - ref: __any__
+        attributes:
+          - key: ref
+            tag_value: ref
+          - key: color
+            value: >-
+              ${ feature.tags.ref.matches('^E-?[0-9]') ? 'verde'
+                 : feature.tags.ref.matches('^(AP|R)-[0-9]') ? 'azul'
+                 : feature.tags.ref.matches('^A-[0-9]{1,2}([^0-9]|$)') ? 'azul'
+                 : feature.tags.ref.matches('^N-[0-9]') ? 'roja'
+                 : (feature.tags.highway == 'motorway' && feature.tags.ref.matches('^[A-Z]{1,2}-[0-9]{2}([^0-9]|$)')
+                    && !feature.tags.ref.matches('^(CV|CM|CL|AS|EX|AG|LR|BI|GI|TF|GC|PM|CA)-')) ? 'azul'
+                 : feature.tags.ref.matches('^[A-Za-z]+-?[0-9]{1,2}([^0-9]|$)') ? 'naranja'
+                 : feature.tags.ref.matches('^[A-Za-z]+-?[0-9]{3}([^0-9]|$)') ? 'verde'
+                 : 'amarilla' }
+      - source: osm
+        geometry: line
+        min_zoom: 10
+        include_when:
+          __all__:
+            - highway:
+                - secondary
+                - tertiary
+            - ref: __any__
+        attributes:
+          - key: ref
+            tag_value: ref
+          - key: color
+            value: >-
+              ${ feature.tags.ref.matches('^E-?[0-9]') ? 'verde'
+                 : feature.tags.ref.matches('^(AP|R)-[0-9]') ? 'azul'
+                 : feature.tags.ref.matches('^A-[0-9]{1,2}([^0-9]|$)') ? 'azul'
+                 : feature.tags.ref.matches('^N-[0-9]') ? 'roja'
+                 : (feature.tags.highway == 'motorway' && feature.tags.ref.matches('^[A-Z]{1,2}-[0-9]{2}([^0-9]|$)')
+                    && !feature.tags.ref.matches('^(CV|CM|CL|AS|EX|AG|LR|BI|GI|TF|GC|PM|CA)-')) ? 'azul'
+                 : feature.tags.ref.matches('^[A-Za-z]+-?[0-9]{1,2}([^0-9]|$)') ? 'naranja'
+                 : feature.tags.ref.matches('^[A-Za-z]+-?[0-9]{3}([^0-9]|$)') ? 'verde'
+                 : 'amarilla' }
+
+  # los carriles de las vías grandes (para dibujarlos de cerca)
+  - id: carriles
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 14
+        include_when:
+          __all__:
+            - highway:
+                - motorway
+                - trunk
+                - primary
+                - secondary
+            - lanes: __any__
+        attributes:
+          - key: n
+            tag_value: lanes
+          - key: c
+            tag_value: highway
+          - key: unico
+            tag_value: oneway
