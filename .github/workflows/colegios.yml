@@ -28,11 +28,16 @@ jobs:
       - name: Extracto de OpenStreetMap
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
-          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl && : > tmp/tranvias.opl && : > tmp/puertos.geojsonseq
+          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl && : > tmp/tranvias.opl && : > tmp/puertos.geojsonseq && : > tmp/peajes.geojsonseq
+          # Geofabrik a veces va lento o da error: se reintenta y, si no, el espejo de OpenStreetMap France
+          F=https://download.openstreetmap.fr/extracts
+          bajar() { d=$1; shift; for i in 1 2 3; do for u in "$@"; do
+            curl -sSfL --retry 3 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1500 -o "$d" "$u" && osmium fileinfo "$d" >/dev/null 2>&1 && return 0
+            echo "reintento $i: $u"; done; sleep 60; done; return 1; }
           for zona in europe/spain africa/canary-islands; do
             f=tmp/$(basename $zona).osm.pbf
-            curl -sSL --retry 6 --retry-all-errors --retry-delay 20 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1200 \
-              -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
+            if [ $zona = europe/spain ]; then espejo=$F/europe/spain-latest.osm.pbf; else espejo=$F/africa/spain/canarias-latest.osm.pbf; fi
+            bajar "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf" "$espejo"
             osmium tags-filter "$f" nwr/amenity=school,kindergarten -o tmp/c.osm.pbf --overwrite
             osmium export tmp/c.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
             cat tmp/parte.geojsonseq >> tmp/colegios.geojsonseq
@@ -52,16 +57,21 @@ jobs:
             osmium export tmp/p.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
             cat tmp/parte.geojsonseq >> tmp/puertos.geojsonseq
             rm -f tmp/v.osm.pbf
+            # las vías de peaje (para saber cuánto cuesta una ruta, con peajes_tarifas.json)
+            osmium tags-filter "$f" w/toll=yes -o tmp/pj.osm.pbf --overwrite
+            osmium export tmp/pj.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
+            cat tmp/parte.geojsonseq >> tmp/peajes.geojsonseq
             rm -f "$f"
           done
           wc -l tmp/colegios.geojsonseq
       - run: python -u colegios.py tmp/colegios.geojsonseq
       - run: python -u senales.py tmp/senales.opl tmp/tranvias.opl
       - run: python -u puertos.py tmp/puertos.geojsonseq
+      - run: python -u peajes.py tmp/peajes.geojsonseq
       - name: Publicar
         run: |
           git config user.name "atalaya-bot"
           git config user.email "atalaya-bot@users.noreply.github.com"
-          git add datos/colegios.json datos/senales.csv.gz datos/puertos.json
+          git add datos/colegios.json datos/senales.csv.gz datos/puertos.json datos/peajes.json
           git diff --cached --quiet || git commit -qm "Colegios: $(date -u +%Y-%m-%d)"
           for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
