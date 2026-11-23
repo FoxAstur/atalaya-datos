@@ -1,0 +1,3 @@
+https://download.openstreetmap.fr/extracts/europe/ -> 200 14771 text/html
+https://download.openstreetmap.fr/extracts/africa/ -> 200 26181 text/html
+https://download.openstreetmap.fr/extracts/africa/spain/ -> 200 1612 text/html
