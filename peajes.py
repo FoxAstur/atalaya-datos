@@ -75,7 +75,7 @@ def main() -> int:
         refs = {r.strip().replace(" ", "-") for r in (p.get("ref") or "").split(";") if r.strip()}
         mla, mlo = pts[len(pts) // 2]
         idx = next((i for i, t in enumerate(lista)
-                    if dentro(t["caja"], mla, mlo) and (t["ref"] is None or t["ref"] in refs)), None)
+                    if dentro(t["caja"], mla, mlo) and (t["ref"] is None or refs & set(t.get("refs") or [t["ref"]]))), None)
         if idx is None:
             sin += 1
             largo = sum(math.hypot((pts[k + 1][0] - pts[k][0]) * 110.54, (pts[k + 1][1] - pts[k][1]) * 111.32 * math.cos(math.radians(pts[k][0])))
