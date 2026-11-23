@@ -28,7 +28,7 @@ jobs:
       - name: Extracto de OpenStreetMap
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
-          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl && : > tmp/tranvias.opl
+          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl && : > tmp/tranvias.opl && : > tmp/puertos.geojsonseq
           for zona in europe/spain africa/canary-islands; do
             f=tmp/$(basename $zona).osm.pbf
             curl -sSL --retry 6 --retry-all-errors --retry-delay 20 --connect-timeout 30 --speed-limit 300000 --speed-time 60 --max-time 1200 \
@@ -45,15 +45,23 @@ jobs:
             osmium tags-filter "$f" w/railway=tram,light_rail -R -o tmp/t.osm.pbf --overwrite
             osmium cat tmp/t.osm.pbf -f opl -o tmp/t.opl --overwrite
             cat tmp/t.opl >> tmp/tranvias.opl
+            # puertos de montaña: los nodos mountain_pass de las vías para coches (no los de las sendas)
+            osmium tags-filter "$f" w/highway=motorway,trunk,primary,secondary,tertiary,unclassified,residential,motorway_link,trunk_link,primary_link,secondary_link,tertiary_link \
+              -o tmp/v.osm.pbf --overwrite
+            osmium tags-filter tmp/v.osm.pbf n/mountain_pass=yes -R -o tmp/p.osm.pbf --overwrite
+            osmium export tmp/p.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
+            cat tmp/parte.geojsonseq >> tmp/puertos.geojsonseq
+            rm -f tmp/v.osm.pbf
             rm -f "$f"
           done
           wc -l tmp/colegios.geojsonseq
       - run: python -u colegios.py tmp/colegios.geojsonseq
       - run: python -u senales.py tmp/senales.opl tmp/tranvias.opl
+      - run: python -u puertos.py tmp/puertos.geojsonseq
       - name: Publicar
         run: |
           git config user.name "atalaya-bot"
           git config user.email "atalaya-bot@users.noreply.github.com"
-          git add datos/colegios.json datos/senales.csv.gz
+          git add datos/colegios.json datos/senales.csv.gz datos/puertos.json
           git diff --cached --quiet || git commit -qm "Colegios: $(date -u +%Y-%m-%d)"
           for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
