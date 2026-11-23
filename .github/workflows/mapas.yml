@@ -43,11 +43,16 @@ jobs:
           # Canarias: Geofabrik la tiene en África, no dentro de España
           bajar tmp/osm/canarias.osm.pbf "https://download.geofabrik.de/africa/canary-islands-latest.osm.pbf" "$F/africa/spain/canarias-latest.osm.pbf"
           ls -la tmp/osm
-          osmium merge tmp/osm/*.osm.pbf -o tmp/espana.osm.pbf --overwrite
+          # si un extracto viene del espejo (otro día que el de Geofabrik), el mismo nodo llega en dos versiones y
+          # Planetiler se para («Nodes must be sorted ascending by ID»): se juntan y se deja solo la última de cada uno
+          osmium merge tmp/osm/*.osm.pbf -o tmp/junto.osm.pbf --overwrite
           rm -rf tmp/osm
+          osmium time-filter tmp/junto.osm.pbf -o tmp/espana.osm.pbf --overwrite
+          rm -f tmp/junto.osm.pbf
           ls -la tmp/espana.osm.pbf
       - name: Teselas (Planetiler)
         run: |
+          set -o pipefail
           curl -sSfL -o tmp/planetiler.jar https://github.com/onthegomap/planetiler/releases/latest/download/planetiler.jar
           # lo nuestro (límites de velocidad y carriles de cada vía): extras.pmtiles
           java -Xmx8g -jar tmp/planetiler.jar generate-custom --schema=mapas/extras.yml --output=tmp/extras.pmtiles \
@@ -60,6 +65,14 @@ jobs:
             --languages=es,ca,eu,gl,ast,en --nodemap-type=sparsearray --storage=mmap 2>&1 | tail -40
           ls -la tmp/espana.pmtiles
           rm -rf tmp/trabajo
+      - name: Comprobar antes de publicar
+        run: |
+          # nunca machacar el mapa bueno con uno roto: tiene que ser un PMTiles y de un tamaño razonable
+          for f in espana:500000000 extras:5000000; do
+            n=${f%%:*}; min=${f##*:}; a=tmp/$n.pmtiles
+            test "$(head -c 7 "$a")" = "PMTiles" || { echo "$a no es un PMTiles"; exit 1; }
+            test "$(stat -c %s "$a")" -ge "$min" || { echo "$a demasiado pequeño: $(stat -c %s "$a")"; exit 1; }
+          done
       - name: Publicar
         env:
           GH_TOKEN: ${{ github.token }}

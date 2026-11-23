@@ -32,10 +32,10 @@ jobs:
           V=$(curl -sSfL https://api.github.com/repos/protomaps/go-pmtiles/releases/latest | python3 -c "import json,sys;print(json.load(sys.stdin)['tag_name'])")
           curl -sSfL -o tmp/pm.tgz "https://github.com/protomaps/go-pmtiles/releases/download/$V/go-pmtiles_${V#v}_Linux_x86_64.tar.gz"
           tar -xzf tmp/pm.tgz -C tmp pmtiles
-          tmp/pmtiles show tmp/teselas/espana.pmtiles | head -30
+          tmp/pmtiles show tmp/teselas/espana.pmtiles | head -30 || { echo "espana.pmtiles roto"; exit 1; }
           (tmp/pmtiles serve tmp/teselas --port 8080 --cors='*' > tmp/serve.log 2>&1 &)
           sleep 3
-          curl -sS -o /dev/null -w "z5: %{http_code} %{size_download}\n" http://localhost:8080/espana/5/15/12.mvt
+          curl -sS --max-time 20 -o /dev/null -w "z5: %{http_code} %{size_download}\n" http://localhost:8080/espana/5/15/12.mvt
       - name: Pintar
         run: |
           npm i --no-save playwright@1.47.2 >/dev/null 2>&1
