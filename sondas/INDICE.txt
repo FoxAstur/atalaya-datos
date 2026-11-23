@@ -1,0 +1,2 @@
+https://www.rainviewer.com/files/rainviewer_api_colors_table.csv -> 200 24228 text/plain
+https://api.rainviewer.com/public/weather-maps.json -> 200 818 application/json
