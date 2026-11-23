@@ -57,6 +57,7 @@ def main() -> int:
     lista = tarifas["tarifas"]
     vias = []
     sin = 0
+    sueltas: dict[str, float] = {}
     for linea in open(sys.argv[1], encoding="utf-8"):
         linea = linea.strip().lstrip("\x1e")
         if not linea:
@@ -77,6 +78,10 @@ def main() -> int:
                     if dentro(t["caja"], mla, mlo) and (t["ref"] is None or t["ref"] in refs)), None)
         if idx is None:
             sin += 1
+            largo = sum(math.hypot((pts[k + 1][0] - pts[k][0]) * 110.54, (pts[k + 1][1] - pts[k][1]) * 111.32 * math.cos(math.radians(pts[k][0])))
+                        for k in range(len(pts) - 1))
+            clave = (",".join(sorted(refs)) or p.get("name") or "?") + f" @{mla:.2f},{mlo:.2f}"[:12]
+            sueltas[clave] = sueltas.get(clave, 0.0) + largo
             continue
         s = simplificar(pts)
         plano = []
@@ -88,6 +93,9 @@ def main() -> int:
     with open("datos/peajes.json", "w", encoding="utf-8") as fh:
         json.dump(out, fh, ensure_ascii=False, separators=(",", ":"))
     usadas = {v[0] for v in vias}
+    print("vías de peaje sin tarifa (las más largas; gratis ya o sin precio conocido):")
+    for k, v in sorted(sueltas.items(), key=lambda x: -x[1])[:25]:
+        print(f"  {k}: {v:.1f} km")
     print(f"vías de peaje: {len(vias)} (sin tarifa: {sin}); tarifas con trazado: {len(usadas)}/{len(lista)}")
     for i, t in enumerate(lista):
         if i not in usadas:
