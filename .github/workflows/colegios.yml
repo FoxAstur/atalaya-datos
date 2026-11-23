@@ -28,7 +28,7 @@ jobs:
       - name: Extracto de OpenStreetMap
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
-          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl && : > tmp/tranvias.opl && : > tmp/puertos.geojsonseq && : > tmp/peajes.geojsonseq
+          mkdir -p tmp && : > tmp/colegios.geojsonseq && : > tmp/senales.opl && : > tmp/tranvias.opl && : > tmp/puertos.geojsonseq && : > tmp/peajes.geojsonseq && : > tmp/autopistas.geojsonseq
           # Geofabrik a veces va lento o da error: se reintenta y, si no, el espejo de OpenStreetMap France
           F=https://download.openstreetmap.fr/extracts
           bajar() { d=$1; shift; for i in 1 2 3; do for u in "$@"; do
@@ -61,13 +61,16 @@ jobs:
             osmium tags-filter "$f" w/toll=yes -o tmp/pj.osm.pbf --overwrite
             osmium export tmp/pj.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
             cat tmp/parte.geojsonseq >> tmp/peajes.geojsonseq
+            osmium tags-filter "$f" w/highway=motorway -o tmp/am.osm.pbf --overwrite
+            osmium export tmp/am.osm.pbf -f geojsonseq -o tmp/parte.geojsonseq --overwrite
+            cat tmp/parte.geojsonseq >> tmp/autopistas.geojsonseq
             rm -f "$f"
           done
           wc -l tmp/colegios.geojsonseq
       - run: python -u colegios.py tmp/colegios.geojsonseq
       - run: python -u senales.py tmp/senales.opl tmp/tranvias.opl
       - run: python -u puertos.py tmp/puertos.geojsonseq
-      - run: python -u peajes.py tmp/peajes.geojsonseq
+      - run: python -u peajes.py tmp/peajes.geojsonseq tmp/autopistas.geojsonseq
       - name: Publicar
         run: |
           git config user.name "atalaya-bot"

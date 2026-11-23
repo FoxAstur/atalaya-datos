@@ -4,7 +4,8 @@ Las autopistas de peaje de España con su precio, para saber lo que cuesta una r
 datos/peajes.json = las tarifas (peajes_tarifas.json, a mano cada año) + el trazado de cada una (las vías con
 toll=yes de OpenStreetMap, simplificadas), asignado por referencia y caja:
   {"version": 1, "fuente": …, "tarifas": [...], "vias": [[i, [lat, lon, lat, lon, …]], …]}
-con i el índice de la tarifa. Entrada: el GeoJSON por líneas de osmium (colegios.yml).
+con i el índice de la tarifa. Entrada: el GeoJSON por líneas de osmium (colegios.yml): las vías con toll=yes y, aparte, las autopistas (para las
+tarifas «todas»).
 Datos © colaboradores de OpenStreetMap (ODbL).
 """
 import json
@@ -58,13 +59,16 @@ def main() -> int:
     vias = []
     sin = 0
     sueltas: dict[str, float] = {}
-    for linea in open(sys.argv[1], encoding="utf-8"):
+    def lineas():
+        for ruta in sys.argv[1:]:
+            yield from open(ruta, encoding="utf-8")
+    for linea in lineas():
         linea = linea.strip().lstrip("\x1e")
         if not linea:
             continue
         f = json.loads(linea)
         p = f.get("properties") or {}
-        if p.get("toll") != "yes" or p.get("highway") not in CLASES:
+        if p.get("highway") not in CLASES:
             continue
         g = f.get("geometry") or {}
         if g.get("type") != "LineString":
@@ -74,8 +78,12 @@ def main() -> int:
             continue
         refs = {r.strip().replace(" ", "-") for r in (p.get("ref") or "").split(";") if r.strip()}
         mla, mlo = pts[len(pts) // 2]
+        peaje = p.get("toll") == "yes"
         idx = next((i for i, t in enumerate(lista)
-                    if dentro(t["caja"], mla, mlo) and (t["ref"] is None or refs & set(t.get("refs") or [t["ref"]]))), None)
+                    if (peaje or t.get("todas")) and dentro(t["caja"], mla, mlo)
+                    and (t["ref"] is None or refs & set(t.get("refs") or [t["ref"]]))), None)
+        if idx is None and not peaje:
+            continue
         if idx is None:
             sin += 1
             largo = sum(math.hypot((pts[k + 1][0] - pts[k][0]) * 110.54, (pts[k + 1][1] - pts[k][1]) * 111.32 * math.cos(math.radians(pts[k][0])))

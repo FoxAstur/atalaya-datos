@@ -38,6 +38,9 @@ def main() -> int:
             continue
         lon, lat = g["coordinates"]
         nombre = (p.get("name:es") or p.get("name") or "").strip() or None
+        # los túneles marcados como puerto (el del Cadí…) no son un puerto que se cruce por arriba
+        if nombre and nombre.lower().startswith(("túnel", "tunel", "túnels", "tunnel")):
+            continue
         ele = altitud(p.get("ele"))
         # un collado sin nombre ni altura en una calle no ayuda a nadie
         if nombre is None and (ele is None or ele < 500):
