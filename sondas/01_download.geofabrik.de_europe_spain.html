@@ -1,0 +1,1146 @@
+
+<!DOCTYPE html>
+<html data-theme="light">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="https://www.geofabrik.de/favicon.ico" />
+<meta name="description" content="Download OpenStreetMap data for Spain, one of the regions served on Geofabrik&#39;s free download server. OSM PBF and Shapefiles available.">
+<meta name="og:description" property="og:description" content="Download OpenStreetMap data for Spain, one of the regions served on Geofabrik&#39;s free download server. OSM PBF and Shapefiles available.">
+<meta property="og:image" content="https://www.geofabrik.de/img/geofabrik_logo_notext.svg">
+<meta property="og:site_name" content="Geofabrik Download Server">
+<meta property="og:title" content="Download OpenStreetMap for Spain | Geofabrik Download Server">
+<title>Download OpenStreetMap for Spain | Geofabrik Download Server</title>
+<link rel="stylesheet" href="/static/leaflet/leaflet.css" />
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+<script type="importmap">
+{ "imports": { "leaflet": "/static/leaflet/leaflet.js" } }
+</script>
+</head>
+<body>
+<div id="donation">
+Do you find OpenStreetMap data useful? Consider giving something back in the OSMF's <a href="//supporting.openstreetmap.org">funding campaign!</a>
+</div>
+<div id="download-top">
+   <div id="download-top-right">
+      <img alt="header image" src="/static/img/geofabrik-downloads.png" height="20">
+   </div>
+</div>
+<div id="download-titlebar">
+<div class="download-main">
+<div class="leftColumn">
+
+<a href="/search.html" class="search">🔍</a>
+<h1 googl="true">Download OpenStreetMap data for this region:</h1>
+<h2>Spain</h2>
+<nav class="breadcrumb">
+   <ol>
+      <li><a href="/">World</a></li>
+      
+      <li><a href="/europe">Europe</a></li>
+      
+      <li><b>Spain</b></li>
+   </ol>
+</nav>
+
+
+
+<p class="isPublicInfo">
+   The OpenStreetMap data files provided on this server do <b>not</b> contain the user names, user IDs and changeset IDs of the OSM objects because these fields are assumed to contain personal information about the OpenStreetMap contributors and are therefore subject to data protection regulations in the European Union.
+   <br>
+   Extracts with full metadata are only available to OpenStreetMap contributors on the <a href="https://osm-internal.download.geofabrik.de/europe/spain.html">internal download server</a>.
+</p>
+
+
+
+
+
+<h3>Commonly Used Formats</h3>
+<ul>
+
+
+<li>
+
+   <a href="https://download.geofabrik.de/europe/spain/spain-latest.osm.pbf">spain-latest.osm.pbf</a>,
+
+   suitable for Osmium, Osmosis, imposm, osm2pgsql, mkgmap, and others.
+
+This file was last modified <time title="Monday, 23.11.2026, 00:39:41 UTC", datetime="2026-11-23T00:39:41+00:00">5 hours ago</time> and contains all OSM data up to <time title="Sunday, 22.11.2026, 21:20:48 UTC", datetime="2026-11-22T21:20:48+00:00">8 hours ago</time>. File size: 1.4&nbsp;GB.
+
+</li>
+
+
+<li>
+
+   <s>spain-latest-free.shp.zip</s>,
+
+   yields a number of ESRI compatible shape files when unzipped.
+   <a href="/static/osm-data-in-gis-formats-free.pdf">(Format description PDF)</a>
+
+</li>
+
+
+<li>
+
+   <s>spain-latest-free.gpkg.zip</s>,
+
+   same as shape file but in more modern Geopackage format.
+
+</li>
+
+</ul>
+
+<h3>Other Formats and Auxiliary Files</h3>
+<ul>
+
+
+<li>
+
+   <s>spain-internal.osh.pbf</s>
+
+
+   The history file contains personal data and is available on the <a href="https://osm-internal.download.geofabrik.de/europe/spain.html">internal server</a> only.
+   See notice above for further information.
+
+</li>
+
+
+<li>
+
+   <a href="https://download.geofabrik.de/europe/spain/spain.geojson">.geojson file</a>
+
+   that describes the extent of this region.
+</li>
+
+
+<li>
+
+   <s>experimental vector tiles package</s>
+
+   conforming to
+   <a href="https://shortbread-tiles.org/">Shortbread schema</a>
+   for use with MapLibre and other MVT capable software
+
+</li>
+
+
+<li>
+
+   <a href="https://download.geofabrik.de/europe/spain/updates">.osc.gz files</a>
+
+   that contain all changes in this region, suitable e.g. for Osmosis updates
+</li>
+
+
+
+<li><a href="https://taginfo.geofabrik.de/europe:spain">Taginfo statistics for this region</a></li>
+
+
+
+<li>
+   <a href="#" onclick="document.getElementById('details').style.display = document.getElementById('details').style.display === 'inline' ? 'none' : 'inline'">
+      raw directory index
+   </a>
+   allowing you to see and download older files
+</li>
+
+
+</ul>
+
+
+<div id="details" style="display: none;">
+   <table id="file_index">
+      <tbody>
+         <tr><th class="filename">Filename</th><th>Last modified</th><th>Filesize</th></tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-140101-free.shp.zip">spain-140101-free.shp.zip</a></td>
+            <td ><time title="Thursday, 26.04.2018, 21:40:17 UTC", datetime="2018-04-26T21:40:17+00:00">8 years ago</time></td>
+            <td>601&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-140101.osm.pbf">spain-140101.osm.pbf</a></td>
+            <td ><time title="Thursday, 02.01.2014, 02:03:44 UTC", datetime="2014-01-02T02:03:44+00:00">12 years ago</time></td>
+            <td>387&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-150101-free.shp.zip">spain-150101-free.shp.zip</a></td>
+            <td ><time title="Thursday, 26.04.2018, 21:29:50 UTC", datetime="2018-04-26T21:29:50+00:00">8 years ago</time></td>
+            <td>719&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-150101.osm.pbf">spain-150101.osm.pbf</a></td>
+            <td ><time title="Friday, 02.01.2015, 04:07:31 UTC", datetime="2015-01-02T04:07:31+00:00">11 years ago</time></td>
+            <td>429&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-160101-free.shp.zip">spain-160101-free.shp.zip</a></td>
+            <td ><time title="Thursday, 26.04.2018, 22:01:40 UTC", datetime="2018-04-26T22:01:40+00:00">8 years ago</time></td>
+            <td>840&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-160101.osm.pbf">spain-160101.osm.pbf</a></td>
+            <td ><time title="Saturday, 02.01.2016, 04:41:30 UTC", datetime="2016-01-02T04:41:30+00:00">10 years ago</time></td>
+            <td>488&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-170101-free.shp.zip">spain-170101-free.shp.zip</a></td>
+            <td ><time title="Thursday, 26.04.2018, 22:34:29 UTC", datetime="2018-04-26T22:34:29+00:00">8 years ago</time></td>
+            <td>976&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-170101.osm.pbf">spain-170101.osm.pbf</a></td>
+            <td ><time title="Monday, 02.01.2017, 04:12:08 UTC", datetime="2017-01-02T04:12:08+00:00">9 years ago</time></td>
+            <td>554&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-180101-free.shp.zip">spain-180101-free.shp.zip</a></td>
+            <td ><time title="Thursday, 26.04.2018, 22:45:11 UTC", datetime="2018-04-26T22:45:11+00:00">8 years ago</time></td>
+            <td>1.1&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-180101.osm.pbf">spain-180101.osm.pbf</a></td>
+            <td ><time title="Tuesday, 02.01.2018, 01:03:38 UTC", datetime="2018-01-02T01:03:38+00:00">8 years ago</time></td>
+            <td>617&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-190101-free.shp.zip">spain-190101-free.shp.zip</a></td>
+            <td ><time title="Wednesday, 02.01.2019, 00:13:30 UTC", datetime="2019-01-02T00:13:30+00:00">7 years ago</time></td>
+            <td>1.2&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-190101.osm.pbf">spain-190101.osm.pbf</a></td>
+            <td ><time title="Wednesday, 02.01.2019, 00:04:25 UTC", datetime="2019-01-02T00:04:25+00:00">7 years ago</time></td>
+            <td>697&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-200101-free.shp.zip">spain-200101-free.shp.zip</a></td>
+            <td ><time title="Saturday, 02.05.2020, 22:04:41 UTC", datetime="2020-05-02T22:04:41+00:00">6 years ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-200101.osm.pbf">spain-200101.osm.pbf</a></td>
+            <td ><time title="Wednesday, 19.02.2020, 15:21:26 UTC", datetime="2020-02-19T15:21:26+00:00">6 years ago</time></td>
+            <td>785&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-210101-free.shp.zip">spain-210101-free.shp.zip</a></td>
+            <td ><time title="Saturday, 02.01.2021, 02:01:03 UTC", datetime="2021-01-02T02:01:03+00:00">5 years ago</time></td>
+            <td>1.6&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-210101.osm.pbf">spain-210101.osm.pbf</a></td>
+            <td ><time title="Saturday, 02.01.2021, 01:14:46 UTC", datetime="2021-01-02T01:14:46+00:00">5 years ago</time></td>
+            <td>885&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-220101.osm.pbf">spain-220101.osm.pbf</a></td>
+            <td ><time title="Sunday, 02.01.2022, 03:47:18 UTC", datetime="2022-01-02T03:47:18+00:00">4 years ago</time></td>
+            <td>967&nbsp;MB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-230101.osm.pbf">spain-230101.osm.pbf</a></td>
+            <td ><time title="Monday, 02.01.2023, 03:13:40 UTC", datetime="2023-01-02T03:13:40+00:00">3 years ago</time></td>
+            <td>1.0&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-240101.osm.pbf">spain-240101.osm.pbf</a></td>
+            <td ><time title="Tuesday, 02.01.2024, 02:48:04 UTC", datetime="2024-01-02T02:48:04+00:00">2 years ago</time></td>
+            <td>1.1&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-250101.osm.pbf">spain-250101.osm.pbf</a></td>
+            <td ><time title="Thursday, 02.01.2025, 03:33:38 UTC", datetime="2025-01-02T03:33:38+00:00">1 year ago</time></td>
+            <td>1.2&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-260101.osm.pbf">spain-260101.osm.pbf</a></td>
+            <td ><time title="Friday, 02.01.2026, 03:56:23 UTC", datetime="2026-01-02T03:56:23+00:00">10 months ago</time></td>
+            <td>1.3&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-260101.osm.pbf.md5">spain-260101.osm.pbf.md5</a></td>
+            <td ><time title="Friday, 02.01.2026, 03:56:25 UTC", datetime="2026-01-02T03:56:25+00:00">10 months ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-260901.osm.pbf">spain-260901.osm.pbf</a></td>
+            <td ><time title="Friday, 04.09.2026, 10:45:04 UTC", datetime="2026-09-04T10:45:04+00:00">2 months ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-260901.osm.pbf.md5">spain-260901.osm.pbf.md5</a></td>
+            <td ><time title="Friday, 04.09.2026, 10:45:30 UTC", datetime="2026-09-04T10:45:30+00:00">2 months ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261001.osm.pbf">spain-261001.osm.pbf</a></td>
+            <td ><time title="Friday, 02.10.2026, 17:35:18 UTC", datetime="2026-10-02T17:35:18+00:00">1 month ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261001.osm.pbf.md5">spain-261001.osm.pbf.md5</a></td>
+            <td ><time title="Friday, 02.10.2026, 17:35:20 UTC", datetime="2026-10-02T17:35:20+00:00">1 month ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261101.osm.pbf">spain-261101.osm.pbf</a></td>
+            <td ><time title="Monday, 02.11.2026, 07:52:43 UTC", datetime="2026-11-02T07:52:43+00:00">2 weeks ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261101.osm.pbf.md5">spain-261101.osm.pbf.md5</a></td>
+            <td ><time title="Monday, 02.11.2026, 07:52:45 UTC", datetime="2026-11-02T07:52:45+00:00">2 weeks ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261112.osm.pbf">spain-261112.osm.pbf</a></td>
+            <td ><time title="Friday, 13.11.2026, 01:24:52 UTC", datetime="2026-11-13T01:24:52+00:00">1 week ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261112.osm.pbf.md5">spain-261112.osm.pbf.md5</a></td>
+            <td ><time title="Friday, 13.11.2026, 01:24:53 UTC", datetime="2026-11-13T01:24:53+00:00">1 week ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261113.osm.pbf">spain-261113.osm.pbf</a></td>
+            <td ><time title="Saturday, 14.11.2026, 00:13:16 UTC", datetime="2026-11-14T00:13:16+00:00">1 week ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261113.osm.pbf.md5">spain-261113.osm.pbf.md5</a></td>
+            <td ><time title="Saturday, 14.11.2026, 00:13:18 UTC", datetime="2026-11-14T00:13:18+00:00">1 week ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261114.osm.pbf">spain-261114.osm.pbf</a></td>
+            <td ><time title="Sunday, 15.11.2026, 02:09:34 UTC", datetime="2026-11-15T02:09:34+00:00">1 week ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261114.osm.pbf.md5">spain-261114.osm.pbf.md5</a></td>
+            <td ><time title="Sunday, 15.11.2026, 02:09:36 UTC", datetime="2026-11-15T02:09:36+00:00">1 week ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261115.osm.pbf">spain-261115.osm.pbf</a></td>
+            <td ><time title="Monday, 16.11.2026, 03:17:48 UTC", datetime="2026-11-16T03:17:48+00:00">1 week ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261115.osm.pbf.md5">spain-261115.osm.pbf.md5</a></td>
+            <td ><time title="Monday, 16.11.2026, 03:17:52 UTC", datetime="2026-11-16T03:17:52+00:00">1 week ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261116.osm.pbf">spain-261116.osm.pbf</a></td>
+            <td ><time title="Tuesday, 17.11.2026, 00:25:30 UTC", datetime="2026-11-17T00:25:30+00:00">6 days ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261116.osm.pbf.md5">spain-261116.osm.pbf.md5</a></td>
+            <td ><time title="Tuesday, 17.11.2026, 00:25:32 UTC", datetime="2026-11-17T00:25:32+00:00">6 days ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261117.osm.pbf">spain-261117.osm.pbf</a></td>
+            <td ><time title="Wednesday, 18.11.2026, 00:35:40 UTC", datetime="2026-11-18T00:35:40+00:00">5 days ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261117.osm.pbf.md5">spain-261117.osm.pbf.md5</a></td>
+            <td ><time title="Wednesday, 18.11.2026, 00:36:04 UTC", datetime="2026-11-18T00:36:04+00:00">5 days ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261118.osm.pbf">spain-261118.osm.pbf</a></td>
+            <td ><time title="Thursday, 19.11.2026, 00:23:49 UTC", datetime="2026-11-19T00:23:49+00:00">4 days ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261118.osm.pbf.md5">spain-261118.osm.pbf.md5</a></td>
+            <td ><time title="Thursday, 19.11.2026, 00:23:51 UTC", datetime="2026-11-19T00:23:51+00:00">4 days ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261119.osm.pbf">spain-261119.osm.pbf</a></td>
+            <td ><time title="Friday, 20.11.2026, 00:24:13 UTC", datetime="2026-11-20T00:24:13+00:00">3 days ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261119.osm.pbf.md5">spain-261119.osm.pbf.md5</a></td>
+            <td ><time title="Friday, 20.11.2026, 00:24:15 UTC", datetime="2026-11-20T00:24:15+00:00">3 days ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261120.osm.pbf">spain-261120.osm.pbf</a></td>
+            <td ><time title="Saturday, 21.11.2026, 00:33:20 UTC", datetime="2026-11-21T00:33:20+00:00">2 days ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261120.osm.pbf.md5">spain-261120.osm.pbf.md5</a></td>
+            <td ><time title="Saturday, 21.11.2026, 00:33:22 UTC", datetime="2026-11-21T00:33:22+00:00">2 days ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261121.osm.pbf">spain-261121.osm.pbf</a></td>
+            <td ><time title="Sunday, 22.11.2026, 00:55:57 UTC", datetime="2026-11-22T00:55:57+00:00">1 day ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261121.osm.pbf.md5">spain-261121.osm.pbf.md5</a></td>
+            <td ><time title="Sunday, 22.11.2026, 00:55:59 UTC", datetime="2026-11-22T00:55:59+00:00">1 day ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261122.osm.pbf">spain-261122.osm.pbf</a></td>
+            <td ><time title="Monday, 23.11.2026, 00:39:41 UTC", datetime="2026-11-23T00:39:41+00:00">5 hours ago</time></td>
+            <td>1.4&nbsp;GB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-261122.osm.pbf.md5">spain-261122.osm.pbf.md5</a></td>
+            <td ><time title="Monday, 23.11.2026, 00:39:42 UTC", datetime="2026-11-23T00:39:42+00:00">5 hours ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain-latest.osm.pbf.md5">spain-latest.osm.pbf.md5</a></td>
+            <td ><time title="Monday, 23.11.2026, 05:00:10 UTC", datetime="2026-11-23T05:00:10+00:00">15 minutes ago</time></td>
+            <td>55.0&nbsp;B</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain.geojson">spain.geojson</a></td>
+            <td ><time title="Monday, 23.11.2026, 00:39:45 UTC", datetime="2026-11-23T00:39:45+00:00">5 hours ago</time></td>
+            <td>15.7&nbsp;KB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain.kml">spain.kml</a></td>
+            <td ><time title="Monday, 23.11.2026, 00:39:44 UTC", datetime="2026-11-23T00:39:44+00:00">5 hours ago</time></td>
+            <td>16.1&nbsp;KB</td>
+         </tr>
+         
+         <tr>
+            <td class="filename"><a href="https://download.geofabrik.de/europe/spain/spain.poly">spain.poly</a></td>
+            <td ><time title="Monday, 23.11.2026, 00:42:01 UTC", datetime="2026-11-23T00:42:01+00:00">5 hours ago</time></td>
+            <td>22.9&nbsp;KB</td>
+         </tr>
+         
+      </tbody>
+   </table>
+</div>
+
+
+
+<h3>Subregions</h3>
+
+<p>Click on the region name to see the overview page for that region, or select one of the
+file extension links for quick access.</p>
+
+<table id="subregions">
+   <tr>
+      <th class="subregion">Subregion</th>
+      <th colspan="3">Quick Links</th>
+   </tr>
+   <tr>
+      <th>&nbsp;</th>
+      <th colspan="2">.osm.pbf</th>
+      <th>.gpkg.zip</th>
+   </tr>
+   <!-- TODO: this sort does not work, since child is just a string -->
+   
+   
+<tr data-child-id="andalucia">
+   <td class="subregion">
+      <a href="/europe/spain/andalucia/">Andalucía</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/andalucia/andalucia-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (189&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/andalucia/andalucia-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="aragon">
+   <td class="subregion">
+      <a href="/europe/spain/aragon/">Aragón</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/aragon/aragon-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (91.5&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/aragon/aragon-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="asturias">
+   <td class="subregion">
+      <a href="/europe/spain/asturias/">Asturias</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/asturias/asturias-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (35.1&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/asturias/asturias-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="cantabria">
+   <td class="subregion">
+      <a href="/europe/spain/cantabria/">Cantabria</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/cantabria/cantabria-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (34.1&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/cantabria/cantabria-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="castilla-y-leon">
+   <td class="subregion">
+      <a href="/europe/spain/castilla-y-leon/">Castilla y León</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/castilla-y-leon/castilla-y-leon-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (171&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/castilla-y-leon/castilla-y-leon-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="castilla-la-mancha">
+   <td class="subregion">
+      <a href="/europe/spain/castilla-la-mancha/">Castilla-La Mancha</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/castilla-la-mancha/castilla-la-mancha-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (103&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/castilla-la-mancha/castilla-la-mancha-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="cataluna">
+   <td class="subregion">
+      <a href="/europe/spain/cataluna/">Cataluña</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/cataluna/cataluna-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (262&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/cataluna/cataluna-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="ceuta">
+   <td class="subregion">
+      <a href="/europe/spain/ceuta/">Ceuta</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/ceuta/ceuta-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (616&nbsp;KB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/ceuta/ceuta-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="extremadura">
+   <td class="subregion">
+      <a href="/europe/spain/extremadura/">Extremadura</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/extremadura/extremadura-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (38.5&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/extremadura/extremadura-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="galicia">
+   <td class="subregion">
+      <a href="/europe/spain/galicia/">Galicia</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/galicia/galicia-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (107&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/galicia/galicia-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="islas-baleares">
+   <td class="subregion">
+      <a href="/europe/spain/islas-baleares/">Islas Baleares</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/islas-baleares/islas-baleares-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (44.7&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/islas-baleares/islas-baleares-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="la-rioja">
+   <td class="subregion">
+      <a href="/europe/spain/la-rioja/">La Rioja</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/la-rioja/la-rioja-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (13.9&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/la-rioja/la-rioja-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="madrid">
+   <td class="subregion">
+      <a href="/europe/spain/madrid/">Madrid</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/madrid/madrid-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (81.9&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/madrid/madrid-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="melilla">
+   <td class="subregion">
+      <a href="/europe/spain/melilla/">Melilla</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/melilla/melilla-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (782&nbsp;KB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/melilla/melilla-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="murcia">
+   <td class="subregion">
+      <a href="/europe/spain/murcia/">Murcia</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/murcia/murcia-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (33.8&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/murcia/murcia-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="navarra">
+   <td class="subregion">
+      <a href="/europe/spain/navarra/">Navarra</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/navarra/navarra-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (35.9&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/navarra/navarra-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="pais-vasco">
+   <td class="subregion">
+      <a href="/europe/spain/pais-vasco/">País Vasco</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/pais-vasco/pais-vasco-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (66.2&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/pais-vasco/pais-vasco-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+   
+<tr data-child-id="valencia">
+   <td class="subregion">
+      <a href="/europe/spain/valencia/">Valencia</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/europe/spain/valencia/valencia-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (135&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/europe/spain/valencia/valencia-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+</table>
+
+
+
+<h3>Special regions</h3>
+<p>These regions are "special" because they are outside of the usual administrative hierarchies and may duplicate data already contained in the other sub regions.</p>
+<table id="special_regions">
+   <tr>
+      <th class="subregion">Special regions</th>
+      <th colspan="3">Quick Links</th>
+   </tr>
+   <tr>
+      <th>&nbsp;</th>
+      <th colspan="2">.osm.pbf</th>
+      <th>.gpkg.zip</th>
+   </tr>
+   
+   
+<tr data-child-id="canary-islands">
+   <td class="subregion">
+      <a href="/africa/canary-islands/">Canary Islands</a>
+   </td>
+   
+   
+   <td style="border-right: 0px; margin-right: 0px; padding-right: 0px;">
+      <a href="https://download.geofabrik.de/africa/canary-islands/canary-islands-latest.osm.pbf">[.osm.pbf]</a>
+   </td>
+   <td style="border-left: 0px; margin-left: 0px; padding-left: 0px;">
+      (57.8&nbsp;MB)
+   </td>
+   
+   
+   
+   <td>
+      
+      <a href="https://download.geofabrik.de/africa/canary-islands/canary-islands-latest-free.shp.zip">[.gpkg.zip]</a>
+      
+   </td>
+   
+</tr>
+
+   
+</table>
+
+
+</div>
+<div id="download-right">
+   <div id="noscroll">
+      
+      <div id="map"></div>
+      <script type="module">
+         import map from '/static/map.js';
+         import { GeoJSON } from 'leaflet';
+         
+   const geojson = {"coordinates": [[[[-1.818554, 35.89823], [-2.159529, 35.7798], [-2.912861, 35.28711], [-2.929856, 35.26917], [-2.949118, 35.26393], [-2.952387, 35.26424], [-2.972404, 35.2854], [-2.972424, 35.28546], [-2.970666, 35.29861], [-2.964749, 35.31337], [-2.95959, 35.31872], [-2.946335, 35.32466], [-2.914235, 35.3535], [-2.922474, 35.47214], [-2.974415, 35.46091], [-3.128324, 35.64784], [-5.011109, 35.73553], [-5.254818, 35.76327], [-5.342838, 35.86857], [-5.355773, 35.87211], [-5.373401, 35.87996], [-5.398531, 35.93988], [-5.630473, 35.91539], [-7.35365, 36.00071], [-7.409518, 37.18382], [-7.417832, 37.21283], [-7.418941, 37.2344], [-7.438431, 37.24837], [-7.429025, 37.27275], [-7.444954, 37.31202], [-7.447286, 37.34549], [-7.440834, 37.35733], [-7.442216, 37.39151], [-7.463837, 37.40671], [-7.464352, 37.41421], [-7.452679, 37.41898], [-7.458467, 37.42509], [-7.470703, 37.46886], [-7.47242, 37.4814], [-7.467957, 37.48862], [-7.477055, 37.49284], [-7.484951, 37.4957], [-7.492704, 37.50539], [-7.492083, 37.51954], [-7.511516, 37.52181], [-7.52466, 37.55333], [-7.517567, 37.56921], [-7.515164, 37.57384], [-7.505036, 37.57955], [-7.503662, 37.58839], [-7.499371, 37.59302], [-7.505928, 37.60388], [-7.490273, 37.60662], [-7.487354, 37.61314], [-7.484093, 37.61777], [-7.48478, 37.62538], [-7.473793, 37.62715], [-7.471905, 37.63598], [-7.466412, 37.64251], [-7.46933, 37.64985], [-7.46109, 37.65325], [-7.458483, 37.66085], [-7.450104, 37.69795], [-7.422466, 37.75999], [-7.329254, 37.81792], [-7.298699, 37.85778], [-7.284279, 37.89883], [-7.263336, 37.92511], [-7.256813, 37.93865], [-7.254067, 37.96369], [-7.26574, 37.9802], [-7.245655, 37.99305], [-7.226944, 37.99319], [-7.203255, 38.00469], [-7.18523, 38.00374], [-7.166691, 37.99738], [-7.146435, 38.00455], [-7.126866, 38.00469], [-7.13356, 38.02227], [-7.13047, 38.03011], [-7.119484, 38.03511], [-7.099571, 38.04688], [-7.077599, 38.03579], [-7.067127, 38.03498], [-7.056828, 38.02037], [-7.023697, 38.02605], [-7.007904, 38.02403], [-7.005329, 38.04431], [-7.000523, 38.05052], [-6.991596, 38.10377], [-6.965847, 38.13361], [-6.961041, 38.13604], [-6.962757, 38.14023], [-6.960697, 38.15224], [-6.97237, 38.15994], [-6.97031, 38.16965], [-6.941072, 38.20297], [-6.952973, 38.21296], [-6.969109, 38.20123], [-7.004829, 38.1998], [-7.021836, 38.1827], [-7.04876, 38.17816], [-7.065411, 38.17667], [-7.084465, 38.1656], [-7.110729, 38.18625], [-7.144944, 38.23924], [-7.149525, 38.26393], [-7.172138, 38.27751], [-7.233811, 38.35431], [-7.263894, 38.38191], [-7.274838, 38.39643], [-7.284279, 38.41742], [-7.300587, 38.42495], [-7.338867, 38.43436], [-7.332001, 38.44525], [-7.308567, 38.4683], [-7.324963, 38.47523], [-7.315178, 38.51835], [-7.305393, 38.54333], [-7.287712, 38.57447], [-7.269173, 38.58843], [-7.261105, 38.61312], [-7.276039, 38.6386], [-7.269173, 38.69891], [-7.26162, 38.72489], [-7.239304, 38.73895], [-7.220078, 38.74418], [-7.193985, 38.77041], [-7.161649, 38.7852], [-7.155533, 38.79851], [-7.130998, 38.81736], [-7.094854, 38.821], [-7.070046, 38.85535], [-7.04979, 38.8631], [-7.038117, 38.87647], [-7.055283, 38.90733], [-7.030049, 38.92363], [-7.022495, 38.94072], [-6.986618, 38.9821], [-6.957264, 39.02358], [-6.970482, 39.03839], [-6.974794, 39.07525], [-7.033652, 39.11515], [-7.111249, 39.09436], [-7.144718, 39.10702], [-7.152532, 39.11232], [-7.152443, 39.12194], [-7.137337, 39.16747], [-7.207901, 39.18443], [-7.24308, 39.2026], [-7.250007, 39.25687], [-7.23709, 39.27669], [-7.309119, 39.33414], [-7.325055, 39.3816], [-7.305234, 39.41759], [-7.311043, 39.43591], [-7.300163, 39.46043], [-7.363802, 39.48042], [-7.389969, 39.49233], [-7.394287, 39.52668], [-7.438688, 39.53429], [-7.463494, 39.57037], [-7.497387, 39.58432], [-7.524867, 39.62766], [-7.54369, 39.66918], [-7.485981, 39.66703], [-7.425393, 39.66114], [-7.41869, 39.65276], [-7.370796, 39.65368], [-7.333546, 39.64377], [-7.299557, 39.65963], [-7.268826, 39.66884], [-7.146607, 39.65884], [-7.125664, 39.6661], [-7.114347, 39.66608], [-7.064255, 39.66157], [-7.020435, 39.67235], [-6.995676, 39.72512], [-6.989638, 39.80901], [-6.981901, 39.82359], [-6.951758, 39.83019], [-6.935609, 39.84957], [-6.930313, 39.85731], [-6.906468, 39.87141], [-6.912117, 39.91843], [-6.875038, 40.01052], [-6.883622, 40.01894], [-6.887055, 40.04049], [-6.920357, 40.06388], [-6.947823, 40.10381], [-6.994858, 40.10985], [-7.018514, 40.12549], [-7.033997, 40.18753], [-7.017838, 40.22379], [-6.990052, 40.24337], [-6.967736, 40.24258], [-6.953659, 40.25883], [-6.921044, 40.2625], [-6.875725, 40.26512], [-6.865942, 40.28403], [-6.865469, 40.30181], [-6.820871, 40.32719], [-6.79671, 40.33083], [-6.793289, 40.36878], [-6.838646, 40.40461], [-6.856156, 40.45348], [-6.821137, 40.50127], [-6.80452, 40.51169], [-6.807519, 40.5514], [-6.849633, 40.56207], [-6.842766, 40.59362], [-6.835814, 40.59825], [-6.82929, 40.60346], [-6.826544, 40.60789], [-6.822767, 40.61174], [-6.798477, 40.66124], [-6.80706, 40.6641], [-6.811622, 40.69742], [-6.831865, 40.74223], [-6.831341, 40.77023], [-6.820956, 40.80142], [-6.8256, 40.81849], [-6.828272, 40.84586], [-6.803395, 40.84824], [-6.810547, 40.88045], [-6.830377, 40.87994], [-6.850531, 40.90085], [-6.860021, 40.94147], [-6.933364, 41.01432], [-6.931644, 41.02981], [-6.916194, 41.03942], [-6.907697, 41.03712], [-6.904221, 41.03469], [-6.897655, 41.03356], [-6.87933, 41.02916], [-6.864009, 41.02819], [-6.843238, 41.02887], [-6.822853, 41.03301], [-6.813626, 41.03926], [-6.808562, 41.04673], [-6.803412, 41.04887], [-6.782169, 41.06887], [-6.775303, 41.07864], [-6.770067, 41.08919], [-6.765947, 41.09125], [-6.763802, 41.09585], [-6.760197, 41.09844], [-6.757536, 41.10316], [-6.759338, 41.10658], [-6.776736, 41.1285], [-6.702551, 41.18846], [-6.693919, 41.20909], [-6.649343, 41.24942], [-6.616345, 41.25019], [-6.590002, 41.25803], [-6.572309, 41.24112], [-6.522519, 41.27795], [-6.512146, 41.27316], [-6.506996, 41.26749], [-6.483135, 41.27548], [-6.49189, 41.28284], [-6.493552, 41.28732], [-6.486912, 41.29283], [-6.471291, 41.30109], [-6.466656, 41.30296], [-6.442881, 41.30573], [-6.439276, 41.31927], [-6.425285, 41.34254], [-6.397614, 41.36369], [-6.393228, 41.38594], [-6.366379, 41.39698], [-6.334733, 41.38723], [-6.334772, 41.41522], [-6.297736, 41.4363], [-6.307896, 41.4487], [-6.28521, 41.47926], [-6.279202, 41.48228], [-6.272807, 41.48592], [-6.268988, 41.48759], [-6.265769, 41.48797], [-6.26328, 41.48785], [-6.26401, 41.4891], [-6.267057, 41.4919], [-6.269331, 41.49431], [-6.267614, 41.49765], [-6.265555, 41.49996], [-6.257057, 41.49926], [-6.256285, 41.50395], [-6.260061, 41.51166], [-6.258245, 41.51488], [-6.246205, 41.5172], [-6.196614, 41.58026], [-6.19801, 41.58996], [-6.23457, 41.60482], [-6.285455, 41.65226], [-6.354218, 41.67291], [-6.374641, 41.67264], [-6.439706, 41.68], [-6.453438, 41.66445], [-6.498993, 41.65298], [-6.549569, 41.67907], [-6.559182, 41.69701], [-6.556168, 41.72065], [-6.571633, 41.74422], [-6.556137, 41.76815], [-6.547637, 41.79538], [-6.523529, 41.87339], [-6.574293, 41.88182], [-6.548705, 41.93965], [-6.585526, 41.96432], [-6.59895, 41.94696], [-6.617454, 41.93895], [-6.670349, 41.93623], [-6.696975, 41.93063], [-6.750448, 41.94124], [-6.776676, 41.98399], [-6.803122, 41.98357], [-6.821389, 41.94297], [-6.892903, 41.9384], [-6.943012, 41.94185], [-6.971684, 41.97034], [-7.009467, 41.9474], [-7.070791, 41.94686], [-7.140343, 41.98889], [-7.157407, 41.97496], [-7.176346, 41.97776], [-7.184385, 41.96931], [-7.180775, 41.95157], [-7.182549, 41.9408], [-7.1719, 41.91911], [-7.18261, 41.8978], [-7.19575, 41.87838], [-7.231034, 41.86564], [-7.253169, 41.86227], [-7.308816, 41.84212], [-7.356211, 41.83808], [-7.383649, 41.84035], [-7.395982, 41.82119], [-7.427711, 41.80443], [-7.44617, 41.83703], [-7.452914, 41.86243], [-7.485302, 41.85973], [-7.492484, 41.86885], [-7.509791, 41.86342], [-7.503777, 41.8492], [-7.540135, 41.83039], [-7.61696, 41.82602], [-7.614216, 41.84606], [-7.60408, 41.8664], [-7.589016, 41.87769], [-7.608166, 41.87799], [-7.61732, 41.88218], [-7.628218, 41.87786], [-7.659008, 41.88081], [-7.699954, 41.90597], [-7.731114, 41.89078], [-7.742938, 41.89155], [-7.759747, 41.89725], [-7.783253, 41.8828], [-7.836983, 41.8778], [-7.838745, 41.86598], [-7.873764, 41.84271], [-7.895222, 41.85806], [-7.885557, 41.88348], [-7.888482, 41.9054], [-7.886263, 41.92446], [-7.902097, 41.92475], [-7.918194, 41.87878], [-7.945466, 41.86967], [-7.979411, 41.87092], [-8.011658, 41.82768], [-8.032384, 41.82772], [-8.055235, 41.81432], [-8.092522, 41.80708], [-8.121925, 41.80559], [-8.167992, 41.81674], [-8.164902, 41.84859], [-8.170953, 41.87479], [-8.201294, 41.8725], [-8.204429, 41.88911], [-8.215463, 41.89563], [-8.218676, 41.91185], [-8.200837, 41.93898], [-8.178815, 41.95567], [-8.165175, 41.98401], [-8.141554, 41.99046], [-8.131392, 42.0058], [-8.087552, 42.01714], [-8.087117, 42.04741], [-8.098351, 42.06801], [-8.12067, 42.07929], [-8.171158, 42.06441], [-8.187058, 42.06623], [-8.195801, 42.12968], [-8.189535, 42.13731], [-8.197432, 42.14864], [-8.204813, 42.1405], [-8.229789, 42.12874], [-8.240965, 42.1364], [-8.258106, 42.11996], [-8.273306, 42.12191], [-8.298369, 42.10548], [-8.303003, 42.10328], [-8.314033, 42.10243], [-8.320169, 42.10115], [-8.323259, 42.09857], [-8.323431, 42.09341], [-8.324075, 42.0901], [-8.332577, 42.0822], [-8.344288, 42.08364], [-8.353429, 42.08803], [-8.361712, 42.08806], [-8.369136, 42.08462], [-8.382354, 42.07478], [-8.390894, 42.07424], [-8.397803, 42.07892], [-8.402614, 42.07887], [-8.411708, 42.07606], [-8.419519, 42.07204], [-8.429904, 42.07163], [-8.438659, 42.07784], [-8.446635, 42.08132], [-8.478398, 42.08013], [-8.484364, 42.0809], [-8.489857, 42.08045], [-8.495693, 42.07886], [-8.500071, 42.07736], [-8.51419, 42.07752], [-8.521142, 42.07787], [-8.525221, 42.07546], [-8.525605, 42.06679], [-8.523717, 42.06427], [-8.526979, 42.06099], [-8.536892, 42.05732], [-8.546848, 42.05347], [-8.561053, 42.05181], [-8.573585, 42.05222], [-8.582425, 42.05136], [-8.597531, 42.0542], [-8.634997, 42.04668], [-8.645983, 42.0361], [-8.65551, 42.02991], [-8.656626, 42.01818], [-8.659507, 42.00363], [-8.678779, 41.98933], [-8.699713, 41.98233], [-8.721943, 41.97583], [-8.742199, 41.96523], [-8.746061, 41.95604], [-8.745718, 41.94679], [-8.747477, 41.93935], [-8.764076, 41.92557], [-8.778591, 41.91965], [-8.787174, 41.91492], [-8.8106, 41.90503], [-8.829854, 41.89206], [-8.843651, 41.87864], [-8.853564, 41.87288], [-8.863049, 41.87055], [-8.870688, 41.86234], [-9.498331, 41.83423], [-9.779014, 44.14855], [-1.642457, 43.71653], [-1.765709, 43.38409], [-1.789055, 43.37611], [-1.789457, 43.37277], [-1.788025, 43.36918], [-1.778506, 43.36299], [-1.788368, 43.35358], [-1.783776, 43.34976], [-1.77691, 43.34851], [-1.775579, 43.3445], [-1.769893, 43.34297], [-1.760924, 43.34466], [-1.756568, 43.34423], [-1.752362, 43.34147], [-1.751719, 43.3396], [-1.750989, 43.33592], [-1.741204, 43.33197], [-1.736611, 43.33042], [-1.736805, 43.32162], [-1.740539, 43.31681], [-1.73545, 43.31262], [-1.72863, 43.29782], [-1.722622, 43.30126], [-1.713352, 43.30182], [-1.7064, 43.30907], [-1.698654, 43.31224], [-1.692581, 43.31269], [-1.683741, 43.31119], [-1.667835, 43.31655], [-1.654215, 43.31338], [-1.645889, 43.30832], [-1.635531, 43.30935], [-1.621838, 43.30707], [-1.621857, 43.30063], [-1.629067, 43.28608], [-1.623173, 43.272], [-1.613853, 43.25738], [-1.577177, 43.25438], [-1.566324, 43.26396], [-1.565981, 43.28845], [-1.556797, 43.29176], [-1.535339, 43.29514], [-1.506071, 43.29403], [-1.503518, 43.29234], [-1.498261, 43.28733], [-1.491802, 43.28181], [-1.484227, 43.28444], [-1.427708, 43.26814], [-1.415777, 43.27427], [-1.407194, 43.27283], [-1.377843, 43.25158], [-1.375143, 43.23416], [-1.382132, 43.19879], [-1.384449, 43.19416], [-1.377754, 43.18944], [-1.398439, 43.18002], [-1.401346, 43.15601], [-1.413043, 43.12741], [-1.425645, 43.11482], [-1.468428, 43.09227], [-1.466093, 43.07671], [-1.439523, 43.04731], [-1.355446, 43.03014], [-1.345825, 43.0534], [-1.347241, 43.09268], [-1.328052, 43.11526], [-1.26689, 43.12027], [-1.271153, 43.1132], [-1.281109, 43.10853], [-1.283169, 43.10498], [-1.290185, 43.10053], [-1.298103, 43.09089], [-1.305566, 43.07442], [-1.305657, 43.07046], [-1.295528, 43.06751], [-1.285315, 43.06387], [-1.25296, 43.04671], [-1.227127, 43.05675], [-1.164062, 43.03628], [-1.134337, 43.02228], [-1.113169, 43.02584], [-1.07975, 43.01155], [-1.084175, 43.00342], [-1.014347, 42.99712], [-0.943623, 42.95554], [-0.927226, 42.95646], [-0.91444, 42.96647], [-0.895558, 42.96371], [-0.893669, 42.95806], [-0.838738, 42.95617], [-0.81419, 42.95378], [-0.794277, 42.96584], [-0.771521, 42.97019], [-0.747595, 42.9689], [-0.716515, 42.9201], [-0.727673, 42.89848], [-0.695057, 42.88049], [-0.679264, 42.88804], [-0.600472, 42.8333], [-0.59103, 42.80774], [-0.572491, 42.81127], [-0.564938, 42.8056], [-0.560704, 42.79148], [-0.555325, 42.7828], [-0.542622, 42.79578], [-0.527687, 42.79578], [-0.527971, 42.80867], [-0.523062, 42.81804], [-0.504341, 42.83091], [-0.472584, 42.8119], [-0.439968, 42.80069], [-0.415421, 42.81014], [-0.392246, 42.80346], [-0.381775, 42.8124], [-0.368042, 42.81694], [-0.351347, 42.83844], [-0.334308, 42.84016], [-0.328082, 42.83603], [-0.313549, 42.85068], [-0.300751, 42.84211], [-0.27792, 42.83935], [-0.257492, 42.82399], [-0.242137, 42.82443], [-0.231743, 42.81089], [-0.197411, 42.79742], [-0.178017, 42.78646], [-0.162563, 42.80031], [-0.157086, 42.79823], [-0.143852, 42.77524], [-0.09819, 42.7257], [-0.064948, 42.71773], [-0.056935, 42.69819], [0.000665, 42.68714], [0.013672, 42.70322], [0.064537, 42.70399], [0.078621, 42.71864], [0.128746, 42.71599], [0.135088, 42.72291], [0.175668, 42.73892], [0.261336, 42.71815], [0.295772, 42.67751], [0.3162, 42.68597], [0.323753, 42.70742], [0.360075, 42.72487], [0.392605, 42.71422], [0.433277, 42.69262], [0.475484, 42.70213], [0.512661, 42.69261], [0.528385, 42.70462], [0.587118, 42.69652], [0.592356, 42.70722], [0.669248, 42.69249], [0.674114, 42.7083], [0.635858, 42.75464], [0.657978, 42.77209], [0.642357, 42.7823], [0.645275, 42.78633], [0.663691, 42.80408], [0.656261, 42.83846], [0.676349, 42.85575], [0.714647, 42.8632], [0.782776, 42.83796], [0.79771, 42.84186], [0.809442, 42.84145], [0.831996, 42.82956], [0.849593, 42.83009], [0.90714, 42.80513], [0.921711, 42.79588], [0.960095, 42.80707], [1.01816, 42.78832], [1.079885, 42.78936], [1.113731, 42.77002], [1.135112, 42.75069], [1.165316, 42.71061], [1.230984, 42.72999], [1.259028, 42.72145], [1.329804, 42.72572], [1.35766, 42.72167], [1.387885, 42.69026], [1.41361, 42.65762], [1.430969, 42.61981], [1.444097, 42.60366], [1.446848, 42.56579], [1.421785, 42.54005], [1.440239, 42.54581], [1.452942, 42.54107], [1.455173, 42.53171], [1.470709, 42.50969], [1.435852, 42.48622], [1.443672, 42.4721], [1.448393, 42.46045], [1.45, 42.44011], [1.511736, 42.43142], [1.548514, 42.43528], [1.558368, 42.45864], [1.563078, 42.46173], [1.57428, 42.45577], [1.596562, 42.46894], [1.656383, 42.4698], [1.66159, 42.49384], [1.667862, 42.50716], [1.704487, 42.49191], [1.725742, 42.50555], [1.762062, 42.49093], [1.804881, 42.491], [1.824168, 42.48769], [1.883093, 42.45999], [1.891487, 42.45025], [1.953249, 42.45962], [1.961059, 42.479], [1.978226, 42.49874], [1.997967, 42.49324], [2.019167, 42.44683], [1.98432, 42.44455], [1.962089, 42.45088], [1.945095, 42.4442], [1.942134, 42.43033], [1.958656, 42.42634], [1.968299, 42.3883], [1.99787, 42.35982], [2.054021, 42.36125], [2.090354, 42.37576], [2.108178, 42.38265], [2.123564, 42.41409], [2.163432, 42.42738], [2.25357, 42.44107], [2.315712, 42.43005], [2.345383, 42.41715], [2.435016, 42.39494], [2.484798, 42.34446], [2.500591, 42.34459], [2.540021, 42.33469], [2.553678, 42.35664], [2.575436, 42.36118], [2.650245, 42.34572], [2.670364, 42.34231], [2.64955, 42.38615], [2.65234, 42.39037], [2.667961, 42.38746], [2.67123, 42.40522], [2.724517, 42.42495], [2.754476, 42.42688], [2.774923, 42.41456], [2.785584, 42.41971], [2.83795, 42.46027], [2.85799, 42.45677], [2.86417, 42.46678], [2.869826, 42.46881], [2.902794, 42.46045], [2.919273, 42.45893], [2.929745, 42.47539], [2.945102, 42.48326], [2.971849, 42.47084], [2.990752, 42.47493], [3.001327, 42.47412], [3.012657, 42.46969], [3.030338, 42.47666], [3.040317, 42.47583], [3.054886, 42.45361], [3.082659, 42.43083], [3.097458, 42.42827], [3.108444, 42.43739], [3.12355, 42.43967], [3.137455, 42.43777], [3.153591, 42.4359], [3.157711, 42.43473], [3.160028, 42.43565], [3.163376, 42.43654], [3.168397, 42.43587], [3.176293, 42.43562], [3.485459, 42.48706], [4.314623, 42.36291], [5.098525, 39.64927], [-1.357879, 36.47351], [-1.818554, 35.89823]]]], "type": "MultiPolygon"};
+   const layer = new GeoJSON(geojson, {
+      style: { fillColor: '#ffcc66', color: '#ff9933', weight: 2, fillOpacity: 0.5 }
+   }).addTo(map);
+   map.fitBounds(layer.getBounds(), { padding: [20, 20] });
+   const childrenGeo = {};
+   
+      
+         childrenGeo['aragon'] = {"coordinates": [[[[-0.716608, 42.92025], [-0.716515, 42.9201], [-0.727673, 42.89848], [-0.695057, 42.88049], [-0.679264, 42.88804], [-0.600472, 42.8333], [-0.59103, 42.80774], [-0.572491, 42.81127], [-0.564938, 42.8056], [-0.560704, 42.79148], [-0.555325, 42.7828], [-0.542622, 42.79578], [-0.527687, 42.79578], [-0.527971, 42.80867], [-0.523062, 42.81804], [-0.504341, 42.83091], [-0.472584, 42.8119], [-0.439968, 42.80069], [-0.415421, 42.81014], [-0.392246, 42.80346], [-0.381775, 42.8124], [-0.368042, 42.81694], [-0.351347, 42.83844], [-0.334308, 42.84016], [-0.328082, 42.83603], [-0.313549, 42.85068], [-0.300751, 42.84211], [-0.27792, 42.83935], [-0.257492, 42.82399], [-0.242137, 42.82443], [-0.231743, 42.81089], [-0.197411, 42.79742], [-0.178017, 42.78646], [-0.162563, 42.80031], [-0.157086, 42.79823], [-0.143852, 42.77524], [-0.09819, 42.7257], [-0.064948, 42.71773], [-0.056935, 42.69819], [0.000665, 42.68714], [0.013672, 42.70322], [0.064537, 42.70399], [0.078621, 42.71864], [0.128746, 42.71599], [0.135088, 42.72291], [0.175668, 42.73892], [0.261336, 42.71815], [0.295772, 42.67751], [0.3162, 42.68597], [0.323753, 42.70742], [0.360075, 42.72487], [0.392605, 42.71422], [0.433277, 42.69262], [0.475484, 42.70213], [0.512661, 42.69261], [0.528385, 42.70462], [0.587118, 42.69652], [0.592356, 42.70722], [0.661725, 42.69393], [0.699691, 42.65921], [0.77033, 42.61008], [0.760889, 42.57015], [0.752306, 42.53424], [0.741062, 42.50488], [0.71351, 42.47798], [0.717287, 42.43429], [0.728273, 42.42783], [0.738745, 42.4118], [0.748701, 42.38568], [0.772562, 42.35144], [0.767584, 42.32276], [0.718918, 42.16277], [0.70673, 42.10294], [0.667934, 42.00734], [0.646305, 41.9794], [0.610771, 41.91658], [0.612659, 41.87173], [0.581417, 41.84834], [0.561719, 41.85093], [0.546226, 41.81828], [0.465717, 41.76184], [0.397739, 41.73046], [0.33268, 41.67894], [0.36169, 41.63174], [0.354824, 41.60068], [0.430698, 41.60505], [0.452499, 41.54122], [0.396881, 41.48415], [0.346241, 41.48145], [0.361519, 41.45161], [0.347786, 41.41248], [0.37817, 41.35091], [0.389499, 41.27806], [0.385723, 41.23122], [0.321693, 41.21159], [0.307617, 41.16043], [0.249595, 41.12721], [0.236549, 41.05114], [0.285473, 41.02097], [0.298176, 40.97005], [0.277061, 40.93245], [0.24908, 40.88458], [0.258865, 40.87497], [0.285129, 40.8181], [0.233974, 40.76481], [0.16737, 40.72124], [0.040512, 40.68806], [0.023861, 40.69353], [-0.084286, 40.73321], [-0.133896, 40.75194], [-0.151406, 40.7743], [-0.187798, 40.7795], [-0.231743, 40.68793], [-0.308647, 40.65668], [-0.364266, 40.66059], [-0.370446, 40.62229], [-0.288735, 40.615], [-0.284958, 40.5425], [-0.270195, 40.49762], [-0.267792, 40.47411], [-0.335083, 40.44381], [-0.278778, 40.39049], [-0.275345, 40.36538], [-0.380059, 40.28817], [-0.377655, 40.26067], [-0.4525, 40.22896], [-0.545197, 40.22607], [-0.559273, 40.18228], [-0.572663, 40.13348], [-0.609742, 40.06835], [-0.678406, 40.04076], [-0.755997, 40.03182], [-0.762864, 40.00684], [-0.833931, 39.9516], [-0.787926, 39.87707], [-0.865174, 39.83833], [-0.905342, 39.85468], [-0.920105, 39.87338], [-0.929718, 39.94817], [-0.990486, 39.97581], [-1.130562, 39.9566], [-1.155367, 39.96863], [-1.176396, 40.0146], [-1.113053, 40.03051], [-1.079407, 40.056], [-1.254502, 40.11274], [-1.366425, 40.12482], [-1.459809, 40.14057], [-1.452256, 40.17835], [-1.54564, 40.18832], [-1.728287, 40.27376], [-1.818238, 40.40252], [-1.689149, 40.6004], [-1.592332, 40.58267], [-1.569672, 40.73685], [-1.639024, 40.89483], [-1.624604, 40.92389], [-1.872483, 41.10523], [-1.935654, 41.13264], [-2.057877, 41.14143], [-2.154694, 41.17969], [-2.167397, 41.27729], [-2.17907, 41.28735], [-2.16671, 41.35568], [-2.128945, 41.37887], [-2.121048, 41.435], [-2.104569, 41.45045], [-2.032814, 41.43681], [-2.026291, 41.39149], [-1.958657, 41.4139], [-1.986809, 41.48621], [-2.000542, 41.58746], [-1.992989, 41.61416], [-1.929474, 41.6044], [-1.899262, 41.64059], [-1.86184, 41.66445], [-1.788369, 41.72136], [-1.816178, 41.73622], [-1.858063, 41.78923], [-1.83815, 41.82225], [-1.846733, 41.88797], [-1.863213, 41.91173], [-1.869393, 41.97991], [-1.849137, 42.01283], [-1.761933, 41.9988], [-1.642113, 41.96664], [-1.607094, 41.95081], [-1.591988, 41.92961], [-1.467705, 41.92655], [-1.41964, 41.91556], [-1.40522, 41.93804], [-1.389084, 41.96077], [-1.341706, 42.02405], [-1.357499, 42.07147], [-1.40728, 42.12522], [-1.401787, 42.18808], [-1.426506, 42.20894], [-1.40419, 42.2961], [-1.354752, 42.35068], [-1.364365, 42.37833], [-1.344452, 42.43005], [-1.31733, 42.45437], [-1.296044, 42.5126], [-1.265831, 42.55915], [-1.226177, 42.54461], [-1.219225, 42.54992], [-1.204033, 42.55257], [-1.206007, 42.56143], [-1.20472, 42.57887], [-1.186953, 42.58936], [-1.169872, 42.60017], [-1.182575, 42.60863], [-1.179571, 42.62006], [-1.158714, 42.61615], [-1.158199, 42.62253], [-1.157341, 42.65012], [-1.042843, 42.65202], [-1.041985, 42.69367], [-1.026192, 42.703], [-0.983277, 42.7054], [-0.948258, 42.71726], [-0.945339, 42.72381], [-0.924397, 42.74853], [-0.896759, 42.76541], [-0.862427, 42.80283], [-0.861397, 42.85042], [-0.822258, 42.9059], [-0.787411, 42.92488], [-0.75222, 42.92677], [-0.716608, 42.92025]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['cataluna'] = {"coordinates": [[[[3.397643, 42.47245], [3.584288, 42.45791], [4.174794, 41.69753], [1.58202, 40.21245], [0.610771, 40.49239], [0.477133, 40.53024], [0.43499, 40.5457], [0.4319, 40.56546], [0.433101, 40.57498], [0.402031, 40.59349], [0.397224, 40.60001], [0.32959, 40.60705], [0.278263, 40.62281], [0.261097, 40.64457], [0.264702, 40.65942], [0.282898, 40.68624], [0.239124, 40.6973], [0.165825, 40.72918], [0.156383, 40.75142], [0.231914, 40.78691], [0.270881, 40.82199], [0.257149, 40.83693], [0.248051, 40.85563], [0.25114, 40.87329], [0.236034, 40.88263], [0.245304, 40.90923], [0.269937, 40.9448], [0.2738, 40.95064], [0.280623, 40.95514], [0.281696, 40.96823], [0.258007, 41.00983], [0.232258, 41.03171], [0.21595, 41.0422], [0.198955, 41.0831], [0.19844, 41.12644], [0.203933, 41.13549], [0.250625, 41.15307], [0.295257, 41.16392], [0.318603, 41.22722], [0.370788, 41.24322], [0.371132, 41.26181], [0.381946, 41.27794], [0.362377, 41.30193], [0.348816, 41.32204], [0.343666, 41.33145], [0.369758, 41.35169], [0.359115, 41.36702], [0.314998, 41.39561], [0.337829, 41.41351], [0.343323, 41.43063], [0.339546, 41.46666], [0.336113, 41.48235], [0.347099, 41.48942], [0.394821, 41.49238], [0.440826, 41.54507], [0.427265, 41.56357], [0.421085, 41.58823], [0.347271, 41.59606], [0.324268, 41.6597], [0.323753, 41.67484], [0.328045, 41.68817], [0.365467, 41.72405], [0.397053, 41.75864], [0.470695, 41.78872], [0.482368, 41.80306], [0.549316, 41.85038], [0.590515, 41.8826], [0.591373, 41.92157], [0.553436, 41.93383], [0.584163, 41.96766], [0.646133, 42.02532], [0.677891, 42.08905], [0.689564, 42.10102], [0.690765, 42.15144], [0.711536, 42.2247], [0.733337, 42.25559], [0.741234, 42.32403], [0.717201, 42.3673], [0.722351, 42.40381], [0.708961, 42.43106], [0.686989, 42.48716], [0.716858, 42.52513], [0.745525, 42.55751], [0.758056, 42.6044], [0.707073, 42.61918], [0.695915, 42.62714], [0.691624, 42.65037], [0.656948, 42.68887], [0.648155, 42.69653], [0.669248, 42.69249], [0.674114, 42.7083], [0.635858, 42.75464], [0.657978, 42.77209], [0.642357, 42.7823], [0.645275, 42.78633], [0.663691, 42.80408], [0.656261, 42.83846], [0.676349, 42.85575], [0.714647, 42.8632], [0.782776, 42.83796], [0.79771, 42.84186], [0.809442, 42.84145], [0.831996, 42.82956], [0.849593, 42.83009], [0.90714, 42.80513], [0.921711, 42.79588], [0.960095, 42.80707], [1.01816, 42.78832], [1.079885, 42.78936], [1.113731, 42.77002], [1.135112, 42.75069], [1.165316, 42.71061], [1.230984, 42.72999], [1.259028, 42.72145], [1.329804, 42.72572], [1.35766, 42.72167], [1.387885, 42.69026], [1.41361, 42.65762], [1.430969, 42.61981], [1.444097, 42.60366], [1.446848, 42.56579], [1.421785, 42.54005], [1.440239, 42.54581], [1.452942, 42.54107], [1.455173, 42.53171], [1.470709, 42.50969], [1.435852, 42.48622], [1.443672, 42.4721], [1.448393, 42.46045], [1.45, 42.44011], [1.511736, 42.43142], [1.548514, 42.43528], [1.558368, 42.45864], [1.563078, 42.46173], [1.57428, 42.45577], [1.596562, 42.46894], [1.656383, 42.4698], [1.66159, 42.49384], [1.667862, 42.50716], [1.704487, 42.49191], [1.725742, 42.50555], [1.762062, 42.49093], [1.804881, 42.491], [1.824168, 42.48769], [1.883093, 42.45999], [1.891487, 42.45025], [1.953249, 42.45962], [1.961059, 42.479], [1.978226, 42.49874], [1.997967, 42.49324], [2.019167, 42.44683], [1.98432, 42.44455], [1.962089, 42.45088], [1.945095, 42.4442], [1.942134, 42.43033], [1.958656, 42.42634], [1.968299, 42.3883], [1.99787, 42.35982], [2.054021, 42.36125], [2.090354, 42.37576], [2.108178, 42.38265], [2.123564, 42.41409], [2.163432, 42.42738], [2.25357, 42.44107], [2.315712, 42.43005], [2.345383, 42.41715], [2.435016, 42.39494], [2.484798, 42.34446], [2.500591, 42.34459], [2.540021, 42.33469], [2.553678, 42.35664], [2.575436, 42.36118], [2.650245, 42.34572], [2.670364, 42.34231], [2.64955, 42.38615], [2.65234, 42.39037], [2.667961, 42.38746], [2.67123, 42.40522], [2.724517, 42.42495], [2.754476, 42.42688], [2.774923, 42.41456], [2.785584, 42.41971], [2.83795, 42.46027], [2.85799, 42.45677], [2.86417, 42.46678], [2.869826, 42.46881], [2.902794, 42.46045], [2.919273, 42.45893], [2.929745, 42.47539], [2.945102, 42.48326], [2.971849, 42.47084], [2.990752, 42.47493], [3.001327, 42.47412], [3.012657, 42.46969], [3.030338, 42.47666], [3.040317, 42.47583], [3.054886, 42.45361], [3.082659, 42.43083], [3.097458, 42.42827], [3.108444, 42.43739], [3.12355, 42.43967], [3.137455, 42.43777], [3.153591, 42.4359], [3.157711, 42.43473], [3.160028, 42.43565], [3.163376, 42.43654], [3.168397, 42.43587], [3.176293, 42.43562], [3.397643, 42.47245]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['ceuta'] = {"coordinates": [[[[-5.391024, 35.92198], [-5.279274, 35.95869], [-5.256615, 35.89086], [-5.34154, 35.86702], [-5.342838, 35.86857], [-5.355773, 35.87211], [-5.373401, 35.87996], [-5.391024, 35.92198]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['murcia'] = {"coordinates": [[[[-1.630611, 37.37466], [-1.670523, 37.40119], [-1.709576, 37.42178], [-1.738007, 37.44239], [-1.78133, 37.4457], [-1.808109, 37.43125], [-1.848107, 37.45442], [-1.877461, 37.4942], [-1.95591, 37.58431], [-1.982517, 37.62402], [-2.01067, 37.66385], [-2.014446, 37.67947], [-2.015991, 37.70243], [-2.009812, 37.77465], [-1.998482, 37.859], [-2.10474, 37.87363], [-2.176838, 37.88623], [-2.256832, 37.93851], [-2.285671, 37.96518], [-2.351246, 38.02822], [-2.33923, 38.06904], [-2.274685, 38.11552], [-2.218723, 38.20851], [-2.173748, 38.23198], [-2.065602, 38.30139], [-2.047577, 38.30907], [-2.014446, 38.30327], [-1.994877, 38.28765], [-1.909561, 38.30139], [-1.873512, 38.32132], [-1.851883, 38.33735], [-1.797123, 38.37504], [-1.772232, 38.38177], [-1.743908, 38.38446], [-1.697045, 38.37813], [-1.676789, 38.36118], [-1.683483, 38.33425], [-1.664601, 38.31728], [-1.601257, 38.31769], [-1.542721, 38.34825], [-1.487961, 38.37988], [-1.48161, 38.4232], [-1.503754, 38.53366], [-1.492253, 38.56696], [-1.456375, 38.58494], [-1.452599, 38.65013], [-1.423073, 38.68578], [-1.368485, 38.70842], [-1.341019, 38.68283], [-1.253815, 38.74096], [-1.18618, 38.76024], [-1.115456, 38.7407], [-1.109963, 38.71271], [-1.034088, 38.66112], [-1.02396, 38.6583], [-1.011429, 38.63578], [-0.997524, 38.57233], [-1.018982, 38.52104], [-1.007996, 38.49552], [-1.043873, 38.4595], [-1.0746, 38.43046], [-1.081295, 38.42603], [-1.081639, 38.3496], [-1.057091, 38.34812], [-1.021557, 38.3395], [-0.984135, 38.3224], [-0.966625, 38.28765], [-0.963364, 38.25665], [-0.98731, 38.19644], [-1.003747, 38.17164], [-1.025505, 38.146], [-1.034775, 38.13834], [-1.029925, 38.11599], [-1.030955, 38.10663], [-1.029925, 38.09738], [-1.025033, 38.09005], [-1.023703, 38.08364], [-1.023016, 38.07691], [-1.014948, 38.06668], [-1.007009, 38.05627], [-1.002202, 38.05472], [-0.997052, 38.05198], [-0.981388, 38.0315], [-0.965037, 38.01371], [-0.957828, 37.99975], [-0.932293, 37.96924], [-0.920019, 37.94481], [-0.898218, 37.92318], [-0.85762, 37.88654], [-0.853372, 37.88464], [-0.838437, 37.8716], [-0.829253, 37.86456], [-0.803247, 37.85988], [-0.79123, 37.85063], [-0.78814, 37.84795], [-0.775738, 37.84473], [-0.758443, 37.84904], [-0.346071, 37.88569], [-0.247194, 37.36033], [-1.367799, 37.11215], [-1.630611, 37.37466]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['madrid'] = {"coordinates": [[[[-3.69381, 39.94554], [-3.752775, 39.92257], [-3.802729, 39.88116], [-3.820925, 39.88623], [-3.87105, 39.90388], [-3.878775, 39.91283], [-3.878689, 39.92922], [-3.866415, 39.93745], [-3.847017, 39.94311], [-3.809338, 39.95844], [-3.748226, 39.98278], [-3.700333, 40.02288], [-3.662224, 40.04076], [-3.631325, 40.05824], [-3.630982, 40.07978], [-3.611927, 40.1088], [-3.630467, 40.11536], [-3.662052, 40.12573], [-3.666987, 40.13578], [-3.668146, 40.14217], [-3.683553, 40.13131], [-3.690634, 40.13144], [-3.721275, 40.14332], [-3.745051, 40.13007], [-3.77655, 40.13919], [-3.803244, 40.1735], [-3.809166, 40.1672], [-3.834744, 40.16071], [-3.842297, 40.16222], [-3.854656, 40.16897], [-3.856373, 40.18019], [-3.870106, 40.18871], [-3.886929, 40.18792], [-3.911047, 40.18818], [-3.934565, 40.20077], [-3.948641, 40.18753], [-3.953962, 40.19035], [-3.957911, 40.19822], [-3.956537, 40.2108], [-3.994389, 40.20759], [-4.030266, 40.23584], [-4.029579, 40.24665], [-4.052754, 40.2511], [-4.063139, 40.25654], [-4.0767, 40.2642], [-4.086056, 40.25221], [-4.103651, 40.23924], [-4.146137, 40.24357], [-4.152918, 40.24887], [-4.178495, 40.28817], [-4.191628, 40.29491], [-4.202185, 40.26761], [-4.227247, 40.26938], [-4.229908, 40.27547], [-4.233856, 40.2735], [-4.244757, 40.27298], [-4.250851, 40.26525], [-4.268704, 40.22961], [-4.298229, 40.2148], [-4.351616, 40.23669], [-4.369126, 40.29026], [-4.401398, 40.27272], [-4.435558, 40.23341], [-4.520703, 40.19841], [-4.543705, 40.19736], [-4.589539, 40.20641], [-4.583531, 40.22109], [-4.570656, 40.26224], [-4.538555, 40.29904], [-4.53804, 40.30663], [-4.552632, 40.34458], [-4.523277, 40.34864], [-4.451351, 40.3799], [-4.443798, 40.38931], [-4.420967, 40.41049], [-4.412041, 40.41389], [-4.336167, 40.41611], [-4.347325, 40.43845], [-4.330673, 40.46236], [-4.33136, 40.53481], [-4.326382, 40.55437], [-4.293766, 40.56598], [-4.283467, 40.60222], [-4.293766, 40.60692], [-4.293766, 40.63363], [-4.272309, 40.63271], [-4.260636, 40.60861], [-4.220295, 40.60822], [-4.176178, 40.62281], [-4.178581, 40.68272], [-4.148884, 40.70628], [-4.114552, 40.74973], [-4.074726, 40.80134], [-3.988381, 40.79029], [-3.968468, 40.83927], [-3.945122, 40.9318], [-3.883667, 40.98094], [-3.793888, 41.00037], [-3.730889, 41.07198], [-3.604546, 41.1625], [-3.536997, 41.16864], [-3.505755, 41.13658], [-3.481293, 41.09863], [-3.470307, 41.09643], [-3.463097, 41.09229], [-3.445587, 41.08375], [-3.428421, 41.08789], [-3.420181, 41.08155], [-3.42001, 41.02809], [-3.388252, 41.00491], [-3.442326, 40.9043], [-3.437004, 40.89068], [-3.436489, 40.87407], [-3.469448, 40.86381], [-3.463955, 40.85615], [-3.469277, 40.83927], [-3.474941, 40.82005], [-3.490133, 40.79718], [-3.50009, 40.79568], [-3.498631, 40.79146], [-3.500176, 40.78938], [-3.496056, 40.78925], [-3.484211, 40.786], [-3.463526, 40.78542], [-3.444557, 40.77144], [-3.439751, 40.75961], [-3.431168, 40.73152], [-3.437348, 40.72072], [-3.45211, 40.70771], [-3.45932, 40.69821], [-3.450909, 40.68767], [-3.437863, 40.67856], [-3.426533, 40.68506], [-3.41795, 40.68142], [-3.414002, 40.67387], [-3.408337, 40.67374], [-3.402157, 40.69457], [-3.392372, 40.69587], [-3.378553, 40.68396], [-3.371945, 40.67979], [-3.33993, 40.6406], [-3.336325, 40.64261], [-3.317356, 40.65649], [-3.312464, 40.64926], [-3.322163, 40.63467], [-3.320103, 40.61115], [-3.309031, 40.58091], [-3.293924, 40.57589], [-3.281307, 40.5727], [-3.282423, 40.56266], [-3.286972, 40.55835], [-3.279848, 40.55222], [-3.29401, 40.53735], [-3.289976, 40.5335], [-3.28414, 40.53813], [-3.24852, 40.54577], [-3.231354, 40.54042], [-3.225861, 40.53552], [-3.221312, 40.5262], [-3.208094, 40.52065], [-3.199082, 40.51504], [-3.197193, 40.50192], [-3.193417, 40.47803], [-3.196249, 40.44499], [-3.173075, 40.44113], [-3.155222, 40.44068], [-3.150845, 40.43251], [-3.12767, 40.40559], [-3.136683, 40.37395], [-3.138571, 40.35008], [-3.150244, 40.33091], [-3.191014, 40.25359], [-3.178311, 40.24717], [-3.145008, 40.26839], [-3.125096, 40.28254], [-3.110848, 40.28778], [-3.102093, 40.28267], [-3.090935, 40.26407], [-3.076, 40.22345], [-3.065958, 40.15762], [-3.069134, 40.15454], [-3.089047, 40.15624], [-3.095484, 40.14424], [-3.089175, 40.14166], [-3.076623, 40.13665], [-3.071065, 40.13095], [-3.063512, 40.12196], [-3.056259, 40.11497], [-3.051281, 40.11182], [-3.050423, 40.0979], [-3.086643, 40.06783], [-3.118057, 40.05876], [-3.163204, 40.06323], [-3.171787, 40.08451], [-3.200455, 40.05771], [-3.276501, 40.04523], [-3.307915, 40.05245], [-3.400612, 40.03235], [-3.447132, 40.03629], [-3.509102, 40.04036], [-3.517857, 40.01986], [-3.573539, 40.01536], [-3.574526, 40.01317], [-3.588667, 40.01266], [-3.592615, 40.00102], [-3.621969, 39.99027], [-3.628922, 39.96502], [-3.69381, 39.94554]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['navarra'] = {"coordinates": [[[[-0.719401, 42.91451], [-0.777626, 42.91809], [-0.807324, 42.90011], [-0.804749, 42.87282], [-0.842686, 42.84186], [-0.840969, 42.78709], [-0.853157, 42.76667], [-0.940533, 42.70502], [-1.022072, 42.69177], [-1.030483, 42.64469], [-1.054859, 42.63964], [-1.149101, 42.64393], [-1.15202, 42.6183], [-1.155281, 42.5972], [-1.199398, 42.57495], [-1.198197, 42.54891], [-1.225834, 42.53904], [-1.264115, 42.55321], [-1.267891, 42.49729], [-1.273899, 42.46475], [-1.336384, 42.42282], [-1.320934, 42.35296], [-1.381359, 42.29369], [-1.391144, 42.24784], [-1.407623, 42.20767], [-1.384106, 42.19279], [-1.390286, 42.1298], [-1.360588, 42.11007], [-1.344795, 42.07618], [-1.305657, 42.07758], [-1.295014, 42.04305], [-1.349774, 41.99548], [-1.379128, 41.94238], [-1.39801, 41.93498], [-1.402645, 41.92476], [-1.414318, 41.91109], [-1.442127, 41.91084], [-1.491738, 41.9185], [-1.51783, 41.90611], [-1.565552, 41.91199], [-1.595936, 41.92412], [-1.655846, 41.95898], [-1.685543, 41.95119], [-1.712494, 41.9526], [-1.791802, 41.98578], [-1.853771, 41.99433], [-1.904755, 42.02532], [-1.912995, 42.05528], [-1.91248, 42.07427], [-1.845703, 42.14342], [-1.824589, 42.15755], [-1.764679, 42.15252], [-1.692152, 42.15112], [-1.717472, 42.20258], [-1.765366, 42.20869], [-1.822701, 42.22712], [-1.826649, 42.23868], [-1.875916, 42.25101], [-1.915913, 42.29941], [-1.966381, 42.33215], [-1.996765, 42.35766], [-2.037792, 42.35778], [-2.06955, 42.3404], [-2.092037, 42.34573], [-2.093754, 42.37478], [-2.118645, 42.39887], [-2.111435, 42.41129], [-2.175293, 42.4066], [-2.204476, 42.41345], [-2.215977, 42.41408], [-2.23589, 42.42447], [-2.248936, 42.4417], [-2.276402, 42.44335], [-2.290478, 42.45601], [-2.329273, 42.45133], [-2.346783, 42.45038], [-2.370558, 42.46181], [-2.378669, 42.47007], [-2.389998, 42.46852], [-2.40047, 42.4707], [-2.412658, 42.48368], [-2.416177, 42.48928], [-2.420769, 42.48729], [-2.423, 42.49014], [-2.426949, 42.50881], [-2.421799, 42.51488], [-2.397251, 42.51906], [-2.404461, 42.54385], [-2.395535, 42.55194], [-2.401028, 42.58443], [-2.418537, 42.5996], [-2.441197, 42.57205], [-2.454415, 42.56206], [-2.467632, 42.58279], [-2.492523, 42.58311], [-2.501192, 42.60945], [-2.502308, 42.61842], [-2.483339, 42.61482], [-2.473555, 42.62727], [-2.452355, 42.64791], [-2.431326, 42.65864], [-2.416048, 42.66382], [-2.397251, 42.66249], [-2.388067, 42.65991], [-2.347298, 42.63686], [-2.310219, 42.66874], [-2.319145, 42.68199], [-2.327728, 42.72217], [-2.318287, 42.74071], [-2.268419, 42.75048], [-2.283011, 42.78488], [-2.272883, 42.80749], [-2.270393, 42.81391], [-2.235289, 42.84318], [-2.243185, 42.86326], [-2.244644, 42.88477], [-2.256489, 42.89219], [-2.239237, 42.93073], [-2.214432, 42.95089], [-2.199326, 42.95542], [-2.174606, 42.94279], [-2.111006, 42.94995], [-2.097015, 42.97332], [-2.089977, 42.97639], [-2.050667, 42.98054], [-2.040968, 42.98268], [-2.032986, 42.99624], [-2.042084, 43.01689], [-2.043114, 43.03025], [-2.034531, 43.03358], [-2.020454, 43.0539], [-2.026548, 43.06719], [-2.014275, 43.07328], [-1.973162, 43.0939], [-1.949387, 43.1028], [-1.908274, 43.14127], [-1.925182, 43.14803], [-1.926642, 43.18709], [-1.915999, 43.20887], [-1.913788, 43.21675], [-1.916986, 43.22335], [-1.911943, 43.22766], [-1.909797, 43.22826], [-1.906171, 43.22207], [-1.88982, 43.21534], [-1.882653, 43.217], [-1.883211, 43.22813], [-1.878448, 43.23445], [-1.865401, 43.23141], [-1.862226, 43.21778], [-1.853213, 43.22619], [-1.850038, 43.22898], [-1.839867, 43.22629], [-1.820941, 43.23945], [-1.804633, 43.24495], [-1.797295, 43.24655], [-1.796565, 43.26386], [-1.794334, 43.27105], [-1.795321, 43.27655], [-1.788583, 43.28055], [-1.784978, 43.28739], [-1.739917, 43.29645], [-1.728753, 43.29809], [-1.72863, 43.29782], [-1.722622, 43.30126], [-1.713352, 43.30182], [-1.7064, 43.30907], [-1.698654, 43.31224], [-1.692581, 43.31269], [-1.683741, 43.31119], [-1.667835, 43.31655], [-1.654215, 43.31338], [-1.645889, 43.30832], [-1.635531, 43.30935], [-1.621838, 43.30707], [-1.621857, 43.30063], [-1.629067, 43.28608], [-1.623173, 43.272], [-1.613853, 43.25738], [-1.577177, 43.25438], [-1.566324, 43.26396], [-1.565981, 43.28845], [-1.556797, 43.29176], [-1.535339, 43.29514], [-1.506071, 43.29403], [-1.503518, 43.29234], [-1.498261, 43.28733], [-1.491802, 43.28181], [-1.484227, 43.28444], [-1.427708, 43.26814], [-1.415777, 43.27427], [-1.407194, 43.27283], [-1.377843, 43.25158], [-1.375143, 43.23416], [-1.382132, 43.19879], [-1.384449, 43.19416], [-1.377754, 43.18944], [-1.398439, 43.18002], [-1.401346, 43.15601], [-1.413043, 43.12741], [-1.425645, 43.11482], [-1.468428, 43.09227], [-1.466093, 43.07671], [-1.439523, 43.04731], [-1.355446, 43.03014], [-1.345825, 43.0534], [-1.347241, 43.09268], [-1.328052, 43.11526], [-1.26689, 43.12027], [-1.271153, 43.1132], [-1.281109, 43.10853], [-1.283169, 43.10498], [-1.290185, 43.10053], [-1.298103, 43.09089], [-1.305566, 43.07442], [-1.305657, 43.07046], [-1.295528, 43.06751], [-1.285315, 43.06387], [-1.25296, 43.04671], [-1.227127, 43.05675], [-1.164062, 43.03628], [-1.134337, 43.02228], [-1.113169, 43.02584], [-1.07975, 43.01155], [-1.084175, 43.00342], [-1.014347, 42.99712], [-0.943623, 42.95554], [-0.927226, 42.95646], [-0.91444, 42.96647], [-0.895558, 42.96371], [-0.893669, 42.95806], [-0.838738, 42.95617], [-0.81419, 42.95378], [-0.794277, 42.96584], [-0.771521, 42.97019], [-0.747595, 42.9689], [-0.716515, 42.9201], [-0.719401, 42.91451]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['extremadura'] = {"coordinates": [[[[-6.950563, 38.19215], [-6.941072, 38.20297], [-6.952973, 38.21296], [-6.969109, 38.20123], [-7.004829, 38.1998], [-7.021836, 38.1827], [-7.04876, 38.17816], [-7.065411, 38.17667], [-7.084465, 38.1656], [-7.110729, 38.18625], [-7.144944, 38.23924], [-7.149525, 38.26393], [-7.172138, 38.27751], [-7.233811, 38.35431], [-7.263894, 38.38191], [-7.274838, 38.39643], [-7.284279, 38.41742], [-7.300587, 38.42495], [-7.338867, 38.43436], [-7.332001, 38.44525], [-7.308567, 38.4683], [-7.324963, 38.47523], [-7.315178, 38.51835], [-7.305393, 38.54333], [-7.287712, 38.57447], [-7.269173, 38.58843], [-7.261105, 38.61312], [-7.276039, 38.6386], [-7.269173, 38.69891], [-7.26162, 38.72489], [-7.239304, 38.73895], [-7.220078, 38.74418], [-7.193985, 38.77041], [-7.161649, 38.7852], [-7.155533, 38.79851], [-7.130998, 38.81736], [-7.094854, 38.821], [-7.070046, 38.85535], [-7.04979, 38.8631], [-7.038117, 38.87647], [-7.055283, 38.90733], [-7.030049, 38.92363], [-7.022495, 38.94072], [-6.986618, 38.9821], [-6.957264, 39.02358], [-6.970482, 39.03839], [-6.974794, 39.07525], [-7.033652, 39.11515], [-7.111249, 39.09436], [-7.144718, 39.10702], [-7.152532, 39.11232], [-7.152443, 39.12194], [-7.137337, 39.16747], [-7.207901, 39.18443], [-7.24308, 39.2026], [-7.250007, 39.25687], [-7.23709, 39.27669], [-7.309119, 39.33414], [-7.325055, 39.3816], [-7.305234, 39.41759], [-7.311043, 39.43591], [-7.300163, 39.46043], [-7.363802, 39.48042], [-7.389969, 39.49233], [-7.394287, 39.52668], [-7.438688, 39.53429], [-7.463494, 39.57037], [-7.497387, 39.58432], [-7.524867, 39.62766], [-7.54369, 39.66918], [-7.485981, 39.66703], [-7.425393, 39.66114], [-7.41869, 39.65276], [-7.370796, 39.65368], [-7.333546, 39.64377], [-7.299557, 39.65963], [-7.268826, 39.66884], [-7.146607, 39.65884], [-7.125664, 39.6661], [-7.114347, 39.66608], [-7.064255, 39.66157], [-7.020435, 39.67235], [-6.995676, 39.72512], [-6.989638, 39.80901], [-6.981901, 39.82359], [-6.951758, 39.83019], [-6.935609, 39.84957], [-6.930313, 39.85731], [-6.906468, 39.87141], [-6.912117, 39.91843], [-6.875038, 40.01052], [-6.883622, 40.01894], [-6.887055, 40.04049], [-6.920357, 40.06388], [-6.947823, 40.10381], [-6.994858, 40.10985], [-7.018514, 40.12549], [-7.033997, 40.18753], [-7.017838, 40.22379], [-6.990052, 40.24337], [-6.967736, 40.24258], [-6.953659, 40.25883], [-6.921044, 40.2625], [-6.875725, 40.26512], [-6.869899, 40.27638], [-6.802769, 40.25189], [-6.722088, 40.27324], [-6.675568, 40.26643], [-6.584587, 40.27743], [-6.562786, 40.32966], [-6.541844, 40.34851], [-6.422711, 40.40082], [-6.370182, 40.4216], [-6.347351, 40.4446], [-6.274567, 40.47007], [-6.239891, 40.48913], [-6.201954, 40.48626], [-6.108227, 40.44512], [-6.120587, 40.42487], [-6.059303, 40.39846], [-6.077671, 40.36381], [-6.086254, 40.35623], [-6.01244, 40.34406], [-6.0145, 40.31828], [-5.965061, 40.29354], [-5.919399, 40.28267], [-5.897083, 40.31658], [-5.894509, 40.32404], [-5.853138, 40.3404], [-5.845757, 40.33307], [-5.819664, 40.35282], [-5.793572, 40.35832], [-5.776062, 40.31252], [-5.789452, 40.28843], [-5.765076, 40.28424], [-5.737954, 40.2976], [-5.690232, 40.29576], [-5.652123, 40.27376], [-5.653153, 40.25831], [-5.619507, 40.25018], [-5.611267, 40.23708], [-5.611611, 40.22633], [-5.52681, 40.19854], [-5.469132, 40.22319], [-5.431366, 40.25595], [-5.347596, 40.26957], [-5.336266, 40.26695], [-5.359612, 40.21637], [-5.356608, 40.15756], [-5.32631, 40.11563], [-5.355149, 40.10171], [-5.365792, 40.06178], [-5.356522, 39.98712], [-5.393257, 39.89446], [-5.309143, 39.89525], [-5.276528, 39.86232], [-5.30674, 39.79192], [-5.306397, 39.76685], [-5.259705, 39.75867], [-5.208807, 39.80056], [-5.17971, 39.80082], [-5.172329, 39.79944], [-5.165463, 39.80181], [-5.13216, 39.71551], [-5.139885, 39.66835], [-5.154305, 39.6439], [-5.195847, 39.59696], [-5.125637, 39.54046], [-5.118427, 39.52112], [-5.108986, 39.51622], [-5.052166, 39.49464], [-5.020752, 39.45793], [-4.871407, 39.37969], [-4.683781, 39.46403], [-4.659405, 39.42187], [-4.697857, 39.32062], [-4.742832, 39.31637], [-4.723263, 39.2627], [-4.643269, 39.17239], [-4.64241, 39.15802], [-4.804459, 39.19248], [-4.860764, 39.09556], [-4.81699, 39.06385], [-4.829521, 39.04505], [-4.859734, 39.02839], [-4.882221, 39.02972], [-4.954319, 39.05225], [-4.923248, 38.97302], [-4.834156, 38.94753], [-4.828577, 38.93565], [-4.840508, 38.87687], [-4.907456, 38.88328], [-4.966164, 38.75971], [-4.989338, 38.73306], [-5.035515, 38.72878], [-5.092335, 38.7048], [-5.173359, 38.71056], [-5.162029, 38.67868], [-5.179196, 38.6587], [-5.23962, 38.63283], [-5.304508, 38.56991], [-5.361672, 38.58078], [-5.377979, 38.54011], [-5.404759, 38.5205], [-5.479431, 38.46044], [-5.548439, 38.44297], [-5.575047, 38.40639], [-5.552044, 38.37248], [-5.562344, 38.32361], [-5.552559, 38.32025], [-5.519772, 38.26487], [-5.515824, 38.21081], [-5.532131, 38.16426], [-5.580197, 38.12862], [-5.631867, 38.13172], [-5.660534, 38.09971], [-5.701904, 38.07688], [-5.73967, 38.0835], [-5.745163, 38.12645], [-5.742417, 38.13496], [-5.703449, 38.15143], [-5.725422, 38.18639], [-5.791168, 38.1733], [-5.865498, 38.15251], [-5.902405, 38.06269], [-5.947724, 37.98872], [-6.053124, 37.98886], [-6.16024, 37.95354], [-6.178951, 37.93851], [-6.227703, 37.94785], [-6.319542, 37.97749], [-6.362801, 38.01077], [-6.370526, 38.04187], [-6.436615, 38.05147], [-6.460819, 37.99576], [-6.526566, 38.01767], [-6.593685, 38.01672], [-6.587334, 38.0512], [-6.647072, 38.08499], [-6.759339, 38.08607], [-6.810494, 38.10633], [-6.820107, 38.11727], [-6.800881, 38.17087], [-6.845341, 38.1733], [-6.93203, 38.19974], [-6.950563, 38.19215]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['melilla'] = {"coordinates": [[[[-2.921045, 35.27847], [-2.929856, 35.26917], [-2.949118, 35.26393], [-2.952387, 35.26424], [-2.972404, 35.2854], [-2.972424, 35.28546], [-2.970666, 35.29861], [-2.964749, 35.31337], [-2.95959, 35.31872], [-2.947968, 35.32393], [-2.908201, 35.30511], [-2.921045, 35.27847]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['cantabria'] = {"coordinates": [[[[-4.447664, 43.86548], [-3.144983, 43.79631], [-3.149386, 43.35589], [-3.148699, 43.34834], [-3.151875, 43.34035], [-3.147412, 43.30619], [-3.150501, 43.29907], [-3.188782, 43.29582], [-3.208008, 43.28133], [-3.250065, 43.28908], [-3.245087, 43.26296], [-3.243885, 43.25145], [-3.26397, 43.20956], [-3.253412, 43.19316], [-3.389969, 43.13457], [-3.439408, 43.12755], [-3.483696, 43.12905], [-3.604546, 43.14559], [-3.644371, 43.17063], [-3.695526, 43.11753], [-3.750115, 43.08042], [-3.824959, 43.06312], [-3.846588, 43.03627], [-3.906327, 43.01369], [-3.938599, 43.00339], [-3.957138, 42.99084], [-3.973275, 42.92802], [-3.872681, 42.96622], [-3.839894, 42.94851], [-3.824959, 42.9279], [-3.818093, 42.87307], [-3.809166, 42.81568], [-3.817749, 42.79767], [-3.864441, 42.78293], [-3.892594, 42.79691], [-3.908043, 42.76642], [-3.943062, 42.75987], [-3.979969, 42.75458], [-4.004688, 42.76541], [-4.003658, 42.80346], [-4.027176, 42.78633], [-4.042111, 42.78205], [-4.037304, 42.75949], [-4.082108, 42.75874], [-4.151287, 42.78558], [-4.188709, 42.80888], [-4.186993, 42.82399], [-4.136009, 42.85344], [-4.152317, 42.86401], [-4.198494, 42.84186], [-4.21463, 42.84325], [-4.23111, 42.8586], [-4.226475, 42.86514], [-4.242096, 42.91872], [-4.243984, 42.95479], [-4.350758, 42.96886], [-4.373932, 42.99172], [-4.403629, 43.03276], [-4.434014, 43.04368], [-4.460793, 43.05559], [-4.473152, 43.03715], [-4.557095, 43.01645], [-4.638462, 43.01406], [-4.740601, 43.0172], [-4.772873, 43.05246], [-4.774246, 43.07089], [-4.835873, 43.09923], [-4.858189, 43.12392], [-4.846173, 43.16087], [-4.861622, 43.17501], [-4.83141, 43.18703], [-4.779053, 43.19529], [-4.746609, 43.19129], [-4.735966, 43.25808], [-4.707642, 43.26933], [-4.645672, 43.27358], [-4.607735, 43.30469], [-4.526882, 43.2892], [-4.530316, 43.32718], [-4.532376, 43.33592], [-4.541988, 43.34306], [-4.542933, 43.3552], [-4.535036, 43.36818], [-4.523363, 43.36971], [-4.518106, 43.37576], [-4.512463, 43.38035], [-4.514351, 43.38927], [-4.513321, 43.39457], [-4.447664, 43.86548]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['islas-baleares'] = {"coordinates": [[[[1.208491, 38.05675], [0.615229, 39.05332], [1.845698, 40.02341], [4.284662, 40.7098], [4.938349, 39.71987], [3.284907, 38.90386], [1.208491, 38.05675]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['pais-vasco'] = {"coordinates": [[[[-1.666284, 43.65226], [-1.765709, 43.38409], [-1.789055, 43.37611], [-1.789457, 43.37277], [-1.788025, 43.36918], [-1.778506, 43.36299], [-1.788368, 43.35358], [-1.783776, 43.34976], [-1.77691, 43.34851], [-1.775579, 43.3445], [-1.769893, 43.34297], [-1.760924, 43.34466], [-1.756568, 43.34423], [-1.752362, 43.34147], [-1.751719, 43.3396], [-1.750989, 43.33592], [-1.741204, 43.33197], [-1.736611, 43.33042], [-1.736805, 43.32162], [-1.740539, 43.31681], [-1.73545, 43.31262], [-1.72863, 43.29782], [-1.726385, 43.29911], [-1.727471, 43.29304], [-1.762533, 43.28458], [-1.776438, 43.28558], [-1.788197, 43.27702], [-1.792402, 43.24564], [-1.822615, 43.22801], [-1.859865, 43.21049], [-1.872311, 43.21049], [-1.88201, 43.20468], [-1.907759, 43.20855], [-1.914969, 43.16957], [-1.901751, 43.14634], [-1.899691, 43.13557], [-1.92029, 43.11583], [-1.936255, 43.10546], [-1.946168, 43.09694], [-1.952133, 43.09594], [-1.967411, 43.08356], [-2.017365, 43.0645], [-2.014275, 43.05133], [-2.025776, 43.02987], [-2.034531, 43.02737], [-2.023716, 43.00088], [-2.027321, 42.98795], [-2.035561, 42.97979], [-2.048435, 42.97376], [-2.088604, 42.96836], [-2.098732, 42.94813], [-2.116757, 42.93858], [-2.160187, 42.93418], [-2.230654, 42.9311], [-2.236576, 42.89596], [-2.239409, 42.88565], [-2.238722, 42.86615], [-2.230053, 42.84344], [-2.231598, 42.83481], [-2.265759, 42.79332], [-2.274685, 42.78671], [-2.259321, 42.74695], [-2.271338, 42.74115], [-2.304297, 42.7339], [-2.315455, 42.73434], [-2.309876, 42.70912], [-2.308245, 42.67991], [-2.291851, 42.67884], [-2.28344, 42.65845], [-2.289791, 42.65056], [-2.344465, 42.63206], [-2.383947, 42.63282], [-2.389355, 42.65593], [-2.416048, 42.66003], [-2.452526, 42.63371], [-2.460337, 42.62777], [-2.487717, 42.59183], [-2.459736, 42.58924], [-2.450895, 42.57318], [-2.424545, 42.60693], [-2.418966, 42.60907], [-2.393475, 42.59941], [-2.387295, 42.56364], [-2.387037, 42.54783], [-2.394676, 42.54492], [-2.390213, 42.51526], [-2.421799, 42.50969], [-2.418451, 42.48849], [-2.421327, 42.48817], [-2.435188, 42.48792], [-2.470036, 42.49109], [-2.477074, 42.48501], [-2.524967, 42.48526], [-2.529087, 42.47982], [-2.557068, 42.48248], [-2.568569, 42.49134], [-2.571831, 42.48691], [-2.585221, 42.46919], [-2.601528, 42.47159], [-2.605305, 42.48071], [-2.600842, 42.49349], [-2.623158, 42.49299], [-2.637921, 42.48349], [-2.648564, 42.48083], [-2.695427, 42.51374], [-2.709332, 42.5164], [-2.690277, 42.56964], [-2.687016, 42.59315], [-2.713967, 42.60048], [-2.739029, 42.61767], [-2.761688, 42.61678], [-2.775078, 42.57976], [-2.798252, 42.56535], [-2.818766, 42.55352], [-2.825289, 42.55327], [-2.838249, 42.56863], [-2.842541, 42.58184], [-2.825117, 42.60017], [-2.823486, 42.61078], [-2.842541, 42.60674], [-2.844515, 42.61078], [-2.848806, 42.61527], [-2.849665, 42.61741], [-2.845116, 42.62404], [-2.844, 42.62954], [-2.856274, 42.6368], [-2.863312, 42.63712], [-2.871294, 42.63819], [-2.890692, 42.6476], [-2.898073, 42.65366], [-2.901077, 42.66729], [-2.901077, 42.6731], [-2.898502, 42.6765], [-2.904682, 42.68635], [-2.904425, 42.69259], [-2.918501, 42.69695], [-2.922621, 42.6996], [-2.933006, 42.69859], [-2.93232, 42.70616], [-2.964592, 42.70565], [-2.981415, 42.69972], [-3.040466, 42.73579], [-3.082009, 42.75432], [-3.129902, 42.75332], [-3.155308, 42.75332], [-3.135567, 42.78545], [-3.228092, 42.82562], [-3.284912, 42.8698], [-3.29092, 42.88376], [-3.282509, 42.90389], [-3.244915, 42.94411], [-3.227749, 42.95291], [-3.205776, 42.95316], [-3.145352, 42.93908], [-3.10175, 42.91683], [-3.090763, 42.90489], [-3.031025, 42.90967], [-2.992916, 42.94034], [-3.018665, 42.94901], [-3.051796, 42.97162], [-3.045101, 42.98092], [-3.089218, 42.99812], [-3.148098, 43.00314], [-3.179856, 43.01783], [-3.182259, 43.02962], [-3.152905, 43.03188], [-3.144493, 43.06287], [-3.161831, 43.07215], [-3.15239, 43.10086], [-3.181572, 43.11301], [-3.186722, 43.12141], [-3.170586, 43.14546], [-3.165436, 43.15536], [-3.145695, 43.16763], [-3.168869, 43.17514], [-3.187065, 43.16638], [-3.216076, 43.17076], [-3.227921, 43.17151], [-3.253155, 43.19316], [-3.389626, 43.13469], [-3.419495, 43.12993], [-3.435288, 43.16838], [-3.439408, 43.19179], [-3.436017, 43.20608], [-3.446789, 43.22019], [-3.454342, 43.2372], [-3.416748, 43.2527], [-3.399582, 43.25258], [-3.393917, 43.26558], [-3.376408, 43.27658], [-3.345337, 43.27958], [-3.347054, 43.29782], [-3.334179, 43.30382], [-3.295727, 43.30269], [-3.263111, 43.29807], [-3.212986, 43.28858], [-3.194618, 43.30082], [-3.158226, 43.30694], [-3.155351, 43.34091], [-3.15239, 43.34796], [-3.154621, 43.35277], [-3.188784, 43.74729], [-1.666284, 43.65226]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['andalucia'] = {"coordinates": [[[[-5.817413, 35.92465], [-6.19639, 35.94341], [-7.399232, 36.96599], [-7.409518, 37.18382], [-7.417832, 37.21283], [-7.418941, 37.2344], [-7.43772, 37.24786], [-7.437916, 37.24932], [-7.437966, 37.24958], [-7.429025, 37.27275], [-7.444954, 37.31202], [-7.447286, 37.34549], [-7.440834, 37.35733], [-7.442216, 37.39151], [-7.463837, 37.40671], [-7.464352, 37.41421], [-7.452679, 37.41898], [-7.458467, 37.42509], [-7.470703, 37.46886], [-7.47242, 37.4814], [-7.467957, 37.48862], [-7.477055, 37.49284], [-7.484951, 37.4957], [-7.492704, 37.50539], [-7.492083, 37.51954], [-7.511516, 37.52181], [-7.52466, 37.55333], [-7.517567, 37.56921], [-7.515164, 37.57384], [-7.505036, 37.57955], [-7.503662, 37.58839], [-7.499371, 37.59302], [-7.505928, 37.60388], [-7.490273, 37.60662], [-7.487354, 37.61314], [-7.484093, 37.61777], [-7.48478, 37.62538], [-7.473793, 37.62715], [-7.471905, 37.63598], [-7.466412, 37.64251], [-7.46933, 37.64985], [-7.46109, 37.65325], [-7.458483, 37.66085], [-7.450104, 37.69795], [-7.422466, 37.75999], [-7.329254, 37.81792], [-7.298699, 37.85778], [-7.284279, 37.89883], [-7.263336, 37.92511], [-7.256813, 37.93865], [-7.254067, 37.96369], [-7.26574, 37.9802], [-7.245655, 37.99305], [-7.226944, 37.99319], [-7.203255, 38.00469], [-7.18523, 38.00374], [-7.166691, 37.99738], [-7.146435, 38.00455], [-7.126866, 38.00469], [-7.13356, 38.02227], [-7.13047, 38.03011], [-7.119484, 38.03511], [-7.099571, 38.04688], [-7.077599, 38.03579], [-7.067127, 38.03498], [-7.056828, 38.02037], [-7.023697, 38.02605], [-7.007904, 38.02403], [-7.005329, 38.04431], [-7.000523, 38.05052], [-6.991596, 38.10377], [-6.965847, 38.13361], [-6.961041, 38.13604], [-6.962757, 38.14023], [-6.960697, 38.15224], [-6.97237, 38.15994], [-6.97031, 38.16965], [-6.941072, 38.20297], [-6.943363, 38.20489], [-6.931687, 38.21229], [-6.788521, 38.18153], [-6.795731, 38.12213], [-6.668702, 38.09998], [-6.61995, 38.10079], [-6.573601, 38.05377], [-6.485367, 38.01997], [-6.450005, 38.06458], [-6.363144, 38.05377], [-6.342545, 38.00969], [-6.301346, 37.98615], [-6.199036, 37.96531], [-6.181183, 37.95015], [-6.137581, 37.98074], [-6.039048, 38.00428], [-5.95768, 38.00536], [-5.940171, 38.04701], [-5.930214, 38.11349], [-5.900345, 38.13618], [-5.878373, 38.16021], [-5.857773, 38.17613], [-5.72834, 38.20123], [-5.681649, 38.18477], [-5.63015, 38.14293], [-5.593758, 38.13753], [-5.542603, 38.20366], [-5.584489, 38.32981], [-5.591355, 38.40249], [-5.580369, 38.43692], [-5.373688, 38.58897], [-5.186234, 38.68765], [-5.193787, 38.72302], [-5.116196, 38.72195], [-5.049591, 38.73347], [-5.017662, 38.72905], [-4.918442, 38.6906], [-4.870033, 38.69154], [-4.857331, 38.68497], [-4.849778, 38.62599], [-4.702149, 38.5777], [-4.527055, 38.48531], [-4.420452, 38.40302], [-4.296169, 38.35795], [-4.276085, 38.40047], [-4.256344, 38.40747], [-4.137898, 38.39119], [-4.055157, 38.3854], [-3.858261, 38.38607], [-3.830452, 38.42939], [-3.728485, 38.43638], [-3.581543, 38.46004], [-3.528672, 38.44902], [-3.514252, 38.41311], [-3.437519, 38.41002], [-3.377781, 38.47926], [-3.314266, 38.48746], [-3.251782, 38.46461], [-3.138657, 38.45077], [-3.060379, 38.48678], [-3.002701, 38.42172], [-2.998238, 38.45695], [-2.964592, 38.48007], [-2.8755, 38.46972], [-2.858334, 38.48786], [-2.766323, 38.53971], [-2.692166, 38.50358], [-2.616591, 38.51385], [-2.602859, 38.51476], [-2.586336, 38.51097], [-2.561531, 38.49068], [-2.567711, 38.43974], [-2.568569, 38.41493], [-2.519217, 38.40558], [-2.481108, 38.39919], [-2.478018, 38.39334], [-2.475186, 38.34866], [-2.475529, 38.29748], [-2.435703, 38.29048], [-2.430039, 38.2615], [-2.441712, 38.18139], [-2.541619, 38.08391], [-2.355881, 38.02808], [-2.339402, 38.02943], [-2.29683, 38.00617], [-2.27108, 37.96261], [-2.169114, 37.90005], [-2.124482, 37.9033], [-2.087403, 37.87919], [-2.07161, 37.88786], [-1.988526, 37.88298], [-1.967926, 37.87133], [-1.992302, 37.82009], [-1.992989, 37.72484], [-2.006379, 37.70202], [-2.004662, 37.67159], [-1.971016, 37.62973], [-1.924668, 37.56254], [-1.85669, 37.48167], [-1.817551, 37.44379], [-1.815491, 37.45578], [-1.734124, 37.44652], [-1.665201, 37.40132], [-1.622801, 37.37173], [-1.332095, 37.12748], [-2.845464, 35.71976], [-3.175054, 35.70638], [-5.163577, 36.02689], [-5.646974, 35.92465], [-5.817413, 35.92465]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['galicia'] = {"coordinates": [[[[-6.964515, 43.99911], [-7.032108, 43.56273], [-7.029877, 43.54198], [-7.024641, 43.53679], [-7.032623, 43.52764], [-7.039919, 43.50113], [-7.04421, 43.49045], [-7.045627, 43.47753], [-7.051377, 43.47257], [-7.068243, 43.46522], [-7.076268, 43.46404], [-7.08571, 43.44416], [-7.095709, 43.44058], [-7.096782, 43.43292], [-7.100515, 43.42759], [-7.108669, 43.42335], [-7.127166, 43.42117], [-7.14253, 43.42768], [-7.167077, 43.42712], [-7.166991, 43.4034], [-7.175274, 43.38889], [-7.157679, 43.37832], [-7.136135, 43.38796], [-7.123432, 43.37536], [-7.124119, 43.35814], [-7.125321, 43.34453], [-7.094937, 43.30432], [-7.068672, 43.31331], [-7.057171, 43.31007], [-7.058373, 43.25145], [-7.041207, 43.2322], [-7.013226, 43.22694], [-6.964302, 43.20793], [-6.959152, 43.18741], [-6.969967, 43.16149], [-6.946621, 43.1387], [-6.879502, 43.18678], [-6.869202, 43.19541], [-6.835213, 43.16963], [-6.81633, 43.14458], [-6.826286, 43.11865], [-6.868515, 43.08895], [-6.915379, 43.07002], [-6.937008, 43.07691], [-6.958637, 43.05773], [-6.957264, 43.04154], [-6.873322, 42.99712], [-6.830235, 42.95981], [-6.818905, 42.91646], [-6.823368, 42.90741], [-6.810322, 42.87131], [-6.837616, 42.83456], [-6.835041, 42.82348], [-6.859245, 42.78784], [-6.892376, 42.76315], [-6.935806, 42.73743], [-6.946449, 42.73825], [-6.95838, 42.74726], [-6.969194, 42.72457], [-6.984043, 42.71656], [-6.993742, 42.72337], [-7.016916, 42.71], [-7.025585, 42.70685], [-7.037516, 42.69411], [-7.013054, 42.66937], [-6.999664, 42.64173], [-7.039147, 42.63137], [-7.039747, 42.60181], [-7.027044, 42.58589], [-7.04936, 42.56376], [-7.050905, 42.51463], [-6.976061, 42.51311], [-6.963787, 42.52019], [-6.931686, 42.52418], [-6.878557, 42.50311], [-6.838303, 42.49881], [-6.823025, 42.49685], [-6.80397, 42.46836], [-6.817467, 42.44332], [-6.819227, 42.43497], [-6.81221, 42.4265], [-6.819677, 42.42088], [-6.828218, 42.41603], [-6.828239, 42.41023], [-6.806717, 42.38866], [-6.779423, 42.3848], [-6.727066, 42.36184], [-6.735993, 42.29763], [-6.762772, 42.25813], [-6.784058, 42.21352], [-6.795388, 42.20716], [-6.870232, 42.21555], [-6.941128, 42.14107], [-6.987047, 42.10077], [-7.001553, 42.08408], [-7.011595, 42.05694], [-6.970139, 42.05745], [-6.955033, 42.02915], [-6.974988, 42.00753], [-6.976962, 42.00125], [-6.986962, 41.98782], [-6.978378, 41.97034], [-6.990137, 41.95914], [-7.009467, 41.9474], [-7.070791, 41.94686], [-7.140343, 41.98889], [-7.157407, 41.97496], [-7.176346, 41.97776], [-7.184385, 41.96931], [-7.180775, 41.95157], [-7.182549, 41.9408], [-7.1719, 41.91911], [-7.18261, 41.8978], [-7.19575, 41.87838], [-7.231034, 41.86564], [-7.253169, 41.86227], [-7.308816, 41.84212], [-7.356211, 41.83808], [-7.383649, 41.84035], [-7.395982, 41.82119], [-7.427711, 41.80443], [-7.44617, 41.83703], [-7.452914, 41.86243], [-7.485302, 41.85973], [-7.492484, 41.86885], [-7.509791, 41.86342], [-7.503777, 41.8492], [-7.540135, 41.83039], [-7.61696, 41.82602], [-7.614216, 41.84606], [-7.60408, 41.8664], [-7.589016, 41.87769], [-7.608166, 41.87799], [-7.61732, 41.88218], [-7.628218, 41.87786], [-7.659008, 41.88081], [-7.699954, 41.90597], [-7.731114, 41.89078], [-7.742938, 41.89155], [-7.759747, 41.89725], [-7.783253, 41.8828], [-7.836983, 41.8778], [-7.838745, 41.86598], [-7.873764, 41.84271], [-7.895222, 41.85806], [-7.885557, 41.88348], [-7.888482, 41.9054], [-7.886263, 41.92446], [-7.902097, 41.92475], [-7.918194, 41.87878], [-7.945466, 41.86967], [-7.979411, 41.87092], [-8.011658, 41.82768], [-8.032384, 41.82772], [-8.055235, 41.81432], [-8.092522, 41.80708], [-8.121925, 41.80559], [-8.167992, 41.81674], [-8.164902, 41.84859], [-8.170953, 41.87479], [-8.201294, 41.8725], [-8.204429, 41.88911], [-8.215463, 41.89563], [-8.218676, 41.91185], [-8.200837, 41.93898], [-8.178815, 41.95567], [-8.165175, 41.98401], [-8.141554, 41.99046], [-8.131392, 42.0058], [-8.087552, 42.01714], [-8.087117, 42.04741], [-8.098351, 42.06801], [-8.12067, 42.07929], [-8.171158, 42.06441], [-8.187058, 42.06623], [-8.195801, 42.12968], [-8.189535, 42.13731], [-8.197432, 42.14864], [-8.204813, 42.1405], [-8.229789, 42.12874], [-8.240965, 42.1364], [-8.258106, 42.11996], [-8.273306, 42.12191], [-8.298369, 42.10548], [-8.303003, 42.10328], [-8.314033, 42.10243], [-8.320169, 42.10115], [-8.323259, 42.09857], [-8.323431, 42.09341], [-8.324075, 42.0901], [-8.332577, 42.0822], [-8.344288, 42.08364], [-8.353429, 42.08803], [-8.361712, 42.08806], [-8.369136, 42.08462], [-8.382354, 42.07478], [-8.390894, 42.07424], [-8.397803, 42.07892], [-8.402614, 42.07887], [-8.411708, 42.07606], [-8.419519, 42.07204], [-8.429904, 42.07163], [-8.438659, 42.07784], [-8.446635, 42.08132], [-8.478398, 42.08013], [-8.484364, 42.0809], [-8.489857, 42.08045], [-8.495693, 42.07886], [-8.500071, 42.07736], [-8.51419, 42.07752], [-8.521142, 42.07787], [-8.525221, 42.07546], [-8.525605, 42.06679], [-8.523717, 42.06427], [-8.526979, 42.06099], [-8.536892, 42.05732], [-8.546848, 42.05347], [-8.561053, 42.05181], [-8.573585, 42.05222], [-8.582425, 42.05136], [-8.597531, 42.0542], [-8.634997, 42.04668], [-8.645983, 42.0361], [-8.65551, 42.02991], [-8.656626, 42.01818], [-8.659507, 42.00363], [-8.678779, 41.98933], [-8.699713, 41.98233], [-8.721943, 41.97583], [-8.742199, 41.96523], [-8.746061, 41.95604], [-8.745718, 41.94679], [-8.747477, 41.93935], [-8.764076, 41.92557], [-8.778591, 41.91965], [-8.787174, 41.91492], [-8.8106, 41.90503], [-8.829854, 41.89206], [-8.843651, 41.87864], [-8.853564, 41.87288], [-8.863049, 41.87055], [-8.870688, 41.86234], [-9.214475, 41.84694], [-9.600434, 42.6761], [-9.779014, 44.14855], [-6.964515, 43.99911]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['valencia'] = {"coordinates": [[[[-1.453285, 40.1487], [-1.378441, 40.14201], [-1.321621, 40.14936], [-1.326428, 40.18595], [-1.317158, 40.21113], [-1.297417, 40.21637], [-1.252098, 40.15028], [-1.241284, 40.14923], [-1.24094, 40.12075], [-1.150131, 40.11707], [-1.143265, 40.11405], [-1.083698, 40.07939], [-0.914269, 39.96739], [-0.836335, 39.98317], [-0.75531, 40.05127], [-0.629998, 40.08411], [-0.636177, 40.10434], [-0.610772, 40.13033], [-0.577813, 40.18228], [-0.549317, 40.26224], [-0.507088, 40.23918], [-0.392762, 40.26748], [-0.408554, 40.29681], [-0.382119, 40.3154], [-0.315171, 40.37166], [-0.353623, 40.44486], [-0.343323, 40.46001], [-0.289765, 40.47908], [-0.306931, 40.5151], [-0.312767, 40.59675], [-0.384522, 40.61187], [-0.390702, 40.67908], [-0.33886, 40.68793], [-0.310707, 40.67804], [-0.246849, 40.69678], [-0.244446, 40.72827], [-0.205307, 40.7925], [-0.138359, 40.79328], [-0.126, 40.76156], [-0.066605, 40.73503], [-0.012703, 40.73607], [0.024032, 40.73217], [0.039825, 40.70146], [0.102996, 40.73555], [0.145569, 40.73165], [0.173378, 40.74231], [0.233459, 40.74101], [0.241356, 40.70875], [0.267105, 40.71292], [0.304527, 40.68845], [0.275345, 40.66085], [0.269852, 40.64385], [0.278177, 40.63623], [0.280752, 40.63102], [0.291138, 40.62588], [0.299206, 40.62757], [0.319891, 40.6163], [0.348387, 40.60907], [0.398941, 40.60822], [0.445804, 40.57941], [0.439453, 40.5502], [0.449753, 40.54524], [0.47224, 40.53676], [0.495071, 40.53076], [0.530433, 40.52124], [1.686396, 40.21245], [0.664667, 39.05332], [0.587763, 38.51809], [-0.344697, 37.88353], [-0.762702, 37.84628], [-0.770609, 37.8436], [-0.772841, 37.84341], [-0.776854, 37.8437], [-0.781939, 37.84458], [-0.788162, 37.84651], [-0.791702, 37.84887], [-0.798483, 37.853], [-0.804598, 37.85885], [-0.809834, 37.85957], [-0.83009, 37.86383], [-0.831764, 37.86501], [-0.842943, 37.87279], [-0.854402, 37.88342], [-0.857706, 37.88488], [-0.901909, 37.92206], [-0.923281, 37.94413], [-0.936155, 37.9687], [-0.96096, 37.99772], [-0.968256, 38.01206], [-0.983877, 38.02977], [-0.995421, 38.04715], [-0.997868, 38.05019], [-1.00733, 38.05495], [-1.018102, 38.06755], [-1.02469, 38.07698], [-1.025806, 38.081], [-1.025291, 38.0836], [-1.027393, 38.08999], [-1.032114, 38.09708], [-1.032629, 38.10697], [-1.031385, 38.11602], [-1.037908, 38.13837], [-1.026492, 38.14934], [-1.006365, 38.17299], [-1.000228, 38.18551], [-0.990315, 38.20204], [-0.980873, 38.23966], [-0.97126, 38.25786], [-0.97229, 38.28738], [-0.988083, 38.30624], [-0.992375, 38.32052], [-1.044903, 38.33977], [-1.086788, 38.34543], [-1.090908, 38.37033], [-1.088333, 38.43181], [-1.098976, 38.4388], [-1.082668, 38.44216], [-1.036663, 38.47725], [-1.018124, 38.49646], [-1.030827, 38.52453], [-1.005764, 38.5738], [-1.015034, 38.60855], [-1.019325, 38.63511], [-1.028938, 38.64114], [-1.029797, 38.65844], [-1.009026, 38.66058], [-0.963364, 38.65938], [-0.932293, 38.68109], [-0.918732, 38.69563], [-0.929718, 38.70574], [-0.942249, 38.72851], [-0.961304, 38.75823], [-0.964394, 38.77777], [-0.934353, 38.7858], [-0.937443, 38.81216], [-0.93916, 38.89237], [-0.973664, 38.93898], [-1.102753, 38.92616], [-1.140518, 38.92777], [-1.156655, 38.93952], [-1.23373, 39.02425], [-1.270123, 39.03959], [-1.273728, 39.05332], [-1.258793, 39.10809], [-1.242657, 39.11608], [-1.230641, 39.15402], [-1.200085, 39.18237], [-1.194592, 39.20486], [-1.177254, 39.28064], [-1.167984, 39.30588], [-1.223774, 39.31239], [-1.303082, 39.32992], [-1.336212, 39.33178], [-1.356125, 39.33934], [-1.387882, 39.35129], [-1.457062, 39.35952], [-1.481438, 39.39322], [-1.508989, 39.41703], [-1.526241, 39.43268], [-1.531649, 39.45747], [-1.514053, 39.49795], [-1.507359, 39.54132], [-1.50753, 39.54449], [-1.522465, 39.54595], [-1.523409, 39.55588], [-1.498947, 39.56984], [-1.4744, 39.57361], [-1.449166, 39.63306], [-1.404019, 39.68262], [-1.365395, 39.70138], [-1.306172, 39.6809], [-1.279392, 39.74165], [-1.245232, 39.78348], [-1.216393, 39.84202], [-1.206436, 39.91513], [-1.221028, 39.94094], [-1.209526, 39.95252], [-1.253128, 39.99106], [-1.338616, 40.01158], [-1.374665, 40.00632], [-1.387024, 40.01631], [-1.428223, 40.09252], [-1.421013, 40.10486], [-1.454659, 40.12062], [-1.465989, 40.13768], [-1.453285, 40.1487]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['castilla-la-mancha'] = {"coordinates": [[[[-1.027522, 38.65438], [-1.043015, 38.65777], [-1.119576, 38.71016], [-1.121464, 38.73534], [-1.182747, 38.75141], [-1.248493, 38.73601], [-1.280766, 38.70561], [-1.296387, 38.69837], [-1.326599, 38.68002], [-1.344795, 38.67332], [-1.368141, 38.70119], [-1.400585, 38.68886], [-1.444359, 38.64946], [-1.441097, 38.63806], [-1.448136, 38.58065], [-1.482983, 38.56293], [-1.496887, 38.53286], [-1.486931, 38.51849], [-1.474915, 38.48584], [-1.470452, 38.41473], [-1.47337, 38.37625], [-1.544609, 38.33102], [-1.587353, 38.30691], [-1.624947, 38.30678], [-1.670523, 38.30927], [-1.686745, 38.32583], [-1.689491, 38.33385], [-1.69507, 38.33681], [-1.696873, 38.34455], [-1.690865, 38.35485], [-1.758156, 38.36723], [-1.818924, 38.33277], [-1.902695, 38.29398], [-1.953163, 38.28293], [-1.991272, 38.27727], [-2.055817, 38.29586], [-2.108002, 38.23494], [-2.199669, 38.19934], [-2.250138, 38.11903], [-2.339401, 38.02227], [-2.368756, 38.0201], [-2.42506, 38.03011], [-2.479992, 38.04917], [-2.530289, 38.06837], [-2.551575, 38.08039], [-2.555695, 38.08823], [-2.515526, 38.12767], [-2.470036, 38.17303], [-2.456989, 38.2193], [-2.445316, 38.27997], [-2.487889, 38.296], [-2.495442, 38.37154], [-2.494755, 38.38997], [-2.5593, 38.40195], [-2.573719, 38.41016], [-2.580242, 38.42428], [-2.579899, 38.47375], [-2.576466, 38.49068], [-2.594147, 38.50855], [-2.616034, 38.51103], [-2.672425, 38.49444], [-2.703667, 38.49632], [-2.748642, 38.51943], [-2.876015, 38.44848], [-2.964936, 38.4552], [-2.992401, 38.4076], [-3.003044, 38.39469], [-3.066903, 38.46784], [-3.124237, 38.43369], [-3.36628, 38.44122], [-3.422585, 38.4041], [-3.46653, 38.39469], [-3.5812, 38.40033], [-3.615189, 38.38957], [-3.735695, 38.40975], [-3.813286, 38.41244], [-3.842469, 38.36858], [-3.981171, 38.36239], [-4.155236, 38.37638], [-4.259606, 38.39603], [-4.261322, 38.34543], [-4.283638, 38.33681], [-4.451523, 38.3963], [-4.590226, 38.47832], [-4.674683, 38.5385], [-4.811669, 38.58924], [-4.869004, 38.60909], [-4.877587, 38.68069], [-4.937668, 38.67693], [-5.006333, 38.6898], [-5.050278, 38.719], [-5.055771, 38.73668], [-4.998093, 38.74257], [-4.952431, 38.8504], [-4.920502, 38.89664], [-4.851494, 38.89157], [-4.848748, 38.93725], [-4.927025, 38.95354], [-4.942475, 38.99064], [-4.966507, 39.05172], [-4.965821, 39.06531], [-4.859047, 39.04265], [-4.87999, 39.10795], [-4.858017, 39.15589], [-4.816475, 39.20512], [-4.700432, 39.18916], [-4.735108, 39.24821], [-4.76738, 39.32261], [-4.716225, 39.35129], [-4.692879, 39.39375], [-4.6764, 39.42426], [-4.693566, 39.44415], [-4.768753, 39.39482], [-4.822655, 39.38792], [-4.871064, 39.36085], [-4.919815, 39.37943], [-4.960327, 39.39508], [-5.079804, 39.48444], [-5.126152, 39.51781], [-5.21267, 39.59643], [-5.154991, 39.69926], [-5.144348, 39.71485], [-5.181084, 39.75392], [-5.172501, 39.79588], [-5.203743, 39.79456], [-5.244255, 39.74706], [-5.3088, 39.75366], [-5.317726, 39.7621], [-5.323563, 39.78664], [-5.313607, 39.83438], [-5.290947, 39.85836], [-5.318413, 39.88735], [-5.344162, 39.88629], [-5.390168, 39.87734], [-5.41111, 39.87391], [-5.399265, 39.91342], [-5.371971, 39.98869], [-5.375405, 40.06165], [-5.37386, 40.1046], [-5.337467, 40.12009], [-5.207348, 40.11169], [-5.194473, 40.09252], [-5.066929, 40.15434], [-5.012341, 40.16418], [-4.993973, 40.12245], [-4.955864, 40.13584], [-4.930287, 40.13978], [-4.928742, 40.17153], [-4.828148, 40.22647], [-4.821625, 40.25543], [-4.808922, 40.279], [-4.766007, 40.26708], [-4.747639, 40.2773], [-4.694424, 40.2862], [-4.689446, 40.25765], [-4.648934, 40.20169], [-4.578896, 40.22017], [-4.518128, 40.2186], [-4.437962, 40.2608], [-4.396935, 40.28764], [-4.384232, 40.32142], [-4.352303, 40.31461], [-4.35668, 40.28863], [-4.355907, 40.2718], [-4.348869, 40.26247], [-4.338741, 40.24586], [-4.275742, 40.23656], [-4.249821, 40.27403], [-4.207077, 40.28699], [-4.197807, 40.29603], [-4.187336, 40.30087], [-4.104767, 40.24599], [-4.083653, 40.27154], [-4.02031, 40.25045], [-4.017391, 40.2359], [-4.001427, 40.22135], [-3.953362, 40.21519], [-3.930016, 40.20602], [-3.873539, 40.19422], [-3.847618, 40.18163], [-3.847447, 40.17113], [-3.830795, 40.16615], [-3.808651, 40.17914], [-3.79818, 40.1794], [-3.775006, 40.15841], [-3.768826, 40.1428], [-3.745995, 40.13545], [-3.72385, 40.14988], [-3.667202, 40.1466], [-3.605747, 40.11274], [-3.596993, 40.09488], [-3.616219, 40.05587], [-3.643513, 40.03353], [-3.675614, 40.01552], [-3.717327, 39.97488], [-3.716126, 39.95594], [-3.593044, 40.01434], [-3.518028, 40.04391], [-3.506699, 40.05048], [-3.456402, 40.05285], [-3.426876, 40.04785], [-3.381214, 40.07689], [-3.324394, 40.08595], [-3.300018, 40.05824], [-3.237877, 40.06231], [-3.181915, 40.09278], [-3.159428, 40.09738], [-3.155995, 40.06848], [-3.094368, 40.07058], [-3.058491, 40.10158], [-3.082695, 40.12941], [-3.099003, 40.14162], [-3.100205, 40.15552], [-3.085785, 40.16812], [-3.091622, 40.19802], [-3.085098, 40.21126], [-3.090763, 40.23931], [-3.101921, 40.25883], [-3.112393, 40.28267], [-3.125611, 40.27743], [-3.172131, 40.23223], [-3.178482, 40.23315], [-3.19685, 40.24612], [-3.199253, 40.257], [-3.18552, 40.30781], [-3.1814, 40.31409], [-3.164578, 40.32862], [-3.159599, 40.34314], [-3.147412, 40.35243], [-3.156853, 40.36695], [-3.14621, 40.38827], [-3.13488, 40.40356], [-3.148098, 40.41598], [-3.157711, 40.43558], [-3.171787, 40.43401], [-3.202858, 40.44094], [-3.20509, 40.49618], [-3.202686, 40.51445], [-3.219166, 40.52085], [-3.25058, 40.53963], [-3.275128, 40.53207], [-3.281994, 40.53442], [-3.289375, 40.52907], [-3.298645, 40.53716], [-3.291092, 40.55555], [-3.287487, 40.56833], [-3.315296, 40.57967], [-3.333492, 40.59525], [-3.332291, 40.6077], [-3.326368, 40.61369], [-3.333492, 40.62203], [-3.339672, 40.62353], [-3.339844, 40.62659], [-3.330617, 40.62838], [-3.326969, 40.63258], [-3.335338, 40.63809], [-3.337441, 40.63545], [-3.370571, 40.62294], [-3.387737, 40.63128], [-3.367825, 40.64678], [-3.376579, 40.67869], [-3.396321, 40.68767], [-3.402157, 40.66788], [-3.442841, 40.67178], [-3.457775, 40.68467], [-3.472195, 40.68962], [-3.458977, 40.70953], [-3.445759, 40.72007], [-3.454342, 40.73477], [-3.45108, 40.76936], [-3.466873, 40.77989], [-3.515968, 40.7873], [-3.477688, 40.85251], [-3.479405, 40.86511], [-3.448334, 40.88237], [-3.462238, 40.89729], [-3.464813, 40.90742], [-3.439751, 40.94451], [-3.421211, 40.97679], [-3.441467, 41.04518], [-3.432369, 41.07806], [-3.45108, 41.07909], [-3.489876, 41.09197], [-3.527985, 41.13827], [-3.543434, 41.14816], [-3.544464, 41.16638], [-3.502321, 41.18033], [-3.473482, 41.18595], [-3.44739, 41.21708], [-3.40662, 41.21656], [-3.420525, 41.27936], [-3.301735, 41.26439], [-3.218994, 41.31392], [-3.060379, 41.28297], [-2.913094, 41.33197], [-2.860909, 41.33223], [-2.849236, 41.28193], [-2.714653, 41.28271], [-2.582474, 41.22799], [-2.531662, 41.1709], [-2.470551, 41.12023], [-2.461968, 41.08246], [-2.351761, 41.09125], [-2.319832, 41.07236], [-2.235718, 41.10264], [-2.130318, 41.12514], [-2.077446, 41.09333], [-2.055817, 41.15565], [-1.959, 41.18176], [-1.895829, 41.14117], [-1.809998, 41.1073], [-1.590958, 40.94049], [-1.613617, 40.89275], [-1.530877, 40.81979], [-1.530361, 40.68845], [-1.537914, 40.59323], [-1.598339, 40.55868], [-1.684513, 40.57615], [-1.688118, 40.48573], [-1.760903, 40.44002], [-1.78442, 40.40448], [-1.718502, 40.34667], [-1.695843, 40.32325], [-1.689491, 40.31213], [-1.661682, 40.2976], [-1.544438, 40.20313], [-1.512852, 40.20746], [-1.433201, 40.20103], [-1.436291, 40.15723], [-1.451569, 40.13269], [-1.400414, 40.10197], [-1.41243, 40.09239], [-1.379471, 40.04036], [-1.37003, 40.01749], [-1.337757, 40.02117], [-1.248665, 39.99961], [-1.157513, 40.01854], [-1.138287, 39.97423], [-1.140347, 39.96712], [-1.197853, 39.94515], [-1.190472, 39.91263], [-1.194077, 39.87338], [-1.195622, 39.85797], [-1.212273, 39.80854], [-1.229954, 39.78255], [-1.264801, 39.73927], [-1.251068, 39.70058], [-1.279907, 39.67337], [-1.302567, 39.66188], [-1.36694, 39.68368], [-1.413117, 39.65368], [-1.451054, 39.58228], [-1.463413, 39.56799], [-1.496201, 39.56163], [-1.493969, 39.49874], [-1.511307, 39.45157], [-1.453457, 39.40397], [-1.414147, 39.38513], [-1.147042, 39.32314], [-1.168328, 39.21603], [-1.19133, 39.17532], [-1.21708, 39.14497], [-1.250038, 39.06452], [-1.133652, 38.93618], [-0.999069, 38.95233], [-0.956326, 38.94846], [-0.920448, 38.8929], [-0.920277, 38.825], [-0.926457, 38.78206], [-0.956669, 38.77269], [-0.930491, 38.72128], [-0.912552, 38.69623], [-0.927143, 38.67841], [-0.96139, 38.65535], [-0.970917, 38.65328], [-1.027522, 38.65438]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['asturias'] = {"coordinates": [[[[-7.188576, 44.01101], [-4.39956, 43.86292], [-4.509459, 43.39644], [-4.508901, 43.38197], [-4.509416, 43.37877], [-4.515939, 43.37634], [-4.520488, 43.37151], [-4.520144, 43.36681], [-4.517098, 43.33854], [-4.513493, 43.31038], [-4.51684, 43.27977], [-4.535122, 43.26771], [-4.54834, 43.26689], [-4.554949, 43.27071], [-4.553833, 43.28495], [-4.580612, 43.2877], [-4.60413, 43.29714], [-4.628677, 43.26683], [-4.658203, 43.26246], [-4.704466, 43.26264], [-4.724636, 43.25508], [-4.719057, 43.22963], [-4.730902, 43.19254], [-4.734335, 43.18453], [-4.751587, 43.18215], [-4.770813, 43.18703], [-4.821882, 43.17658], [-4.841795, 43.17852], [-4.86763, 43.21068], [-4.898186, 43.2342], [-4.934922, 43.22044], [-4.997063, 43.16988], [-5.050965, 43.17213], [-5.067788, 43.17113], [-5.091133, 43.10048], [-5.211983, 43.08243], [-5.280304, 43.0739], [-5.328369, 43.07691], [-5.37489, 43.08544], [-5.386391, 43.04669], [-5.493851, 43.01871], [-5.537453, 43.0162], [-5.569039, 43.01996], [-5.641136, 43.03477], [-5.68903, 43.05371], [-5.722847, 43.03841], [-5.752373, 42.96773], [-5.801983, 42.96044], [-5.842667, 42.96333], [-5.893479, 42.97514], [-5.959397, 43.01481], [-5.989781, 43.05622], [-6.089688, 43.02912], [-6.132431, 43.0172], [-6.227188, 43.0049], [-6.262207, 43.0118], [-6.330528, 43.02975], [-6.354046, 43.04543], [-6.40297, 42.99812], [-6.427345, 42.93858], [-6.488629, 42.91721], [-6.508713, 42.92425], [-6.541157, 42.90879], [-6.590595, 42.91419], [-6.710758, 42.91218], [-6.721916, 42.91394], [-6.754017, 42.881], [-6.772728, 42.87886], [-6.838131, 42.91558], [-6.844998, 42.92777], [-6.839676, 42.95692], [-6.867829, 42.98104], [-6.911431, 42.98694], [-6.943875, 43.01017], [-6.949711, 43.02649], [-6.958122, 43.0246], [-6.953316, 42.99586], [-6.959667, 42.98732], [-6.975117, 42.99109], [-6.999493, 43.01745], [-6.999664, 43.02749], [-6.984215, 43.04292], [-6.970825, 43.05961], [-6.940613, 43.08895], [-6.867829, 43.10224], [-6.828346, 43.14208], [-6.841736, 43.15924], [-6.870918, 43.17777], [-6.878472, 43.15723], [-6.914349, 43.13895], [-6.947136, 43.1283], [-6.971856, 43.13857], [-6.983872, 43.16838], [-6.971512, 43.20242], [-6.987219, 43.2013], [-6.99357, 43.20699], [-7.002926, 43.20655], [-7.007732, 43.21375], [-7.020092, 43.21112], [-7.043867, 43.22701], [-7.065325, 43.24414], [-7.074337, 43.26877], [-7.071591, 43.28002], [-7.07365, 43.3007], [-7.090645, 43.29782], [-7.101803, 43.30101], [-7.110128, 43.31375], [-7.134247, 43.33067], [-7.133045, 43.36338], [-7.130642, 43.37093], [-7.139225, 43.38041], [-7.159996, 43.37318], [-7.178707, 43.38054], [-7.184115, 43.3917], [-7.177849, 43.41372], [-7.173901, 43.43136], [-7.162228, 43.4331], [-7.142143, 43.43254], [-7.127037, 43.42469], [-7.102404, 43.44039], [-7.093477, 43.45398], [-7.084551, 43.46363], [-7.062149, 43.47572], [-7.05348, 43.47615], [-7.05142, 43.50374], [-7.041979, 43.52752], [-7.033568, 43.53536], [-7.035112, 43.54034], [-7.033138, 43.54693], [-7.188576, 44.01101]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['castilla-y-leon'] = {"coordinates": [[[[-2.513466, 42.64482], [-2.546253, 42.63522], [-2.635861, 42.64532], [-2.714997, 42.65959], [-2.770615, 42.66313], [-2.77834, 42.66868], [-2.786751, 42.69013], [-2.826619, 42.70779], [-2.830267, 42.71826], [-2.855544, 42.72533], [-2.854128, 42.73425], [-2.86623, 42.73604], [-2.87035, 42.74068], [-2.856617, 42.76894], [-2.837048, 42.79868], [-2.810612, 42.79427], [-2.733708, 42.79704], [-2.602558, 42.77423], [-2.550888, 42.76592], [-2.567711, 42.71927], [-2.596207, 42.70616], [-2.6017, 42.69695], [-2.540932, 42.68837], [-2.518788, 42.68975], [-2.513466, 42.64482]]], [[[-6.981559, 41.96434], [-6.983013, 41.96651], [-6.993656, 41.98297], [-6.993656, 41.99344], [-6.965504, 42.028], [-6.976662, 42.04037], [-6.97958, 42.04955], [-7.011681, 42.0498], [-7.033482, 42.06229], [-7.037258, 42.07427], [-7.021465, 42.08408], [-7.009449, 42.08803], [-6.99194, 42.12178], [-6.945419, 42.17384], [-6.892891, 42.21263], [-6.872978, 42.22458], [-6.794701, 42.25165], [-6.768952, 42.26854], [-6.741314, 42.34446], [-6.738911, 42.35651], [-6.767578, 42.36349], [-6.82251, 42.38467], [-6.834183, 42.39304], [-6.844997, 42.40559], [-6.841264, 42.41078], [-6.832423, 42.41056], [-6.830406, 42.41598], [-6.825728, 42.42602], [-6.826115, 42.45361], [-6.819248, 42.47412], [-6.858216, 42.48526], [-6.916409, 42.50678], [-6.951771, 42.51475], [-6.971684, 42.49007], [-7.030564, 42.49552], [-7.080517, 42.50564], [-7.072277, 42.55295], [-7.053051, 42.59644], [-7.050991, 42.62638], [-7.049618, 42.63232], [-7.023697, 42.65265], [-7.019749, 42.66148], [-7.033997, 42.67448], [-7.038117, 42.68218], [-7.047558, 42.69493], [-7.0261, 42.71789], [-6.962586, 42.75735], [-6.904907, 42.77045], [-6.853924, 42.82437], [-6.875553, 42.8732], [-6.846028, 42.90703], [-6.831093, 42.91784], [-6.724663, 42.92086], [-6.669045, 42.92752], [-6.491718, 42.92915], [-6.482105, 42.99285], [-6.415329, 43.0162], [-6.399193, 43.03941], [-6.360569, 43.06262], [-6.283493, 43.03891], [-6.217575, 43.04882], [-6.186333, 43.05221], [-6.10136, 43.03703], [-6.095181, 43.06638], [-6.082649, 43.07867], [-5.989266, 43.07027], [-5.971413, 43.06826], [-5.960083, 43.05371], [-5.95356, 43.02096], [-5.88644, 42.99586], [-5.860863, 42.98355], [-5.791683, 42.96974], [-5.769367, 42.98418], [-5.754605, 43.01657], [-5.732632, 43.04531], [-5.690575, 43.06237], [-5.573158, 43.03753], [-5.485783, 43.05484], [-5.387764, 43.0877], [-5.373516, 43.09785], [-5.34811, 43.09785], [-5.277043, 43.08995], [-5.14761, 43.1184], [-5.106411, 43.10976], [-5.096283, 43.14559], [-5.080147, 43.18052], [-5.051994, 43.18666], [-5.001011, 43.18816], [-4.951401, 43.22457], [-4.911232, 43.24058], [-4.885655, 43.24095], [-4.857845, 43.21981], [-4.836388, 43.19003], [-4.82832, 43.16074], [-4.840508, 43.12554], [-4.765148, 43.07892], [-4.728413, 43.0492], [-4.731159, 43.02711], [-4.602585, 43.03778], [-4.522076, 43.04945], [-4.461994, 43.06287], [-4.445172, 43.06023], [-4.39848, 43.04242], [-4.343205, 42.97589], [-4.259606, 42.96836], [-4.235745, 42.95843], [-4.219608, 42.91042], [-4.201412, 42.85105], [-4.148026, 42.87634], [-4.122791, 42.8591], [-4.087086, 42.82663], [-4.066658, 42.76705], [-4.02237, 42.82877], [-4.000569, 42.83909], [-3.9604, 42.76743], [-3.89534, 42.81077], [-3.829079, 42.80422], [-3.822041, 42.83456], [-3.875942, 42.84715], [-3.916454, 42.85785], [-3.925209, 42.88766], [-3.934651, 42.8976], [-3.973789, 42.90841], [-3.994389, 42.93079], [-3.975163, 42.97338], [-3.965035, 42.98927], [-3.950357, 43.0065], [-3.895555, 43.035], [-3.891392, 43.04267], [-3.852768, 43.04844], [-3.853455, 43.07767], [-3.852425, 43.08669], [-3.811569, 43.08832], [-3.714237, 43.1169], [-3.679733, 43.15498], [-3.653126, 43.18503], [-3.613129, 43.17426], [-3.583431, 43.15673], [-3.421383, 43.13632], [-3.345165, 43.16713], [-3.30534, 43.17889], [-3.279848, 43.19617], [-3.248949, 43.20111], [-3.222942, 43.17382], [-3.207772, 43.18115], [-3.192558, 43.17326], [-3.173332, 43.17952], [-3.153076, 43.17914], [-3.137112, 43.17263], [-3.137627, 43.16099], [-3.161144, 43.14759], [-3.136254, 43.11377], [-3.131104, 43.0971], [-3.13694, 43.06889], [-3.138313, 43.01004], [-3.067761, 43.01469], [-3.034802, 42.9833], [-2.992745, 42.95692], [-2.97678, 42.93858], [-3.015919, 42.90703], [-3.093338, 42.89747], [-3.101063, 42.88238], [-3.110333, 42.86011], [-3.148956, 42.80648], [-3.117714, 42.7915], [-3.13076, 42.76869], [-3.14106, 42.75899], [-3.101406, 42.76875], [-3.079433, 42.76797], [-3.049543, 42.76614], [-3.045981, 42.76604], [-3.04553, 42.76031], [-3.048899, 42.7567], [-3.048985, 42.75481], [-3.048041, 42.7495], [-3.042419, 42.74448], [-3.035488, 42.73894], [-3.016262, 42.74298], [-3.002615, 42.73522], [-3.004503, 42.73075], [-3.008108, 42.72514], [-2.994375, 42.7235], [-2.987766, 42.71978], [-2.983131, 42.70849], [-2.955837, 42.71196], [-2.929616, 42.70923], [-2.926183, 42.7054], [-2.928629, 42.70084], [-2.921419, 42.70199], [-2.900562, 42.69467], [-2.893696, 42.67966], [-2.895498, 42.66799], [-2.887602, 42.65012], [-2.851982, 42.63787], [-2.862539, 42.63143], [-2.880478, 42.61811], [-2.93232, 42.59151], [-2.94777, 42.59353], [-3.049736, 42.59682], [-3.106728, 42.54423], [-3.068619, 42.53715], [-3.065873, 42.52272], [-3.059006, 42.47742], [-3.041497, 42.44474], [-3.04699, 42.36971], [-3.060379, 42.35245], [-3.082009, 42.24326], [-3.103638, 42.19342], [-3.027077, 42.09975], [-2.929058, 42.09147], [-2.907086, 42.02418], [-2.810097, 42.0521], [-2.807522, 42.08141], [-2.795162, 42.11058], [-2.776451, 42.12942], [-2.732334, 42.1298], [-2.699375, 42.10637], [-2.683754, 42.00568], [-2.620926, 42.01015], [-2.5387, 42.06191], [-2.518616, 42.12064], [-2.441025, 42.14711], [-2.312623, 42.15272], [-2.124482, 42.10637], [-2.118302, 42.09083], [-2.102509, 41.99726], [-2.106285, 41.96255], [-2.022858, 41.95719], [-1.975136, 41.92808], [-1.907502, 41.94928], [-1.865294, 41.9808], [-1.848107, 41.96562], [-1.813088, 41.86342], [-1.816178, 41.82634], [-1.766053, 41.7229], [-1.801415, 41.66086], [-1.919518, 41.59311], [-1.972733, 41.59182], [-1.959687, 41.54636], [-1.925354, 41.40102], [-2.023201, 41.37758], [-2.150917, 41.34872], [-2.135468, 41.18847], [-2.07264, 41.17581], [-2.037964, 41.14764], [-2.043457, 41.06149], [-2.078476, 41.06874], [-2.130661, 41.09824], [-2.17289, 41.08039], [-2.268677, 41.06356], [-2.326012, 41.05217], [-2.420769, 41.05528], [-2.477074, 41.07573], [-2.539215, 41.14014], [-2.583847, 41.13575], [-2.60479, 41.14997], [-2.627106, 41.18692], [-2.651139, 41.23161], [-2.696114, 41.24013], [-2.754479, 41.26336], [-2.773018, 41.24632], [-2.828637, 41.25406], [-2.928887, 41.29999], [-2.947426, 41.28684], [-3.059693, 41.27007], [-3.203888, 41.29973], [-3.247834, 41.25484], [-3.275128, 41.25652], [-3.338127, 41.25123], [-3.370228, 41.25626], [-3.394432, 41.25329], [-3.399067, 41.21017], [-3.41795, 41.21043], [-3.441811, 41.21069], [-3.464384, 41.18176], [-3.508416, 41.15824], [-3.576737, 41.15436], [-3.754063, 41.01773], [-3.79612, 40.9869], [-3.856373, 40.97445], [-3.915596, 40.93102], [-3.93774, 40.88847], [-3.948899, 40.8294], [-3.972759, 40.7808], [-4.027004, 40.77794], [-4.067688, 40.78613], [-4.087429, 40.74908], [-4.122791, 40.7228], [-4.139958, 40.69391], [-4.161244, 40.67973], [-4.163733, 40.64151], [-4.157209, 40.62145], [-4.214029, 40.60359], [-4.247246, 40.60086], [-4.26321, 40.60333], [-4.274197, 40.6262], [-4.284239, 40.62718], [-4.285698, 40.60933], [-4.276257, 40.60477], [-4.27793, 40.59007], [-4.288144, 40.56983], [-4.288101, 40.56357], [-4.311791, 40.55411], [-4.317455, 40.53272], [-4.313851, 40.46667], [-4.321747, 40.42709], [-4.314194, 40.40788], [-4.361572, 40.40552], [-4.412556, 40.40605], [-4.435902, 40.38657], [-4.435387, 40.35217], [-4.453755, 40.31972], [-4.459419, 40.31815], [-4.487744, 40.31775], [-4.523964, 40.29249], [-4.55246, 40.23236], [-4.560528, 40.2165], [-4.610996, 40.19946], [-4.648075, 40.19448], [-4.688587, 40.20589], [-4.707127, 40.25805], [-4.705067, 40.27232], [-4.761715, 40.25765], [-4.803085, 40.27154], [-4.803944, 40.23525], [-4.81699, 40.21834], [-4.873982, 40.18884], [-4.91724, 40.16772], [-4.913292, 40.15736], [-4.920845, 40.13597], [-4.949684, 40.1197], [-5.004444, 40.10749], [-5.016804, 40.10959], [-5.021267, 40.15526], [-5.083408, 40.12252], [-5.139027, 40.08523], [-5.201082, 40.08044], [-5.215502, 40.08635], [-5.21576, 40.10302], [-5.319443, 40.10388], [-5.334978, 40.11221], [-5.351029, 40.13157], [-5.357337, 40.14721], [-5.357273, 40.15188], [-5.360491, 40.15298], [-5.372315, 40.16012], [-5.372486, 40.2186], [-5.362702, 40.24494], [-5.420551, 40.24914], [-5.466042, 40.20484], [-5.536251, 40.19041], [-5.612126, 40.21244], [-5.664311, 40.25556], [-5.663796, 40.26944], [-5.692291, 40.28555], [-5.737953, 40.2883], [-5.762158, 40.27678], [-5.794773, 40.28162], [-5.807648, 40.29799], [-5.787563, 40.31501], [-5.804215, 40.34733], [-5.845585, 40.32652], [-5.880604, 40.32129], [-5.913048, 40.27311], [-5.970898, 40.28778], [-5.991497, 40.29616], [-6.105995, 40.35387], [-6.109772, 40.35596], [-6.083679, 40.39807], [-6.131745, 40.41872], [-6.145821, 40.43336], [-6.231651, 40.48273], [-6.250534, 40.46954], [-6.291561, 40.45047], [-6.338425, 40.4429], [-6.359024, 40.40592], [-6.434384, 40.37114], [-6.535835, 40.34131], [-6.552658, 40.29026], [-6.578064, 40.26839], [-6.688271, 40.23983], [-6.754017, 40.23616], [-6.806545, 40.23616], [-6.848602, 40.25136], [-6.87006, 40.27036], [-6.870947, 40.27436], [-6.865942, 40.28403], [-6.865469, 40.30181], [-6.820871, 40.32719], [-6.79671, 40.33083], [-6.793289, 40.36878], [-6.838646, 40.40461], [-6.856156, 40.45348], [-6.821137, 40.50127], [-6.80452, 40.51169], [-6.807519, 40.5514], [-6.849633, 40.56207], [-6.842766, 40.59362], [-6.835814, 40.59825], [-6.82929, 40.60346], [-6.826544, 40.60789], [-6.822767, 40.61174], [-6.798477, 40.66124], [-6.80706, 40.6641], [-6.811622, 40.69742], [-6.831865, 40.74223], [-6.831341, 40.77023], [-6.820956, 40.80142], [-6.8256, 40.81849], [-6.828272, 40.84586], [-6.803395, 40.84824], [-6.810547, 40.88045], [-6.830377, 40.87994], [-6.850531, 40.90085], [-6.860021, 40.94147], [-6.933364, 41.01432], [-6.931644, 41.02981], [-6.916194, 41.03942], [-6.907697, 41.03712], [-6.904221, 41.03469], [-6.897655, 41.03356], [-6.87933, 41.02916], [-6.864009, 41.02819], [-6.843238, 41.02887], [-6.822853, 41.03301], [-6.813626, 41.03926], [-6.808562, 41.04673], [-6.803412, 41.04887], [-6.782169, 41.06887], [-6.775303, 41.07864], [-6.770067, 41.08919], [-6.765947, 41.09125], [-6.763802, 41.09585], [-6.760197, 41.09844], [-6.757536, 41.10316], [-6.759338, 41.10658], [-6.776736, 41.1285], [-6.702551, 41.18846], [-6.693919, 41.20909], [-6.649343, 41.24942], [-6.616345, 41.25019], [-6.590002, 41.25803], [-6.572309, 41.24112], [-6.522519, 41.27795], [-6.512146, 41.27316], [-6.506996, 41.26749], [-6.483135, 41.27548], [-6.49189, 41.28284], [-6.493552, 41.28732], [-6.486912, 41.29283], [-6.471291, 41.30109], [-6.466656, 41.30296], [-6.442881, 41.30573], [-6.439276, 41.31927], [-6.425285, 41.34254], [-6.397614, 41.36369], [-6.393228, 41.38594], [-6.366379, 41.39698], [-6.334733, 41.38723], [-6.334772, 41.41522], [-6.297736, 41.4363], [-6.307896, 41.4487], [-6.28521, 41.47926], [-6.279202, 41.48228], [-6.272807, 41.48592], [-6.268988, 41.48759], [-6.265769, 41.48797], [-6.26328, 41.48785], [-6.26401, 41.4891], [-6.267057, 41.4919], [-6.269331, 41.49431], [-6.267614, 41.49765], [-6.265555, 41.49996], [-6.257057, 41.49926], [-6.256285, 41.50395], [-6.260061, 41.51166], [-6.258245, 41.51488], [-6.246205, 41.5172], [-6.196614, 41.58026], [-6.19801, 41.58996], [-6.23457, 41.60482], [-6.285455, 41.65226], [-6.354218, 41.67291], [-6.374641, 41.67264], [-6.439706, 41.68], [-6.453438, 41.66445], [-6.498993, 41.65298], [-6.549569, 41.67907], [-6.559182, 41.69701], [-6.556168, 41.72065], [-6.571633, 41.74422], [-6.556137, 41.76815], [-6.547637, 41.79538], [-6.523529, 41.87339], [-6.574293, 41.88182], [-6.548705, 41.93965], [-6.585526, 41.96432], [-6.59895, 41.94696], [-6.617454, 41.93895], [-6.670349, 41.93623], [-6.696975, 41.93063], [-6.750448, 41.94124], [-6.776676, 41.98399], [-6.803122, 41.98357], [-6.821389, 41.94297], [-6.892903, 41.9384], [-6.943012, 41.94185], [-6.971684, 41.97034], [-6.981559, 41.96434]]]], "type": "MultiPolygon"};
+      
+   
+      
+         childrenGeo['la-rioja'] = {"coordinates": [[[[-1.830598, 42.0039], [-1.848965, 41.96574], [-1.904755, 41.93012], [-1.982689, 41.91403], [-2.026892, 41.94443], [-2.034874, 41.93676], [-2.117615, 41.95438], [-2.129975, 41.99471], [-2.125855, 42.01818], [-2.27211, 42.07835], [-2.309189, 42.13515], [-2.435532, 42.12904], [-2.507973, 42.06714], [-2.574749, 41.99216], [-2.670708, 41.99458], [-2.747441, 42.00479], [-2.790356, 42.04164], [-2.883568, 42.00517], [-2.917042, 42.01448], [-2.943993, 42.08001], [-3.036518, 42.08026], [-3.068447, 42.12713], [-3.08733, 42.13082], [-3.136597, 42.19775], [-3.097286, 42.24631], [-3.110333, 42.31007], [-3.114453, 42.33736], [-3.108788, 42.3848], [-3.106041, 42.41573], [-3.091793, 42.42612], [-3.079434, 42.42232], [-3.051281, 42.44613], [-3.091793, 42.47628], [-3.126984, 42.52943], [-3.140202, 42.54195], [-3.073082, 42.59467], [-3.072224, 42.60465], [-3.08939, 42.62524], [-3.086643, 42.64305], [-3.023644, 42.6428], [-3.007851, 42.64621], [-2.948628, 42.64292], [-2.907086, 42.62777], [-2.859793, 42.64027], [-2.852755, 42.63882], [-2.839708, 42.62878], [-2.838764, 42.6116], [-2.817049, 42.61615], [-2.815247, 42.60061], [-2.817135, 42.57148], [-2.80057, 42.5742], [-2.781, 42.5819], [-2.776022, 42.60491], [-2.766581, 42.62537], [-2.740231, 42.62373], [-2.678776, 42.59663], [-2.686501, 42.57002], [-2.685471, 42.55896], [-2.694225, 42.53006], [-2.680042, 42.5271], [-2.675729, 42.52644], [-2.665386, 42.51134], [-2.630196, 42.49666], [-2.604103, 42.5059], [-2.577689, 42.48568], [-2.575071, 42.49112], [-2.573032, 42.49336], [-2.568569, 42.49507], [-2.538614, 42.49621], [-2.519131, 42.5107], [-2.515268, 42.51861], [-2.512693, 42.52038], [-2.507114, 42.52121], [-2.502737, 42.5133], [-2.507887, 42.50273], [-2.510376, 42.49469], [-2.499561, 42.49001], [-2.479305, 42.48824], [-2.474842, 42.49318], [-2.44832, 42.49786], [-2.437506, 42.49115], [-2.419224, 42.49052], [-2.413988, 42.49109], [-2.399912, 42.47406], [-2.376909, 42.47583], [-2.363691, 42.46804], [-2.330732, 42.47045], [-2.297516, 42.47026], [-2.28713, 42.46919], [-2.236061, 42.44303], [-2.221041, 42.42871], [-2.195377, 42.42162], [-2.158213, 42.41921], [-2.136498, 42.42352], [-2.114096, 42.42206], [-2.101221, 42.4182], [-2.109289, 42.3995], [-2.086887, 42.38733], [-2.076759, 42.37135], [-2.072125, 42.34643], [-2.050753, 42.36], [-2.029381, 42.36603], [-2.015133, 42.37142], [-1.996164, 42.36622], [-1.968184, 42.35537], [-1.959686, 42.34389], [-1.94149, 42.3371], [-1.935053, 42.32854], [-1.923466, 42.33038], [-1.913681, 42.32828], [-1.902952, 42.30194], [-1.870251, 42.29166], [-1.842957, 42.2627], [-1.831541, 42.25057], [-1.818752, 42.25209], [-1.788197, 42.23494], [-1.712837, 42.21466], [-1.683226, 42.19641], [-1.675243, 42.18827], [-1.693525, 42.18007], [-1.69756, 42.17129], [-1.691723, 42.16137], [-1.673012, 42.15042], [-1.717472, 42.13146], [-1.779614, 42.13528], [-1.798668, 42.13833], [-1.819611, 42.14915], [-1.832485, 42.1298], [-1.897202, 42.07058], [-1.891022, 42.04062], [-1.830598, 42.0039]]]], "type": "MultiPolygon"};
+      
+   
+   
+      
+         childrenGeo['canary-islands'] = {"coordinates": [[[[-13.65186, 30.25648], [-12.47875, 29.68803], [-14.02816, 27.25685], [-16.70429, 26.36117], [-18.92352, 27.81183], [-18.24516, 29.34705], [-15.53783, 28.80727], [-13.65186, 30.25648]]]], "type": "MultiPolygon"};
+      
+   
+
+   let activeLayer = null;
+   document.querySelectorAll('#subregions tr[data-child-id], #special_regions tr[data-child-id]').forEach(row => {
+      row.addEventListener('mouseover', () => {
+         const id = row.getAttribute('data-child-id');
+         if (!childrenGeo[id]) return;
+         if (activeLayer) map.removeLayer(activeLayer);
+         activeLayer = new GeoJSON(childrenGeo[id], {
+            style: { color: '#ff0000', weight: 0, fillOpacity: 0.6 }
+         }).addTo(map);
+      });
+      row.addEventListener('mouseout', () => {
+         if (activeLayer) { map.removeLayer(activeLayer); activeLayer = null; }
+      });
+   });
+
+      </script>
+      
+
+      <div class="customized_shapes">
+         <p>
+         <img alt="small flag of UK" src="/static/img/en.png">
+         Not what you were looking for?
+         Geofabrik is a consulting and software development firm based in Karlsruhe, Germany
+         specializing in OpenStreetMap services. We're happy to help you with data
+         preparation, processing, server setup and the like. <a href="http://www.geofabrik.de/data/shapefiles.html">Check out our web site</a>
+         and contact us if we can be of service.
+         </p>
+      </div>
+      <div class="customized_shapes">
+         <p>
+         <img alt="small flag of Germany" src="/static/img/de.png">
+         Nicht das Richtige dabei?
+         Die Geofabrik ist ein auf OpenStreetMap spezialisiertes Beratungs- und Softwareentwicklungsunternehmen in Karlsruhe.
+         Gern helfen wir Ihnen bei der Datenaufbereitung, Datenkonvertierung, Serverinstallation und &auml;hnlichen Aufgaben.
+         <a href="http://www.geofabrik.de/data/shapefiles.html">Besuchen Sie unsere Webseite</a> und sprechen Sie mit uns, wenn wir Ihnen
+         helfen k&ouml;nnen.
+         </p>
+      </div>
+   </div>
+</div>
+</div>
+</div>
+<div id="download-copyright">
+Data processed by
+<a href="http://www.geofabrik.de/">Geofabrik GmbH</a>
+and created by
+<a href="http://www.openstreetmap.org/">OpenStreetMap Contributors</a>
+|
+<a href="http://opendatacommons.org/licenses/odbl/">License: ODbL 1.0</a>
+|
+<a href="http://www.geofabrik.de/geofabrik/contact.html">Contact</a>
+|
+<a href="http://www.geofabrik.de/geofabrik/imprint.html">Legal Notice/Privacy Policy</a>
+</div>
+</body>
+</html>

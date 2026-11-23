@@ -1,0 +1,3 @@
+https://download.geofabrik.de/europe/spain.html -> 200 132675 text/html
+https://download.geofabrik.de/europe/spain-latest.osm.pbf.md5 -> 200 55 application/octet-stream
+https://download.geofabrik.de/europe/spain/valencia-latest.osm.pbf.md5 -> 200 58 application/octet-stream
