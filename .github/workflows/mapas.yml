@@ -31,12 +31,15 @@ jobs:
           java-version: "21"
       - name: Datos de OpenStreetMap (Geofabrik)
         run: |
-          sudo apt-get -qq update && sudo apt-get -qq install -y osmium-tool >/dev/null
+          sudo apt-get -qq update && sudo apt-get -qq install -y osmium-tool aria2 >/dev/null
           mkdir -p tmp/osm
           B=https://download.geofabrik.de/europe
           # Geofabrik a veces da 404 un rato mientras renueva sus archivos (de madrugada): se reintenta con calma
           # y si no responde, el espejo de OpenStreetMap France (los mismos extractos)
-          bajar() { d=$1; shift; for i in 1 2 3 4; do for u in "$@"; do curl -sSfL --retry 3 -o "$d" "$u" && return 0; echo "reintento $i: $u"; done; sleep 60; done; return 1; }
+          # (con varias conexiones a la vez, aria2: con una sola, a veces no acaba a tiempo)
+          bajar() { d=$1; shift; for i in 1 2 3 4; do for u in "$@"; do rm -f "$d" "$d.aria2"
+            aria2c -q -x 8 -s 8 -k 20M --max-tries=3 --lowest-speed-limit=100K -d "$(dirname "$d")" -o "$(basename "$d")" "$u" && return 0
+            curl -sSfL --retry 3 -o "$d" "$u" && return 0; echo "reintento $i: $u"; done; sleep 60; done; return 1; }
           F=https://download.openstreetmap.fr/extracts
           bajar tmp/osm/espana.osm.pbf "$B/spain-latest.osm.pbf" "$F/europe/spain-latest.osm.pbf"
           bajar tmp/osm/andorra.osm.pbf "$B/andorra-latest.osm.pbf" "$F/europe/andorra-latest.osm.pbf"

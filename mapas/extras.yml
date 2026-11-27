@@ -1,7 +1,7 @@
 # Lo que el mapa de Atalaya pinta y OpenMapTiles no trae: el límite de velocidad y los carriles de cada vía
 # (OpenStreetMap). Se genera con Planetiler («generate-custom») junto al mapa base, en mapas.yml.
 schema_name: Atalaya extras
-schema_description: Límites de velocidad y carriles de las vías (OpenStreetMap)
+schema_description: Límites de velocidad, carriles, placas y carriles bus de las vías (OpenStreetMap)
 attribution: <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>
 sources:
   osm:
@@ -133,5 +133,97 @@ layers:
             tag_value: lanes
           - key: c
             tag_value: highway
+          - key: unico
+            tag_value: oneway
+
+  # lo reservado al autobús y al taxi: calles enteras (solo bus/taxi) y carriles bus de las calles, para pintarlos
+  # y que se vea que por ahí no se puede ir
+  - id: bus
+    features:
+      # calles solo para bus (y taxi): highway=busway o calles cerradas al tráfico salvo bus, taxi o servicio público
+      - source: osm
+        geometry: line
+        min_zoom: 13
+        include_when:
+          highway: busway
+        attributes:
+          - key: k
+            value: calle
+          - key: taxi
+            tag_value: taxi
+      - source: osm
+        geometry: line
+        min_zoom: 13
+        include_when:
+          __all__:
+            - highway:
+                - trunk
+                - primary
+                - secondary
+                - tertiary
+                - unclassified
+                - residential
+                - living_street
+                - service
+                - road
+            - __any__:
+                - access:
+                    - "no"
+                    - private
+                - motor_vehicle:
+                    - "no"
+                    - private
+                - motorcar: "no"
+            - __any__:
+                - bus:
+                    - "yes"
+                    - designated
+                - psv:
+                    - "yes"
+                    - designated
+                - taxi:
+                    - "yes"
+                    - designated
+        attributes:
+          - key: k
+            value: calle
+          - key: taxi
+            value: >-
+              ${ ('taxi' in feature.tags && (feature.tags.taxi == 'yes' || feature.tags.taxi == 'designated'))
+              || ('psv' in feature.tags && (feature.tags.psv == 'yes' || feature.tags.psv == 'designated')) ? 'si' : 'no' }
+      # carriles bus de una calle (a un lado): se pintan junto al borde
+      - source: osm
+        geometry: line
+        min_zoom: 14
+        include_when:
+          __all__:
+            - highway:
+                - trunk
+                - primary
+                - secondary
+                - tertiary
+                - unclassified
+                - residential
+                - motorway
+                - motorway_link
+                - trunk_link
+                - primary_link
+                - secondary_link
+            - __any__:
+                - busway:
+                    - lane
+                    - opposite_lane
+                - busway:right: lane
+                - busway:left: lane
+                - busway:both: lane
+                - bus:lanes: "%designated%"
+                - psv:lanes: "%designated%"
+                - lanes:bus: __any__
+                - lanes:psv: __any__
+        attributes:
+          - key: k
+            value: carril
+          - key: izq
+            tag_value: busway:left
           - key: unico
             tag_value: oneway

@@ -43,6 +43,12 @@ ZONAS = {
 }
 
 
+def solo_bus(p):
+    """¿Calle cerrada al tráfico salvo autobús, taxi o servicio público?"""
+    cerrada = p.get("access") in ("no", "private") or p.get("motor_vehicle") in ("no", "private") or p.get("motorcar") == "no"
+    return cerrada and any(p.get(k) in ("yes", "designated") for k in ("bus", "psv", "taxi"))
+
+
 def a_kmh(v):
     """'50' → (50, 1); 'ES:urban' → (50, 2); '30 mph' → km/h; 'none'/'walk'/basura → (0, 0)."""
     if not v:
@@ -183,6 +189,9 @@ def main():
             p = g["properties"]
             clase = p.get("highway")
             if clase not in CLASES:
+                continue
+            # calles solo para bus o taxi (cerradas al resto): ni para guiar ni para emparejar
+            if solo_bus(p):
                 continue
             pts = []
             for x, y in g["geometry"]["coordinates"]:

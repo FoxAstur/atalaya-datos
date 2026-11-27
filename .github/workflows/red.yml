@@ -26,13 +26,16 @@ jobs:
           python-version: "3.12"
       - name: Descargar y filtrar OpenStreetMap
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool
+          sudo apt-get update -qq && sudo apt-get install -y -qq osmium-tool aria2
           mkdir -p red/tmp
-          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward","maxspeed:type","source:maxspeed","zone:maxspeed","lanes","tunnel"]}' > red/export.json
+          echo '{"attributes":{"id":false},"linear_tags":true,"area_tags":false,"format_options":{"print_record_separator":false},"include_tags":["highway","ref","oneway","junction","maxspeed","maxspeed:forward","maxspeed:backward","maxspeed:type","source:maxspeed","zone:maxspeed","lanes","tunnel","access","motor_vehicle","motorcar","bus","psv","taxi"]}' > red/export.json
           FILTRO="w/highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link,secondary,secondary_link,tertiary,tertiary_link,unclassified,residential,living_street,road"
           for zona in europe/spain europe/portugal africa/canary-islands; do
             f=red/tmp/$(basename $zona).osm.pbf
-            curl -sSL --retry 3 --connect-timeout 30 --max-time 1800 -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
+            # con varias conexiones (aria2): con una sola, Geofabrik a veces va tan lento que no acaba a tiempo
+            aria2c -q -x 8 -s 8 -k 20M --max-tries=5 --lowest-speed-limit=100K -d "$(dirname "$f")" -o "$(basename "$f")" \
+              "https://download.geofabrik.de/${zona}-latest.osm.pbf" || \
+              curl -sSL --retry 3 --connect-timeout 30 --max-time 2400 -o "$f" "https://download.geofabrik.de/${zona}-latest.osm.pbf"
             osmium tags-filter "$f" "$FILTRO" -o red/tmp/filtrado.osm.pbf --overwrite
             osmium export red/tmp/filtrado.osm.pbf -f geojsonseq --geometry-types=linestring -c red/export.json -o red/tmp/parte.geojsonseq --overwrite
             mv red/tmp/parte.geojsonseq red/$(basename $zona).geojsonseq
