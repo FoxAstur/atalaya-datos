@@ -1,0 +1,5 @@
+https://opendata-ajuntament.barcelona.cat/data/dataset/40743bb8-e4e0-457f-aa15-87007a0bdb6a/resource/26f6ecdd-b0ac-46c4-84f0-a312640913ca/download -> 403 548 text/html
+https://opendata-ajuntament.barcelona.cat/data/dataset/b658184b-45f4-400d-a06c-bb2f68bdcab4/resource/409a7f2d-f62a-407b-a3d7-436026fd858d/download -> 403 548 text/html
+https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/PARQU%C3%8DMETROS_DEL_SERVICIO_DE_ESTACIONAMIENTO_REGULADO/MapServer?f=pjson -> 200 4480 text/plain; charset=UTF-8
+https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/PARQU%C3%8DMETROS_DEL_SERVICIO_DE_ESTACIONAMIENTO_REGULADO/MapServer/0/query?where=1%3D1&outFields=*&resultRecordCount=3&outSR=4326&f=geojson -> 200 699 application/geo+json; charset=UTF-8
+https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/205/query?where=1%3D1&returnCountOnly=true&f=json -> 200 15 application/json;charset=UTF-8

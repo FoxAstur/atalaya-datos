@@ -1,0 +1,161 @@
+{
+ "currentVersion": 11.5,
+ "cimVersion": "3.5.0",
+ "serviceDescription": "<div style='text-align:Left;'><div><div><p><span>Este servicio de mapas recoge los datos de parquímetros desde el año 2014 (vigentes e histórico) del Servicio de Estacionamiento Regulado (SER)  <\/span><\/p><\/div><\/div><\/div>",
+ "mapName": "PARQUÍMETROS DEL SERVICIO DE ESTACIONAMIENTO REGULADO",
+ "description": "Este servicio de mapas recoge los datos de parquímetros desde el año 2014 (vigentes e histórico) del Servicio de Estacionamiento Regulado (SER)  ",
+ "copyrightText": "D.G. de Sostenibilidad y Control Ambiental. S.G. de Gestión de la Movilidad. Departamento Técnico",
+ "supportsDynamicLayers": true,
+ "layers": [
+  {
+   "id": 0,
+   "name": "Parquímetros. Escala < 5.000",
+   "parentLayerId": -1,
+   "defaultVisibility": true,
+   "subLayerIds": null,
+   "minScale": 5000,
+   "maxScale": 0,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 1,
+   "name": "Parquímetros. Escala 5.001 a 40.000",
+   "parentLayerId": -1,
+   "defaultVisibility": true,
+   "subLayerIds": null,
+   "minScale": 40000,
+   "maxScale": 5001,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint",
+   "supportsDynamicLegends": true
+  },
+  {
+   "id": 2,
+   "name": "Parquímetros. Escala > 40.000",
+   "parentLayerId": -1,
+   "defaultVisibility": true,
+   "subLayerIds": null,
+   "minScale": 0,
+   "maxScale": 40001,
+   "type": "Feature Layer",
+   "geometryType": "esriGeometryPoint",
+   "supportsDynamicLegends": true
+  }
+ ],
+ "tables": [],
+ "spatialReference": {
+  "wkid": 25830,
+  "latestWkid": 25830,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -5120900,
+  "falseY": -9998100,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "singleFusedMapCache": false,
+ "initialExtent": {
+  "xmin": 435279.4248749506,
+  "ymin": 4471215.398424555,
+  "xmax": 447324.38642504957,
+  "ymax": 4481624.7955754455,
+  "spatialReference": {
+   "wkid": 25830,
+   "latestWkid": 25830,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -5120900,
+   "falseY": -9998100,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "fullExtent": {
+  "xmin": 437010.23900000006,
+  "ymin": 4469968.909399999,
+  "xmax": 445593.5723000001,
+  "ymax": 4482253.148,
+  "zmin": 0,
+  "zmax": 0,
+  "spatialReference": {
+   "wkid": 25830,
+   "latestWkid": 25830,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -5120900,
+   "falseY": -9998100,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "datesInUnknownTimezone": false,
+ "minScale": 0,
+ "maxScale": 0,
+ "units": "esriMeters",
+ "supportedImageFormatTypes": "PNG32,PNG24,PNG,JPG,DIB,TIFF,EMF,PS,PDF,GIF,SVG,SVGZ,BMP",
+ "documentInfo": {
+  "Title": "PARQUÍMETROS",
+  "Author": "",
+  "Comments": "Este servicio de mapas recoge los datos de parquímetros desde el año 2014 (vigentes e histórico) del Servicio de Estacionamiento Regulado (SER)  ",
+  "Subject": "Mostrar la ubicación de los parquímetros del Servicio de Estacionamiento Regulado (SER)",
+  "Category": "",
+  "Version": "3.3.0",
+  "AntialiasingMode": "Fast",
+  "TextAntialiasingMode": "Force",
+  "Keywords": "Parquímetros,vehículos,zona SER,movilidad,plazas,verdes,azules,barrios,alta rotación"
+ },
+ "supportsQueryDomains": true,
+ "capabilities": "Query,Map,Data",
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "exportTilesAllowed": false,
+ "referenceScale": 0.0,
+ "datumTransformations": [
+  {
+   "geoTransforms": [
+    {
+     "wkid": 1149,
+     "latestWkid": 1149,
+     "transformForward": false,
+     "name": "ETRS_1989_To_WGS_1984"
+    }
+   ]
+  },
+  {
+   "geoTransforms": [
+    {
+     "wkid": 1149,
+     "latestWkid": 1149,
+     "transformForward": true,
+     "name": "ETRS_1989_To_WGS_1984"
+    }
+   ]
+  }
+ ],
+ "supportsDatumTransformation": true,
+ "archivingInfo": {"supportsHistoricMoment": false},
+ "supportsClipping": true,
+ "supportsSpatialFilter": true,
+ "supportsTimeRelation": true,
+ "supportsQueryDataElements": true,
+ "mapUnits": {"uwkid": 9001},
+ "maxSelectionCount": 2000,
+ "maxRecordCount": 2000,
+ "maxImageHeight": 4096,
+ "maxImageWidth": 4096,
+ "supportedExtensions": "WMSServer",
+ "serviceItemId": "5d009f011da144479b2e3c28c4c478c3"
+}
