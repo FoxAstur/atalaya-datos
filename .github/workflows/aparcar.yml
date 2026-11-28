@@ -1,0 +1,33 @@
+name: Zonas de aparcamiento regulado
+
+# ORA de València y SER de Madrid (datos abiertos), una vez por semana, como versión "aparcar".
+on:
+  schedule:
+    - cron: "41 5 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aparcar
+  cancel-in-progress: true
+
+jobs:
+  aparcar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Zonas
+        run: python aparcar.py
+      - name: Publicar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view aparcar >/dev/null 2>&1 || gh release create aparcar --title "Zonas de aparcamiento regulado" \
+            --notes "ORA de València y SER de Madrid (datos abiertos de los ayuntamientos, CC BY 4.0) para la app."
+          gh release upload aparcar salida/aparcar.json.gz --clobber
