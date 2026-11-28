@@ -1,0 +1,5 @@
+https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/205?f=json -> 200 4883 application/json;charset=UTF-8
+https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/205/query?where=1%3D1&outFields=*&resultRecordCount=5&outSR=4326&f=geojson -> 200 1790 application/geo+json;charset=UTF-8
+https://datos.madrid.es/dataset/200077-0-zona-ser/resource/200077-0-zona-ser-csv/download/200077-0-zona-ser-csv.csv -> 200 1008281 text/csv; charset=utf-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=trams-aparcament-superficie -> 200 49613 application/json;charset=utf-8
+https://opendata-ajuntament.barcelona.cat/data/api/3/action/package_show?id=colors-aparcaments-superficie -> 200 6853 application/json;charset=utf-8
